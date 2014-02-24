@@ -1,0 +1,18 @@
+PODS:
+  - MagicalRecord (2.2):
+    - MagicalRecord/Core
+  - MagicalRecord/Core (2.2)
+  - PSTCollectionView (1.2.0)
+  - SVSegmentedControl (0.2)
+
+DEPENDENCIES:
+  - MagicalRecord (~> 2.2)
+  - PSTCollectionView (~> 1.2.0)
+  - SVSegmentedControl (~> 0.2)
+
+SPEC CHECKSUMS:
+  MagicalRecord: 95d49d74ef752cd52f6ad87bcb474817fc3978cf
+  PSTCollectionView: fb2ad2790c6efa306b2caf10315b2c1464d1f5c6
+  SVSegmentedControl: e874fc56c2a1efb9f597ddf0908101393f53fe96
+
+COCOAPODS: 0.28.0
