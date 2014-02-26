@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KGViewController : UIViewController
+@interface KGViewController : UITabBarController <UITabBarControllerDelegate>
 
 @end
