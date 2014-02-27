@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		06CE0146A8D24179B54771E8 /* libPods-KelpGang.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E044CDC874D44F7B9918FAE3 /* libPods-KelpGang.a */; };
+		A1036BA718BEE81200FA7358 /* KGFindKelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1036BA618BEE81200FA7358 /* KGFindKelpViewController.m */; };
+		A1036BAD18BF191100FA7358 /* KGFindKelpViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1036BAC18BF191100FA7358 /* KGFindKelpViewCell.m */; };
+		A1036BB318BF31EF00FA7358 /* 2-star.png in Resources */ = {isa = PBXBuildFile; fileRef = A1036BB118BF31EF00FA7358 /* 2-star.png */; };
+		A1036BB418BF31EF00FA7358 /* 2-star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1036BB218BF31EF00FA7358 /* 2-star@2x.png */; };
+		A1036BB618BF336200FA7358 /* test-head.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1036BB518BF336200FA7358 /* test-head.jpg */; };
+		A1036BB818BF3A1700FA7358 /* test-canada-flag.png in Resources */ = {isa = PBXBuildFile; fileRef = A1036BB718BF3A1700FA7358 /* test-canada-flag.png */; };
+		A1036BBB18BF3DCF00FA7358 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = A1036BB918BF3DCF00FA7358 /* location.png */; };
+		A1036BBC18BF3DCF00FA7358 /* location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1036BBA18BF3DCF00FA7358 /* location@2x.png */; };
 		A14300C918BB252F0064DF87 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14300C818BB252F0064DF87 /* Foundation.framework */; };
 		A14300CB18BB252F0064DF87 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14300CA18BB252F0064DF87 /* CoreGraphics.framework */; };
 		A14300CD18BB252F0064DF87 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14300CC18BB252F0064DF87 /* UIKit.framework */; };
@@ -47,6 +55,16 @@
 
 /* Begin PBXFileReference section */
 		71B7D4768EEC4B5B9F048CA3 /* Pods-KelpGang.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KelpGang.xcconfig"; path = "Pods/Pods-KelpGang.xcconfig"; sourceTree = "<group>"; };
+		A1036BA518BEE81200FA7358 /* KGFindKelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGFindKelpViewController.h; sourceTree = SOURCE_ROOT; };
+		A1036BA618BEE81200FA7358 /* KGFindKelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGFindKelpViewController.m; sourceTree = SOURCE_ROOT; };
+		A1036BAB18BF191100FA7358 /* KGFindKelpViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGFindKelpViewCell.h; sourceTree = SOURCE_ROOT; };
+		A1036BAC18BF191100FA7358 /* KGFindKelpViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGFindKelpViewCell.m; sourceTree = SOURCE_ROOT; };
+		A1036BB118BF31EF00FA7358 /* 2-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2-star.png"; sourceTree = "<group>"; };
+		A1036BB218BF31EF00FA7358 /* 2-star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2-star@2x.png"; sourceTree = "<group>"; };
+		A1036BB518BF336200FA7358 /* test-head.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "test-head.jpg"; sourceTree = "<group>"; };
+		A1036BB718BF3A1700FA7358 /* test-canada-flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test-canada-flag.png"; sourceTree = "<group>"; };
+		A1036BB918BF3DCF00FA7358 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
+		A1036BBA18BF3DCF00FA7358 /* location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location@2x.png"; sourceTree = "<group>"; };
 		A14300C518BB252F0064DF87 /* KelpGang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KelpGang.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14300C818BB252F0064DF87 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A14300CA18BB252F0064DF87 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -223,6 +241,12 @@
 		A143015E18BB5D7A0064DF87 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A1036BB918BF3DCF00FA7358 /* location.png */,
+				A1036BBA18BF3DCF00FA7358 /* location@2x.png */,
+				A1036BB718BF3A1700FA7358 /* test-canada-flag.png */,
+				A1036BB518BF336200FA7358 /* test-head.jpg */,
+				A1036BB118BF31EF00FA7358 /* 2-star.png */,
+				A1036BB218BF31EF00FA7358 /* 2-star@2x.png */,
 				A1A6232518BDE01E00D8E9A0 /* arrow-down@2x.png */,
 				A1A6231718BDC4F400D8E9A0 /* arrow-down.png */,
 				A1A6231518BDA73B00D8E9A0 /* navbar-item-right.png */,
@@ -237,6 +261,10 @@
 		A1A6232718BDE10500D8E9A0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				A1036BA518BEE81200FA7358 /* KGFindKelpViewController.h */,
+				A1036BA618BEE81200FA7358 /* KGFindKelpViewController.m */,
+				A1036BAB18BF191100FA7358 /* KGFindKelpViewCell.h */,
+				A1036BAC18BF191100FA7358 /* KGFindKelpViewCell.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -320,16 +348,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1036BB618BF336200FA7358 /* test-head.jpg in Resources */,
 				A1A6232618BDE01E00D8E9A0 /* arrow-down@2x.png in Resources */,
+				A1036BB318BF31EF00FA7358 /* 2-star.png in Resources */,
+				A1036BB818BF3A1700FA7358 /* test-canada-flag.png in Resources */,
 				A1A6231118BD991C00D8E9A0 /* tabbar-background.png in Resources */,
+				A1036BBC18BF3DCF00FA7358 /* location@2x.png in Resources */,
 				A1A6231618BDA73B00D8E9A0 /* navbar-item-right.png in Resources */,
 				A1A6231818BDC4F400D8E9A0 /* arrow-down.png in Resources */,
+				A1036BBB18BF3DCF00FA7358 /* location.png in Resources */,
 				A14300E118BB252F0064DF87 /* Images.xcassets in Resources */,
 				A14300D318BB252F0064DF87 /* InfoPlist.strings in Resources */,
 				A143012918BB4C4E0064DF87 /* common.bundle in Resources */,
 				A1A6231218BD991C00D8E9A0 /* tabbar-item.png in Resources */,
 				A1A6231418BD9E2C00D8E9A0 /* tabbar-item-selected.png in Resources */,
 				A14300DC18BB252F0064DF87 /* Main.storyboard in Resources */,
+				A1036BB418BF31EF00FA7358 /* 2-star@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,9 +415,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1036BAD18BF191100FA7358 /* KGFindKelpViewCell.m in Sources */,
 				A14300DF18BB252F0064DF87 /* KGViewController.m in Sources */,
 				A14300D918BB252F0064DF87 /* KGAppDelegate.m in Sources */,
 				A143012418BB461A0064DF87 /* UIColor+PKColor.m in Sources */,
+				A1036BA718BEE81200FA7358 /* KGFindKelpViewController.m in Sources */,
 				A14300D518BB252F0064DF87 /* main.m in Sources */,
 				A143012718BB461A0064DF87 /* PKResManager.m in Sources */,
 				A143012618BB461A0064DF87 /* UIImage+PKImage.m in Sources */,
