@@ -261,7 +261,7 @@
         <image name="tabbar-background.png" width="320" height="49"/>
         <image name="tabbar-item.png" width="24" height="24"/>
         <image name="test-canada-flag.png" width="19" height="19"/>
-        <image name="test-head.jpg" width="600" height="800"/>
+        <image name="test-head.jpg" width="50" height="50"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
