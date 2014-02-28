@@ -9,7 +9,7 @@
 #import "KGFindKelpViewController.h"
 #import "KGFindKelpViewCell.h"
 #import "KGCountryConditionView.h"
-#import "KGCountryConditionViewController.h"
+//#import "KGCountryConditionViewController.h"
 
 static NSString * const kFindKelpCell = @"kFindKelpCell";
 
@@ -18,11 +18,17 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 @property (weak, nonatomic) IBOutlet UIView *conditionView;
 @property (weak, nonatomic) IBOutlet UIImageView *headLineImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *headIndicatorImageView;
+@property (weak, nonatomic) IBOutlet UIButton *countryBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *arrowImageView;
 - (IBAction)showCountryCondition:(id)sender;
 
 @property (nonatomic, assign) BOOL showCountryView;
-@property (nonatomic, strong) UIView *countryConditionView;
+@property (nonatomic, strong) KGCountryConditionView *countryConditionView;
+@property (nonatomic, strong) NSArray *continents;
+@property (nonatomic, strong) NSDictionary *countrys;
+@property (nonatomic, copy) NSString *currContinent;
+
+//@property (nonatomic, strong) KGCountryConditionViewController *countryConditionViewController;
 
 @end
 
@@ -43,7 +49,14 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
     [self.headLineImageView setHidden:YES];
     [self.headIndicatorImageView setHidden:YES];
 //    [self.collectionView registerClass:[KGFindKelpViewCell class] forCellWithReuseIdentifier:@"mycell"];
-
+    self.continents = @[@"热门国家", @"亚洲", @"欧洲", @"非洲", @"北美洲", @"南美洲", @"大洋洲"];
+    self.countrys = @{@"热门国家":@[@"日本",@"韩国",@"美国",@"法国",@"意大利",@"德国",@"加拿大",@"澳大利亚",@"泰国"],
+      @"亚洲": @[@"日本",@"韩国",@"泰国"],
+      @"欧洲": @[@"英国",@"法国"],
+      @"非洲": @[@"日本",@"韩国",@"美国",@"法国",@"意大利",@"德国",@"加拿大",@"澳大利亚",@"泰国"],
+      @"北美洲": @[@"日本",@"韩国",@"美国",@"法国",@"意大利",@"德国",@"加拿大",@"澳大利亚",@"泰国"],
+      @"南美洲": @[@"日本",@"韩国",@"美国",@"法国",@"意大利",@"德国",@"加拿大",@"澳大利亚",@"泰国"],
+      @"大洋洲": @[@"日本",@"韩国",@"美国",@"法国",@"意大利",@"德国",@"加拿大",@"澳大利亚",@"泰国"]};
 }
 
 - (void)didReceiveMemoryWarning
@@ -134,25 +147,89 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
     } else {
         [self.headLineImageView setHidden:NO];
         [self.headIndicatorImageView setHidden:NO];
-//        NSArray *nibArr = [[NSBundle mainBundle]loadNibNamed:@"KGCountryConditionView" owner:self options:nil];
-//        KGCountryConditionView *countryConditionView = [nibArr objectAtIndex:0];
-//        CGRect conditionFrame = self.conditionView.frame;
-//        CGRect countryFrame = countryConditionView.frame;
-//        countryFrame.origin.y = conditionFrame.origin.y + conditionFrame.size.height;
-//        countryConditionView.frame = countryFrame;
+        NSArray *nibArr = [[NSBundle mainBundle]loadNibNamed:@"KGCountryConditionView" owner:self options:nil];
+        KGCountryConditionView *countryConditionView = [nibArr objectAtIndex:0];
+        self.countryConditionView = countryConditionView;
+        CGRect countryFrame = countryConditionView.frame;
+        countryFrame.origin.y = self.conditionView.frame.origin.y + self.conditionView.frame.size.height;
+        countryConditionView.frame = countryFrame;
+        [self.countryConditionView.continentTableView setSeparatorColor:[UIColor clearColor]];
+//        [self.countryConditionView.countryTableView setSeparatorColor:[UIColor redColor]];
+        NSIndexPath *firstLine= [NSIndexPath indexPathForRow:0 inSection:0];
+        [self.countryConditionView.continentTableView selectRowAtIndexPath:firstLine animated:YES scrollPosition:UITableViewScrollPositionNone];
+        [self tableView:self.countryConditionView.continentTableView didSelectRowAtIndexPath:firstLine];
+        self.currContinent = [self.continents objectAtIndex:0];
 
-//        countryConditionView.continentTableView.backgroundColor = [UIColor clearColor];
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        KGCountryConditionViewController *conditionController = [storyboard instantiateViewControllerWithIdentifier:@"kCountryConditionViewController"];
-
-//        [conditionController.view setBackgroundColor:[UIColor redColor]];
-        conditionController.view.frame = CGRectMake(0, self.conditionView.frame.origin.y + self.conditionView.frame.size.height, 320, 360);
-        self.countryConditionView = conditionController.view;
         [self.view addSubview:self.countryConditionView];
         self.showCountryView = YES;
         UIImage *arrowUpImg = [UIImage imageNamed:@"arrow-up.png"];
         [self.arrowImageView setImage:arrowUpImg];
     }
 }
+
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if(tableView == self.countryConditionView.continentTableView) {
+        return [self.continents count];
+    } else {
+        return [[self.countrys objectForKey:self.currContinent] count];
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *kLeftTableViewCell = @"kLeftTableViewCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kLeftTableViewCell];
+    if (cell == nil) {
+        NSArray *nibArr = [[NSBundle mainBundle]loadNibNamed:@"KGCountryConditionView" owner:self options:nil];
+        cell = [nibArr objectAtIndex:1];
+    }
+
+
+    if(tableView == self.countryConditionView.continentTableView) {
+        cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
+        cell.selectedBackgroundView.backgroundColor = [UIColor whiteColor];
+        cell.textLabel.text = [self.continents objectAtIndex:[indexPath row]];
+    } else {
+        cell.backgroundColor = [UIColor whiteColor];
+        cell.textLabel.text = [[self.countrys objectForKey:self.currContinent]objectAtIndex:[indexPath row]];
+    }
+
+    return cell;
+}
+
+#pragma UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(tableView == self.countryConditionView.continentTableView) {
+        NSInteger row = indexPath.row;
+        NSLog(@"item%d is: %@", row, [self.continents objectAtIndex:row]);
+        NSString *continent = [self.continents objectAtIndex:row];
+        self.currContinent = continent;
+        [self.countryConditionView.countryTableView reloadData];
+    } else {
+        self.showCountryView = NO;
+        [self.headLineImageView setHidden:YES];
+        [self.headIndicatorImageView setHidden:YES];
+        [self.countryConditionView removeFromSuperview];
+        UIImage *arrowDownImg = [UIImage imageNamed:@"arrow-down.png"];
+        [self.arrowImageView setImage:arrowDownImg];
+
+        NSString *selectCountry = [[self.countrys objectForKey:self.currContinent]objectAtIndex:[indexPath row]];
+        [self.countryBtn setTitle:selectCountry forState:UIControlStateNormal];
+        
+    }
+
+}
+
 
 @end

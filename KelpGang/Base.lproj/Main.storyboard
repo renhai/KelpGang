@@ -212,6 +212,7 @@
                         <outlet property="arrowImageView" destination="OZ8-mE-Sfw" id="woi-Yk-DT3"/>
                         <outlet property="collectionView" destination="u1G-k4-vRS" id="4mg-bx-OrN"/>
                         <outlet property="conditionView" destination="lUr-4M-GFK" id="BhB-ow-kk7"/>
+                        <outlet property="countryBtn" destination="jJM-Rx-EXO" id="SIT-4S-pbu"/>
                         <outlet property="headIndicatorImageView" destination="kz5-mc-Rhp" id="0sz-Hc-Fmp"/>
                         <outlet property="headLineImageView" destination="doV-9j-TZm" id="Vnx-3x-ILc"/>
                     </connections>
@@ -219,57 +220,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sfH-pZ-UwX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="776" y="-232"/>
-        </scene>
-        <!--Country Condition View Controller-->
-        <scene sceneID="wZG-fj-Gp0">
-            <objects>
-                <viewController storyboardIdentifier="kCountryConditionViewController" id="WO7-cm-vSR" customClass="KGCountryConditionViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="kOD-OD-ZkD">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="tSZ-gp-sEw" userLabel="Left Table View">
-                                <rect key="frame" x="0.0" y="0.0" width="138" height="360"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="sectionIndexTrackingBackgroundColor" red="0.91372549020000005" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="XDI-qr-38k">
-                                        <rect key="frame" x="0.0" y="22" width="138" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XDI-qr-38k" id="y3w-Vb-luN">
-                                            <rect key="frame" x="0.0" y="0.0" width="138" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="KsH-6Z-JNq" userLabel="Right Table View">
-                                <rect key="frame" x="138" y="0.0" width="182" height="360"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3GM-QJ-FjJ">
-                                        <rect key="frame" x="0.0" y="22" width="182" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3GM-QJ-FjJ" id="WMh-bu-nYi">
-                                            <rect key="frame" x="0.0" y="0.0" width="182" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <outlet property="leftTableView" destination="tSZ-gp-sEw" id="SfT-LS-noK"/>
-                        <outlet property="rightTableView" destination="KsH-6Z-JNq" id="hKb-NQ-S45"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="54A-CW-1j2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1260" y="-232"/>
         </scene>
         <!--View Controller - 扫货-->
         <scene sceneID="FAH-W9-KcX">
