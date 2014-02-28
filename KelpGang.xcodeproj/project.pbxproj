@@ -8,14 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		06CE0146A8D24179B54771E8 /* libPods-KelpGang.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E044CDC874D44F7B9918FAE3 /* libPods-KelpGang.a */; };
-		A1036BA718BEE81200FA7358 /* KGFindKelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1036BA618BEE81200FA7358 /* KGFindKelpViewController.m */; };
-		A1036BAD18BF191100FA7358 /* KGFindKelpViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1036BAC18BF191100FA7358 /* KGFindKelpViewCell.m */; };
 		A1036BB318BF31EF00FA7358 /* 2-star.png in Resources */ = {isa = PBXBuildFile; fileRef = A1036BB118BF31EF00FA7358 /* 2-star.png */; };
 		A1036BB418BF31EF00FA7358 /* 2-star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1036BB218BF31EF00FA7358 /* 2-star@2x.png */; };
 		A1036BB618BF336200FA7358 /* test-head.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1036BB518BF336200FA7358 /* test-head.jpg */; };
 		A1036BB818BF3A1700FA7358 /* test-canada-flag.png in Resources */ = {isa = PBXBuildFile; fileRef = A1036BB718BF3A1700FA7358 /* test-canada-flag.png */; };
 		A1036BBB18BF3DCF00FA7358 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = A1036BB918BF3DCF00FA7358 /* location.png */; };
 		A1036BBC18BF3DCF00FA7358 /* location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1036BBA18BF3DCF00FA7358 /* location@2x.png */; };
+		A106930718C068CF003CC6BC /* head-indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = A106930318C068CF003CC6BC /* head-indicator.png */; };
+		A106930818C068CF003CC6BC /* head-indicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A106930418C068CF003CC6BC /* head-indicator@2x.png */; };
+		A106930918C068CF003CC6BC /* head-line.png in Resources */ = {isa = PBXBuildFile; fileRef = A106930518C068CF003CC6BC /* head-line.png */; };
+		A106930A18C068CF003CC6BC /* head-line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A106930618C068CF003CC6BC /* head-line@2x.png */; };
+		A106930D18C06C32003CC6BC /* arrow-up.png in Resources */ = {isa = PBXBuildFile; fileRef = A106930B18C06C32003CC6BC /* arrow-up.png */; };
+		A106930E18C06C32003CC6BC /* arrow-up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A106930C18C06C32003CC6BC /* arrow-up@2x.png */; };
 		A14300C918BB252F0064DF87 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14300C818BB252F0064DF87 /* Foundation.framework */; };
 		A14300CB18BB252F0064DF87 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14300CA18BB252F0064DF87 /* CoreGraphics.framework */; };
 		A14300CD18BB252F0064DF87 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14300CC18BB252F0064DF87 /* UIKit.framework */; };
@@ -35,6 +39,11 @@
 		A143012618BB461A0064DF87 /* UIImage+PKImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A143012018BB461A0064DF87 /* UIImage+PKImage.m */; };
 		A143012718BB461A0064DF87 /* PKResManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A143012218BB461A0064DF87 /* PKResManager.m */; };
 		A143012918BB4C4E0064DF87 /* common.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A143012818BB4C4E0064DF87 /* common.bundle */; };
+		A144159E18C0EA590053456D /* KGCountryConditionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A144159618C0EA590053456D /* KGCountryConditionView.m */; };
+		A144159F18C0EA590053456D /* KGCountryConditionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A144159718C0EA590053456D /* KGCountryConditionView.xib */; };
+		A14415A018C0EA590053456D /* KGCountryConditionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A144159918C0EA590053456D /* KGCountryConditionViewController.m */; };
+		A14415A118C0EA590053456D /* KGFindKelpViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A144159B18C0EA590053456D /* KGFindKelpViewCell.m */; };
+		A14415A218C0EA590053456D /* KGFindKelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A144159D18C0EA590053456D /* KGFindKelpViewController.m */; };
 		A1A6231118BD991C00D8E9A0 /* tabbar-background.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A6230F18BD991C00D8E9A0 /* tabbar-background.png */; };
 		A1A6231218BD991C00D8E9A0 /* tabbar-item.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A6231018BD991C00D8E9A0 /* tabbar-item.png */; };
 		A1A6231418BD9E2C00D8E9A0 /* tabbar-item-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A6231318BD9E2C00D8E9A0 /* tabbar-item-selected.png */; };
@@ -55,16 +64,18 @@
 
 /* Begin PBXFileReference section */
 		71B7D4768EEC4B5B9F048CA3 /* Pods-KelpGang.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KelpGang.xcconfig"; path = "Pods/Pods-KelpGang.xcconfig"; sourceTree = "<group>"; };
-		A1036BA518BEE81200FA7358 /* KGFindKelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGFindKelpViewController.h; sourceTree = SOURCE_ROOT; };
-		A1036BA618BEE81200FA7358 /* KGFindKelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGFindKelpViewController.m; sourceTree = SOURCE_ROOT; };
-		A1036BAB18BF191100FA7358 /* KGFindKelpViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGFindKelpViewCell.h; sourceTree = SOURCE_ROOT; };
-		A1036BAC18BF191100FA7358 /* KGFindKelpViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGFindKelpViewCell.m; sourceTree = SOURCE_ROOT; };
 		A1036BB118BF31EF00FA7358 /* 2-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2-star.png"; sourceTree = "<group>"; };
 		A1036BB218BF31EF00FA7358 /* 2-star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2-star@2x.png"; sourceTree = "<group>"; };
 		A1036BB518BF336200FA7358 /* test-head.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "test-head.jpg"; sourceTree = "<group>"; };
 		A1036BB718BF3A1700FA7358 /* test-canada-flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test-canada-flag.png"; sourceTree = "<group>"; };
 		A1036BB918BF3DCF00FA7358 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
 		A1036BBA18BF3DCF00FA7358 /* location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location@2x.png"; sourceTree = "<group>"; };
+		A106930318C068CF003CC6BC /* head-indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "head-indicator.png"; sourceTree = "<group>"; };
+		A106930418C068CF003CC6BC /* head-indicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "head-indicator@2x.png"; sourceTree = "<group>"; };
+		A106930518C068CF003CC6BC /* head-line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "head-line.png"; sourceTree = "<group>"; };
+		A106930618C068CF003CC6BC /* head-line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "head-line@2x.png"; sourceTree = "<group>"; };
+		A106930B18C06C32003CC6BC /* arrow-up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-up.png"; sourceTree = "<group>"; };
+		A106930C18C06C32003CC6BC /* arrow-up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-up@2x.png"; sourceTree = "<group>"; };
 		A14300C518BB252F0064DF87 /* KelpGang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KelpGang.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14300C818BB252F0064DF87 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A14300CA18BB252F0064DF87 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -94,6 +105,15 @@
 		A143012218BB461A0064DF87 /* PKResManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKResManager.m; sourceTree = "<group>"; };
 		A143012318BB461A0064DF87 /* PKResManagerKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKResManagerKit.h; sourceTree = "<group>"; };
 		A143012818BB4C4E0064DF87 /* common.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = common.bundle; path = ../common.bundle; sourceTree = "<group>"; };
+		A144159518C0EA590053456D /* KGCountryConditionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCountryConditionView.h; sourceTree = "<group>"; };
+		A144159618C0EA590053456D /* KGCountryConditionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCountryConditionView.m; sourceTree = "<group>"; };
+		A144159718C0EA590053456D /* KGCountryConditionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KGCountryConditionView.xib; sourceTree = "<group>"; };
+		A144159818C0EA590053456D /* KGCountryConditionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCountryConditionViewController.h; sourceTree = "<group>"; };
+		A144159918C0EA590053456D /* KGCountryConditionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCountryConditionViewController.m; sourceTree = "<group>"; };
+		A144159A18C0EA590053456D /* KGFindKelpViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGFindKelpViewCell.h; sourceTree = "<group>"; };
+		A144159B18C0EA590053456D /* KGFindKelpViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGFindKelpViewCell.m; sourceTree = "<group>"; };
+		A144159C18C0EA590053456D /* KGFindKelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGFindKelpViewController.h; sourceTree = "<group>"; };
+		A144159D18C0EA590053456D /* KGFindKelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGFindKelpViewController.m; sourceTree = "<group>"; };
 		A1A6230F18BD991C00D8E9A0 /* tabbar-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-background.png"; sourceTree = "<group>"; };
 		A1A6231018BD991C00D8E9A0 /* tabbar-item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-item.png"; sourceTree = "<group>"; };
 		A1A6231318BD9E2C00D8E9A0 /* tabbar-item-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-item-selected.png"; sourceTree = "<group>"; };
@@ -169,7 +189,7 @@
 				A14300DD18BB252F0064DF87 /* KGViewController.h */,
 				A14300DE18BB252F0064DF87 /* KGViewController.m */,
 				A14300E018BB252F0064DF87 /* Images.xcassets */,
-				A1A6232718BDE10500D8E9A0 /* ViewControllers */,
+				A144159418C0E98F0053456D /* ViewControllers */,
 				A143011818BB461A0064DF87 /* ToolBox */,
 				A14300CF18BB252F0064DF87 /* Supporting Files */,
 				A143015E18BB5D7A0064DF87 /* Resources */,
@@ -241,6 +261,12 @@
 		A143015E18BB5D7A0064DF87 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A106930B18C06C32003CC6BC /* arrow-up.png */,
+				A106930C18C06C32003CC6BC /* arrow-up@2x.png */,
+				A106930318C068CF003CC6BC /* head-indicator.png */,
+				A106930418C068CF003CC6BC /* head-indicator@2x.png */,
+				A106930518C068CF003CC6BC /* head-line.png */,
+				A106930618C068CF003CC6BC /* head-line@2x.png */,
 				A1036BB918BF3DCF00FA7358 /* location.png */,
 				A1036BBA18BF3DCF00FA7358 /* location@2x.png */,
 				A1036BB718BF3A1700FA7358 /* test-canada-flag.png */,
@@ -258,13 +284,18 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		A1A6232718BDE10500D8E9A0 /* ViewControllers */ = {
+		A144159418C0E98F0053456D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				A1036BA518BEE81200FA7358 /* KGFindKelpViewController.h */,
-				A1036BA618BEE81200FA7358 /* KGFindKelpViewController.m */,
-				A1036BAB18BF191100FA7358 /* KGFindKelpViewCell.h */,
-				A1036BAC18BF191100FA7358 /* KGFindKelpViewCell.m */,
+				A144159518C0EA590053456D /* KGCountryConditionView.h */,
+				A144159618C0EA590053456D /* KGCountryConditionView.m */,
+				A144159718C0EA590053456D /* KGCountryConditionView.xib */,
+				A144159818C0EA590053456D /* KGCountryConditionViewController.h */,
+				A144159918C0EA590053456D /* KGCountryConditionViewController.m */,
+				A144159A18C0EA590053456D /* KGFindKelpViewCell.h */,
+				A144159B18C0EA590053456D /* KGFindKelpViewCell.m */,
+				A144159C18C0EA590053456D /* KGFindKelpViewController.h */,
+				A144159D18C0EA590053456D /* KGFindKelpViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -349,18 +380,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1036BB618BF336200FA7358 /* test-head.jpg in Resources */,
+				A106930A18C068CF003CC6BC /* head-line@2x.png in Resources */,
 				A1A6232618BDE01E00D8E9A0 /* arrow-down@2x.png in Resources */,
 				A1036BB318BF31EF00FA7358 /* 2-star.png in Resources */,
 				A1036BB818BF3A1700FA7358 /* test-canada-flag.png in Resources */,
+				A106930818C068CF003CC6BC /* head-indicator@2x.png in Resources */,
 				A1A6231118BD991C00D8E9A0 /* tabbar-background.png in Resources */,
 				A1036BBC18BF3DCF00FA7358 /* location@2x.png in Resources */,
+				A106930918C068CF003CC6BC /* head-line.png in Resources */,
 				A1A6231618BDA73B00D8E9A0 /* navbar-item-right.png in Resources */,
 				A1A6231818BDC4F400D8E9A0 /* arrow-down.png in Resources */,
 				A1036BBB18BF3DCF00FA7358 /* location.png in Resources */,
+				A106930718C068CF003CC6BC /* head-indicator.png in Resources */,
 				A14300E118BB252F0064DF87 /* Images.xcassets in Resources */,
+				A106930D18C06C32003CC6BC /* arrow-up.png in Resources */,
 				A14300D318BB252F0064DF87 /* InfoPlist.strings in Resources */,
 				A143012918BB4C4E0064DF87 /* common.bundle in Resources */,
+				A106930E18C06C32003CC6BC /* arrow-up@2x.png in Resources */,
 				A1A6231218BD991C00D8E9A0 /* tabbar-item.png in Resources */,
+				A144159F18C0EA590053456D /* KGCountryConditionView.xib in Resources */,
 				A1A6231418BD9E2C00D8E9A0 /* tabbar-item-selected.png in Resources */,
 				A14300DC18BB252F0064DF87 /* Main.storyboard in Resources */,
 				A1036BB418BF31EF00FA7358 /* 2-star@2x.png in Resources */,
@@ -415,13 +453,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1036BAD18BF191100FA7358 /* KGFindKelpViewCell.m in Sources */,
 				A14300DF18BB252F0064DF87 /* KGViewController.m in Sources */,
+				A14415A018C0EA590053456D /* KGCountryConditionViewController.m in Sources */,
 				A14300D918BB252F0064DF87 /* KGAppDelegate.m in Sources */,
 				A143012418BB461A0064DF87 /* UIColor+PKColor.m in Sources */,
-				A1036BA718BEE81200FA7358 /* KGFindKelpViewController.m in Sources */,
 				A14300D518BB252F0064DF87 /* main.m in Sources */,
+				A144159E18C0EA590053456D /* KGCountryConditionView.m in Sources */,
 				A143012718BB461A0064DF87 /* PKResManager.m in Sources */,
+				A14415A218C0EA590053456D /* KGFindKelpViewController.m in Sources */,
+				A14415A118C0EA590053456D /* KGFindKelpViewCell.m in Sources */,
 				A143012618BB461A0064DF87 /* UIImage+PKImage.m in Sources */,
 				A143012518BB461A0064DF87 /* UIFont+PKFont.m in Sources */,
 			);
