@@ -22,12 +22,7 @@
 - (id)initWithCoder:(NSCoder*)coder
 {
     self = [super initWithCoder:coder];
-    if (self)
-    {
-//        [self.continentTableView setSeparatorColor:[UIColor clearColor]];
-//        [self.countryTableView setSeparatorColor:[UIColor clearColor]];
-//        NSIndexPath *firstLine= [NSIndexPath indexPathForRow:0 inSection:0];
-//        [self.continentTableView selectRowAtIndexPath:firstLine animated:YES scrollPosition:UITableViewScrollPositionNone];
+    if (self) {
     }
     return self;
 
