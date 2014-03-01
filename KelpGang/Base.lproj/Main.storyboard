@@ -58,61 +58,65 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" id="lUr-4M-GFK" userLabel="Condition View" colorLabel="IBBuiltInLabel-Green">
+                            <view contentMode="scaleToFill" id="lUr-4M-GFK" userLabel="Condition View" customClass="KGConditionSelectBar" colorLabel="IBBuiltInLabel-Green">
                                 <rect key="frame" x="0.0" y="64" width="320" height="37"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jJM-Rx-EXO">
-                                        <rect key="frame" x="32" y="5" width="60" height="30"/>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" id="jJM-Rx-EXO">
+                                        <rect key="frame" x="0.0" y="0.0" width="106" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="国家">
+                                        <inset key="imageEdgeInsets" minX="72" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="国家" image="arrow-down.png">
                                             <color key="titleColor" red="0.30980392156862746" green="0.82352941176470584" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="showCountryCondition:" destination="ntO-8B-Gy4" eventType="touchUpInside" id="sID-tK-iIv"/>
+                                            <action selector="btnTaped:" destination="lUr-4M-GFK" eventType="touchUpInside" id="jJc-e6-BJ9"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fcs-LQ-5ro">
-                                        <rect key="frame" x="130" y="5" width="60" height="30"/>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" id="fcs-LQ-5ro">
+                                        <rect key="frame" x="106" y="0.0" width="106" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="回国时间">
+                                        <inset key="imageEdgeInsets" minX="87" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="回国时间" image="arrow-down.png">
                                             <color key="titleColor" red="0.30980392156862746" green="0.82352941176470584" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="btnTaped:" destination="lUr-4M-GFK" eventType="touchUpInside" id="9Lr-a8-4pW"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Cog-4L-ds4">
-                                        <rect key="frame" x="215" y="5" width="60" height="30"/>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" id="Cog-4L-ds4">
+                                        <rect key="frame" x="212" y="0.0" width="106" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="默认排序">
+                                        <inset key="imageEdgeInsets" minX="87" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="默认排序" image="arrow-down.png">
                                             <color key="titleColor" red="0.30980392156862746" green="0.82352941176470584" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="btnTaped:" destination="lUr-4M-GFK" eventType="touchUpInside" id="VTl-Yd-fHl"/>
+                                        </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow-down.png" id="OZ8-mE-Sfw">
-                                        <rect key="frame" x="78" y="20" width="4" height="2"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow-down.png" id="7qB-Wa-Ffm">
-                                        <rect key="frame" x="193" y="20" width="4" height="2"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow-down.png" id="nec-PC-edg">
-                                        <rect key="frame" x="278" y="20" width="4" height="2"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head-line.png" id="doV-9j-TZm">
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head-line.png" id="doV-9j-TZm">
                                         <rect key="frame" x="0.0" y="36" width="320" height="1"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head-indicator.png" id="kz5-mc-Rhp">
-                                        <rect key="frame" x="55" y="31" width="10" height="6"/>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head-indicator.png" id="kz5-mc-Rhp">
+                                        <rect key="frame" x="48" y="31" width="10" height="6"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="-64"/>
+                                <connections>
+                                    <outlet property="countryBtn" destination="jJM-Rx-EXO" id="1tm-XX-oG7"/>
+                                    <outlet property="headIndicatorImageView" destination="kz5-mc-Rhp" id="1r9-3F-VmD"/>
+                                    <outlet property="headLineImageView" destination="doV-9j-TZm" id="JcR-94-RhQ"/>
+                                    <outlet property="sortBtn" destination="Cog-4L-ds4" id="I3X-Lf-ZwC"/>
+                                    <outlet property="timeBtn" destination="fcs-LQ-5ro" id="iGe-1R-IPt"/>
+                                </connections>
                             </view>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="u1G-k4-vRS">
                                 <rect key="frame" x="0.0" y="101" width="320" height="416"/>
@@ -209,12 +213,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="arrowImageView" destination="OZ8-mE-Sfw" id="woi-Yk-DT3"/>
                         <outlet property="collectionView" destination="u1G-k4-vRS" id="4mg-bx-OrN"/>
-                        <outlet property="conditionView" destination="lUr-4M-GFK" id="BhB-ow-kk7"/>
-                        <outlet property="countryBtn" destination="jJM-Rx-EXO" id="SIT-4S-pbu"/>
-                        <outlet property="headIndicatorImageView" destination="kz5-mc-Rhp" id="0sz-Hc-Fmp"/>
-                        <outlet property="headLineImageView" destination="doV-9j-TZm" id="Vnx-3x-ILc"/>
+                        <outlet property="conditionSelectBar" destination="lUr-4M-GFK" id="TjD-Vv-wDZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sfH-pZ-UwX" userLabel="First Responder" sceneMemberID="firstResponder"/>
