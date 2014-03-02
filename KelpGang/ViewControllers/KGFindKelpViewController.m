@@ -12,7 +12,7 @@
 
 static NSString * const kFindKelpCell = @"kFindKelpCell";
 
-@interface KGFindKelpViewController ()
+@interface KGFindKelpViewController () <KGConditionDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet KGConditionSelectBar *conditionSelectBar;
@@ -34,6 +34,7 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 {
     [super viewDidLoad];
     self.conditionSelectBar.canvasView = self.view;
+    self.conditionSelectBar.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -112,5 +113,12 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 //{
 //    return UIEdgeInsetsMake(50, 20, 50, 20);
 //}
+
+
+#pragma KGConditionDelegate
+
+- (void) didSelectCondition:(NSInteger)index item: (NSString *) item {
+    NSLog(@"selected index: %d, item : %@", index, item);
+}
 
 @end

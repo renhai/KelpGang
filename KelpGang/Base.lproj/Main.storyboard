@@ -107,15 +107,25 @@
                                         <rect key="frame" x="48" y="31" width="10" height="6"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head-indicator.png" id="SX9-1e-2fr">
+                                        <rect key="frame" x="155" y="31" width="10" height="6"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head-indicator.png" id="B88-pX-Nxb">
+                                        <rect key="frame" x="260" y="31" width="10" height="6"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="-64"/>
                                 <connections>
                                     <outlet property="countryBtn" destination="jJM-Rx-EXO" id="1tm-XX-oG7"/>
-                                    <outlet property="headIndicatorImageView" destination="kz5-mc-Rhp" id="1r9-3F-VmD"/>
+                                    <outlet property="countryIndicatorImageView" destination="kz5-mc-Rhp" id="BMZ-lQ-Tdh"/>
                                     <outlet property="headLineImageView" destination="doV-9j-TZm" id="JcR-94-RhQ"/>
                                     <outlet property="sortBtn" destination="Cog-4L-ds4" id="I3X-Lf-ZwC"/>
+                                    <outlet property="sortIndicatorImageView" destination="B88-pX-Nxb" id="wjC-wr-g9w"/>
                                     <outlet property="timeBtn" destination="fcs-LQ-5ro" id="iGe-1R-IPt"/>
+                                    <outlet property="timeIndicatorImageView" destination="SX9-1e-2fr" id="Gom-M0-SXo"/>
                                 </connections>
                             </view>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="u1G-k4-vRS">

@@ -45,6 +45,8 @@
 		A14415A218C0EA590053456D /* KGFindKelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A144159D18C0EA590053456D /* KGFindKelpViewController.m */; };
 		A15DE73C18C21F1900C2C2F8 /* KGConditionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A15DE73B18C21F1900C2C2F8 /* KGConditionItem.m */; };
 		A15DE73F18C2545500C2C2F8 /* KGConditionSelectBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A15DE73E18C2545500C2C2F8 /* KGConditionSelectBar.m */; };
+		A18BE57F18C326FA0004CD2A /* KGTimeConditionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A18BE57E18C326FA0004CD2A /* KGTimeConditionView.xib */; };
+		A18BE58118C358840004CD2A /* KGSortConditionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A18BE58018C358840004CD2A /* KGSortConditionView.xib */; };
 		A1A6231118BD991C00D8E9A0 /* tabbar-background.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A6230F18BD991C00D8E9A0 /* tabbar-background.png */; };
 		A1A6231218BD991C00D8E9A0 /* tabbar-item.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A6231018BD991C00D8E9A0 /* tabbar-item.png */; };
 		A1A6231418BD9E2C00D8E9A0 /* tabbar-item-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A6231318BD9E2C00D8E9A0 /* tabbar-item-selected.png */; };
@@ -117,6 +119,8 @@
 		A15DE73B18C21F1900C2C2F8 /* KGConditionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGConditionItem.m; sourceTree = "<group>"; };
 		A15DE73D18C2545500C2C2F8 /* KGConditionSelectBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGConditionSelectBar.h; sourceTree = "<group>"; };
 		A15DE73E18C2545500C2C2F8 /* KGConditionSelectBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGConditionSelectBar.m; sourceTree = "<group>"; };
+		A18BE57E18C326FA0004CD2A /* KGTimeConditionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KGTimeConditionView.xib; sourceTree = "<group>"; };
+		A18BE58018C358840004CD2A /* KGSortConditionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KGSortConditionView.xib; sourceTree = "<group>"; };
 		A1A6230F18BD991C00D8E9A0 /* tabbar-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-background.png"; sourceTree = "<group>"; };
 		A1A6231018BD991C00D8E9A0 /* tabbar-item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-item.png"; sourceTree = "<group>"; };
 		A1A6231318BD9E2C00D8E9A0 /* tabbar-item-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-item-selected.png"; sourceTree = "<group>"; };
@@ -293,6 +297,8 @@
 				A144159518C0EA590053456D /* KGCountryConditionView.h */,
 				A144159618C0EA590053456D /* KGCountryConditionView.m */,
 				A144159718C0EA590053456D /* KGCountryConditionView.xib */,
+				A18BE57E18C326FA0004CD2A /* KGTimeConditionView.xib */,
+				A18BE58018C358840004CD2A /* KGSortConditionView.xib */,
 				A144159A18C0EA590053456D /* KGFindKelpViewCell.h */,
 				A144159B18C0EA590053456D /* KGFindKelpViewCell.m */,
 				A144159C18C0EA590053456D /* KGFindKelpViewController.h */,
@@ -395,6 +401,7 @@
 				A106930918C068CF003CC6BC /* head-line.png in Resources */,
 				A1A6231618BDA73B00D8E9A0 /* navbar-item-right.png in Resources */,
 				A1A6231818BDC4F400D8E9A0 /* arrow-down.png in Resources */,
+				A18BE57F18C326FA0004CD2A /* KGTimeConditionView.xib in Resources */,
 				A1036BBB18BF3DCF00FA7358 /* location.png in Resources */,
 				A106930718C068CF003CC6BC /* head-indicator.png in Resources */,
 				A14300E118BB252F0064DF87 /* Images.xcassets in Resources */,
@@ -402,6 +409,7 @@
 				A14300D318BB252F0064DF87 /* InfoPlist.strings in Resources */,
 				A143012918BB4C4E0064DF87 /* common.bundle in Resources */,
 				A106930E18C06C32003CC6BC /* arrow-up@2x.png in Resources */,
+				A18BE58118C358840004CD2A /* KGSortConditionView.xib in Resources */,
 				A1A6231218BD991C00D8E9A0 /* tabbar-item.png in Resources */,
 				A144159F18C0EA590053456D /* KGCountryConditionView.xib in Resources */,
 				A1A6231418BD9E2C00D8E9A0 /* tabbar-item-selected.png in Resources */,
