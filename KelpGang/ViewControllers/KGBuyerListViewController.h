@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KGFindKelpViewController : UIViewController
+@interface KGBuyerListViewController : UIViewController
 
 @end

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KGFindKelpViewCell : UICollectionViewCell
+@interface KGBuyerListViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIView *cellTopView;
 @property (weak, nonatomic) IBOutlet UILabel *cellBottomLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;

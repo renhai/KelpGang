@@ -50,10 +50,10 @@
             </objects>
             <point key="canvasLocation" x="137" y="-232"/>
         </scene>
-        <!--Find Kelp View Controller - 海带帮-->
+        <!--Buyer List View Controller - 海带帮-->
         <scene sceneID="iX6-z6-A3N">
             <objects>
-                <viewController id="ntO-8B-Gy4" customClass="KGFindKelpViewController" sceneMemberID="viewController">
+                <viewController id="ntO-8B-Gy4" customClass="KGBuyerListViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NH6-ji-Wnd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -140,7 +140,7 @@
                                     <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="kFindKelpCell" id="FPC-x4-SNG" customClass="KGFindKelpViewCell">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="kFindKelpCell" id="FPC-x4-SNG" customClass="KGBuyerListViewCell">
                                         <rect key="frame" x="5" y="5" width="152" height="115"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -206,6 +206,7 @@
                                             <outlet property="cellBottomLabel" destination="i7x-PA-sZw" id="Ndo-PP-mMj"/>
                                             <outlet property="cellTopView" destination="MCx-Y2-PqM" id="p0f-zA-Msd"/>
                                             <outlet property="headImageView" destination="Bsi-eI-cTP" id="mez-dX-pwa"/>
+                                            <segue destination="CcB-zG-elM" kind="push" id="Ubu-UK-y4e"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -230,6 +231,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sfH-pZ-UwX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="776" y="-232"/>
+        </scene>
+        <!--Buyer Detail View Controller-->
+        <scene sceneID="zWC-dk-6Mf">
+            <objects>
+                <viewController id="CcB-zG-elM" customClass="KGBuyerDetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TJ3-Zo-4S1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="pvN-Hu-E2p"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xoU-j8-iNR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1281" y="-232"/>
         </scene>
         <!--View Controller - 扫货-->
         <scene sceneID="FAH-W9-KcX">

@@ -6,20 +6,21 @@
 //  Copyright (c) 2014年 renren. All rights reserved.
 //
 
-#import "KGFindKelpViewController.h"
-#import "KGFindKelpViewCell.h"
+#import "KGBuyerListViewController.h"
+#import "KGBuyerListViewCell.h"
 #import "KGConditionSelectBar.h"
+#import "KGBuyerDetailViewController.h"
 
 static NSString * const kFindKelpCell = @"kFindKelpCell";
 
-@interface KGFindKelpViewController () <KGConditionDelegate>
+@interface KGBuyerListViewController () <KGConditionDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet KGConditionSelectBar *conditionSelectBar;
 
 @end
 
-@implementation KGFindKelpViewController
+@implementation KGBuyerListViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -56,7 +57,7 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    KGFindKelpViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:kFindKelpCell forIndexPath:indexPath];
+    KGBuyerListViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:kFindKelpCell forIndexPath:indexPath];
 //    cell.headImageView.clipsToBounds = YES;
 //    [cell.headImageView setContentMode:UIViewContentModeScaleAspectFill];
 
@@ -113,6 +114,13 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 //{
 //    return UIEdgeInsetsMake(50, 20, 50, 20);
 //}
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    KGBuyerDetailViewController *detailController = segue.destinationViewController;
+    [detailController setHidesBottomBarWhenPushed:YES];
+
+}
 
 
 #pragma KGConditionDelegate

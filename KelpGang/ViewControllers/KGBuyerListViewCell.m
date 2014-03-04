@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 renren. All rights reserved.
 //
 
-#import "KGFindKelpViewCell.h"
+#import "KGBuyerListViewCell.h"
 
-@implementation KGFindKelpViewCell
+@implementation KGBuyerListViewCell
 
 - (id)initWithFrame:(CGRect)frame
 {
