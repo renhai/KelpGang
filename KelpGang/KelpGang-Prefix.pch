@@ -17,3 +17,6 @@
     #import "UIFont+PKFont.h"
     #import "UIColor+PKColor.h"
 #endif
+
+#define HAVE_XMPP_SUBSPEC_RECONNECT
+#define HAVE_XMPP_SUBSPEC_ROSTER
