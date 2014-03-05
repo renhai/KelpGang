@@ -8,5 +8,6 @@ target :'KelpGang' do
     pod 'SVSegmentedControl', '~> 0.2'
     pod 'SDWebImage', '~> 3.5.2'
     pod 'SVPullToRefresh', '~> 0.4.1'
+    pod 'XMPPFramework', '~> 3.6.4'
 end
 
