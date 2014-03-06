@@ -12,11 +12,13 @@
 #import "XMPPFramework.h"
 #import "XMPPRosterCoreDataStorage.h"
 
-@interface XMPPManager : NSObject <XMPPStreamDelegate, XMPPRosterDelegate>{
+@interface XMPPManager : NSObject <XMPPStreamDelegate, XMPPRosterDelegate, XMPPAutoPingDelegate>{
 	XMPPStream *xmppStream;
 	XMPPReconnect *xmppReconnect;
     XMPPRoster *xmppRoster;
 	XMPPRosterCoreDataStorage *xmppRosterStorage;
+    XMPPAutoPing *xmppAutoPing;
+
 //    XMPPvCardCoreDataStorage *xmppvCardStorage;
 //	XMPPvCardTempModule *xmppvCardTempModule;
 //	XMPPvCardAvatarModule *xmppvCardAvatarModule;
@@ -35,6 +37,9 @@
 @property (nonatomic, strong, readonly) XMPPReconnect *xmppReconnect;
 @property (nonatomic, strong, readonly) XMPPRoster *xmppRoster;
 @property (nonatomic, strong, readonly) XMPPRosterCoreDataStorage *xmppRosterStorage;
+@property (nonatomic, strong, readonly) XMPPAutoPing *xmppAutoPing;
+@property (nonatomic, assign) BOOL isXmppConnected;
+
 //@property (nonatomic, strong, readonly) XMPPvCardTempModule *xmppvCardTempModule;
 //@property (nonatomic, strong, readonly) XMPPvCardAvatarModule *xmppvCardAvatarModule;
 //@property (nonatomic, strong, readonly) XMPPCapabilities *xmppCapabilities;

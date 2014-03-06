@@ -10,6 +10,7 @@
 #import "KGBuyerListViewCell.h"
 #import "KGConditionSelectBar.h"
 #import "KGBuyerDetailViewController.h"
+#import "XMPPManager.h"
 
 static NSString * const kFindKelpCell = @"kFindKelpCell";
 
@@ -119,6 +120,10 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     KGBuyerDetailViewController *detailController = segue.destinationViewController;
     [detailController setHidesBottomBarWhenPushed:YES];
+
+    BOOL connect = [[XMPPManager sharedInstance] connect];
+    NSLog(@"prepareForSegue, connect: %d", connect);
+    NSLog(@"prepareForSegue, isXmppConnected: %d", [[XMPPManager sharedInstance] isXmppConnected]);
 
 }
 

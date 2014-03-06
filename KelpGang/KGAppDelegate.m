@@ -22,6 +22,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
     XMPPManager *xmppmgr = [XMPPManager sharedInstance];
     [xmppmgr setupStream];
     BOOL connect = [xmppmgr connect];

@@ -33,6 +33,8 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 @synthesize xmppReconnect;
 @synthesize xmppRoster;
 @synthesize xmppRosterStorage;
+@synthesize xmppAutoPing;
+@synthesize isXmppConnected;
 //@synthesize xmppvCardTempModule;
 //@synthesize xmppvCardAvatarModule;
 //@synthesize xmppCapabilities;
@@ -183,6 +185,16 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 	[xmppStream setHostName:@"10.2.185.29"];
 	[xmppStream setHostPort:5222];
 
+
+    xmppAutoPing = [[XMPPAutoPing alloc] init];
+	xmppAutoPing.pingInterval = 30;
+	xmppAutoPing.pingTimeout = 5;
+	xmppAutoPing.targetJID = nil;
+//    xmppAutoPing.respondsToQueries = YES;
+
+	[xmppAutoPing activate:xmppStream];
+
+	[xmppAutoPing addDelegate:self delegateQueue:dispatch_get_main_queue()];
 
 	// You may need to alter these settings depending on the server you're connecting to
 	allowSelfSignedCertificates = NO;
@@ -467,6 +479,24 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 		[[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
 	}
 	
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+- (void)xmppAutoPingDidSendPing:(XMPPAutoPing *)sender
+{
+	DDLogVerbose(@"%@: %@", [self class], THIS_METHOD);
+}
+
+- (void)xmppAutoPingDidReceivePong:(XMPPAutoPing *)sender
+{
+	DDLogVerbose(@"%@: %@", [self class], THIS_METHOD);
+}
+
+- (void)xmppAutoPingDidTimeout:(XMPPAutoPing *)sender
+{
+	DDLogVerbose(@"%@: %@", [self class], THIS_METHOD);
 }
 
 
