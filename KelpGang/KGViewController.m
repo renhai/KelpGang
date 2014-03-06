@@ -8,7 +8,7 @@
 
 #import "KGViewController.h"
 
-static NSString * const kTabbarItemSelectedImage = @"tabbar-item-selected.png";
+//static NSString * const kTabbarItemSelectedImage = @"tabbar-item-selected.png";
 
 @interface KGViewController ()
 
@@ -20,10 +20,10 @@ static NSString * const kTabbarItemSelectedImage = @"tabbar-item-selected.png";
 {
     [super viewDidLoad];
     self.delegate = self;
-    UITabBar *tabbar = [self tabBar];
-    UITabBarItem * tabbarItem = [[tabbar items] objectAtIndex:0];
-    UIImage *selectedImage = [UIImage imageNamed:kTabbarItemSelectedImage];
-    [tabbarItem setSelectedImage:selectedImage];
+//    UITabBar *tabbar = [self tabBar];
+//    UITabBarItem * tabbarItem = [[tabbar items] objectAtIndex:0];
+//    UIImage *selectedImage = [UIImage imageNamed:kTabbarItemSelectedImage];
+//    [tabbarItem setSelectedImage:selectedImage];
 }
 
 - (void)didReceiveMemoryWarning
@@ -33,10 +33,10 @@ static NSString * const kTabbarItemSelectedImage = @"tabbar-item-selected.png";
 }
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
-    UITabBar *tabbar = [tabBarController tabBar];
-    UITabBarItem * tabbarItem = [tabbar selectedItem];
-    UIImage *selectedImage = [UIImage imageNamed:kTabbarItemSelectedImage];
-    [tabbarItem setSelectedImage:selectedImage];
+//    UITabBar *tabbar = [tabBarController tabBar];
+//    UITabBarItem * tabbarItem = [tabbar selectedItem];
+//    UIImage *selectedImage = [UIImage imageNamed:kTabbarItemSelectedImage];
+//    [tabbarItem setSelectedImage:selectedImage];
 
 }
 

@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KGBuyerListViewCell : UICollectionViewCell
-@property (weak, nonatomic) IBOutlet UIView *cellTopView;
-@property (weak, nonatomic) IBOutlet UILabel *cellBottomLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *headImageView;
+@interface KGBuyerListViewCell : UITableViewCell
+//@property (weak, nonatomic) IBOutlet UIView *cellTopView;
+//@property (weak, nonatomic) IBOutlet UILabel *cellBottomLabel;
+//@property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 
 @end
