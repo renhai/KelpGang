@@ -100,7 +100,7 @@
                                             <action selector="btnTaped:" destination="lUr-4M-GFK" eventType="touchUpInside" id="VTl-Yd-fHl"/>
                                         </connections>
                                     </button>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head-line.png" id="doV-9j-TZm">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head-line.png" id="doV-9j-TZm">
                                         <rect key="frame" x="0.0" y="36" width="320" height="1"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -129,14 +129,114 @@
                                     <outlet property="timeIndicatorImageView" destination="SX9-1e-2fr" id="Gom-M0-SXo"/>
                                 </connections>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="lCN-9f-6k1">
+                                <rect key="frame" x="0.0" y="101" width="320" height="417"/>
+                                <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="49"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="kBuyerListViewCell" id="aBH-t1-m5f" customClass="KGBuyerListViewCell">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aBH-t1-m5f" id="ljs-Hf-D3W">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" id="4Zp-73-QFQ" userLabel="Country Flag View">
+                                                    <rect key="frame" x="0.0" y="0.0" width="29" height="79"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test-canada-flag.png" id="6l7-Wl-3HF">
+                                                            <rect key="frame" x="5" y="25" width="19" height="19"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.91372549020000005" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                </view>
+                                                <view contentMode="scaleToFill" id="75a-Ac-ZhN" userLabel="User Head View">
+                                                    <rect key="frame" x="29" y="0.0" width="60" height="79"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test-head.jpg" id="EcG-1T-Pyq">
+                                                            <rect key="frame" x="5" y="10" width="50" height="50"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        </imageView>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star_3.png" id="jeW-UU-O48">
+                                                            <rect key="frame" x="13" y="62" width="34" height="10"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                </view>
+                                                <view contentMode="scaleToFill" id="E6z-ZJ-r5W" userLabel="User Info View">
+                                                    <rect key="frame" x="89" y="0.0" width="160" height="79"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="chenlizi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="02t-IJ-Yoi">
+                                                            <rect key="frame" x="5" y="10" width="58" height="11"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                            <color key="textColor" red="1" green="0.52156862745098043" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="北京" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZlM-lb-JNW">
+                                                            <rect key="frame" x="5" y="34" width="42" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                            <color key="textColor" red="0.44705882352941173" green="0.44705882352941173" blue="0.44705882352941173" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="airplane.png" id="Dvi-Ze-L59">
+                                                            <rect key="frame" x="44" y="37" width="20" height="12"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新加坡" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vue-F4-vBH">
+                                                            <rect key="frame" x="69" y="34" width="54" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                            <color key="textColor" red="0.44705882349999998" green="0.44705882349999998" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="化妆品 装饰品 苹果产品 名牌包" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="37b-9m-Ter">
+                                                            <rect key="frame" x="5" y="60" width="155" height="13"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                            <color key="textColor" red="0.81176470588235294" green="0.81176470588235294" blue="0.81176470588235294" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </view>
+                                                <view contentMode="scaleToFill" id="RRj-u4-Rab" userLabel="Time View">
+                                                    <rect key="frame" x="249" y="0.0" width="71" height="79"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11.12-3.20" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KaR-rr-TEP">
+                                                            <rect key="frame" x="0.0" y="10" width="67" height="16"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                            <color key="textColor" red="0.81176470590000005" green="0.81176470590000005" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <outlet property="headImageView" destination="EcG-1T-Pyq" id="Ibe-jc-xUF"/>
+                                            <segue destination="CcB-zG-elM" kind="push" id="hXD-OT-gz1"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ntO-8B-Gy4" id="GaJ-2Q-c3R"/>
+                                    <outlet property="delegate" destination="ntO-8B-Gy4" id="wpw-gx-QLb"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="帮帮" id="cyV-Od-KUY">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="navbar-item-right.png" id="cnS-Ue-JdN">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="帮帮" id="cyV-Od-KUY"/>
                     <connections>
                         <outlet property="conditionSelectBar" destination="lUr-4M-GFK" id="TjD-Vv-wDZ"/>
                     </connections>
@@ -145,7 +245,7 @@
             </objects>
             <point key="canvasLocation" x="736" y="-1000"/>
         </scene>
-        <!--Buyer Detail View Controller-->
+        <!--Buyer Detail View Controller - 帮帮信息-->
         <scene sceneID="zWC-dk-6Mf">
             <objects>
                 <viewController id="CcB-zG-elM" customClass="KGBuyerDetailViewController" sceneMemberID="viewController">
@@ -154,7 +254,14 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="pvN-Hu-E2p"/>
+                    <navigationItem key="navigationItem" title="帮帮信息" id="AZm-Am-IWX">
+                        <barButtonItem key="leftBarButtonItem" image="nav_bar_item_back.png" id="y3F-BV-NcU">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="goBack:" destination="CcB-zG-elM" id="Zkt-yR-sIZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xoU-j8-iNR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -225,15 +332,19 @@
         </scene>
     </scenes>
     <resources>
+        <image name="airplane.png" width="20" height="12"/>
         <image name="arrow-down.png" width="4" height="2"/>
         <image name="head-indicator.png" width="10" height="6"/>
         <image name="head-line.png" width="320" height="1"/>
         <image name="me_gray.png" width="24" height="24"/>
         <image name="more_gray.png" width="17" height="3"/>
-        <image name="navbar-item-right.png" width="25" height="25"/>
+        <image name="nav_bar_item_back.png" width="23" height="16"/>
         <image name="search_gray.png" width="25" height="24"/>
         <image name="search_someone_gray.png" width="25" height="24"/>
+        <image name="star_3.png" width="34" height="10"/>
         <image name="tab_bar.png" width="320" height="49"/>
+        <image name="test-canada-flag.png" width="19" height="19"/>
+        <image name="test-head.jpg" width="50" height="50"/>
         <image name="write_gray.png" width="24" height="24"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

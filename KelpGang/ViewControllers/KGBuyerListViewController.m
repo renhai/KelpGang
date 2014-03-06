@@ -49,11 +49,29 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
     KGBuyerDetailViewController *detailController = segue.destinationViewController;
     [detailController setHidesBottomBarWhenPushed:YES];
 
-    BOOL connect = [[XMPPManager sharedInstance] connect];
-    NSLog(@"prepareForSegue, connect: %d", connect);
-    NSLog(@"prepareForSegue, isXmppConnected: %d", [[XMPPManager sharedInstance] isXmppConnected]);
+//    BOOL connect = [[XMPPManager sharedInstance] connect];
+//    NSLog(@"prepareForSegue, connect: %d", connect);
+//    NSLog(@"prepareForSegue, isXmppConnected: %d", [[XMPPManager sharedInstance] isXmppConnected]);
 
 }
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return  50;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"kBuyerListViewCell";
+
+    KGBuyerListViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[KGBuyerListViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+//    cell.headImageView.clipsToBounds = YES;
+//    [cell.headImageView setContentMode:UIViewContentModeScaleAspectFill];
+    cell.headImageView.layer.cornerRadius = cell.headImageView.frame.size.width / 2;
+    return cell;
+}
+
 
 
 #pragma KGConditionDelegate

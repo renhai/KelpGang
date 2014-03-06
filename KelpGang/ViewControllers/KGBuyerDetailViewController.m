@@ -9,6 +9,7 @@
 #import "KGBuyerDetailViewController.h"
 
 @interface KGBuyerDetailViewController ()
+- (IBAction)goBack:(UIBarButtonItem *)sender;
 
 @end
 
@@ -27,7 +28,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [self.view setBackgroundColor:[UIColor greenColor]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -36,4 +36,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)goBack:(UIBarButtonItem *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

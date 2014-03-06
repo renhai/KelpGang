@@ -79,7 +79,7 @@
     if (btn) {
         [btn setImage:arrowDownImg forState:UIControlStateNormal];
     }
-    self.headLineImageView.hidden = YES;
+//    self.headLineImageView.hidden = YES;
     self.currTapIndex = -1;
 
     if (index == 1) {
@@ -101,7 +101,7 @@
     if (btn) {
         [btn setImage:arrowUpImg forState:UIControlStateNormal];
     }
-    self.headLineImageView.hidden = NO;
+//    self.headLineImageView.hidden = NO;
     self.currTapIndex = index;
 
     if (index == 1) {
