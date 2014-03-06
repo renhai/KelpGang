@@ -10,7 +10,7 @@
             <objects>
                 <tabBarController definesPresentationContext="YES" id="E2r-t6-hyR" userLabel="Tab View Controller" customClass="KGViewController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" backgroundImage="tabbar-background.png" id="Zdn-tj-JyJ">
+                    <tabBar key="tabBar" contentMode="scaleToFill" backgroundImage="tab_bar.png" id="Zdn-tj-JyJ">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="tintColor" red="0.12941176469999999" green="0.72549019609999998" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -20,17 +20,18 @@
                         <segue destination="LhV-0Z-c9d" kind="relationship" relationship="viewControllers" id="j4Q-ER-mdB"/>
                         <segue destination="ioA-4q-AmG" kind="relationship" relationship="viewControllers" id="JT6-iq-gnY"/>
                         <segue destination="seN-QH-Bi7" kind="relationship" relationship="viewControllers" id="K5Y-eI-fLV"/>
+                        <segue destination="eXJ-Dn-JtP" kind="relationship" relationship="viewControllers" id="AlF-wY-6H5"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1BY-LV-Loe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-388" y="236"/>
         </scene>
-        <!--Navigation Controller - 求带-->
+        <!--Navigation Controller - 找人帮-->
         <scene sceneID="8WC-mm-GbR">
             <objects>
                 <navigationController definesPresentationContext="YES" id="wFT-OJ-542" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="求带" image="tabbar-item.png" id="FbE-ni-BJn"/>
+                    <tabBarItem key="tabBarItem" title="找人帮" image="search_someone_gray.png" id="FbE-ni-BJn"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="UOy-Nc-PCC">
                         <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
@@ -48,7 +49,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zI8-Bp-Vw3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137" y="-232"/>
+            <point key="canvasLocation" x="146" y="-1000"/>
         </scene>
         <!--Buyer List View Controller - 海带帮-->
         <scene sceneID="iX6-z6-A3N">
@@ -230,7 +231,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sfH-pZ-UwX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="776" y="-232"/>
+            <point key="canvasLocation" x="736" y="-1000"/>
         </scene>
         <!--Buyer Detail View Controller-->
         <scene sceneID="zWC-dk-6Mf">
@@ -245,9 +246,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xoU-j8-iNR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1281" y="-232"/>
+            <point key="canvasLocation" x="1297" y="-1000"/>
         </scene>
-        <!--View Controller - 扫货-->
+        <!--View Controller - 发任务-->
         <scene sceneID="FAH-W9-KcX">
             <objects>
                 <viewController id="ioA-4q-AmG" sceneMemberID="viewController">
@@ -256,12 +257,12 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="扫货" image="tabbar-item.png" id="xZv-zB-qQh"/>
+                    <tabBarItem key="tabBarItem" title="发任务" image="write_gray.png" id="xZv-zB-qQh"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ydk-Aj-RdM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="146" y="1420"/>
+            <point key="canvasLocation" x="154" y="660"/>
         </scene>
         <!--View Controller - 我-->
         <scene sceneID="le3-mN-vdI">
@@ -272,14 +273,30 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="我" image="tabbar-item.png" id="goz-rB-8eP"/>
+                    <tabBarItem key="tabBarItem" title="我" image="me_gray.png" id="goz-rB-8eP"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gEK-LS-83P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="147" y="2177"/>
+            <point key="canvasLocation" x="154" y="1473"/>
         </scene>
-        <!--View Controller - 帮带-->
+        <!--View Controller - 更多-->
+        <scene sceneID="xpw-kh-2it">
+            <objects>
+                <viewController id="eXJ-Dn-JtP" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NbW-Io-aWM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="更多" image="more_gray.png" id="CKI-Yv-lW4"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gQW-ii-fcV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="166" y="2257"/>
+        </scene>
+        <!--View Controller - 发现-->
         <scene sceneID="jXh-Y6-kEE">
             <objects>
                 <viewController id="LhV-0Z-c9d" sceneMemberID="viewController">
@@ -288,11 +305,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="帮带" image="tabbar-item.png" id="tgl-jP-pUm"/>
+                    <tabBarItem key="tabBarItem" title="发现" image="search_gray.png" id="tgl-jP-pUm"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BfK-ze-ma3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="146" y="562"/>
+            <point key="canvasLocation" x="154" y="-182"/>
         </scene>
     </scenes>
     <resources>
@@ -301,11 +318,15 @@
         <image name="head-indicator.png" width="10" height="6"/>
         <image name="head-line.png" width="320" height="1"/>
         <image name="location.png" width="8" height="11"/>
+        <image name="me_gray.png" width="24" height="24"/>
+        <image name="more_gray.png" width="17" height="3"/>
         <image name="navbar-item-right.png" width="25" height="25"/>
-        <image name="tabbar-background.png" width="320" height="49"/>
-        <image name="tabbar-item.png" width="24" height="24"/>
+        <image name="search_gray.png" width="25" height="24"/>
+        <image name="search_someone_gray.png" width="25" height="24"/>
+        <image name="tab_bar.png" width="320" height="49"/>
         <image name="test-canada-flag.png" width="19" height="19"/>
         <image name="test-head.jpg" width="50" height="50"/>
+        <image name="write_gray.png" width="24" height="24"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
