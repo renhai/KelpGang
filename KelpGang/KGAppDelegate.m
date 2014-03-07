@@ -22,11 +22,18 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    if ([KGUtils isHigherIOS7]) {
+        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"nav_bar_64"] forBarMetrics:UIBarMetricsDefault];
+    } else {
+        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"nav_bar_44"] forBarMetrics:UIBarMetricsDefault];
+    }
+
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     XMPPManager *xmppmgr = [XMPPManager sharedInstance];
     [xmppmgr setupStream];
     BOOL connect = [xmppmgr connect];
     NSLog(@"connect: %d", connect);
+
     return YES;
 }
 							

@@ -20,11 +20,12 @@
 {
     [super viewDidLoad];
     self.delegate = self;
-    if (![self isHigherIOS7]) {
+    if (![KGUtils isHigherIOS7]) {
         UIImage *tabbarImage = [UIImage imageNamed:@"tab-bar"];
         UIImage *selectedImage = [UIImage imageNamed:@"tab_bar_selected"];
-        UIColor *textColor = [UIColor colorWithRed:33.0 / 255 green:185.0 / 255 blue:162.0 / 255 alpha:1.0];
-        UIColor *tintColor = [UIColor colorWithRed:233.0 / 255 green:243.0 / 255 blue:243.0 / 255 alpha:1.0];
+        UIColor *textColor = RGBCOLOR(33, 185, 162);
+        UIColor *tintColor = RGBCOLOR(233, 243, 243);
+
         [[UITabBar appearance] setBackgroundImage:tabbarImage];
         [[UITabBar appearance] setSelectionIndicatorImage:selectedImage];
         [[UITabBar appearance] setSelectedImageTintColor:[UIColor clearColor]];
@@ -50,8 +51,8 @@
 }
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
-    if (![self isHigherIOS7]) {
-        [self.selectedViewController.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:33.0 / 255 green:185.0 / 255 blue:162.0 / 255 alpha:1.0],UITextAttributeTextColor,nil] forState:UIControlStateNormal];
+    if (![KGUtils isHigherIOS7]) {
+        [self.selectedViewController.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:RGBCOLOR(33, 185, 162),UITextAttributeTextColor,nil] forState:UIControlStateNormal];
         NSInteger index = 0;
         for (UITabBarItem *item in self.tabBar.items) {
             if (self.selectedIndex != index ++) {
@@ -62,15 +63,5 @@
 
 }
 
-- (BOOL)isHigherIOS7 {
-    NSString *requestSysVer = @"7.0";
-    NSString *currentSysVer = [[UIDevice currentDevice] systemVersion];
-
-    if ([currentSysVer compare:requestSysVer options:NSNumericSearch] == NSOrderedAscending) {
-        return NO;
-    }
-
-    return YES;
-}
 
 @end

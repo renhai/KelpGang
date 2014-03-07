@@ -16,6 +16,8 @@
     #import "UIImage+PKImage.h"
     #import "UIFont+PKFont.h"
     #import "UIColor+PKColor.h"
+    #import "KGUtils.h"
+    #import "KGGlobal.h"
 #endif
 
 #define HAVE_XMPP_SUBSPEC_RECONNECT

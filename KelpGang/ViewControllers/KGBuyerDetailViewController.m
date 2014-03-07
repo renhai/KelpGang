@@ -10,6 +10,7 @@
 
 @interface KGBuyerDetailViewController ()
 - (IBAction)goBack:(UIBarButtonItem *)sender;
+@property (weak, nonatomic) IBOutlet UIImageView *headImgView;
 
 @end
 
@@ -28,6 +29,7 @@
 {
     [super viewDidLoad];
     NSLog(@"%@",self.navigationItem.leftBarButtonItem);
+    self.headImgView.layer.cornerRadius = self.headImgView.frame.size.width / 2;
 
 }
 
