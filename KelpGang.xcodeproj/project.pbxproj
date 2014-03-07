@@ -19,6 +19,8 @@
 		A106930D18C06C32003CC6BC /* arrow-up.png in Resources */ = {isa = PBXBuildFile; fileRef = A106930B18C06C32003CC6BC /* arrow-up.png */; };
 		A106930E18C06C32003CC6BC /* arrow-up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A106930C18C06C32003CC6BC /* arrow-up@2x.png */; };
 		A1231E8518C5B62900DCF6CD /* KGBuyerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1231E8418C5B62900DCF6CD /* KGBuyerDetailViewController.m */; };
+		A1311F4118CA27A300D1A40F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1311F4018CA27A300D1A40F /* MapKit.framework */; };
+		A1311F4518CA2E0800D1A40F /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1311F4418CA2E0800D1A40F /* SwipeView.m */; };
 		A14300C918BB252F0064DF87 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14300C818BB252F0064DF87 /* Foundation.framework */; };
 		A14300CB18BB252F0064DF87 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14300CA18BB252F0064DF87 /* CoreGraphics.framework */; };
 		A14300CD18BB252F0064DF87 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14300CC18BB252F0064DF87 /* UIKit.framework */; };
@@ -122,6 +124,9 @@
 		A106930C18C06C32003CC6BC /* arrow-up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-up@2x.png"; sourceTree = "<group>"; };
 		A1231E8318C5B62900DCF6CD /* KGBuyerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGBuyerDetailViewController.h; sourceTree = "<group>"; };
 		A1231E8418C5B62900DCF6CD /* KGBuyerDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGBuyerDetailViewController.m; sourceTree = "<group>"; };
+		A1311F4018CA27A300D1A40F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		A1311F4318CA2E0800D1A40F /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
+		A1311F4418CA2E0800D1A40F /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
 		A14300C518BB252F0064DF87 /* KelpGang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KelpGang.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14300C818BB252F0064DF87 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A14300CA18BB252F0064DF87 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -224,6 +229,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1311F4118CA27A300D1A40F /* MapKit.framework in Frameworks */,
 				A14300CB18BB252F0064DF87 /* CoreGraphics.framework in Frameworks */,
 				A14300CD18BB252F0064DF87 /* UIKit.framework in Frameworks */,
 				A14300C918BB252F0064DF87 /* Foundation.framework in Frameworks */,
@@ -244,6 +250,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A1311F4218CA2E0800D1A40F /* SwipeView */ = {
+			isa = PBXGroup;
+			children = (
+				A1311F4318CA2E0800D1A40F /* SwipeView.h */,
+				A1311F4418CA2E0800D1A40F /* SwipeView.m */,
+			);
+			path = SwipeView;
+			sourceTree = "<group>";
+		};
 		A14300BC18BB252F0064DF87 = {
 			isa = PBXGroup;
 			children = (
@@ -267,6 +282,7 @@
 		A14300C718BB252F0064DF87 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A1311F4018CA27A300D1A40F /* MapKit.framework */,
 				A14300C818BB252F0064DF87 /* Foundation.framework */,
 				A14300CA18BB252F0064DF87 /* CoreGraphics.framework */,
 				A14300CC18BB252F0064DF87 /* UIKit.framework */,
@@ -328,6 +344,7 @@
 		A143011818BB461A0064DF87 /* ToolBox */ = {
 			isa = PBXGroup;
 			children = (
+				A1311F4218CA2E0800D1A40F /* SwipeView */,
 				A143011918BB461A0064DF87 /* PKResManager */,
 				A1A1DAFB18C9CCD200F03E04 /* KGUtils.h */,
 				A1A1DAFC18C9CCD200F03E04 /* KGUtils.m */,
@@ -651,6 +668,7 @@
 				A143012718BB461A0064DF87 /* PKResManager.m in Sources */,
 				A14415A218C0EA590053456D /* KGBuyerListViewController.m in Sources */,
 				A14415A118C0EA590053456D /* KGBuyerListViewCell.m in Sources */,
+				A1311F4518CA2E0800D1A40F /* SwipeView.m in Sources */,
 				A1A1DAFD18C9CCD200F03E04 /* KGUtils.m in Sources */,
 				A15DE73F18C2545500C2C2F8 /* KGConditionSelectBar.m in Sources */,
 				A143012618BB461A0064DF87 /* UIImage+PKImage.m in Sources */,

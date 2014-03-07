@@ -11,6 +11,8 @@
 #import "KGConditionSelectBar.h"
 #import "KGBuyerDetailViewController.h"
 #import "XMPPManager.h"
+#import "UIImageView+WebCache.h"
+
 
 static NSString * const kFindKelpCell = @"kFindKelpCell";
 
@@ -51,8 +53,8 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    KGBuyerDetailViewController *detailController = segue.destinationViewController;
-//    [detailController setHidesBottomBarWhenPushed:YES];
+    KGBuyerDetailViewController *detailController = segue.destinationViewController;
+    [detailController setHidesBottomBarWhenPushed:YES];
 
 //    BOOL connect = [[XMPPManager sharedInstance] connect];
 //    NSLog(@"prepareForSegue, connect: %d", connect);
@@ -74,6 +76,7 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 //    cell.headImageView.clipsToBounds = YES;
 //    [cell.headImageView setContentMode:UIViewContentModeScaleAspectFill];
     cell.headImageView.layer.cornerRadius = cell.headImageView.frame.size.width / 2;
+    [cell.headImageView setImageWithURL:[NSURL URLWithString:@"http://b.hiphotos.baidu.com/image/w%3D2048/sign=9540c45036a85edffa8cf9237d6c0823/3ac79f3df8dcd10093d05521708b4710b9122f65.jpg"] placeholderImage:[UIImage imageNamed:@"test-head.jpg"]];
     return cell;
 }
 
