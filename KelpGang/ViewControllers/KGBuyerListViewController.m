@@ -32,11 +32,27 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
     return self;
 }
 
+- (BOOL)isHigherIOS7 {
+    NSString *requestSysVer = @"7.0";
+    NSString *currentSysVer = [[UIDevice currentDevice] systemVersion];
+
+    if ([currentSysVer compare:requestSysVer options:NSNumericSearch] == NSOrderedAscending) {
+        return NO;
+    }
+
+    return YES;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.conditionSelectBar.canvasView = self.view;
     self.conditionSelectBar.delegate = self;
+    if (![self isHigherIOS7]) {
+        UIImage *image = [UIImage imageNamed:@"nav_bar_44"];
+        [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+    }
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,7 +72,7 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return  50;
+    return  20;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
