@@ -11,12 +11,13 @@
 #import "KGMainMenuTableViewCell.h"
 #import "KGSubMenuTableViewCell.h"
 
+static NSString * const kContinentKey = @"continent";
+static NSString * const kCountryKey = @"country";
+
 @interface KGConditionSelectBar()
 
-@property (nonatomic, strong) NSArray *continents;
-@property (nonatomic, strong) NSDictionary *countrys;
-@property (nonatomic, copy) NSString *currContinent;
-@property (nonatomic, assign) NSInteger tableViewTag;
+@property (nonatomic, strong) NSArray *countryArr;
+@property (nonatomic, assign) NSInteger currContinentIndex;
 @property (nonatomic, strong) NSMutableDictionary *conditionViews;
 @property (nonatomic, assign) NSInteger currTapIndex;
 @property (nonatomic, strong) NSMutableDictionary *btnDic;
@@ -39,21 +40,13 @@
 -(id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.continents = @[@"热门国家", @"亚洲", @"欧洲", @"非洲", @"北美洲", @"南美洲", @"大洋洲"];
-        self.countrys = @{@"热门国家":@[@"日本",@"韩国",@"美国",@"法国",@"意大利",@"德国",@"加拿大",@"澳大利亚",@"泰国"],
-                          @"亚洲": @[@"日本",@"韩国",@"泰国"],
-                          @"欧洲": @[@"英国",@"法国",@"意大利",@"德国"],
-                          @"非洲": @[@"南非",@"埃及",@"阿尔及利亚",@"刚果"],
-                          @"北美洲": @[@"美国",@"加拿大",@"墨西哥",@"哥斯达黎加"],
-                          @"南美洲": @[@"巴西",@"阿根廷",@"哥伦比亚",@"厄瓜多尔",@"委内瑞拉",@"乌拉圭"],
-                          @"大洋洲": @[@"澳大利亚",@"新西兰",@"六个字的国家",@"七个字的国家啊"]};
-//        self.continents = @[@{@"热门国家": @[@"日本",@"韩国",@"美国",@"法国",@"意大利",@"德国",@"加拿大",@"澳大利亚",@"泰国"]},
-//                            @{@"亚洲": @[@"日本",@"韩国",@"泰国"]},
-//                            @{@"欧洲": @[@"英国",@"法国",@"意大利",@"德国"]},
-//                            @{@"非洲": @[@"南非",@"埃及",@"阿尔及利亚",@"刚果"]},
-//                            @{@"北美洲": @[@"美国",@"加拿大",@"墨西哥",@"哥斯达黎加"]},
-//                            @{@"南美洲": @[@"巴西",@"阿根廷",@"哥伦比亚",@"厄瓜多尔",@"委内瑞拉",@"乌拉圭"]},
-//                            @{@"大洋洲": @[@"澳大利亚",@"新西兰",@"六个字的国家",@"七个字的国家啊"]}];
+        self.countryArr = @[@{@"continent": @"热门国家",@"country": @[@"日本",@"韩国",@"美国",@"法国",@"意大利",@"德国",@"加拿大",@"澳大利亚",@"泰国"]},
+                            @{@"continent": @"亚洲",@"country": @[@"日本",@"韩国",@"泰国"]},
+                            @{@"continent": @"欧洲",@"country": @[@"英国",@"法国",@"意大利",@"德国"]},
+                            @{@"continent": @"非洲",@"country": @[@"南非",@"埃及",@"阿尔及利亚",@"刚果"]},
+                            @{@"continent": @"北美洲",@"country": @[@"美国",@"加拿大",@"墨西哥",@"哥斯达黎加"]},
+                            @{@"continent": @"南美洲",@"country": @[@"巴西",@"阿根廷",@"哥伦比亚",@"厄瓜多尔",@"委内瑞拉",@"乌拉圭"]},
+                            @{@"continent": @"大洋洲",@"country": @[@"澳大利亚",@"新西兰",@"六个字的国家",@"七个字的国家啊"]}];
         self.timeConditions = @[@"3天内", @"1周内", @"2周内", @"1月内", @"常驻"];
         self.sortConditions = @[@"按距离排序", @"按信用排序", @"按人气排序"];
         self.conditionViews = [NSMutableDictionary dictionaryWithCapacity:3];
@@ -83,7 +76,7 @@
     if (currView) {
         [currView removeFromSuperview];
     }
-    UIImage *arrowDownImg = [UIImage imageNamed:@"arrow-down.png"];
+    UIImage *arrowDownImg = [UIImage imageNamed:@"arrow-down"];
     UIButton *btn = [self.btnDic objectForKey:@(index)];
     if (btn) {
         [btn setImage:arrowDownImg forState:UIControlStateNormal];
@@ -105,7 +98,7 @@
     if (view) {
         [self.canvasView addSubview:view];
     }
-    UIImage *arrowUpImg = [UIImage imageNamed:@"arrow-up.png"];
+    UIImage *arrowUpImg = [UIImage imageNamed:@"arrow-up"];
     UIButton *btn = [self.btnDic objectForKey:@(index)];
     if (btn) {
         [btn setImage:arrowUpImg forState:UIControlStateNormal];
@@ -136,7 +129,7 @@
             NSIndexPath *firstRow= [NSIndexPath indexPathForRow:0 inSection:0];
             [countryConditionView.continentTableView selectRowAtIndexPath:firstRow animated:NO scrollPosition:UITableViewScrollPositionNone];
             [self tableView:countryConditionView.continentTableView didSelectRowAtIndexPath:firstRow];
-            self.currContinent = [self.continents objectAtIndex:0];
+            self.currContinentIndex = 0;
             [self.conditionViews setObject:countryConditionView forKey:@(index)];
             return countryConditionView;
         } else if (index == 2) {
@@ -170,9 +163,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if(tableView.tag == 1) {
-        return [self.continents count];
+        return [self.countryArr count];
     } else if (tableView.tag == 2) {
-        return [[self.countrys objectForKey:self.currContinent] count];
+        NSDictionary *dic = [self.countryArr objectAtIndex:self.currContinentIndex];
+        return [[dic objectForKey:kCountryKey] count];
     } else if (tableView.tag == 3) {
         return [self.timeConditions count];
     } else if (tableView.tag == 4) {
@@ -198,7 +192,7 @@
         cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
         cell.selectedBackgroundView.backgroundColor = [UIColor whiteColor];
         KGMainMenuTableViewCell *continentCell = (KGMainMenuTableViewCell *) cell;
-        continentCell.continentLabel.text = [self.continents objectAtIndex:[indexPath row]];
+        continentCell.continentLabel.text = [[self.countryArr objectAtIndex:[indexPath row]] objectForKey:kContinentKey];
     } else if (tableView.tag == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:kRightTableViewCell];
         if (cell == nil) {
@@ -208,7 +202,7 @@
         cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
         cell.selectedBackgroundView.backgroundColor = [UIColor whiteColor];
         KGSubMenuTableViewCell *countryCell = (KGSubMenuTableViewCell *) cell;
-        countryCell.countryLabel.text = [[self.countrys objectForKey:self.currContinent]objectAtIndex:[indexPath row]];
+        countryCell.countryLabel.text = [[[self.countryArr objectAtIndex:self.currContinentIndex] objectForKey:kCountryKey] objectAtIndex:indexPath.row];
     } else if (tableView.tag == 3) {
         cell = [tableView dequeueReusableCellWithIdentifier:kTimeTableViewCell];
         if (cell == nil) {
@@ -235,9 +229,8 @@
     NSInteger selectedIndex = self.currTapIndex;
     if(tableView.tag == 1) {
         NSInteger row = indexPath.row;
-        NSLog(@"item%d is: %@", row, [self.continents objectAtIndex:row]);
-        NSString *continent = [self.continents objectAtIndex:row];
-        self.currContinent = continent;
+        NSLog(@"item%d is: %@", row, [[self.countryArr objectAtIndex:row] objectForKey:kContinentKey]);
+        self.currContinentIndex = row;
         UIView *currView = [self.conditionViews objectForKey:@(self.currTapIndex)];
         if ([currView respondsToSelector:@selector(countryTableView)]) {
             UITableView *countryTableView = [currView performSelector:@selector(countryTableView) withObject:currView];
@@ -245,7 +238,7 @@
         }
     } else if (tableView.tag == 2){
         [self closeConditionView:self.currTapIndex];
-        NSString *selectCountry = [[self.countrys objectForKey:self.currContinent]objectAtIndex:[indexPath row]];
+        NSString *selectCountry = [[[self.countryArr objectAtIndex:self.currContinentIndex] objectForKey:kCountryKey] objectAtIndex:indexPath.row];
         [self.countryBtn setTitle:selectCountry forState:UIControlStateNormal];
         NSInteger offset = self.countryBtn.titleLabel.frame.origin.x + self.countryBtn.titleLabel.frame.size.width + 2;
         NSLog(@"offset: %d", offset);
