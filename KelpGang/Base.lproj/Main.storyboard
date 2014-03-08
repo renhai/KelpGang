@@ -368,7 +368,21 @@
                             <view contentMode="scaleToFill" id="VKq-5x-ZNo" userLabel="Chat View">
                                 <rect key="frame" x="0.0" y="440" width="320" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" red="0.96470588239999999" green="0.98431372549999996" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="NHl-uY-zzg">
+                                        <rect key="frame" x="15" y="10" width="290" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.12941176469999999" green="0.72549019609999998" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="开始聊天">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="cIg-QM-o4s" kind="push" id="VxO-gL-2x7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.90196078431372551" green="0.94901960784313721" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -391,6 +405,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xoU-j8-iNR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1297" y="-1000"/>
+        </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="yCm-5o-4xs">
+            <objects>
+                <viewController id="cIg-QM-o4s" customClass="KGChatViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6NW-Lf-M4t">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="c75-Be-QsY"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HBO-mO-1qF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1763" y="-1000"/>
         </scene>
         <!--View Controller - 发任务-->
         <scene sceneID="FAH-W9-KcX">

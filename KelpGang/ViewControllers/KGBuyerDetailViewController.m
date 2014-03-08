@@ -37,9 +37,9 @@
     NSLog(@"%@",self.navigationItem.leftBarButtonItem);
     self.headImgView.layer.cornerRadius = self.headImgView.frame.size.width / 2;
     [self.scrollView setContentSize:CGSizeMake(320, 600)];
-    UIView *chatView = [[UIView alloc] initWithFrame:CGRectMake(0, 440, 320, 64)];
-    [chatView setBackgroundColor:RGBCOLOR(246, 251, 249)];
-    [self.view addSubview:chatView];
+//    UIView *chatView = [[UIView alloc] initWithFrame:CGRectMake(0, 440, 320, 64)];
+//    [chatView setBackgroundColor:RGBCOLOR(246, 251, 249)];
+//    [self.view addSubview:chatView];
 
     self.swipeView.dataSource = self;
     self.swipeView.delegate = self;
@@ -99,4 +99,5 @@
 - (IBAction)goBack:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 @end
