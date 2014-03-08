@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KGCountryTableViewCell : UITableViewCell
+@interface KGSubMenuTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *countryLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *splitLine;
 

@@ -1,14 +1,14 @@
 //
-//  KGContinentTableViewCell.m
+//  KGCountryTableViewCell.m
 //  KelpGang
 //
-//  Created by Andy on 14-3-8.
+//  Created by Andy on 14-3-9.
 //  Copyright (c) 2014年 renren. All rights reserved.
 //
 
-#import "KGContinentTableViewCell.h"
+#import "KGSubMenuTableViewCell.h"
 
-@implementation KGContinentTableViewCell
+@implementation KGSubMenuTableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -22,8 +22,11 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+    if (selected) {
+        [self.splitLine setImage:[UIImage imageNamed:@"selected_line"]];
+    } else {
+        [self.splitLine setImage:[UIImage imageNamed:@"default_line"]];
+    }
 }
 
 @end

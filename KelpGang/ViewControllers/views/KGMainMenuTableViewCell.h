@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KGContinentTableViewCell : UITableViewCell
+@interface KGMainMenuTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *continentLabel;
 
 @end

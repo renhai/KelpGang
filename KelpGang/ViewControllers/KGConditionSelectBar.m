@@ -8,8 +8,8 @@
 
 #import "KGConditionSelectBar.h"
 #import "KGCountryConditionView.h"
-#import "KGContinentTableViewCell.h"
-#import "KGCountryTableViewCell.h"
+#import "KGMainMenuTableViewCell.h"
+#import "KGSubMenuTableViewCell.h"
 
 @interface KGConditionSelectBar()
 
@@ -47,6 +47,13 @@
                           @"北美洲": @[@"美国",@"加拿大",@"墨西哥",@"哥斯达黎加"],
                           @"南美洲": @[@"巴西",@"阿根廷",@"哥伦比亚",@"厄瓜多尔",@"委内瑞拉",@"乌拉圭"],
                           @"大洋洲": @[@"澳大利亚",@"新西兰",@"六个字的国家",@"七个字的国家啊"]};
+//        self.continents = @[@{@"热门国家": @[@"日本",@"韩国",@"美国",@"法国",@"意大利",@"德国",@"加拿大",@"澳大利亚",@"泰国"]},
+//                            @{@"亚洲": @[@"日本",@"韩国",@"泰国"]},
+//                            @{@"欧洲": @[@"英国",@"法国",@"意大利",@"德国"]},
+//                            @{@"非洲": @[@"南非",@"埃及",@"阿尔及利亚",@"刚果"]},
+//                            @{@"北美洲": @[@"美国",@"加拿大",@"墨西哥",@"哥斯达黎加"]},
+//                            @{@"南美洲": @[@"巴西",@"阿根廷",@"哥伦比亚",@"厄瓜多尔",@"委内瑞拉",@"乌拉圭"]},
+//                            @{@"大洋洲": @[@"澳大利亚",@"新西兰",@"六个字的国家",@"七个字的国家啊"]}];
         self.timeConditions = @[@"3天内", @"1周内", @"2周内", @"1月内", @"常驻"];
         self.sortConditions = @[@"按距离排序", @"按信用排序", @"按人气排序"];
         self.conditionViews = [NSMutableDictionary dictionaryWithCapacity:3];
@@ -176,8 +183,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *kLeftTableViewCell = @"kContinentTableViewCell";
-    static NSString *kRightTableViewCell = @"kCountryTableViewCell";
+    static NSString *kLeftTableViewCell = @"kMainMenuTableViewCell";
+    static NSString *kRightTableViewCell = @"kSubMenuTableViewCell";
     static NSString *kTimeTableViewCell = @"kTimeTableViewCell";
     static NSString *kSortTableViewCell = @"kSortTableViewCell";
 
@@ -185,22 +192,22 @@
     if(tableView.tag == 1) {
         cell = [tableView dequeueReusableCellWithIdentifier:kLeftTableViewCell];
         if (cell == nil) {
-            NSArray *nibArr = [[NSBundle mainBundle]loadNibNamed:@"KGContinentTableViewCell" owner:self options:nil];
+            NSArray *nibArr = [[NSBundle mainBundle]loadNibNamed:@"KGMainMenuTableViewCell" owner:self options:nil];
             cell = [nibArr objectAtIndex:0];
         }
         cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
         cell.selectedBackgroundView.backgroundColor = [UIColor whiteColor];
-        KGContinentTableViewCell *continentCell = (KGContinentTableViewCell *) cell;
+        KGMainMenuTableViewCell *continentCell = (KGMainMenuTableViewCell *) cell;
         continentCell.continentLabel.text = [self.continents objectAtIndex:[indexPath row]];
     } else if (tableView.tag == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:kRightTableViewCell];
         if (cell == nil) {
-            NSArray *nibArr = [[NSBundle mainBundle]loadNibNamed:@"KGCountryTableViewCell" owner:self options:nil];
+            NSArray *nibArr = [[NSBundle mainBundle]loadNibNamed:@"KGSubMenuTableViewCell" owner:self options:nil];
             cell = [nibArr objectAtIndex:0];
         }
         cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
         cell.selectedBackgroundView.backgroundColor = [UIColor whiteColor];
-        KGCountryTableViewCell *countryCell = (KGCountryTableViewCell *) cell;
+        KGSubMenuTableViewCell *countryCell = (KGSubMenuTableViewCell *) cell;
         countryCell.countryLabel.text = [[self.countrys objectForKey:self.currContinent]objectAtIndex:[indexPath row]];
     } else if (tableView.tag == 3) {
         cell = [tableView dequeueReusableCellWithIdentifier:kTimeTableViewCell];
