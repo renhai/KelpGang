@@ -72,8 +72,8 @@
         //control events are bound to view controller in nib file
         //note that it is only safe to use the reusingView if we return the same nib for each
         //item view, if different items have different contents, ignore the reusingView value
-        UIView *containerView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 87, 85)];
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 85, 85)];
+        UIView *containerView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 97, 95)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 95, 95)];
         [imageView setContentMode:UIViewContentModeScaleAspectFill];
         [imageView setClipsToBounds:YES];
         [imageView setImageWithURL:[NSURL URLWithString:[self.imageUrls objectAtIndex:index]] placeholderImage:[UIImage imageNamed:@"test-head.jpg"]];

@@ -350,7 +350,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <view contentMode="scaleToFill" id="MjA-iJ-JPv" customClass="SwipeView">
-                                                <rect key="frame" x="5" y="114" width="315" height="85"/>
+                                                <rect key="frame" x="5" y="114" width="315" height="95"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </view>
                                         </subviews>
