@@ -8,6 +8,8 @@
 
 #import "KGConditionSelectBar.h"
 #import "KGCountryConditionView.h"
+#import "KGContinentTableViewCell.h"
+#import "KGCountryTableViewCell.h"
 
 @interface KGConditionSelectBar()
 
@@ -124,12 +126,10 @@
             CGRect countryFrame = countryConditionView.frame;
             countryFrame.origin.y = currY;
             countryConditionView.frame = countryFrame;
-            [countryConditionView.continentTableView setSeparatorColor:[UIColor clearColor]];
-            NSIndexPath *firstLine= [NSIndexPath indexPathForRow:0 inSection:0];
-            [countryConditionView.continentTableView selectRowAtIndexPath:firstLine animated:YES scrollPosition:UITableViewScrollPositionNone];
-            [self tableView:countryConditionView.continentTableView didSelectRowAtIndexPath:firstLine];
+            NSIndexPath *firstRow= [NSIndexPath indexPathForRow:0 inSection:0];
+            [countryConditionView.continentTableView selectRowAtIndexPath:firstRow animated:NO scrollPosition:UITableViewScrollPositionNone];
+            [self tableView:countryConditionView.continentTableView didSelectRowAtIndexPath:firstRow];
             self.currContinent = [self.continents objectAtIndex:0];
-
             [self.conditionViews setObject:countryConditionView forKey:@(index)];
             return countryConditionView;
         } else if (index == 2) {
@@ -176,7 +176,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *kLeftTableViewCell = @"kLeftTableViewCell";
+    static NSString *kLeftTableViewCell = @"kContinentTableViewCell";
+    static NSString *kRightTableViewCell = @"kCountryTableViewCell";
     static NSString *kTimeTableViewCell = @"kTimeTableViewCell";
     static NSString *kSortTableViewCell = @"kSortTableViewCell";
 
@@ -184,20 +185,23 @@
     if(tableView.tag == 1) {
         cell = [tableView dequeueReusableCellWithIdentifier:kLeftTableViewCell];
         if (cell == nil) {
-            NSArray *nibArr = [[NSBundle mainBundle]loadNibNamed:@"KGCountryConditionView" owner:self options:nil];
-            cell = [nibArr objectAtIndex:1];
+            NSArray *nibArr = [[NSBundle mainBundle]loadNibNamed:@"KGContinentTableViewCell" owner:self options:nil];
+            cell = [nibArr objectAtIndex:0];
         }
         cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
         cell.selectedBackgroundView.backgroundColor = [UIColor whiteColor];
-        cell.textLabel.text = [self.continents objectAtIndex:[indexPath row]];
+        KGContinentTableViewCell *continentCell = (KGContinentTableViewCell *) cell;
+        continentCell.continentLabel.text = [self.continents objectAtIndex:[indexPath row]];
     } else if (tableView.tag == 2) {
-        cell = [tableView dequeueReusableCellWithIdentifier:kLeftTableViewCell];
+        cell = [tableView dequeueReusableCellWithIdentifier:kRightTableViewCell];
         if (cell == nil) {
-            NSArray *nibArr = [[NSBundle mainBundle]loadNibNamed:@"KGCountryConditionView" owner:self options:nil];
-            cell = [nibArr objectAtIndex:1];
+            NSArray *nibArr = [[NSBundle mainBundle]loadNibNamed:@"KGCountryTableViewCell" owner:self options:nil];
+            cell = [nibArr objectAtIndex:0];
         }
-        cell.backgroundColor = [UIColor whiteColor];
-        cell.textLabel.text = [[self.countrys objectForKey:self.currContinent]objectAtIndex:[indexPath row]];
+        cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
+        cell.selectedBackgroundView.backgroundColor = [UIColor whiteColor];
+        KGCountryTableViewCell *countryCell = (KGCountryTableViewCell *) cell;
+        countryCell.countryLabel.text = [[self.countrys objectForKey:self.currContinent]objectAtIndex:[indexPath row]];
     } else if (tableView.tag == 3) {
         cell = [tableView dequeueReusableCellWithIdentifier:kTimeTableViewCell];
         if (cell == nil) {

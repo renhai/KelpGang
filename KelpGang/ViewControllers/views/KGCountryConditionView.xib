@@ -11,21 +11,21 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="360"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="s0B-RP-cAq" userLabel="Left Table View">
+                <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="s0B-RP-cAq" userLabel="Left Table View">
                     <rect key="frame" x="0.0" y="0.0" width="140" height="360"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.90196078430000004" green="0.94901960780000005" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <color key="sectionIndexTrackingBackgroundColor" red="0.9137254901960784" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="8Xz-f1-RW9"/>
                         <outlet property="delegate" destination="-1" id="rIL-fH-4K8"/>
                     </connections>
                 </tableView>
-                <tableView clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Slh-dw-HW0" userLabel="Right Table View">
+                <tableView clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Slh-dw-HW0" userLabel="Right Table View">
                     <rect key="frame" x="140" y="0.0" width="180" height="360"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="RKp-mb-aSi"/>
                         <outlet property="delegate" destination="-1" id="hYp-b5-lqM"/>
@@ -40,23 +40,5 @@
                 <outlet property="countryTableView" destination="Slh-dw-HW0" id="DOY-6e-lJO"/>
             </connections>
         </view>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="kLeftTableViewCell" textLabel="ELJ-89-b8q" rowHeight="40" style="IBUITableViewCellStyleDefault" id="xQl-jO-uAj">
-            <rect key="frame" x="0.0" y="0.0" width="137" height="40"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xQl-jO-uAj" id="TCS-tb-404">
-                <rect key="frame" x="0.0" y="0.0" width="137" height="39"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ELJ-89-b8q">
-                        <rect key="frame" x="15" y="0.0" width="107" height="39"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <color key="textColor" red="0.44705882352941173" green="0.44705882352941173" blue="0.44705882352941173" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                </subviews>
-            </tableViewCellContentView>
-            <color key="backgroundColor" red="0.91372549020000005" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
-        </tableViewCell>
     </objects>
 </document>
