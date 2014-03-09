@@ -13,19 +13,17 @@ static CGFloat const kArrowMarginLeft = 4.0;
 
 @implementation KGConditionBarItem
 
+- (void)dealloc
+{
+    
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
     }
     return self;
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-    }
-    return  self;
 }
 
 - (void) relayout {

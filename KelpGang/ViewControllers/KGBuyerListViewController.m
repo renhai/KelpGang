@@ -24,6 +24,10 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 
 @implementation KGBuyerListViewController
 
+-(void) dealloc {
+
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -39,8 +43,13 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
     NSArray *nibArr = [[NSBundle mainBundle]loadNibNamed:@"KGConditionBar" owner:self options:nil];
     self.conditionBar = [nibArr objectAtIndex:0];
     self.conditionBar.canvasView = self.view;
+    self.conditionBar.delegate = self;
     [self.view addSubview:self.conditionBar];
 
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning

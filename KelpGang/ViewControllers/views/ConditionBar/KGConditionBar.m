@@ -11,6 +11,7 @@
 #import "KGSecondLevelMenuView.h"
 #import "KGMainMenuTableViewCell.h"
 #import "KGSubMenuTableViewCell.h"
+#import "KGCommonConditionCell.h"
 
 static NSString * const kContinentKey = @"continent";
 static NSString * const kCountryKey = @"country";
@@ -32,6 +33,10 @@ static NSString * const kCityKey = @"city";
 @end
 
 @implementation KGConditionBar
+
+- (void) dealloc {
+
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -191,7 +196,7 @@ static NSString * const kCityKey = @"city";
 {
     static NSString *kLeftTableViewCell = @"kMainMenuTableViewCell";
     static NSString *kRightTableViewCell = @"kSubMenuTableViewCell";
-    static NSString *kTimeTableViewCell = @"kTimeTableViewCell";
+    static NSString *kTimeTableViewCell = @"kCommonConditionCell";
 
     UITableViewCell *cell = nil;
     if (self.currTapIndex == 1) {
@@ -201,8 +206,6 @@ static NSString * const kCityKey = @"city";
                 NSArray *nibArr = [[NSBundle mainBundle]loadNibNamed:@"KGMainMenuTableViewCell" owner:self options:nil];
                 cell = [nibArr objectAtIndex:0];
             }
-            cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
-            cell.selectedBackgroundView.backgroundColor = [UIColor whiteColor];
             KGMainMenuTableViewCell *continentCell = (KGMainMenuTableViewCell *) cell;
             continentCell.continentLabel.text = [[self.countryArr objectAtIndex:[indexPath row]] objectForKey:kContinentKey];
         } else if (tableView.tag == 2) {
@@ -211,17 +214,16 @@ static NSString * const kCityKey = @"city";
                 NSArray *nibArr = [[NSBundle mainBundle]loadNibNamed:@"KGSubMenuTableViewCell" owner:self options:nil];
                 cell = [nibArr objectAtIndex:0];
             }
-            cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
-            cell.selectedBackgroundView.backgroundColor = [UIColor whiteColor];
             KGSubMenuTableViewCell *countryCell = (KGSubMenuTableViewCell *) cell;
             countryCell.countryLabel.text = [[[self.countryArr objectAtIndex:self.currContinentIndex] objectForKey:kCountryKey] objectAtIndex:indexPath.row];
         }
     } else if (self.currTapIndex == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:kTimeTableViewCell];
         if (cell == nil) {
-            NSArray *nibArr = [[NSBundle mainBundle] loadNibNamed:@"KGTimeConditionView" owner:self options:nil];
-            cell = [nibArr objectAtIndex:1];
-            cell.textLabel.text = [self.timeArr objectAtIndex: [indexPath row]];
+            NSArray *nibArr = [[NSBundle mainBundle] loadNibNamed:@"KGCommonConditionCell" owner:self options:nil];
+            cell = [nibArr objectAtIndex:0];
+            KGCommonConditionCell *timeCell = (KGCommonConditionCell *) cell;
+            timeCell.timeLabel.text = [self.timeArr objectAtIndex: [indexPath row]];
         }
     } else if (self.currTapIndex == 3) {
         if (tableView.tag == 1) {
@@ -230,8 +232,6 @@ static NSString * const kCityKey = @"city";
                 NSArray *nibArr = [[NSBundle mainBundle]loadNibNamed:@"KGMainMenuTableViewCell" owner:self options:nil];
                 cell = [nibArr objectAtIndex:0];
             }
-            cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
-            cell.selectedBackgroundView.backgroundColor = [UIColor whiteColor];
             KGMainMenuTableViewCell *continentCell = (KGMainMenuTableViewCell *) cell;
             continentCell.continentLabel.text = [[self.cityArr objectAtIndex:[indexPath row]] objectForKey:kRegionKey];
         } else if (tableView.tag == 2) {
@@ -240,13 +240,12 @@ static NSString * const kCityKey = @"city";
                 NSArray *nibArr = [[NSBundle mainBundle]loadNibNamed:@"KGSubMenuTableViewCell" owner:self options:nil];
                 cell = [nibArr objectAtIndex:0];
             }
-            cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
-            cell.selectedBackgroundView.backgroundColor = [UIColor whiteColor];
             KGSubMenuTableViewCell *countryCell = (KGSubMenuTableViewCell *) cell;
             countryCell.countryLabel.text = [[[self.cityArr objectAtIndex:self.currRegionIndex] objectForKey:kCityKey] objectAtIndex:indexPath.row];
         }
     }
-
+    cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
+    cell.selectedBackgroundView.backgroundColor = [UIColor whiteColor];
     return cell;
 }
 
