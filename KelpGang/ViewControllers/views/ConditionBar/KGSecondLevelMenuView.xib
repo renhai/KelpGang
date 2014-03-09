@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="1" customClass="KGCountryConditionView">
+        <view contentMode="scaleToFill" id="1" customClass="KGSecondLevelMenuView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="360"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -36,8 +36,8 @@
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="continentTableView" destination="s0B-RP-cAq" id="o2J-YS-5Oy"/>
-                <outlet property="countryTableView" destination="Slh-dw-HW0" id="DOY-6e-lJO"/>
+                <outlet property="mainMenuTableView" destination="s0B-RP-cAq" id="XE1-E1-Was"/>
+                <outlet property="subMenuTableView" destination="Slh-dw-HW0" id="98Q-ec-qsF"/>
             </connections>
         </view>
     </objects>

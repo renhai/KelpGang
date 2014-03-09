@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 renren. All rights reserved.
 //
 
-#import "KGCountryConditionView.h"
+#import "KGSecondLevelMenuView.h"
 
-@implementation KGCountryConditionView
+@implementation KGSecondLevelMenuView
 
 - (id)initWithFrame:(CGRect)frame
 {
