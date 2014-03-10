@@ -19,6 +19,7 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 @interface KGBuyerListViewController () <KGConditionDelegate>
 
 @property (weak, nonatomic) IBOutlet KGConditionBar *conditionBar;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -42,6 +43,12 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
     [super viewDidLoad];
     self.conditionBar.canvasView = self.view;
     self.conditionBar.delegate = self;
+
+    if (!iPhone5) {
+        CGRect frame = self.tableView.frame;
+        frame.size.height = SCREEN_HEIGHT - STATUSBAR_HEIGHT - NAVIGATIONBAR_HEIGHT - TABBAR_HEIGHT - self.conditionBar.frame.size.height;
+        self.tableView.frame = frame;
+    }
 
 }
 

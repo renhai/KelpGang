@@ -181,6 +181,7 @@
                     <navigationItem key="navigationItem" title="帮帮" id="cyV-Od-KUY"/>
                     <connections>
                         <outlet property="conditionBar" destination="fSV-Vb-4aJ" id="Prc-Nz-DHd"/>
+                        <outlet property="tableView" destination="lCN-9f-6k1" id="Hal-uM-yNC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sfH-pZ-UwX" userLabel="First Responder" sceneMemberID="firstResponder"/>
