@@ -20,6 +20,5 @@
 
 @property (nonatomic, weak) UIView* canvasView;
 @property (nonatomic, weak) id<KGConditionDelegate> delegate;
-- (void)relayout;
 
 @end

@@ -18,7 +18,7 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 
 @interface KGBuyerListViewController () <KGConditionDelegate>
 
-@property (nonatomic, strong) KGConditionBar *conditionBar;
+@property (weak, nonatomic) IBOutlet KGConditionBar *conditionBar;
 
 @end
 
@@ -40,29 +40,9 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSArray *nibArr = [[NSBundle mainBundle]loadNibNamed:@"KGConditionBar" owner:self options:nil];
-    self.conditionBar = [nibArr objectAtIndex:0];
     self.conditionBar.canvasView = self.view;
     self.conditionBar.delegate = self;
-    [self.view addSubview:self.conditionBar];
 
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-//    [self.conditionBar relayout];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning

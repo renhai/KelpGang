@@ -37,18 +37,6 @@ static NSString * const kCityKey = @"city";
 
 }
 
-- (void)relayout {
-    NSArray *subviews = [self subviews];
-    if (subviews) {
-        for (UIView *view in subviews) {
-            if ([view respondsToSelector:@selector(relayout)]) {
-                [view performSelector:@selector(relayout) withObject:view afterDelay:0];
-            }
-        }
-    }
-}
-
-
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -86,13 +74,13 @@ static NSString * const kCityKey = @"city";
             item.index = i + 1;
             item.textLabel.text = [titles objectAtIndex:i];
             item.indImgView.hidden = YES;
+            item.tag = item.index;
             CGFloat x = i * itemWidth;
             CGRect frame = item.frame;
             frame.origin.x = x;
             [item setFrame:frame];
             UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
             tapGesture.delegate = self;
-            item.tag = item.index;
             [item addGestureRecognizer:tapGesture];
             [self addSubview:item];
         }

@@ -82,7 +82,6 @@
 		A190FCE318C89BB000A87329 /* nav_bar_item_back.png in Resources */ = {isa = PBXBuildFile; fileRef = A190FCE118C89BB000A87329 /* nav_bar_item_back.png */; };
 		A190FCE418C89BB000A87329 /* nav_bar_item_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A190FCE218C89BB000A87329 /* nav_bar_item_back@2x.png */; };
 		A1992CD518CCC582004BB29D /* KGConditionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A1992CC618CCC582004BB29D /* KGConditionBar.m */; };
-		A1992CD618CCC582004BB29D /* KGConditionBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1992CC718CCC582004BB29D /* KGConditionBar.xib */; };
 		A1992CD718CCC582004BB29D /* KGConditionBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A1992CC918CCC582004BB29D /* KGConditionBarItem.m */; };
 		A1992CD818CCC582004BB29D /* KGConditionBarItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1992CCA18CCC582004BB29D /* KGConditionBarItem.xib */; };
 		A1992CD918CCC582004BB29D /* KGMainMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1992CCC18CCC582004BB29D /* KGMainMenuTableViewCell.m */; };
@@ -215,7 +214,6 @@
 		A190FCE218C89BB000A87329 /* nav_bar_item_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_bar_item_back@2x.png"; sourceTree = "<group>"; };
 		A1992CC518CCC582004BB29D /* KGConditionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGConditionBar.h; sourceTree = "<group>"; };
 		A1992CC618CCC582004BB29D /* KGConditionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGConditionBar.m; sourceTree = "<group>"; };
-		A1992CC718CCC582004BB29D /* KGConditionBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KGConditionBar.xib; sourceTree = "<group>"; };
 		A1992CC818CCC582004BB29D /* KGConditionBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGConditionBarItem.h; sourceTree = "<group>"; };
 		A1992CC918CCC582004BB29D /* KGConditionBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGConditionBarItem.m; sourceTree = "<group>"; };
 		A1992CCA18CCC582004BB29D /* KGConditionBarItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KGConditionBarItem.xib; sourceTree = "<group>"; };
@@ -507,7 +505,6 @@
 			children = (
 				A1992CC518CCC582004BB29D /* KGConditionBar.h */,
 				A1992CC618CCC582004BB29D /* KGConditionBar.m */,
-				A1992CC718CCC582004BB29D /* KGConditionBar.xib */,
 				A1992CC818CCC582004BB29D /* KGConditionBarItem.h */,
 				A1992CC918CCC582004BB29D /* KGConditionBarItem.m */,
 				A1992CCA18CCC582004BB29D /* KGConditionBarItem.xib */,
@@ -648,7 +645,6 @@
 				A1F8A65318C9805A00ECDABB /* tab_bar_selected@2x.png in Resources */,
 				A1A1DAF918C9AE7C00F03E04 /* follow-btn-bg.png in Resources */,
 				A190FCDF18C8859400A87329 /* airplane.png in Resources */,
-				A1992CD618CCC582004BB29D /* KGConditionBar.xib in Resources */,
 				A180C0EB18C8BE7800116DCF /* search_someone_active.png in Resources */,
 				A1992CDF18CCC582004BB29D /* KGTimeConditionView.xib in Resources */,
 				A1992CDC18CCC582004BB29D /* KGSecondLevelMenuView.xib in Resources */,
