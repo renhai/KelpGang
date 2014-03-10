@@ -9,9 +9,9 @@ PODS:
   - MagicalRecord (2.2):
     - MagicalRecord/Core
   - MagicalRecord/Core (2.2)
-  - SDWebImage (3.5.2):
+  - SDWebImage (3.5.4):
     - SDWebImage/Core
-  - SDWebImage/Core (3.5.2)
+  - SDWebImage/Core (3.5.4)
   - SVPullToRefresh (0.4.1)
   - SVSegmentedControl (0.2)
   - XMPPFramework (3.6.4):
@@ -156,7 +156,7 @@ SPEC CHECKSUMS:
   CocoaAsyncSocket: 534d09416f992fd51efb23f534742ce70b3a7999
   CocoaLumberjack: 17803afbade3126a377d32b8d23367264b44ced6
   MagicalRecord: 95d49d74ef752cd52f6ad87bcb474817fc3978cf
-  SDWebImage: fe7ce01ae4e0a884d168f59c9dd82d35baf8429e
+  SDWebImage: 1a62010700adbba823b621fc217906739dbf6aa5
   SVPullToRefresh: 61a0e4bd12bd6f8e3465909810b0fbeb1a28d5f2
   SVSegmentedControl: e874fc56c2a1efb9f597ddf0908101393f53fe96
   XMPPFramework: eee9ed80df314067fac613c24223ad73834306b0
