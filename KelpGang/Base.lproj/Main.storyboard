@@ -151,7 +151,10 @@
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
+                                            <outlet property="fromCityLabel" destination="ZlM-lb-JNW" id="fFe-PE-Bv6"/>
                                             <outlet property="headImageView" destination="EcG-1T-Pyq" id="Ibe-jc-xUF"/>
+                                            <outlet property="planeImgView" destination="Dvi-Ze-L59" id="Pc5-IC-Cu6"/>
+                                            <outlet property="toCityLabel" destination="vue-F4-vBH" id="ZK6-YR-SzF"/>
                                             <segue destination="CcB-zG-elM" kind="push" id="hXD-OT-gz1"/>
                                         </connections>
                                     </tableViewCell>

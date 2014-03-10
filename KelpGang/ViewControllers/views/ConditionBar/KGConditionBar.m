@@ -24,7 +24,6 @@ static NSString * const kCityKey = @"city";
 @property (nonatomic, assign) NSInteger currContinentIndex;
 @property (nonatomic, strong) NSMutableDictionary *conditionViews;
 @property (nonatomic, assign) NSInteger currTapIndex;
-@property (nonatomic, strong) NSMutableDictionary *conditionBarItems;
 @property (nonatomic, strong) NSArray *timeArr;
 @property (nonatomic, strong) NSArray *cityArr;
 @property (nonatomic, assign) NSInteger currRegionIndex;
@@ -37,6 +36,18 @@ static NSString * const kCityKey = @"city";
 - (void) dealloc {
 
 }
+
+- (void)relayout {
+    NSArray *subviews = [self subviews];
+    if (subviews) {
+        for (UIView *view in subviews) {
+            if ([view respondsToSelector:@selector(relayout)]) {
+                [view performSelector:@selector(relayout) withObject:view afterDelay:0];
+            }
+        }
+    }
+}
+
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -65,7 +76,6 @@ static NSString * const kCityKey = @"city";
                          @{@"region": @"其他",@"city": @[@"巴西",@"阿根廷",@"哥伦比亚",@"厄瓜多尔",@"委内瑞拉",@"乌拉圭"]}];
         self.timeArr = @[@"3天内", @"1周内", @"2周内", @"1月内", @"常驻"];
         self.conditionViews = [NSMutableDictionary dictionaryWithCapacity:3];
-        self.conditionBarItems = [NSMutableDictionary dictionaryWithCapacity:3];
         self.currTapIndex = -1;
 
         CGFloat itemWidth = 320.0 / 3;
@@ -82,8 +92,8 @@ static NSString * const kCityKey = @"city";
             [item setFrame:frame];
             UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
             tapGesture.delegate = self;
+            item.tag = item.index;
             [item addGestureRecognizer:tapGesture];
-            [self.conditionBarItems setObject:item forKey:@(item.index)];
             [self addSubview:item];
         }
     }
@@ -107,7 +117,7 @@ static NSString * const kCityKey = @"city";
     if (currView) {
         [currView removeFromSuperview];
     }
-    KGConditionBarItem *item = [self.conditionBarItems objectForKey:@(index)];
+    KGConditionBarItem *item = (KGConditionBarItem *)[self viewWithTag:index];
     [item closeItem];
     self.currTapIndex = -1;
 }
@@ -118,7 +128,7 @@ static NSString * const kCityKey = @"city";
     if (view) {
         [self.canvasView addSubview:view];
     }
-    KGConditionBarItem *item = [self.conditionBarItems objectForKey:@(index)];
+    KGConditionBarItem *item = (KGConditionBarItem *)[self viewWithTag:index];
     [item openItem];
 }
 
@@ -267,7 +277,7 @@ static NSString * const kCityKey = @"city";
         } else if (tableView.tag == 2) {
             [self closeConditionView:selectedIndex];
             NSString *selectCountry = [[[self.countryArr objectAtIndex:self.currContinentIndex] objectForKey:kCountryKey] objectAtIndex:row];
-            KGConditionBarItem *currItem = [self.conditionBarItems objectForKey:@(selectedIndex)];
+            KGConditionBarItem *currItem = (KGConditionBarItem *)[self viewWithTag:selectedIndex];
             currItem.textLabel.text = selectCountry;
             [currItem relayout];
             [self.delegate didSelectCondition:selectedIndex item:selectCountry];
@@ -275,7 +285,8 @@ static NSString * const kCityKey = @"city";
     } else if (selectedIndex == 2) {
         [self closeConditionView:selectedIndex];
         NSString *selectTime = [self.timeArr objectAtIndex:row];
-        KGConditionBarItem *currItem = [self.conditionBarItems objectForKey:@(selectedIndex)];
+        KGConditionBarItem *currItem = (KGConditionBarItem *)[self viewWithTag:selectedIndex];
+
         currItem.textLabel.text = selectTime;
         [currItem relayout];
         [self.delegate didSelectCondition:selectedIndex item:selectTime];
@@ -291,7 +302,8 @@ static NSString * const kCityKey = @"city";
         } else if (tableView.tag == 2) {
             [self closeConditionView:selectedIndex];
             NSString *selectCity = [[[self.cityArr objectAtIndex:self.currRegionIndex] objectForKey:kCityKey] objectAtIndex:row];
-            KGConditionBarItem *currItem = [self.conditionBarItems objectForKey:@(selectedIndex)];
+            KGConditionBarItem *currItem = (KGConditionBarItem *)[self viewWithTag:selectedIndex];
+
             currItem.textLabel.text = selectCity;
             [currItem relayout];
             [self.delegate didSelectCondition:selectedIndex item:selectCity];
