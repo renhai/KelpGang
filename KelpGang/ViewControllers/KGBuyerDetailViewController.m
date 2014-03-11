@@ -9,6 +9,8 @@
 #import "KGBuyerDetailViewController.h"
 #import "SwipeView.h"
 #import "UIImageView+WebCache.h"
+#import "FSBasicImage.h"
+#import "FSBasicImageSource.h"
 
 @interface KGBuyerDetailViewController () <SwipeViewDataSource, SwipeViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -17,6 +19,8 @@
 - (IBAction)goBack:(UIBarButtonItem *)sender;
 
 @property (nonatomic, strong) NSArray *imageUrls;
+
+@property(strong, nonatomic) FSImageViewerViewController *imageViewController;
 
 @end
 
@@ -92,6 +96,21 @@
 #pragma SwipeViewDelegate
 - (void)swipeView:(SwipeView *)swipeView didSelectItemAtIndex:(NSInteger)index {
     NSLog(@"selelect index is : %d", index);
+    NSMutableArray *imgArr = [[NSMutableArray alloc] initWithCapacity:self.imageUrls.count];
+    for (NSString *url in self.imageUrls) {
+        FSBasicImage *img = [[FSBasicImage alloc] initWithImageURL:[NSURL URLWithString:url] name:@"Photo by andy"];
+        [imgArr addObject:img];
+    }
+
+    FSBasicImageSource *photoSource = [[FSBasicImageSource alloc] initWithImages:imgArr];
+    self.imageViewController = [[FSImageViewerViewController alloc] initWithImageSource:photoSource imageIndex:index];
+
+//    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:_imageViewController];
+//    [self.navigationController presentViewController:navigationController animated:YES completion:nil];
+
+    [self.navigationController pushViewController:_imageViewController animated:YES];
+
+//    [self presentViewController:self.imageViewController animated:YES completion:nil];
 }
 
 

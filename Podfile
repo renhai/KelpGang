@@ -9,5 +9,10 @@ target :'KelpGang' do
     pod 'SDWebImage', '~> 3.5.2'
     pod 'SVPullToRefresh', '~> 0.4.1'
     pod 'XMPPFramework', '~> 3.6.4'
+    pod 'AFNetworking', '~> 2.2'
+    pod 'EGOCache', '~> 2.0'
+    #pod 'FSImageViewer', '~> 2.1'
+    pod 'MBProgressHUD', '~> 0.8'
+    #pod 'MWPhotoBrowser'
 end
 
