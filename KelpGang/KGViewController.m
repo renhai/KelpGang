@@ -24,23 +24,23 @@
         UIImage *tabbarImage = [UIImage imageNamed:@"tab-bar"];
         UIImage *selectedImage = [UIImage imageNamed:@"tab_bar_selected"];
         UIColor *textColor = RGBCOLOR(33, 185, 162);
-        UIColor *tintColor = RGBCOLOR(233, 243, 243);
-
+//        UIColor *tintColor = RGBCOLOR(233, 243, 243);
+//
         [[UITabBar appearance] setBackgroundImage:tabbarImage];
         [[UITabBar appearance] setSelectionIndicatorImage:selectedImage];
-        [[UITabBar appearance] setSelectedImageTintColor:[UIColor clearColor]];
-        [[UITabBar appearance] setTintColor:tintColor];
+//        [[UITabBar appearance] setSelectedImageTintColor:[UIColor clearColor]];
+//        [[UITabBar appearance] setTintColor:tintColor];
         [[self.tabBar.items objectAtIndex:0] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:textColor,UITextAttributeTextColor,nil] forState:UIControlStateNormal];
-        UIImage *selectedImage1 = [UIImage imageNamed:@"search_someone_active"];
-        UIImage *selectedImage2 = [UIImage imageNamed:@"search_active"];
-        UIImage *selectedImage3 = [UIImage imageNamed:@"write_active"];
-        UIImage *selectedImage4 = [UIImage imageNamed:@"me_active"];
-        UIImage *selectedImage5 = [UIImage imageNamed:@"more_active"];
-        NSArray *selectedImages = @[selectedImage1, selectedImage2,selectedImage3,selectedImage4,selectedImage5];
-        NSInteger index = 0;
-        for (UITabBarItem *item in self.tabBar.items) {
-            [item setSelectedImage:[selectedImages objectAtIndex: index ++]];
-        }
+//        UIImage *selectedImage1 = [UIImage imageNamed:@"search_someone_active"];
+//        UIImage *selectedImage2 = [UIImage imageNamed:@"search_active"];
+//        UIImage *selectedImage3 = [UIImage imageNamed:@"write_active"];
+//        UIImage *selectedImage4 = [UIImage imageNamed:@"me_active"];
+//        UIImage *selectedImage5 = [UIImage imageNamed:@"more_active"];
+//        NSArray *selectedImages = @[selectedImage1, selectedImage2,selectedImage3,selectedImage4,selectedImage5];
+//        NSInteger index = 0;
+//        for (UITabBarItem *item in self.tabBar.items) {
+//            [item setSelectedImage:[selectedImages objectAtIndex: index ++]];
+//        }
     }
 }
 
