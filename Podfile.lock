@@ -30,6 +30,7 @@ PODS:
     - MagicalRecord/Core
   - MagicalRecord/Core (2.2)
   - MBProgressHUD (0.8)
+  - PSTCollectionView (1.2.0)
   - SDWebImage (3.5.4):
     - SDWebImage/Core
   - SDWebImage/Core (3.5.4)
@@ -171,6 +172,7 @@ DEPENDENCIES:
   - EGOCache (~> 2.0)
   - MagicalRecord (~> 2.2)
   - MBProgressHUD (~> 0.8)
+  - PSTCollectionView (~> 1.2.0)
   - SDWebImage (~> 3.5.2)
   - SVPullToRefresh (~> 0.4.1)
   - SVSegmentedControl (~> 0.2)
@@ -183,6 +185,7 @@ SPEC CHECKSUMS:
   EGOCache: c7116e8a6692eecb542f001a9c71f9b71ae9644b
   MagicalRecord: 95d49d74ef752cd52f6ad87bcb474817fc3978cf
   MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
+  PSTCollectionView: fb2ad2790c6efa306b2caf10315b2c1464d1f5c6
   SDWebImage: 1a62010700adbba823b621fc217906739dbf6aa5
   SVPullToRefresh: 61a0e4bd12bd6f8e3465909810b0fbeb1a28d5f2
   SVSegmentedControl: e874fc56c2a1efb9f597ddf0908101393f53fe96
