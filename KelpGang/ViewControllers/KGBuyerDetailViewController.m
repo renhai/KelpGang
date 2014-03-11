@@ -95,8 +95,8 @@
 - (void)swipeView:(SwipeView *)swipeView didSelectItemAtIndex:(NSInteger)index {
     NSLog(@"selelect index is : %d", index);
     //for testing
-    [[SDImageCache sharedImageCache] clearDisk];
-    [[SDImageCache sharedImageCache] clearMemory];
+//    [[SDImageCache sharedImageCache] clearDisk];
+//    [[SDImageCache sharedImageCache] clearMemory];
 
     [self.photos removeAllObjects];
     for (NSString *url in self.imageUrls) {
@@ -116,11 +116,11 @@
     browser.alwaysShowControls = NO;
     [browser setCurrentPhotoIndex:index];
 
-//    [self.navigationController pushViewController:browser animated:YES];
+    [self.navigationController pushViewController:browser animated:YES];
 
-    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:browser];
-    nc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self presentViewController:nc animated:YES completion:nil];
+//    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:browser];
+//    nc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//    [self presentViewController:nc animated:YES completion:nil];
 
 }
 

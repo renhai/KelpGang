@@ -40,6 +40,7 @@ static CGFloat const kBottomViewHeight = 100.0;
     self.backgroundColor = [UIColor clearColor];
     NSArray *nibs = [[NSBundle mainBundle] loadNibNamed:@"KGPicBottom" owner:self options:nil];
     self.bottomView = nibs[0];
+    self.bottomView.backgroundColor = [UIColor clearColor];
     [self addSubview:self.bottomView];
 }
 
