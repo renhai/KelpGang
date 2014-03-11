@@ -11,7 +11,6 @@ target :'KelpGang' do
     pod 'XMPPFramework', '~> 3.6.4'
     pod 'AFNetworking', '~> 2.2'
     pod 'EGOCache', '~> 2.0'
-    #pod 'FSImageViewer', '~> 2.1'
     pod 'MBProgressHUD', '~> 0.8'
     #pod 'MWPhotoBrowser'
 end

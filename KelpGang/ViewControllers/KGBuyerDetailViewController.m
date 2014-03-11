@@ -9,18 +9,18 @@
 #import "KGBuyerDetailViewController.h"
 #import "SwipeView.h"
 #import "UIImageView+WebCache.h"
-#import "FSBasicImage.h"
-#import "FSBasicImageSource.h"
+#import "MWPhotoBrowser.h"
+#import "KGPicBottomView.h"
 
-@interface KGBuyerDetailViewController () <SwipeViewDataSource, SwipeViewDelegate>
+@interface KGBuyerDetailViewController () <SwipeViewDataSource, SwipeViewDelegate, MWPhotoBrowserDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *headImgView;
 @property (weak, nonatomic) IBOutlet SwipeView *swipeView;
 - (IBAction)goBack:(UIBarButtonItem *)sender;
 
 @property (nonatomic, strong) NSArray *imageUrls;
-
-@property(strong, nonatomic) FSImageViewerViewController *imageViewController;
+@property (nonatomic, strong) NSMutableArray *photos;
+//@property (nonatomic, strong) NSMutableArray *thumbs;
 
 @end
 
@@ -46,9 +46,6 @@
     NSLog(@"%@",self.navigationItem.leftBarButtonItem);
     self.headImgView.layer.cornerRadius = self.headImgView.frame.size.width / 2;
     [self.scrollView setContentSize:CGSizeMake(320, 600)];
-//    UIView *chatView = [[UIView alloc] initWithFrame:CGRectMake(0, 440, 320, 64)];
-//    [chatView setBackgroundColor:RGBCOLOR(246, 251, 249)];
-//    [self.view addSubview:chatView];
 
     self.swipeView.dataSource = self;
     self.swipeView.delegate = self;
@@ -64,6 +61,7 @@
                        @"http://g.hiphotos.baidu.com/image/w%3D2048/sign=b1b6a1081d30e924cfa49b3178306f06/9922720e0cf3d7cacd758376f01fbe096b63a92b.jpg",
                        @"http://f.hiphotos.baidu.com/image/w%3D2048/sign=6679150dfadcd100cd9cff2146b34610/0eb30f2442a7d933952b5b73af4bd11373f0012a.jpg",
                        @"http://h.hiphotos.baidu.com/image/w%3D2048/sign=9ec10093c1cec3fd8b3ea075e2b0d53f/72f082025aafa40f6c283382a964034f79f01986.jpg"];
+    self.photos = [[NSMutableArray alloc] init];
 }
 
 
@@ -96,21 +94,34 @@
 #pragma SwipeViewDelegate
 - (void)swipeView:(SwipeView *)swipeView didSelectItemAtIndex:(NSInteger)index {
     NSLog(@"selelect index is : %d", index);
-    NSMutableArray *imgArr = [[NSMutableArray alloc] initWithCapacity:self.imageUrls.count];
+    //for testing
+    [[SDImageCache sharedImageCache] clearDisk];
+    [[SDImageCache sharedImageCache] clearMemory];
+
+    [self.photos removeAllObjects];
     for (NSString *url in self.imageUrls) {
-        FSBasicImage *img = [[FSBasicImage alloc] initWithImageURL:[NSURL URLWithString:url] name:@"Photo by andy"];
-        [imgArr addObject:img];
+        [self.photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:url]]];
     }
 
-    FSBasicImageSource *photoSource = [[FSBasicImageSource alloc] initWithImages:imgArr];
-    self.imageViewController = [[FSImageViewerViewController alloc] initWithImageSource:photoSource imageIndex:index];
+    MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
+    browser.displayActionButton = NO;
+    browser.displayNavArrows = NO;
+    browser.displaySelectionButtons = NO;
+    browser.alwaysShowControls = NO;
+    browser.wantsFullScreenLayout = YES;
+    browser.zoomPhotosToFill = NO;
+    browser.enableGrid = NO;
+    browser.startOnGrid = NO;
+    browser.enableSwipeToDismiss = YES;
+    browser.alwaysShowControls = NO;
+    [browser setCurrentPhotoIndex:index];
 
-//    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:_imageViewController];
-//    [self.navigationController presentViewController:navigationController animated:YES completion:nil];
+//    [self.navigationController pushViewController:browser animated:YES];
 
-    [self.navigationController pushViewController:_imageViewController animated:YES];
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:browser];
+    nc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:nc animated:YES completion:nil];
 
-//    [self presentViewController:self.imageViewController animated:YES completion:nil];
 }
 
 
@@ -123,5 +134,58 @@
 - (IBAction)goBack:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+
+#pragma mark - MWPhotoBrowserDelegate
+
+- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser {
+    return _photos.count;
+}
+
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index {
+    if (index < _photos.count)
+        return [_photos objectAtIndex:index];
+    return nil;
+}
+
+//- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser thumbPhotoAtIndex:(NSUInteger)index {
+//    if (index < _thumbs.count)
+//        return [_thumbs objectAtIndex:index];
+//    return nil;
+//}
+
+- (MWCaptionView *)photoBrowser:(MWPhotoBrowser *)photoBrowser captionViewForPhotoAtIndex:(NSUInteger)index {
+    MWPhoto *photo = [self.photos objectAtIndex:index];
+    KGPicBottomView *captionView = [[KGPicBottomView alloc] initWithPhoto:photo index:index count:self.photos.count title:[NSString stringWithFormat:@"photo title - %i", index]];
+    return captionView;
+}
+
+//- (void)photoBrowser:(MWPhotoBrowser *)photoBrowser actionButtonPressedForPhotoAtIndex:(NSUInteger)index {
+//    NSLog(@"ACTION!");
+//}
+
+- (void)photoBrowser:(MWPhotoBrowser *)photoBrowser didDisplayPhotoAtIndex:(NSUInteger)index {
+    NSLog(@"Did start viewing photo at index %lu", (unsigned long)index);
+}
+
+//- (BOOL)photoBrowser:(MWPhotoBrowser *)photoBrowser isPhotoSelectedAtIndex:(NSUInteger)index {
+//    return [[_selections objectAtIndex:index] boolValue];
+//}
+
+- (NSString *)photoBrowser:(MWPhotoBrowser *)photoBrowser titleForPhotoAtIndex:(NSUInteger)index {
+    return @"";
+}
+
+//- (void)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index selectedChanged:(BOOL)selected {
+//    [_selections replaceObjectAtIndex:index withObject:[NSNumber numberWithBool:selected]];
+//    NSLog(@"Photo at index %lu selected %@", (unsigned long)index, selected ? @"YES" : @"NO");
+//}
+
+- (void)photoBrowserDidFinishModalPresentation:(MWPhotoBrowser *)photoBrowser {
+    // If we subscribe to this method we must dismiss the view controller ourselves
+    NSLog(@"Did finish modal presentation");
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 @end

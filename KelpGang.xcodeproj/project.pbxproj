@@ -57,14 +57,6 @@
 		A143012918BB4C4E0064DF87 /* common.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A143012818BB4C4E0064DF87 /* common.bundle */; };
 		A14415A118C0EA590053456D /* KGBuyerListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A144159B18C0EA590053456D /* KGBuyerListViewCell.m */; };
 		A14415A218C0EA590053456D /* KGBuyerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A144159D18C0EA590053456D /* KGBuyerListViewController.m */; };
-		A156EA6318CE0752004DEE24 /* FSBasicImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A156EA5018CE0752004DEE24 /* FSBasicImage.m */; };
-		A156EA6418CE0752004DEE24 /* FSBasicImageSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A156EA5218CE0752004DEE24 /* FSBasicImageSource.m */; };
-		A156EA6518CE0752004DEE24 /* FSImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = A156EA5518CE0752004DEE24 /* FSImageLoader.m */; };
-		A156EA6618CE0752004DEE24 /* FSImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = A156EA5718CE0752004DEE24 /* FSImageScrollView.m */; };
-		A156EA6718CE0752004DEE24 /* FSImageTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = A156EA5A18CE0752004DEE24 /* FSImageTitleView.m */; };
-		A156EA6818CE0752004DEE24 /* FSImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A156EA5C18CE0752004DEE24 /* FSImageView.m */; };
-		A156EA6918CE0752004DEE24 /* FSImageViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A156EA6018CE0752004DEE24 /* FSImageViewerViewController.m */; };
-		A156EA6A18CE0752004DEE24 /* FSPlaceholderImages.m in Sources */ = {isa = PBXBuildFile; fileRef = A156EA6218CE0752004DEE24 /* FSPlaceholderImages.m */; };
 		A180C0EB18C8BE7800116DCF /* search_someone_active.png in Resources */ = {isa = PBXBuildFile; fileRef = A180C0E918C8BE7800116DCF /* search_someone_active.png */; };
 		A180C0EC18C8BE7800116DCF /* search_someone_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A180C0EA18C8BE7800116DCF /* search_someone_active@2x.png */; };
 		A180C0F718C8BFD900116DCF /* me_active.png in Resources */ = {isa = PBXBuildFile; fileRef = A180C0ED18C8BFD900116DCF /* me_active.png */; };
@@ -99,6 +91,12 @@
 		A190FCE018C8859400A87329 /* airplane@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A190FCDE18C8859400A87329 /* airplane@2x.png */; };
 		A190FCE318C89BB000A87329 /* nav_bar_item_back.png in Resources */ = {isa = PBXBuildFile; fileRef = A190FCE118C89BB000A87329 /* nav_bar_item_back.png */; };
 		A190FCE418C89BB000A87329 /* nav_bar_item_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A190FCE218C89BB000A87329 /* nav_bar_item_back@2x.png */; };
+		A1930B2318CEFA66000D84A1 /* KGPicBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1930B2218CEFA66000D84A1 /* KGPicBottomView.m */; };
+		A1930B2518CEFB3E000D84A1 /* KGPicBottom.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1930B2418CEFB3E000D84A1 /* KGPicBottom.xib */; };
+		A1930B2818CEFD47000D84A1 /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = A1930B2618CEFD47000D84A1 /* chat.png */; };
+		A1930B2918CEFD47000D84A1 /* chat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1930B2718CEFD47000D84A1 /* chat@2x.png */; };
+		A1930B2C18CEFDC7000D84A1 /* collect.png in Resources */ = {isa = PBXBuildFile; fileRef = A1930B2A18CEFDC7000D84A1 /* collect.png */; };
+		A1930B2D18CEFDC7000D84A1 /* collect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1930B2B18CEFDC7000D84A1 /* collect@2x.png */; };
 		A1992CD518CCC582004BB29D /* KGConditionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A1992CC618CCC582004BB29D /* KGConditionBar.m */; };
 		A1992CD718CCC582004BB29D /* KGConditionBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A1992CC918CCC582004BB29D /* KGConditionBarItem.m */; };
 		A1992CD818CCC582004BB29D /* KGConditionBarItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1992CCA18CCC582004BB29D /* KGConditionBarItem.xib */; };
@@ -218,26 +216,6 @@
 		A144159B18C0EA590053456D /* KGBuyerListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGBuyerListViewCell.m; sourceTree = "<group>"; };
 		A144159C18C0EA590053456D /* KGBuyerListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGBuyerListViewController.h; sourceTree = "<group>"; };
 		A144159D18C0EA590053456D /* KGBuyerListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGBuyerListViewController.m; sourceTree = "<group>"; };
-		A156EA4F18CE0752004DEE24 /* FSBasicImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBasicImage.h; sourceTree = "<group>"; };
-		A156EA5018CE0752004DEE24 /* FSBasicImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBasicImage.m; sourceTree = "<group>"; };
-		A156EA5118CE0752004DEE24 /* FSBasicImageSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBasicImageSource.h; sourceTree = "<group>"; };
-		A156EA5218CE0752004DEE24 /* FSBasicImageSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBasicImageSource.m; sourceTree = "<group>"; };
-		A156EA5318CE0752004DEE24 /* FSImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImage.h; sourceTree = "<group>"; };
-		A156EA5418CE0752004DEE24 /* FSImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageLoader.h; sourceTree = "<group>"; };
-		A156EA5518CE0752004DEE24 /* FSImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageLoader.m; sourceTree = "<group>"; };
-		A156EA5618CE0752004DEE24 /* FSImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageScrollView.h; sourceTree = "<group>"; };
-		A156EA5718CE0752004DEE24 /* FSImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageScrollView.m; sourceTree = "<group>"; };
-		A156EA5818CE0752004DEE24 /* FSImageSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageSource.h; sourceTree = "<group>"; };
-		A156EA5918CE0752004DEE24 /* FSImageTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageTitleView.h; sourceTree = "<group>"; };
-		A156EA5A18CE0752004DEE24 /* FSImageTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageTitleView.m; sourceTree = "<group>"; };
-		A156EA5B18CE0752004DEE24 /* FSImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageView.h; sourceTree = "<group>"; };
-		A156EA5C18CE0752004DEE24 /* FSImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageView.m; sourceTree = "<group>"; };
-		A156EA5D18CE0752004DEE24 /* FSImageViewer-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FSImageViewer-Prefix.pch"; sourceTree = "<group>"; };
-		A156EA5E18CE0752004DEE24 /* FSImageViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageViewer.h; sourceTree = "<group>"; };
-		A156EA5F18CE0752004DEE24 /* FSImageViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageViewerViewController.h; sourceTree = "<group>"; };
-		A156EA6018CE0752004DEE24 /* FSImageViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageViewerViewController.m; sourceTree = "<group>"; };
-		A156EA6118CE0752004DEE24 /* FSPlaceholderImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPlaceholderImages.h; sourceTree = "<group>"; };
-		A156EA6218CE0752004DEE24 /* FSPlaceholderImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPlaceholderImages.m; sourceTree = "<group>"; };
 		A180C0E918C8BE7800116DCF /* search_someone_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_someone_active.png; sourceTree = "<group>"; };
 		A180C0EA18C8BE7800116DCF /* search_someone_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search_someone_active@2x.png"; sourceTree = "<group>"; };
 		A180C0ED18C8BFD900116DCF /* me_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = me_active.png; sourceTree = "<group>"; };
@@ -272,6 +250,13 @@
 		A190FCDE18C8859400A87329 /* airplane@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "airplane@2x.png"; sourceTree = "<group>"; };
 		A190FCE118C89BB000A87329 /* nav_bar_item_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_bar_item_back.png; sourceTree = "<group>"; };
 		A190FCE218C89BB000A87329 /* nav_bar_item_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_bar_item_back@2x.png"; sourceTree = "<group>"; };
+		A1930B2118CEFA66000D84A1 /* KGPicBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGPicBottomView.h; sourceTree = "<group>"; };
+		A1930B2218CEFA66000D84A1 /* KGPicBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGPicBottomView.m; sourceTree = "<group>"; };
+		A1930B2418CEFB3E000D84A1 /* KGPicBottom.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KGPicBottom.xib; sourceTree = "<group>"; };
+		A1930B2618CEFD47000D84A1 /* chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat.png; sourceTree = "<group>"; };
+		A1930B2718CEFD47000D84A1 /* chat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat@2x.png"; sourceTree = "<group>"; };
+		A1930B2A18CEFDC7000D84A1 /* collect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collect.png; sourceTree = "<group>"; };
+		A1930B2B18CEFDC7000D84A1 /* collect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "collect@2x.png"; sourceTree = "<group>"; };
 		A1992CC518CCC582004BB29D /* KGConditionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGConditionBar.h; sourceTree = "<group>"; };
 		A1992CC618CCC582004BB29D /* KGConditionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGConditionBar.m; sourceTree = "<group>"; };
 		A1992CC818CCC582004BB29D /* KGConditionBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGConditionBarItem.h; sourceTree = "<group>"; };
@@ -343,6 +328,9 @@
 			isa = PBXGroup;
 			children = (
 				A1992CC418CCC582004BB29D /* ConditionBar */,
+				A1930B2118CEFA66000D84A1 /* KGPicBottomView.h */,
+				A1930B2218CEFA66000D84A1 /* KGPicBottomView.m */,
+				A1930B2418CEFB3E000D84A1 /* KGPicBottom.xib */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -487,7 +475,6 @@
 			children = (
 				A12D782918CECC5F00873887 /* DACircularProgress */,
 				A12D780A18CECBED00873887 /* MWPhotoBrowser */,
-				A156EA4E18CE0752004DEE24 /* FSImageViewer */,
 				A1311F4218CA2E0800D1A40F /* SwipeView */,
 				A143011918BB461A0064DF87 /* PKResManager */,
 				A1A1DAFB18C9CCD200F03E04 /* KGUtils.h */,
@@ -523,6 +510,10 @@
 		A143015E18BB5D7A0064DF87 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A1930B2A18CEFDC7000D84A1 /* collect.png */,
+				A1930B2B18CEFDC7000D84A1 /* collect@2x.png */,
+				A1930B2618CEFD47000D84A1 /* chat.png */,
+				A1930B2718CEFD47000D84A1 /* chat@2x.png */,
 				A10150DF18CB8BA7004A729D /* default_line.png */,
 				A10150E018CB8BA7004A729D /* default_line@2x.png */,
 				A10150E118CB8BA7004A729D /* selected_line.png */,
@@ -605,33 +596,6 @@
 				A10150C918CB6445004A729D /* KGChatViewController.m */,
 			);
 			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		A156EA4E18CE0752004DEE24 /* FSImageViewer */ = {
-			isa = PBXGroup;
-			children = (
-				A156EA4F18CE0752004DEE24 /* FSBasicImage.h */,
-				A156EA5018CE0752004DEE24 /* FSBasicImage.m */,
-				A156EA5118CE0752004DEE24 /* FSBasicImageSource.h */,
-				A156EA5218CE0752004DEE24 /* FSBasicImageSource.m */,
-				A156EA5318CE0752004DEE24 /* FSImage.h */,
-				A156EA5418CE0752004DEE24 /* FSImageLoader.h */,
-				A156EA5518CE0752004DEE24 /* FSImageLoader.m */,
-				A156EA5618CE0752004DEE24 /* FSImageScrollView.h */,
-				A156EA5718CE0752004DEE24 /* FSImageScrollView.m */,
-				A156EA5818CE0752004DEE24 /* FSImageSource.h */,
-				A156EA5918CE0752004DEE24 /* FSImageTitleView.h */,
-				A156EA5A18CE0752004DEE24 /* FSImageTitleView.m */,
-				A156EA5B18CE0752004DEE24 /* FSImageView.h */,
-				A156EA5C18CE0752004DEE24 /* FSImageView.m */,
-				A156EA5D18CE0752004DEE24 /* FSImageViewer-Prefix.pch */,
-				A156EA5E18CE0752004DEE24 /* FSImageViewer.h */,
-				A156EA5F18CE0752004DEE24 /* FSImageViewerViewController.h */,
-				A156EA6018CE0752004DEE24 /* FSImageViewerViewController.m */,
-				A156EA6118CE0752004DEE24 /* FSPlaceholderImages.h */,
-				A156EA6218CE0752004DEE24 /* FSPlaceholderImages.m */,
-			);
-			path = FSImageViewer;
 			sourceTree = "<group>";
 		};
 		A1992CC418CCC582004BB29D /* ConditionBar */ = {
@@ -748,10 +712,12 @@
 				A1A6232618BDE01E00D8E9A0 /* arrow-down@2x.png in Resources */,
 				A190FCE418C89BB000A87329 /* nav_bar_item_back@2x.png in Resources */,
 				A180C10018C8BFD900116DCF /* write_active@2x.png in Resources */,
+				A1930B2C18CEFDC7000D84A1 /* collect.png in Resources */,
 				A10150E618CB8BA7004A729D /* selected_line@2x.png in Resources */,
 				A1036BB818BF3A1700FA7358 /* test-canada-flag.png in Resources */,
 				A106930818C068CF003CC6BC /* head-indicator@2x.png in Resources */,
 				A1F8A66318C9A8B400ECDABB /* v-user-icon@2x.png in Resources */,
+				A1930B2918CEFD47000D84A1 /* chat@2x.png in Resources */,
 				A1036BBC18BF3DCF00FA7358 /* location@2x.png in Resources */,
 				A180C0FB18C8BFD900116DCF /* more_active.png in Resources */,
 				A106930918C068CF003CC6BC /* head-line.png in Resources */,
@@ -759,15 +725,18 @@
 				A1A6231618BDA73B00D8E9A0 /* navbar-item-right.png in Resources */,
 				A180C0FC18C8BFD900116DCF /* more_active@2x.png in Resources */,
 				A190FCDC18C87B1700A87329 /* star_4@2x.png in Resources */,
+				A1930B2D18CEFDC7000D84A1 /* collect@2x.png in Resources */,
 				A1F8A64A18C9691800ECDABB /* nav_bar_64@2x.png in Resources */,
 				A180C0FA18C8BFD900116DCF /* message_alert@2x.png in Resources */,
 				A1A6231818BDC4F400D8E9A0 /* arrow-down.png in Resources */,
 				A1992CD818CCC582004BB29D /* KGConditionBarItem.xib in Resources */,
+				A1930B2518CEFB3E000D84A1 /* KGPicBottom.xib in Resources */,
 				A180C0FD18C8BFD900116DCF /* search_active.png in Resources */,
 				A1036BBB18BF3DCF00FA7358 /* location.png in Resources */,
 				A190FCC918C857C700A87329 /* more_gray.png in Resources */,
 				A190FCB918C8541F00A87329 /* search_someone_gray.png in Resources */,
 				A190FCC518C856D800A87329 /* me_gray.png in Resources */,
+				A1930B2818CEFD47000D84A1 /* chat.png in Resources */,
 				A1F8A66218C9A8B400ECDABB /* v-user-icon.png in Resources */,
 				A190FCD918C87B1700A87329 /* star_3.png in Resources */,
 				A190FCC618C856D800A87329 /* me_gray@2x.png in Resources */,
@@ -863,16 +832,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A156EA6318CE0752004DEE24 /* FSBasicImage.m in Sources */,
 				A1992CE618CCC97C004BB29D /* KGCommonConditionCell.m in Sources */,
 				A1992CD518CCC582004BB29D /* KGConditionBar.m in Sources */,
 				A14300DF18BB252F0064DF87 /* KGViewController.m in Sources */,
 				A12D782518CECBED00873887 /* MWTapDetectingImageView.m in Sources */,
-				A156EA6918CE0752004DEE24 /* FSImageViewerViewController.m in Sources */,
-				A156EA6618CE0752004DEE24 /* FSImageScrollView.m in Sources */,
+				A1930B2318CEFA66000D84A1 /* KGPicBottomView.m in Sources */,
 				A14300D918BB252F0064DF87 /* KGAppDelegate.m in Sources */,
 				A10150CA18CB6445004A729D /* KGChatViewController.m in Sources */,
-				A156EA6418CE0752004DEE24 /* FSBasicImageSource.m in Sources */,
 				A143012418BB461A0064DF87 /* UIColor+PKColor.m in Sources */,
 				A14300D518BB252F0064DF87 /* main.m in Sources */,
 				A1C0ACFB18C759010092E3B4 /* XMPPManager.m in Sources */,
@@ -880,25 +846,21 @@
 				A143012718BB461A0064DF87 /* PKResManager.m in Sources */,
 				A14415A218C0EA590053456D /* KGBuyerListViewController.m in Sources */,
 				A14415A118C0EA590053456D /* KGBuyerListViewCell.m in Sources */,
-				A156EA6718CE0752004DEE24 /* FSImageTitleView.m in Sources */,
 				A1311F4518CA2E0800D1A40F /* SwipeView.m in Sources */,
 				A1992CD718CCC582004BB29D /* KGConditionBarItem.m in Sources */,
 				A12D782318CECBED00873887 /* MWPhoto.m in Sources */,
 				A12D782718CECBED00873887 /* MWZoomingScrollView.m in Sources */,
-				A156EA6818CE0752004DEE24 /* FSImageView.m in Sources */,
 				A1A1DAFD18C9CCD200F03E04 /* KGUtils.m in Sources */,
 				A1992CDB18CCC582004BB29D /* KGSecondLevelMenuView.m in Sources */,
 				A12D782118CECBED00873887 /* MWGridCell.m in Sources */,
 				A12D782218CECBED00873887 /* MWGridViewController.m in Sources */,
 				A143012618BB461A0064DF87 /* UIImage+PKImage.m in Sources */,
-				A156EA6A18CE0752004DEE24 /* FSPlaceholderImages.m in Sources */,
 				A12D782C18CECC5F00873887 /* DACircularProgressView.m in Sources */,
 				A1231E8518C5B62900DCF6CD /* KGBuyerDetailViewController.m in Sources */,
 				A143012518BB461A0064DF87 /* UIFont+PKFont.m in Sources */,
 				A1992CD918CCC582004BB29D /* KGMainMenuTableViewCell.m in Sources */,
 				A12D782618CECBED00873887 /* MWTapDetectingView.m in Sources */,
 				A1992CDD18CCC582004BB29D /* KGSubMenuTableViewCell.m in Sources */,
-				A156EA6518CE0752004DEE24 /* FSImageLoader.m in Sources */,
 				A12D782018CECBED00873887 /* MWCaptionView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
