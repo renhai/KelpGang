@@ -12,6 +12,10 @@ static CGFloat const kBottomViewHeight = 100.0;
 
 @implementation KGPicBottomView
 
+- (void)dealloc {
+    NSLog(@"KGPicBottomView deallloc");
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -21,23 +25,36 @@ static CGFloat const kBottomViewHeight = 100.0;
     return self;
 }
 
-- (id)initWithPhoto:(id<MWPhoto>)photo index: (NSInteger) index count: (NSInteger) count title: (NSString*) title{
+- (id)initWithPhoto:(id<MWPhoto>)photo index: (NSInteger) index count: (NSInteger) count title: (NSString*) title chatBlock: (ChatBlock) chatBlock collectBlock: (CollectBlock) collectBlock{
     self = [super initWithPhoto:photo];
     if (self) {
+        self.chatBlock = chatBlock;
+        self.collectBlock = collectBlock;
+        self.userInteractionEnabled = YES;
         UILabel* titleLabel = (UILabel*)[self.bottomView viewWithTag:1];
         titleLabel.text = title;
         UILabel* indexLable = (UILabel*)[self.bottomView viewWithTag:2];
         indexLable.text = [NSString stringWithFormat:@"%d/%d", index + 1, count];
 
         UIButton *chatBtn = (UIButton *)[self.bottomView viewWithTag:3];
-        self.userInteractionEnabled = YES;
         [chatBtn addTarget:self action:@selector(tapChat:) forControlEvents:UIControlEventTouchUpInside];
+
+        UIButton *collectBtn = (UIButton *)[self.bottomView viewWithTag:4];
+        [collectBtn addTarget:self action:@selector(tapCollect:) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
 }
 
-- (void) tapChat:(UIButton *)sender {
-    NSLog(@"tab chat");
+- (void)tapChat:(UIButton *)sender {
+    if (self.chatBlock) {
+        self.chatBlock(sender);
+    }
+}
+
+- (void)tapCollect:(UIButton *)sender {
+    if (self.collectBlock) {
+        self.collectBlock(sender);
+    }
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {

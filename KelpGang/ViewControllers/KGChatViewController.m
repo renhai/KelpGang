@@ -16,7 +16,7 @@
 
 - (void)dealloc
 {
-    
+    NSLog(@"KGChatViewController dealloc");
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -32,6 +32,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+//    if ([KGUtils isHigherIOS7]) {
+//        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav_bar_64"] forBarMetrics:UIBarMetricsDefault];
+//    } else {
+//        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav_bar_44"] forBarMetrics:UIBarMetricsDefault];
+//    }
 }
 
 - (void)didReceiveMemoryWarning

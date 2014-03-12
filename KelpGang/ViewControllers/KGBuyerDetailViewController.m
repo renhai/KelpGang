@@ -11,6 +11,7 @@
 #import "UIImageView+WebCache.h"
 #import "MWPhotoBrowser.h"
 #import "KGPicBottomView.h"
+#import "KGChatViewController.h"
 
 @interface KGBuyerDetailViewController () <SwipeViewDataSource, SwipeViewDelegate, MWPhotoBrowserDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -28,7 +29,7 @@
 
 - (void)dealloc
 {
-    
+    NSLog(@"KGBuyerDetailViewController deallloc");
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -157,7 +158,14 @@
 
 - (MWCaptionView *)photoBrowser:(MWPhotoBrowser *)photoBrowser captionViewForPhotoAtIndex:(NSUInteger)index {
     MWPhoto *photo = [self.photos objectAtIndex:index];
-    KGPicBottomView *captionView = [[KGPicBottomView alloc] initWithPhoto:photo index:index count:self.photos.count title:[NSString stringWithFormat:@"photo title - %i", index]];
+    KGPicBottomView *captionView = [[KGPicBottomView alloc] initWithPhoto:photo index:index count:self.photos.count title:[NSString stringWithFormat:@"photo title - %i", index] chatBlock:^(UIButton *sender) {
+        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        KGChatViewController *chatViewController = (KGChatViewController *)[storyBoard instantiateViewControllerWithIdentifier:@"kChatViewController"];
+        [self.navigationController pushViewController:chatViewController animated:YES];
+        NSLog(@"do chat operation");
+    } collectBlock:^(UIButton *sender) {
+        NSLog(@"do collect operation");
+    }];
     return captionView;
 }
 
