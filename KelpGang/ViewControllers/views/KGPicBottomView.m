@@ -27,9 +27,17 @@ static CGFloat const kBottomViewHeight = 100.0;
         UILabel* titleLabel = (UILabel*)[self.bottomView viewWithTag:1];
         titleLabel.text = title;
         UILabel* indexLable = (UILabel*)[self.bottomView viewWithTag:2];
-        indexLable.text = [NSString stringWithFormat:@"%d/%d", index, count];
+        indexLable.text = [NSString stringWithFormat:@"%d/%d", index + 1, count];
+
+        UIButton *chatBtn = (UIButton *)[self.bottomView viewWithTag:3];
+        self.userInteractionEnabled = YES;
+        [chatBtn addTarget:self action:@selector(tapChat:) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
+}
+
+- (void) tapChat:(UIButton *)sender {
+    NSLog(@"tab chat");
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {

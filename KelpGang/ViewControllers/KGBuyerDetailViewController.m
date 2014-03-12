@@ -114,6 +114,7 @@
     browser.startOnGrid = NO;
     browser.enableSwipeToDismiss = YES;
     browser.alwaysShowControls = NO;
+    browser.delayToHideElements = -1;
     [browser setCurrentPhotoIndex:index];
 
     [self.navigationController pushViewController:browser animated:YES];
