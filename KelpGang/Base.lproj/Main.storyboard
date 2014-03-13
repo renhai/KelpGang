@@ -619,6 +619,9 @@
                                                             <state key="normal" image="add_img.png">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="doAddPicture:" destination="FL4-SZ-t3M" eventType="touchUpInside" id="4yj-eN-YYg"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -682,6 +685,7 @@
                         <outlet property="commionTextField" destination="kjF-xp-GIO" id="IPV-Kc-c8S"/>
                         <outlet property="deadlineTextField" destination="DuG-iX-zLa" id="eV9-Q5-N2a"/>
                         <outlet property="descTextView" destination="Ry4-iu-5aS" id="zv5-SN-dce"/>
+                        <outlet property="doAddPictureBtn" destination="ib0-uQ-6gO" id="7Cc-P6-zHs"/>
                         <outlet property="titleTextField" destination="3CJ-pD-SlA" id="ERM-ze-Rg3"/>
                     </connections>
                 </tableViewController>

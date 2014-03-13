@@ -306,6 +306,7 @@
 		A1B22C4F18D16BED00953EE5 /* down-arrow-big@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "down-arrow-big@2x.png"; sourceTree = "<group>"; };
 		A1B22C5218D1B96B00953EE5 /* add_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_img.png; sourceTree = "<group>"; };
 		A1B22C5318D1B96B00953EE5 /* add_img@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_img@2x.png"; sourceTree = "<group>"; };
+		A1B22C5718D1CD1D00953EE5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		A1C0ACF918C759010092E3B4 /* XMPPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPManager.h; sourceTree = "<group>"; };
 		A1C0ACFA18C759010092E3B4 /* XMPPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPManager.m; sourceTree = "<group>"; };
 		A1F8A64718C9691800ECDABB /* nav_bar_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_bar_64.png; sourceTree = "<group>"; };
@@ -434,6 +435,7 @@
 		A14300C718BB252F0064DF87 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A1B22C5718D1CD1D00953EE5 /* MobileCoreServices.framework */,
 				A1311F4018CA27A300D1A40F /* MapKit.framework */,
 				A14300C818BB252F0064DF87 /* Foundation.framework */,
 				A14300CA18BB252F0064DF87 /* CoreGraphics.framework */,

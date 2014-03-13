@@ -8,15 +8,17 @@
 
 #import "KGCreateTaskViewController.h"
 
-@interface KGCreateTaskViewController () <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate>
+@interface KGCreateTaskViewController () <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *commionTextField;
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UITextField *deadlineTextField;
 @property (weak, nonatomic) IBOutlet UITextView *descTextView;
+@property (weak, nonatomic) IBOutlet UIButton *doAddPictureBtn;
 
 @property (nonatomic, strong) UIPickerView *commionPickerView;
 @property (nonatomic, strong) UIDatePicker *deadlinePicker;
 - (IBAction)addPicture:(UIButton *)sender;
+- (IBAction)doAddPicture:(UIButton *)sender;
 
 @property (nonatomic, assign) BOOL picExpanded;
 
@@ -269,4 +271,101 @@
 //    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:2]];
 //    NSLog(@"%@", cell);
 }
+
+- (IBAction)doAddPicture:(UIButton *)sender {
+    UIActionSheet *choiceSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                             delegate:self
+                                                    cancelButtonTitle:@"取消"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"拍照", @"从相册中选取", nil];
+    [choiceSheet showInView:self.view.window];
+}
+
+#pragma UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        // 拍照
+        if ([self isCameraAvailable]) {
+            UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+            controller.sourceType = UIImagePickerControllerSourceTypeCamera;
+            controller.delegate = self;
+            [self presentViewController:controller
+                               animated:YES
+                             completion:^(void){
+                                 NSLog(@"Picker View Controller is presented");
+                             }];
+        }
+    } else if (buttonIndex == 1) {
+        // 从相册中选取
+        if ([self isPhotoLibraryAvailable]) {
+            UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+            controller.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+            controller.allowsEditing=YES;
+            controller.delegate = self;
+            [self presentViewController:controller
+                               animated:YES
+                             completion:^(void){
+                                 NSLog(@"Picker View Controller is presented");
+                             }];
+        }
+    }
+}
+
+- (BOOL) isPhotoLibraryAvailable{
+    return [UIImagePickerController isSourceTypeAvailable:
+            UIImagePickerControllerSourceTypePhotoLibrary];
+}
+
+
+#pragma UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [picker dismissViewControllerAnimated:YES completion:^() {
+        UIImage *oriImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+        UIImageView *imageView = [self buildImageView:oriImage];
+
+        CGRect imageFrame = imageView.frame;
+        imageFrame.origin.x = 15;
+        imageFrame.origin.y = 13;
+        imageView.frame = imageFrame;
+
+        CGRect btnFrame = self.doAddPictureBtn.frame;
+        btnFrame.origin.x += (94 + 5);
+        self.doAddPictureBtn.frame = btnFrame;
+
+        UIView *superView = self.doAddPictureBtn.superview;
+        [superView addSubview:imageView];
+
+        NSLog(@"%@",info);
+    }];
+}
+
+- (UIImageView *) buildImageView: (UIImage *) image {
+    UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 94, 94)];
+    view.clipsToBounds = YES;
+    view.ContentMode = UIViewContentModeScaleAspectFill;
+    if (image) {
+        view.image = image;
+    }
+    return view;
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (BOOL) isCameraAvailable{
+    return [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
+}
+
+- (BOOL) isRearCameraAvailable{
+    return [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear];
+}
+
+- (BOOL) isFrontCameraAvailable {
+    return [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront];
+}
+
+
 @end
