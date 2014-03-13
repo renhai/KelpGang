@@ -8,11 +8,17 @@
 
 #import "KGCreateTaskViewController.h"
 
-@interface KGCreateTaskViewController () <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
+@interface KGCreateTaskViewController () <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *commionTextField;
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
+@property (weak, nonatomic) IBOutlet UITextField *deadlineTextField;
+@property (weak, nonatomic) IBOutlet UITextView *descTextView;
 
 @property (nonatomic, strong) UIPickerView *commionPickerView;
+@property (nonatomic, strong) UIDatePicker *deadlinePicker;
+- (IBAction)addPicture:(UIButton *)sender;
+
+@property (nonatomic, assign) BOOL picExpanded;
 
 @end
 
@@ -32,6 +38,8 @@
     [super viewDidLoad];
     self.titleTextField.delegate = self;
     self.commionTextField.delegate = self;
+    self.deadlineTextField.delegate = self;
+    self.descTextView.delegate = self;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -55,6 +63,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (!self.picExpanded && section == 2) {
+        return 1;
+    }
     return [super tableView:tableView numberOfRowsInSection:section];
 }
 
@@ -73,16 +84,17 @@
     return sectionHeaderView;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
+    UITableViewCell *cell = [super tableView:self.tableView cellForRowAtIndexPath:indexPath];
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];
+
     // Configure the cell...
-    
+    cell.backgroundColor = [UIColor clearColor];
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -164,10 +176,27 @@
         UIBarButtonItem *fixedButton  = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target: nil action: nil];
         [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:cancelButton, fixedButton, doneButton, nil]];
         textField.inputAccessoryView = keyboardDoneButtonView;
+    } else if (textField == self.deadlineTextField) {
+        UIDatePicker *datepicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
+        datepicker.datePickerMode = UIDatePickerModeDate;
+        datepicker.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"Chinese"];
+        textField.inputView = datepicker;
+        self.deadlinePicker = datepicker;
+
+        UIToolbar* keyboardDoneButtonView = [[UIToolbar alloc] init];
+        keyboardDoneButtonView.barStyle = UIBarStyleBlack;
+        keyboardDoneButtonView.translucent = YES;
+        keyboardDoneButtonView.tintColor = nil;
+        [keyboardDoneButtonView sizeToFit];
+        UIBarButtonItem* doneButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleBordered target:self action:@selector(datePickerDoneClicked:)];
+        UIBarButtonItem *cancelButton  = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleBordered target: self action: @selector(datePickerCancelClicked:)];
+        UIBarButtonItem *fixedButton  = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target: nil action: nil];
+        [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:cancelButton, fixedButton, doneButton, nil]];
+        textField.inputAccessoryView = keyboardDoneButtonView;
     }
 }
 
-#pragma pickViewDatasource
+#pragma UIPickerViewDataSource
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;
@@ -178,6 +207,7 @@
 }
 
 #pragma UIPickerViewDelegate
+
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     return [NSString stringWithFormat:@"%d%@",row + 1, @"%"];
 }
@@ -194,4 +224,49 @@
     [self.commionTextField resignFirstResponder];
 }
 
+- (void) datePickerDoneClicked:(UIBarButtonItem *) btn
+{
+    NSDateFormatter *formattor = [[NSDateFormatter alloc] init];
+    formattor.dateFormat = @"YYYY/M/d";
+    NSString *timestamp = [formattor stringFromDate:self.deadlinePicker.date];
+    self.deadlineTextField.text = timestamp;
+    [self.deadlineTextField resignFirstResponder];
+}
+
+- (void) datePickerCancelClicked:(UIBarButtonItem *) btn
+{
+    [self.deadlineTextField resignFirstResponder];
+}
+
+#pragma UITextViewDelegate
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
+
+
+- (IBAction)addPicture:(UIButton *)sender {
+    if (!self.picExpanded) {
+        self.picExpanded = YES;
+        [self.tableView beginUpdates];
+        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:1 inSection:2]] withRowAnimation:UITableViewRowAnimationTop];
+        [self.tableView endUpdates];
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:2]
+                                  atScrollPosition:UITableViewScrollPositionBottom
+                                      animated:YES];
+    } else {
+        self.picExpanded = NO;
+        [self.tableView beginUpdates];
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:1 inSection:2]] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView endUpdates];
+    }
+
+
+//    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:2]];
+//    NSLog(@"%@", cell);
+}
 @end
