@@ -55,13 +55,13 @@
 //    self.swipeView.itemsPerPage = 1;
 //    self.swipeView.truncateFinalPage = YES;
 
-    self.imageUrls = @[@"http://f.hiphotos.baidu.com/image/w%3D2048/sign=c0745bf8a586c91708035539fd0571cf/0824ab18972bd40760446cfd79899e510fb3092a.jpg",
+    self.imageUrls = @[@"http://e.hiphotos.baidu.com/image/w%3D2048/sign=6fb2d513d60735fa91f049b9aa690eb3/f703738da977391277b1f269fa198618367ae227.jpg",
                        @"http://b.hiphotos.baidu.com/image/w%3D2048/sign=c6c8dc509c2f07085f052d00dd1cb899/472309f7905298223310f7dcd5ca7bcb0a46d48a.jpg",
-                       @"http://c.hiphotos.baidu.com/image/w%3D2048/sign=022720314e086e066aa8384b36307af4/7acb0a46f21fbe09d1dd7f1469600c338744ad2b.jpg",
-                       @"http://g.hiphotos.baidu.com/image/w%3D2048/sign=80cd02e4b11c8701d6b6b5e613479f2f/b3fb43166d224f4a8e1acf130bf790529822d12b.jpg",
-                       @"http://g.hiphotos.baidu.com/image/w%3D2048/sign=b1b6a1081d30e924cfa49b3178306f06/9922720e0cf3d7cacd758376f01fbe096b63a92b.jpg",
-                       @"http://f.hiphotos.baidu.com/image/w%3D2048/sign=6679150dfadcd100cd9cff2146b34610/0eb30f2442a7d933952b5b73af4bd11373f0012a.jpg",
-                       @"http://h.hiphotos.baidu.com/image/w%3D2048/sign=9ec10093c1cec3fd8b3ea075e2b0d53f/72f082025aafa40f6c283382a964034f79f01986.jpg"];
+                       @"http://g.hiphotos.baidu.com/image/w%3D2048/sign=3577b2edd762853592e0d521a4d776c6/6d81800a19d8bc3e1f12ced5808ba61ea8d34593.jpg",
+                       @"http://b.hiphotos.baidu.com/image/w%3D2048/sign=807be20a544e9258a63481eea8bad058/4610b912c8fcc3ce4aa5c35d9045d688d43f2072.jpg",
+                       @"http://h.hiphotos.baidu.com/image/w%3D2048/sign=bc8f94038544ebf86d71633fedc1d62a/5882b2b7d0a20cf4e64253df74094b36adaf99e4.jpg",
+                       @"http://c.hiphotos.baidu.com/image/w%3D2048/sign=908c963b938fa0ec7fc7630d12af58ee/d52a2834349b033ba9e9a8d217ce36d3d539bd51.jpg",
+                       @"http://a.hiphotos.baidu.com/image/w%3D2048/sign=c2974a1513dfa9ecfd2e511756e8f603/1b4c510fd9f9d72a501d3814d62a2834349bbbb9.jpg"];
     self.photos = [[NSMutableArray alloc] init];
 }
 

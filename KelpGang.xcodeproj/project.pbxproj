@@ -24,6 +24,10 @@
 		A106930D18C06C32003CC6BC /* arrow-up.png in Resources */ = {isa = PBXBuildFile; fileRef = A106930B18C06C32003CC6BC /* arrow-up.png */; };
 		A106930E18C06C32003CC6BC /* arrow-up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A106930C18C06C32003CC6BC /* arrow-up@2x.png */; };
 		A1231E8518C5B62900DCF6CD /* KGBuyerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1231E8418C5B62900DCF6CD /* KGBuyerDetailViewController.m */; };
+		A12ADE4518D3225F0009B225 /* close-active.png in Resources */ = {isa = PBXBuildFile; fileRef = A12ADE4318D3225F0009B225 /* close-active.png */; };
+		A12ADE4618D3225F0009B225 /* close-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A12ADE4418D3225F0009B225 /* close-active@2x.png */; };
+		A12ADE4918D323A10009B225 /* delete_img.png in Resources */ = {isa = PBXBuildFile; fileRef = A12ADE4718D323A10009B225 /* delete_img.png */; };
+		A12ADE4A18D323A10009B225 /* delete_img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A12ADE4818D323A10009B225 /* delete_img@2x.png */; };
 		A12D782018CECBED00873887 /* MWCaptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A12D780D18CECBED00873887 /* MWCaptionView.m */; };
 		A12D782118CECBED00873887 /* MWGridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A12D781018CECBED00873887 /* MWGridCell.m */; };
 		A12D782218CECBED00873887 /* MWGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A12D781218CECBED00873887 /* MWGridViewController.m */; };
@@ -169,6 +173,10 @@
 		A106930C18C06C32003CC6BC /* arrow-up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-up@2x.png"; sourceTree = "<group>"; };
 		A1231E8318C5B62900DCF6CD /* KGBuyerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGBuyerDetailViewController.h; sourceTree = "<group>"; };
 		A1231E8418C5B62900DCF6CD /* KGBuyerDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGBuyerDetailViewController.m; sourceTree = "<group>"; };
+		A12ADE4318D3225F0009B225 /* close-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-active.png"; sourceTree = "<group>"; };
+		A12ADE4418D3225F0009B225 /* close-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-active@2x.png"; sourceTree = "<group>"; };
+		A12ADE4718D323A10009B225 /* delete_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete_img.png; sourceTree = "<group>"; };
+		A12ADE4818D323A10009B225 /* delete_img@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete_img@2x.png"; sourceTree = "<group>"; };
 		A12D780C18CECBED00873887 /* MWCaptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWCaptionView.h; sourceTree = "<group>"; };
 		A12D780D18CECBED00873887 /* MWCaptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWCaptionView.m; sourceTree = "<group>"; };
 		A12D780E18CECBED00873887 /* MWCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWCommon.h; sourceTree = "<group>"; };
@@ -535,6 +543,10 @@
 		A143015E18BB5D7A0064DF87 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A12ADE4718D323A10009B225 /* delete_img.png */,
+				A12ADE4818D323A10009B225 /* delete_img@2x.png */,
+				A12ADE4318D3225F0009B225 /* close-active.png */,
+				A12ADE4418D3225F0009B225 /* close-active@2x.png */,
 				A1B22C5218D1B96B00953EE5 /* add_img.png */,
 				A1B22C5318D1B96B00953EE5 /* add_img@2x.png */,
 				A1B22C4E18D16BED00953EE5 /* down-arrow-big.png */,
@@ -758,6 +770,7 @@
 				A1036BBC18BF3DCF00FA7358 /* location@2x.png in Resources */,
 				A180C0FB18C8BFD900116DCF /* more_active.png in Resources */,
 				A106930918C068CF003CC6BC /* head-line.png in Resources */,
+				A12ADE4618D3225F0009B225 /* close-active@2x.png in Resources */,
 				A1B22C5418D1B96B00953EE5 /* add_img.png in Resources */,
 				A12D782818CECBED00873887 /* MWPhotoBrowser.bundle in Resources */,
 				A1A6231618BDA73B00D8E9A0 /* navbar-item-right.png in Resources */,
@@ -770,6 +783,7 @@
 				A1992CD818CCC582004BB29D /* KGConditionBarItem.xib in Resources */,
 				A1B22C5018D16BED00953EE5 /* down-arrow-big.png in Resources */,
 				A1930B2518CEFB3E000D84A1 /* KGPicBottom.xib in Resources */,
+				A12ADE4918D323A10009B225 /* delete_img.png in Resources */,
 				A180C0FD18C8BFD900116DCF /* search_active.png in Resources */,
 				A1036BBB18BF3DCF00FA7358 /* location.png in Resources */,
 				A190FCC918C857C700A87329 /* more_gray.png in Resources */,
@@ -801,6 +815,7 @@
 				A190FCD718C87B1700A87329 /* star_2.png in Resources */,
 				A14300E118BB252F0064DF87 /* Images.xcassets in Resources */,
 				A190FCE018C8859400A87329 /* airplane@2x.png in Resources */,
+				A12ADE4518D3225F0009B225 /* close-active.png in Resources */,
 				A1B22C4918D1654D00953EE5 /* add@2x.png in Resources */,
 				A1B22C5118D16BED00953EE5 /* down-arrow-big@2x.png in Resources */,
 				A1992CDA18CCC582004BB29D /* KGMainMenuTableViewCell.xib in Resources */,
@@ -818,6 +833,7 @@
 				A1AFF97918D079160043E75E /* right-arrow@2x.png in Resources */,
 				A190FCD518C87B1700A87329 /* star_1.png in Resources */,
 				A180C0F818C8BFD900116DCF /* me_active@2x.png in Resources */,
+				A12ADE4A18D323A10009B225 /* delete_img@2x.png in Resources */,
 				A1F8A65218C9805A00ECDABB /* tab_bar_selected.png in Resources */,
 				A1B22C4D18D1670C00953EE5 /* add-active@2x.png in Resources */,
 				A1F8A65618C9826700ECDABB /* tab-bar.png in Resources */,

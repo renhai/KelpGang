@@ -647,6 +647,13 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="94" height="94"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     </imageView>
+                                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6UU-9d-PXv">
+                                                                        <rect key="frame" x="61" y="7" width="26" height="26"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <state key="normal" image="delete_img.png">
+                                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        </state>
+                                                                    </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             </view>
@@ -795,6 +802,7 @@
         <image name="add_img.png" width="94" height="94"/>
         <image name="airplane.png" width="20" height="12"/>
         <image name="default_line.png" width="160" height="1"/>
+        <image name="delete_img.png" width="26" height="26"/>
         <image name="down-arrow-big.png" width="13" height="7"/>
         <image name="follow-btn-bg.png" width="55" height="20"/>
         <image name="head-line.png" width="320" height="1"/>
