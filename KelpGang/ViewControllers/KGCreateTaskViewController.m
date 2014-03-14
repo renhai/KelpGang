@@ -8,19 +8,19 @@
 
 #import "KGCreateTaskViewController.h"
 
-@interface KGCreateTaskViewController () <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface KGCreateTaskViewController () <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UITextField *commionTextField;
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UITextField *deadlineTextField;
 @property (weak, nonatomic) IBOutlet UITextView *descTextView;
-@property (weak, nonatomic) IBOutlet UIButton *doAddPictureBtn;
+@property (weak, nonatomic) IBOutlet UICollectionView *picCollectionView;
 
 @property (nonatomic, strong) UIPickerView *commionPickerView;
 @property (nonatomic, strong) UIDatePicker *deadlinePicker;
-- (IBAction)addPicture:(UIButton *)sender;
-- (IBAction)doAddPicture:(UIButton *)sender;
+- (IBAction)expandPictureView:(UIButton *)sender;
 
 @property (nonatomic, assign) BOOL picExpanded;
+@property (nonatomic, strong) NSMutableArray *pictures;
 
 @end
 
@@ -42,7 +42,12 @@
     self.commionTextField.delegate = self;
     self.deadlineTextField.delegate = self;
     self.descTextView.delegate = self;
-    
+    self.picCollectionView.delegate = self;
+    self.picCollectionView.dataSource = self;
+//    self.picCollectionView.layer.borderWidth = 1;
+//    self.picCollectionView.layer.borderColor = RGBCOLOR(211, 220, 224).CGColor;
+    self.pictures = [[NSMutableArray alloc] init];
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -86,13 +91,27 @@
     return sectionHeaderView;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 2 && indexPath.row == 1) {
+        NSInteger height = self.picCollectionView.collectionViewLayout.collectionViewContentSize.height;
+        NSLog(@"collectionViewContentSize.height :%d", height);
+        return height;
+    }
+    return [super tableView:self.tableView heightForRowAtIndexPath:indexPath];
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [super tableView:self.tableView cellForRowAtIndexPath:indexPath];
+//    if (self.picNum > 2 && indexPath.section == 2) {
+//        CGRect frame = cell.frame;
+//        frame.size.height *=2;
+//        cell.frame = frame;
+//    }
 //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];
 
-    // Configure the cell...
+    // Configure the cell...if
     cell.backgroundColor = [UIColor clearColor];
     return cell;
 }
@@ -251,14 +270,14 @@
 }
 
 
-- (IBAction)addPicture:(UIButton *)sender {
+- (IBAction)expandPictureView:(UIButton *)sender {
     if (!self.picExpanded) {
         self.picExpanded = YES;
         [self.tableView beginUpdates];
-        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:1 inSection:2]] withRowAnimation:UITableViewRowAnimationTop];
+        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:1 inSection:2]] withRowAnimation:UITableViewRowAnimationNone];
         [self.tableView endUpdates];
         [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:2]
-                                  atScrollPosition:UITableViewScrollPositionBottom
+                                  atScrollPosition:UITableViewScrollPositionTop
                                       animated:YES];
     } else {
         self.picExpanded = NO;
@@ -272,7 +291,7 @@
 //    NSLog(@"%@", cell);
 }
 
-- (IBAction)doAddPicture:(UIButton *)sender {
+- (void)addPicture:(UIButton *)sender {
     UIActionSheet *choiceSheet = [[UIActionSheet alloc] initWithTitle:nil
                                                              delegate:self
                                                     cancelButtonTitle:@"取消"
@@ -323,20 +342,17 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     [picker dismissViewControllerAnimated:YES completion:^() {
         UIImage *oriImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-        UIImageView *imageView = [self buildImageView:oriImage];
+        [self.pictures addObject:oriImage];
+        [self.picCollectionView reloadData];
 
-        CGRect imageFrame = imageView.frame;
-        imageFrame.origin.x = 15;
-        imageFrame.origin.y = 13;
-        imageView.frame = imageFrame;
+//        NSIndexPath *path = [NSIndexPath indexPathForRow:1 inSection:2];
+//        [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationNone];
 
-        CGRect btnFrame = self.doAddPictureBtn.frame;
-        btnFrame.origin.x += (94 + 5);
-        self.doAddPictureBtn.frame = btnFrame;
-
-        UIView *superView = self.doAddPictureBtn.superview;
-        [superView addSubview:imageView];
-
+        [self.tableView reloadData];
+//        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:2]
+                              atScrollPosition:UITableViewScrollPositionTop
+                                      animated:YES];
         NSLog(@"%@",info);
     }];
 }
@@ -366,6 +382,44 @@
 - (BOOL) isFrontCameraAvailable {
     return [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront];
 }
+
+
+#pragma UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    if (self.pictures) {
+        return [self.pictures count] + 1;
+    } else {
+        return 1;
+    }
+
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell = nil;
+    NSInteger count = [self.pictures count];
+    if (indexPath.row == count) {
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"kAddBtnCollectionViewCell" forIndexPath:indexPath];
+    } else {
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"kPictureCollectionViewCell" forIndexPath:indexPath];
+        UIImageView *imgView = (UIImageView *)[cell viewWithTag:1];
+        [imgView.layer setBorderColor:RGBCOLOR(213, 232, 232).CGColor];
+        [imgView.layer setBorderWidth:5];
+        imgView.image = self.pictures[indexPath.row];
+    }
+    return cell;
+
+}
+
+#pragma UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == self.pictures.count) {
+        [self addPicture:nil];
+    }
+
+}
+
 
 
 @end
