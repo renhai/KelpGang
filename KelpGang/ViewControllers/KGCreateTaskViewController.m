@@ -15,12 +15,16 @@
 @property (weak, nonatomic) IBOutlet UITextField *deadlineTextField;
 @property (weak, nonatomic) IBOutlet UITextView *descTextView;
 @property (weak, nonatomic) IBOutlet UICollectionView *picCollectionView;
+@property (weak, nonatomic) IBOutlet UITextField *expectCountryTextField;
+@property (weak, nonatomic) IBOutlet UITextField *maxMoneyTextField;
 
 @property (nonatomic, strong) UIPickerView *commionPickerView;
 @property (nonatomic, strong) UIDatePicker *deadlinePicker;
 - (IBAction)expandPictureView:(UIButton *)sender;
+- (IBAction)expandMoreInfoView:(UIButton *)sender;
 
 @property (nonatomic, assign) BOOL picExpanded;
+@property (nonatomic, assign) BOOL moreInfoExpanded;
 @property (nonatomic, strong) NSMutableArray *pictures;
 
 @end
@@ -46,6 +50,8 @@
     self.picCollectionView.delegate = self;
     self.picCollectionView.dataSource = self;
     self.pictures = [[NSMutableArray alloc] init];
+    self.expectCountryTextField.delegate = self;
+    self.maxMoneyTextField.delegate = self;
 
 //    UILongPressGestureRecognizer *longPressReger = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
 //    longPressReger.minimumPressDuration = 1.0;
@@ -73,7 +79,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (!self.picExpanded && section == 2) {
+    if (section == 2 && !self.picExpanded) {
+        return 1;
+    } else if (section == 3 && !self.moreInfoExpanded) {
         return 1;
     }
     return [super tableView:tableView numberOfRowsInSection:section];
@@ -165,6 +173,10 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == self.titleTextField) {
+        [textField resignFirstResponder];
+    } else if (textField == self.expectCountryTextField) {
+        [textField resignFirstResponder];
+    } else if (textField == self.maxMoneyTextField) {
         [textField resignFirstResponder];
     }
     return YES;
@@ -266,12 +278,13 @@
 
 
 - (IBAction)expandPictureView:(UIButton *)sender {
+    NSArray *pathArr = @[[NSIndexPath indexPathForRow:1 inSection:2]];
     if (!self.picExpanded) {
         self.picExpanded = YES;
         [self.tableView beginUpdates];
-        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:1 inSection:2]] withRowAnimation:UITableViewRowAnimationTop];
+        [self.tableView insertRowsAtIndexPaths:pathArr withRowAnimation:UITableViewRowAnimationTop];
         [self.tableView endUpdates];
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:2]
+        [self.tableView scrollToRowAtIndexPath:pathArr.lastObject
                                   atScrollPosition:UITableViewScrollPositionTop
                                       animated:YES];
         UIImage *image = [UIImage imageNamed:@"close-active"];
@@ -279,9 +292,31 @@
     } else {
         self.picExpanded = NO;
         [self.tableView beginUpdates];
-        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:1 inSection:2]] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView deleteRowsAtIndexPaths:pathArr withRowAnimation:UITableViewRowAnimationFade];
         [self.tableView endUpdates];
         UIImage *image = [UIImage imageNamed:@"add-active"];
+        [sender setImage:image forState:UIControlStateNormal];
+    }
+}
+
+- (IBAction)expandMoreInfoView:(UIButton *)sender {
+    NSArray *pathArr = @[[NSIndexPath indexPathForRow:1 inSection:3], [NSIndexPath indexPathForRow:2 inSection:3]];
+    if (!self.moreInfoExpanded) {
+        self.moreInfoExpanded = YES;
+        [self.tableView beginUpdates];
+        [self.tableView insertRowsAtIndexPaths:pathArr withRowAnimation:UITableViewRowAnimationTop];
+        [self.tableView endUpdates];
+        [self.tableView scrollToRowAtIndexPath:pathArr.lastObject
+                              atScrollPosition:UITableViewScrollPositionTop
+                                      animated:YES];
+        UIImage *image = [UIImage imageNamed:@"up-arrow-big"];
+        [sender setImage:image forState:UIControlStateNormal];
+    } else {
+        self.moreInfoExpanded = NO;
+        [self.tableView beginUpdates];
+        [self.tableView deleteRowsAtIndexPaths:pathArr withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView endUpdates];
+        UIImage *image = [UIImage imageNamed:@"down-arrow-big"];
         [sender setImage:image forState:UIControlStateNormal];
     }
 }
@@ -352,15 +387,15 @@
     }];
 }
 
-- (UIImageView *) buildImageView: (UIImage *) image {
-    UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 94, 94)];
-    view.clipsToBounds = YES;
-    view.ContentMode = UIViewContentModeScaleAspectFill;
-    if (image) {
-        view.image = image;
-    }
-    return view;
-}
+//- (UIImageView *) buildImageView: (UIImage *) image {
+//    UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 94, 94)];
+//    view.clipsToBounds = YES;
+//    view.ContentMode = UIViewContentModeScaleAspectFill;
+//    if (image) {
+//        view.image = image;
+//    }
+//    return view;
+//}
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [picker dismissViewControllerAnimated:YES completion:nil];
