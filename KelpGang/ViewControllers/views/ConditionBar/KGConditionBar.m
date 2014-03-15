@@ -28,6 +28,8 @@ static NSString * const kCityKey = @"city";
 @property (nonatomic, strong) NSArray *cityArr;
 @property (nonatomic, assign) NSInteger currRegionIndex;
 
+@property (nonatomic, strong) UIView *maskView;
+
 
 @end
 
@@ -100,10 +102,35 @@ static NSString * const kCityKey = @"city";
     }
 }
 
+- (void)showMask: (CGRect) frame {
+    self.maskView = [[UIView alloc]initWithFrame:frame];
+    self.maskView.backgroundColor = [UIColor grayColor];
+    self.maskView.alpha = 0.5;
+    self.maskView.opaque = NO;
+
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapMaskView:)];
+    [self.maskView addGestureRecognizer:tapGesture];
+
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    if (!window) {
+        window = [[UIApplication sharedApplication].windows objectAtIndex:0];
+    }
+    [[[window subviews] objectAtIndex:0] addSubview:self.maskView];
+}
+
+- (void)tapMaskView: (UITapGestureRecognizer *)tapGesture {
+    [self closeConditionView:self.currTapIndex];
+}
+
+- (void) removeMask {
+    [self.maskView removeFromSuperview];
+}
+
 - (void) closeConditionView: (NSInteger) index {
     UIView *currView = [self.conditionViews objectForKey:@(index)];
     if (currView) {
         [currView removeFromSuperview];
+        [self removeMask];
     }
     KGConditionBarItem *item = (KGConditionBarItem *)[self viewWithTag:index];
     [item closeItem];
@@ -115,6 +142,8 @@ static NSString * const kCityKey = @"city";
     UIView *view = [self renderConditionView:index];
     if (view) {
         [self.canvasView addSubview:view];
+        CGRect maskFrame = CGRectMake(0, NAVIGATIONBAR_IOS7_HEIGHT + view.frame.origin.y + view.frame.size.height, SCREEN_WIDTH, SCREEN_HEIGHT - NAVIGATIONBAR_IOS7_HEIGHT - self.frame.size.height - view.frame.size.height);
+        [self showMask:maskFrame];
     }
     KGConditionBarItem *item = (KGConditionBarItem *)[self viewWithTag:index];
     [item openItem];
@@ -130,6 +159,9 @@ static NSString * const kCityKey = @"city";
             KGSecondLevelMenuView *countryConditionView = [nibArr objectAtIndex:0];
             CGRect countryFrame = countryConditionView.frame;
             countryFrame.origin.y = currY;
+            if (!iPhone5) {
+                countryFrame.size.height -= 50;
+            }
             countryConditionView.frame = countryFrame;
             NSIndexPath *firstRow= [NSIndexPath indexPathForRow:0 inSection:0];
             [countryConditionView.mainMenuTableView selectRowAtIndexPath:firstRow animated:NO scrollPosition:UITableViewScrollPositionNone];
@@ -150,6 +182,9 @@ static NSString * const kCityKey = @"city";
             KGSecondLevelMenuView *cityConditionView = [nibArr objectAtIndex:0];
             CGRect cityFrame = cityConditionView.frame;
             cityFrame.origin.y = currY;
+            if (!iPhone5) {
+                cityFrame.size.height -= 50;
+            }
             cityConditionView.frame = cityFrame;
             NSIndexPath *firstRow= [NSIndexPath indexPathForRow:0 inSection:0];
             [cityConditionView.mainMenuTableView selectRowAtIndexPath:firstRow animated:NO scrollPosition:UITableViewScrollPositionNone];
