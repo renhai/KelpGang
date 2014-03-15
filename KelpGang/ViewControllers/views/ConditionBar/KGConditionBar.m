@@ -248,7 +248,12 @@ static NSString * const kCityKey = @"city";
                 cell = [nibArr objectAtIndex:0];
             }
             KGSubMenuTableViewCell *countryCell = (KGSubMenuTableViewCell *) cell;
-            countryCell.countryLabel.text = [[[self.countryArr objectAtIndex:self.currContinentIndex] objectForKey:kCountryKey] objectAtIndex:indexPath.row];
+            countryCell.splitLine.hidden = NO;
+            NSArray *cArr = [self.countryArr[self.currContinentIndex] objectForKey:kCountryKey];
+            countryCell.countryLabel.text = cArr[indexPath.row];
+//            if (indexPath.row == cArr.count - 1) {
+//                countryCell.splitLine.hidden = YES;
+//            }
         }
     } else if (self.currTapIndex == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:kTimeTableViewCell];
@@ -256,6 +261,7 @@ static NSString * const kCityKey = @"city";
             NSArray *nibArr = [[NSBundle mainBundle] loadNibNamed:@"KGCommonConditionCell" owner:self options:nil];
             cell = [nibArr objectAtIndex:0];
             KGCommonConditionCell *timeCell = (KGCommonConditionCell *) cell;
+            timeCell.splitLine.hidden = NO;
             timeCell.timeLabel.text = [self.timeArr objectAtIndex: [indexPath row]];
             if (indexPath.row == self.timeArr.count - 1) {
                 timeCell.splitLine.hidden = YES;
@@ -277,7 +283,12 @@ static NSString * const kCityKey = @"city";
                 cell = [nibArr objectAtIndex:0];
             }
             KGSubMenuTableViewCell *countryCell = (KGSubMenuTableViewCell *) cell;
-            countryCell.countryLabel.text = [[[self.cityArr objectAtIndex:self.currRegionIndex] objectForKey:kCityKey] objectAtIndex:indexPath.row];
+            countryCell.splitLine.hidden = NO;
+            NSArray *cArr = [self.cityArr[self.currRegionIndex] objectForKey:kCityKey];
+            countryCell.countryLabel.text = cArr[indexPath.row];
+//            if (indexPath.row == cArr.count - 1) {
+//                countryCell.splitLine.hidden = YES;
+//            }
         }
     }
     cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];

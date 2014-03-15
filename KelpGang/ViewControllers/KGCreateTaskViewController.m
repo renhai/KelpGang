@@ -470,7 +470,7 @@
         browser.zoomPhotosToFill = NO;
         browser.enableGrid = NO;
         browser.startOnGrid = NO;
-        browser.enableSwipeToDismiss = YES;
+        browser.enableSwipeToDismiss = NO;
         browser.alwaysShowControls = NO;
         browser.delayToHideElements = -1;
         [browser setCurrentPhotoIndex:indexPath.row];
