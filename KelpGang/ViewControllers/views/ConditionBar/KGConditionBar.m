@@ -257,6 +257,9 @@ static NSString * const kCityKey = @"city";
             cell = [nibArr objectAtIndex:0];
             KGCommonConditionCell *timeCell = (KGCommonConditionCell *) cell;
             timeCell.timeLabel.text = [self.timeArr objectAtIndex: [indexPath row]];
+            if (indexPath.row == self.timeArr.count - 1) {
+                timeCell.splitLine.hidden = YES;
+            }
         }
     } else if (self.currTapIndex == 3) {
         if (tableView.tag == 1) {
