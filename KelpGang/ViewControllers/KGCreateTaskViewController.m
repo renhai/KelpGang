@@ -20,8 +20,6 @@
 
 @property (nonatomic, strong) UIPickerView *commionPickerView;
 @property (nonatomic, strong) UIDatePicker *deadlinePicker;
-- (IBAction)expandPictureView:(UIButton *)sender;
-- (IBAction)expandMoreInfoView:(UIButton *)sender;
 
 @property (nonatomic, assign) BOOL picExpanded;
 @property (nonatomic, assign) BOOL moreInfoExpanded;
@@ -169,6 +167,19 @@
 }
 */
 
+#pragma UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+    if (indexPath.section == 2 && indexPath.row == 0) {
+        UIImageView *imageView = (UIImageView *)[cell viewWithTag:1];
+        [self expandPictureView:imageView];
+    } else if (indexPath.section == 3 && indexPath.row == 0) {
+        UIImageView *imageView = (UIImageView *)[cell viewWithTag:1];
+        [self expandMoreInfoView:imageView];
+    }
+}
+
 #pragma UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -277,7 +288,7 @@
 }
 
 
-- (IBAction)expandPictureView:(UIButton *)sender {
+- (void)expandPictureView:(UIImageView *)imageView {
     NSArray *pathArr = @[[NSIndexPath indexPathForRow:1 inSection:2]];
     if (!self.picExpanded) {
         self.picExpanded = YES;
@@ -288,18 +299,18 @@
                                   atScrollPosition:UITableViewScrollPositionTop
                                       animated:YES];
         UIImage *image = [UIImage imageNamed:@"close-active"];
-        [sender setImage:image forState:UIControlStateNormal];
+        imageView.image = image;
     } else {
         self.picExpanded = NO;
         [self.tableView beginUpdates];
         [self.tableView deleteRowsAtIndexPaths:pathArr withRowAnimation:UITableViewRowAnimationFade];
         [self.tableView endUpdates];
         UIImage *image = [UIImage imageNamed:@"add-active"];
-        [sender setImage:image forState:UIControlStateNormal];
+        imageView.image = image;
     }
 }
 
-- (IBAction)expandMoreInfoView:(UIButton *)sender {
+- (void)expandMoreInfoView:(UIImageView *)imageView {
     NSArray *pathArr = @[[NSIndexPath indexPathForRow:1 inSection:3], [NSIndexPath indexPathForRow:2 inSection:3]];
     if (!self.moreInfoExpanded) {
         self.moreInfoExpanded = YES;
@@ -310,14 +321,14 @@
                               atScrollPosition:UITableViewScrollPositionTop
                                       animated:YES];
         UIImage *image = [UIImage imageNamed:@"up-arrow-big"];
-        [sender setImage:image forState:UIControlStateNormal];
+        imageView.image = image;
     } else {
         self.moreInfoExpanded = NO;
         [self.tableView beginUpdates];
         [self.tableView deleteRowsAtIndexPaths:pathArr withRowAnimation:UITableViewRowAnimationFade];
         [self.tableView endUpdates];
         UIImage *image = [UIImage imageNamed:@"down-arrow-big"];
-        [sender setImage:image forState:UIControlStateNormal];
+        imageView.image = image;
     }
 }
 
