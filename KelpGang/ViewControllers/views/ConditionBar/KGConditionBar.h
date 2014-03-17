@@ -21,4 +21,12 @@
 @property (nonatomic, weak) UIView* canvasView;
 @property (nonatomic, weak) id<KGConditionDelegate> delegate;
 
+@property (nonatomic, strong) NSArray *countryArr;
+@property (nonatomic, strong) NSArray *cityArr;
+@property (nonatomic, strong) NSArray *timeArr;
+
+@property (nonatomic, strong) NSArray *titles;
+
+-(void)initBarItems;
+
 @end

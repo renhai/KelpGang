@@ -20,12 +20,9 @@ static NSString * const kCityKey = @"city";
 
 @interface KGConditionBar()
 
-@property (nonatomic, strong) NSArray *countryArr;
 @property (nonatomic, assign) NSInteger currContinentIndex;
 @property (nonatomic, strong) NSMutableDictionary *conditionViews;
 @property (nonatomic, assign) NSInteger currTapIndex;
-@property (nonatomic, strong) NSArray *timeArr;
-@property (nonatomic, strong) NSArray *cityArr;
 @property (nonatomic, assign) NSInteger currRegionIndex;
 
 @property (nonatomic, strong) UIView *maskView;
@@ -36,7 +33,7 @@ static NSString * const kCityKey = @"city";
 @implementation KGConditionBar
 
 - (void) dealloc {
-
+    NSLog(@"KGConditionBar dealloc");
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -51,44 +48,33 @@ static NSString * const kCityKey = @"city";
 -(id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.countryArr = @[@{@"continent": @"热门国家",@"country": @[@"日本",@"韩国",@"美国",@"法国",@"意大利",@"德国",@"加拿大",@"澳大利亚",@"泰国"]},
-                            @{@"continent": @"亚洲",@"country": @[@"日本",@"韩国",@"泰国"]},
-                            @{@"continent": @"欧洲",@"country": @[@"英国",@"法国",@"意大利",@"德国"]},
-                            @{@"continent": @"非洲",@"country": @[@"南非",@"埃及",@"阿尔及利亚",@"刚果"]},
-                            @{@"continent": @"北美洲",@"country": @[@"美国",@"加拿大",@"墨西哥",@"哥斯达黎加"]},
-                            @{@"continent": @"南美洲",@"country": @[@"巴西",@"阿根廷",@"哥伦比亚",@"厄瓜多尔",@"委内瑞拉",@"乌拉圭"]},
-                            @{@"continent": @"大洋洲",@"country": @[@"澳大利亚",@"新西兰",@"六个字的国家",@"七个字的国家啊", @"八个字的国家啊哈"]}];
-        self.cityArr = @[@{@"region": @"热门城市",@"city": @[@"北京",@"上海",@"广州",@"深圳",@"武汉",@"长春",@"东莞",@"吉林",@"延吉"]},
-                         @{@"region": @"华东",@"city": @[@"石家庄",@"邯郸",@"北京"]},
-                         @{@"region": @"华北",@"city": @[@"英国",@"法国",@"意大利",@"德国"]},
-                         @{@"region": @"华南",@"city": @[@"南非",@"埃及",@"阿尔及利亚",@"刚果"]},
-                         @{@"region": @"西部",@"city": @[@"美国",@"加拿大",@"墨西哥",@"哥斯达黎加"]},
-                         @{@"region": @"其他",@"city": @[@"巴西",@"阿根廷",@"哥伦比亚",@"厄瓜多尔",@"委内瑞拉",@"乌拉圭"]}];
-        self.timeArr = @[@"3天内", @"1周内", @"2周内", @"1月内", @"常驻"];
         self.conditionViews = [NSMutableDictionary dictionaryWithCapacity:3];
         self.currTapIndex = -1;
-
-        CGFloat itemWidth = 320.0 / 3;
-        NSArray *titles = @[@"目的国家", @"回国时间", @"所在城市"];
-        for (NSInteger i = 0; i < 3; i ++) {
-            NSArray *nibArr = [[NSBundle mainBundle]loadNibNamed:@"KGConditionBarItem" owner:self options:nil];
-            KGConditionBarItem *item = [nibArr objectAtIndex:0];
-            item.index = i + 1;
-            item.textLabel.text = [titles objectAtIndex:i];
-            item.indImgView.hidden = YES;
-            item.tag = item.index;
-            CGFloat x = i * itemWidth;
-            CGRect frame = item.frame;
-            frame.origin.x = x;
-            [item setFrame:frame];
-            UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
-            tapGesture.delegate = self;
-            [item addGestureRecognizer:tapGesture];
-            [self addSubview:item];
-        }
     }
     return  self;
 }
+
+-(void)initBarItems {
+    CGFloat itemWidth = 320.0 / 3;
+    for (NSInteger i = 0; i < 3; i ++) {
+        NSArray *nibArr = [[NSBundle mainBundle]loadNibNamed:@"KGConditionBarItem" owner:self options:nil];
+        KGConditionBarItem *item = [nibArr objectAtIndex:0];
+        item.index = i + 1;
+        item.textLabel.text = [self.titles objectAtIndex:i];
+        item.indImgView.hidden = YES;
+        item.tag = item.index;
+        CGFloat x = i * itemWidth;
+        CGRect frame = item.frame;
+        frame.origin.x = x;
+        [item setFrame:frame];
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
+        tapGesture.delegate = self;
+        [item addGestureRecognizer:tapGesture];
+        [item relayout];
+        [self addSubview:item];
+    }
+}
+
 
 - (void)didTap: (UIGestureRecognizer *)gestureRecognizer {
     KGConditionBarItem *item = (KGConditionBarItem *)gestureRecognizer.view;

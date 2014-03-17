@@ -133,6 +133,7 @@
 		A1B22C5418D1B96B00953EE5 /* add_img.png in Resources */ = {isa = PBXBuildFile; fileRef = A1B22C5218D1B96B00953EE5 /* add_img.png */; };
 		A1B22C5518D1B96B00953EE5 /* add_img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1B22C5318D1B96B00953EE5 /* add_img@2x.png */; };
 		A1BBB07D18D6B1B0002C8BD2 /* KGMoreInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BBB07C18D6B1B0002C8BD2 /* KGMoreInfoTableViewController.m */; };
+		A1BBB08018D6B4E1002C8BD2 /* KGTaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BBB07F18D6B4E1002C8BD2 /* KGTaskListViewController.m */; };
 		A1C0ACFB18C759010092E3B4 /* XMPPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C0ACFA18C759010092E3B4 /* XMPPManager.m */; };
 		A1F8A64918C9691800ECDABB /* nav_bar_64.png in Resources */ = {isa = PBXBuildFile; fileRef = A1F8A64718C9691800ECDABB /* nav_bar_64.png */; };
 		A1F8A64A18C9691800ECDABB /* nav_bar_64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1F8A64818C9691800ECDABB /* nav_bar_64@2x.png */; };
@@ -322,6 +323,8 @@
 		A1B22C5718D1CD1D00953EE5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		A1BBB07B18D6B1B0002C8BD2 /* KGMoreInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGMoreInfoTableViewController.h; sourceTree = "<group>"; };
 		A1BBB07C18D6B1B0002C8BD2 /* KGMoreInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGMoreInfoTableViewController.m; sourceTree = "<group>"; };
+		A1BBB07E18D6B4E1002C8BD2 /* KGTaskListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGTaskListViewController.h; sourceTree = "<group>"; };
+		A1BBB07F18D6B4E1002C8BD2 /* KGTaskListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGTaskListViewController.m; sourceTree = "<group>"; };
 		A1C0ACF918C759010092E3B4 /* XMPPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPManager.h; sourceTree = "<group>"; };
 		A1C0ACFA18C759010092E3B4 /* XMPPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPManager.m; sourceTree = "<group>"; };
 		A1F8A64718C9691800ECDABB /* nav_bar_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_bar_64.png; sourceTree = "<group>"; };
@@ -654,6 +657,8 @@
 				A1AFF97418D0494B0043E75E /* KGCreateTaskViewController.m */,
 				A1BBB07B18D6B1B0002C8BD2 /* KGMoreInfoTableViewController.h */,
 				A1BBB07C18D6B1B0002C8BD2 /* KGMoreInfoTableViewController.m */,
+				A1BBB07E18D6B4E1002C8BD2 /* KGTaskListViewController.h */,
+				A1BBB07F18D6B4E1002C8BD2 /* KGTaskListViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -927,6 +932,7 @@
 				A1992CD718CCC582004BB29D /* KGConditionBarItem.m in Sources */,
 				A12D782318CECBED00873887 /* MWPhoto.m in Sources */,
 				A1BBB07D18D6B1B0002C8BD2 /* KGMoreInfoTableViewController.m in Sources */,
+				A1BBB08018D6B4E1002C8BD2 /* KGTaskListViewController.m in Sources */,
 				A12D782718CECBED00873887 /* MWZoomingScrollView.m in Sources */,
 				A1A1DAFD18C9CCD200F03E04 /* KGUtils.m in Sources */,
 				A1992CDB18CCC582004BB29D /* KGSecondLevelMenuView.m in Sources */,

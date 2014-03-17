@@ -7,6 +7,7 @@
 //
 
 #import "KGMoreInfoTableViewController.h"
+#import "KGTaskListViewController.h"
 
 @interface KGMoreInfoTableViewController ()
 
@@ -109,15 +110,17 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    UIViewController *destController = segue.destinationViewController;
+    if ([destController isKindOfClass:[KGTaskListViewController class]]) {
+        destController.hidesBottomBarWhenPushed = YES;
+    }
 }
-*/
+
 
 @end
