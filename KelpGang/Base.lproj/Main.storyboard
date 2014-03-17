@@ -776,7 +776,14 @@
                             <outlet property="delegate" destination="FL4-SZ-t3M" id="PHt-gu-X3m"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="新任务" id="u8k-ar-uRY"/>
+                    <navigationItem key="navigationItem" title="新任务" id="u8k-ar-uRY">
+                        <barButtonItem key="rightBarButtonItem" title="预览" id="po9-gr-LDW">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="wdh-9J-MgB" kind="push" id="CvA-vc-lOx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="commionTextField" destination="kjF-xp-GIO" id="IPV-Kc-c8S"/>
                         <outlet property="deadlineTextField" destination="DuG-iX-zLa" id="eV9-Q5-N2a"/>
@@ -790,6 +797,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QDM-rg-ZBA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="585" y="733"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="CEl-d3-PcM">
+            <objects>
+                <viewController id="wdh-9J-MgB" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="R1M-YY-QrV">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dhw-wZ-STA"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3jN-X6-63y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1001" y="733"/>
         </scene>
         <!--Navigation Controller - 发任务-->
         <scene sceneID="LBe-b2-1xc">
