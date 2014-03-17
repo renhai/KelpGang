@@ -8,6 +8,8 @@
 
 #import "KGTaskListViewController.h"
 #import "KGConditionBar.h"
+#import "KGTaskListViewCell.h"
+#import "UIImageView+WebCache.h"
 
 @interface KGTaskListViewController () <KGConditionDelegate>
 @property (weak, nonatomic) IBOutlet KGConditionBar *conditionBar;
@@ -71,6 +73,24 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return  20;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"kTaskListTableViewCell";
+
+    KGTaskListViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[KGTaskListViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    cell.headImageView.clipsToBounds = YES;
+    cell.headImageView.ContentMode = UIViewContentModeScaleAspectFill;
+    cell.headImageView.layer.cornerRadius = cell.headImageView.frame.size.width / 2;
+    [cell.headImageView setImageWithURL:[NSURL URLWithString:@"http://b.hiphotos.baidu.com/image/w%3D2048/sign=828c8a708544ebf86d71633fedc1d62a/5882b2b7d0a20cf4d8414dac74094b36adaf99f4.jpg"] placeholderImage:[UIImage imageNamed:@"test-head.jpg"]];
+    return cell;
+}
 
 
 #pragma KGConditionDelegate

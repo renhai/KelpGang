@@ -134,6 +134,9 @@
 		A1B22C5518D1B96B00953EE5 /* add_img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1B22C5318D1B96B00953EE5 /* add_img@2x.png */; };
 		A1BBB07D18D6B1B0002C8BD2 /* KGMoreInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BBB07C18D6B1B0002C8BD2 /* KGMoreInfoTableViewController.m */; };
 		A1BBB08018D6B4E1002C8BD2 /* KGTaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BBB07F18D6B4E1002C8BD2 /* KGTaskListViewController.m */; };
+		A1BBB08318D6E60C002C8BD2 /* KGTaskListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BBB08218D6E60C002C8BD2 /* KGTaskListViewCell.m */; };
+		A1BBB08618D6EE86002C8BD2 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BBB08418D6EE86002C8BD2 /* search.png */; };
+		A1BBB08718D6EE86002C8BD2 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BBB08518D6EE86002C8BD2 /* search@2x.png */; };
 		A1C0ACFB18C759010092E3B4 /* XMPPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C0ACFA18C759010092E3B4 /* XMPPManager.m */; };
 		A1F8A64918C9691800ECDABB /* nav_bar_64.png in Resources */ = {isa = PBXBuildFile; fileRef = A1F8A64718C9691800ECDABB /* nav_bar_64.png */; };
 		A1F8A64A18C9691800ECDABB /* nav_bar_64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1F8A64818C9691800ECDABB /* nav_bar_64@2x.png */; };
@@ -325,6 +328,10 @@
 		A1BBB07C18D6B1B0002C8BD2 /* KGMoreInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGMoreInfoTableViewController.m; sourceTree = "<group>"; };
 		A1BBB07E18D6B4E1002C8BD2 /* KGTaskListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGTaskListViewController.h; sourceTree = "<group>"; };
 		A1BBB07F18D6B4E1002C8BD2 /* KGTaskListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGTaskListViewController.m; sourceTree = "<group>"; };
+		A1BBB08118D6E60C002C8BD2 /* KGTaskListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGTaskListViewCell.h; sourceTree = "<group>"; };
+		A1BBB08218D6E60C002C8BD2 /* KGTaskListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGTaskListViewCell.m; sourceTree = "<group>"; };
+		A1BBB08418D6EE86002C8BD2 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
+		A1BBB08518D6EE86002C8BD2 /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
 		A1C0ACF918C759010092E3B4 /* XMPPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPManager.h; sourceTree = "<group>"; };
 		A1C0ACFA18C759010092E3B4 /* XMPPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPManager.m; sourceTree = "<group>"; };
 		A1F8A64718C9691800ECDABB /* nav_bar_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_bar_64.png; sourceTree = "<group>"; };
@@ -553,6 +560,8 @@
 		A143015E18BB5D7A0064DF87 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A1BBB08418D6EE86002C8BD2 /* search.png */,
+				A1BBB08518D6EE86002C8BD2 /* search@2x.png */,
 				A1A2EECE18D4A71C00CEFA96 /* up-arrow-big.png */,
 				A1A2EECF18D4A71C00CEFA96 /* up-arrow-big@2x.png */,
 				A12ADE4718D323A10009B225 /* delete_img.png */,
@@ -659,6 +668,8 @@
 				A1BBB07C18D6B1B0002C8BD2 /* KGMoreInfoTableViewController.m */,
 				A1BBB07E18D6B4E1002C8BD2 /* KGTaskListViewController.h */,
 				A1BBB07F18D6B4E1002C8BD2 /* KGTaskListViewController.m */,
+				A1BBB08118D6E60C002C8BD2 /* KGTaskListViewCell.h */,
+				A1BBB08218D6E60C002C8BD2 /* KGTaskListViewCell.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -786,6 +797,7 @@
 				A1036BBC18BF3DCF00FA7358 /* location@2x.png in Resources */,
 				A180C0FB18C8BFD900116DCF /* more_active.png in Resources */,
 				A106930918C068CF003CC6BC /* head-line.png in Resources */,
+				A1BBB08618D6EE86002C8BD2 /* search.png in Resources */,
 				A12ADE4618D3225F0009B225 /* close-active@2x.png in Resources */,
 				A1B22C5418D1B96B00953EE5 /* add_img.png in Resources */,
 				A12D782818CECBED00873887 /* MWPhotoBrowser.bundle in Resources */,
@@ -858,6 +870,7 @@
 				A1992CDE18CCC582004BB29D /* KGSubMenuTableViewCell.xib in Resources */,
 				A1A1DAFA18C9AE7C00F03E04 /* follow-btn-bg@2x.png in Resources */,
 				A190FCBE18C855F600A87329 /* search_gray@2x.png in Resources */,
+				A1BBB08718D6EE86002C8BD2 /* search@2x.png in Resources */,
 				A190FCE318C89BB000A87329 /* nav_bar_item_back.png in Resources */,
 				A190FCBA18C8541F00A87329 /* search_someone_gray@2x.png in Resources */,
 				A180C0FE18C8BFD900116DCF /* search_active@2x.png in Resources */,
@@ -916,6 +929,7 @@
 				A1AFF97518D0494B0043E75E /* KGCreateTaskViewController.m in Sources */,
 				A1992CE618CCC97C004BB29D /* KGCommonConditionCell.m in Sources */,
 				A1992CD518CCC582004BB29D /* KGConditionBar.m in Sources */,
+				A1BBB08318D6E60C002C8BD2 /* KGTaskListViewCell.m in Sources */,
 				A14300DF18BB252F0064DF87 /* KGViewController.m in Sources */,
 				A12D782518CECBED00873887 /* MWTapDetectingImageView.m in Sources */,
 				A1930B2318CEFA66000D84A1 /* KGPicBottomView.m in Sources */,
