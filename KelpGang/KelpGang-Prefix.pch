@@ -13,9 +13,6 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
-    #import "UIImage+PKImage.h"
-    #import "UIFont+PKFont.h"
-    #import "UIColor+PKColor.h"
     #import "KGUtils.h"
     #import "KGGlobal.h"
 #endif
