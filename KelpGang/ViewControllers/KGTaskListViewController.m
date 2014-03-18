@@ -13,6 +13,7 @@
 
 @interface KGTaskListViewController () <KGConditionDelegate>
 @property (weak, nonatomic) IBOutlet KGConditionBar *conditionBar;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *rightBarButtonItem;
 
 @end
 
@@ -30,7 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    [self setLeftBarButtonItem];
+    [self setRightBarButtonItems];
 
     self.conditionBar.canvasView = self.view;
     self.conditionBar.delegate = self;
@@ -52,11 +53,14 @@
     self.conditionBar.titles = @[@"目的国家", @"跑腿费", @"所在城市"];
     [self.conditionBar initBarItems];
 
-//    if (!iPhone5) {
-//        CGRect frame = self.tableView.frame;
-//        frame.size.height = SCREEN_HEIGHT - STATUSBAR_HEIGHT - NAVIGATIONBAR_HEIGHT - TABBAR_HEIGHT - self.conditionBar.frame.size.height;
-//        self.tableView.frame = frame;
-//    }
+}
+
+- (void)setRightBarButtonItems {
+    if (![KGUtils isHigherIOS7]) {
+        UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        negativeSpacer.width = 15;
+        self.navigationItem.rightBarButtonItems = @[negativeSpacer, self.rightBarButtonItem];
+    }
 }
 
 - (void)didReceiveMemoryWarning

@@ -104,6 +104,8 @@
 		A197503218D84BF10062CAA7 /* UIDevice+Addtional.m in Sources */ = {isa = PBXBuildFile; fileRef = A197501618D84BF10062CAA7 /* UIDevice+Addtional.m */; };
 		A197503918D84BF10062CAA7 /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = A197502418D84BF10062CAA7 /* UIView+Additions.m */; };
 		A197503A18D84BF10062CAA7 /* UIWindow+RscExt.m in Sources */ = {isa = PBXBuildFile; fileRef = A197502618D84BF10062CAA7 /* UIWindow+RscExt.m */; };
+		A197503D18D85F920062CAA7 /* trip.png in Resources */ = {isa = PBXBuildFile; fileRef = A197503B18D85F920062CAA7 /* trip.png */; };
+		A197503E18D85F920062CAA7 /* trip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A197503C18D85F920062CAA7 /* trip@2x.png */; };
 		A1992CD518CCC582004BB29D /* KGConditionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A1992CC618CCC582004BB29D /* KGConditionBar.m */; };
 		A1992CD718CCC582004BB29D /* KGConditionBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A1992CC918CCC582004BB29D /* KGConditionBarItem.m */; };
 		A1992CD818CCC582004BB29D /* KGConditionBarItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1992CCA18CCC582004BB29D /* KGConditionBarItem.xib */; };
@@ -292,6 +294,8 @@
 		A197502418D84BF10062CAA7 /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
 		A197502518D84BF10062CAA7 /* UIWindow+RscExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+RscExt.h"; sourceTree = "<group>"; };
 		A197502618D84BF10062CAA7 /* UIWindow+RscExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+RscExt.m"; sourceTree = "<group>"; };
+		A197503B18D85F920062CAA7 /* trip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trip.png; sourceTree = "<group>"; };
+		A197503C18D85F920062CAA7 /* trip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trip@2x.png"; sourceTree = "<group>"; };
 		A1992CC518CCC582004BB29D /* KGConditionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGConditionBar.h; sourceTree = "<group>"; };
 		A1992CC618CCC582004BB29D /* KGConditionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGConditionBar.m; sourceTree = "<group>"; };
 		A1992CC818CCC582004BB29D /* KGConditionBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGConditionBarItem.h; sourceTree = "<group>"; };
@@ -570,6 +574,8 @@
 		A143015E18BB5D7A0064DF87 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A197503B18D85F920062CAA7 /* trip.png */,
+				A197503C18D85F920062CAA7 /* trip@2x.png */,
 				A1BBB08418D6EE86002C8BD2 /* search.png */,
 				A1BBB08518D6EE86002C8BD2 /* search@2x.png */,
 				A1A2EECE18D4A71C00CEFA96 /* up-arrow-big.png */,
@@ -838,6 +844,7 @@
 				A1A2EED118D4A71C00CEFA96 /* up-arrow-big@2x.png in Resources */,
 				A180C0FD18C8BFD900116DCF /* search_active.png in Resources */,
 				A1036BBB18BF3DCF00FA7358 /* location.png in Resources */,
+				A197503E18D85F920062CAA7 /* trip@2x.png in Resources */,
 				A190FCC918C857C700A87329 /* more_gray.png in Resources */,
 				A190FCB918C8541F00A87329 /* search_someone_gray.png in Resources */,
 				A190FCC518C856D800A87329 /* me_gray.png in Resources */,
@@ -865,6 +872,7 @@
 				A1B22C5518D1B96B00953EE5 /* add_img@2x.png in Resources */,
 				A190FCBD18C855F600A87329 /* search_gray.png in Resources */,
 				A1B22C4C18D1670C00953EE5 /* add-active.png in Resources */,
+				A197503D18D85F920062CAA7 /* trip.png in Resources */,
 				A190FCD718C87B1700A87329 /* star_2.png in Resources */,
 				A14300E118BB252F0064DF87 /* Images.xcassets in Resources */,
 				A190FCE018C8859400A87329 /* airplane@2x.png in Resources */,
