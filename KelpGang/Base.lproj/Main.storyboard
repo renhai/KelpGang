@@ -1154,7 +1154,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="任务" id="GgS-16-deG">
-                        <barButtonItem key="rightBarButtonItem" image="search.png" id="cBo-2s-8AA"/>
+                        <barButtonItem key="leftBarButtonItem" image="nav_bar_item_back.png" id="JI9-FF-M6f">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="goBack:" destination="wry-1v-JvQ" id="VeL-Rt-RKG"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="search.png" id="cBo-2s-8AA">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="conditionBar" destination="9g9-rv-xwK" id="Fbx-LF-7bj"/>

@@ -26,6 +26,9 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
         [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"nav_bar_64"] forBarMetrics:UIBarMetricsDefault];
     } else {
         [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"nav_bar_44"] forBarMetrics:UIBarMetricsDefault];
+        [[UIBarButtonItem appearance] setBackgroundImage:[UIImage new]
+                                                forState:UIControlStateNormal
+                                              barMetrics:UIBarMetricsDefault];
     }
 
     [DDLog addLogger:[DDTTYLogger sharedInstance]];

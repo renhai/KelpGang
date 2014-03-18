@@ -30,6 +30,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+//    [self setLeftBarButtonItem];
+
     self.conditionBar.canvasView = self.view;
     self.conditionBar.delegate = self;
 
@@ -61,6 +63,10 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)goBack:(UIBarButtonItem *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 /*

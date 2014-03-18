@@ -101,6 +101,9 @@
 		A1930B2918CEFD47000D84A1 /* chat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1930B2718CEFD47000D84A1 /* chat@2x.png */; };
 		A1930B2C18CEFDC7000D84A1 /* collect.png in Resources */ = {isa = PBXBuildFile; fileRef = A1930B2A18CEFDC7000D84A1 /* collect.png */; };
 		A1930B2D18CEFDC7000D84A1 /* collect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1930B2B18CEFDC7000D84A1 /* collect@2x.png */; };
+		A197503218D84BF10062CAA7 /* UIDevice+Addtional.m in Sources */ = {isa = PBXBuildFile; fileRef = A197501618D84BF10062CAA7 /* UIDevice+Addtional.m */; };
+		A197503918D84BF10062CAA7 /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = A197502418D84BF10062CAA7 /* UIView+Additions.m */; };
+		A197503A18D84BF10062CAA7 /* UIWindow+RscExt.m in Sources */ = {isa = PBXBuildFile; fileRef = A197502618D84BF10062CAA7 /* UIWindow+RscExt.m */; };
 		A1992CD518CCC582004BB29D /* KGConditionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A1992CC618CCC582004BB29D /* KGConditionBar.m */; };
 		A1992CD718CCC582004BB29D /* KGConditionBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A1992CC918CCC582004BB29D /* KGConditionBarItem.m */; };
 		A1992CD818CCC582004BB29D /* KGConditionBarItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1992CCA18CCC582004BB29D /* KGConditionBarItem.xib */; };
@@ -283,6 +286,12 @@
 		A1930B2718CEFD47000D84A1 /* chat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat@2x.png"; sourceTree = "<group>"; };
 		A1930B2A18CEFDC7000D84A1 /* collect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collect.png; sourceTree = "<group>"; };
 		A1930B2B18CEFDC7000D84A1 /* collect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "collect@2x.png"; sourceTree = "<group>"; };
+		A197501518D84BF10062CAA7 /* UIDevice+Addtional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Addtional.h"; sourceTree = "<group>"; };
+		A197501618D84BF10062CAA7 /* UIDevice+Addtional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Addtional.m"; sourceTree = "<group>"; };
+		A197502318D84BF10062CAA7 /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
+		A197502418D84BF10062CAA7 /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
+		A197502518D84BF10062CAA7 /* UIWindow+RscExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+RscExt.h"; sourceTree = "<group>"; };
+		A197502618D84BF10062CAA7 /* UIWindow+RscExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+RscExt.m"; sourceTree = "<group>"; };
 		A1992CC518CCC582004BB29D /* KGConditionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGConditionBar.h; sourceTree = "<group>"; };
 		A1992CC618CCC582004BB29D /* KGConditionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGConditionBar.m; sourceTree = "<group>"; };
 		A1992CC818CCC582004BB29D /* KGConditionBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGConditionBarItem.h; sourceTree = "<group>"; };
@@ -523,6 +532,7 @@
 		A143011818BB461A0064DF87 /* ToolBox */ = {
 			isa = PBXGroup;
 			children = (
+				A1974FFD18D84BF10062CAA7 /* Addtional */,
 				A12D782918CECC5F00873887 /* DACircularProgress */,
 				A12D780A18CECBED00873887 /* MWPhotoBrowser */,
 				A1311F4218CA2E0800D1A40F /* SwipeView */,
@@ -672,6 +682,19 @@
 				A1BBB08218D6E60C002C8BD2 /* KGTaskListViewCell.m */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		A1974FFD18D84BF10062CAA7 /* Addtional */ = {
+			isa = PBXGroup;
+			children = (
+				A197501518D84BF10062CAA7 /* UIDevice+Addtional.h */,
+				A197501618D84BF10062CAA7 /* UIDevice+Addtional.m */,
+				A197502318D84BF10062CAA7 /* UIView+Additions.h */,
+				A197502418D84BF10062CAA7 /* UIView+Additions.m */,
+				A197502518D84BF10062CAA7 /* UIWindow+RscExt.h */,
+				A197502618D84BF10062CAA7 /* UIWindow+RscExt.m */,
+			);
+			path = Addtional;
 			sourceTree = "<group>";
 		};
 		A1992CC418CCC582004BB29D /* ConditionBar */ = {
@@ -941,9 +964,11 @@
 				A12D782418CECBED00873887 /* MWPhotoBrowser.m in Sources */,
 				A143012718BB461A0064DF87 /* PKResManager.m in Sources */,
 				A14415A218C0EA590053456D /* KGBuyerListViewController.m in Sources */,
+				A197503218D84BF10062CAA7 /* UIDevice+Addtional.m in Sources */,
 				A14415A118C0EA590053456D /* KGBuyerListViewCell.m in Sources */,
 				A1311F4518CA2E0800D1A40F /* SwipeView.m in Sources */,
 				A1992CD718CCC582004BB29D /* KGConditionBarItem.m in Sources */,
+				A197503A18D84BF10062CAA7 /* UIWindow+RscExt.m in Sources */,
 				A12D782318CECBED00873887 /* MWPhoto.m in Sources */,
 				A1BBB07D18D6B1B0002C8BD2 /* KGMoreInfoTableViewController.m in Sources */,
 				A1BBB08018D6B4E1002C8BD2 /* KGTaskListViewController.m in Sources */,
@@ -957,6 +982,7 @@
 				A1231E8518C5B62900DCF6CD /* KGBuyerDetailViewController.m in Sources */,
 				A143012518BB461A0064DF87 /* UIFont+PKFont.m in Sources */,
 				A1992CD918CCC582004BB29D /* KGMainMenuTableViewCell.m in Sources */,
+				A197503918D84BF10062CAA7 /* UIView+Additions.m in Sources */,
 				A12D782618CECBED00873887 /* MWTapDetectingView.m in Sources */,
 				A1992CDD18CCC582004BB29D /* KGSubMenuTableViewCell.m in Sources */,
 				A12D782018CECBED00873887 /* MWCaptionView.m in Sources */,
