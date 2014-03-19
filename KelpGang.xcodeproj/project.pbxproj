@@ -126,6 +126,8 @@
 		A1A6231618BDA73B00D8E9A0 /* navbar-item-right.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A6231518BDA73B00D8E9A0 /* navbar-item-right.png */; };
 		A1A6231818BDC4F400D8E9A0 /* arrow-down.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A6231718BDC4F400D8E9A0 /* arrow-down.png */; };
 		A1A6232618BDE01E00D8E9A0 /* arrow-down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A6232518BDE01E00D8E9A0 /* arrow-down@2x.png */; };
+		A1A948BC18D93E84006DCF6E /* KGCreateJourneyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A948BB18D93E84006DCF6E /* KGCreateJourneyTableViewController.m */; };
+		A1A948BF18D9495D006DCF6E /* KGJourneyAddImgTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A948BE18D9495D006DCF6E /* KGJourneyAddImgTableViewCell.m */; };
 		A1AFF97518D0494B0043E75E /* KGCreateTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1AFF97418D0494B0043E75E /* KGCreateTaskViewController.m */; };
 		A1AFF97818D079160043E75E /* right-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = A1AFF97618D079160043E75E /* right-arrow.png */; };
 		A1AFF97918D079160043E75E /* right-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1AFF97718D079160043E75E /* right-arrow@2x.png */; };
@@ -324,6 +326,10 @@
 		A1A6231518BDA73B00D8E9A0 /* navbar-item-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar-item-right.png"; sourceTree = "<group>"; };
 		A1A6231718BDC4F400D8E9A0 /* arrow-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-down.png"; sourceTree = "<group>"; };
 		A1A6232518BDE01E00D8E9A0 /* arrow-down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-down@2x.png"; sourceTree = "<group>"; };
+		A1A948BA18D93E84006DCF6E /* KGCreateJourneyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCreateJourneyTableViewController.h; sourceTree = "<group>"; };
+		A1A948BB18D93E84006DCF6E /* KGCreateJourneyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCreateJourneyTableViewController.m; sourceTree = "<group>"; };
+		A1A948BD18D9495D006DCF6E /* KGJourneyAddImgTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGJourneyAddImgTableViewCell.h; sourceTree = "<group>"; };
+		A1A948BE18D9495D006DCF6E /* KGJourneyAddImgTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGJourneyAddImgTableViewCell.m; sourceTree = "<group>"; };
 		A1AFF97318D0494B0043E75E /* KGCreateTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCreateTaskViewController.h; sourceTree = "<group>"; };
 		A1AFF97418D0494B0043E75E /* KGCreateTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCreateTaskViewController.m; sourceTree = "<group>"; };
 		A1AFF97618D079160043E75E /* right-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right-arrow.png"; sourceTree = "<group>"; };
@@ -686,6 +692,10 @@
 				A1BBB07F18D6B4E1002C8BD2 /* KGTaskListViewController.m */,
 				A1BBB08118D6E60C002C8BD2 /* KGTaskListViewCell.h */,
 				A1BBB08218D6E60C002C8BD2 /* KGTaskListViewCell.m */,
+				A1A948BA18D93E84006DCF6E /* KGCreateJourneyTableViewController.h */,
+				A1A948BB18D93E84006DCF6E /* KGCreateJourneyTableViewController.m */,
+				A1A948BD18D9495D006DCF6E /* KGJourneyAddImgTableViewCell.h */,
+				A1A948BE18D9495D006DCF6E /* KGJourneyAddImgTableViewCell.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -967,6 +977,7 @@
 				A14300D918BB252F0064DF87 /* KGAppDelegate.m in Sources */,
 				A10150CA18CB6445004A729D /* KGChatViewController.m in Sources */,
 				A143012418BB461A0064DF87 /* UIColor+PKColor.m in Sources */,
+				A1A948BC18D93E84006DCF6E /* KGCreateJourneyTableViewController.m in Sources */,
 				A14300D518BB252F0064DF87 /* main.m in Sources */,
 				A1C0ACFB18C759010092E3B4 /* XMPPManager.m in Sources */,
 				A12D782418CECBED00873887 /* MWPhotoBrowser.m in Sources */,
@@ -982,6 +993,7 @@
 				A1BBB08018D6B4E1002C8BD2 /* KGTaskListViewController.m in Sources */,
 				A12D782718CECBED00873887 /* MWZoomingScrollView.m in Sources */,
 				A1A1DAFD18C9CCD200F03E04 /* KGUtils.m in Sources */,
+				A1A948BF18D9495D006DCF6E /* KGJourneyAddImgTableViewCell.m in Sources */,
 				A1992CDB18CCC582004BB29D /* KGSecondLevelMenuView.m in Sources */,
 				A12D782118CECBED00873887 /* MWGridCell.m in Sources */,
 				A12D782218CECBED00873887 /* MWGridViewController.m in Sources */,
