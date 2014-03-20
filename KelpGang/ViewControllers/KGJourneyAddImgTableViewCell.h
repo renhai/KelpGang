@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SwipeView.h"
+
+@class KGJourneyGoods;
 
 @interface KGJourneyAddImgTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UITextField *imgNameTextField;
 
-@property (weak, nonatomic) IBOutlet UIScrollView *imgScrollView;
+@property (weak, nonatomic) IBOutlet SwipeView *imgSwipView;
 
 
 @end

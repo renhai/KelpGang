@@ -128,6 +128,7 @@
 		A1A6232618BDE01E00D8E9A0 /* arrow-down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A6232518BDE01E00D8E9A0 /* arrow-down@2x.png */; };
 		A1A948BC18D93E84006DCF6E /* KGCreateJourneyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A948BB18D93E84006DCF6E /* KGCreateJourneyTableViewController.m */; };
 		A1A948BF18D9495D006DCF6E /* KGJourneyAddImgTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A948BE18D9495D006DCF6E /* KGJourneyAddImgTableViewCell.m */; };
+		A1A948C218D981C3006DCF6E /* KGJourneyGoods.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A948C118D981C3006DCF6E /* KGJourneyGoods.m */; };
 		A1AFF97518D0494B0043E75E /* KGCreateTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1AFF97418D0494B0043E75E /* KGCreateTaskViewController.m */; };
 		A1AFF97818D079160043E75E /* right-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = A1AFF97618D079160043E75E /* right-arrow.png */; };
 		A1AFF97918D079160043E75E /* right-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1AFF97718D079160043E75E /* right-arrow@2x.png */; };
@@ -330,6 +331,8 @@
 		A1A948BB18D93E84006DCF6E /* KGCreateJourneyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCreateJourneyTableViewController.m; sourceTree = "<group>"; };
 		A1A948BD18D9495D006DCF6E /* KGJourneyAddImgTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGJourneyAddImgTableViewCell.h; sourceTree = "<group>"; };
 		A1A948BE18D9495D006DCF6E /* KGJourneyAddImgTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGJourneyAddImgTableViewCell.m; sourceTree = "<group>"; };
+		A1A948C018D981C3006DCF6E /* KGJourneyGoods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGJourneyGoods.h; sourceTree = "<group>"; };
+		A1A948C118D981C3006DCF6E /* KGJourneyGoods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGJourneyGoods.m; sourceTree = "<group>"; };
 		A1AFF97318D0494B0043E75E /* KGCreateTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCreateTaskViewController.h; sourceTree = "<group>"; };
 		A1AFF97418D0494B0043E75E /* KGCreateTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCreateTaskViewController.m; sourceTree = "<group>"; };
 		A1AFF97618D079160043E75E /* right-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right-arrow.png"; sourceTree = "<group>"; };
@@ -696,6 +699,8 @@
 				A1A948BB18D93E84006DCF6E /* KGCreateJourneyTableViewController.m */,
 				A1A948BD18D9495D006DCF6E /* KGJourneyAddImgTableViewCell.h */,
 				A1A948BE18D9495D006DCF6E /* KGJourneyAddImgTableViewCell.m */,
+				A1A948C018D981C3006DCF6E /* KGJourneyGoods.h */,
+				A1A948C118D981C3006DCF6E /* KGJourneyGoods.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -996,6 +1001,7 @@
 				A1A948BF18D9495D006DCF6E /* KGJourneyAddImgTableViewCell.m in Sources */,
 				A1992CDB18CCC582004BB29D /* KGSecondLevelMenuView.m in Sources */,
 				A12D782118CECBED00873887 /* MWGridCell.m in Sources */,
+				A1A948C218D981C3006DCF6E /* KGJourneyGoods.m in Sources */,
 				A12D782218CECBED00873887 /* MWGridViewController.m in Sources */,
 				A143012618BB461A0064DF87 /* UIImage+PKImage.m in Sources */,
 				A12D782C18CECC5F00873887 /* DACircularProgressView.m in Sources */,

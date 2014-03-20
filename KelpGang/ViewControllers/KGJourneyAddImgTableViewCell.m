@@ -7,6 +7,13 @@
 //
 
 #import "KGJourneyAddImgTableViewCell.h"
+#import "KGJourneyGoods.h"
+
+@interface KGJourneyAddImgTableViewCell ()
+
+@property (nonatomic, strong) KGJourneyGoods *goodsObj;
+
+@end
 
 @implementation KGJourneyAddImgTableViewCell
 
@@ -30,5 +37,6 @@
 
     // Configure the view for the selected state
 }
+
 
 @end
