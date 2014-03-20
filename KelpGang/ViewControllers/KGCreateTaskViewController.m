@@ -445,7 +445,7 @@
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"kPictureCollectionViewCell" forIndexPath:indexPath];
         UIImageView *imgView = (UIImageView *)[cell viewWithTag:1];
         [imgView.layer setBorderColor:RGBCOLOR(213, 232, 232).CGColor];
-        [imgView.layer setBorderWidth:5];
+        [imgView.layer setBorderWidth:3];
         imgView.image = self.pictures[indexPath.row];
 
         UIButton *btn = (UIButton *)[cell viewWithTag:2];

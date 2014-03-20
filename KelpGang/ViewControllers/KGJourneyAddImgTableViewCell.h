@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SwipeView.h"
+#import "KGJourneyPictureContainerView.h"
+
 
 @class KGJourneyGoods;
 
@@ -15,7 +16,11 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *imgNameTextField;
 
-@property (weak, nonatomic) IBOutlet SwipeView *imgSwipView;
+@property (weak, nonatomic) IBOutlet UIScrollView *imgScrollView;
+
+@property (weak, nonatomic) IBOutlet UIButton *delGoodsBtn;
+
+- (void)setupData: (KGJourneyGoods *) goods;
 
 
 @end

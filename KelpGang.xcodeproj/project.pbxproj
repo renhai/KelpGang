@@ -146,6 +146,7 @@
 		A1BBB08618D6EE86002C8BD2 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BBB08418D6EE86002C8BD2 /* search.png */; };
 		A1BBB08718D6EE86002C8BD2 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BBB08518D6EE86002C8BD2 /* search@2x.png */; };
 		A1C0ACFB18C759010092E3B4 /* XMPPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C0ACFA18C759010092E3B4 /* XMPPManager.m */; };
+		A1CA060018DAF32D00B1F3A6 /* KGJourneyPictureContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CA05FF18DAF32D00B1F3A6 /* KGJourneyPictureContainerView.m */; };
 		A1F8A64918C9691800ECDABB /* nav_bar_64.png in Resources */ = {isa = PBXBuildFile; fileRef = A1F8A64718C9691800ECDABB /* nav_bar_64.png */; };
 		A1F8A64A18C9691800ECDABB /* nav_bar_64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1F8A64818C9691800ECDABB /* nav_bar_64@2x.png */; };
 		A1F8A64D18C96A6B00ECDABB /* nav_bar_44.png in Resources */ = {isa = PBXBuildFile; fileRef = A1F8A64B18C96A6B00ECDABB /* nav_bar_44.png */; };
@@ -356,6 +357,8 @@
 		A1BBB08518D6EE86002C8BD2 /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
 		A1C0ACF918C759010092E3B4 /* XMPPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPManager.h; sourceTree = "<group>"; };
 		A1C0ACFA18C759010092E3B4 /* XMPPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPManager.m; sourceTree = "<group>"; };
+		A1CA05FE18DAF32D00B1F3A6 /* KGJourneyPictureContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGJourneyPictureContainerView.h; sourceTree = "<group>"; };
+		A1CA05FF18DAF32D00B1F3A6 /* KGJourneyPictureContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGJourneyPictureContainerView.m; sourceTree = "<group>"; };
 		A1F8A64718C9691800ECDABB /* nav_bar_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_bar_64.png; sourceTree = "<group>"; };
 		A1F8A64818C9691800ECDABB /* nav_bar_64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_bar_64@2x.png"; sourceTree = "<group>"; };
 		A1F8A64B18C96A6B00ECDABB /* nav_bar_44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_bar_44.png; sourceTree = "<group>"; };
@@ -402,6 +405,8 @@
 				A1930B2118CEFA66000D84A1 /* KGPicBottomView.h */,
 				A1930B2218CEFA66000D84A1 /* KGPicBottomView.m */,
 				A1930B2418CEFB3E000D84A1 /* KGPicBottom.xib */,
+				A1CA05FE18DAF32D00B1F3A6 /* KGJourneyPictureContainerView.h */,
+				A1CA05FF18DAF32D00B1F3A6 /* KGJourneyPictureContainerView.m */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -996,6 +1001,7 @@
 				A12D782318CECBED00873887 /* MWPhoto.m in Sources */,
 				A1BBB07D18D6B1B0002C8BD2 /* KGMoreInfoTableViewController.m in Sources */,
 				A1BBB08018D6B4E1002C8BD2 /* KGTaskListViewController.m in Sources */,
+				A1CA060018DAF32D00B1F3A6 /* KGJourneyPictureContainerView.m in Sources */,
 				A12D782718CECBED00873887 /* MWZoomingScrollView.m in Sources */,
 				A1A1DAFD18C9CCD200F03E04 /* KGUtils.m in Sources */,
 				A1A948BF18D9495D006DCF6E /* KGJourneyAddImgTableViewCell.m in Sources */,

@@ -38,5 +38,30 @@
     // Configure the view for the selected state
 }
 
+- (void)setupData: (KGJourneyGoods *) goods {
+    for (UIView *subview in self.imgScrollView.subviews) {
+        [subview removeFromSuperview];
+    }
+    if (!goods) {
+        return;
+    }
+    self.imgNameTextField.text = goods.name;
+    NSMutableArray *pictures = goods.pictures;
+    NSInteger index = 0;
+    for (UIImage *img in pictures) {
+        CGRect frame = CGRectMake((index ++) * (kImageContainerViewWidth), 0, kImageContainerViewWidth, kImageViewHeight);
+        KGJourneyPictureContainerView *containerView = [[KGJourneyPictureContainerView alloc] initWithFrame:frame image:img];
+        [self.imgScrollView addSubview:containerView];
+    }
+    UIView *addContainerView = [[UIView alloc] initWithFrame:CGRectMake((index ++) * (kImageContainerViewWidth), 0, kImageContainerViewWidth, kImageViewHeight)];
+    UIImageView *addImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kImageViewWidth, kImageViewHeight)];
+    addImgView.image = [UIImage imageNamed:@"add_img"];
+    [addContainerView addSubview:addImgView];
+    [self.imgScrollView addSubview:addContainerView];
+    self.imgScrollView.contentSize = CGSizeMake(index * kImageContainerViewWidth, kImageViewHeight);
+    self.imgScrollView.contentInset = UIEdgeInsetsMake(0, 15, 0, 15);
+}
+
+
 
 @end

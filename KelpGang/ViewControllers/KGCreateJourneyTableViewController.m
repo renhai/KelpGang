@@ -10,13 +10,13 @@
 #import "KGJourneyAddImgTableViewCell.h"
 #import "KGJourneyGoods.h"
 
-@interface KGCreateJourneyTableViewController () <SwipeViewDataSource, SwipeViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface KGCreateJourneyTableViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate>
 
 @property (nonatomic, strong) NSMutableArray *goodsArr;
-@property (nonatomic, assign) BOOL picExpanded;
-@property (nonatomic, assign) NSInteger currEditIndex;
-@property (nonatomic, strong) SwipeView *currEditSwipeView;
+//@property (nonatomic, assign) BOOL picExpanded;
+@property (nonatomic, assign) NSInteger currTapCellIndex;
 
+- (IBAction)addGoods:(UIButton *)sender;
 
 @end
 
@@ -35,7 +35,7 @@
 {
     [super viewDidLoad];
     self.goodsArr = [[NSMutableArray alloc] init];
-    self.currEditIndex = 0;
+    self.currTapCellIndex = 0;
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,11 +60,7 @@
     } else if (section == 2) {
         return 1;
     } else {
-        if (self.picExpanded) {
-            return self.goodsArr.count;
-        } else {
-            return 0;
-        }
+        return self.goodsArr.count;
     }
 }
 
@@ -89,14 +85,48 @@
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"kPicturesCell" forIndexPath:indexPath];
         KGJourneyAddImgTableViewCell *jCell = (KGJourneyAddImgTableViewCell *) cell;
-//        KGJourneyGoods *goods = self.goodsArr[indexPath.row];
-//        [jCell.imgSwipView reloadData];
-        self.currEditIndex = indexPath.row;
-        jCell.imgSwipView.delegate = self;
-        jCell.imgSwipView.dataSource = self;
+        KGJourneyGoods *goods = self.goodsArr[indexPath.row];
+        [jCell setupData:goods];
+        jCell.imgNameTextField.delegate = self;
+
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapPicture:)];
+//        jCell.imgScrollView.tag = indexPath.row;
+        [jCell.imgScrollView addGestureRecognizer:tapGesture];
+
+        [jCell.delGoodsBtn addTarget:self action:@selector(deleteGoods:) forControlEvents:UIControlEventTouchUpInside];
+
+        NSArray *subviews = [jCell.imgScrollView subviews];
+        NSInteger index = 0;
+        for (UIView *view in subviews) {
+            if ([view isKindOfClass:[KGJourneyPictureContainerView class]]) {
+                KGJourneyPictureContainerView *jpcView = (KGJourneyPictureContainerView *) view;
+                jpcView.imgIndex = index ++;
+                jpcView.goodsIndex = indexPath.row;
+                [jpcView.delBtn addTarget:self action:@selector(deleteImgFromGoods:) forControlEvents:UIControlEventTouchUpInside];
+            }
+        }
     }
 
     return cell;
+}
+
+- (void)tapPicture:(UIGestureRecognizer *) tapGesture {
+    CGPoint point = [tapGesture locationInView:tapGesture.view];
+    NSInteger index = (point.x / kImageContainerViewWidth);
+    UITableViewCell *cell = (UITableViewCell *)tapGesture.view.superview.superview.superview;
+    NSIndexPath *tapPath = [self.tableView indexPathForCell:cell];
+//    self.currEditCellIndex = tapGesture.view.tag;
+    self.currTapCellIndex = tapPath.row;
+    NSLog(@"curr tap cell index: %d, image index: %d", self.currTapCellIndex, index);
+    KGJourneyGoods *goods = self.goodsArr[self.currTapCellIndex];
+    if (index >= 0 && index < goods.pictures.count + 1) {
+        if (index == goods.pictures.count) {
+            [self showActionSheet];
+        } else {
+
+        }
+    }
+
 }
 
 
@@ -145,112 +175,40 @@
 #pragma UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
-    if (indexPath.section == 2 && indexPath.row == 0) {
-        [self expandPictureView:nil];
-    }
+
 }
 
-- (void)expandPictureView:(UIImageView *)imageView {
-    NSMutableArray *pathArr = [[NSMutableArray alloc] init];
-    if (self.goodsArr.count == 0) {
-        [pathArr addObject:[NSIndexPath indexPathForRow:0 inSection:3]];
-    } else {
-        for (NSInteger i = 0; i < self.goodsArr.count; i ++) {
-            [pathArr addObject:[NSIndexPath indexPathForRow:i inSection:3]];
-        }
-    }
-    if (!self.picExpanded) {
-        if (self.goodsArr.count == 0) {
-            KGJourneyGoods *goods = [[KGJourneyGoods alloc] init];
-            [self.goodsArr addObject:goods];
-        }
-        self.picExpanded = YES;
-        [self.tableView beginUpdates];
-        [self.tableView insertRowsAtIndexPaths:pathArr withRowAnimation:UITableViewRowAnimationNone];
-        [self.tableView endUpdates];
-        [self.tableView scrollToRowAtIndexPath:pathArr.lastObject
-                              atScrollPosition:UITableViewScrollPositionTop
-                                      animated:YES];
-//        UIImage *image = [UIImage imageNamed:@"close-active"];
-//        imageView.image = image;
-
-        UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 30)];
-        footerView.backgroundColor = [UIColor redColor];
-        UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(test:)];
-        [footerView addGestureRecognizer:gesture];
-        self.tableView.tableFooterView = footerView;
-    } else {
-        self.picExpanded = NO;
-//        for (NSIndexPath *path in pathArr) {
-//            [self.goodsArr removeObjectAtIndex:path.row];
-//        }
-        [self.tableView beginUpdates];
-        [self.tableView deleteRowsAtIndexPaths:pathArr withRowAnimation:UITableViewRowAnimationFade];
-        [self.tableView endUpdates];
-//        UIImage *image = [UIImage imageNamed:@"add-active"];
-//        imageView.image = image;
-        self.tableView.tableFooterView = nil;
-
-    }
-}
-
-- (void) test:(UIGestureRecognizer *) gesture {
-    NSLog(@"test");
+- (void)addNewGoods:(UIGestureRecognizer *) gesture {
     KGJourneyGoods *one = [[KGJourneyGoods alloc] init];
     [self.goodsArr addObject:one];
-//    NSIndexPath *path = [NSIndexPath indexPathForRow:self.goodsArr.count - 1 inSection:3];
     [self.tableView reloadData];
-//    [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationNone];
 }
 
-#pragma SwipViewDataSource
-- (NSInteger)numberOfItemsInSwipeView:(SwipeView *)swipeView
-{
-    KGJourneyGoods *goodsObj = self.goodsArr[self.currEditIndex];
-    if (goodsObj && goodsObj.pictures.count > 0) {
-        return [goodsObj.pictures count] + 1;
-    } else {
-        return 1;
+- (void)deleteGoods:(UIButton *) sender {
+    UITableViewCell *cell = (UITableViewCell *)sender.superview.superview.superview;
+    NSIndexPath *tapPath = [self.tableView indexPathForCell:cell];
+    [self.goodsArr removeObjectAtIndex:tapPath.row];
+    [self reloadGoodsSection];
+}
+
+- (void)deleteImgFromGoods:(UIButton *) sender {
+    KGJourneyPictureContainerView *view = (KGJourneyPictureContainerView *)sender.superview;
+    self.currTapCellIndex = view.goodsIndex;
+    NSLog(@"goodsIndex: %d, imgIndex: %d", view.goodsIndex, view.imgIndex);
+    KGJourneyGoods *goods = self.goodsArr[view.goodsIndex];
+    if (goods && goods.pictures && view.imgIndex < goods.pictures.count) {
+        [goods.pictures removeObjectAtIndex:view.imgIndex];
+        [self reloadCurrentEditRow];
     }
 }
 
-- (UIView *)swipeView:(SwipeView *)swipeView viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
-{
-    KGJourneyGoods *goodsObj = self.goodsArr[self.currEditIndex];
-    if (!goodsObj) {
-        return  nil;
-    }
-    UIView *containerView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 109, 94)];
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 0, 94, 94)];
-    [imageView setContentMode:UIViewContentModeScaleAspectFill];
-    [imageView setClipsToBounds:YES];
-    if (index == goodsObj.pictures.count) {
-        [imageView setImage:[UIImage imageNamed:@"add_img"]];
-    } else {
-        [imageView setImage:[goodsObj.pictures objectAtIndex:index]];
-    }
-    [containerView addSubview:imageView];
-
-    view = containerView;
-    return view;
+- (void)reloadRowAtIndex: (NSInteger) index {
+    NSArray *pathArr = @[[NSIndexPath indexPathForRow:index inSection:3]];
+    [self.tableView reloadRowsAtIndexPaths:pathArr withRowAnimation:UITableViewRowAnimationNone];
 }
 
-#pragma SwipeViewDelegate
-- (void)swipeView:(SwipeView *)swipeView didSelectItemAtIndex:(NSInteger)index {
-    NSLog(@"selelect index is : %d", index);
-    KGJourneyAddImgTableViewCell *cell = (KGJourneyAddImgTableViewCell *)swipeView.superview.superview.superview;
-    NSIndexPath *path = [self.tableView indexPathForCell:cell];
-    self.currEditIndex = path.row;
-    self.currEditSwipeView = swipeView;
-    KGJourneyGoods *goods = self.goodsArr[path.row];
-    if (!goods) {
-        return;
-    }
-    NSMutableArray *pictures = goods.pictures;
-    if (index == pictures.count) {
-        [self showActionSheet];
-    }
+- (void)reloadCurrentEditRow {
+    [self reloadRowAtIndex:self.currTapCellIndex];
 }
 
 - (void)showActionSheet {
@@ -299,13 +257,12 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     [picker dismissViewControllerAnimated:YES completion:^() {
         UIImage *oriImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-        KGJourneyGoods *goods = self.goodsArr[self.currEditIndex];
+        KGJourneyGoods *goods = self.goodsArr[self.currTapCellIndex];
         if (!goods) {
             return;
         }
         [goods.pictures addObject:oriImage];
-        [self.currEditSwipeView reloadData];
-
+        [self reloadCurrentEditRow];
 
         NSLog(@"%@",info);
     }];
@@ -381,4 +338,26 @@
 }
 */
 
+#pragma UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (IBAction)addGoods:(UIButton *)sender {
+    KGJourneyGoods *goods = [[KGJourneyGoods alloc] init];
+    [self.goodsArr addObject:goods];
+
+    [self reloadGoodsSection];
+    NSIndexPath *lastIndePath = [NSIndexPath indexPathForRow:self.goodsArr.count - 1 inSection:3];
+    [self.tableView scrollToRowAtIndexPath: lastIndePath
+                              atScrollPosition:UITableViewScrollPositionBottom
+                                      animated:YES];
+
+}
+
+- (void)reloadGoodsSection {
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationFade];
+}
 @end
