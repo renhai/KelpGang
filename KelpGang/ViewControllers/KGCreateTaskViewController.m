@@ -293,7 +293,7 @@
     if (!self.picExpanded) {
         self.picExpanded = YES;
         [self.tableView beginUpdates];
-        [self.tableView insertRowsAtIndexPaths:pathArr withRowAnimation:UITableViewRowAnimationTop];
+        [self.tableView insertRowsAtIndexPaths:pathArr withRowAnimation:UITableViewRowAnimationFade];
         [self.tableView endUpdates];
         [self.tableView scrollToRowAtIndexPath:pathArr.lastObject
                                   atScrollPosition:UITableViewScrollPositionTop
@@ -302,6 +302,8 @@
         imageView.image = image;
     } else {
         self.picExpanded = NO;
+        [self.pictures removeAllObjects];
+        [self.picCollectionView reloadData];
         [self.tableView beginUpdates];
         [self.tableView deleteRowsAtIndexPaths:pathArr withRowAnimation:UITableViewRowAnimationFade];
         [self.tableView endUpdates];
