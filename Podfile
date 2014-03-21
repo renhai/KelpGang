@@ -12,6 +12,6 @@ target :'KelpGang' do
     pod 'AFNetworking', '~> 2.2'
     pod 'EGOCache', '~> 2.0'
     pod 'MBProgressHUD', '~> 0.8'
-    #pod 'MWPhotoBrowser'
+    pod 'OHAttributedLabel'
 end
 
