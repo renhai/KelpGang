@@ -17,6 +17,7 @@
 @property (nonatomic, assign) NSInteger currTapCellIndex;
 
 - (IBAction)addGoods:(UIButton *)sender;
+- (IBAction)goBack:(UIBarButtonItem *)sender;
 
 @end
 
@@ -114,6 +115,9 @@
     CGPoint point = [tapGesture locationInView:tapGesture.view];
     NSInteger index = (point.x / kImageContainerViewWidth);
     UITableViewCell *cell = (UITableViewCell *)tapGesture.view.superview.superview.superview;
+    if (![KGUtils isHigherIOS7]) {
+        cell = (UITableViewCell *)tapGesture.view.superview.superview;
+    }
     NSIndexPath *tapPath = [self.tableView indexPathForCell:cell];
 //    self.currEditCellIndex = tapGesture.view.tag;
     self.currTapCellIndex = tapPath.row;
@@ -132,13 +136,13 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return 44.0;
+        return 46.0;
     } else if (indexPath.section == 1) {
-        return 65.0;
+        return 64.0;
     } else if (indexPath.section == 2){
-        return 44.0;
+        return 46.0;
     } else {
-        return 160.0;
+        return 177.0;
     }
 }
 
@@ -178,29 +182,6 @@
 
 }
 
-- (void)addNewGoods:(UIGestureRecognizer *) gesture {
-    KGJourneyGoods *one = [[KGJourneyGoods alloc] init];
-    [self.goodsArr addObject:one];
-    [self.tableView reloadData];
-}
-
-- (void)deleteGoods:(UIButton *) sender {
-    UITableViewCell *cell = (UITableViewCell *)sender.superview.superview.superview;
-    NSIndexPath *tapPath = [self.tableView indexPathForCell:cell];
-    [self.goodsArr removeObjectAtIndex:tapPath.row];
-    [self reloadGoodsSection];
-}
-
-- (void)deleteImgFromGoods:(UIButton *) sender {
-    KGJourneyPictureContainerView *view = (KGJourneyPictureContainerView *)sender.superview;
-    self.currTapCellIndex = view.goodsIndex;
-    NSLog(@"goodsIndex: %d, imgIndex: %d", view.goodsIndex, view.imgIndex);
-    KGJourneyGoods *goods = self.goodsArr[view.goodsIndex];
-    if (goods && goods.pictures && view.imgIndex < goods.pictures.count) {
-        [goods.pictures removeObjectAtIndex:view.imgIndex];
-        [self reloadCurrentEditRow];
-    }
-}
 
 - (void)reloadRowAtIndex: (NSInteger) index {
     NSArray *pathArr = @[[NSIndexPath indexPathForRow:index inSection:3]];
@@ -349,12 +330,40 @@
     KGJourneyGoods *goods = [[KGJourneyGoods alloc] init];
     [self.goodsArr addObject:goods];
 
-    [self reloadGoodsSection];
+//    [self reloadGoodsSection];
     NSIndexPath *lastIndePath = [NSIndexPath indexPathForRow:self.goodsArr.count - 1 inSection:3];
+    [self.tableView beginUpdates];
+    [self.tableView insertRowsAtIndexPaths:@[lastIndePath] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView endUpdates];
     [self.tableView scrollToRowAtIndexPath: lastIndePath
                               atScrollPosition:UITableViewScrollPositionBottom
                                       animated:YES];
 
+}
+
+- (IBAction)goBack:(UIBarButtonItem *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)deleteGoods:(UIButton *) sender {
+    UITableViewCell *cell = (UITableViewCell *)sender.superview.superview.superview;
+    if (![KGUtils isHigherIOS7]) {
+        cell = (UITableViewCell *)sender.superview.superview;
+    }
+    NSIndexPath *tapPath = [self.tableView indexPathForCell:cell];
+    [self.goodsArr removeObjectAtIndex:tapPath.row];
+    [self reloadGoodsSection];
+}
+
+- (void)deleteImgFromGoods:(UIButton *) sender {
+    KGJourneyPictureContainerView *view = (KGJourneyPictureContainerView *)sender.superview;
+    self.currTapCellIndex = view.goodsIndex;
+    NSLog(@"goodsIndex: %d, imgIndex: %d", view.goodsIndex, view.imgIndex);
+    KGJourneyGoods *goods = self.goodsArr[view.goodsIndex];
+    if (goods && goods.pictures && view.imgIndex < goods.pictures.count) {
+        [goods.pictures removeObjectAtIndex:view.imgIndex];
+        [self reloadCurrentEditRow];
+    }
 }
 
 - (void)reloadGoodsSection {

@@ -60,6 +60,10 @@
     [self.imgScrollView addSubview:addContainerView];
     self.imgScrollView.contentSize = CGSizeMake(index * kImageContainerViewWidth, kImageViewHeight);
     self.imgScrollView.contentInset = UIEdgeInsetsMake(0, 15, 0, 15);
+    if (index > 3) {
+        [self.imgScrollView setContentOffset:CGPointMake((index - 3) * kImageContainerViewWidth, 0) animated:YES];
+    }
+
 }
 
 
