@@ -61,6 +61,7 @@
 		A143012918BB4C4E0064DF87 /* common.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A143012818BB4C4E0064DF87 /* common.bundle */; };
 		A14415A118C0EA590053456D /* KGBuyerListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A144159B18C0EA590053456D /* KGBuyerListViewCell.m */; };
 		A14415A218C0EA590053456D /* KGBuyerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A144159D18C0EA590053456D /* KGBuyerListViewController.m */; };
+		A16FBEED18DC178C009E2F66 /* KGMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = A16FBEEC18DC178C009E2F66 /* KGMaskView.m */; };
 		A180C0EB18C8BE7800116DCF /* search_someone_active.png in Resources */ = {isa = PBXBuildFile; fileRef = A180C0E918C8BE7800116DCF /* search_someone_active.png */; };
 		A180C0EC18C8BE7800116DCF /* search_someone_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A180C0EA18C8BE7800116DCF /* search_someone_active@2x.png */; };
 		A180C0F718C8BFD900116DCF /* me_active.png in Resources */ = {isa = PBXBuildFile; fileRef = A180C0ED18C8BFD900116DCF /* me_active.png */; };
@@ -251,6 +252,8 @@
 		A144159B18C0EA590053456D /* KGBuyerListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGBuyerListViewCell.m; sourceTree = "<group>"; };
 		A144159C18C0EA590053456D /* KGBuyerListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGBuyerListViewController.h; sourceTree = "<group>"; };
 		A144159D18C0EA590053456D /* KGBuyerListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGBuyerListViewController.m; sourceTree = "<group>"; };
+		A16FBEEB18DC178C009E2F66 /* KGMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGMaskView.h; sourceTree = "<group>"; };
+		A16FBEEC18DC178C009E2F66 /* KGMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGMaskView.m; sourceTree = "<group>"; };
 		A180C0E918C8BE7800116DCF /* search_someone_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_someone_active.png; sourceTree = "<group>"; };
 		A180C0EA18C8BE7800116DCF /* search_someone_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search_someone_active@2x.png"; sourceTree = "<group>"; };
 		A180C0ED18C8BFD900116DCF /* me_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = me_active.png; sourceTree = "<group>"; };
@@ -407,6 +410,8 @@
 				A1930B2418CEFB3E000D84A1 /* KGPicBottom.xib */,
 				A1CA05FE18DAF32D00B1F3A6 /* KGJourneyPictureContainerView.h */,
 				A1CA05FF18DAF32D00B1F3A6 /* KGJourneyPictureContainerView.m */,
+				A16FBEEB18DC178C009E2F66 /* KGMaskView.h */,
+				A16FBEEC18DC178C009E2F66 /* KGMaskView.m */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -989,6 +994,7 @@
 				A143012418BB461A0064DF87 /* UIColor+PKColor.m in Sources */,
 				A1A948BC18D93E84006DCF6E /* KGCreateJourneyTableViewController.m in Sources */,
 				A14300D518BB252F0064DF87 /* main.m in Sources */,
+				A16FBEED18DC178C009E2F66 /* KGMaskView.m in Sources */,
 				A1C0ACFB18C759010092E3B4 /* XMPPManager.m in Sources */,
 				A12D782418CECBED00873887 /* MWPhotoBrowser.m in Sources */,
 				A143012718BB461A0064DF87 /* PKResManager.m in Sources */,

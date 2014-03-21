@@ -27,6 +27,8 @@
 
 @property (nonatomic, strong) NSArray *titles;
 
--(void)initBarItems;
+- (void)initBarItems;
+
+- (void)closeCurrPopView;
 
 @end

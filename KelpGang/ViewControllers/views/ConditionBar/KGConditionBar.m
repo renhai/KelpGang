@@ -12,6 +12,7 @@
 #import "KGMainMenuTableViewCell.h"
 #import "KGSubMenuTableViewCell.h"
 #import "KGCommonConditionCell.h"
+#import "KGMaskView.h"
 
 static NSString * const kContinentKey = @"continent";
 static NSString * const kCountryKey = @"country";
@@ -89,11 +90,7 @@ static NSString * const kCityKey = @"city";
 }
 
 - (void)showMask: (CGRect) frame {
-    self.maskView = [[UIView alloc]initWithFrame:frame];
-    self.maskView.backgroundColor = [UIColor grayColor];
-    self.maskView.alpha = 0.5;
-    self.maskView.opaque = NO;
-
+    self.maskView = [[KGMaskView alloc] initWithFrame:frame];
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapMaskView:)];
     [self.maskView addGestureRecognizer:tapGesture];
 
@@ -101,7 +98,7 @@ static NSString * const kCityKey = @"city";
     if (!window) {
         window = [[UIApplication sharedApplication].windows objectAtIndex:0];
     }
-    [[[window subviews] objectAtIndex:0] addSubview:self.maskView];
+    [window addSubview:self.maskView];
 }
 
 - (void)tapMaskView: (UITapGestureRecognizer *)tapGesture {
@@ -111,6 +108,11 @@ static NSString * const kCityKey = @"city";
 - (void) removeMask {
     [self.maskView removeFromSuperview];
 }
+
+- (void)closeCurrPopView {
+    [self closeConditionView:self.currTapIndex];
+}
+
 
 - (void) closeConditionView: (NSInteger) index {
     UIView *currView = [self.conditionViews objectForKey:@(index)];

@@ -10,6 +10,7 @@
 #import "KGConditionBar.h"
 #import "KGTaskListViewCell.h"
 #import "UIImageView+WebCache.h"
+#import "KGMaskView.h"
 
 @interface KGTaskListViewController () <KGConditionDelegate>
 @property (weak, nonatomic) IBOutlet KGConditionBar *conditionBar;
@@ -61,6 +62,11 @@
         negativeSpacer.width = 15;
         self.navigationItem.rightBarButtonItems = @[negativeSpacer, self.rightBarButtonItem];
     }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.conditionBar closeCurrPopView];
 }
 
 - (void)didReceiveMemoryWarning
