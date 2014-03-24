@@ -37,14 +37,12 @@ static CGFloat const kArrowMarginLeft = 4.0;
     textFrame.origin = CGPointMake(textX, textY);
     textFrame.size = textSize;
     self.textLabel.frame = textFrame;
-    NSLog(@"text label frame :%@", NSStringFromCGRect(self.textLabel.frame));
 
     CGRect arrowFrame = self.arrowImgView.frame;
     CGFloat arrowX = textX + textSize.width + kArrowMarginLeft;
     CGFloat arrowY = (height - arrowFrame.size.height) / 2;
     arrowFrame.origin = CGPointMake(arrowX, arrowY);
     self.arrowImgView.frame = arrowFrame;
-    NSLog(@"arrowImgView frame :%@", NSStringFromCGRect(self.arrowImgView.frame));
 }
 
 - (void)openItem {
