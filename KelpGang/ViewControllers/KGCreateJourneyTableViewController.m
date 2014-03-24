@@ -9,12 +9,20 @@
 #import "KGCreateJourneyTableViewController.h"
 #import "KGJourneyAddImgTableViewCell.h"
 #import "KGJourneyGoods.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+#import "MWPhotoBrowser.h"
 
-@interface KGCreateJourneyTableViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate>
+
+@interface KGCreateJourneyTableViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, MWPhotoBrowserDelegate>
 
 @property (nonatomic, strong) NSMutableArray *goodsArr;
 //@property (nonatomic, assign) BOOL picExpanded;
 @property (nonatomic, assign) NSInteger currTapCellIndex;
+@property (nonatomic, strong) ALAssetsLibrary *assetLibrary;
+@property (nonatomic, strong) NSMutableArray *assets;
+@property (nonatomic, strong) NSMutableArray *photos;
+@property (nonatomic, strong) NSMutableArray *thumbs;
+@property (nonatomic, strong) NSMutableArray *selections;
 
 - (IBAction)addGoods:(UIButton *)sender;
 - (IBAction)goBack:(UIBarButtonItem *)sender;
@@ -37,6 +45,8 @@
     [super viewDidLoad];
     self.goodsArr = [[NSMutableArray alloc] init];
     self.currTapCellIndex = 0;
+
+    [self loadAssets];
 }
 
 - (void)didReceiveMemoryWarning
@@ -218,40 +228,139 @@
         }
     } else if (buttonIndex == 1) {
         // 从相册中选取
-        if ([self isPhotoLibraryAvailable]) {
-            UIImagePickerController *controller = [[UIImagePickerController alloc] init];
-            controller.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-            controller.allowsEditing = NO;
-            controller.delegate = self;
-            [self presentViewController:controller
-                               animated:YES
-                             completion:^(void){
-                                 NSLog(@"Picker View Controller is presented");
-                             }];
+//        if ([self isPhotoLibraryAvailable]) {
+//            UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+//            controller.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+//            controller.allowsEditing = NO;
+//            controller.delegate = self;
+//            [self presentViewController:controller
+//                               animated:YES
+//                             completion:^(void){
+//                                 NSLog(@"Picker View Controller is presented");
+//                             }];
+//        }
+        NSMutableArray *photos = [[NSMutableArray alloc] init];
+        NSMutableArray *thumbs = [[NSMutableArray alloc] init];
+        @synchronized(_assets) {
+            NSMutableArray *copy = [_assets copy];
+            for (ALAsset *asset in copy) {
+                [photos addObject:[MWPhoto photoWithURL:asset.defaultRepresentation.url]];
+                [thumbs addObject:[MWPhoto photoWithImage:[UIImage imageWithCGImage:asset.thumbnail]]];
+            }
         }
+        self.photos = photos;
+        self.thumbs = thumbs;
+
+        MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
+        browser.displayActionButton = NO;
+        browser.displayNavArrows = NO;
+        browser.displaySelectionButtons = YES;
+        browser.alwaysShowControls = YES;
+        browser.wantsFullScreenLayout = YES;
+        browser.zoomPhotosToFill = YES;
+        browser.enableGrid = NO;
+        browser.startOnGrid = YES;
+        browser.enableSwipeToDismiss = NO;
+        [browser setCurrentPhotoIndex:0];
+
+        _selections = [NSMutableArray new];
+        for (int i = 0; i < photos.count; i++) {
+            [_selections addObject:[NSNumber numberWithBool:NO]];
+        }
+
+        UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:browser];
+        [self presentViewController:nc animated:YES completion:nil];
     }
 }
 
+#pragma mark - MWPhotoBrowserDelegate
 
-#pragma UIImagePickerControllerDelegate
+- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser {
+    return _photos.count;
+}
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    [picker dismissViewControllerAnimated:YES completion:^() {
-        UIImage *oriImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-        KGJourneyGoods *goods = self.goodsArr[self.currTapCellIndex];
-        if (!goods) {
-            return;
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index {
+    if (index < _photos.count)
+        return [_photos objectAtIndex:index];
+    return nil;
+}
+
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser thumbPhotoAtIndex:(NSUInteger)index {
+    if (index < _thumbs.count)
+        return [_thumbs objectAtIndex:index];
+    return nil;
+}
+
+//- (MWCaptionView *)photoBrowser:(MWPhotoBrowser *)photoBrowser captionViewForPhotoAtIndex:(NSUInteger)index {
+//    MWPhoto *photo = [self.photos objectAtIndex:index];
+//    MWCaptionView *captionView = [[MWCaptionView alloc] initWithPhoto:photo];
+//    return [captionView autorelease];
+//}
+
+//- (void)photoBrowser:(MWPhotoBrowser *)photoBrowser actionButtonPressedForPhotoAtIndex:(NSUInteger)index {
+//    NSLog(@"ACTION!");
+//}
+
+- (void)photoBrowser:(MWPhotoBrowser *)photoBrowser didDisplayPhotoAtIndex:(NSUInteger)index {
+    NSLog(@"Did start viewing photo at index %lu", (unsigned long)index);
+}
+
+- (BOOL)photoBrowser:(MWPhotoBrowser *)photoBrowser isPhotoSelectedAtIndex:(NSUInteger)index {
+    return [[_selections objectAtIndex:index] boolValue];
+}
+
+//- (NSString *)photoBrowser:(MWPhotoBrowser *)photoBrowser titleForPhotoAtIndex:(NSUInteger)index {
+//    return [NSString stringWithFormat:@"Photo %lu", (unsigned long)index+1];
+//}
+
+- (void)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index selectedChanged:(BOOL)selected {
+    [_selections replaceObjectAtIndex:index withObject:[NSNumber numberWithBool:selected]];
+    NSLog(@"Photo at index %lu selected %@", (unsigned long)index, selected ? @"YES" : @"NO");
+}
+
+- (void)photoBrowserDidFinishModalPresentation:(MWPhotoBrowser *)photoBrowser {
+    // If we subscribe to this method we must dismiss the view controller ourselves
+    NSLog(@"Did finish modal presentation");
+    [self dismissViewControllerAnimated:YES completion:nil];
+    KGJourneyGoods *goods = self.goodsArr[self.currTapCellIndex];
+    if (!goods) {
+        return;
+    }
+    for (NSInteger i = 0; i < self.selections.count; i ++) {
+        if ([self.selections[i] boolValue]) {
+            ALAsset *asset = self.assets[i];
+            ALAssetRepresentation *representation = [asset defaultRepresentation];
+            CGImageRef originalImage = [representation fullResolutionImage];
+            UIImage *original = [UIImage imageWithCGImage:originalImage];
+            [goods.pictures addObject:original];
         }
-        [goods.pictures addObject:oriImage];
-        [self reloadCurrentEditRow];
+    }
+    [self reloadCurrentEditRow];
 
-        NSLog(@"%@",info);
-    }];
 }
 
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    [picker dismissViewControllerAnimated:YES completion:nil];
-}
+
+//#pragma UIImagePickerControllerDelegate
+//
+//- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+//    [picker dismissViewControllerAnimated:YES completion:^() {
+//        UIImage *oriImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+//        KGJourneyGoods *goods = self.goodsArr[self.currTapCellIndex];
+//        if (!goods) {
+//            return;
+//        }
+//        [goods.pictures addObject:oriImage];
+//        [self reloadCurrentEditRow];
+//
+//        NSLog(@"%@",info);
+//    }];
+//}
+//
+//- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+//    [picker dismissViewControllerAnimated:YES completion:nil];
+//}
+
+
 
 - (BOOL) isPhotoLibraryAvailable{
     return [UIImagePickerController isSourceTypeAvailable:
@@ -368,5 +477,64 @@
 
 - (void)reloadGoodsSection {
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+#pragma mark - Load Assets
+
+- (void)loadAssets {
+
+    // Initialise
+    _assets = [NSMutableArray new];
+    _assetLibrary = [[ALAssetsLibrary alloc] init];
+
+    // Run in the background as it takes a while to get all assets from the library
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+
+        NSMutableArray *assetGroups = [[NSMutableArray alloc] init];
+        NSMutableArray *assetURLDictionaries = [[NSMutableArray alloc] init];
+
+        // Process assets
+        void (^assetEnumerator)(ALAsset *, NSUInteger, BOOL *) = ^(ALAsset *result, NSUInteger index, BOOL *stop) {
+            if (result != nil) {
+                if ([[result valueForProperty:ALAssetPropertyType] isEqualToString:ALAssetTypePhoto]) {
+                    [assetURLDictionaries addObject:[result valueForProperty:ALAssetPropertyURLs]];
+                    NSURL *url = result.defaultRepresentation.url;
+                    [_assetLibrary assetForURL:url
+                                   resultBlock:^(ALAsset *asset) {
+                                       if (asset) {
+                                           @synchronized(_assets) {
+                                               [_assets addObject:asset];
+                                               if (_assets.count == 1) {
+                                                   // Added first asset so reload data
+                                                   [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+                                               }
+                                           }
+                                       }
+                                   }
+                                  failureBlock:^(NSError *error){
+                                      NSLog(@"operation was not successfull!");
+                                  }];
+
+                }
+            }
+        };
+
+        // Process groups
+        void (^ assetGroupEnumerator) (ALAssetsGroup *, BOOL *) = ^(ALAssetsGroup *group, BOOL *stop) {
+            if (group != nil) {
+                [group enumerateAssetsWithOptions:NSEnumerationReverse usingBlock:assetEnumerator];
+                [assetGroups addObject:group];
+            }
+        };
+
+        // Process!
+        [self.assetLibrary enumerateGroupsWithTypes:ALAssetsGroupAll
+                                         usingBlock:assetGroupEnumerator
+                                       failureBlock:^(NSError *error) {
+                                           NSLog(@"There is an error");
+                                       }];
+
+    });
+    
 }
 @end
