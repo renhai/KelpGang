@@ -163,6 +163,7 @@
 		A1DD135318E0538E000F52C2 /* add-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1DD135118E0538E000F52C2 /* add-white@2x.png */; };
 		A1DD135618E05562000F52C2 /* selected-tablecell.png in Resources */ = {isa = PBXBuildFile; fileRef = A1DD135418E05562000F52C2 /* selected-tablecell.png */; };
 		A1DD135718E05562000F52C2 /* selected-tablecell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1DD135518E05562000F52C2 /* selected-tablecell@2x.png */; };
+		A1DD135C18E0690D000F52C2 /* UIImage+Addtional.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DD135B18E0690D000F52C2 /* UIImage+Addtional.m */; };
 		A1F8A64918C9691800ECDABB /* nav_bar_64.png in Resources */ = {isa = PBXBuildFile; fileRef = A1F8A64718C9691800ECDABB /* nav_bar_64.png */; };
 		A1F8A64A18C9691800ECDABB /* nav_bar_64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1F8A64818C9691800ECDABB /* nav_bar_64@2x.png */; };
 		A1F8A64D18C96A6B00ECDABB /* nav_bar_44.png in Resources */ = {isa = PBXBuildFile; fileRef = A1F8A64B18C96A6B00ECDABB /* nav_bar_44.png */; };
@@ -395,6 +396,8 @@
 		A1DD135118E0538E000F52C2 /* add-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-white@2x.png"; sourceTree = "<group>"; };
 		A1DD135418E05562000F52C2 /* selected-tablecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selected-tablecell.png"; sourceTree = "<group>"; };
 		A1DD135518E05562000F52C2 /* selected-tablecell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selected-tablecell@2x.png"; sourceTree = "<group>"; };
+		A1DD135A18E0690D000F52C2 /* UIImage+Addtional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Addtional.h"; sourceTree = "<group>"; };
+		A1DD135B18E0690D000F52C2 /* UIImage+Addtional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Addtional.m"; sourceTree = "<group>"; };
 		A1F8A64718C9691800ECDABB /* nav_bar_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_bar_64.png; sourceTree = "<group>"; };
 		A1F8A64818C9691800ECDABB /* nav_bar_64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_bar_64@2x.png"; sourceTree = "<group>"; };
 		A1F8A64B18C96A6B00ECDABB /* nav_bar_44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_bar_44.png; sourceTree = "<group>"; };
@@ -769,6 +772,8 @@
 		A1974FFD18D84BF10062CAA7 /* Addtional */ = {
 			isa = PBXGroup;
 			children = (
+				A1DD135A18E0690D000F52C2 /* UIImage+Addtional.h */,
+				A1DD135B18E0690D000F52C2 /* UIImage+Addtional.m */,
 				A197501518D84BF10062CAA7 /* UIDevice+Addtional.h */,
 				A197501618D84BF10062CAA7 /* UIDevice+Addtional.m */,
 				A197502318D84BF10062CAA7 /* UIView+Additions.h */,
@@ -1067,6 +1072,7 @@
 				A14415A118C0EA590053456D /* KGBuyerListViewCell.m in Sources */,
 				A1311F4518CA2E0800D1A40F /* SwipeView.m in Sources */,
 				A1992CD718CCC582004BB29D /* KGConditionBarItem.m in Sources */,
+				A1DD135C18E0690D000F52C2 /* UIImage+Addtional.m in Sources */,
 				A197503A18D84BF10062CAA7 /* UIWindow+RscExt.m in Sources */,
 				A12D782318CECBED00873887 /* MWPhoto.m in Sources */,
 				A1BBB07D18D6B1B0002C8BD2 /* KGMoreInfoTableViewController.m in Sources */,

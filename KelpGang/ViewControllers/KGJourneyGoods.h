@@ -11,6 +11,7 @@
 @interface KGJourneyGoods : NSObject
 
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSMutableArray* pictures;
+@property (nonatomic, strong) NSMutableArray *localImgUrls;
+@property (nonatomic, strong) NSMutableArray *thumbs;
 
 @end

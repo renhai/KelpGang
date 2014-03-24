@@ -14,7 +14,8 @@
     self = [super init];
     if (self) {
         self.name = @"";
-        self.pictures = [[NSMutableArray alloc] init];
+        self.localImgUrls = [[NSMutableArray alloc] init];
+        self.thumbs = [[NSMutableArray alloc] init];
     }
     return self;
 }

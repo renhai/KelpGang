@@ -46,9 +46,9 @@
         return;
     }
     self.imgNameTextField.text = goods.name;
-    NSMutableArray *pictures = goods.pictures;
+    NSMutableArray *thumbs = goods.thumbs;
     NSInteger index = 0;
-    for (UIImage *img in pictures) {
+    for (UIImage *img in thumbs) {
         CGRect frame = CGRectMake((index ++) * (kImageContainerViewWidth), 0, kImageContainerViewWidth, kImageViewHeight);
         KGJourneyPictureContainerView *containerView = [[KGJourneyPictureContainerView alloc] initWithFrame:frame image:img];
         [self.imgScrollView addSubview:containerView];

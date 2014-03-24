@@ -11,7 +11,7 @@
 #import "KGJourneyGoods.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "MWPhotoBrowser.h"
-
+#import "UIImage+Addtional.h"
 
 @interface KGCreateJourneyTableViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, MWPhotoBrowserDelegate>
 
@@ -47,6 +47,10 @@
     self.currTapCellIndex = 0;
 
     [self loadAssets];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -133,8 +137,8 @@
     self.currTapCellIndex = tapPath.row;
     NSLog(@"curr tap cell index: %d, image index: %d", self.currTapCellIndex, index);
     KGJourneyGoods *goods = self.goodsArr[self.currTapCellIndex];
-    if (index >= 0 && index < goods.pictures.count + 1) {
-        if (index == goods.pictures.count) {
+    if (index >= 0 && index < goods.thumbs.count + 1) {
+        if (index == goods.thumbs.count) {
             [self showActionSheet];
         } else {
 
@@ -333,7 +337,8 @@
 //            CGImageRef originalImage = [representation fullResolutionImage];
 //            UIImage *original = [UIImage imageWithCGImage:originalImage];
             UIImage *thumb = [UIImage imageWithCGImage:asset.thumbnail];
-            [goods.pictures addObject:thumb];
+            [goods.thumbs addObject:thumb];
+            [goods.localImgUrls addObject:asset.defaultRepresentation.url];
         }
     }
     [self reloadCurrentEditRow];
@@ -341,25 +346,34 @@
 }
 
 
-//#pragma UIImagePickerControllerDelegate
-//
-//- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-//    [picker dismissViewControllerAnimated:YES completion:^() {
-//        UIImage *oriImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-//        KGJourneyGoods *goods = self.goodsArr[self.currTapCellIndex];
-//        if (!goods) {
-//            return;
-//        }
-//        [goods.pictures addObject:oriImage];
-//        [self reloadCurrentEditRow];
-//
-//        NSLog(@"%@",info);
-//    }];
-//}
-//
-//- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-//    [picker dismissViewControllerAnimated:YES completion:nil];
-//}
+#pragma UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [picker dismissViewControllerAnimated:YES completion:^() {
+        UIImage *oriImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+        KGJourneyGoods *goods = self.goodsArr[self.currTapCellIndex];
+        if (!goods) {
+            return;
+        }
+        UIImage *thumb = [UIImage scaleImage:oriImage toScale:0.1];
+        [goods.thumbs addObject:thumb];
+        [self reloadCurrentEditRow];
+        NSLog(@"%@",info);
+
+        [self.assetLibrary writeImageToSavedPhotosAlbum:[oriImage CGImage] orientation:(ALAssetOrientation)[oriImage imageOrientation] completionBlock:^(NSURL *assetURL, NSError *error){
+            if (error) {
+                NSLog(@"error");
+            } else {
+                NSLog(@"url %@", assetURL);
+                [goods.localImgUrls addObject:assetURL];
+            }  
+        }];
+    }];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 
@@ -470,8 +484,9 @@
     self.currTapCellIndex = view.goodsIndex;
     NSLog(@"goodsIndex: %d, imgIndex: %d", view.goodsIndex, view.imgIndex);
     KGJourneyGoods *goods = self.goodsArr[view.goodsIndex];
-    if (goods && goods.pictures && view.imgIndex < goods.pictures.count) {
-        [goods.pictures removeObjectAtIndex:view.imgIndex];
+    if (goods && goods.thumbs && view.imgIndex < goods.thumbs.count) {
+        [goods.thumbs removeObjectAtIndex:view.imgIndex];
+        [goods.localImgUrls removeObjectAtIndex:view.imgIndex];
         [self reloadCurrentEditRow];
     }
 }
