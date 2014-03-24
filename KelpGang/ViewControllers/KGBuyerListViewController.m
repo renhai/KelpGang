@@ -12,6 +12,7 @@
 #import "XMPPManager.h"
 #import "UIImageView+WebCache.h"
 #import "KGConditionBar.h"
+#import "SVPullToRefresh.h"
 
 
 static NSString * const kFindKelpCell = @"kFindKelpCell";
@@ -65,6 +66,18 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
         frame.size.height = SCREEN_HEIGHT - STATUSBAR_HEIGHT - NAVIGATIONBAR_HEIGHT - TABBAR_HEIGHT - self.conditionBar.frame.size.height;
         self.tableView.frame = frame;
     }
+
+//    __weak KGBuyerListViewController *weakSelf = self;
+//
+//    // setup pull-to-refresh
+//    [self.tableView addPullToRefreshWithActionHandler:^{
+//        [weakSelf insertRowAtTop];
+//    }];
+//
+//    // setup infinite scrolling
+//    [self.tableView addInfiniteScrollingWithActionHandler:^{
+//        [weakSelf insertRowAtBottom];
+//    }];
 
 }
 
