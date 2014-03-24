@@ -13,6 +13,7 @@
 #import "UIImageView+WebCache.h"
 #import "KGConditionBar.h"
 #import "SVPullToRefresh.h"
+#import "MBProgressHUD.h"
 
 
 static NSString * const kFindKelpCell = @"kFindKelpCell";
@@ -21,6 +22,8 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 
 @property (weak, nonatomic) IBOutlet KGConditionBar *conditionBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (nonatomic, strong) NSMutableArray *datasource;
 
 @end
 
@@ -67,18 +70,66 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
         self.tableView.frame = frame;
     }
 
-//    __weak KGBuyerListViewController *weakSelf = self;
-//
-//    // setup pull-to-refresh
-//    [self.tableView addPullToRefreshWithActionHandler:^{
-//        [weakSelf insertRowAtTop];
-//    }];
-//
-//    // setup infinite scrolling
-//    [self.tableView addInfiniteScrollingWithActionHandler:^{
-//        [weakSelf insertRowAtBottom];
-//    }];
+    [self setupDatasource];
 
+    __weak KGBuyerListViewController *weakSelf = self;
+
+    [self.tableView addPullToRefreshWithActionHandler:^{
+        [weakSelf refreshDatasource];
+    }];
+
+    [self.tableView addInfiniteScrollingWithActionHandler:^{
+        [weakSelf insertRowAtBottom];
+    }];
+
+}
+
+- (void)setupDatasource {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"Loading";
+
+    self.datasource = [[NSMutableArray alloc] init];
+    //TODO
+    __weak KGBuyerListViewController *weakSelf = self;
+    int64_t delayInSeconds = 3.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        for (NSInteger i = 0; i < 5; i ++) {
+            [weakSelf.datasource addObject: [NSString stringWithFormat:@"%d", i]];
+        }
+        [weakSelf.tableView reloadData];
+        [hud hide:YES];
+    });
+}
+
+- (void) refreshDatasource {
+    self.datasource = [[NSMutableArray alloc] init];
+    __weak KGBuyerListViewController *weakSelf = self;
+    int64_t delayInSeconds = 2.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        for (NSInteger i = 0; i < 5; i ++) {
+            [weakSelf.datasource addObject: [NSString stringWithFormat:@"%d", i]];
+        }
+        [weakSelf.tableView reloadData];
+        [weakSelf.tableView.pullToRefreshView stopAnimating];
+    });
+}
+
+- (void)insertRowAtBottom {
+    __weak KGBuyerListViewController *weakSelf = self;
+
+    int64_t delayInSeconds = 2.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [weakSelf.tableView beginUpdates];
+        [weakSelf.datasource addObject: [NSString stringWithFormat:@"%d", 0]];
+        [weakSelf.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:weakSelf.datasource.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+        [weakSelf.tableView endUpdates];
+
+        [weakSelf.tableView.infiniteScrollingView stopAnimating];
+    });
 }
 
 - (void)didReceiveMemoryWarning
@@ -98,7 +149,7 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return  20;
+    return  [self.datasource count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
