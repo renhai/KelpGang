@@ -329,10 +329,11 @@
     for (NSInteger i = 0; i < self.selections.count; i ++) {
         if ([self.selections[i] boolValue]) {
             ALAsset *asset = self.assets[i];
-            ALAssetRepresentation *representation = [asset defaultRepresentation];
-            CGImageRef originalImage = [representation fullResolutionImage];
-            UIImage *original = [UIImage imageWithCGImage:originalImage];
-            [goods.pictures addObject:original];
+//            ALAssetRepresentation *representation = [asset defaultRepresentation];
+//            CGImageRef originalImage = [representation fullResolutionImage];
+//            UIImage *original = [UIImage imageWithCGImage:originalImage];
+            UIImage *thumb = [UIImage imageWithCGImage:asset.thumbnail];
+            [goods.pictures addObject:thumb];
         }
     }
     [self reloadCurrentEditRow];

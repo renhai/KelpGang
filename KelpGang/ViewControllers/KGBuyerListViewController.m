@@ -92,7 +92,7 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
     self.datasource = [[NSMutableArray alloc] init];
     //TODO
     __weak KGBuyerListViewController *weakSelf = self;
-    int64_t delayInSeconds = 3.0;
+    int64_t delayInSeconds = 1.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         for (NSInteger i = 0; i < 5; i ++) {
