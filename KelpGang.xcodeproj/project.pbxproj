@@ -158,6 +158,11 @@
 		A1C0ACFB18C759010092E3B4 /* XMPPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C0ACFA18C759010092E3B4 /* XMPPManager.m */; };
 		A1CA060018DAF32D00B1F3A6 /* KGJourneyPictureContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CA05FF18DAF32D00B1F3A6 /* KGJourneyPictureContainerView.m */; };
 		A1DD134C18E03229000F52C2 /* KGHostDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DD134B18E03229000F52C2 /* KGHostDetailTableViewController.m */; };
+		A1DD134F18E04C7A000F52C2 /* KGDeliveryAddressTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DD134E18E04C7A000F52C2 /* KGDeliveryAddressTableViewController.m */; };
+		A1DD135218E0538E000F52C2 /* add-white.png in Resources */ = {isa = PBXBuildFile; fileRef = A1DD135018E0538E000F52C2 /* add-white.png */; };
+		A1DD135318E0538E000F52C2 /* add-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1DD135118E0538E000F52C2 /* add-white@2x.png */; };
+		A1DD135618E05562000F52C2 /* selected-tablecell.png in Resources */ = {isa = PBXBuildFile; fileRef = A1DD135418E05562000F52C2 /* selected-tablecell.png */; };
+		A1DD135718E05562000F52C2 /* selected-tablecell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1DD135518E05562000F52C2 /* selected-tablecell@2x.png */; };
 		A1F8A64918C9691800ECDABB /* nav_bar_64.png in Resources */ = {isa = PBXBuildFile; fileRef = A1F8A64718C9691800ECDABB /* nav_bar_64.png */; };
 		A1F8A64A18C9691800ECDABB /* nav_bar_64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1F8A64818C9691800ECDABB /* nav_bar_64@2x.png */; };
 		A1F8A64D18C96A6B00ECDABB /* nav_bar_44.png in Resources */ = {isa = PBXBuildFile; fileRef = A1F8A64B18C96A6B00ECDABB /* nav_bar_44.png */; };
@@ -384,6 +389,12 @@
 		A1CA05FF18DAF32D00B1F3A6 /* KGJourneyPictureContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGJourneyPictureContainerView.m; sourceTree = "<group>"; };
 		A1DD134A18E03229000F52C2 /* KGHostDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGHostDetailTableViewController.h; sourceTree = "<group>"; };
 		A1DD134B18E03229000F52C2 /* KGHostDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGHostDetailTableViewController.m; sourceTree = "<group>"; };
+		A1DD134D18E04C7A000F52C2 /* KGDeliveryAddressTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGDeliveryAddressTableViewController.h; sourceTree = "<group>"; };
+		A1DD134E18E04C7A000F52C2 /* KGDeliveryAddressTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGDeliveryAddressTableViewController.m; sourceTree = "<group>"; };
+		A1DD135018E0538E000F52C2 /* add-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-white.png"; sourceTree = "<group>"; };
+		A1DD135118E0538E000F52C2 /* add-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-white@2x.png"; sourceTree = "<group>"; };
+		A1DD135418E05562000F52C2 /* selected-tablecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selected-tablecell.png"; sourceTree = "<group>"; };
+		A1DD135518E05562000F52C2 /* selected-tablecell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selected-tablecell@2x.png"; sourceTree = "<group>"; };
 		A1F8A64718C9691800ECDABB /* nav_bar_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_bar_64.png; sourceTree = "<group>"; };
 		A1F8A64818C9691800ECDABB /* nav_bar_64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_bar_64@2x.png"; sourceTree = "<group>"; };
 		A1F8A64B18C96A6B00ECDABB /* nav_bar_44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_bar_44.png; sourceTree = "<group>"; };
@@ -615,6 +626,10 @@
 		A143015E18BB5D7A0064DF87 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A1DD135418E05562000F52C2 /* selected-tablecell.png */,
+				A1DD135518E05562000F52C2 /* selected-tablecell@2x.png */,
+				A1DD135018E0538E000F52C2 /* add-white.png */,
+				A1DD135118E0538E000F52C2 /* add-white@2x.png */,
 				A16FBEFF18DC4F3A009E2F66 /* recent-contact.png */,
 				A16FBF0018DC4F3A009E2F66 /* recent-contact@2x.png */,
 				A16FBEF118DC255A009E2F66 /* empty_heart.png */,
@@ -745,6 +760,8 @@
 				A16FBEEF18DC1FA6009E2F66 /* KGHostTableViewController.m */,
 				A1DD134A18E03229000F52C2 /* KGHostDetailTableViewController.h */,
 				A1DD134B18E03229000F52C2 /* KGHostDetailTableViewController.m */,
+				A1DD134D18E04C7A000F52C2 /* KGDeliveryAddressTableViewController.h */,
+				A1DD134E18E04C7A000F52C2 /* KGDeliveryAddressTableViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -883,6 +900,7 @@
 				A1036BB818BF3A1700FA7358 /* test-canada-flag.png in Resources */,
 				A106930818C068CF003CC6BC /* head-indicator@2x.png in Resources */,
 				A16FBEFB18DC255A009E2F66 /* half_heart.png in Resources */,
+				A1DD135618E05562000F52C2 /* selected-tablecell.png in Resources */,
 				A1F8A66318C9A8B400ECDABB /* v-user-icon@2x.png in Resources */,
 				A1930B2918CEFD47000D84A1 /* chat@2x.png in Resources */,
 				A1036BBC18BF3DCF00FA7358 /* location@2x.png in Resources */,
@@ -922,6 +940,7 @@
 				A106930718C068CF003CC6BC /* head-indicator.png in Resources */,
 				A1AFF97818D079160043E75E /* right-arrow.png in Resources */,
 				A1F8A64D18C96A6B00ECDABB /* nav_bar_44.png in Resources */,
+				A1DD135318E0538E000F52C2 /* add-white@2x.png in Resources */,
 				A1A2EED018D4A71C00CEFA96 /* up-arrow-big.png in Resources */,
 				A180C0F918C8BFD900116DCF /* message_alert.png in Resources */,
 				A190FCD818C87B1700A87329 /* star_2@2x.png in Resources */,
@@ -937,6 +956,7 @@
 				A10150E418CB8BA7004A729D /* default_line@2x.png in Resources */,
 				A1B22C5518D1B96B00953EE5 /* add_img@2x.png in Resources */,
 				A190FCBD18C855F600A87329 /* search_gray.png in Resources */,
+				A1DD135718E05562000F52C2 /* selected-tablecell@2x.png in Resources */,
 				A1B22C4C18D1670C00953EE5 /* add-active.png in Resources */,
 				A197503D18D85F920062CAA7 /* trip.png in Resources */,
 				A190FCD718C87B1700A87329 /* star_2.png in Resources */,
@@ -957,6 +977,7 @@
 				A106930E18C06C32003CC6BC /* arrow-up@2x.png in Resources */,
 				A10150E518CB8BA7004A729D /* selected_line.png in Resources */,
 				A190FCDB18C87B1700A87329 /* star_4.png in Resources */,
+				A1DD135218E0538E000F52C2 /* add-white.png in Resources */,
 				A180C0EC18C8BE7800116DCF /* search_someone_active@2x.png in Resources */,
 				A1AFF97918D079160043E75E /* right-arrow@2x.png in Resources */,
 				A190FCD518C87B1700A87329 /* star_1.png in Resources */,
@@ -1049,6 +1070,7 @@
 				A197503A18D84BF10062CAA7 /* UIWindow+RscExt.m in Sources */,
 				A12D782318CECBED00873887 /* MWPhoto.m in Sources */,
 				A1BBB07D18D6B1B0002C8BD2 /* KGMoreInfoTableViewController.m in Sources */,
+				A1DD134F18E04C7A000F52C2 /* KGDeliveryAddressTableViewController.m in Sources */,
 				A1BBB08018D6B4E1002C8BD2 /* KGTaskListViewController.m in Sources */,
 				A1CA060018DAF32D00B1F3A6 /* KGJourneyPictureContainerView.m in Sources */,
 				A12D782718CECBED00873887 /* MWZoomingScrollView.m in Sources */,

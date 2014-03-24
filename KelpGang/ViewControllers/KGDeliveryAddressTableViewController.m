@@ -1,20 +1,20 @@
 //
-//  KGHostDetailTableViewController.m
+//  KGDeliveryAddressTableViewController.m
 //  KelpGang
 //
 //  Created by Andy on 14-3-24.
 //  Copyright (c) 2014年 renren. All rights reserved.
 //
 
-#import "KGHostDetailTableViewController.h"
+#import "KGDeliveryAddressTableViewController.h"
 
-@interface KGHostDetailTableViewController ()
+@interface KGDeliveryAddressTableViewController ()
 
-@property (nonatomic, assign) BOOL sexExpand;
+@property(nonatomic, strong) NSMutableArray *datasource;
 
 @end
 
-@implementation KGHostDetailTableViewController
+@implementation KGDeliveryAddressTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -29,7 +29,12 @@
 {
     [super viewDidLoad];
     [self setLeftBarButtonItem];
-    
+
+    self.datasource = [[NSMutableArray alloc] init];
+    for (NSInteger i = 0; i < 3; i ++) {
+        [self.datasource addObject:[NSString stringWithFormat:@"%d", i]];
+    }
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -58,25 +63,32 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [super numberOfSectionsInTableView:tableView];
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (!self.sexExpand) {
-        return 5;
-    }
-    return [super tableView:tableView numberOfRowsInSection:section];
+    return  [self.datasource count];
 }
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
-    if (!self.sexExpand && indexPath.row > 2) {
-        cell = [super tableView:tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row + 2 inSection:indexPath.section]];
-    }
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"kDeliveryAddressTableViewCell" forIndexPath:indexPath];
+
     return cell;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 70.0;
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0;
+}
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -126,25 +138,5 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-
-#pragma UITableViewDelegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
-    if (indexPath.row == 2) {
-        NSArray *paths = @[[NSIndexPath indexPathForRow:3 inSection:indexPath.section], [NSIndexPath indexPathForRow:4 inSection:indexPath.section]];
-        [self.tableView beginUpdates];
-        if (!self.sexExpand) {
-            self.sexExpand = YES;
-            [self.tableView insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-        } else {
-            self.sexExpand = NO;
-            [self.tableView deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-        }
-        [self.tableView endUpdates];
-
-    }
-}
 
 @end
