@@ -7,8 +7,14 @@
 //
 
 #import "KGAddAddressTableViewController.h"
+#import "KGAddressObject.h"
 
 @interface KGAddAddressTableViewController ()
+
+@property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
+@property (nonatomic, assign) BOOL areaExpand;
+@property (nonatomic, strong) NSArray *provinces, *cities, *areas;
+@property (nonatomic, strong) KGAddressObject *addrObj;
 
 @end
 
@@ -28,6 +34,7 @@
     [super viewDidLoad];
     NAVIGATIONBAR_ADD_DEFAULT_BACKBUTTON_WITH_CALLBACK(goBack:);
 
+    [self initAreaData];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -54,18 +61,18 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    if (!self.sexExpand) {
-//        return 5;
-//    }
+    if (!self.areaExpand) {
+        return 5;
+    }
     return [super tableView:tableView numberOfRowsInSection:section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
-//    if (!self.sexExpand && indexPath.row > 2) {
-//        cell = [super tableView:tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row + 2 inSection:indexPath.section]];
-//    }
+    if (!self.areaExpand && indexPath.row > 2) {
+        cell = [super tableView:tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row + 1 inSection:indexPath.section]];
+    }
     return cell;
 }
 
@@ -118,5 +125,140 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    //    UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+    if (indexPath.row == 2) {
+        NSArray *paths = @[[NSIndexPath indexPathForRow:3 inSection:indexPath.section]];
+        [self.tableView beginUpdates];
+        if (!self.areaExpand) {
+            self.areaExpand = YES;
+            [self.tableView insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+        } else {
+            self.areaExpand = NO;
+            [self.tableView deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
+        }
+        [self.tableView endUpdates];
+
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat height = [super tableView:tableView heightForRowAtIndexPath:indexPath];
+    if (!self.areaExpand && indexPath.row > 2) {
+        height = [super tableView:tableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row + 1 inSection:indexPath.section]];;
+    }
+    return height;
+}
+
+- (void)initAreaData {
+    NSArray *data = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"area" ofType:@"plist"]];
+    self.provinces = data;
+    self.cities = self.provinces[0][@"cities"];
+    self.areas = self.cities[0][@"areas"];
+
+    if (!self.addrObj) {
+        KGAddressObject *addrObj = [[KGAddressObject alloc] init];
+        self.addrObj = addrObj;
+    }
+    self.addrObj.province = self.provinces[0][@"state"];
+    self.addrObj.city = self.cities[0][@"city"];
+    if (self.areas.count > 0) {
+        self.addrObj.district = self.areas[0];
+    } else{
+        self.addrObj.district = @"";
+    }
+
+}
+
+#pragma UIPickerViewDataSource
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 3;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    NSInteger num = 0;
+    switch (component) {
+        case 0:
+            num = [self.provinces count];
+            break;
+        case 1:
+            num = [self.cities count];
+            break;
+        case 2:
+            num = [self.areas count];
+            break;
+        default:
+            break;
+    }
+    return num;
+}
+
+#pragma UIPickerViewDelegate
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    NSString *title;
+    switch (component) {
+        case 0:
+            title = self.provinces[row][@"state"];
+            break;
+        case 1:
+            title = self.cities[row][@"city"];
+            break;
+        case 2:
+            if (self.areas.count > 0) {
+                title = self.areas[row];
+            }
+            break;
+        default:
+            break;
+    }
+    return title;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    switch (component) {
+        case 0:
+            self.cities = [[self.provinces objectAtIndex:row] objectForKey:@"cities"];
+            [self.pickerView selectRow:0 inComponent:1 animated:YES];
+            [self.pickerView reloadComponent:1];
+
+            self.areas = [[self.cities objectAtIndex:0] objectForKey:@"areas"];
+            [self.pickerView selectRow:0 inComponent:2 animated:YES];
+            [self.pickerView reloadComponent:2];
+
+            self.addrObj.province = [[self.provinces objectAtIndex:row] objectForKey:@"state"];
+            self.addrObj.city = [[self.cities objectAtIndex:0] objectForKey:@"city"];
+            if ([self.areas count] > 0) {
+                self.addrObj.district = [self.areas objectAtIndex:0];
+            } else{
+                self.addrObj.district = @"";
+            }
+            break;
+        case 1:
+            self.areas = [[self.cities objectAtIndex:row] objectForKey:@"areas"];
+            [self.pickerView selectRow:0 inComponent:2 animated:YES];
+            [self.pickerView reloadComponent:2];
+
+            self.addrObj.city = [[self.cities objectAtIndex:row] objectForKey:@"city"];
+            if ([self.areas count] > 0) {
+                self.addrObj.district = [self.areas objectAtIndex:0];
+            } else{
+                self.addrObj.district = @"";
+            }
+            break;
+        case 2:
+            if ([self.areas count] > 0) {
+                self.addrObj.district = [self.areas objectAtIndex:row];
+            } else{
+                self.addrObj.district = @"";
+            }
+            break;
+        default:
+            break;
+    }
+}
+
 
 @end
