@@ -104,11 +104,11 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 }
 
 - (void) refreshDatasource {
-    self.datasource = [[NSMutableArray alloc] init];
     __weak KGBuyerListViewController *weakSelf = self;
     int64_t delayInSeconds = 2.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self.datasource removeAllObjects];
         for (NSInteger i = 0; i < 5; i ++) {
             [weakSelf.datasource addObject: [NSString stringWithFormat:@"%d", i]];
         }
@@ -125,7 +125,7 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [weakSelf.tableView beginUpdates];
         [weakSelf.datasource addObject: [NSString stringWithFormat:@"%d", 0]];
-        [weakSelf.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:weakSelf.datasource.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+        [weakSelf.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:weakSelf.datasource.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
         [weakSelf.tableView endUpdates];
 
         [weakSelf.tableView.infiniteScrollingView stopAnimating];
