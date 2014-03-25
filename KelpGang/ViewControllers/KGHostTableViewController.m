@@ -7,6 +7,7 @@
 //
 
 #import "KGHostTableViewController.h"
+#import "KGBadgeView.h"
 
 @interface KGHostTableViewController ()
 
@@ -55,7 +56,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return  [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    for (UIView *subview in [cell.contentView subviews]) {
+        if ([subview isKindOfClass:[KGBadgeView class]]) {
+            KGBadgeView *badgeView = (KGBadgeView *)subview;
+            [badgeView setBadgeValue:3];
+        }
+    }
+    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
