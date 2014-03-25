@@ -1,20 +1,18 @@
 //
-//  KGDeliveryAddressTableViewController.m
+//  KGAddAddressTableViewController.m
 //  KelpGang
 //
-//  Created by Andy on 14-3-24.
+//  Created by Andy on 14-3-25.
 //  Copyright (c) 2014年 renren. All rights reserved.
 //
 
-#import "KGDeliveryAddressTableViewController.h"
+#import "KGAddAddressTableViewController.h"
 
-@interface KGDeliveryAddressTableViewController ()
-
-@property(nonatomic, strong) NSMutableArray *datasource;
+@interface KGAddAddressTableViewController ()
 
 @end
 
-@implementation KGDeliveryAddressTableViewController
+@implementation KGAddAddressTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -29,11 +27,6 @@
 {
     [super viewDidLoad];
     NAVIGATIONBAR_ADD_DEFAULT_BACKBUTTON_WITH_CALLBACK(goBack:);
-
-    self.datasource = [[NSMutableArray alloc] init];
-    for (NSInteger i = 0; i < 3; i ++) {
-        [self.datasource addObject:[NSString stringWithFormat:@"%d", i]];
-    }
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -56,30 +49,24 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return [super numberOfSectionsInTableView:tableView];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return  [self.datasource count];
+//    if (!self.sexExpand) {
+//        return 5;
+//    }
+    return [super tableView:tableView numberOfRowsInSection:section];
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"kDeliveryAddressTableViewCell" forIndexPath:indexPath];
-
+    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+//    if (!self.sexExpand && indexPath.row > 2) {
+//        cell = [super tableView:tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row + 2 inSection:indexPath.section]];
+//    }
     return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 70.0;
-}
-
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 0;
 }
 
 

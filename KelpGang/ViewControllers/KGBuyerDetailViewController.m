@@ -118,7 +118,10 @@
     browser.delayToHideElements = -1;
     [browser setCurrentPhotoIndex:index];
 
-    [self setLeftBarButtonItem:browser];
+    UIImage *normalImage = [UIImage imageNamed:@"nav_bar_item_back"];
+    UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithImage:normalImage style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
+    buttonItem.tintColor = [UIColor whiteColor];
+    browser.navigationItem.leftBarButtonItem = buttonItem;
 
     [self.navigationController pushViewController:browser animated:YES];
 
@@ -127,14 +130,6 @@
 //    [self presentViewController:nc animated:YES completion:nil];
 
 }
-
-- (void)setLeftBarButtonItem: (UIViewController *) controller{
-    UIImage *normalImage = [UIImage imageNamed:@"nav_bar_item_back"];
-    UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithImage:normalImage style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
-    buttonItem.tintColor = [UIColor whiteColor];
-    controller.navigationItem.leftBarButtonItem = buttonItem;
-}
-
 
 - (void)didReceiveMemoryWarning
 {

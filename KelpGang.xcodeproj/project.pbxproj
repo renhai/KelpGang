@@ -98,6 +98,7 @@
 		A18A2B8818E1325D00FDFB8E /* KGBuyerListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A18A2B8318E1325D00FDFB8E /* KGBuyerListViewCell.m */; };
 		A18A2B8918E1325D00FDFB8E /* KGJourneyAddImgTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A18A2B8518E1325D00FDFB8E /* KGJourneyAddImgTableViewCell.m */; };
 		A18A2B8A18E1325D00FDFB8E /* KGTaskListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A18A2B8718E1325D00FDFB8E /* KGTaskListViewCell.m */; };
+		A18A2B8D18E1334200FDFB8E /* KGAddAddressTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A18A2B8C18E1334200FDFB8E /* KGAddAddressTableViewController.m */; };
 		A190FCB918C8541F00A87329 /* search_someone_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = A190FCB718C8541F00A87329 /* search_someone_gray.png */; };
 		A190FCBA18C8541F00A87329 /* search_someone_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A190FCB818C8541F00A87329 /* search_someone_gray@2x.png */; };
 		A190FCBD18C855F600A87329 /* search_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = A190FCBB18C855F500A87329 /* search_gray.png */; };
@@ -322,6 +323,8 @@
 		A18A2B8518E1325D00FDFB8E /* KGJourneyAddImgTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGJourneyAddImgTableViewCell.m; sourceTree = "<group>"; };
 		A18A2B8618E1325D00FDFB8E /* KGTaskListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGTaskListViewCell.h; sourceTree = "<group>"; };
 		A18A2B8718E1325D00FDFB8E /* KGTaskListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGTaskListViewCell.m; sourceTree = "<group>"; };
+		A18A2B8B18E1334200FDFB8E /* KGAddAddressTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGAddAddressTableViewController.h; sourceTree = "<group>"; };
+		A18A2B8C18E1334200FDFB8E /* KGAddAddressTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGAddAddressTableViewController.m; sourceTree = "<group>"; };
 		A190FCB718C8541F00A87329 /* search_someone_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_someone_gray.png; sourceTree = "<group>"; };
 		A190FCB818C8541F00A87329 /* search_someone_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search_someone_gray@2x.png"; sourceTree = "<group>"; };
 		A190FCBB18C855F500A87329 /* search_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_gray.png; sourceTree = "<group>"; };
@@ -795,6 +798,8 @@
 				A1DD134B18E03229000F52C2 /* KGHostDetailTableViewController.m */,
 				A1DD134D18E04C7A000F52C2 /* KGDeliveryAddressTableViewController.h */,
 				A1DD134E18E04C7A000F52C2 /* KGDeliveryAddressTableViewController.m */,
+				A18A2B8B18E1334200FDFB8E /* KGAddAddressTableViewController.h */,
+				A18A2B8C18E1334200FDFB8E /* KGAddAddressTableViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1149,6 +1154,7 @@
 				A1A1DAFD18C9CCD200F03E04 /* KGUtils.m in Sources */,
 				A16FBEF018DC1FA6009E2F66 /* KGHostTableViewController.m in Sources */,
 				A1992CDB18CCC582004BB29D /* KGSecondLevelMenuView.m in Sources */,
+				A18A2B8D18E1334200FDFB8E /* KGAddAddressTableViewController.m in Sources */,
 				A12D782118CECBED00873887 /* MWGridCell.m in Sources */,
 				A12D782218CECBED00873887 /* MWGridViewController.m in Sources */,
 				A143012618BB461A0064DF87 /* UIImage+PKImage.m in Sources */,

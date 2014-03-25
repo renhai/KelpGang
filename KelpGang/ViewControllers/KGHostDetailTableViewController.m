@@ -28,20 +28,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setLeftBarButtonItem];
+    NAVIGATIONBAR_ADD_DEFAULT_BACKBUTTON_WITH_CALLBACK(goBack:);
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (void)setLeftBarButtonItem {
-    UIImage *normalImage = [UIImage imageNamed:@"nav_bar_item_back"];
-    UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithImage:normalImage style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
-    buttonItem.tintColor = [UIColor whiteColor];
-    self.navigationItem.leftBarButtonItem = buttonItem;
 }
 
 - (void)goBack:(UIBarButtonItem *)sender {
