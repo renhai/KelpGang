@@ -94,7 +94,7 @@ static NSString * const kCityKey = @"city";
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapMaskView:)];
     [self.maskView addGestureRecognizer:tapGesture];
 
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    UIWindow *window = [[UIApplication sharedApplication].delegate window];
     if (!window) {
         window = [[UIApplication sharedApplication].windows objectAtIndex:0];
     }

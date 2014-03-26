@@ -348,6 +348,9 @@
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="ZAH-X8-gsB" kind="push" id="uAR-fs-fpu"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="kBuyerCommentCell" rowHeight="85" id="Nn0-fo-fhg" customClass="KGBuyerCommentCell">
                                         <rect key="frame" x="0.0" y="399" width="320" height="85"/>
@@ -431,6 +434,34 @@
             </objects>
             <point key="canvasLocation" x="1255" y="-1000"/>
         </scene>
+        <!--Comment List View Controller - 评论-->
+        <scene sceneID="MX9-hN-WPT">
+            <objects>
+                <viewController id="ZAH-X8-gsB" customClass="KGCommentListViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sfb-3I-3Gr">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" id="FcK-ux-uev">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="ZAH-X8-gsB" id="2L2-xB-yo2"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="评论" id="Djx-23-OaW"/>
+                    <connections>
+                        <outlet property="webView" destination="FcK-ux-uev" id="Gip-bp-4aV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hbW-4B-SWK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1791" y="-563"/>
+        </scene>
         <!--Chat View Controller-->
         <scene sceneID="yCm-5o-4xs">
             <objects>
@@ -444,7 +475,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HBO-mO-1qF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1763" y="-1000"/>
+            <point key="canvasLocation" x="1791" y="-1598"/>
         </scene>
         <!--Create Task View Controller - 新任务-->
         <scene sceneID="23G-YY-Eaw">

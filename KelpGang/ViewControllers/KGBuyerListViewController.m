@@ -13,7 +13,7 @@
 #import "UIImageView+WebCache.h"
 #import "KGConditionBar.h"
 #import "SVPullToRefresh.h"
-#import "MBProgressHUD.h"
+#import "HudHelper.h"
 
 
 static NSString * const kFindKelpCell = @"kFindKelpCell";
@@ -85,9 +85,7 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 }
 
 - (void)setupDatasource {
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeIndeterminate;
-    hud.labelText = @"Loading";
+    [[HudHelper getInstance] showHudOnView:self.view caption:@"Loading" image:nil acitivity:YES autoHideTime:0.0];
 
     self.datasource = [[NSMutableArray alloc] init];
     //TODO
@@ -99,7 +97,7 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
             [weakSelf.datasource addObject: [NSString stringWithFormat:@"%d", i]];
         }
         [weakSelf.tableView reloadData];
-        [hud hide:YES];
+        [[HudHelper getInstance] hideHudInView:self.view];
     });
 }
 
