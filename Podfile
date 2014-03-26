@@ -9,9 +9,11 @@ target :'KelpGang' do
     pod 'SDWebImage', '~> 3.5.2'
     pod 'SVPullToRefresh', '~> 0.4.1'
     pod 'XMPPFramework', '~> 3.6.4'
-    pod 'AFNetworking', '~> 2.2'
     pod 'EGOCache', '~> 2.0'
     pod 'MBProgressHUD', '~> 0.8'
     pod 'OHAttributedLabel'
+    pod 'RestKit', '~> 0.20.3'
+    pod 'RestKit/Search', '~> 0.20.3'
+    pod 'RestKit/Testing', '~> 0.20.3'
 end
 
