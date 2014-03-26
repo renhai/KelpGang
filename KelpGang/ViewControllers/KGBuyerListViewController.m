@@ -139,6 +139,8 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 
 }
 
+#pragma UITableViewDataSource
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return  [self.datasource count];
 }
@@ -157,6 +159,11 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
     return cell;
 }
 
+#pragma UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+}
 
 
 #pragma KGConditionDelegate
@@ -164,5 +171,6 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 - (void) didSelectCondition:(NSInteger)index item: (NSString *) item {
     NSLog(@"selected index: %d, item : %@", index, item);
 }
+
 
 @end
