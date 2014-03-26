@@ -8,7 +8,7 @@
 
 #import "KGBuyerListViewController.h"
 #import "KGBuyerListViewCell.h"
-#import "KGBuyerDetailViewController.h"
+#import "KGBuyerInfoViewController.h"
 #import "XMPPManager.h"
 #import "UIImageView+WebCache.h"
 #import "KGConditionBar.h"
@@ -139,7 +139,7 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    KGBuyerDetailViewController *detailController = segue.destinationViewController;
+    KGBuyerInfoViewController *detailController = segue.destinationViewController;
     [detailController setHidesBottomBarWhenPushed:YES];
 
 //    BOOL connect = [[XMPPManager sharedInstance] connect];
