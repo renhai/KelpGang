@@ -64,12 +64,6 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
     self.conditionBar.titles = @[@"目的国家", @"回国时间", @"所在城市"];
     [self.conditionBar initBarItems];
 
-    if (!iPhone5) {
-        CGRect frame = self.tableView.frame;
-        frame.size.height = SCREEN_HEIGHT - STATUSBAR_HEIGHT - NAVIGATIONBAR_HEIGHT - TABBAR_HEIGHT - self.conditionBar.frame.size.height;
-        self.tableView.frame = frame;
-    }
-
     [self setupDatasource];
 
     __weak KGBuyerListViewController *weakSelf = self;
@@ -81,7 +75,6 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
     [self.tableView addInfiniteScrollingWithActionHandler:^{
         [weakSelf insertRowAtBottom];
     }];
-
 }
 
 - (void)setupDatasource {
