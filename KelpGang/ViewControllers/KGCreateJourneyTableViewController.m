@@ -12,6 +12,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "MWPhotoBrowser.h"
 #import "UIImage+Addtional.h"
+#import "KGPhotoBrowserViewController.h"
 
 @interface KGCreateJourneyTableViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, MWPhotoBrowserDelegate>
 
@@ -141,7 +142,9 @@
         if (index == goods.thumbs.count) {
             [self showActionSheet];
         } else {
-
+            KGPhotoBrowserViewController *controller = [[KGPhotoBrowserViewController alloc]initWithImgUrls:goods.localImgUrls index:index];
+            UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:controller];
+            [self presentViewController:nc animated:YES completion:nil];
         }
     }
 

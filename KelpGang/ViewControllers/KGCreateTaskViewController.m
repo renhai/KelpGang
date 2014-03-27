@@ -8,6 +8,10 @@
 
 #import "KGCreateTaskViewController.h"
 #import "MWPhotoBrowser.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+#import "UIImage+Addtional.h"
+#import "KGPhotoBrowserViewController.h"
+
 
 @interface KGCreateTaskViewController () <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, MWPhotoBrowserDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *commionTextField;
@@ -23,7 +27,14 @@
 
 @property (nonatomic, assign) BOOL picExpanded;
 @property (nonatomic, assign) BOOL moreInfoExpanded;
-@property (nonatomic, strong) NSMutableArray *pictures;
+@property (nonatomic, strong) NSMutableArray *imgThumbs;
+@property (nonatomic, strong) NSMutableArray *imgUrls;
+
+@property (nonatomic, strong) ALAssetsLibrary *assetLibrary;
+@property (nonatomic, strong) NSMutableArray *assets;
+@property (nonatomic, strong) NSMutableArray *photos;
+@property (nonatomic, strong) NSMutableArray *thumbs;
+@property (nonatomic, strong) NSMutableArray *selections;
 
 @end
 
@@ -47,19 +58,13 @@
     self.descTextView.delegate = self;
     self.picCollectionView.delegate = self;
     self.picCollectionView.dataSource = self;
-    self.pictures = [[NSMutableArray alloc] init];
+    self.imgThumbs = [[NSMutableArray alloc] init];
+    self.imgUrls = [[NSMutableArray alloc] init];
     self.expectCountryTextField.delegate = self;
     self.maxMoneyTextField.delegate = self;
 
-//    UILongPressGestureRecognizer *longPressReger = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-//    longPressReger.minimumPressDuration = 1.0;
-//    [self.picCollectionView addGestureRecognizer:longPressReger];
+    [self loadAssets];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -302,7 +307,8 @@
         imageView.image = image;
     } else {
         self.picExpanded = NO;
-        [self.pictures removeAllObjects];
+        [self.imgThumbs removeAllObjects];
+        [self.imgUrls removeAllObjects];
         [self.picCollectionView reloadData];
         [self.tableView beginUpdates];
         [self.tableView deleteRowsAtIndexPaths:pathArr withRowAnimation:UITableViewRowAnimationFade];
@@ -360,17 +366,49 @@
         }
     } else if (buttonIndex == 1) {
         // 从相册中选取
-        if ([self isPhotoLibraryAvailable]) {
-            UIImagePickerController *controller = [[UIImagePickerController alloc] init];
-            controller.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-            controller.allowsEditing = NO;
-            controller.delegate = self;
-            [self presentViewController:controller
-                               animated:YES
-                             completion:^(void){
-                                 NSLog(@"Picker View Controller is presented");
-                             }];
+//        if ([self isPhotoLibraryAvailable]) {
+//            UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+//            controller.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+//            controller.allowsEditing = NO;
+//            controller.delegate = self;
+//            [self presentViewController:controller
+//                               animated:YES
+//                             completion:^(void){
+//                                 NSLog(@"Picker View Controller is presented");
+//                             }];
+//        }
+
+        NSMutableArray *photos = [[NSMutableArray alloc] init];
+        NSMutableArray *thumbs = [[NSMutableArray alloc] init];
+        @synchronized(_assets) {
+            NSMutableArray *copy = [_assets copy];
+            for (ALAsset *asset in copy) {
+                [photos addObject:[MWPhoto photoWithURL:asset.defaultRepresentation.url]];
+                [thumbs addObject:[MWPhoto photoWithImage:[UIImage imageWithCGImage:asset.thumbnail]]];
+            }
         }
+        self.photos = photos;
+        self.thumbs = thumbs;
+
+        MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
+        browser.displayActionButton = NO;
+        browser.displayNavArrows = NO;
+        browser.displaySelectionButtons = YES;
+        browser.alwaysShowControls = YES;
+        browser.wantsFullScreenLayout = YES;
+        browser.zoomPhotosToFill = YES;
+        browser.enableGrid = NO;
+        browser.startOnGrid = YES;
+        browser.enableSwipeToDismiss = NO;
+        [browser setCurrentPhotoIndex:0];
+
+        _selections = [NSMutableArray new];
+        for (int i = 0; i < photos.count; i++) {
+            [_selections addObject:[NSNumber numberWithBool:NO]];
+        }
+
+        UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:browser];
+        [self presentViewController:nc animated:YES completion:nil];
     }
 }
 
@@ -385,30 +423,26 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     [picker dismissViewControllerAnimated:YES completion:^() {
         UIImage *oriImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-        [self.pictures addObject:oriImage];
+        UIImage *thumb = [UIImage scaleImage:oriImage toScale:0.1];
+        [self.imgThumbs addObject:thumb];
         [self.picCollectionView reloadData];
-
-//        NSIndexPath *path = [NSIndexPath indexPathForRow:1 inSection:2];
-//        [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationNone];
-
         [self.tableView reloadData];
-//        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationNone];
         [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:2]
                               atScrollPosition:UITableViewScrollPositionBottom
                                       animated:YES];
+
+        [self.assetLibrary writeImageToSavedPhotosAlbum:[oriImage CGImage] orientation:(ALAssetOrientation)[oriImage imageOrientation] completionBlock:^(NSURL *assetURL, NSError *error){
+            if (error) {
+                NSLog(@"error");
+            } else {
+                NSLog(@"url %@", assetURL);
+                [self.imgUrls addObject:assetURL];
+            }
+        }];
+
         NSLog(@"%@",info);
     }];
 }
-
-//- (UIImageView *) buildImageView: (UIImage *) image {
-//    UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 94, 94)];
-//    view.clipsToBounds = YES;
-//    view.ContentMode = UIViewContentModeScaleAspectFill;
-//    if (image) {
-//        view.image = image;
-//    }
-//    return view;
-//}
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [picker dismissViewControllerAnimated:YES completion:nil];
@@ -430,8 +464,8 @@
 #pragma UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    if (self.pictures) {
-        return [self.pictures count] + 1;
+    if (self.imgThumbs) {
+        return [self.imgThumbs count] + 1;
     } else {
         return 1;
     }
@@ -440,7 +474,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = nil;
-    NSInteger count = [self.pictures count];
+    NSInteger count = [self.imgThumbs count];
     if (indexPath.row == count) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"kAddBtnCollectionViewCell" forIndexPath:indexPath];
     } else {
@@ -448,7 +482,7 @@
         UIImageView *imgView = (UIImageView *)[cell viewWithTag:1];
         [imgView.layer setBorderColor:RGBCOLOR(213, 232, 232).CGColor];
         [imgView.layer setBorderWidth:3];
-        imgView.image = self.pictures[indexPath.row];
+        imgView.image = self.imgThumbs[indexPath.row];
 
         UIButton *btn = (UIButton *)[cell viewWithTag:2];
         [btn addTarget:self action:@selector(delPicture:) forControlEvents:UIControlEventTouchUpInside];
@@ -460,98 +494,16 @@
 #pragma UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == self.pictures.count) {
+    if (indexPath.row == self.imgThumbs.count) {
         [self showActionSheet];
     } else {
-        MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
-        browser.displayActionButton = NO;
-        browser.displayNavArrows = NO;
-        browser.displaySelectionButtons = NO;
-        browser.alwaysShowControls = NO;
-        browser.wantsFullScreenLayout = YES;
-        browser.zoomPhotosToFill = NO;
-        browser.enableGrid = NO;
-        browser.startOnGrid = NO;
-        browser.enableSwipeToDismiss = NO;
-        browser.alwaysShowControls = NO;
-        browser.delayToHideElements = -1;
-        [browser setCurrentPhotoIndex:indexPath.row];
-
-//        [self.navigationController pushViewController:browser animated:YES];
-        UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:browser];
-        nc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        KGPhotoBrowserViewController *controller = [[KGPhotoBrowserViewController alloc] initWithImgUrls:self.imgUrls index:indexPath.row];
+        UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:controller];
         [self presentViewController:nc animated:YES completion:nil];
 
+//        [self.navigationController pushViewController:controller animated:YES];
+
     }
-
-}
-
-
-//- (void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer {
-//    CGPoint point = [gestureRecognizer locationInView:self.picCollectionView];
-//    if(gestureRecognizer.state == UIGestureRecognizerStateBegan) {
-//
-//    } else if(gestureRecognizer.state == UIGestureRecognizerStateEnded) {
-//
-//    }
-//    else if(gestureRecognizer.state == UIGestureRecognizerStateChanged) {
-//
-//    }
-//    NSIndexPath *indexPath = [self.picCollectionView indexPathForItemAtPoint:point];
-//    NSLog(@"handleLongPress indexPath: %@", indexPath);
-//    if (indexPath) {
-//        UICollectionViewCell *cell = [self.picCollectionView cellForItemAtIndexPath:indexPath];
-//        UIButton *btn = (UIButton *)[cell viewWithTag:2];
-//        btn.hidden = NO;
-//        btn.tag = indexPath.row;
-//        [btn addTarget:self action:@selector(delPicture:) forControlEvents:UIControlEventTouchUpInside];
-//    }
-//
-//}
-
-
-#pragma mark - MWPhotoBrowserDelegate
-
-- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser {
-    return [self.pictures count];
-}
-
-- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index {
-    if (index < [self.pictures count]) {
-        UIImage *img = [self.pictures objectAtIndex:index];
-        MWPhoto *mPhoto = [MWPhoto photoWithImage:img];
-        return mPhoto;
-    }
-    return nil;
-}
-
-//- (MWCaptionView *)photoBrowser:(MWPhotoBrowser *)photoBrowser captionViewForPhotoAtIndex:(NSUInteger)index {
-//    MWPhoto *photo = [self.photos objectAtIndex:index];
-//    KGPicBottomView *captionView = [[KGPicBottomView alloc] initWithPhoto:photo index:index count:self.photos.count title:[NSString stringWithFormat:@"photo title - %i", index] chatBlock:^(UIButton *sender) {
-//        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//        KGChatViewController *chatViewController = (KGChatViewController *)[storyBoard instantiateViewControllerWithIdentifier:@"kChatViewController"];
-//        [self.navigationController pushViewController:chatViewController animated:YES];
-//        NSLog(@"do chat operation");
-//    } collectBlock:^(UIButton *sender) {
-//        NSLog(@"do collect operation");
-//    }];
-//    return captionView;
-//}
-
-
-- (void)photoBrowser:(MWPhotoBrowser *)photoBrowser didDisplayPhotoAtIndex:(NSUInteger)index {
-    NSLog(@"Did start viewing photo at index %lu", (unsigned long)index);
-}
-
-- (NSString *)photoBrowser:(MWPhotoBrowser *)photoBrowser titleForPhotoAtIndex:(NSUInteger)index {
-    return @"";
-}
-
-- (void)photoBrowserDidFinishModalPresentation:(MWPhotoBrowser *)photoBrowser {
-    // If we subscribe to this method we must dismiss the view controller ourselves
-    NSLog(@"Did finish modal presentation");
-    [self dismissViewControllerAnimated:YES completion:nil];
-
 
 }
 
@@ -562,12 +514,127 @@
 }
 
 - (void) delPictureAtIndex: (NSInteger) index {
-    [self.pictures removeObjectAtIndex:index];
+    [self.imgThumbs removeObjectAtIndex:index];
+    [self.imgUrls removeObjectAtIndex:index];
     [self.picCollectionView reloadData];
     [self.tableView reloadData];
     [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:2]
                           atScrollPosition:UITableViewScrollPositionTop
                                   animated:YES];
 }
+
+
+#pragma mark - Load Assets
+
+- (void)loadAssets {
+
+    // Initialise
+    _assets = [NSMutableArray new];
+    _assetLibrary = [[ALAssetsLibrary alloc] init];
+
+    // Run in the background as it takes a while to get all assets from the library
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+
+        NSMutableArray *assetGroups = [[NSMutableArray alloc] init];
+        NSMutableArray *assetURLDictionaries = [[NSMutableArray alloc] init];
+
+        // Process assets
+        void (^assetEnumerator)(ALAsset *, NSUInteger, BOOL *) = ^(ALAsset *result, NSUInteger index, BOOL *stop) {
+            if (result != nil) {
+                if ([[result valueForProperty:ALAssetPropertyType] isEqualToString:ALAssetTypePhoto]) {
+                    [assetURLDictionaries addObject:[result valueForProperty:ALAssetPropertyURLs]];
+                    NSURL *url = result.defaultRepresentation.url;
+                    [_assetLibrary assetForURL:url
+                                   resultBlock:^(ALAsset *asset) {
+                                       if (asset) {
+                                           @synchronized(_assets) {
+                                               [_assets addObject:asset];
+                                               if (_assets.count == 1) {
+                                                   // Added first asset so reload data
+                                                   [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+                                               }
+                                           }
+                                       }
+                                   }
+                                  failureBlock:^(NSError *error){
+                                      NSLog(@"operation was not successfull!");
+                                  }];
+
+                }
+            }
+        };
+
+        // Process groups
+        void (^ assetGroupEnumerator) (ALAssetsGroup *, BOOL *) = ^(ALAssetsGroup *group, BOOL *stop) {
+            if (group != nil) {
+                [group enumerateAssetsWithOptions:NSEnumerationReverse usingBlock:assetEnumerator];
+                [assetGroups addObject:group];
+            }
+        };
+
+        // Process!
+        [self.assetLibrary enumerateGroupsWithTypes:ALAssetsGroupAll
+                                         usingBlock:assetGroupEnumerator
+                                       failureBlock:^(NSError *error) {
+                                           NSLog(@"There is an error");
+                                       }];
+        
+    });
+    
+}
+
+
+#pragma mark - MWPhotoBrowserDelegate
+
+- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser {
+    return _photos.count;
+}
+
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index {
+    if (index < _photos.count)
+        return [_photos objectAtIndex:index];
+    return nil;
+}
+
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser thumbPhotoAtIndex:(NSUInteger)index {
+    if (index < _thumbs.count)
+        return [_thumbs objectAtIndex:index];
+    return nil;
+}
+
+- (void)photoBrowser:(MWPhotoBrowser *)photoBrowser didDisplayPhotoAtIndex:(NSUInteger)index {
+    NSLog(@"Did start viewing photo at index %lu", (unsigned long)index);
+}
+
+- (BOOL)photoBrowser:(MWPhotoBrowser *)photoBrowser isPhotoSelectedAtIndex:(NSUInteger)index {
+    return [[_selections objectAtIndex:index] boolValue];
+}
+
+- (void)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index selectedChanged:(BOOL)selected {
+    [_selections replaceObjectAtIndex:index withObject:[NSNumber numberWithBool:selected]];
+    NSLog(@"Photo at index %lu selected %@", (unsigned long)index, selected ? @"YES" : @"NO");
+}
+
+- (void)photoBrowserDidFinishModalPresentation:(MWPhotoBrowser *)photoBrowser {
+    NSLog(@"Did finish modal presentation");
+    [self dismissViewControllerAnimated:YES completion:nil];
+
+    for (NSInteger i = 0; i < self.selections.count; i ++) {
+        if ([self.selections[i] boolValue]) {
+            ALAsset *asset = self.assets[i];
+            UIImage *thumb = [UIImage imageWithCGImage:asset.thumbnail];
+            [self.imgThumbs addObject:thumb];
+            [self.imgUrls addObject:asset.defaultRepresentation.url];
+        }
+    }
+    [self.picCollectionView reloadData];
+
+    [self.tableView reloadData];
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:2]
+                          atScrollPosition:UITableViewScrollPositionBottom
+                                  animated:YES];
+}
+
+
 
 @end

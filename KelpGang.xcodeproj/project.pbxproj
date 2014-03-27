@@ -132,6 +132,7 @@
 		A1930B2918CEFD47000D84A1 /* chat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1930B2718CEFD47000D84A1 /* chat@2x.png */; };
 		A1930B2C18CEFDC7000D84A1 /* collect.png in Resources */ = {isa = PBXBuildFile; fileRef = A1930B2A18CEFDC7000D84A1 /* collect.png */; };
 		A1930B2D18CEFDC7000D84A1 /* collect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1930B2B18CEFDC7000D84A1 /* collect@2x.png */; };
+		A1933C2718E3D3C9000FC0B4 /* KGPhotoBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1933C2618E3D3C9000FC0B4 /* KGPhotoBrowserViewController.m */; };
 		A197503218D84BF10062CAA7 /* UIDevice+Addtional.m in Sources */ = {isa = PBXBuildFile; fileRef = A197501618D84BF10062CAA7 /* UIDevice+Addtional.m */; };
 		A197503918D84BF10062CAA7 /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = A197502418D84BF10062CAA7 /* UIView+Additions.m */; };
 		A197503A18D84BF10062CAA7 /* UIWindow+RscExt.m in Sources */ = {isa = PBXBuildFile; fileRef = A197502618D84BF10062CAA7 /* UIWindow+RscExt.m */; };
@@ -371,6 +372,8 @@
 		A1930B2718CEFD47000D84A1 /* chat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat@2x.png"; sourceTree = "<group>"; };
 		A1930B2A18CEFDC7000D84A1 /* collect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collect.png; sourceTree = "<group>"; };
 		A1930B2B18CEFDC7000D84A1 /* collect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "collect@2x.png"; sourceTree = "<group>"; };
+		A1933C2518E3D3C9000FC0B4 /* KGPhotoBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGPhotoBrowserViewController.h; sourceTree = "<group>"; };
+		A1933C2618E3D3C9000FC0B4 /* KGPhotoBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGPhotoBrowserViewController.m; sourceTree = "<group>"; };
 		A197501518D84BF10062CAA7 /* UIDevice+Addtional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Addtional.h"; sourceTree = "<group>"; };
 		A197501618D84BF10062CAA7 /* UIDevice+Addtional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Addtional.m"; sourceTree = "<group>"; };
 		A197502318D84BF10062CAA7 /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
@@ -836,6 +839,8 @@
 				A18A2B8C18E1334200FDFB8E /* KGAddAddressTableViewController.m */,
 				A19F0ECA18E2B86200C2944D /* KGCommentListViewController.h */,
 				A19F0ECB18E2B86200C2944D /* KGCommentListViewController.m */,
+				A1933C2518E3D3C9000FC0B4 /* KGPhotoBrowserViewController.h */,
+				A1933C2618E3D3C9000FC0B4 /* KGPhotoBrowserViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1215,6 +1220,7 @@
 				A19F0ECC18E2B86200C2944D /* KGCommentListViewController.m in Sources */,
 				A12D782C18CECC5F00873887 /* DACircularProgressView.m in Sources */,
 				A143012518BB461A0064DF87 /* UIFont+PKFont.m in Sources */,
+				A1933C2718E3D3C9000FC0B4 /* KGPhotoBrowserViewController.m in Sources */,
 				A1992CD918CCC582004BB29D /* KGMainMenuTableViewCell.m in Sources */,
 				A197503918D84BF10062CAA7 /* UIView+Additions.m in Sources */,
 				A12D782618CECBED00873887 /* MWTapDetectingView.m in Sources */,
