@@ -20,4 +20,6 @@
     self.navigationItem.leftBarButtonItem = buttonItem;\
 }
 
++ (BOOL)checkIsNetworkConnectionAvailableAndNotify:(UIView*)view;
+
 @end

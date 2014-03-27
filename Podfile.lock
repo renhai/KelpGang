@@ -14,6 +14,7 @@ PODS:
   - MBProgressHUD (0.8)
   - OHAttributedLabel (3.5.3)
   - PSTCollectionView (1.2.0)
+  - Reachability (3.1.1)
   - RestKit (0.20.3):
     - RestKit/Core
   - RestKit/Core (0.20.3):
@@ -176,6 +177,7 @@ DEPENDENCIES:
   - MBProgressHUD (~> 0.8)
   - OHAttributedLabel
   - PSTCollectionView (~> 1.2.0)
+  - Reachability (~> 3.1.1)
   - RestKit (~> 0.20.3)
   - RestKit/Search (~> 0.20.3)
   - RestKit/Testing (~> 0.20.3)
@@ -193,6 +195,7 @@ SPEC CHECKSUMS:
   MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
   OHAttributedLabel: 985e4b57eec0dc6add79179ac47ec888b8a914e7
   PSTCollectionView: fb2ad2790c6efa306b2caf10315b2c1464d1f5c6
+  Reachability: be4883bb93f31e38266ae3365e5600a317aae735
   RestKit: 1f181c180105a92f11ec4f6cd7de37625e516d83
   SDWebImage: 1a62010700adbba823b621fc217906739dbf6aa5
   SOCKit: 2f3bc4d07910de12dcc202815e07db68a3802581

@@ -64,7 +64,7 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
     self.conditionBar.titles = @[@"目的国家", @"回国时间", @"所在城市"];
     [self.conditionBar initBarItems];
 
-    [self setupDatasource];
+    [self initDatasource];
 
     __weak KGBuyerListViewController *weakSelf = self;
 
@@ -75,52 +75,69 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
     [self.tableView addInfiniteScrollingWithActionHandler:^{
         [weakSelf insertRowAtBottom];
     }];
+    self.tableView.showsPullToRefresh = YES;
+    self.tableView.showsInfiniteScrolling = NO;
 }
 
-- (void)setupDatasource {
-    [[HudHelper getInstance] showHudOnView:self.view caption:@"Loading" image:nil acitivity:YES autoHideTime:0.0];
-
+- (void)initDatasource {
     self.datasource = [[NSMutableArray alloc] init];
-    //TODO
-    __weak KGBuyerListViewController *weakSelf = self;
-    int64_t delayInSeconds = 1.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        for (NSInteger i = 0; i < 5; i ++) {
-            [weakSelf.datasource addObject: [NSString stringWithFormat:@"%d", i]];
-        }
-        [weakSelf.tableView reloadData];
-        [[HudHelper getInstance] hideHudInView:self.view];
-    });
+
+    if ([KGUtils checkIsNetworkConnectionAvailableAndNotify:self.view]) {
+        [[HudHelper getInstance] showHudOnView:self.view caption:@"Loading" image:nil acitivity:YES autoHideTime:0.0];
+        //TODO
+        __weak KGBuyerListViewController *weakSelf = self;
+        int64_t delayInSeconds = 1.0;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            for (NSInteger i = 0; i < 5; i ++) {
+                [weakSelf.datasource addObject: [NSString stringWithFormat:@"%d", i]];
+            }
+            [weakSelf.tableView reloadData];
+            [[HudHelper getInstance] hideHudInView:self.view];
+            if (weakSelf.datasource.count >= 5) {
+                weakSelf.tableView.showsInfiniteScrolling = YES;
+            }
+        });
+    }
 }
 
-- (void) refreshDatasource {
+- (void)refreshDatasource {
     __weak KGBuyerListViewController *weakSelf = self;
-    int64_t delayInSeconds = 2.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [self.datasource removeAllObjects];
-        for (NSInteger i = 0; i < 5; i ++) {
-            [weakSelf.datasource addObject: [NSString stringWithFormat:@"%d", i]];
-        }
-        [weakSelf.tableView reloadData];
+    if ([KGUtils checkIsNetworkConnectionAvailableAndNotify:self.view]) {
+        int64_t delayInSeconds = 2.0;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [self.datasource removeAllObjects];
+            for (NSInteger i = 0; i < 5; i ++) {
+                [weakSelf.datasource addObject: [NSString stringWithFormat:@"%d", i]];
+            }
+            [weakSelf.tableView reloadData];
+            [weakSelf.tableView.pullToRefreshView stopAnimating];
+            if (weakSelf.datasource.count >= 5) {
+                weakSelf.tableView.showsInfiniteScrolling = YES;
+            }
+        });
+    } else {
         [weakSelf.tableView.pullToRefreshView stopAnimating];
-    });
+    }
 }
 
 - (void)insertRowAtBottom {
     __weak KGBuyerListViewController *weakSelf = self;
+    if ([KGUtils checkIsNetworkConnectionAvailableAndNotify:self.view]) {
+        int64_t delayInSeconds = 2.0;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [weakSelf.tableView beginUpdates];
+            [weakSelf.datasource addObject: [NSString stringWithFormat:@"%d", 0]];
+            [weakSelf.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:weakSelf.datasource.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+            [weakSelf.tableView endUpdates];
 
-    int64_t delayInSeconds = 2.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [weakSelf.tableView beginUpdates];
-        [weakSelf.datasource addObject: [NSString stringWithFormat:@"%d", 0]];
-        [weakSelf.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:weakSelf.datasource.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
-        [weakSelf.tableView endUpdates];
-
+            [weakSelf.tableView.infiniteScrollingView stopAnimating];
+        });
+    } else {
         [weakSelf.tableView.infiniteScrollingView stopAnimating];
-    });
+    }
 }
 
 - (void)didReceiveMemoryWarning
