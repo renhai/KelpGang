@@ -50,4 +50,10 @@
     return YES;
 }
 
++ (UIView *)seperatorWithFrame: (CGRect) frame {
+    UIView *seperator = [[UIView alloc] initWithFrame:frame];
+    seperator.backgroundColor = RGBCOLOR(211, 220, 224);
+    return seperator;
+}
+
 @end

@@ -22,4 +22,6 @@
 
 + (BOOL)checkIsNetworkConnectionAvailableAndNotify:(UIView*)view;
 
++ (UIView *)seperatorWithFrame: (CGRect) frame;
+
 @end
