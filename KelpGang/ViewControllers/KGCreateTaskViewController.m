@@ -13,7 +13,7 @@
 #import "KGPhotoBrowserViewController.h"
 
 
-@interface KGCreateTaskViewController () <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, MWPhotoBrowserDelegate>
+@interface KGCreateTaskViewController () <UITextFieldDelegate, UITextViewDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, MWPhotoBrowserDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *commionTextField;
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UITextField *deadlineTextField;
@@ -22,7 +22,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *expectCountryTextField;
 @property (weak, nonatomic) IBOutlet UITextField *maxMoneyTextField;
 
-@property (nonatomic, strong) UIPickerView *commionPickerView;
 @property (nonatomic, strong) UIDatePicker *deadlinePicker;
 
 @property (nonatomic, assign) BOOL picExpanded;
@@ -101,7 +100,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *sectionHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 10)];
-    sectionHeaderView.backgroundColor = [UIColor clearColor];
+    sectionHeaderView.backgroundColor = RGBCOLOR(233, 243, 243);
     return sectionHeaderView;
 }
 
@@ -127,55 +126,6 @@
 }
 
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 #pragma UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -198,32 +148,15 @@
         [textField resignFirstResponder];
     } else if (textField == self.maxMoneyTextField) {
         [textField resignFirstResponder];
+    } else if (textField == self.commionTextField) {
+        [textField resignFirstResponder];
     }
     return YES;
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     if (textField == self.commionTextField) {
-        UIPickerView *pickerView = [[UIPickerView alloc] initWithFrame:CGRectZero];
-        [pickerView sizeToFit];
-        pickerView.showsSelectionIndicator = YES;
-        pickerView.autoresizingMask = (UIViewAutoresizingFlexibleHeight);
-        pickerView.delegate = self;
-        pickerView.dataSource = self;
-        textField.inputView = pickerView;
-        self.commionPickerView = pickerView;
-        [self.commionPickerView selectRow:9 inComponent:0 animated:YES];
 
-        UIToolbar* keyboardDoneButtonView = [[UIToolbar alloc] init];
-        keyboardDoneButtonView.barStyle = UIBarStyleBlack;
-        keyboardDoneButtonView.translucent = YES;
-        keyboardDoneButtonView.tintColor = nil;
-        [keyboardDoneButtonView sizeToFit];
-        UIBarButtonItem* doneButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleBordered target:self action:@selector(pickerDoneClicked:)];
-        UIBarButtonItem *cancelButton  = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleBordered target: self action: @selector(pickerCancelClicked:)];
-        UIBarButtonItem *fixedButton  = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target: nil action: nil];
-        [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:cancelButton, fixedButton, doneButton, nil]];
-        textField.inputAccessoryView = keyboardDoneButtonView;
     } else if (textField == self.deadlineTextField) {
         UIDatePicker *datepicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
         datepicker.datePickerMode = UIDatePickerModeDate;
@@ -242,34 +175,6 @@
         [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:cancelButton, fixedButton, doneButton, nil]];
         textField.inputAccessoryView = keyboardDoneButtonView;
     }
-}
-
-#pragma UIPickerViewDataSource
-
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 1;
-}
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return 100;
-}
-
-#pragma UIPickerViewDelegate
-
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return [NSString stringWithFormat:@"%d%@",row + 1, @"%"];
-}
-
-- (void) pickerDoneClicked:(UIBarButtonItem *) btn
-{
-    NSInteger approw = [self.commionPickerView selectedRowInComponent:0];
-    self.commionTextField.text = [NSString stringWithFormat:@"%d%@", approw + 1, @"%"];
-    [self.commionTextField resignFirstResponder];
-}
-
-- (void) pickerCancelClicked:(UIBarButtonItem *) btn
-{
-    [self.commionTextField resignFirstResponder];
 }
 
 - (void) datePickerDoneClicked:(UIBarButtonItem *) btn
