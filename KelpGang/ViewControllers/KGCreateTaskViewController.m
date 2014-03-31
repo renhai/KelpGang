@@ -107,9 +107,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 2 && indexPath.row == 1) {
-        NSInteger height = self.picCollectionView.collectionViewLayout.collectionViewContentSize.height;
-        NSLog(@"collectionViewContentSize.height :%d", height);
-        return height;
+//        NSInteger height = self.picCollectionView.collectionViewLayout.collectionViewContentSize.height;
+//        NSLog(@"collectionViewContentSize.height :%d", height);
+//        return height;
+        return 120.0;
     }
     return [super tableView:self.tableView heightForRowAtIndexPath:indexPath];
 }
@@ -119,6 +120,9 @@
 {
     UITableViewCell *cell = [super tableView:self.tableView cellForRowAtIndexPath:indexPath];
     cell.backgroundColor = [UIColor clearColor];
+    if (indexPath.section == 2 && indexPath.row == 1) {
+        [self.picCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.imgThumbs.count inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+    }
     return cell;
 }
 

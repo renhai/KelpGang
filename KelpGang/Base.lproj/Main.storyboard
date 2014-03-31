@@ -741,7 +741,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="5" id="H1E-dj-RNJ">
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="5" id="H1E-dj-RNJ">
                                                         <size key="itemSize" width="94" height="94"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -749,7 +749,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="kAddBtnCollectionViewCell" id="c26-tk-9mN">
-                                                            <rect key="frame" x="14" y="15" width="94" height="94"/>
+                                                            <rect key="frame" x="14" y="13" width="94" height="94"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                                 <rect key="frame" x="0.0" y="0.0" width="94" height="94"/>
@@ -765,7 +765,7 @@
                                                             <size key="customSize" width="94" height="94"/>
                                                         </collectionViewCell>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="kPictureCollectionViewCell" id="sK5-8g-rAC">
-                                                            <rect key="frame" x="113" y="15" width="94" height="94"/>
+                                                            <rect key="frame" x="118" y="13" width="94" height="94"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                                 <rect key="frame" x="0.0" y="0.0" width="94" height="94"/>
