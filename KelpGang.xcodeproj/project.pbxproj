@@ -175,7 +175,6 @@
 		A1B22C5118D16BED00953EE5 /* down-arrow-big@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1B22C4F18D16BED00953EE5 /* down-arrow-big@2x.png */; };
 		A1B22C5418D1B96B00953EE5 /* add_img.png in Resources */ = {isa = PBXBuildFile; fileRef = A1B22C5218D1B96B00953EE5 /* add_img.png */; };
 		A1B22C5518D1B96B00953EE5 /* add_img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1B22C5318D1B96B00953EE5 /* add_img@2x.png */; };
-		A1BBB07D18D6B1B0002C8BD2 /* KGMoreInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BBB07C18D6B1B0002C8BD2 /* KGMoreInfoTableViewController.m */; };
 		A1BBB08018D6B4E1002C8BD2 /* KGTaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BBB07F18D6B4E1002C8BD2 /* KGTaskListViewController.m */; };
 		A1BBB08618D6EE86002C8BD2 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BBB08418D6EE86002C8BD2 /* search.png */; };
 		A1BBB08718D6EE86002C8BD2 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BBB08518D6EE86002C8BD2 /* search@2x.png */; };
@@ -435,8 +434,6 @@
 		A1B22C5218D1B96B00953EE5 /* add_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_img.png; sourceTree = "<group>"; };
 		A1B22C5318D1B96B00953EE5 /* add_img@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_img@2x.png"; sourceTree = "<group>"; };
 		A1B22C5718D1CD1D00953EE5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		A1BBB07B18D6B1B0002C8BD2 /* KGMoreInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGMoreInfoTableViewController.h; sourceTree = "<group>"; };
-		A1BBB07C18D6B1B0002C8BD2 /* KGMoreInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGMoreInfoTableViewController.m; sourceTree = "<group>"; };
 		A1BBB07E18D6B4E1002C8BD2 /* KGTaskListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGTaskListViewController.h; sourceTree = "<group>"; };
 		A1BBB07F18D6B4E1002C8BD2 /* KGTaskListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGTaskListViewController.m; sourceTree = "<group>"; };
 		A1BBB08418D6EE86002C8BD2 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
@@ -823,8 +820,6 @@
 				A10150C918CB6445004A729D /* KGChatViewController.m */,
 				A1AFF97318D0494B0043E75E /* KGCreateTaskViewController.h */,
 				A1AFF97418D0494B0043E75E /* KGCreateTaskViewController.m */,
-				A1BBB07B18D6B1B0002C8BD2 /* KGMoreInfoTableViewController.h */,
-				A1BBB07C18D6B1B0002C8BD2 /* KGMoreInfoTableViewController.m */,
 				A1BBB07E18D6B4E1002C8BD2 /* KGTaskListViewController.h */,
 				A1BBB07F18D6B4E1002C8BD2 /* KGTaskListViewController.m */,
 				A1A948BA18D93E84006DCF6E /* KGCreateJourneyTableViewController.h */,
@@ -1201,7 +1196,6 @@
 				A1DD135C18E0690D000F52C2 /* UIImage+Addtional.m in Sources */,
 				A197503A18D84BF10062CAA7 /* UIWindow+RscExt.m in Sources */,
 				A12D782318CECBED00873887 /* MWPhoto.m in Sources */,
-				A1BBB07D18D6B1B0002C8BD2 /* KGMoreInfoTableViewController.m in Sources */,
 				A1DD134F18E04C7A000F52C2 /* KGDeliveryAddressTableViewController.m in Sources */,
 				A18A2B9218E1793500FDFB8E /* KGAddressObject.m in Sources */,
 				A1BBB08018D6B4E1002C8BD2 /* KGTaskListViewController.m in Sources */,
