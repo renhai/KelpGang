@@ -941,12 +941,61 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="expectCountryTextField" destination="ZE9-0E-rIA" id="Sff-wF-1A3"/>
                         <outlet property="maxMoneyTextField" destination="9N4-2G-745" id="wdC-wh-642"/>
                         <outlet property="picCollectionView" destination="diD-7M-3Bh" id="m4w-3U-eOC"/>
+                        <outlet property="previewBarBtn" destination="po9-gr-LDW" id="lJn-qf-AwF"/>
                         <outlet property="titleTextField" destination="3CJ-pD-SlA" id="ERM-ze-Rg3"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QDM-rg-ZBA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="585" y="733"/>
+        </scene>
+        <!--Task Table View Controller-->
+        <scene sceneID="vFF-WD-tYD">
+            <objects>
+                <tableViewController storyboardIdentifier="kTaskTableViewController" id="3zo-bT-D7b" customClass="KGTaskTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="hg4-sc-Oee">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="Bh7-Cj-m7Z">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="MmC-oI-58o">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MmC-oI-58o" id="kgK-3E-e8G">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="XOO-aQ-yJb">
+                                        <rect key="frame" x="0.0" y="44" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XOO-aQ-yJb" id="EMx-FC-j2e">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Y6q-Se-etW">
+                                        <rect key="frame" x="0.0" y="88" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Y6q-Se-etW" id="IFX-3n-YRs">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="3zo-bT-D7b" id="KrF-KX-qPF"/>
+                            <outlet property="delegate" destination="3zo-bT-D7b" id="fng-H7-suT"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ziq-kE-9gq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1096" y="733"/>
         </scene>
         <!--Navigation Controller - 发任务-->
         <scene sceneID="LBe-b2-1xc">
@@ -1276,7 +1325,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s47-CR-AbF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="585" y="1479"/>
+            <point key="canvasLocation" x="585" y="2359"/>
         </scene>
         <!--Navigation Controller - 我-->
         <scene sceneID="Tg8-yQ-Ubv">
@@ -1296,7 +1345,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eCk-l9-DpD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="154" y="1479"/>
+            <point key="canvasLocation" x="154" y="2359"/>
         </scene>
         <!--Task List View Controller - 任务-->
         <scene sceneID="hcX-bd-hNZ">
@@ -1450,7 +1499,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sQd-ud-UgS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1009" y="2186"/>
+            <point key="canvasLocation" x="1065" y="2346"/>
         </scene>
         <!--Host Detail Table View Controller - 个人信息-->
         <scene sceneID="yFe-AA-Kq5">
@@ -1601,7 +1650,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TQz-YE-qo1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1001" y="1479"/>
+            <point key="canvasLocation" x="1065" y="1447"/>
         </scene>
         <!--Delivery Address Table View Controller - 收货地址管理-->
         <scene sceneID="DwD-NC-dNG">
@@ -1679,7 +1728,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oJU-Mg-ifC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1449" y="1475"/>
+            <point key="canvasLocation" x="1481" y="1439"/>
         </scene>
         <!--Add Address Table View Controller - 新增地址管理-->
         <scene sceneID="m2P-fQ-vQi">
@@ -1848,7 +1897,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P1d-xJ-KRR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1865" y="1475"/>
+            <point key="canvasLocation" x="1913" y="1447"/>
         </scene>
         <!--Create Journey Table View Controller - 发行程-->
         <scene sceneID="BA3-k3-AG3">
@@ -2026,7 +2075,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJC-jm-8eb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1481" y="2194"/>
+            <point key="canvasLocation" x="1481" y="2138"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="COb-ic-2y5">
@@ -2041,7 +2090,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fKx-b0-Hbn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1497" y="2911"/>
+            <point key="canvasLocation" x="1481" y="2855"/>
         </scene>
         <!--View Controller - 发现-->
         <scene sceneID="jXh-Y6-kEE">

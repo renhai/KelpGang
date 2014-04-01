@@ -11,6 +11,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "UIImage+Addtional.h"
 #import "KGPhotoBrowserViewController.h"
+#import "KGTaskTableViewController.h"
 
 
 @interface KGCreateTaskViewController () <UITextFieldDelegate, UITextViewDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, MWPhotoBrowserDelegate>
@@ -23,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *picCollectionView;
 @property (weak, nonatomic) IBOutlet UITextField *expectCountryTextField;
 @property (weak, nonatomic) IBOutlet UITextField *maxMoneyTextField;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *previewBarBtn;
 
 @property (nonatomic, assign) BOOL picExpanded;
 @property (nonatomic, assign) BOOL moreInfoExpanded;
@@ -41,6 +43,11 @@
 
 @implementation KGCreateTaskViewController
 
+- (void)dealloc {
+    NSLog(@"KGCreateTaskViewController dealloc");
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -53,6 +60,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clearData:) name:kPublishTask object:nil];
+
     self.titleTextField.delegate = self;
     self.commionTextField.delegate = self;
     self.descTextView.delegate = self;
@@ -65,8 +74,20 @@
 
     [self.deadlineCompleteBtn addTarget:self action:@selector(datePickerDoneClicked:) forControlEvents:UIControlEventTouchUpInside];
 
+    [self.previewBarBtn setTarget:self];
+    [self.previewBarBtn setAction:@selector(previewAction:)];
+
     [self loadAssets];
 
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -564,6 +585,17 @@
                                   animated:YES];
 }
 
+- (void)previewAction: (UIBarButtonItem *) btn {
+    KGTaskTableViewController *taskController = [self.storyboard instantiateViewControllerWithIdentifier:@"kTaskTableViewController"];
+    [self.navigationController pushViewController:taskController animated:YES];
+}
+
+- (void)clearData:(NSNotification *) notification{
+    [self.imgUrls removeAllObjects];
+    [self.imgThumbs removeAllObjects];
+    [self.picCollectionView reloadData];
+    [self.tableView reloadData];
+}
 
 
 @end
