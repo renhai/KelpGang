@@ -127,6 +127,7 @@
 */
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     //    UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
     if (indexPath.row == 2) {
         NSArray *paths = @[[NSIndexPath indexPathForRow:3 inSection:indexPath.section]];
@@ -139,7 +140,6 @@
             [self.tableView deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
         }
         [self.tableView endUpdates];
-
     }
 }
 

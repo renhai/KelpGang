@@ -144,32 +144,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [super tableView:self.tableView cellForRowAtIndexPath:indexPath];
-    if (indexPath.section == 2 && indexPath.row == 1) {
-        [self.picCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.imgThumbs.count inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
-    }
-    if (indexPath.section == 0) {
-        if (indexPath.row == 0 || indexPath.row == 3) {
-            UIView *seperator = [KGUtils seperatorWithFrame:CGRectMake(0, cell.contentView.height - 1.0, cell.contentView.width, 1.0)];
-            [cell.contentView addSubview:seperator];
-        } else {
-            UIView *seperator = [KGUtils seperatorWithFrame:CGRectMake(15, cell.contentView.height - 1.0, cell.contentView.width - 15 * 2, 1.0)];
-            [cell.contentView addSubview:seperator];
-        }
-    } else if (indexPath.section == 1 || indexPath.section == 2) {
-        UIView *topSep = [KGUtils seperatorWithFrame:CGRectMake(0, 0, cell.contentView.width, 1.0)];
-        UIView *bottomSep = [KGUtils seperatorWithFrame:CGRectMake(0, cell.contentView.height - 1.0, cell.contentView.width, 1.0)];
-        [cell.contentView addSubview:topSep];
-        [cell.contentView addSubview:bottomSep];
-    } else if (indexPath.section == 3) {
-        if (indexPath.row == 0 || indexPath.row == 2) {
-            UIView *seperator = [KGUtils seperatorWithFrame:CGRectMake(0, cell.contentView.height - 1.0, cell.contentView.width, 1.0)];
-            [cell.contentView addSubview:seperator];
-        } else {
-            UIView *seperator = [KGUtils seperatorWithFrame:CGRectMake(15, cell.contentView.height - 1.0, cell.contentView.width - 15 * 2, 1.0)];
-            [cell.contentView addSubview:seperator];
-        }
-    }
-
     return cell;
 }
 
@@ -177,6 +151,8 @@
 #pragma UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+
     UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
     if (indexPath.section == 2 && indexPath.row == 0) {
         UIImageView *imageView = (UIImageView *)[cell viewWithTag:1];
@@ -467,10 +443,10 @@
     [self.imgThumbs removeObjectAtIndex:index];
     [self.imgUrls removeObjectAtIndex:index];
     [self.picCollectionView reloadData];
-    [self.tableView reloadData];
-    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:2]
-                          atScrollPosition:UITableViewScrollPositionTop
-                                  animated:YES];
+//    [self.tableView reloadData];
+//    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:2]
+//                          atScrollPosition:UITableViewScrollPositionTop
+//                                  animated:YES];
 }
 
 
