@@ -587,6 +587,7 @@
 
 - (void)previewAction: (UIBarButtonItem *) btn {
     KGTaskTableViewController *taskController = [self.storyboard instantiateViewControllerWithIdentifier:@"kTaskTableViewController"];
+    [taskController setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:taskController animated:YES];
 }
 
