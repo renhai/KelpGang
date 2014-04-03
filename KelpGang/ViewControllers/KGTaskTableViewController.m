@@ -79,14 +79,17 @@
     int64_t delay = 2.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void) {
-        [[HudHelper getInstance] showHudOnView:weakSelf.view caption:@"发布成功" image:nil acitivity:YES autoHideTime:1.0 doBlock:^(void) {
-            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
-            [[NSNotificationCenter defaultCenter] postNotificationName:kPublishTask object:nil];
-        }];
+        [[HudHelper getInstance] hideHudInView:weakSelf.view];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kPublishTask object:nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"发布成功" delegate:weakSelf cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alertView show];
     });
-
-
 }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 
 
 

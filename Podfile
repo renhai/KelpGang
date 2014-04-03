@@ -16,5 +16,6 @@ target :'KelpGang' do
     pod 'RestKit/Search', '~> 0.20.3'
     pod 'RestKit/Testing', '~> 0.20.3'
     pod 'Reachability', '~> 3.1.1'
+   #pod 'AKTabBarController'
 end
 
