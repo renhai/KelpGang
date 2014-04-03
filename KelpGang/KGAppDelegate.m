@@ -31,6 +31,8 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
                                               barMetrics:UIBarMetricsDefault];
     }
 
+    [[UITabBar appearance] setTintColor:RGBCOLOR(33, 185, 162)];
+
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     XMPPManager *xmppmgr = [XMPPManager sharedInstance];
     [xmppmgr setupStream];
