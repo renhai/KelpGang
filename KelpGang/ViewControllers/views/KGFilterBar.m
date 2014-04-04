@@ -9,7 +9,7 @@
 #import "KGFilterBar.h"
 #import "KGFilterItem.h"
 
-@interface KGFilterBar()
+@interface KGFilterBar() <KGFilterItemDelegate>
 
 @property (nonatomic, assign) NSInteger currTapIndex;
 
@@ -19,14 +19,12 @@
 
 - (void)dealloc {
     NSLog(@"KGFilterBar dealloc");
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectFilterViewCell:) name:kSelectFilterViewCell object:nil];
     }
     return self;
 }
@@ -38,6 +36,7 @@
         for (KGFilterItem *item in items) {
             UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
             [item addGestureRecognizer:tapGesture];
+            item.delegate = self;
             [self addSubview:item];
         }
     }
@@ -46,21 +45,21 @@
 
 - (void)didTap: (UIGestureRecognizer *)gestureRecognizer {
     KGFilterItem *item = (KGFilterItem *)gestureRecognizer.view;
-    if (self.currTapIndex == -1) {
-        [self openItem:item];
-    } else if (self.currTapIndex == item.index) {
-        [self closeItem:item];
+    if (item.data && item.data.count > 0) {
+        if (self.currTapIndex == -1) {
+            [self openItem:item];
+        } else if (self.currTapIndex == item.index) {
+            [self closeItem:item];
+        } else {
+            [self closeItemByIndex:self.currTapIndex];
+            [self openItem:item];
+        }
     } else {
-        [self closeItemByIndex:self.currTapIndex];
-        [self openItem:item];
+        [self.delegate didSelectFilter:item.index item:item.text];
     }
 }
 
-- (void)selectFilterViewCell:(NSNotification*)notification {
-    NSDictionary *dict = notification.object;
-    NSInteger index = [dict[@"index"] integerValue];
-    NSString *item = dict[@"item"];
-
+- (void)didSelectFilterItem:(NSInteger)index item: (NSString *)item {
     [self closeItemByIndex:self.currTapIndex];
     [self.delegate didSelectFilter:index item:item];
 }

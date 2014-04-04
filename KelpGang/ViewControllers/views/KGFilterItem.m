@@ -28,7 +28,9 @@ static CGFloat const kMaxTextLabelMarginLeft = 10.0;
 
 @implementation KGFilterItem
 
-
+- (void)dealloc {
+    NSLog(@"KGFilterItem dealloc");
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -39,9 +41,12 @@ static CGFloat const kMaxTextLabelMarginLeft = 10.0;
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame text: (NSString *) text {
+- (id)initWithFrame:(CGRect)frame text: (NSString *) text data:(NSArray *)data{
     self = [self initWithFrame:frame];
     if (self) {
+        self.text = text;
+        self.data = data;
+        
         self.backgroundColor = [UIColor whiteColor];
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
         label.text = text;
@@ -86,6 +91,10 @@ static CGFloat const kMaxTextLabelMarginLeft = 10.0;
     arrowFrame.origin.x = labelFrame.origin.x + labelFrame.size.width + 3;
     arrowFrame.origin.y = (self.height - arrowFrame.size.height) / 2;
     self.arrowImgView.frame = arrowFrame;
+
+    if (!self.data) {
+        self.arrowImgView.hidden = YES;
+    }
 }
 
 - (void)openFilterView {
@@ -151,8 +160,7 @@ static CGFloat const kMaxTextLabelMarginLeft = 10.0;
 - (void)didSelectFilterViewCell:(NSString *)item {
     self.textLabel.text = item;
     [self.textLabel sizeToFit];
-    NSDictionary *dict = @{@"index": @(self.index), @"item": item};
-    [[NSNotificationCenter defaultCenter] postNotificationName:kSelectFilterViewCell object:dict];
+    [self.delegate didSelectFilterItem:self.index item:item];
 }
 
 

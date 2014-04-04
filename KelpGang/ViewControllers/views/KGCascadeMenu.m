@@ -10,11 +10,8 @@
 #import "KGCascadeMenuLeftCell.h"
 #import "KGCascadeMenuRightCell.h"
 
-static NSString * const kContinentKey = @"continent";
-static NSString * const kCountryKey = @"country";
-
-//static NSString * const kRegionKey = @"region";
-//static NSString * const kCityKey = @"city";
+static NSString * const kContinentKey = @"firstLevel";
+static NSString * const kCountryKey = @"secondLevel";
 
 @interface KGCascadeMenu () <UITableViewDataSource, UITableViewDelegate>
 
@@ -23,10 +20,13 @@ static NSString * const kCountryKey = @"country";
 @property (nonatomic, strong) NSArray *data;
 @property (nonatomic, assign) NSInteger currContinentIndex;
 
-
 @end
 
 @implementation KGCascadeMenu
+
+- (void)dealloc {
+    NSLog(@"KGCascadeMenu dealloc");
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
