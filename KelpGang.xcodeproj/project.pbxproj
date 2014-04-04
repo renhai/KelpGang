@@ -139,18 +139,6 @@
 		A197503A18D84BF10062CAA7 /* UIWindow+RscExt.m in Sources */ = {isa = PBXBuildFile; fileRef = A197502618D84BF10062CAA7 /* UIWindow+RscExt.m */; };
 		A197503D18D85F920062CAA7 /* trip.png in Resources */ = {isa = PBXBuildFile; fileRef = A197503B18D85F920062CAA7 /* trip.png */; };
 		A197503E18D85F920062CAA7 /* trip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A197503C18D85F920062CAA7 /* trip@2x.png */; };
-		A1992CD518CCC582004BB29D /* KGConditionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A1992CC618CCC582004BB29D /* KGConditionBar.m */; };
-		A1992CD718CCC582004BB29D /* KGConditionBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A1992CC918CCC582004BB29D /* KGConditionBarItem.m */; };
-		A1992CD818CCC582004BB29D /* KGConditionBarItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1992CCA18CCC582004BB29D /* KGConditionBarItem.xib */; };
-		A1992CD918CCC582004BB29D /* KGMainMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1992CCC18CCC582004BB29D /* KGMainMenuTableViewCell.m */; };
-		A1992CDA18CCC582004BB29D /* KGMainMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1992CCD18CCC582004BB29D /* KGMainMenuTableViewCell.xib */; };
-		A1992CDB18CCC582004BB29D /* KGSecondLevelMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1992CCF18CCC582004BB29D /* KGSecondLevelMenuView.m */; };
-		A1992CDC18CCC582004BB29D /* KGSecondLevelMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1992CD018CCC582004BB29D /* KGSecondLevelMenuView.xib */; };
-		A1992CDD18CCC582004BB29D /* KGSubMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1992CD218CCC582004BB29D /* KGSubMenuTableViewCell.m */; };
-		A1992CDE18CCC582004BB29D /* KGSubMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1992CD318CCC582004BB29D /* KGSubMenuTableViewCell.xib */; };
-		A1992CDF18CCC582004BB29D /* KGTimeConditionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1992CD418CCC582004BB29D /* KGTimeConditionView.xib */; };
-		A1992CE318CCC8B7004BB29D /* KGCommonConditionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1992CE218CCC8B7004BB29D /* KGCommonConditionCell.xib */; };
-		A1992CE618CCC97C004BB29D /* KGCommonConditionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1992CE518CCC97C004BB29D /* KGCommonConditionCell.m */; };
 		A19F0EC318E2AE0D00C2944D /* KGBuyerRefPicturesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A19F0EC218E2AE0D00C2944D /* KGBuyerRefPicturesCell.m */; };
 		A19F0EC618E2B33B00C2944D /* KGBuyerDescriptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A19F0EC518E2B33B00C2944D /* KGBuyerDescriptionCell.m */; };
 		A19F0EC918E2B47800C2944D /* KGBuyerCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A19F0EC818E2B47800C2944D /* KGBuyerCommentCell.m */; };
@@ -392,24 +380,6 @@
 		A197502618D84BF10062CAA7 /* UIWindow+RscExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+RscExt.m"; sourceTree = "<group>"; };
 		A197503B18D85F920062CAA7 /* trip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trip.png; sourceTree = "<group>"; };
 		A197503C18D85F920062CAA7 /* trip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trip@2x.png"; sourceTree = "<group>"; };
-		A1992CC518CCC582004BB29D /* KGConditionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGConditionBar.h; sourceTree = "<group>"; };
-		A1992CC618CCC582004BB29D /* KGConditionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGConditionBar.m; sourceTree = "<group>"; };
-		A1992CC818CCC582004BB29D /* KGConditionBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGConditionBarItem.h; sourceTree = "<group>"; };
-		A1992CC918CCC582004BB29D /* KGConditionBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGConditionBarItem.m; sourceTree = "<group>"; };
-		A1992CCA18CCC582004BB29D /* KGConditionBarItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KGConditionBarItem.xib; sourceTree = "<group>"; };
-		A1992CCB18CCC582004BB29D /* KGMainMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGMainMenuTableViewCell.h; sourceTree = "<group>"; };
-		A1992CCC18CCC582004BB29D /* KGMainMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGMainMenuTableViewCell.m; sourceTree = "<group>"; };
-		A1992CCD18CCC582004BB29D /* KGMainMenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KGMainMenuTableViewCell.xib; sourceTree = "<group>"; };
-		A1992CCE18CCC582004BB29D /* KGSecondLevelMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGSecondLevelMenuView.h; sourceTree = "<group>"; };
-		A1992CCF18CCC582004BB29D /* KGSecondLevelMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGSecondLevelMenuView.m; sourceTree = "<group>"; };
-		A1992CD018CCC582004BB29D /* KGSecondLevelMenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KGSecondLevelMenuView.xib; sourceTree = "<group>"; };
-		A1992CD118CCC582004BB29D /* KGSubMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGSubMenuTableViewCell.h; sourceTree = "<group>"; };
-		A1992CD218CCC582004BB29D /* KGSubMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGSubMenuTableViewCell.m; sourceTree = "<group>"; };
-		A1992CD318CCC582004BB29D /* KGSubMenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KGSubMenuTableViewCell.xib; sourceTree = "<group>"; };
-		A1992CD418CCC582004BB29D /* KGTimeConditionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KGTimeConditionView.xib; sourceTree = "<group>"; };
-		A1992CE218CCC8B7004BB29D /* KGCommonConditionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KGCommonConditionCell.xib; sourceTree = "<group>"; };
-		A1992CE418CCC97C004BB29D /* KGCommonConditionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCommonConditionCell.h; sourceTree = "<group>"; };
-		A1992CE518CCC97C004BB29D /* KGCommonConditionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCommonConditionCell.m; sourceTree = "<group>"; };
 		A19F0EC118E2AE0D00C2944D /* KGBuyerRefPicturesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGBuyerRefPicturesCell.h; sourceTree = "<group>"; };
 		A19F0EC218E2AE0D00C2944D /* KGBuyerRefPicturesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGBuyerRefPicturesCell.m; sourceTree = "<group>"; };
 		A19F0EC418E2B33B00C2944D /* KGBuyerDescriptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGBuyerDescriptionCell.h; sourceTree = "<group>"; };
@@ -521,7 +491,6 @@
 		A10150CB18CB6D41004A729D /* views */ = {
 			isa = PBXGroup;
 			children = (
-				A1992CC418CCC582004BB29D /* ConditionBar */,
 				A1930B2118CEFA66000D84A1 /* KGPicBottomView.h */,
 				A1930B2218CEFA66000D84A1 /* KGPicBottomView.m */,
 				A1930B2418CEFB3E000D84A1 /* KGPicBottom.xib */,
@@ -930,31 +899,6 @@
 			path = Addtional;
 			sourceTree = "<group>";
 		};
-		A1992CC418CCC582004BB29D /* ConditionBar */ = {
-			isa = PBXGroup;
-			children = (
-				A1992CC518CCC582004BB29D /* KGConditionBar.h */,
-				A1992CC618CCC582004BB29D /* KGConditionBar.m */,
-				A1992CC818CCC582004BB29D /* KGConditionBarItem.h */,
-				A1992CC918CCC582004BB29D /* KGConditionBarItem.m */,
-				A1992CCA18CCC582004BB29D /* KGConditionBarItem.xib */,
-				A1992CCE18CCC582004BB29D /* KGSecondLevelMenuView.h */,
-				A1992CCF18CCC582004BB29D /* KGSecondLevelMenuView.m */,
-				A1992CD018CCC582004BB29D /* KGSecondLevelMenuView.xib */,
-				A1992CCB18CCC582004BB29D /* KGMainMenuTableViewCell.h */,
-				A1992CCC18CCC582004BB29D /* KGMainMenuTableViewCell.m */,
-				A1992CCD18CCC582004BB29D /* KGMainMenuTableViewCell.xib */,
-				A1992CD118CCC582004BB29D /* KGSubMenuTableViewCell.h */,
-				A1992CD218CCC582004BB29D /* KGSubMenuTableViewCell.m */,
-				A1992CD318CCC582004BB29D /* KGSubMenuTableViewCell.xib */,
-				A1992CE418CCC97C004BB29D /* KGCommonConditionCell.h */,
-				A1992CE518CCC97C004BB29D /* KGCommonConditionCell.m */,
-				A1992CE218CCC8B7004BB29D /* KGCommonConditionCell.xib */,
-				A1992CD418CCC582004BB29D /* KGTimeConditionView.xib */,
-			);
-			path = ConditionBar;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1038,7 +982,6 @@
 				A10150E318CB8BA7004A729D /* default_line.png in Resources */,
 				A182A2B818E1267F00B63470 /* my-follow@2x.png in Resources */,
 				A190FCD618C87B1700A87329 /* star_1@2x.png in Resources */,
-				A1992CE318CCC8B7004BB29D /* KGCommonConditionCell.xib in Resources */,
 				A1036BB618BF336200FA7358 /* test-head.jpg in Resources */,
 				A106930A18C068CF003CC6BC /* head-line@2x.png in Resources */,
 				A180C0F718C8BFD900116DCF /* me_active.png in Resources */,
@@ -1075,7 +1018,6 @@
 				A180C0FA18C8BFD900116DCF /* message_alert@2x.png in Resources */,
 				A18A2B9618E1873500FDFB8E /* bubble-big@2x.png in Resources */,
 				A1A6231818BDC4F400D8E9A0 /* arrow-down.png in Resources */,
-				A1992CD818CCC582004BB29D /* KGConditionBarItem.xib in Resources */,
 				A16FBEF818DC255A009E2F66 /* empty_heart@2x.png in Resources */,
 				A1B22C5018D16BED00953EE5 /* down-arrow-big.png in Resources */,
 				A1930B2518CEFB3E000D84A1 /* KGPicBottom.xib in Resources */,
@@ -1109,8 +1051,6 @@
 				A1A1DAF918C9AE7C00F03E04 /* follow-btn-bg.png in Resources */,
 				A190FCDF18C8859400A87329 /* airplane.png in Resources */,
 				A180C0EB18C8BE7800116DCF /* search_someone_active.png in Resources */,
-				A1992CDF18CCC582004BB29D /* KGTimeConditionView.xib in Resources */,
-				A1992CDC18CCC582004BB29D /* KGSecondLevelMenuView.xib in Resources */,
 				A190FCDA18C87B1700A87329 /* star_3@2x.png in Resources */,
 				A16FBEF918DC255A009E2F66 /* full_heart.png in Resources */,
 				A10150E418CB8BA7004A729D /* default_line@2x.png in Resources */,
@@ -1127,7 +1067,6 @@
 				A12ADE4518D3225F0009B225 /* close-active.png in Resources */,
 				A1B22C4918D1654D00953EE5 /* add@2x.png in Resources */,
 				A1B22C5118D16BED00953EE5 /* down-arrow-big@2x.png in Resources */,
-				A1992CDA18CCC582004BB29D /* KGMainMenuTableViewCell.xib in Resources */,
 				A180C0FF18C8BFD900116DCF /* write_active.png in Resources */,
 				A1F8A64918C9691800ECDABB /* nav_bar_64.png in Resources */,
 				A190FCC118C8566600A87329 /* write_gray.png in Resources */,
@@ -1150,7 +1089,6 @@
 				A1B22C4D18D1670C00953EE5 /* add-active@2x.png in Resources */,
 				A1F8A65618C9826700ECDABB /* tab-bar.png in Resources */,
 				A182A2B718E1267F00B63470 /* my-follow.png in Resources */,
-				A1992CDE18CCC582004BB29D /* KGSubMenuTableViewCell.xib in Resources */,
 				A1A1DAFA18C9AE7C00F03E04 /* follow-btn-bg@2x.png in Resources */,
 				A190FCBE18C855F600A87329 /* search_gray@2x.png in Resources */,
 				A182A2B518E1267F00B63470 /* my-collect.png in Resources */,
@@ -1214,8 +1152,6 @@
 				A1AFF97518D0494B0043E75E /* KGCreateTaskViewController.m in Sources */,
 				A18A2B8018E131EA00FDFB8E /* KGJourneyGoods.m in Sources */,
 				A19F0EC918E2B47800C2944D /* KGBuyerCommentCell.m in Sources */,
-				A1992CE618CCC97C004BB29D /* KGCommonConditionCell.m in Sources */,
-				A1992CD518CCC582004BB29D /* KGConditionBar.m in Sources */,
 				A1F13E0618EE954F0013B183 /* KGCommonMenuCell.m in Sources */,
 				A1B287BD18ED9A2600E44682 /* KGFilterBar.m in Sources */,
 				A19F85E618EA6C300089B14F /* KGTaskTableViewController.m in Sources */,
@@ -1244,7 +1180,6 @@
 				A19F0EC318E2AE0D00C2944D /* KGBuyerRefPicturesCell.m in Sources */,
 				A197503218D84BF10062CAA7 /* UIDevice+Addtional.m in Sources */,
 				A1311F4518CA2E0800D1A40F /* SwipeView.m in Sources */,
-				A1992CD718CCC582004BB29D /* KGConditionBarItem.m in Sources */,
 				A1DD135C18E0690D000F52C2 /* UIImage+Addtional.m in Sources */,
 				A197503A18D84BF10062CAA7 /* UIWindow+RscExt.m in Sources */,
 				A12D782318CECBED00873887 /* MWPhoto.m in Sources */,
@@ -1258,7 +1193,6 @@
 				A1F13E0318EE47830013B183 /* KGCommonMenu.m in Sources */,
 				A1A1DAFD18C9CCD200F03E04 /* KGUtils.m in Sources */,
 				A16FBEF018DC1FA6009E2F66 /* KGHostTableViewController.m in Sources */,
-				A1992CDB18CCC582004BB29D /* KGSecondLevelMenuView.m in Sources */,
 				A19F0ED118E2C6A400C2944D /* HudHelper.m in Sources */,
 				A18A2B8D18E1334200FDFB8E /* KGAddAddressTableViewController.m in Sources */,
 				A12D782118CECBED00873887 /* MWGridCell.m in Sources */,
@@ -1269,10 +1203,8 @@
 				A18F6FD018ED50C60029F762 /* KGFilterItem.m in Sources */,
 				A143012518BB461A0064DF87 /* UIFont+PKFont.m in Sources */,
 				A1933C2718E3D3C9000FC0B4 /* KGPhotoBrowserViewController.m in Sources */,
-				A1992CD918CCC582004BB29D /* KGMainMenuTableViewCell.m in Sources */,
 				A197503918D84BF10062CAA7 /* UIView+Additions.m in Sources */,
 				A12D782618CECBED00873887 /* MWTapDetectingView.m in Sources */,
-				A1992CDD18CCC582004BB29D /* KGSubMenuTableViewCell.m in Sources */,
 				A12D782018CECBED00873887 /* MWCaptionView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
