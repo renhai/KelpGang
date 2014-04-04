@@ -9,7 +9,7 @@
 #import "KGUtils.h"
 #import "Reachability.h"
 #import "MBProgressHUD.h"
-
+#import "KGMaskView.h"
 
 @implementation KGUtils
 
@@ -56,4 +56,15 @@
     return seperator;
 }
 
++ (void)removeMaskViewFromWindow {
+    UIWindow *window = [[UIApplication sharedApplication].delegate window];
+    if (!window) {
+        window = [[UIApplication sharedApplication].windows objectAtIndex:0];
+    }
+    for (UIView *subview in window.subviews) {
+        if ([subview isKindOfClass:[KGMaskView class]]) {
+            [subview removeFromSuperview];
+        }
+    }
+}
 @end

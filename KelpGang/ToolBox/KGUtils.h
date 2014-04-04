@@ -24,4 +24,6 @@
 
 + (UIView *)seperatorWithFrame: (CGRect) frame;
 
++ (void)removeMaskViewFromWindow;
+
 @end

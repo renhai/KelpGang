@@ -182,7 +182,7 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 	//
 	// If you don't specify a hostPort, then the default (5222) will be used.
 
-	[xmppStream setHostName:@"10.2.185.29"];
+	[xmppStream setHostName:@"10.2.45.77"];
 	[xmppStream setHostPort:5222];
 
 
