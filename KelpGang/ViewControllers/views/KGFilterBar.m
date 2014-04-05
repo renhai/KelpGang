@@ -33,6 +33,8 @@
     self = [self initWithFrame:frame];
     if (self) {
         self.currTapIndex = -1;
+        UIView *bottomLine = [KGUtils seperatorWithFrame:CGRectMake(0, frame.size.height - LINE_HEIGHT, SCREEN_WIDTH, LINE_HEIGHT)];
+        [self addSubview:bottomLine];
         for (KGFilterItem *item in items) {
             UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
             [item addGestureRecognizer:tapGesture];

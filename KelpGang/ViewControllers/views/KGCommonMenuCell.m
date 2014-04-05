@@ -19,7 +19,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        UIView *line = [KGUtils seperatorWithFrame:CGRectMake(0, self.height - 1, self.width, 1)];
+        UIView *line = [KGUtils seperatorWithFrame:CGRectMake(0, self.height - LINE_HEIGHT, self.width, LINE_HEIGHT)];
         self.bottomLine = line;
         [self addSubview:self.bottomLine];
 

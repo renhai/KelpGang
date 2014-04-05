@@ -25,7 +25,7 @@
         self.label = [[UILabel alloc]initWithFrame:CGRectZero];
         [self addSubview:self.label];
 
-        UIView *line = [KGUtils seperatorWithFrame:CGRectMake(20, self.height - 1, self.width - 20, 1)];
+        UIView *line = [KGUtils seperatorWithFrame:CGRectMake(20, self.height - LINE_HEIGHT, self.width - 20, LINE_HEIGHT)];
         self.bottomLine = line;
         [self addSubview:self.bottomLine];
     }

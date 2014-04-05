@@ -41,5 +41,9 @@
 
 //判断是否为iPhone5
 #define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+//判断是否为Retina
+#define isRetina ([[UIScreen mainScreen] respondsToSelector:@selector(scale)] && [[UIScreen mainScreen] scale] == 2.0)
+
+#define LINE_HEIGHT (isRetina ? 0.5 : 1.0)
 
 #define kPublishTask @"kPublishTask"
