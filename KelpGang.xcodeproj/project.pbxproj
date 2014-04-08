@@ -145,6 +145,17 @@
 		A19F0ECC18E2B86200C2944D /* KGCommentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A19F0ECB18E2B86200C2944D /* KGCommentListViewController.m */; };
 		A19F0ED118E2C6A400C2944D /* HudHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A19F0ED018E2C6A400C2944D /* HudHelper.m */; };
 		A19F85E618EA6C300089B14F /* KGTaskTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A19F85E518EA6C300089B14F /* KGTaskTableViewController.m */; };
+		A1A003E618F3CE8D00B5A1D7 /* chat-add.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A003E518F3CE8D00B5A1D7 /* chat-add.png */; };
+		A1A003EC18F3CE9E00B5A1D7 /* chat-add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A003E718F3CE9E00B5A1D7 /* chat-add@2x.png */; };
+		A1A003ED18F3CE9E00B5A1D7 /* chat-emotion.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A003E818F3CE9E00B5A1D7 /* chat-emotion.png */; };
+		A1A003EE18F3CE9E00B5A1D7 /* chat-emotion@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A003E918F3CE9E00B5A1D7 /* chat-emotion@2x.png */; };
+		A1A003EF18F3CE9E00B5A1D7 /* chat-voice.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A003EA18F3CE9E00B5A1D7 /* chat-voice.png */; };
+		A1A003F018F3CE9E00B5A1D7 /* chat-voice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A003EB18F3CE9E00B5A1D7 /* chat-voice@2x.png */; };
+		A1A003F318F3D17100B5A1D7 /* chat-textfield-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A003F118F3D17100B5A1D7 /* chat-textfield-bg.png */; };
+		A1A003F418F3D17100B5A1D7 /* chat-textfield-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A003F218F3D17100B5A1D7 /* chat-textfield-bg@2x.png */; };
+		A1A003F718F3F0BC00B5A1D7 /* KGMessageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A003F618F3F0BC00B5A1D7 /* KGMessageObject.m */; };
+		A1A003FA18F3F60500B5A1D7 /* chat-view-background.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A003F818F3F60500B5A1D7 /* chat-view-background.png */; };
+		A1A003FB18F3F60500B5A1D7 /* chat-view-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A003F918F3F60500B5A1D7 /* chat-view-background@2x.png */; };
 		A1A1DAF918C9AE7C00F03E04 /* follow-btn-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A1DAF718C9AE7C00F03E04 /* follow-btn-bg.png */; };
 		A1A1DAFA18C9AE7C00F03E04 /* follow-btn-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A1DAF818C9AE7C00F03E04 /* follow-btn-bg@2x.png */; };
 		A1A1DAFD18C9CCD200F03E04 /* KGUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A1DAFC18C9CCD200F03E04 /* KGUtils.m */; };
@@ -392,6 +403,18 @@
 		A19F0ED018E2C6A400C2944D /* HudHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HudHelper.m; sourceTree = "<group>"; };
 		A19F85E418EA6C300089B14F /* KGTaskTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGTaskTableViewController.h; sourceTree = "<group>"; };
 		A19F85E518EA6C300089B14F /* KGTaskTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGTaskTableViewController.m; sourceTree = "<group>"; };
+		A1A003E518F3CE8D00B5A1D7 /* chat-add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat-add.png"; sourceTree = "<group>"; };
+		A1A003E718F3CE9E00B5A1D7 /* chat-add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat-add@2x.png"; sourceTree = "<group>"; };
+		A1A003E818F3CE9E00B5A1D7 /* chat-emotion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat-emotion.png"; sourceTree = "<group>"; };
+		A1A003E918F3CE9E00B5A1D7 /* chat-emotion@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat-emotion@2x.png"; sourceTree = "<group>"; };
+		A1A003EA18F3CE9E00B5A1D7 /* chat-voice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat-voice.png"; sourceTree = "<group>"; };
+		A1A003EB18F3CE9E00B5A1D7 /* chat-voice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat-voice@2x.png"; sourceTree = "<group>"; };
+		A1A003F118F3D17100B5A1D7 /* chat-textfield-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat-textfield-bg.png"; sourceTree = "<group>"; };
+		A1A003F218F3D17100B5A1D7 /* chat-textfield-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat-textfield-bg@2x.png"; sourceTree = "<group>"; };
+		A1A003F518F3F0BC00B5A1D7 /* KGMessageObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGMessageObject.h; sourceTree = "<group>"; };
+		A1A003F618F3F0BC00B5A1D7 /* KGMessageObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGMessageObject.m; sourceTree = "<group>"; };
+		A1A003F818F3F60500B5A1D7 /* chat-view-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat-view-background.png"; sourceTree = "<group>"; };
+		A1A003F918F3F60500B5A1D7 /* chat-view-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat-view-background@2x.png"; sourceTree = "<group>"; };
 		A1A1DAF718C9AE7C00F03E04 /* follow-btn-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "follow-btn-bg.png"; sourceTree = "<group>"; };
 		A1A1DAF818C9AE7C00F03E04 /* follow-btn-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "follow-btn-bg@2x.png"; sourceTree = "<group>"; };
 		A1A1DAFB18C9CCD200F03E04 /* KGUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGUtils.h; sourceTree = "<group>"; };
@@ -699,6 +722,16 @@
 		A143015E18BB5D7A0064DF87 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A1A003F818F3F60500B5A1D7 /* chat-view-background.png */,
+				A1A003F918F3F60500B5A1D7 /* chat-view-background@2x.png */,
+				A1A003F118F3D17100B5A1D7 /* chat-textfield-bg.png */,
+				A1A003F218F3D17100B5A1D7 /* chat-textfield-bg@2x.png */,
+				A1A003E518F3CE8D00B5A1D7 /* chat-add.png */,
+				A1A003E718F3CE9E00B5A1D7 /* chat-add@2x.png */,
+				A1A003E818F3CE9E00B5A1D7 /* chat-emotion.png */,
+				A1A003E918F3CE9E00B5A1D7 /* chat-emotion@2x.png */,
+				A1A003EA18F3CE9E00B5A1D7 /* chat-voice.png */,
+				A1A003EB18F3CE9E00B5A1D7 /* chat-voice@2x.png */,
 				A18A2B9318E1873500FDFB8E /* bubble-big.png */,
 				A18A2B9418E1873500FDFB8E /* bubble-big@2x.png */,
 				A18A2B8E18E1653B00FDFB8E /* area.plist */,
@@ -861,6 +894,8 @@
 				A18A2B7F18E131EA00FDFB8E /* KGJourneyGoods.m */,
 				A18A2B9018E1793500FDFB8E /* KGAddressObject.h */,
 				A18A2B9118E1793500FDFB8E /* KGAddressObject.m */,
+				A1A003F518F3F0BC00B5A1D7 /* KGMessageObject.h */,
+				A1A003F618F3F0BC00B5A1D7 /* KGMessageObject.m */,
 			);
 			path = objects;
 			sourceTree = "<group>";
@@ -979,6 +1014,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A16FBEF718DC255A009E2F66 /* empty_heart.png in Resources */,
+				A1A003F418F3D17100B5A1D7 /* chat-textfield-bg@2x.png in Resources */,
 				A10150E318CB8BA7004A729D /* default_line.png in Resources */,
 				A182A2B818E1267F00B63470 /* my-follow@2x.png in Resources */,
 				A190FCD618C87B1700A87329 /* star_1@2x.png in Resources */,
@@ -996,8 +1032,10 @@
 				A1036BB818BF3A1700FA7358 /* test-canada-flag.png in Resources */,
 				A182A2BA18E1267F00B63470 /* my-settings@2x.png in Resources */,
 				A106930818C068CF003CC6BC /* head-indicator@2x.png in Resources */,
+				A1A003EF18F3CE9E00B5A1D7 /* chat-voice.png in Resources */,
 				A16FBEFB18DC255A009E2F66 /* half_heart.png in Resources */,
 				A1DD135618E05562000F52C2 /* selected-tablecell.png in Resources */,
+				A1A003EE18F3CE9E00B5A1D7 /* chat-emotion@2x.png in Resources */,
 				A182A2AB18E125FC00B63470 /* my-orders.png in Resources */,
 				A1F8A66318C9A8B400ECDABB /* v-user-icon@2x.png in Resources */,
 				A1930B2918CEFD47000D84A1 /* chat@2x.png in Resources */,
@@ -1006,6 +1044,7 @@
 				A182A2AC18E125FC00B63470 /* my-orders@2x.png in Resources */,
 				A106930918C068CF003CC6BC /* head-line.png in Resources */,
 				A1BBB08618D6EE86002C8BD2 /* search.png in Resources */,
+				A1A003FB18F3F60500B5A1D7 /* chat-view-background@2x.png in Resources */,
 				A12ADE4618D3225F0009B225 /* close-active@2x.png in Resources */,
 				A1B22C5418D1B96B00953EE5 /* add_img.png in Resources */,
 				A12D782818CECBED00873887 /* MWPhotoBrowser.bundle in Resources */,
@@ -1030,6 +1069,7 @@
 				A190FCC918C857C700A87329 /* more_gray.png in Resources */,
 				A190FCB918C8541F00A87329 /* search_someone_gray.png in Resources */,
 				A190FCC518C856D800A87329 /* me_gray.png in Resources */,
+				A1A003FA18F3F60500B5A1D7 /* chat-view-background.png in Resources */,
 				A1930B2818CEFD47000D84A1 /* chat.png in Resources */,
 				A1B22C4818D1654D00953EE5 /* add.png in Resources */,
 				A1F8A66218C9A8B400ECDABB /* v-user-icon.png in Resources */,
@@ -1056,6 +1096,7 @@
 				A10150E418CB8BA7004A729D /* default_line@2x.png in Resources */,
 				A1B22C5518D1B96B00953EE5 /* add_img@2x.png in Resources */,
 				A190FCBD18C855F600A87329 /* search_gray.png in Resources */,
+				A1A003E618F3CE8D00B5A1D7 /* chat-add.png in Resources */,
 				A1DD135718E05562000F52C2 /* selected-tablecell@2x.png in Resources */,
 				A182A2BF18E1280200B63470 /* i-am-buyer.png in Resources */,
 				A18A2B9518E1873500FDFB8E /* bubble-big.png in Resources */,
@@ -1074,12 +1115,14 @@
 				A14300D318BB252F0064DF87 /* InfoPlist.strings in Resources */,
 				A190FCCA18C857C700A87329 /* more_gray@2x.png in Resources */,
 				A143012918BB4C4E0064DF87 /* common.bundle in Resources */,
+				A1A003F018F3CE9E00B5A1D7 /* chat-voice@2x.png in Resources */,
 				A16FBF0218DC4F3A009E2F66 /* recent-contact@2x.png in Resources */,
 				A106930E18C06C32003CC6BC /* arrow-up@2x.png in Resources */,
 				A10150E518CB8BA7004A729D /* selected_line.png in Resources */,
 				A190FCDB18C87B1700A87329 /* star_4.png in Resources */,
 				A1DD135218E0538E000F52C2 /* add-white.png in Resources */,
 				A180C0EC18C8BE7800116DCF /* search_someone_active@2x.png in Resources */,
+				A1A003ED18F3CE9E00B5A1D7 /* chat-emotion.png in Resources */,
 				A1AFF97918D079160043E75E /* right-arrow@2x.png in Resources */,
 				A190FCD518C87B1700A87329 /* star_1.png in Resources */,
 				A180C0F818C8BFD900116DCF /* me_active@2x.png in Resources */,
@@ -1087,6 +1130,7 @@
 				A1F8A65218C9805A00ECDABB /* tab_bar_selected.png in Resources */,
 				A182A2BC18E1267F00B63470 /* my-task@2x.png in Resources */,
 				A1B22C4D18D1670C00953EE5 /* add-active@2x.png in Resources */,
+				A1A003F318F3D17100B5A1D7 /* chat-textfield-bg.png in Resources */,
 				A1F8A65618C9826700ECDABB /* tab-bar.png in Resources */,
 				A182A2B718E1267F00B63470 /* my-follow.png in Resources */,
 				A1A1DAFA18C9AE7C00F03E04 /* follow-btn-bg@2x.png in Resources */,
@@ -1097,6 +1141,7 @@
 				A190FCBA18C8541F00A87329 /* search_someone_gray@2x.png in Resources */,
 				A18A2B8F18E1653B00FDFB8E /* area.plist in Resources */,
 				A180C0FE18C8BFD900116DCF /* search_active@2x.png in Resources */,
+				A1A003EC18F3CE9E00B5A1D7 /* chat-add@2x.png in Resources */,
 				A14300DC18BB252F0064DF87 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1171,6 +1216,7 @@
 				A14300D518BB252F0064DF87 /* main.m in Sources */,
 				A18A2B9B18E18D8C00FDFB8E /* KGBadgeView.m in Sources */,
 				A16FBEED18DC178C009E2F66 /* KGMaskView.m in Sources */,
+				A1A003F718F3F0BC00B5A1D7 /* KGMessageObject.m in Sources */,
 				A1C0ACFB18C759010092E3B4 /* XMPPManager.m in Sources */,
 				A12D782418CECBED00873887 /* MWPhotoBrowser.m in Sources */,
 				A143012718BB461A0064DF87 /* PKResManager.m in Sources */,
