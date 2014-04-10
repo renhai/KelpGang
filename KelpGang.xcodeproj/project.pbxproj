@@ -151,8 +151,6 @@
 		A1A003EE18F3CE9E00B5A1D7 /* chat-emotion@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A003E918F3CE9E00B5A1D7 /* chat-emotion@2x.png */; };
 		A1A003EF18F3CE9E00B5A1D7 /* chat-voice.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A003EA18F3CE9E00B5A1D7 /* chat-voice.png */; };
 		A1A003F018F3CE9E00B5A1D7 /* chat-voice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A003EB18F3CE9E00B5A1D7 /* chat-voice@2x.png */; };
-		A1A003F318F3D17100B5A1D7 /* chat-textfield-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A003F118F3D17100B5A1D7 /* chat-textfield-bg.png */; };
-		A1A003F418F3D17100B5A1D7 /* chat-textfield-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A003F218F3D17100B5A1D7 /* chat-textfield-bg@2x.png */; };
 		A1A003F718F3F0BC00B5A1D7 /* KGMessageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A003F618F3F0BC00B5A1D7 /* KGMessageObject.m */; };
 		A1A003FA18F3F60500B5A1D7 /* chat-view-background.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A003F818F3F60500B5A1D7 /* chat-view-background.png */; };
 		A1A003FB18F3F60500B5A1D7 /* chat-view-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A003F918F3F60500B5A1D7 /* chat-view-background@2x.png */; };
@@ -185,6 +183,8 @@
 		A1C9C76D18F5281D00A081D0 /* KGChatTipCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C9C76C18F5281D00A081D0 /* KGChatTipCell.m */; };
 		A1C9C77E18F5675D00A081D0 /* KGChatMessageOtherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C9C77D18F5675D00A081D0 /* KGChatMessageOtherCell.m */; };
 		A1CA060018DAF32D00B1F3A6 /* KGJourneyPictureContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CA05FF18DAF32D00B1F3A6 /* KGJourneyPictureContainerView.m */; };
+		A1CF104A18F655F600B9F6B1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1CF104918F655F600B9F6B1 /* QuartzCore.framework */; };
+		A1CF105118F68E3600B9F6B1 /* KGChatTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CF105018F68E3600B9F6B1 /* KGChatTextField.m */; };
 		A1DD134C18E03229000F52C2 /* KGHostDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DD134B18E03229000F52C2 /* KGHostDetailTableViewController.m */; };
 		A1DD134F18E04C7A000F52C2 /* KGDeliveryAddressTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DD134E18E04C7A000F52C2 /* KGDeliveryAddressTableViewController.m */; };
 		A1DD135218E0538E000F52C2 /* add-white.png in Resources */ = {isa = PBXBuildFile; fileRef = A1DD135018E0538E000F52C2 /* add-white.png */; };
@@ -411,8 +411,6 @@
 		A1A003E918F3CE9E00B5A1D7 /* chat-emotion@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat-emotion@2x.png"; sourceTree = "<group>"; };
 		A1A003EA18F3CE9E00B5A1D7 /* chat-voice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat-voice.png"; sourceTree = "<group>"; };
 		A1A003EB18F3CE9E00B5A1D7 /* chat-voice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat-voice@2x.png"; sourceTree = "<group>"; };
-		A1A003F118F3D17100B5A1D7 /* chat-textfield-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat-textfield-bg.png"; sourceTree = "<group>"; };
-		A1A003F218F3D17100B5A1D7 /* chat-textfield-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat-textfield-bg@2x.png"; sourceTree = "<group>"; };
 		A1A003F518F3F0BC00B5A1D7 /* KGMessageObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGMessageObject.h; sourceTree = "<group>"; };
 		A1A003F618F3F0BC00B5A1D7 /* KGMessageObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGMessageObject.m; sourceTree = "<group>"; };
 		A1A003F818F3F60500B5A1D7 /* chat-view-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat-view-background.png"; sourceTree = "<group>"; };
@@ -458,6 +456,9 @@
 		A1C9C77D18F5675D00A081D0 /* KGChatMessageOtherCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGChatMessageOtherCell.m; sourceTree = "<group>"; };
 		A1CA05FE18DAF32D00B1F3A6 /* KGJourneyPictureContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGJourneyPictureContainerView.h; sourceTree = "<group>"; };
 		A1CA05FF18DAF32D00B1F3A6 /* KGJourneyPictureContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGJourneyPictureContainerView.m; sourceTree = "<group>"; };
+		A1CF104918F655F600B9F6B1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A1CF104F18F68E3600B9F6B1 /* KGChatTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGChatTextField.h; sourceTree = "<group>"; };
+		A1CF105018F68E3600B9F6B1 /* KGChatTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGChatTextField.m; sourceTree = "<group>"; };
 		A1DD134A18E03229000F52C2 /* KGHostDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGHostDetailTableViewController.h; sourceTree = "<group>"; };
 		A1DD134B18E03229000F52C2 /* KGHostDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGHostDetailTableViewController.m; sourceTree = "<group>"; };
 		A1DD134D18E04C7A000F52C2 /* KGDeliveryAddressTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGDeliveryAddressTableViewController.h; sourceTree = "<group>"; };
@@ -496,6 +497,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1CF104A18F655F600B9F6B1 /* QuartzCore.framework in Frameworks */,
 				A1311F4118CA27A300D1A40F /* MapKit.framework in Frameworks */,
 				A14300CB18BB252F0064DF87 /* CoreGraphics.framework in Frameworks */,
 				A14300CD18BB252F0064DF87 /* UIKit.framework in Frameworks */,
@@ -545,6 +547,8 @@
 				A1F13E0218EE47830013B183 /* KGCommonMenu.m */,
 				A1F13E0418EE954F0013B183 /* KGCommonMenuCell.h */,
 				A1F13E0518EE954F0013B183 /* KGCommonMenuCell.m */,
+				A1CF104F18F68E3600B9F6B1 /* KGChatTextField.h */,
+				A1CF105018F68E3600B9F6B1 /* KGChatTextField.m */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -625,6 +629,7 @@
 		A14300C718BB252F0064DF87 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A1CF104918F655F600B9F6B1 /* QuartzCore.framework */,
 				A1B22C5718D1CD1D00953EE5 /* MobileCoreServices.framework */,
 				A1311F4018CA27A300D1A40F /* MapKit.framework */,
 				A14300C818BB252F0064DF87 /* Foundation.framework */,
@@ -730,8 +735,6 @@
 			children = (
 				A1A003F818F3F60500B5A1D7 /* chat-view-background.png */,
 				A1A003F918F3F60500B5A1D7 /* chat-view-background@2x.png */,
-				A1A003F118F3D17100B5A1D7 /* chat-textfield-bg.png */,
-				A1A003F218F3D17100B5A1D7 /* chat-textfield-bg@2x.png */,
 				A1A003E518F3CE8D00B5A1D7 /* chat-add.png */,
 				A1A003E718F3CE9E00B5A1D7 /* chat-add@2x.png */,
 				A1A003E818F3CE9E00B5A1D7 /* chat-emotion.png */,
@@ -1024,7 +1027,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A16FBEF718DC255A009E2F66 /* empty_heart.png in Resources */,
-				A1A003F418F3D17100B5A1D7 /* chat-textfield-bg@2x.png in Resources */,
 				A10150E318CB8BA7004A729D /* default_line.png in Resources */,
 				A182A2B818E1267F00B63470 /* my-follow@2x.png in Resources */,
 				A190FCD618C87B1700A87329 /* star_1@2x.png in Resources */,
@@ -1140,7 +1142,6 @@
 				A1F8A65218C9805A00ECDABB /* tab_bar_selected.png in Resources */,
 				A182A2BC18E1267F00B63470 /* my-task@2x.png in Resources */,
 				A1B22C4D18D1670C00953EE5 /* add-active@2x.png in Resources */,
-				A1A003F318F3D17100B5A1D7 /* chat-textfield-bg.png in Resources */,
 				A1F8A65618C9826700ECDABB /* tab-bar.png in Resources */,
 				A182A2B718E1267F00B63470 /* my-follow.png in Resources */,
 				A1A1DAFA18C9AE7C00F03E04 /* follow-btn-bg@2x.png in Resources */,
@@ -1217,6 +1218,7 @@
 				A1C9C76D18F5281D00A081D0 /* KGChatTipCell.m in Sources */,
 				A1930B2318CEFA66000D84A1 /* KGPicBottomView.m in Sources */,
 				A1B287BA18ED955B00E44682 /* KGFilterView.m in Sources */,
+				A1CF105118F68E3600B9F6B1 /* KGChatTextField.m in Sources */,
 				A14300D918BB252F0064DF87 /* KGAppDelegate.m in Sources */,
 				A1F13E0018EE46E50013B183 /* KGCascadeMenu.m in Sources */,
 				A112770318E29445006F7CFA /* KGBuyerInfoViewController.m in Sources */,

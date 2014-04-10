@@ -506,7 +506,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" background="chat-textfield-bg.png" id="Zd4-ta-Jmw">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="Zd4-ta-Jmw" customClass="KGChatTextField">
                                         <rect key="frame" x="60" y="13" width="158" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2342,7 +2342,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="bubble-big.png" width="22" height="22"/>
         <image name="chat-add.png" width="35" height="35"/>
         <image name="chat-emotion.png" width="35" height="35"/>
-        <image name="chat-textfield-bg.png" width="158" height="34"/>
         <image name="chat-voice.png" width="35" height="35"/>
         <image name="delete_img.png" width="26" height="26"/>
         <image name="down-arrow-big.png" width="13" height="7"/>

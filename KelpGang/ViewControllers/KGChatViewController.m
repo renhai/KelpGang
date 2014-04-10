@@ -9,13 +9,14 @@
 #import "KGChatViewController.h"
 #import "KGChatTipCell.h"
 #import "KGChatMessageOtherCell.h"
+#import "KGChatTextField.h"
 
 
 @interface KGChatViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *voiceBtn;
-@property (weak, nonatomic) IBOutlet UITextField *chatTextField;
+@property (weak, nonatomic) IBOutlet KGChatTextField *chatTextField;
 @property (weak, nonatomic) IBOutlet UIButton *emotionBtn;
 @property (weak, nonatomic) IBOutlet UIButton *addBtn;
 
@@ -46,10 +47,19 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chat-view-background"]];
+
     [self initGoodsView];
+    [self initChatTextField];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)initChatTextField {
+    self.chatTextField.borderStyle = UITextBorderStyleNone;
+    self.chatTextField.layer.cornerRadius = 15;
+    self.chatTextField.layer.borderWidth = LINE_HEIGHT;
+    self.chatTextField.layer.borderColor = RGBCOLOR(211, 220, 224).CGColor;
 }
 
 #pragma mark - Table view data source
