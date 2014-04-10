@@ -7,9 +7,12 @@
 //
 
 #import "KGChatViewController.h"
+#import "KGChatTipCell.h"
+#import "KGChatMessageOtherCell.h"
 
 
 @interface KGChatViewController () <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *voiceBtn;
 @property (weak, nonatomic) IBOutlet UITextField *chatTextField;
@@ -43,6 +46,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chat-view-background"]];
+    [self initGoodsView];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -62,16 +66,57 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"kChatTableViewCell";
     UITableViewCell *cell;
     if (indexPath.row == 0) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"kChatTipCell"];
+        cell = [[KGChatTipCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"kChatTipCell"];
+        cell.backgroundColor = [UIColor clearColor];
     } else {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[KGChatMessageOtherCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"kChatMessageOtherCell"];
+        cell.backgroundColor = [UIColor clearColor];
     }
-    cell.backgroundColor = [UIColor clearColor];
     return cell;
 }
+
+#pragma UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        return 60;
+    } else {
+        return 60;
+    }
+}
+
+
+- (void)initGoodsView {
+    UIButton *topView = [[UIButton alloc] initWithFrame:self.topView.frame];
+    [topView setBackgroundImage:[UIImage imageWithColor:RGBACOLOR(0, 0, 0, 0.12)] forState:UIControlStateHighlighted];
+    topView.backgroundColor = [UIColor whiteColor];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+    label.text = @"美国版ipad mini 代购，快来大家快来买吧!";
+    label.textColor = RGBCOLOR(33, 185, 162);
+    label.font = [UIFont systemFontOfSize:16];
+    [label sizeToFit];
+    [label setWidth:130];
+    [label setLeft:15];
+    [label setTop:10];
+    [topView addSubview:label];
+
+    UIImageView *arrowView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"right-arrow"]];
+    [arrowView setTop:13];
+    [arrowView setLeft:293];
+    [topView addSubview:arrowView];
+
+    [topView addTarget:self action:@selector(tapHeader:) forControlEvents:UIControlEventTouchUpInside];
+    [self.topView addSubview:topView];
+}
+
+- (void)tapHeader:(UIControl *) controll {
+    UIViewController *controller = [[UIViewController alloc]init];
+    controller.view.backgroundColor = [UIColor whiteColor];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
 
 #pragma UIScrollViewDelegate
 

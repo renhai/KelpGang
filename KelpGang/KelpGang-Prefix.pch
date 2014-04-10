@@ -16,6 +16,7 @@
     #import "KGUtils.h"
     #import "KGGlobal.h"
     #import "UIView+Additions.h"
+    #import "UIImage+Addtional.h"
 #endif
 
 #define HAVE_XMPP_SUBSPEC_RECONNECT
