@@ -26,7 +26,7 @@ static const CGFloat kMessageLabelMarginRight = 10.0;
 
 @class KGMessageObject;
 
-@interface KGChatMessageOtherCell : UITableViewCell
+@interface KGChatTextMessageCell : UITableViewCell
 
 @property (nonatomic, strong) UIView *bgView;
 @property (nonatomic, strong) UILabel *msgLabel;

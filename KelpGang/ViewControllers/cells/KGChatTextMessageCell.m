@@ -6,10 +6,10 @@
 //  Copyright (c) 2014年 renren. All rights reserved.
 //
 
-#import "KGChatMessageOtherCell.h"
+#import "KGChatTextMessageCell.h"
 #import "KGMessageObject.h"
 
-@implementation KGChatMessageOtherCell
+@implementation KGChatTextMessageCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

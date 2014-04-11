@@ -7,7 +7,7 @@
 //
 
 #import "KGChatViewController.h"
-#import "KGChatMessageOtherCell.h"
+#import "KGChatTextMessageCell.h"
 #import "KGChatTextField.h"
 #import "KGMessageObject.h"
 
@@ -131,9 +131,9 @@
 {
     UITableViewCell *cell;
 
-    cell = [[KGChatMessageOtherCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"kChatMessageOtherCell"];
+    cell = [[KGChatTextMessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"kChatMessageOtherCell"];
     cell.backgroundColor = [UIColor clearColor];
-    KGChatMessageOtherCell *mCell = (KGChatMessageOtherCell *)cell;
+    KGChatTextMessageCell *mCell = (KGChatTextMessageCell *)cell;
     KGMessageObject *msgObj = self.messageArr[indexPath.row];
     [mCell configCell:msgObj];
 
