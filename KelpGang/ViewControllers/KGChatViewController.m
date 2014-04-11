@@ -7,9 +7,9 @@
 //
 
 #import "KGChatViewController.h"
-#import "KGChatTipCell.h"
 #import "KGChatMessageOtherCell.h"
 #import "KGChatTextField.h"
+#import "KGMessageObject.h"
 
 
 @interface KGChatViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet KGChatTextField *chatTextField;
 @property (weak, nonatomic) IBOutlet UIButton *emotionBtn;
 @property (weak, nonatomic) IBOutlet UIButton *addBtn;
+
+@property (nonatomic, strong) NSMutableArray *messageArr;
 
 @end
 
@@ -44,15 +46,36 @@
     [super viewDidLoad];
     NAVIGATIONBAR_ADD_DEFAULT_BACKBUTTON_WITH_CALLBACK(goBack:);
     [self.navigationItem setTitle:@"myrenhai"];
+
+    [self mockData];
+
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+//    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;//TEST
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chat-view-background"]];
 
     [self initGoodsView];
     [self initChatTextField];
+    [self initHeaderView];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)mockData {
+    self.messageArr = [[NSMutableArray alloc] init];
+    KGMessageObject *obj1 = [[KGMessageObject alloc]init];
+    obj1.content = @"帮带的东西很好，希望还能继续合作，剩了不少钱，还是海带划算啊。。。。";
+
+    KGMessageObject *obj2 = [[KGMessageObject alloc]init];
+    obj2.content = @"剩了不少钱，还是海带划算啊";
+
+    KGMessageObject *obj3 = [[KGMessageObject alloc]init];
+    obj3.content = @"剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊";
+
+    [self.messageArr addObject:obj1];
+    [self.messageArr addObject:obj2];
+    [self.messageArr addObject:obj3];
 }
 
 - (void)initChatTextField {
@@ -60,6 +83,36 @@
     self.chatTextField.layer.cornerRadius = 15;
     self.chatTextField.layer.borderWidth = LINE_HEIGHT;
     self.chatTextField.layer.borderColor = RGBCOLOR(211, 220, 224).CGColor;
+}
+
+-(void)initHeaderView {
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 60)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(81, 15, 158, 30)];
+    view.backgroundColor = RGBACOLOR(0, 0, 0, 0.12);
+    view.layer.cornerRadius = 4;
+
+    UILabel *topLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    topLabel.backgroundColor = [UIColor clearColor];
+    topLabel.text = @"可以开始聊天了";
+    topLabel.textColor = [UIColor whiteColor];
+    topLabel.font = [UIFont systemFontOfSize:10];
+    [topLabel sizeToFit];
+    [topLabel setTop:2];
+    [topLabel setLeft:(view.width - topLabel.width) / 2.0];
+    [view addSubview:topLabel];
+
+    UILabel *bottomLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    bottomLabel.backgroundColor = [UIColor clearColor];
+    bottomLabel.text = @"别忘了填写商品信息生成订单哦";
+    bottomLabel.textColor = [UIColor whiteColor];
+    bottomLabel.font = [UIFont systemFontOfSize:10];
+    [bottomLabel sizeToFit];
+    [bottomLabel setTop:topLabel.bottom + 2];
+    [bottomLabel setLeft:(view.width - bottomLabel.width) / 2.0];
+    [view addSubview:bottomLabel];
+    [headerView addSubview:view];
+
+    self.tableView.tableHeaderView = headerView;
 }
 
 #pragma mark - Table view data source
@@ -71,30 +124,27 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return self.messageArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;
-    if (indexPath.row == 0) {
-        cell = [[KGChatTipCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"kChatTipCell"];
-        cell.backgroundColor = [UIColor clearColor];
-    } else {
-        cell = [[KGChatMessageOtherCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"kChatMessageOtherCell"];
-        cell.backgroundColor = [UIColor clearColor];
-    }
+
+    cell = [[KGChatMessageOtherCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"kChatMessageOtherCell"];
+    cell.backgroundColor = [UIColor clearColor];
+    KGChatMessageOtherCell *mCell = (KGChatMessageOtherCell *)cell;
+    KGMessageObject *msgObj = self.messageArr[indexPath.row];
+    [mCell configCell:msgObj];
+
     return cell;
 }
 
 #pragma UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0) {
-        return 60;
-    } else {
-        return 60;
-    }
+    KGMessageObject *msgObj = self.messageArr[indexPath.row];
+    return [self cellHeight:msgObj];
 }
 
 
@@ -165,6 +215,13 @@
 
 - (void)goBack:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (CGFloat)cellHeight: (KGMessageObject *) msgObj {
+    NSString *content = msgObj.content;
+    CGSize constraint = CGSizeMake(kMessageLableMaxWidth, 20000.0f);
+    CGSize labelSize = [content sizeWithFont:[UIFont systemFontOfSize:16] constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
+    return labelSize.height + kMessageLabelMarginTop + kMessageLabelMarginBottom;
 }
 
 @end
