@@ -251,6 +251,7 @@
     MWPhoto *photo = [self.photos objectAtIndex:index];
     KGPicBottomView *captionView = [[KGPicBottomView alloc] initWithPhoto:photo index:index count:self.photos.count title:[NSString stringWithFormat:@"photo title - %i", index] chatBlock:^(UIButton *sender) {
         KGChatViewController *chatViewController = (KGChatViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"kChatViewController"];
+        self.navigationController.navigationBar.translucent = NO;
         [self.navigationController pushViewController:chatViewController animated:YES];
         NSLog(@"do chat operation");
     } collectBlock:^(UIButton *sender) {

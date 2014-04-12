@@ -31,7 +31,7 @@
     NAVIGATIONBAR_ADD_DEFAULT_BACKBUTTON_WITH_CALLBACK(goBack:);
 
     [[HudHelper getInstance] showHudOnView:self.view caption:@"Loading" image:nil acitivity:YES autoHideTime:0.0];
-    NSURLRequest *reqest = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://10.2.24.140/html/guangjieapp.htm"]];//TODO
+    NSURLRequest *reqest = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://10.2.24.140/html/gj_pingjia.htm"]];//TODO
     [self.webView loadRequest:reqest];
 }
 

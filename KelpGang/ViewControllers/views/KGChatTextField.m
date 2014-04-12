@@ -48,13 +48,14 @@ static const CGFloat kTextFieldPaddingHeight = 0.0;
     [self setNeedsDisplay];
 }
 
-/*
+
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
+//- (void)drawRect:(CGRect)rect
+//{
+//    UIImage * backgroundImage = [[UIImage imageNamed:@"chat-tf-bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(13, 19, 13, 19)];
+//    [backgroundImage drawInRect:[self bounds]];
+//}
+
 
 @end

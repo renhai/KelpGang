@@ -9,6 +9,16 @@
 #import "KGChatTextMessageCell.h"
 #import "KGMessageObject.h"
 
+static const CGFloat kBackgroundViewMarginTop = 8.0;
+static const CGFloat kBackgroundViewMarginLeftOrRight = 5.0;
+static const CGFloat kBackgroundViewPaddingLeftOrRight = 10.0;
+
+static const CGFloat kHeaderImageMarginTop = 16.0;
+static const CGFloat kHeaderImageMarginLeftOrRight = 14.0;
+static const CGFloat kHeaderImageWidth = 25.0;
+static const CGFloat kHeaderImageHeight = 25.0;
+
+
 @implementation KGChatTextMessageCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -21,13 +31,40 @@
 }
 
 - (void)layoutSubviews {
-    [self.msgLabel setLeft:self.headView.right + kHeaderImageMarginRight];
-    [self.msgLabel setTop:kMessageLabelMarginTop];
+    CGSize constraint = CGSizeMake(kMessageLableMaxWidth, 20000.0f);
+    CGSize labelSize = [self.msgLabel.text sizeWithFont:self.msgLabel.font constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
+    CGFloat bgViewPaddingMsgLabelTopOrBottom = 13.0;
+    CGFloat headerImageMarginMsgLabelLeftOrRight = 10.0;
+    if (self.msgObj.type == MessageTypeOther) {
+        [self.headView setLeft:kHeaderImageMarginLeftOrRight];
+        [self.headView setTop:kHeaderImageMarginTop];
 
-    [self.bgView setTop:kBackgroundViewMarginTop];
-    [self.bgView setLeft:kBackgroundViewMarginLeft];
-    [self.bgView setWidth:self.msgLabel.right + kMessageLabelMarginRight - kBackgroundViewMarginLeft];
-    [self.bgView setHeight:kBackgroundViewPaddingTop + self.msgLabel.height + kBackgroundViewPaddingBottom];
+        [self.msgLabel setLeft:self.headView.right + headerImageMarginMsgLabelLeftOrRight];
+        [self.msgLabel setTop:kMessageLabelMarginTop];
+        [self.msgLabel setSize:labelSize];
+        self.msgLabel.textColor = RGBCOLOR(92, 92, 92);
+
+        [self.bgView setTop:kBackgroundViewMarginTop];
+        [self.bgView setLeft:kBackgroundViewMarginLeftOrRight];
+        [self.bgView setWidth:kBackgroundViewPaddingLeftOrRight * 2 + self.headView.width + headerImageMarginMsgLabelLeftOrRight + labelSize.width];
+        [self.bgView setHeight:bgViewPaddingMsgLabelTopOrBottom * 2 + self.msgLabel.height];
+        self.bgView.backgroundColor = [UIColor whiteColor];
+    } else if (self.msgObj.type == MessageTypeMe) {
+        [self.headView setLeft:SCREEN_WIDTH - kHeaderImageMarginLeftOrRight - kHeaderImageWidth];
+        [self.headView setTop:kHeaderImageMarginTop];
+
+        [self.msgLabel setLeft:self.headView.left - headerImageMarginMsgLabelLeftOrRight - labelSize.width];
+        [self.msgLabel setTop:kMessageLabelMarginTop];
+        [self.msgLabel setSize:labelSize];
+        self.msgLabel.textColor = RGBCOLOR(73, 73, 73);
+
+        [self.bgView setTop:kBackgroundViewMarginTop];
+        [self.bgView setLeft:self.msgLabel.left - headerImageMarginMsgLabelLeftOrRight];
+        [self.bgView setWidth:kBackgroundViewPaddingLeftOrRight * 2 + self.headView.width + headerImageMarginMsgLabelLeftOrRight + labelSize.width];
+        [self.bgView setHeight:bgViewPaddingMsgLabelTopOrBottom * 2 + self.msgLabel.height];
+        self.bgView.backgroundColor = RGBCOLOR(189, 230, 224);
+    }
+
 }
 
 - (void)awakeFromNib
@@ -43,25 +80,20 @@
 }
 
 - (void)configCell:(KGMessageObject *)msgObj {
+    self.msgObj = msgObj;
     UIView *bgView = [[UIView alloc] initWithFrame:CGRectZero];
     bgView.layer.cornerRadius = 4;
-    bgView.backgroundColor = [UIColor whiteColor];
     self.bgView = bgView;
     [self addSubview:self.bgView];
 
     UILabel *msgLabel = [[UILabel alloc]initWithFrame:CGRectZero];
-//    msgLabel.backgroundColor = [UIColor redColor];
     msgLabel.text = msgObj.content;
-    msgLabel.textColor = RGBCOLOR(92, 92, 92);
     msgLabel.font = [UIFont systemFontOfSize:16];
     msgLabel.numberOfLines = 0;
-    CGSize constraint = CGSizeMake(kMessageLableMaxWidth, 20000.0f);
-    CGSize labelSize = [msgLabel.text sizeWithFont:msgLabel.font constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
-    msgLabel.frame = CGRectMake(0, 0, labelSize.width, labelSize.height);
     self.msgLabel = msgLabel;
     [self addSubview:msgLabel];
 
-    UIImageView *headView = [[UIImageView alloc]initWithFrame:CGRectMake(kHeaderImageMarginLeft, kHeaderImageMarginTop, kHeaderImageWidth, kHeaderImageHeight)];
+    UIImageView *headView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kHeaderImageWidth, kHeaderImageHeight)];
     headView.image = [UIImage imageNamed:@"test-head.jpg"];
     headView.clipsToBounds = YES;
     headView.contentMode = UIViewContentModeScaleAspectFill;

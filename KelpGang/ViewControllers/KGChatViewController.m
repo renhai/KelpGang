@@ -47,31 +47,43 @@
     NAVIGATIONBAR_ADD_DEFAULT_BACKBUTTON_WITH_CALLBACK(goBack:);
     [self.navigationItem setTitle:@"myrenhai"];
 
-    [self mockData];
+//    [self mockData];
 
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 //    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;//TEST
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chat-view-background"]];
+    if (!self.messageArr || self.messageArr.count == 0) {
+        [self initHeaderView];
+    }
 
     [self initGoodsView];
     [self initChatTextField];
-    [self initHeaderView];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (self.messageArr && self.messageArr.count > 0) {
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.messageArr.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
 }
 
 - (void)mockData {
     self.messageArr = [[NSMutableArray alloc] init];
     KGMessageObject *obj1 = [[KGMessageObject alloc]init];
     obj1.content = @"帮带的东西很好，希望还能继续合作，剩了不少钱，还是海带划算啊。。。。";
+    obj1.type = MessageTypeOther;
 
     KGMessageObject *obj2 = [[KGMessageObject alloc]init];
     obj2.content = @"剩了不少钱，还是海带划算啊";
+    obj2.type = MessageTypeMe;
 
     KGMessageObject *obj3 = [[KGMessageObject alloc]init];
     obj3.content = @"剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊";
+    obj3.type = MessageTypeMe;
 
     [self.messageArr addObject:obj1];
     [self.messageArr addObject:obj2];
@@ -186,17 +198,21 @@
 
 #pragma mark - 键盘处理
 - (void)keyBoardWillShow:(NSNotification *)note{
-    CGRect rect = [note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    CGFloat ty = - rect.size.height;
+    CGRect endRect = [note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGFloat ty = - endRect.size.height;
     [UIView animateWithDuration:[note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{
         self.view.transform = CGAffineTransformMakeTranslation(0, ty);
+        [self.tableView setContentInset:UIEdgeInsetsMake(self.tableView.contentInset.top-ty - self.topView.height, 0, 0, 0)];
     }];
 
 }
 #pragma mark 键盘即将退出
 - (void)keyBoardWillHide:(NSNotification *)note{
+    CGRect beginRect = [note.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+    CGFloat ty = - beginRect.size.height;
     [UIView animateWithDuration:[note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{
         self.view.transform = CGAffineTransformIdentity;
+        [self.tableView setContentInset:UIEdgeInsetsMake(self.tableView.contentInset.top + ty + self.topView.height, 0, 0, 0)];
     }];
 }
 
@@ -204,6 +220,19 @@
 #pragma UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    KGMessageObject *obj = [[KGMessageObject alloc]init];
+    obj.content = textField.text;
+    obj.type = MessageTypeMe;
+    if (!self.messageArr) {
+        self.messageArr = [[NSMutableArray alloc]init];
+    }
+    [self.messageArr addObject:obj];
+    [self.tableView beginUpdates];
+    NSIndexPath *lastRow = [NSIndexPath indexPathForRow:self.messageArr.count - 1 inSection:0];
+    [self.tableView insertRowsAtIndexPaths:@[lastRow] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView endUpdates];
+    [self.tableView scrollToRowAtIndexPath:lastRow atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    textField.text = @"";
     return YES;
 }
 
