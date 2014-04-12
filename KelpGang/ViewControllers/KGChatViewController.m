@@ -51,12 +51,13 @@
 
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.backgroundColor = [UIColor clearColor];
 //    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;//TEST
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chat-view-background"]];
+
     if (!self.messageArr || self.messageArr.count == 0) {
         [self initHeaderView];
     }
-
     [self initGoodsView];
     [self initChatTextField];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -69,6 +70,11 @@
     if (self.messageArr && self.messageArr.count > 0) {
         [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.messageArr.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.chatTextField resignFirstResponder];
 }
 
 - (void)mockData {
@@ -86,8 +92,8 @@
     obj3.type = MessageTypeMe;
 
     [self.messageArr addObject:obj1];
-    [self.messageArr addObject:obj2];
     [self.messageArr addObject:obj3];
+    [self.messageArr addObject:obj2];
 }
 
 - (void)initChatTextField {
@@ -198,11 +204,18 @@
 
 #pragma mark - 键盘处理
 - (void)keyBoardWillShow:(NSNotification *)note{
+    CGRect beginRect = [note.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
     CGRect endRect = [note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    CGFloat ty = - endRect.size.height;
+    NSLog(@"**** %@, %@ ****", NSStringFromCGRect(beginRect), NSStringFromCGRect(endRect));
     [UIView animateWithDuration:[note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{
-        self.view.transform = CGAffineTransformMakeTranslation(0, ty);
-        [self.tableView setContentInset:UIEdgeInsetsMake(self.tableView.contentInset.top-ty - self.topView.height, 0, 0, 0)];
+        [self.chatTextField.superview setTop:self.view.height - self.chatTextField.superview.height - endRect.size.height];
+//        self.view.transform = CGAffineTransformMakeTranslation(0, ty);
+        [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, endRect.size.height, 0)];
+        if (self.messageArr && self.messageArr.count > 0) {
+            NSIndexPath *lastRow = [NSIndexPath indexPathForRow:self.messageArr.count - 1 inSection:0];
+            [self.tableView scrollToRowAtIndexPath:lastRow atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+        }
+
     }];
 
 }
@@ -210,14 +223,21 @@
 - (void)keyBoardWillHide:(NSNotification *)note{
     CGRect beginRect = [note.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
     CGFloat ty = - beginRect.size.height;
+    NSLog(@"#### %f ####", ty);
     [UIView animateWithDuration:[note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{
-        self.view.transform = CGAffineTransformIdentity;
-        [self.tableView setContentInset:UIEdgeInsetsMake(self.tableView.contentInset.top + ty + self.topView.height, 0, 0, 0)];
+        [self.chatTextField.superview setTop:self.chatTextField.superview.top - ty];
+//        self.view.transform = CGAffineTransformIdentity;
+        [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, self.tableView.contentInset.bottom + ty, 0)];
     }];
 }
 
 
 #pragma UITextFieldDelegate
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    return YES;
+}
+
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     KGMessageObject *obj = [[KGMessageObject alloc]init];

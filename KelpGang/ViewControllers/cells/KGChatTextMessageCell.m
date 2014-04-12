@@ -87,6 +87,7 @@ static const CGFloat kHeaderImageHeight = 25.0;
     [self addSubview:self.bgView];
 
     UILabel *msgLabel = [[UILabel alloc]initWithFrame:CGRectZero];
+    msgLabel.backgroundColor = [UIColor clearColor];
     msgLabel.text = msgObj.content;
     msgLabel.font = [UIFont systemFontOfSize:16];
     msgLabel.numberOfLines = 0;
