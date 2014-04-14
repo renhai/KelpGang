@@ -545,6 +545,7 @@
                     <navigationItem key="navigationItem" id="c75-Be-QsY"/>
                     <connections>
                         <outlet property="addBtn" destination="kqV-3f-hiZ" id="7Zy-El-nZa"/>
+                        <outlet property="bottomView" destination="Tns-Xi-7Nh" id="WJf-Gu-RMq"/>
                         <outlet property="chatTextField" destination="Zd4-ta-Jmw" id="7fP-as-Ych"/>
                         <outlet property="chatTextView" destination="Lp1-85-BGg" id="Paw-6h-lWp"/>
                         <outlet property="emotionBtn" destination="fg9-Y6-RGg" id="sX0-tX-ajB"/>

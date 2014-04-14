@@ -21,6 +21,7 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
 @property (weak, nonatomic) IBOutlet UIButton *emotionBtn;
 @property (weak, nonatomic) IBOutlet UIButton *addBtn;
 @property (weak, nonatomic) IBOutlet UITextView *chatTextView;
+@property (weak, nonatomic) IBOutlet UIView *bottomView;
 
 @property (nonatomic, strong) NSMutableArray *messageArr;
 @property (nonatomic, assign) CGFloat currKeyboardHeight;
@@ -218,7 +219,7 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
     NSLog(@"**** %@, %@ ****", NSStringFromCGRect(beginRect), NSStringFromCGRect(endRect));
     self.currKeyboardHeight = endRect.size.height;
     [UIView animateWithDuration:[note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{
-        [self.chatTextField.superview setTop:self.view.height - self.chatTextField.superview.height - endRect.size.height];
+        [self.bottomView setTop:self.view.height - self.bottomView.height - endRect.size.height];
 //        self.view.transform = CGAffineTransformMakeTranslation(0, ty);
         [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, endRect.size.height, 0)];
         if (self.messageArr && self.messageArr.count > 0) {
@@ -236,7 +237,7 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
     CGFloat ty = - beginRect.size.height;
     NSLog(@"#### %f ####", ty);
     [UIView animateWithDuration:[note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{
-        [self.chatTextField.superview setTop:self.chatTextField.superview.top - ty];
+        [self.bottomView setTop:self.bottomView.top - ty];
 //        self.view.transform = CGAffineTransformIdentity;
         [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, self.tableView.contentInset.bottom + ty, 0)];
     }];
@@ -291,8 +292,8 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
     CGFloat contentHeight = newSize.height + 16;
     if (![self.chatTextView.text isEqualToString:@""] && contentHeight <= kMaxChatTextViewHeight) {
         self.chatTextView.height = contentHeight;
-        self.chatTextView.superview.height = self.chatTextView.height + 21;
-        self.chatTextView.superview.top = self.view.height - self.chatTextView.superview.height - self.currKeyboardHeight;
+        self.bottomView.height = self.chatTextView.height + 21;
+        self.bottomView.top = self.view.height - self.bottomView.height - self.currKeyboardHeight;
     }
 }
 
