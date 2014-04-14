@@ -51,7 +51,7 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
     NAVIGATIONBAR_ADD_DEFAULT_BACKBUTTON_WITH_CALLBACK(goBack:);
     [self.navigationItem setTitle:@"myrenhai"];
 
-//    [self mockData];
+    [self mockData];
 
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -81,6 +81,7 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.chatTextField resignFirstResponder];
+    [self.chatTextView resignFirstResponder];
 }
 
 - (void)mockData {
@@ -91,7 +92,7 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
 
     KGMessageObject *obj2 = [[KGMessageObject alloc]init];
     obj2.content = @"剩了不少钱，还是海带划算啊";
-    obj2.type = MessageTypeMe;
+    obj2.type = MessageTypeOther;
 
     KGMessageObject *obj3 = [[KGMessageObject alloc]init];
     obj3.content = @"剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊";
@@ -103,14 +104,15 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
 }
 
 - (void)initChatTextField {
-    self.chatTextField.borderStyle = UITextBorderStyleNone;
-    self.chatTextField.layer.cornerRadius = 15;
+    self.chatTextField.layer.cornerRadius = self.chatTextView.height / 2;
     self.chatTextField.layer.borderWidth = LINE_HEIGHT;
     self.chatTextField.layer.borderColor = RGBCOLOR(211, 220, 224).CGColor;
+    self.chatTextField.hidden = NO;
 
     self.chatTextView.layer.cornerRadius = 10;
     self.chatTextView.layer.borderWidth = LINE_HEIGHT;
     self.chatTextView.layer.borderColor = RGBCOLOR(211, 220, 224).CGColor;
+    self.chatTextView.hidden = YES;
 }
 
 -(void)initHeaderView {
@@ -220,7 +222,6 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
     self.currKeyboardHeight = endRect.size.height;
     [UIView animateWithDuration:[note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{
         [self.bottomView setTop:self.view.height - self.bottomView.height - endRect.size.height];
-//        self.view.transform = CGAffineTransformMakeTranslation(0, ty);
         [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, endRect.size.height, 0)];
         if (self.messageArr && self.messageArr.count > 0) {
             NSIndexPath *lastRow = [NSIndexPath indexPathForRow:self.messageArr.count - 1 inSection:0];
@@ -238,7 +239,6 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
     NSLog(@"#### %f ####", ty);
     [UIView animateWithDuration:[note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{
         [self.bottomView setTop:self.bottomView.top - ty];
-//        self.view.transform = CGAffineTransformIdentity;
         [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, self.tableView.contentInset.bottom + ty, 0)];
     }];
 }
@@ -296,5 +296,32 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
         self.bottomView.top = self.view.height - self.bottomView.height - self.currKeyboardHeight;
     }
 }
+
+#pragma UITextViewDelegate
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if ([text isEqualToString:@"\n"]) {
+        KGMessageObject *obj = [[KGMessageObject alloc]init];
+        obj.content = textView.text;
+        obj.type = MessageTypeMe;
+        if (!self.messageArr) {
+            self.messageArr = [[NSMutableArray alloc]init];
+        }
+        [self.messageArr addObject:obj];
+        [self.tableView beginUpdates];
+        NSIndexPath *lastRow = [NSIndexPath indexPathForRow:self.messageArr.count - 1 inSection:0];
+        [self.tableView insertRowsAtIndexPaths:@[lastRow] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView endUpdates];
+        [self.tableView scrollToRowAtIndexPath:lastRow atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+        textView.text = @"";
+
+        self.chatTextView.height = 33;
+        self.bottomView.height = 54;
+        self.bottomView.top = self.view.height - self.bottomView.height - self.currKeyboardHeight;
+        return NO;
+    }
+    return YES;
+}
+
 
 @end

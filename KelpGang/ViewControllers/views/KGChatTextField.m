@@ -8,7 +8,7 @@
 
 #import "KGChatTextField.h"
 
-static const CGFloat kTextFieldPaddingWidth = 10.0;
+static const CGFloat kTextFieldPaddingWidth = 13.0;
 static const CGFloat kTextFieldPaddingHeight = 0.0;
 
 @implementation KGChatTextField
