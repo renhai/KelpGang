@@ -529,6 +529,13 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Lp1-85-BGg">
+                                        <rect key="frame" x="60" y="10" width="158" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.93333333333333335" green="0.96862745098039216" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -539,6 +546,7 @@
                     <connections>
                         <outlet property="addBtn" destination="kqV-3f-hiZ" id="7Zy-El-nZa"/>
                         <outlet property="chatTextField" destination="Zd4-ta-Jmw" id="7fP-as-Ych"/>
+                        <outlet property="chatTextView" destination="Lp1-85-BGg" id="Paw-6h-lWp"/>
                         <outlet property="emotionBtn" destination="fg9-Y6-RGg" id="sX0-tX-ajB"/>
                         <outlet property="tableView" destination="3JT-GB-f0S" id="dfH-X3-pZf"/>
                         <outlet property="topView" destination="Gjg-Eg-uP0" id="xcC-Aq-Nf1"/>

@@ -11,6 +11,7 @@
 #import "KGChatTextField.h"
 #import "KGMessageObject.h"
 
+static const CGFloat kMaxChatTextViewHeight = 99.0;
 
 @interface KGChatViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *topView;
@@ -19,8 +20,10 @@
 @property (weak, nonatomic) IBOutlet KGChatTextField *chatTextField;
 @property (weak, nonatomic) IBOutlet UIButton *emotionBtn;
 @property (weak, nonatomic) IBOutlet UIButton *addBtn;
+@property (weak, nonatomic) IBOutlet UITextView *chatTextView;
 
 @property (nonatomic, strong) NSMutableArray *messageArr;
+@property (nonatomic, assign) CGFloat currKeyboardHeight;
 
 @end
 
@@ -63,6 +66,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChanged:) name: UITextViewTextDidChangeNotification object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -101,6 +106,10 @@
     self.chatTextField.layer.cornerRadius = 15;
     self.chatTextField.layer.borderWidth = LINE_HEIGHT;
     self.chatTextField.layer.borderColor = RGBCOLOR(211, 220, 224).CGColor;
+
+    self.chatTextView.layer.cornerRadius = 10;
+    self.chatTextView.layer.borderWidth = LINE_HEIGHT;
+    self.chatTextView.layer.borderColor = RGBCOLOR(211, 220, 224).CGColor;
 }
 
 -(void)initHeaderView {
@@ -207,6 +216,7 @@
     CGRect beginRect = [note.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
     CGRect endRect = [note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     NSLog(@"**** %@, %@ ****", NSStringFromCGRect(beginRect), NSStringFromCGRect(endRect));
+    self.currKeyboardHeight = endRect.size.height;
     [UIView animateWithDuration:[note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{
         [self.chatTextField.superview setTop:self.view.height - self.chatTextField.superview.height - endRect.size.height];
 //        self.view.transform = CGAffineTransformMakeTranslation(0, ty);
@@ -221,6 +231,7 @@
 }
 #pragma mark 键盘即将退出
 - (void)keyBoardWillHide:(NSNotification *)note{
+    self.currKeyboardHeight = 0;
     CGRect beginRect = [note.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
     CGFloat ty = - beginRect.size.height;
     NSLog(@"#### %f ####", ty);
@@ -271,6 +282,18 @@
     CGSize constraint = CGSizeMake(kMessageLableMaxWidth, 20000.0f);
     CGSize labelSize = [content sizeWithFont:[UIFont systemFontOfSize:16] constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
     return labelSize.height + kMessageLabelMarginTop + kMessageLabelMarginBottom;
+}
+
+- (void)textChanged:(NSNotification *) note {
+    NSLog(@"******* contentSize height: %f", self.chatTextView.contentSize.height);
+    CGSize newSize = [self.chatTextView.text sizeWithFont:self.chatTextView.font constrainedToSize:CGSizeMake(self.chatTextView.width,9999) lineBreakMode:NSLineBreakByWordWrapping];
+    NSLog(@"!!!!! newSize: %@", NSStringFromCGSize(newSize));
+    CGFloat contentHeight = newSize.height + 16;
+    if (![self.chatTextView.text isEqualToString:@""] && contentHeight <= kMaxChatTextViewHeight) {
+        self.chatTextView.height = contentHeight;
+        self.chatTextView.superview.height = self.chatTextView.height + 21;
+        self.chatTextView.superview.top = self.view.height - self.chatTextView.superview.height - self.currKeyboardHeight;
+    }
 }
 
 @end
