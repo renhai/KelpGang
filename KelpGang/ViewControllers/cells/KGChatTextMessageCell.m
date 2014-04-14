@@ -8,6 +8,7 @@
 
 #import "KGChatTextMessageCell.h"
 #import "KGMessageObject.h"
+#import "KGChatObject.h"
 
 static const CGFloat kBackgroundViewMarginTop = 8.0;
 static const CGFloat kBackgroundViewMarginLeftOrRight = 5.0;
@@ -35,7 +36,7 @@ static const CGFloat kHeaderImageHeight = 25.0;
     CGSize labelSize = [self.msgLabel.text sizeWithFont:self.msgLabel.font constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
     CGFloat bgViewPaddingMsgLabelTopOrBottom = 13.0;
     CGFloat headerImageMarginMsgLabelLeftOrRight = 10.0;
-    if (self.msgObj.type == MessageTypeOther) {
+    if (self.chatObj.messageObj.type == MessageTypeOther) {
         [self.headView setLeft:kHeaderImageMarginLeftOrRight];
         [self.headView setTop:kHeaderImageMarginTop];
 
@@ -49,7 +50,7 @@ static const CGFloat kHeaderImageHeight = 25.0;
         [self.bgView setWidth:kBackgroundViewPaddingLeftOrRight * 2 + self.headView.width + headerImageMarginMsgLabelLeftOrRight + labelSize.width];
         [self.bgView setHeight:bgViewPaddingMsgLabelTopOrBottom * 2 + self.msgLabel.height];
         self.bgView.backgroundColor = [UIColor whiteColor];
-    } else if (self.msgObj.type == MessageTypeMe) {
+    } else if (self.chatObj.messageObj.type == MessageTypeMe) {
         [self.headView setLeft:SCREEN_WIDTH - kHeaderImageMarginLeftOrRight - kHeaderImageWidth];
         [self.headView setTop:kHeaderImageMarginTop];
 
@@ -79,8 +80,8 @@ static const CGFloat kHeaderImageHeight = 25.0;
     // Configure the view for the selected state
 }
 
-- (void)configCell:(KGMessageObject *)msgObj {
-    self.msgObj = msgObj;
+- (void)configCell:(KGChatObject *) chatObj {
+    self.chatObj = chatObj;
     UIView *bgView = [[UIView alloc] initWithFrame:CGRectZero];
     bgView.layer.cornerRadius = 4;
     self.bgView = bgView;
@@ -88,7 +89,7 @@ static const CGFloat kHeaderImageHeight = 25.0;
 
     UILabel *msgLabel = [[UILabel alloc]initWithFrame:CGRectZero];
     msgLabel.backgroundColor = [UIColor clearColor];
-    msgLabel.text = msgObj.content;
+    msgLabel.text = chatObj.messageObj.content;
     msgLabel.font = [UIFont systemFontOfSize:16];
     msgLabel.numberOfLines = 0;
     self.msgLabel = msgLabel;

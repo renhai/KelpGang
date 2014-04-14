@@ -8,19 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-static const CGFloat kMessageLableMaxWidth = 240.0;
-static const CGFloat kMessageLabelMarginTop = 21.0;
-static const CGFloat kMessageLabelMarginBottom = 21.0;
-
-@class KGMessageObject;
+@class KGChatObject;
 
 @interface KGChatTextMessageCell : UITableViewCell
 
 @property (nonatomic, strong) UIView *bgView;
 @property (nonatomic, strong) UILabel *msgLabel;
 @property (nonatomic, strong) UIImageView *headView;
-@property (nonatomic, strong) KGMessageObject *msgObj;
+@property (nonatomic, strong) KGChatObject *chatObj;
 
-- (void)configCell:(KGMessageObject *)msgObj;
+- (void)configCell:(KGChatObject *)chatObj;
 
 @end

@@ -10,6 +10,7 @@
 #import "KGChatTextMessageCell.h"
 #import "KGChatTextField.h"
 #import "KGMessageObject.h"
+#import "KGChatObject.h"
 
 static const CGFloat kMaxChatTextViewHeight = 99.0;
 
@@ -23,7 +24,8 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
 @property (weak, nonatomic) IBOutlet UITextView *chatTextView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 
-@property (nonatomic, strong) NSMutableArray *messageArr;
+//@property (nonatomic, strong) NSMutableArray *messageArr;
+@property (nonatomic, strong) NSMutableArray *chatObjArr;
 @property (nonatomic, assign) CGFloat currKeyboardHeight;
 
 @end
@@ -59,7 +61,7 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
 //    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;//TEST
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chat-view-background"]];
 
-    if (!self.messageArr || self.messageArr.count == 0) {
+    if (!self.chatObjArr || self.chatObjArr.count == 0) {
         [self initHeaderView];
     }
     [self initGoodsView];
@@ -73,8 +75,8 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if (self.messageArr && self.messageArr.count > 0) {
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.messageArr.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    if (self.chatObjArr && self.chatObjArr.count > 0) {
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.chatObjArr.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     }
 }
 
@@ -85,22 +87,26 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
 }
 
 - (void)mockData {
-    self.messageArr = [[NSMutableArray alloc] init];
+//    self.messageArr = [[NSMutableArray alloc] init];
+    self.chatObjArr = [[NSMutableArray alloc] init];
     KGMessageObject *obj1 = [[KGMessageObject alloc]init];
     obj1.content = @"帮带的东西很好，希望还能继续合作，剩了不少钱，还是海带划算啊。。。。";
     obj1.type = MessageTypeOther;
+    KGChatObject *chatObj1 = [[KGChatObject alloc] initWithMessage:obj1];
 
     KGMessageObject *obj2 = [[KGMessageObject alloc]init];
     obj2.content = @"剩了不少钱，还是海带划算啊";
     obj2.type = MessageTypeOther;
+    KGChatObject *chatObj2 = [[KGChatObject alloc] initWithMessage:obj2];
 
     KGMessageObject *obj3 = [[KGMessageObject alloc]init];
     obj3.content = @"剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊";
     obj3.type = MessageTypeMe;
+    KGChatObject *chatObj3 = [[KGChatObject alloc] initWithMessage:obj3];
 
-    [self.messageArr addObject:obj1];
-    [self.messageArr addObject:obj3];
-    [self.messageArr addObject:obj2];
+    [self.chatObjArr addObject:chatObj1];
+    [self.chatObjArr addObject:chatObj2];
+    [self.chatObjArr addObject:chatObj3];
 }
 
 - (void)initChatTextField {
@@ -154,7 +160,7 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.messageArr.count;
+    return self.chatObjArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -164,8 +170,8 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
     cell = [[KGChatTextMessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"kChatMessageOtherCell"];
     cell.backgroundColor = [UIColor clearColor];
     KGChatTextMessageCell *mCell = (KGChatTextMessageCell *)cell;
-    KGMessageObject *msgObj = self.messageArr[indexPath.row];
-    [mCell configCell:msgObj];
+    KGChatObject *chatObj = self.chatObjArr[indexPath.row];
+    [mCell configCell:chatObj];
 
     return cell;
 }
@@ -173,8 +179,9 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
 #pragma UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    KGMessageObject *msgObj = self.messageArr[indexPath.row];
-    return [self cellHeight:msgObj];
+    KGChatObject *msgObj = self.chatObjArr[indexPath.row];
+//    return [self cellHeight:msgObj];
+    return msgObj.cellHeight;
 }
 
 
@@ -223,8 +230,8 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
     [UIView animateWithDuration:[note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{
         [self.bottomView setTop:self.view.height - self.bottomView.height - endRect.size.height];
         [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, endRect.size.height, 0)];
-        if (self.messageArr && self.messageArr.count > 0) {
-            NSIndexPath *lastRow = [NSIndexPath indexPathForRow:self.messageArr.count - 1 inSection:0];
+        if (self.chatObjArr && self.chatObjArr.count > 0) {
+            NSIndexPath *lastRow = [NSIndexPath indexPathForRow:self.chatObjArr.count - 1 inSection:0];
             [self.tableView scrollToRowAtIndexPath:lastRow atScrollPosition:UITableViewScrollPositionBottom animated:YES];
         }
 
@@ -255,12 +262,13 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
     KGMessageObject *obj = [[KGMessageObject alloc]init];
     obj.content = textField.text;
     obj.type = MessageTypeMe;
-    if (!self.messageArr) {
-        self.messageArr = [[NSMutableArray alloc]init];
+    KGChatObject *chatObj = [[KGChatObject alloc] initWithMessage:obj];
+    if (!self.chatObjArr) {
+        self.chatObjArr = [[NSMutableArray alloc]init];
     }
-    [self.messageArr addObject:obj];
+    [self.chatObjArr addObject:chatObj];
     [self.tableView beginUpdates];
-    NSIndexPath *lastRow = [NSIndexPath indexPathForRow:self.messageArr.count - 1 inSection:0];
+    NSIndexPath *lastRow = [NSIndexPath indexPathForRow:self.chatObjArr.count - 1 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[lastRow] withRowAnimation:UITableViewRowAnimationFade];
     [self.tableView endUpdates];
     [self.tableView scrollToRowAtIndexPath:lastRow atScrollPosition:UITableViewScrollPositionBottom animated:YES];
@@ -276,13 +284,6 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
 
 - (void)goBack:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (CGFloat)cellHeight: (KGMessageObject *) msgObj {
-    NSString *content = msgObj.content;
-    CGSize constraint = CGSizeMake(kMessageLableMaxWidth, 20000.0f);
-    CGSize labelSize = [content sizeWithFont:[UIFont systemFontOfSize:16] constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
-    return labelSize.height + kMessageLabelMarginTop + kMessageLabelMarginBottom;
 }
 
 - (void)textChanged:(NSNotification *) note {
@@ -304,12 +305,13 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
         KGMessageObject *obj = [[KGMessageObject alloc]init];
         obj.content = textView.text;
         obj.type = MessageTypeMe;
-        if (!self.messageArr) {
-            self.messageArr = [[NSMutableArray alloc]init];
+        KGChatObject *chatObj = [[KGChatObject alloc] initWithMessage:obj];
+        if (!self.chatObjArr) {
+            self.chatObjArr = [[NSMutableArray alloc]init];
         }
-        [self.messageArr addObject:obj];
+        [self.chatObjArr addObject:chatObj];
         [self.tableView beginUpdates];
-        NSIndexPath *lastRow = [NSIndexPath indexPathForRow:self.messageArr.count - 1 inSection:0];
+        NSIndexPath *lastRow = [NSIndexPath indexPathForRow:self.chatObjArr.count - 1 inSection:0];
         [self.tableView insertRowsAtIndexPaths:@[lastRow] withRowAnimation:UITableViewRowAnimationFade];
         [self.tableView endUpdates];
         [self.tableView scrollToRowAtIndexPath:lastRow atScrollPosition:UITableViewScrollPositionBottom animated:YES];

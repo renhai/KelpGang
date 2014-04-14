@@ -139,6 +139,7 @@
 		A197503A18D84BF10062CAA7 /* UIWindow+RscExt.m in Sources */ = {isa = PBXBuildFile; fileRef = A197502618D84BF10062CAA7 /* UIWindow+RscExt.m */; };
 		A197503D18D85F920062CAA7 /* trip.png in Resources */ = {isa = PBXBuildFile; fileRef = A197503B18D85F920062CAA7 /* trip.png */; };
 		A197503E18D85F920062CAA7 /* trip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A197503C18D85F920062CAA7 /* trip@2x.png */; };
+		A199395818FBD687002E7E51 /* KGChatObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A199395718FBD687002E7E51 /* KGChatObject.m */; };
 		A19F0EC318E2AE0D00C2944D /* KGBuyerRefPicturesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A19F0EC218E2AE0D00C2944D /* KGBuyerRefPicturesCell.m */; };
 		A19F0EC618E2B33B00C2944D /* KGBuyerDescriptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A19F0EC518E2B33B00C2944D /* KGBuyerDescriptionCell.m */; };
 		A19F0EC918E2B47800C2944D /* KGBuyerCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A19F0EC818E2B47800C2944D /* KGBuyerCommentCell.m */; };
@@ -392,6 +393,8 @@
 		A197502618D84BF10062CAA7 /* UIWindow+RscExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+RscExt.m"; sourceTree = "<group>"; };
 		A197503B18D85F920062CAA7 /* trip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trip.png; sourceTree = "<group>"; };
 		A197503C18D85F920062CAA7 /* trip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trip@2x.png"; sourceTree = "<group>"; };
+		A199395618FBD687002E7E51 /* KGChatObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGChatObject.h; sourceTree = "<group>"; };
+		A199395718FBD687002E7E51 /* KGChatObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGChatObject.m; sourceTree = "<group>"; };
 		A19F0EC118E2AE0D00C2944D /* KGBuyerRefPicturesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGBuyerRefPicturesCell.h; sourceTree = "<group>"; };
 		A19F0EC218E2AE0D00C2944D /* KGBuyerRefPicturesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGBuyerRefPicturesCell.m; sourceTree = "<group>"; };
 		A19F0EC418E2B33B00C2944D /* KGBuyerDescriptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGBuyerDescriptionCell.h; sourceTree = "<group>"; };
@@ -902,6 +905,8 @@
 				A18A2B9118E1793500FDFB8E /* KGAddressObject.m */,
 				A1A003F518F3F0BC00B5A1D7 /* KGMessageObject.h */,
 				A1A003F618F3F0BC00B5A1D7 /* KGMessageObject.m */,
+				A199395618FBD687002E7E51 /* KGChatObject.h */,
+				A199395718FBD687002E7E51 /* KGChatObject.m */,
 			);
 			path = objects;
 			sourceTree = "<group>";
@@ -1223,6 +1228,7 @@
 				A1A948BC18D93E84006DCF6E /* KGCreateJourneyTableViewController.m in Sources */,
 				A14300D518BB252F0064DF87 /* main.m in Sources */,
 				A18A2B9B18E18D8C00FDFB8E /* KGBadgeView.m in Sources */,
+				A199395818FBD687002E7E51 /* KGChatObject.m in Sources */,
 				A16FBEED18DC178C009E2F66 /* KGMaskView.m in Sources */,
 				A1A003F718F3F0BC00B5A1D7 /* KGMessageObject.m in Sources */,
 				A1C0ACFB18C759010092E3B4 /* XMPPManager.m in Sources */,
