@@ -61,9 +61,7 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
 //    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;//TEST
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chat-view-background"]];
 
-    if (!self.chatObjArr || self.chatObjArr.count == 0) {
-        [self initHeaderView];
-    }
+    [self initHeaderView];
     [self initGoodsView];
     [self initChatTextField];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -92,21 +90,34 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
     KGMessageObject *obj1 = [[KGMessageObject alloc]init];
     obj1.content = @"帮带的东西很好，希望还能继续合作，剩了不少钱，还是海带划算啊。。。。";
     obj1.type = MessageTypeOther;
+    obj1.date = [NSDate dateWithTimeInterval:-200 sinceDate:[NSDate date]];
     KGChatObject *chatObj1 = [[KGChatObject alloc] initWithMessage:obj1];
 
     KGMessageObject *obj2 = [[KGMessageObject alloc]init];
     obj2.content = @"剩了不少钱，还是海带划算啊";
     obj2.type = MessageTypeOther;
+    obj2.date = [NSDate dateWithTimeInterval:-150 sinceDate:[NSDate date]];
     KGChatObject *chatObj2 = [[KGChatObject alloc] initWithMessage:obj2];
 
     KGMessageObject *obj3 = [[KGMessageObject alloc]init];
     obj3.content = @"剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊";
     obj3.type = MessageTypeMe;
+    obj3.date = [NSDate dateWithTimeInterval:-100 sinceDate:[NSDate date]];
     KGChatObject *chatObj3 = [[KGChatObject alloc] initWithMessage:obj3];
 
     [self.chatObjArr addObject:chatObj1];
     [self.chatObjArr addObject:chatObj2];
     [self.chatObjArr addObject:chatObj3];
+
+    [self handleShowTime];
+}
+
+- (void)handleShowTime {
+    NSString *preTime = nil;
+    for (KGChatObject *chatObj in self.chatObjArr) {
+        chatObj.showTime = ![preTime isEqualToString:chatObj.time];
+        preTime = chatObj.time;
+    }
 }
 
 - (void)initChatTextField {
@@ -146,6 +157,7 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
     [bottomLabel setTop:topLabel.bottom + 2];
     [bottomLabel setLeft:(view.width - bottomLabel.width) / 2.0];
     [view addSubview:bottomLabel];
+    [view setHeight:bottomLabel.bottom + 2];
     [headerView addSubview:view];
 
     self.tableView.tableHeaderView = headerView;
@@ -180,8 +192,7 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     KGChatObject *msgObj = self.chatObjArr[indexPath.row];
-//    return [self cellHeight:msgObj];
-    return msgObj.cellHeight;
+    return [msgObj cellHeight];
 }
 
 
@@ -262,11 +273,15 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
     KGMessageObject *obj = [[KGMessageObject alloc]init];
     obj.content = textField.text;
     obj.type = MessageTypeMe;
+    obj.date = [NSDate date];
     KGChatObject *chatObj = [[KGChatObject alloc] initWithMessage:obj];
     if (!self.chatObjArr) {
         self.chatObjArr = [[NSMutableArray alloc]init];
     }
     [self.chatObjArr addObject:chatObj];
+
+    [self handleShowTime];
+
     [self.tableView beginUpdates];
     NSIndexPath *lastRow = [NSIndexPath indexPathForRow:self.chatObjArr.count - 1 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[lastRow] withRowAnimation:UITableViewRowAnimationFade];
