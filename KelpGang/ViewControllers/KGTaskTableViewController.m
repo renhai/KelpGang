@@ -108,7 +108,13 @@
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    UIViewController *controller = [[UIViewController alloc] init];
+    controller.view.backgroundColor = [UIColor whiteColor];
+    UIBarButtonItem *leftBar = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    leftBar.tintColor = [UIColor whiteColor];
+    controller.navigationItem.leftBarButtonItem = leftBar;
+    [self setHidesBottomBarWhenPushed:NO];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 
