@@ -62,8 +62,10 @@ static const CGFloat kHeaderImageHeight = 25.0;
         [self.bgView setWidth:kBackgroundViewPaddingLeftOrRight * 2 + self.headView.width + headerImageMarginMsgLabelLeftOrRight + labelSize.width];
         [self.bgView setHeight:bgViewPaddingMsgLabelTopOrBottom * 2 + self.msgLabel.height];
         self.bgView.backgroundColor = RGBCOLOR(189, 230, 224);
-    }
 
+        [self.indicatorView setLeft:self.bgView.left - self.indicatorView.width - 3];
+        [self.indicatorView setTop:self.bgView.top + (self.bgView.height - self.indicatorView.height) / 2];
+    }
 }
 
 - (void)awakeFromNib
@@ -79,7 +81,7 @@ static const CGFloat kHeaderImageHeight = 25.0;
 }
 
 - (void)configCell:(KGChatObject *) chatObj {
-    self.chatObj = chatObj;
+    [super configCell:chatObj];
     UIView *bgView = [[UIView alloc] initWithFrame:CGRectZero];
     bgView.layer.cornerRadius = 4;
     self.bgView = bgView;
@@ -118,6 +120,5 @@ static const CGFloat kHeaderImageHeight = 25.0;
         [self addSubview:timeView];
     }
 }
-
 
 @end

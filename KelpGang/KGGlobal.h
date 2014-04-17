@@ -47,3 +47,9 @@
 #define LINE_HEIGHT (isRetina ? 0.5 : 1.0)
 
 #define kPublishTask @"kPublishTask"
+#define kXMPPNewMsgNotifaction @"xmppNewMsgNotifaction"
+#define kChatHostName @"10.2.45.77"
+#define kChatHostPort 5222
+#define kChatHostURL @"10.2.45.77:5222"
+
+

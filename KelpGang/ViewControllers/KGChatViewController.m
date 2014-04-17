@@ -11,6 +11,8 @@
 #import "KGChatTextField.h"
 #import "KGMessageObject.h"
 #import "KGChatObject.h"
+#import "XMPPManager.h"
+
 
 static const CGFloat kMaxChatTextViewHeight = 99.0;
 
@@ -52,7 +54,7 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
     [super viewDidLoad];
     NAVIGATIONBAR_ADD_DEFAULT_BACKBUTTON_WITH_CALLBACK(goBack:);
     [self.navigationItem setTitle:@"myrenhai"];
-
+    self.chatObjArr = [[NSMutableArray alloc] init];
     [self mockData];
 
     self.tableView.delegate = self;
@@ -69,6 +71,8 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChanged:) name: UITextViewTextDidChangeNotification object:nil];
+
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(newMsgCome:) name:kXMPPNewMsgNotifaction object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -85,8 +89,6 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
 }
 
 - (void)mockData {
-//    self.messageArr = [[NSMutableArray alloc] init];
-    self.chatObjArr = [[NSMutableArray alloc] init];
     KGMessageObject *obj1 = [[KGMessageObject alloc]init];
     obj1.content = @"帮带的东西很好，希望还能继续合作，剩了不少钱，还是海带划算啊。。。。";
     obj1.type = MessageTypeOther;
@@ -275,9 +277,7 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
     obj.type = MessageTypeMe;
     obj.date = [NSDate date];
     KGChatObject *chatObj = [[KGChatObject alloc] initWithMessage:obj];
-    if (!self.chatObjArr) {
-        self.chatObjArr = [[NSMutableArray alloc]init];
-    }
+    chatObj.showIndicator = NO;
     [self.chatObjArr addObject:chatObj];
 
     [self handleShowTime];
@@ -287,6 +287,17 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
     [self.tableView insertRowsAtIndexPaths:@[lastRow] withRowAnimation:UITableViewRowAnimationFade];
     [self.tableView endUpdates];
     [self.tableView scrollToRowAtIndexPath:lastRow atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+
+    XMPPElement *body = [XMPPElement elementWithName:@"body"];
+    [body setStringValue:textField.text];
+    XMPPElement *mes = [XMPPElement elementWithName:@"message"];
+    [mes addAttributeWithName:@"type" stringValue:@"chat"];
+    [mes addAttributeWithName:@"to" stringValue:@"andy@pc-20120831ebrg"];
+    [mes addAttributeWithName:@"from" stringValue:@"hai@pc-20120831ebrg"];
+    [mes addChild:body];
+    
+    [[XMPPManager sharedInstance] sendMessage:mes];
+
     textField.text = @"";
     return YES;
 }
@@ -321,9 +332,6 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
         obj.content = textView.text;
         obj.type = MessageTypeMe;
         KGChatObject *chatObj = [[KGChatObject alloc] initWithMessage:obj];
-        if (!self.chatObjArr) {
-            self.chatObjArr = [[NSMutableArray alloc]init];
-        }
         [self.chatObjArr addObject:chatObj];
         [self.tableView beginUpdates];
         NSIndexPath *lastRow = [NSIndexPath indexPathForRow:self.chatObjArr.count - 1 inSection:0];
@@ -338,6 +346,18 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
         return NO;
     }
     return YES;
+}
+
+
+- (void)newMsgCome:(NSNotification *)notifacation {
+    KGChatObject *chatObj = notifacation.object;
+    [self.chatObjArr addObject:chatObj];
+    [self handleShowTime];
+    [self.tableView beginUpdates];
+    NSIndexPath *lastRow = [NSIndexPath indexPathForRow:self.chatObjArr.count - 1 inSection:0];
+    [self.tableView insertRowsAtIndexPaths:@[lastRow] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView endUpdates];
+    [self.tableView scrollToRowAtIndexPath:lastRow atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
 

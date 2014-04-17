@@ -56,6 +56,8 @@
 - (void)goOnline;
 - (void)goOffline;
 
+- (void)sendMessage:(XMPPElement *) message;
+
 + (XMPPManager *)sharedInstance;
 
 @end

@@ -10,6 +10,8 @@
 
 #import "DDLog.h"
 #import "DDTTYLogger.h"
+#import "KGChatObject.h"
+#import "KGMessageObject.h"
 
 
 // Log levels: off, error, warn, info, verbose
@@ -182,8 +184,8 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 	//
 	// If you don't specify a hostPort, then the default (5222) will be used.
 
-	[xmppStream setHostName:@"10.2.45.77"];
-	[xmppStream setHostPort:5222];
+	[xmppStream setHostName:kChatHostName];
+	[xmppStream setHostPort:kChatHostPort];
 
 
     xmppAutoPing = [[XMPPAutoPing alloc] init];
@@ -395,12 +397,20 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 
 		if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive)
 		{
-			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:displayName
-                                                                message:body
-                                                               delegate:nil
-                                                      cancelButtonTitle:@"Ok"
-                                                      otherButtonTitles:nil];
-			[alertView show];
+//			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:displayName
+//                                                                message:body
+//                                                               delegate:nil
+//                                                      cancelButtonTitle:@"Ok"
+//                                                      otherButtonTitles:nil];
+//			[alertView show];
+            KGMessageObject *msgObj = [[KGMessageObject alloc] init];
+            msgObj.content = body;
+            msgObj.from = displayName;
+            msgObj.date = [NSDate date];
+            msgObj.type = MessageTypeOther;
+            KGChatObject *chatObj = [[KGChatObject alloc] initWithMessage:msgObj];
+            [[NSNotificationCenter defaultCenter]postNotificationName:kXMPPNewMsgNotifaction object:chatObj];
+
 		}
 		else
 		{
@@ -432,6 +442,14 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 	{
 		DDLogError(@"Unable to connect to server. Check xmppStream.hostName");
 	}
+}
+
+- (void)xmppStream:(XMPPStream *)sender didSendMessage:(XMPPMessage *)message {
+
+}
+
+- (void)xmppStream:(XMPPStream *)sender didFailToSendMessage:(XMPPMessage *)message error:(NSError *)error {
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -499,5 +517,9 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 	DDLogVerbose(@"%@: %@", [self class], THIS_METHOD);
 }
 
+
+- (void)sendMessage:(XMPPElement *) message {
+    [xmppStream sendElement:message];
+}
 
 @end

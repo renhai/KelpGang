@@ -155,6 +155,7 @@
 		A1A003F718F3F0BC00B5A1D7 /* KGMessageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A003F618F3F0BC00B5A1D7 /* KGMessageObject.m */; };
 		A1A003FA18F3F60500B5A1D7 /* chat-view-background.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A003F818F3F60500B5A1D7 /* chat-view-background.png */; };
 		A1A003FB18F3F60500B5A1D7 /* chat-view-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A003F918F3F60500B5A1D7 /* chat-view-background@2x.png */; };
+		A1A0DA0318FE662300E0C0E8 /* KGBaseMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A0DA0218FE662300E0C0E8 /* KGBaseMessageCell.m */; };
 		A1A1DAF918C9AE7C00F03E04 /* follow-btn-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A1DAF718C9AE7C00F03E04 /* follow-btn-bg.png */; };
 		A1A1DAFA18C9AE7C00F03E04 /* follow-btn-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A1DAF818C9AE7C00F03E04 /* follow-btn-bg@2x.png */; };
 		A1A1DAFD18C9CCD200F03E04 /* KGUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A1DAFC18C9CCD200F03E04 /* KGUtils.m */; };
@@ -417,6 +418,8 @@
 		A1A003F618F3F0BC00B5A1D7 /* KGMessageObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGMessageObject.m; sourceTree = "<group>"; };
 		A1A003F818F3F60500B5A1D7 /* chat-view-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat-view-background.png"; sourceTree = "<group>"; };
 		A1A003F918F3F60500B5A1D7 /* chat-view-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat-view-background@2x.png"; sourceTree = "<group>"; };
+		A1A0DA0118FE662300E0C0E8 /* KGBaseMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGBaseMessageCell.h; sourceTree = "<group>"; };
+		A1A0DA0218FE662300E0C0E8 /* KGBaseMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGBaseMessageCell.m; sourceTree = "<group>"; };
 		A1A1DAF718C9AE7C00F03E04 /* follow-btn-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "follow-btn-bg.png"; sourceTree = "<group>"; };
 		A1A1DAF818C9AE7C00F03E04 /* follow-btn-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "follow-btn-bg@2x.png"; sourceTree = "<group>"; };
 		A1A1DAFB18C9CCD200F03E04 /* KGUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGUtils.h; sourceTree = "<group>"; };
@@ -926,6 +929,8 @@
 				A19F0EC518E2B33B00C2944D /* KGBuyerDescriptionCell.m */,
 				A19F0EC718E2B47800C2944D /* KGBuyerCommentCell.h */,
 				A19F0EC818E2B47800C2944D /* KGBuyerCommentCell.m */,
+				A1A0DA0118FE662300E0C0E8 /* KGBaseMessageCell.h */,
+				A1A0DA0218FE662300E0C0E8 /* KGBaseMessageCell.m */,
 				A1C9C77C18F5675D00A081D0 /* KGChatTextMessageCell.h */,
 				A1C9C77D18F5675D00A081D0 /* KGChatTextMessageCell.m */,
 			);
@@ -1253,6 +1258,7 @@
 				A1F13E0318EE47830013B183 /* KGCommonMenu.m in Sources */,
 				A1A1DAFD18C9CCD200F03E04 /* KGUtils.m in Sources */,
 				A16FBEF018DC1FA6009E2F66 /* KGHostTableViewController.m in Sources */,
+				A1A0DA0318FE662300E0C0E8 /* KGBaseMessageCell.m in Sources */,
 				A19F0ED118E2C6A400C2944D /* HudHelper.m in Sources */,
 				A18A2B8D18E1334200FDFB8E /* KGAddAddressTableViewController.m in Sources */,
 				A12D782118CECBED00873887 /* MWGridCell.m in Sources */,

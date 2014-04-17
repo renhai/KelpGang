@@ -20,8 +20,9 @@ static const CGFloat kTimeViewHeight = 28.0;
 @property (nonatomic, strong) KGMessageObject *messageObj;
 @property (nonatomic, assign) BOOL showTime;
 @property (nonatomic, strong) NSString *time;
+@property (nonatomic, assign) BOOL showIndicator;
 
-- (id) initWithMessage: (KGMessageObject *) msg;
+- (id)initWithMessage: (KGMessageObject *) msg;
 
 - (CGFloat)cellHeight;
 
