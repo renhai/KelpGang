@@ -1,16 +1,24 @@
-//------------------------------------Debug/Release
+//-------------------打印日志-------------------------
+//DEBUG  模式下打印日志,当前行
 #ifdef DEBUG
-//Debug模式
-//...
-
-
+#   define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
 #else
-//发布模式
-//...
+#   define DLog(...)
+#endif
 
-//屏蔽NSLog
-#define NSLog(...) {};
 
+//重写NSLog,Debug模式下打印日志和当前行数
+#if DEBUG
+#define NSLog(FORMAT, ...) fprintf(stderr,"\nfunction:%s line:%d content:%s\n", __FUNCTION__, __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+#else
+#define NSLog(FORMAT, ...) nil
+#endif
+
+//DEBUG  模式下打印日志,当前行 并弹出一个警告
+#ifdef DEBUG
+#   define ULog(fmt, ...)  { UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%s\n [Line %d] ", __PRETTY_FUNCTION__, __LINE__] message:[NSString stringWithFormat:fmt, ##__VA_ARGS__]  delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil]; [alert show]; }
+#else
+#   define ULog(...)
 #endif
 
 
@@ -177,6 +185,8 @@ typedef id  (^IDBlock_id)  (id);
 
 #define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
 #define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
+#define CLEARCOLOR [UIColor clearColor]
+#define MAIN_COLOR [UIColor colorWithRed:33.0/255.0 green:185.0/255.0 blue:162.0/255.0 alpha:1.0]
 
 #define SCREEN_WIDTH ([[UIScreen mainScreen]bounds].size.width)
 #define SCREEN_HEIGHT ([[UIScreen mainScreen]bounds].size.height)
@@ -196,5 +206,24 @@ typedef id  (^IDBlock_id)  (id);
 #define ENGISH_KEYBOARD_HEIGHT 216.0
 
 #define LINE_HEIGHT (isRetina ? 0.5 : 1.0)
+
+//检查系统版本
+#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
+
+
+//----------------------图片----------------------------
+
+//读取本地图片
+#define IMAGE_WITH_TYPE(file,ext) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:file ofType:ext]]
+
+//定义UIImage对象
+#define IMAGE(A) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:A ofType:nil]]
+
+//----------------------图片----------------------------
+
 
 

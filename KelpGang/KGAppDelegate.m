@@ -22,17 +22,14 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    if ([KGUtils isHigherIOS7]) {
-        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:RGBCOLOR(33, 185, 162)] forBarMetrics:UIBarMetricsDefault];
-    } else {
-        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:RGBCOLOR(33, 185, 162)] forBarMetrics:UIBarMetricsDefault];
+    [[UITabBar appearance] setTintColor:MAIN_COLOR];
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:MAIN_COLOR] forBarMetrics:UIBarMetricsDefault];
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
         [[UIBarButtonItem appearance] setBackgroundImage:[UIImage new]
                                                 forState:UIControlStateNormal
                                               barMetrics:UIBarMetricsDefault];
         [application setStatusBarStyle:UIStatusBarStyleLightContent];
     }
-
-    [[UITabBar appearance] setTintColor:RGBCOLOR(33, 185, 162)];
 
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     XMPPManager *xmppmgr = [XMPPManager sharedInstance];
