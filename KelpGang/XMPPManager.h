@@ -11,8 +11,10 @@
 
 #import "XMPPFramework.h"
 #import "XMPPRosterCoreDataStorage.h"
+#import "MTStatusBarOverlay.h"
 
-@interface XMPPManager : NSObject <XMPPStreamDelegate, XMPPRosterDelegate, XMPPAutoPingDelegate>{
+
+@interface XMPPManager : NSObject <XMPPStreamDelegate, XMPPRosterDelegate, XMPPAutoPingDelegate, MTStatusBarOverlayDelegate>{
 	XMPPStream *xmppStream;
 	XMPPReconnect *xmppReconnect;
     XMPPRoster *xmppRoster;

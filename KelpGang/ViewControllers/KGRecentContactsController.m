@@ -10,6 +10,8 @@
 
 @interface KGRecentContactsController ()
 
+@property(nonatomic, strong) NSMutableArray *contacts;
+
 @end
 
 @implementation KGRecentContactsController
@@ -26,12 +28,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    NAVIGATIONBAR_ADD_DEFAULT_BACKBUTTON_WITH_CALLBACK(goBack:);
+
+    self.contacts = [[NSMutableArray alloc] init];
+    [self.contacts addObject:@"a"];
+    [self.contacts addObject:@"b"];
+    [self.contacts addObject:@"c"];
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)goBack:(UIBarButtonItem *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,28 +56,23 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return self.contacts.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"kRecentContactsCell" forIndexPath:indexPath];
     
-    // Configure the cell...
-    
+    cell.textLabel.text = self.contacts[indexPath.row];
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -115,5 +122,14 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+
+    UIViewController *chatViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"kChatViewController"];
+    [self.navigationController pushViewController:chatViewController animated:YES];
+}
 
 @end

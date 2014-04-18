@@ -29,6 +29,7 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 @property (nonatomic, strong) NSArray *countryArr;
 @property (nonatomic, strong) NSArray *cityArr;
 @property (nonatomic, strong) NSArray *timeArr;
+@property (nonatomic, strong) KGFilterBar *filterBar;
 
 
 @end
@@ -84,6 +85,11 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
     self.tableView.showsInfiniteScrolling = NO;
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.filterBar closeCurrFilterView];
+}
+
 - (void)initFilterBar {
     CGFloat itemWidth = 320.0 / 3;
     CGFloat itemHeight = self.conditionBar.height - 1;
@@ -104,7 +110,8 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 
     KGFilterBar *filterBar = [[KGFilterBar alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 37) items:@[item1, item2, item3]];
     filterBar.delegate = self;
-    [self.conditionBar addSubview:filterBar];
+    self.filterBar = filterBar;
+    [self.conditionBar addSubview:self.filterBar];
 }
 
 - (void)initDatasource {

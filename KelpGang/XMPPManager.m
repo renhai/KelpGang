@@ -12,7 +12,7 @@
 #import "DDTTYLogger.h"
 #import "KGChatObject.h"
 #import "KGMessageObject.h"
-
+#import "KGChatViewController.h"
 
 // Log levels: off, error, warn, info, verbose
 #if DEBUG
@@ -395,32 +395,64 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 		NSString *body = [[message elementForName:@"body"] stringValue];
 		NSString *displayName = [user displayName];
 
+        NSInteger notifyType = 0;//0：前台运营，非聊天页面 1：聊天页面 2：后台运行
 		if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive)
 		{
-//			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:displayName
-//                                                                message:body
-//                                                               delegate:nil
-//                                                      cancelButtonTitle:@"Ok"
-//                                                      otherButtonTitles:nil];
-//			[alertView show];
-            KGMessageObject *msgObj = [[KGMessageObject alloc] init];
-            msgObj.content = body;
-            msgObj.from = displayName;
-            msgObj.date = [NSDate date];
-            msgObj.type = MessageTypeOther;
-            KGChatObject *chatObj = [[KGChatObject alloc] initWithMessage:msgObj];
-            [[NSNotificationCenter defaultCenter]postNotificationName:kXMPPNewMsgNotifaction object:chatObj];
+            UIWindow *window = [[UIApplication sharedApplication].delegate window];
+            UITabBarController *rootViewController = (UITabBarController *)window.rootViewController;
+            UIViewController *selectViewController = rootViewController.selectedViewController;
+            if ([selectViewController isKindOfClass:[UINavigationController class]]) {
+                UINavigationController *navController = (UINavigationController *) selectViewController;
+                if ([navController.visibleViewController isKindOfClass:[KGChatViewController class]]) {
+                    notifyType = 1;
+                }
+            } else {
+                if ([selectViewController.presentedViewController isKindOfClass:[KGChatViewController class]]) {
+                    notifyType = 1;
+                }
+            }
+		} else {
+            notifyType = 2;
+        }
 
-		}
-		else
-		{
-			// We are not active, so use a local notification instead
-			UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-			localNotification.alertAction = @"Ok";
-			localNotification.alertBody = [NSString stringWithFormat:@"From: %@\n\n%@",displayName,body];
+        switch (notifyType) {
+            case 0: {
+                MTStatusBarOverlay *overlay = [MTStatusBarOverlay sharedInstance];
+                overlay.animation = MTStatusBarOverlayAnimationFallDown;
+                overlay.detailViewMode = MTDetailViewModeCustom;
+                overlay.frame = CGRectMake(200, 0, 150, 20);
+                [overlay setDetailView:nil];
+                overlay.delegate = self;
 
-			[[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
-		}
+                if ([KGUtils isHigherIOS7]) {
+                    overlay.defaultStatusBarImage = [UIImage imageWithColor:RGBCOLOR(33, 185, 162)];
+                } else {
+                    overlay.defaultStatusBarImage = nil;
+                }
+                overlay.hidesActivity = YES;
+                [overlay postMessage:[NSString stringWithFormat:@"%@(1)", displayName] animated:YES];
+                break;
+            }
+            case 1: {
+                KGMessageObject *msgObj = [[KGMessageObject alloc] init];
+                msgObj.content = body;
+                msgObj.from = displayName;
+                msgObj.date = [NSDate date];
+                msgObj.type = MessageTypeOther;
+                KGChatObject *chatObj = [[KGChatObject alloc] initWithMessage:msgObj];
+                [[NSNotificationCenter defaultCenter]postNotificationName:kXMPPNewMsgNotifaction object:chatObj];
+                break;
+            }
+            case 2: {
+                UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+                localNotification.alertAction = @"Ok";
+                localNotification.alertBody = [NSString stringWithFormat:@"From: %@\n\n%@",displayName,body];
+                [[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
+                break;
+            }
+            default:
+                break;
+        }
 	}
 }
 
@@ -521,5 +553,25 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 - (void)sendMessage:(XMPPElement *) message {
     [xmppStream sendElement:message];
 }
+
+
+- (void)statusBarOverlayDidRecognizeGesture:(UIGestureRecognizer *)gestureRecognizer {
+    [[MTStatusBarOverlay sharedInstance] hide];
+    UIWindow *window = [[UIApplication sharedApplication].delegate window];
+    UITabBarController *rootViewController = (UITabBarController *)window.rootViewController;
+    UIViewController *chatViewController = [rootViewController.storyboard instantiateViewControllerWithIdentifier:@"kChatViewController"];
+    UIViewController *selectViewController = rootViewController.selectedViewController;
+    if ([selectViewController isKindOfClass:[UINavigationController class]]) {
+        UINavigationController *navController = (UINavigationController *) selectViewController;
+        [navController popToRootViewControllerAnimated:NO];
+        [rootViewController setSelectedIndex:3];
+        navController = (UINavigationController *)(rootViewController.selectedViewController);
+        UIViewController *recentContactsController = [rootViewController.storyboard instantiateViewControllerWithIdentifier:@"kRecentContactsController"];
+        recentContactsController.hidesBottomBarWhenPushed = YES;
+        [navController pushViewController:recentContactsController animated:NO];
+        [navController pushViewController:chatViewController animated:YES];
+    }
+}
+
 
 @end

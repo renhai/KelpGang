@@ -309,7 +309,12 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
 }
 
 - (void)goBack:(UIBarButtonItem *)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    NSArray *controllers = self.navigationController.viewControllers;
+    if (controllers.count > 1) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (void)textChanged:(NSNotification *) note {

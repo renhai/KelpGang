@@ -8,6 +8,7 @@
 
 #import "KGHostTableViewController.h"
 #import "KGBadgeView.h"
+#import "KGRecentContactsController.h"
 
 @interface KGHostTableViewController ()
 
@@ -121,16 +122,18 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    UIViewController *destController = segue.destinationViewController;
+    if ([destController isKindOfClass:[KGRecentContactsController class]]) {
+        destController.hidesBottomBarWhenPushed = YES;
+    }
 }
-*/
+
 
 #pragma UITableViewDelegate
 

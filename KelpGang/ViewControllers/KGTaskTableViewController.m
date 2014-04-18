@@ -96,11 +96,11 @@
 
 - (void)publish: (UIBarButtonItem *)btn {
     __weak typeof(self) weakSelf = self;
-    [[HudHelper getInstance] showHudOnView:self.view caption:@"正在发布..." image:nil acitivity:YES autoHideTime:0.0];
+    [[HudHelper getInstance] showHudOnWindow:@"正在发布..." image:nil acitivity:YES autoHideTime:0.0];
     int64_t delay = 2.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void) {
-        [[HudHelper getInstance] hideHudInView:weakSelf.view];
+        [[HudHelper getInstance] hideHudInWindow];
         [[NSNotificationCenter defaultCenter] postNotificationName:kPublishTask object:nil];
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"发布成功" delegate:weakSelf cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alertView show];
@@ -108,13 +108,14 @@
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    UIViewController *controller = [[UIViewController alloc] init];
-    controller.view.backgroundColor = [UIColor whiteColor];
-    UIBarButtonItem *leftBar = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:nil action:nil];
-    leftBar.tintColor = [UIColor whiteColor];
-    controller.navigationItem.leftBarButtonItem = leftBar;
-    [self setHidesBottomBarWhenPushed:NO];
-    [self.navigationController pushViewController:controller animated:YES];
+    UIViewController *recentContactsController = [self.storyboard instantiateViewControllerWithIdentifier:@"kRecentContactsController"];
+    recentContactsController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    UIWindow *window = [[UIApplication sharedApplication].delegate window];
+    UITabBarController *rootViewController = (UITabBarController *)window.rootViewController;
+    [rootViewController setSelectedIndex:3];
+    UINavigationController *navController = (UINavigationController *)(rootViewController.selectedViewController);
+    [navController pushViewController:recentContactsController animated:YES];
 }
 
 

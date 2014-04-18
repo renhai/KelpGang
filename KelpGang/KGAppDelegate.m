@@ -23,12 +23,13 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     if ([KGUtils isHigherIOS7]) {
-        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"nav_bar_64"] forBarMetrics:UIBarMetricsDefault];
+        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:RGBCOLOR(33, 185, 162)] forBarMetrics:UIBarMetricsDefault];
     } else {
-        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"nav_bar_44"] forBarMetrics:UIBarMetricsDefault];
+        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:RGBCOLOR(33, 185, 162)] forBarMetrics:UIBarMetricsDefault];
         [[UIBarButtonItem appearance] setBackgroundImage:[UIImage new]
                                                 forState:UIControlStateNormal
                                               barMetrics:UIBarMetricsDefault];
+        [application setStatusBarStyle:UIStatusBarStyleLightContent];
     }
 
     [[UITabBar appearance] setTintColor:RGBCOLOR(33, 185, 162)];
@@ -89,6 +90,24 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
 	DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    DDLogVerbose(@"%@", notification);
+    UITabBarController *rootViewController = (UITabBarController *)self.window.rootViewController;
+    UIViewController *chatViewController = [rootViewController.storyboard instantiateViewControllerWithIdentifier:@"kChatViewController"];
+    UIViewController *selectViewController = rootViewController.selectedViewController;
+    if ([selectViewController isKindOfClass:[UINavigationController class]]) {
+        UINavigationController *navController = (UINavigationController *) selectViewController;
+        chatViewController.hidesBottomBarWhenPushed = YES;
+        [navController popToRootViewControllerAnimated:NO];
+        [navController pushViewController: chatViewController animated:YES];
+    } else {
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:chatViewController];
+        [selectViewController presentViewController:navController animated:YES completion:nil];
+    }
+
+    [[UIApplication sharedApplication] cancelLocalNotification:notification];
 }
 
 @end
