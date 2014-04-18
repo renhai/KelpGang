@@ -63,5 +63,7 @@ typedef void (^ afterHudDisappearBlock) (void);
 // 隐藏hud
 - (void)hideHudInView:(UIView *)parentView;
 - (void)hideHudInView:(UIView *)parentView after:(NSTimeInterval)time;
+- (void)hideHudInWindow;
+
 
 @end

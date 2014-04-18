@@ -175,4 +175,9 @@ static HudHelper* hudInstance = nil;
     }
 }
 
+- (void)hideHudInWindow {
+    UIWindow *v = [[UIApplication sharedApplication].delegate window];
+    [self hideHudInView:v];
+}
+
 @end
