@@ -149,9 +149,11 @@ typedef id  (^IDBlock_id)  (id);
 #define isIOS4 ([[[UIDevice currentDevice] systemVersion] intValue]==4)
 #define isIOS5 ([[[UIDevice currentDevice] systemVersion] intValue]==5)
 #define isIOS6 ([[[UIDevice currentDevice] systemVersion] intValue]==6)
+#define isIOS7 ([[[UIDevice currentDevice] systemVersion] intValue]==7)
 #define isAfterIOS4 ([[[UIDevice currentDevice] systemVersion] intValue]>4)
 #define isAfterIOS5 ([[[UIDevice currentDevice] systemVersion] intValue]>5)
 #define isAfterIOS6 ([[[UIDevice currentDevice] systemVersion] intValue]>6)
+#define isAfterIOS7 ([[[UIDevice currentDevice] systemVersion] intValue]>7)
 
 #define iOS ([[[UIDevice currentDevice] systemVersion] floatValue])
 
