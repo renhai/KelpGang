@@ -102,7 +102,7 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
     KGChatObject *chatObj2 = [[KGChatObject alloc] initWithMessage:obj2];
 
     KGMessageObject *obj3 = [[KGMessageObject alloc]init];
-    obj3.content = @"剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊";
+    obj3.content = @"剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱";
     obj3.type = MessageTypeMe;
     obj3.date = [NSDate dateWithTimeInterval:-100 sinceDate:[NSDate date]];
     KGChatObject *chatObj3 = [[KGChatObject alloc] initWithMessage:obj3];
