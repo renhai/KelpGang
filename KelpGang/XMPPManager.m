@@ -424,13 +424,13 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
                 [overlay setDetailView:nil];
                 overlay.delegate = self;
 
-                if ([KGUtils isHigherIOS7]) {
-                    overlay.defaultStatusBarImage = [UIImage imageWithColor:RGBCOLOR(33, 185, 162)];
+                if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+                    overlay.defaultStatusBarImage = [UIImage imageWithColor:MAIN_COLOR];
                 } else {
                     overlay.defaultStatusBarImage = nil;
                 }
                 overlay.hidesActivity = YES;
-                [overlay postMessage:[NSString stringWithFormat:@"%@(1)", displayName] animated:YES];
+                [overlay postMessage:[NSString stringWithFormat:@"%@(1)", displayName] duration:5.0];
                 break;
             }
             case 1: {
