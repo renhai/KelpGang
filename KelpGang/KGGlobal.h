@@ -11,5 +11,6 @@
 #define kChatHostName @"10.2.45.77"
 #define kChatHostPort 5222
 #define kChatHostURL @"10.2.45.77:5222"
+#define kWebHTML5Url @"http://10.2.24.140"
 
 

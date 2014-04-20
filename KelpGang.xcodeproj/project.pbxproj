@@ -25,6 +25,7 @@
 		A106930E18C06C32003CC6BC /* arrow-up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A106930C18C06C32003CC6BC /* arrow-up@2x.png */; };
 		A112770318E29445006F7CFA /* KGBuyerInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A112770218E29445006F7CFA /* KGBuyerInfoViewController.m */; };
 		A11E91641900D28100BBC1A2 /* KGRecentContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A11E91631900D28100BBC1A2 /* KGRecentContactsController.m */; };
+		A11E916E19011F3700BBC1A2 /* KGDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A11E916D19011F3700BBC1A2 /* KGDiscoverViewController.m */; };
 		A12ADE4518D3225F0009B225 /* close-active.png in Resources */ = {isa = PBXBuildFile; fileRef = A12ADE4318D3225F0009B225 /* close-active.png */; };
 		A12ADE4618D3225F0009B225 /* close-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A12ADE4418D3225F0009B225 /* close-active@2x.png */; };
 		A12ADE4918D323A10009B225 /* delete_img.png in Resources */ = {isa = PBXBuildFile; fileRef = A12ADE4718D323A10009B225 /* delete_img.png */; };
@@ -241,6 +242,8 @@
 		A11E91621900D28100BBC1A2 /* KGRecentContactsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGRecentContactsController.h; sourceTree = "<group>"; };
 		A11E91631900D28100BBC1A2 /* KGRecentContactsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGRecentContactsController.m; sourceTree = "<group>"; };
 		A11E91691900F4F800BBC1A2 /* KGMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGMacro.h; sourceTree = "<group>"; };
+		A11E916C19011F3700BBC1A2 /* KGDiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGDiscoverViewController.h; sourceTree = "<group>"; };
+		A11E916D19011F3700BBC1A2 /* KGDiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGDiscoverViewController.m; sourceTree = "<group>"; };
 		A12ADE4318D3225F0009B225 /* close-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-active.png"; sourceTree = "<group>"; };
 		A12ADE4418D3225F0009B225 /* close-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-active@2x.png"; sourceTree = "<group>"; };
 		A12ADE4718D323A10009B225 /* delete_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete_img.png; sourceTree = "<group>"; };
@@ -894,6 +897,8 @@
 				A19F85E518EA6C300089B14F /* KGTaskTableViewController.m */,
 				A11E91621900D28100BBC1A2 /* KGRecentContactsController.h */,
 				A11E91631900D28100BBC1A2 /* KGRecentContactsController.m */,
+				A11E916C19011F3700BBC1A2 /* KGDiscoverViewController.h */,
+				A11E916D19011F3700BBC1A2 /* KGDiscoverViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1236,6 +1241,7 @@
 				A1DD134C18E03229000F52C2 /* KGHostDetailTableViewController.m in Sources */,
 				A18A2B8818E1325D00FDFB8E /* KGBuyerListViewCell.m in Sources */,
 				A1A948BC18D93E84006DCF6E /* KGCreateJourneyTableViewController.m in Sources */,
+				A11E916E19011F3700BBC1A2 /* KGDiscoverViewController.m in Sources */,
 				A14300D518BB252F0064DF87 /* main.m in Sources */,
 				A18A2B9B18E18D8C00FDFB8E /* KGBadgeView.m in Sources */,
 				A199395818FBD687002E7E51 /* KGChatObject.m in Sources */,

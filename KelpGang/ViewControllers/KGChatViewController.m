@@ -12,7 +12,7 @@
 #import "KGMessageObject.h"
 #import "KGChatObject.h"
 #import "XMPPManager.h"
-
+//#import "SVPullToRefresh.h"
 
 static const CGFloat kMaxChatTextViewHeight = 99.0;
 
@@ -29,6 +29,8 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
 //@property (nonatomic, strong) NSMutableArray *messageArr;
 @property (nonatomic, strong) NSMutableArray *chatObjArr;
 @property (nonatomic, assign) CGFloat currKeyboardHeight;
+
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -62,10 +64,14 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
     self.tableView.backgroundColor = [UIColor clearColor];
 //    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;//TEST
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chat-view-background"]];
-
     [self initHeaderView];
     [self initGoodsView];
     [self initChatTextField];
+
+//    self.refreshControl = [[UIRefreshControl alloc] init];
+//    [self.tableView addSubview:self.refreshControl];
+//    [self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -111,12 +117,15 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
     [self.chatObjArr addObject:chatObj2];
     [self.chatObjArr addObject:chatObj3];
 
-    [self handleShowTime];
+    [self handleShowTime:self.chatObjArr];
 }
 
-- (void)handleShowTime {
+- (void)handleShowTime: (NSMutableArray *)msgArr {
+    if (!msgArr) {
+        return;
+    }
     NSString *preTime = nil;
-    for (KGChatObject *chatObj in self.chatObjArr) {
+    for (KGChatObject *chatObj in msgArr) {
         chatObj.showTime = ![preTime isEqualToString:chatObj.time];
         preTime = chatObj.time;
     }
@@ -280,7 +289,7 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
     chatObj.showIndicator = NO;
     [self.chatObjArr addObject:chatObj];
 
-    [self handleShowTime];
+    [self handleShowTime:self.chatObjArr];
 
     [self.tableView beginUpdates];
     NSIndexPath *lastRow = [NSIndexPath indexPathForRow:self.chatObjArr.count - 1 inSection:0];
@@ -357,7 +366,7 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
 - (void)newMsgCome:(NSNotification *)notifacation {
     KGChatObject *chatObj = notifacation.object;
     [self.chatObjArr addObject:chatObj];
-    [self handleShowTime];
+    [self handleShowTime:self.chatObjArr];
     [self.tableView beginUpdates];
     NSIndexPath *lastRow = [NSIndexPath indexPathForRow:self.chatObjArr.count - 1 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[lastRow] withRowAnimation:UITableViewRowAnimationFade];
@@ -365,5 +374,77 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
     [self.tableView scrollToRowAtIndexPath:lastRow atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
+#pragma UIScrollViewDelegate
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    DLog(@"%@", scrollView);
+    LOGBOOL(decelerate);
+    if (scrollView.contentOffset.y <= 0) {
+        if (!self.refreshControl.isRefreshing) {
+//            [self.tableView setContentOffset:CGPointMake(0, -44) animated:YES];
+            [self.refreshControl beginRefreshing];
+            [self.refreshControl sendActionsForControlEvents:UIControlEventValueChanged];
+        }
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    DLog("%@", scrollView);
+    if (scrollView.contentOffset.y <= 0) {
+        if (!self.refreshControl.isRefreshing) {
+//            [self.tableView setContentOffset:CGPointMake(0, -44) animated:YES];
+            [self.refreshControl beginRefreshing];
+            [self.refreshControl sendActionsForControlEvents:UIControlEventValueChanged];
+        }
+        [self loadingView];
+        [self handleRefresh:nil];
+    }
+}
+
+- (void)handleRefresh: (UIRefreshControl *)refreshControl {
+    [self performSelector:@selector(loadData) withObject:nil afterDelay:1.0];
+}
+
+- (void)loadData {
+    NSMutableArray *moreMsgs = [[NSMutableArray alloc] init];
+//    NSMutableArray *indexPaths = [[NSMutableArray alloc] init];
+    for (NSInteger i = 0; i < 10; i ++) {
+        KGMessageObject *obj = [[KGMessageObject alloc]init];
+        obj.content = [NSString stringWithFormat:@"%i,帮带的东西很好%i", i, arc4random()];
+        obj.type = i % 2;
+        obj.date = [NSDate dateWithTimeInterval:-100*i sinceDate:[NSDate date]];
+        KGChatObject *chatObj = [[KGChatObject alloc] initWithMessage:obj];
+        [moreMsgs addObject:chatObj];
+
+//        [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+
+    }
+    [self handleShowTime:moreMsgs];
+    CGFloat offset = 0.0;
+    for (KGChatObject *obj in moreMsgs) {
+        offset += [obj cellHeight];
+    }
+    [self.chatObjArr insertObjects:moreMsgs atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, moreMsgs.count)]];
+    [self.tableView reloadData];
+
+//    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
+//    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:moreMsgs.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    [self.tableView setContentOffset:CGPointMake(0, offset)];
+    [self.refreshControl endRefreshing];
+    [self initHeaderView];
+}
+
+- (UIView *)loadingView {
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 60)];
+    UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleGray];
+    indicatorView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin |UIViewAutoresizingFlexibleBottomMargin
+    | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    [indicatorView startAnimating];
+    indicatorView.top = (headerView.height - indicatorView.height) / 2;
+    indicatorView.left = (headerView.width - indicatorView.width) / 2;
+    [headerView addSubview:indicatorView];
+    self.tableView.tableHeaderView = headerView;
+    return headerView;
+}
 
 @end
