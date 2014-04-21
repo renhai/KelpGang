@@ -42,6 +42,7 @@
 		A12D782C18CECC5F00873887 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = A12D782B18CECC5F00873887 /* DACircularProgressView.m */; };
 		A1311F4118CA27A300D1A40F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1311F4018CA27A300D1A40F /* MapKit.framework */; };
 		A1311F4518CA2E0800D1A40F /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1311F4418CA2E0800D1A40F /* SwipeView.m */; };
+		A14155AB1904F4BB0045D641 /* KGBaseWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A14155AA1904F4BB0045D641 /* KGBaseWebViewController.m */; };
 		A14300C918BB252F0064DF87 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14300C818BB252F0064DF87 /* Foundation.framework */; };
 		A14300CB18BB252F0064DF87 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14300CA18BB252F0064DF87 /* CoreGraphics.framework */; };
 		A14300CD18BB252F0064DF87 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14300CC18BB252F0064DF87 /* UIKit.framework */; };
@@ -274,6 +275,8 @@
 		A1311F4018CA27A300D1A40F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A1311F4318CA2E0800D1A40F /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
 		A1311F4418CA2E0800D1A40F /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
+		A14155A91904F4BB0045D641 /* KGBaseWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGBaseWebViewController.h; sourceTree = "<group>"; };
+		A14155AA1904F4BB0045D641 /* KGBaseWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGBaseWebViewController.m; sourceTree = "<group>"; };
 		A14300C518BB252F0064DF87 /* KelpGang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KelpGang.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14300C818BB252F0064DF87 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A14300CA18BB252F0064DF87 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -902,6 +905,8 @@
 				A11E91631900D28100BBC1A2 /* KGRecentContactsController.m */,
 				A11E916C19011F3700BBC1A2 /* KGDiscoverViewController.h */,
 				A11E916D19011F3700BBC1A2 /* KGDiscoverViewController.m */,
+				A14155A91904F4BB0045D641 /* KGBaseWebViewController.h */,
+				A14155AA1904F4BB0045D641 /* KGBaseWebViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1237,6 +1242,7 @@
 				A1930B2318CEFA66000D84A1 /* KGPicBottomView.m in Sources */,
 				A1B287BA18ED955B00E44682 /* KGFilterView.m in Sources */,
 				A1CF105118F68E3600B9F6B1 /* KGChatTextField.m in Sources */,
+				A14155AB1904F4BB0045D641 /* KGBaseWebViewController.m in Sources */,
 				A11E91641900D28100BBC1A2 /* KGRecentContactsController.m in Sources */,
 				A14300D918BB252F0064DF87 /* KGAppDelegate.m in Sources */,
 				A1F13E0018EE46E50013B183 /* KGCascadeMenu.m in Sources */,

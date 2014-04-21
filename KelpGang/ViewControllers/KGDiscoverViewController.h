@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KGBaseWebViewController.h"
 
-@interface KGDiscoverViewController : UIViewController
+@interface KGDiscoverViewController : KGBaseWebViewController
 
 @end

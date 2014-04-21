@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KGBaseWebViewController.h"
 
-@interface KGCommentListViewController : UIViewController
+@interface KGCommentListViewController : KGBaseWebViewController
 
 @end

@@ -202,7 +202,7 @@ typedef id  (^IDBlock_id)  (id);
 #define NAVIGATIONBAR_HEIGHT 44.0f
 #define NAVIGATIONBAR_IOS7_HEIGHT 64.0f
 // tabBar高度
-#define TABBAR_HEIGHT 50.0f
+#define TABBAR_HEIGHT 49.0f
 #define ENGISH_KEYBOARD_HEIGHT 216.0
 
 #define LINE_HEIGHT (isRetina ? 0.5 : 1.0)

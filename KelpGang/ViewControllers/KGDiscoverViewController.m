@@ -7,13 +7,8 @@
 //
 
 #import "KGDiscoverViewController.h"
-#import "HudHelper.h"
-#import "SVPullToRefresh.h"
-
-static const NSString * kWebPath = @"/html/gj_saohuo.htm";
 
 @interface KGDiscoverViewController ()
-@property (weak, nonatomic) IBOutlet UIWebView *webView;
 @end
 
 @implementation KGDiscoverViewController
@@ -27,71 +22,44 @@ static const NSString * kWebPath = @"/html/gj_saohuo.htm";
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.webPath = @"/html/gj_saohuo.htm";
+        self.isPullToRefresh = YES;
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[HudHelper getInstance] showHudOnView:self.view caption:@"Loading" image:nil acitivity:YES autoHideTime:0.0];
-    [self loadRequest];
-    [self addPullToRefresh];
+    self.webView.height = SCREEN_HEIGHT - NAVIGATIONBAR_IOS7_HEIGHT - TABBAR_HEIGHT;
 }
 
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma UIWebViewDelegate
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     NSString *url = request.URL.absoluteString;
     DLog(@"%@", url);
+    NSString *suffix = @"/html/gj_saohuo2_1.htm";
+    if ([url hasSuffix:suffix]) {
+        KGBaseWebViewController *webController = [[KGBaseWebViewController alloc] initWithWebPath:suffix];
+        webController.isPullToRefresh = YES;
+        webController.hidesBottomBarWhenPushed = YES;
+        [webController setLeftBarbuttonItem];
+        [webController setTitle:@"英国海淘指南"];
+        [self.navigationController pushViewController:webController animated:YES];
+        return NO;
+    }
     return YES;
 }
 
-- (void)webViewDidStartLoad:(UIWebView *)webView {
-
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-    [[HudHelper getInstance] hideHudInView:self.view];
-    [self.webView.scrollView.pullToRefreshView stopAnimating];
-}
-
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    DLog(@"didFailLoadWithError: %@", error);
-    [[HudHelper getInstance] showHudOnView:self.view caption:@"加载失败" autoHideTime:2];
-    [self.webView.scrollView.pullToRefreshView stopAnimating];
-
-}
-
-- (void)addPullToRefresh {
-    __weak typeof(self) weakSelf = self;
-    [self.webView.scrollView addPullToRefreshWithActionHandler:^{
-        [weakSelf handleRefresh];
-    }];
-}
-
-- (void)handleRefresh {
-    [self loadRequest];
-}
-
-- (void)loadRequest {
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", kWebHTML5Url, kWebPath]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:5.0];
-    [self.webView loadRequest:request];
-}
 
 @end
