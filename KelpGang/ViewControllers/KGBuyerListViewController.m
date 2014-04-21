@@ -221,7 +221,9 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 
 - (void) didSelectFilter:(NSInteger)index item: (NSString *) item {
     NSLog(@"selected index: %d, item : %@", index, item);
-    [self.tableView triggerPullToRefresh];
+    if (self.tableView.pullToRefreshView.state == SVPullToRefreshStateStopped) {
+        [self.tableView triggerPullToRefresh];
+    }
 }
 
 
