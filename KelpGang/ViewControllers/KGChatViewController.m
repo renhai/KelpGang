@@ -12,9 +12,11 @@
 #import "KGMessageObject.h"
 #import "KGChatObject.h"
 #import "XMPPManager.h"
-//#import "SVPullToRefresh.h"
 
 static const CGFloat kMaxChatTextViewHeight = 99.0;
+static const NSInteger kHeaderTipViewTag = 1;
+static const NSInteger kHeaderRefreshViewTag = 2;
+
 
 @interface KGChatViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *topView;
@@ -26,11 +28,9 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
 @property (weak, nonatomic) IBOutlet UITextView *chatTextView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 
-//@property (nonatomic, strong) NSMutableArray *messageArr;
 @property (nonatomic, strong) NSMutableArray *chatObjArr;
 @property (nonatomic, assign) CGFloat currKeyboardHeight;
-
-@property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (nonatomic, strong) UIView *headerView;
 
 @end
 
@@ -67,10 +67,6 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
     [self initHeaderView];
     [self initGoodsView];
     [self initChatTextField];
-
-//    self.refreshControl = [[UIRefreshControl alloc] init];
-//    [self.tableView addSubview:self.refreshControl];
-//    [self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 
@@ -145,10 +141,11 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
 
 -(void)initHeaderView {
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 60)];
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(81, 15, 158, 30)];
-    view.backgroundColor = RGBACOLOR(0, 0, 0, 0.12);
-    view.layer.cornerRadius = 4;
 
+    UIView *tipView = [[UIView alloc] initWithFrame:CGRectMake(81, 15, 158, 30)];
+    tipView.tag = kHeaderTipViewTag;
+    tipView.backgroundColor = RGBACOLOR(0, 0, 0, 0.12);
+    tipView.layer.cornerRadius = 4;
     UILabel *topLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     topLabel.backgroundColor = [UIColor clearColor];
     topLabel.text = @"可以开始聊天了";
@@ -156,9 +153,8 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
     topLabel.font = [UIFont systemFontOfSize:10];
     [topLabel sizeToFit];
     [topLabel setTop:2];
-    [topLabel setLeft:(view.width - topLabel.width) / 2.0];
-    [view addSubview:topLabel];
-
+    [topLabel setLeft:(tipView.width - topLabel.width) / 2.0];
+    [tipView addSubview:topLabel];
     UILabel *bottomLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     bottomLabel.backgroundColor = [UIColor clearColor];
     bottomLabel.text = @"别忘了填写商品信息生成订单哦";
@@ -166,12 +162,21 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
     bottomLabel.font = [UIFont systemFontOfSize:10];
     [bottomLabel sizeToFit];
     [bottomLabel setTop:topLabel.bottom + 2];
-    [bottomLabel setLeft:(view.width - bottomLabel.width) / 2.0];
-    [view addSubview:bottomLabel];
-    [view setHeight:bottomLabel.bottom + 2];
-    [headerView addSubview:view];
+    [bottomLabel setLeft:(tipView.width - bottomLabel.width) / 2.0];
+    [tipView addSubview:bottomLabel];
+    [tipView setHeight:bottomLabel.bottom + 2];
 
-    self.tableView.tableHeaderView = headerView;
+    UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleGray];
+    indicatorView.tag = kHeaderRefreshViewTag;
+    indicatorView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin |UIViewAutoresizingFlexibleBottomMargin
+    | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    indicatorView.top = (headerView.height - indicatorView.height) / 2;
+    indicatorView.left = (headerView.width - indicatorView.width) / 2;
+
+    [headerView addSubview:tipView];
+    [headerView addSubview:indicatorView];
+    self.headerView = headerView;
+    self.tableView.tableHeaderView = self.headerView;
 }
 
 #pragma mark - Table view data source
@@ -371,34 +376,27 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
     DLog(@"%@", scrollView);
     LOGBOOL(decelerate);
     if (scrollView.contentOffset.y <= 0) {
-        if (!self.refreshControl.isRefreshing) {
-//            [self.tableView setContentOffset:CGPointMake(0, -44) animated:YES];
-            [self.refreshControl beginRefreshing];
-            [self.refreshControl sendActionsForControlEvents:UIControlEventValueChanged];
-        }
+
     }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     DLog("%@", scrollView);
     if (scrollView.contentOffset.y <= 0) {
-        if (!self.refreshControl.isRefreshing) {
-//            [self.tableView setContentOffset:CGPointMake(0, -44) animated:YES];
-            [self.refreshControl beginRefreshing];
-            [self.refreshControl sendActionsForControlEvents:UIControlEventValueChanged];
-        }
-        [self loadingView];
-        [self handleRefresh:nil];
+        [self handleRefresh];
     }
 }
 
-- (void)handleRefresh: (UIRefreshControl *)refreshControl {
-    [self performSelector:@selector(loadData) withObject:nil afterDelay:1.0];
+- (void)handleRefresh {
+    UIActivityIndicatorView *refreshView = (UIActivityIndicatorView *)[self.headerView viewWithTag:kHeaderRefreshViewTag];
+    if (!refreshView.isAnimating) {
+        [self startRefresh];
+        [self performSelector:@selector(loadData) withObject:nil afterDelay:1.0];
+    }
 }
 
 - (void)loadData {
     NSMutableArray *moreMsgs = [[NSMutableArray alloc] init];
-//    NSMutableArray *indexPaths = [[NSMutableArray alloc] init];
     for (NSInteger i = 0; i < 10; i ++) {
         KGMessageObject *obj = [[KGMessageObject alloc]init];
         obj.content = [NSString stringWithFormat:@"%i,帮带的东西很好%i", i, arc4random()];
@@ -406,9 +404,6 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
         obj.date = [NSDate dateWithTimeInterval:-100*i sinceDate:[NSDate date]];
         KGChatObject *chatObj = [[KGChatObject alloc] initWithMessage:obj];
         [moreMsgs addObject:chatObj];
-
-//        [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
-
     }
     [self handleShowTime:moreMsgs];
     CGFloat offset = 0.0;
@@ -417,25 +412,24 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
     }
     [self.chatObjArr insertObjects:moreMsgs atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, moreMsgs.count)]];
     [self.tableView reloadData];
-
-//    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
-//    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:moreMsgs.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     [self.tableView setContentOffset:CGPointMake(0, offset)];
-    [self.refreshControl endRefreshing];
-    [self initHeaderView];
+    [self stopRefresh];
 }
 
-- (UIView *)loadingView {
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 60)];
-    UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleGray];
-    indicatorView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin |UIViewAutoresizingFlexibleBottomMargin
-    | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    [indicatorView startAnimating];
-    indicatorView.top = (headerView.height - indicatorView.height) / 2;
-    indicatorView.left = (headerView.width - indicatorView.width) / 2;
-    [headerView addSubview:indicatorView];
-    self.tableView.tableHeaderView = headerView;
-    return headerView;
+- (void)startRefresh {
+    UIView *tipView = [self.headerView viewWithTag:kHeaderTipViewTag];
+    tipView.hidden = YES;
+
+    UIActivityIndicatorView *refreshView = (UIActivityIndicatorView *)[self.headerView viewWithTag:kHeaderRefreshViewTag];
+    [refreshView startAnimating];
+}
+
+- (void)stopRefresh {
+    UIView *tipView = [self.headerView viewWithTag:kHeaderTipViewTag];
+    tipView.hidden = NO;
+
+    UIActivityIndicatorView *refreshView = (UIActivityIndicatorView *)[self.headerView viewWithTag:kHeaderRefreshViewTag];
+    [refreshView stopAnimating];
 }
 
 @end
