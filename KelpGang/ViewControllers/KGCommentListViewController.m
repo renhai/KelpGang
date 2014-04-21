@@ -28,16 +28,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NAVIGATIONBAR_ADD_DEFAULT_BACKBUTTON_WITH_CALLBACK(goBack:);
+    [self setLeftBarbuttonItem];
 
     [[HudHelper getInstance] showHudOnView:self.view caption:@"Loading" image:nil acitivity:YES autoHideTime:0.0];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/html/gj_pingjia.htm", kWebHTML5Url]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:5.0];
     [self.webView loadRequest:request];
-}
-
-- (void)goBack:(UIBarButtonItem *)sender {
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning

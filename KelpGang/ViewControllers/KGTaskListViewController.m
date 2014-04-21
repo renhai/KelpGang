@@ -39,6 +39,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setLeftBarbuttonItem];
     [self setRightBarButtonItems];
 
     self.countryArr = @[@{@"firstLevel": @"热门国家",@"secondLevel": @[@"日本",@"韩国",@"美国",@"法国",@"意大利",@"德国",@"加拿大",@"澳大利亚",@"泰国"]},
@@ -98,10 +99,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)goBack:(UIBarButtonItem *)sender {
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 /*

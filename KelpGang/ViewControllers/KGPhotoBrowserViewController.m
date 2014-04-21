@@ -54,10 +54,6 @@
     [super viewDidLoad];
 }
 
-- (void)goBack:(UIBarButtonItem *)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

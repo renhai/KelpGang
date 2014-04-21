@@ -54,7 +54,7 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NAVIGATIONBAR_ADD_DEFAULT_BACKBUTTON_WITH_CALLBACK(goBack:);
+    [self setLeftBarbuttonItem];
     [self.navigationItem setTitle:@"myrenhai"];
     self.chatObjArr = [[NSMutableArray alloc] init];
     [self mockData];
@@ -315,15 +315,6 @@ static const CGFloat kMaxChatTextViewHeight = 99.0;
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)goBack:(UIBarButtonItem *)sender {
-    NSArray *controllers = self.navigationController.viewControllers;
-    if (controllers.count > 1) {
-        [self.navigationController popViewControllerAnimated:YES];
-    } else {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
 }
 
 - (void)textChanged:(NSNotification *) note {

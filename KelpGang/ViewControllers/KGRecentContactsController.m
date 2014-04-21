@@ -28,7 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NAVIGATIONBAR_ADD_DEFAULT_BACKBUTTON_WITH_CALLBACK(goBack:);
+    [self setLeftBarbuttonItem];
 
     self.contacts = [[NSMutableArray alloc] init];
     [self.contacts addObject:@"a"];
@@ -42,9 +42,6 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)goBack:(UIBarButtonItem *)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 - (void)didReceiveMemoryWarning
 {

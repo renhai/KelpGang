@@ -40,7 +40,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NAVIGATIONBAR_ADD_DEFAULT_BACKBUTTON_WITH_CALLBACK(goBack:);
+    [self setLeftBarbuttonItem];
 
     //for test
     self.comments = @[@"1", @"2", @"3", @"4", @"5"];
@@ -52,10 +52,6 @@
                        @"http://c.hiphotos.baidu.com/image/w%3D2048/sign=908c963b938fa0ec7fc7630d12af58ee/d52a2834349b033ba9e9a8d217ce36d3d539bd51.jpg",
                        @"http://a.hiphotos.baidu.com/image/w%3D2048/sign=c2974a1513dfa9ecfd2e511756e8f603/1b4c510fd9f9d72a501d3814d62a2834349bbbb9.jpg"];
     self.photos = [[NSMutableArray alloc] init];
-}
-
-- (void)goBack:(UIBarButtonItem *)sender {
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning

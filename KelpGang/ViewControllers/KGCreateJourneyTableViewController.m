@@ -26,7 +26,6 @@
 @property (nonatomic, strong) NSMutableArray *selections;
 
 - (IBAction)addGoods:(UIButton *)sender;
-- (IBAction)goBack:(UIBarButtonItem *)sender;
 
 @end
 
@@ -44,6 +43,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setLeftBarbuttonItem];
     self.goodsArr = [[NSMutableArray alloc] init];
     self.currTapCellIndex = 0;
 
@@ -468,9 +468,6 @@
 
 }
 
-- (IBAction)goBack:(UIBarButtonItem *)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 - (void)deleteGoods:(UIButton *) sender {
     UITableViewCell *cell = (UITableViewCell *)sender.superview.superview.superview;

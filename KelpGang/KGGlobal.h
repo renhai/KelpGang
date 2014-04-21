@@ -6,6 +6,13 @@
 //  Copyright (c) 2014年 renren. All rights reserved.
 //
 
+#define NAVIGATIONBAR_ADD_DEFAULT_BACKBUTTON_WITH_CALLBACK(callbackFunction) \
+{ \
+UIImage *normalImage = [UIImage imageNamed:@"nav_bar_item_back"];\
+UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithImage:normalImage style:UIBarButtonItemStyleBordered target:self action:@selector(callbackFunction)];\
+buttonItem.tintColor = [UIColor whiteColor];\
+self.navigationItem.leftBarButtonItem = buttonItem;\
+}
 #define kPublishTask @"kPublishTask"
 #define kXMPPNewMsgNotifaction @"xmppNewMsgNotifaction"
 #define kChatHostName @"10.2.45.77"

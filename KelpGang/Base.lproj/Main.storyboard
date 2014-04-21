@@ -1786,9 +1786,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <navigationItem key="navigationItem" title="任务" id="GgS-16-deG">
                         <barButtonItem key="leftBarButtonItem" image="nav_bar_item_back.png" id="JI9-FF-M6f">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="goBack:" destination="wry-1v-JvQ" id="VeL-Rt-RKG"/>
-                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" id="VEt-U1-wGE">
                             <view key="customView" contentMode="scaleToFill" id="8w8-fz-Xss">
@@ -2391,12 +2388,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="发行程" id="l3y-Pa-W7z">
-                        <barButtonItem key="leftBarButtonItem" image="nav_bar_item_back.png" id="Emn-j1-c6W">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="goBack:" destination="f6u-L3-iGf" id="omt-QM-yMa"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="发布" id="VLC-OV-y7t">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
