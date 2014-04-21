@@ -72,7 +72,7 @@
 		A16FBEFC18DC255A009E2F66 /* half_heart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A16FBEF618DC255A009E2F66 /* half_heart@2x.png */; };
 		A16FBF0118DC4F3A009E2F66 /* recent-contact.png in Resources */ = {isa = PBXBuildFile; fileRef = A16FBEFF18DC4F3A009E2F66 /* recent-contact.png */; };
 		A16FBF0218DC4F3A009E2F66 /* recent-contact@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A16FBF0018DC4F3A009E2F66 /* recent-contact@2x.png */; };
-		A17205E219042FC40031363A /* UIViewController+Goback.m in Sources */ = {isa = PBXBuildFile; fileRef = A17205E119042FC40031363A /* UIViewController+Goback.m */; };
+		A174CD671904CFAC00D910C5 /* UIViewController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = A174CD661904CFAC00D910C5 /* UIViewController+Additions.m */; };
 		A180C0EB18C8BE7800116DCF /* search_someone_active.png in Resources */ = {isa = PBXBuildFile; fileRef = A180C0E918C8BE7800116DCF /* search_someone_active.png */; };
 		A180C0EC18C8BE7800116DCF /* search_someone_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A180C0EA18C8BE7800116DCF /* search_someone_active@2x.png */; };
 		A180C0F718C8BFD900116DCF /* me_active.png in Resources */ = {isa = PBXBuildFile; fileRef = A180C0ED18C8BFD900116DCF /* me_active.png */; };
@@ -317,8 +317,8 @@
 		A16FBEF618DC255A009E2F66 /* half_heart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "half_heart@2x.png"; sourceTree = "<group>"; };
 		A16FBEFF18DC4F3A009E2F66 /* recent-contact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "recent-contact.png"; sourceTree = "<group>"; };
 		A16FBF0018DC4F3A009E2F66 /* recent-contact@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "recent-contact@2x.png"; sourceTree = "<group>"; };
-		A17205E019042FC40031363A /* UIViewController+Goback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Goback.h"; sourceTree = "<group>"; };
-		A17205E119042FC40031363A /* UIViewController+Goback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Goback.m"; sourceTree = "<group>"; };
+		A174CD651904CFAC00D910C5 /* UIViewController+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Additions.h"; sourceTree = "<group>"; };
+		A174CD661904CFAC00D910C5 /* UIViewController+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Additions.m"; sourceTree = "<group>"; };
 		A180C0E918C8BE7800116DCF /* search_someone_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_someone_active.png; sourceTree = "<group>"; };
 		A180C0EA18C8BE7800116DCF /* search_someone_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search_someone_active@2x.png"; sourceTree = "<group>"; };
 		A180C0ED18C8BFD900116DCF /* me_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = me_active.png; sourceTree = "<group>"; };
@@ -902,8 +902,6 @@
 				A11E91631900D28100BBC1A2 /* KGRecentContactsController.m */,
 				A11E916C19011F3700BBC1A2 /* KGDiscoverViewController.h */,
 				A11E916D19011F3700BBC1A2 /* KGDiscoverViewController.m */,
-				A17205E019042FC40031363A /* UIViewController+Goback.h */,
-				A17205E119042FC40031363A /* UIViewController+Goback.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -957,6 +955,8 @@
 				A197502418D84BF10062CAA7 /* UIView+Additions.m */,
 				A197502518D84BF10062CAA7 /* UIWindow+RscExt.h */,
 				A197502618D84BF10062CAA7 /* UIWindow+RscExt.m */,
+				A174CD651904CFAC00D910C5 /* UIViewController+Additions.h */,
+				A174CD661904CFAC00D910C5 /* UIViewController+Additions.m */,
 			);
 			path = Addtional;
 			sourceTree = "<group>";
@@ -1280,11 +1280,11 @@
 				A18A2B8D18E1334200FDFB8E /* KGAddAddressTableViewController.m in Sources */,
 				A12D782118CECBED00873887 /* MWGridCell.m in Sources */,
 				A12D782218CECBED00873887 /* MWGridViewController.m in Sources */,
-				A17205E219042FC40031363A /* UIViewController+Goback.m in Sources */,
 				A143012618BB461A0064DF87 /* UIImage+PKImage.m in Sources */,
 				A19F0ECC18E2B86200C2944D /* KGCommentListViewController.m in Sources */,
 				A12D782C18CECC5F00873887 /* DACircularProgressView.m in Sources */,
 				A18F6FD018ED50C60029F762 /* KGFilterItem.m in Sources */,
+				A174CD671904CFAC00D910C5 /* UIViewController+Additions.m in Sources */,
 				A143012518BB461A0064DF87 /* UIFont+PKFont.m in Sources */,
 				A1933C2718E3D3C9000FC0B4 /* KGPhotoBrowserViewController.m in Sources */,
 				A197503918D84BF10062CAA7 /* UIView+Additions.m in Sources */,

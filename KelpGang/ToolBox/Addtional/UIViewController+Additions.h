@@ -1,5 +1,5 @@
 //
-//  UIViewController+Goback.h
+//  UIViewController+Additions.h
 //  KelpGang
 //
 //  Created by Andy on 14-4-21.
@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIViewController (Goback)
+@interface UIViewController (Additions)
+
 - (void)setLeftBarbuttonItem;
 - (void)goBack:(UIBarButtonItem *)sender;
+
 @end
