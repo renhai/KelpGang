@@ -65,6 +65,9 @@
         [webController setTitle:@"关于帮帮"];
         [self.navigationController pushViewController:webController animated:YES];
         return NO;
+    } else if ([url hasSuffix:@"gj_logout"]){
+        ALERT(@"退出登录成功");
+        return NO;
     }
     return YES;
 }
