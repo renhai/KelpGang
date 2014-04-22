@@ -25,4 +25,9 @@ self.navigationItem.leftBarButtonItem = buttonItem;\
 #define kTabBarIndexCreateTask  2;
 #define kTabBarIndexHome        3;
 
+typedef enum {
+    MALE =      0,
+    FEMALE =    1
+} Gender;
+
 

@@ -32,6 +32,7 @@ static const CGFloat kHeaderImageHeight = 25.0;
 }
 
 - (void)layoutSubviews {
+    [super layoutSubviews];
     CGSize constraint = CGSizeMake(kMessageLableMaxWidth, 20000.0f);
     CGSize labelSize = [self.msgLabel.text sizeWithFont:self.msgLabel.font constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
     CGFloat bgViewPaddingMsgLabelTopOrBottom = 13.0;

@@ -7,6 +7,8 @@
 //
 
 #import "KGRecentContactsController.h"
+#import "KGRecentContactsCell.h"
+#import "KGRecentContactObject.h"
 
 @interface KGRecentContactsController ()
 
@@ -31,9 +33,7 @@
     [self setLeftBarbuttonItem];
 
     self.contacts = [[NSMutableArray alloc] init];
-    [self.contacts addObject:@"a"];
-    [self.contacts addObject:@"b"];
-    [self.contacts addObject:@"c"];
+    [self mockData];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -42,11 +42,32 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void)mockData {
+    KGRecentContactObject *obj1 = [[KGRecentContactObject alloc]init];
+    obj1.uid = 1;
+    obj1.uname = @"任海";
+    obj1.gender = MALE;
+    obj1.headUrl = @"";
+    obj1.lastMsg = @"这位朋友特别热心，帮带的东西很好，下次继续合作。";
+    obj1.lastMsgTime = [NSDate date];
+    obj1.hasRead = NO;
+    [self.contacts addObject:obj1];
+
+    KGRecentContactObject *obj2 = [[KGRecentContactObject alloc]init];
+    obj2.uid = 2;
+    obj2.uname = @"王小花";
+    obj2.gender = FEMALE;
+    obj2.headUrl = @"http://b.hiphotos.baidu.com/image/w%3D2048/sign=d21da2634f4a20a4311e3bc7a46a9822/3b87e950352ac65c81339c02fbf2b21193138a89.jpg";
+    obj2.lastMsg = @"这位朋友特别热心";
+    obj2.lastMsgTime = [NSDate dateWithTimeIntervalSinceNow:-1000000];
+    obj2.hasRead = YES;
+    [self.contacts addObject:obj2];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -64,9 +85,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"kRecentContactsCell" forIndexPath:indexPath];
-    
-    cell.textLabel.text = self.contacts[indexPath.row];
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"kRecentContactsCell" forIndexPath:indexPath];
+    KGRecentContactObject *obj = self.contacts[indexPath.row];
+    KGRecentContactsCell *cell = [[KGRecentContactsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"kRecentContactsCell" contactInfo:obj];
     return cell;
 }
 
@@ -128,5 +149,10 @@
     UIViewController *chatViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"kChatViewController"];
     [self.navigationController pushViewController:chatViewController animated:YES];
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 68.0;
+}
+
 
 @end

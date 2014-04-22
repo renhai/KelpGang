@@ -73,6 +73,7 @@ static CGFloat const kMaxTextLabelMarginLeft = 10.0;
 }
 
 - (void)layoutSubviews {
+    [super layoutSubviews];
     CGRect labelFrame = self.textLabel.frame;
     labelFrame.origin.x = (self.width - labelFrame.size.width) / 2;
     if (labelFrame.origin.x < kMaxTextLabelMarginLeft) {

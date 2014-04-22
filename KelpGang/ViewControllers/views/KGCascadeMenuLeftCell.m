@@ -34,6 +34,7 @@
 }
 
 - (void)layoutSubviews {
+    [super layoutSubviews];
     CGRect labelFrame = self.label.frame;
     labelFrame.origin.x = 38.0;
     labelFrame.origin.y = (self.height - labelFrame.size.height) / 2;
