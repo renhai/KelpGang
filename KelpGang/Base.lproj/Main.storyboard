@@ -1345,7 +1345,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                     <rect key="frame" x="0.0" y="0.0" width="95" height="92"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test-head.jpg" id="ApQ-ui-CeD">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="ApQ-ui-CeD">
                                                             <rect key="frame" x="15" y="10" width="65" height="65"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </imageView>
@@ -1390,7 +1390,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         <color key="backgroundColor" red="0.96470588235294119" green="0.98431372549019602" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
+                                            <outlet property="followLabel" destination="VZ8-is-qfr" id="1xW-RX-pYj"/>
                                             <outlet property="headImageView" destination="ApQ-ui-CeD" id="nSy-cx-THC"/>
+                                            <outlet property="nameLabel" destination="8IP-Sn-qfB" id="G0K-aF-8Pt"/>
+                                            <outlet property="vipImageView" destination="0Tg-fu-zIE" id="rab-Qr-MU0"/>
                                             <segue destination="3ce-tb-lAT" kind="push" id="yI7-RC-Z6l"/>
                                         </connections>
                                     </tableViewCell>

@@ -11,6 +11,10 @@
 @interface KGHostHeadViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *vipImageView;
+@property (weak, nonatomic) IBOutlet UILabel *followLabel;
+
 
 - (void)configCell;
 
