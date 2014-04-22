@@ -9,6 +9,8 @@
 #import "KGHostTableViewController.h"
 #import "KGBadgeView.h"
 #import "KGRecentContactsController.h"
+#import "KGBaseWebViewController.h"
+#import "KGSettingViewController.h"
 
 @interface KGHostTableViewController ()
 
@@ -139,6 +141,42 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+    switch (indexPath.section) {
+        case 0:
+            break;
+        case 1:
+            break;
+        case 2: {
+            if (indexPath.row == 1) {//我的任务
+                KGBaseWebViewController *taskController = [[KGBaseWebViewController alloc] initWithWebPath:@"/html/gj_task.htm"];
+                taskController.hidesBottomBarWhenPushed = YES;
+                taskController.isPullToRefresh = YES;
+                [taskController setLeftBarbuttonItem];
+                [taskController setTitle:@"我的任务"];
+                [self.navigationController pushViewController:taskController animated:YES];
+            } else if (indexPath.row == 2) {//我的收藏
+                KGBaseWebViewController *collectController = [[KGBaseWebViewController alloc] initWithWebPath:@"/html/gj_collect.htm"];
+                collectController.hidesBottomBarWhenPushed = YES;
+                collectController.isPullToRefresh = YES;
+                [collectController setLeftBarbuttonItem];
+                [collectController setTitle:@"我的收藏"];
+                [self.navigationController pushViewController:collectController animated:YES];
+            }
+            break;
+        }
+        case 3:
+            break;
+        case 4: {
+            KGSettingViewController *settingController = [[KGSettingViewController alloc] initWithWebPath:@"/html/gj_set.htm"];
+            settingController.hidesBottomBarWhenPushed = YES;
+            [settingController setLeftBarbuttonItem];
+            [settingController setTitle:@"设置"];
+            [self.navigationController pushViewController:settingController animated:YES];
+            break;
+        }
+        default:
+            break;
+    }
 }
 
 @end

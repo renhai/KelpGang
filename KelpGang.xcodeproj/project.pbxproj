@@ -131,6 +131,7 @@
 		A190FCE018C8859400A87329 /* airplane@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A190FCDE18C8859400A87329 /* airplane@2x.png */; };
 		A190FCE318C89BB000A87329 /* nav_bar_item_back.png in Resources */ = {isa = PBXBuildFile; fileRef = A190FCE118C89BB000A87329 /* nav_bar_item_back.png */; };
 		A190FCE418C89BB000A87329 /* nav_bar_item_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A190FCE218C89BB000A87329 /* nav_bar_item_back@2x.png */; };
+		A1929ECA1906185300DDB66E /* KGSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1929EC91906185300DDB66E /* KGSettingViewController.m */; };
 		A1930B2318CEFA66000D84A1 /* KGPicBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1930B2218CEFA66000D84A1 /* KGPicBottomView.m */; };
 		A1930B2518CEFB3E000D84A1 /* KGPicBottom.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1930B2418CEFB3E000D84A1 /* KGPicBottom.xib */; };
 		A1930B2818CEFD47000D84A1 /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = A1930B2618CEFD47000D84A1 /* chat.png */; };
@@ -387,6 +388,8 @@
 		A190FCDE18C8859400A87329 /* airplane@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "airplane@2x.png"; sourceTree = "<group>"; };
 		A190FCE118C89BB000A87329 /* nav_bar_item_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_bar_item_back.png; sourceTree = "<group>"; };
 		A190FCE218C89BB000A87329 /* nav_bar_item_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_bar_item_back@2x.png"; sourceTree = "<group>"; };
+		A1929EC81906185300DDB66E /* KGSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGSettingViewController.h; sourceTree = "<group>"; };
+		A1929EC91906185300DDB66E /* KGSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGSettingViewController.m; sourceTree = "<group>"; };
 		A1930B2118CEFA66000D84A1 /* KGPicBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGPicBottomView.h; sourceTree = "<group>"; };
 		A1930B2218CEFA66000D84A1 /* KGPicBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGPicBottomView.m; sourceTree = "<group>"; };
 		A1930B2418CEFB3E000D84A1 /* KGPicBottom.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KGPicBottom.xib; sourceTree = "<group>"; };
@@ -907,6 +910,8 @@
 				A11E916D19011F3700BBC1A2 /* KGDiscoverViewController.m */,
 				A14155A91904F4BB0045D641 /* KGBaseWebViewController.h */,
 				A14155AA1904F4BB0045D641 /* KGBaseWebViewController.m */,
+				A1929EC81906185300DDB66E /* KGSettingViewController.h */,
+				A1929EC91906185300DDB66E /* KGSettingViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1288,6 +1293,7 @@
 				A12D782218CECBED00873887 /* MWGridViewController.m in Sources */,
 				A143012618BB461A0064DF87 /* UIImage+PKImage.m in Sources */,
 				A19F0ECC18E2B86200C2944D /* KGCommentListViewController.m in Sources */,
+				A1929ECA1906185300DDB66E /* KGSettingViewController.m in Sources */,
 				A12D782C18CECC5F00873887 /* DACircularProgressView.m in Sources */,
 				A18F6FD018ED50C60029F762 /* KGFilterItem.m in Sources */,
 				A174CD671904CFAC00D910C5 /* UIViewController+Additions.m in Sources */,

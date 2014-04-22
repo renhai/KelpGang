@@ -8,6 +8,7 @@
 
 #import "KGTaskTableViewController.h"
 #import "HudHelper.h"
+#import "KGBaseWebViewController.h"
 
 @interface KGTaskTableViewController ()
 
@@ -104,14 +105,17 @@
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    UIViewController *recentContactsController = [self.storyboard instantiateViewControllerWithIdentifier:@"kRecentContactsController"];
-    recentContactsController.hidesBottomBarWhenPushed = YES;
     [self.navigationController popToRootViewControllerAnimated:NO];
     UIWindow *window = [[UIApplication sharedApplication].delegate window];
     UITabBarController *rootViewController = (UITabBarController *)window.rootViewController;
     [rootViewController setSelectedIndex:3];
     UINavigationController *navController = (UINavigationController *)(rootViewController.selectedViewController);
-    [navController pushViewController:recentContactsController animated:YES];
+    KGBaseWebViewController *taskController = [[KGBaseWebViewController alloc] initWithWebPath:@"/html/gj_task.htm"];
+    taskController.hidesBottomBarWhenPushed = YES;
+    taskController.isPullToRefresh = YES;
+    [taskController setLeftBarbuttonItem];
+    [taskController setTitle:@"我的任务"];
+    [navController pushViewController:taskController animated:YES];
 }
 
 
