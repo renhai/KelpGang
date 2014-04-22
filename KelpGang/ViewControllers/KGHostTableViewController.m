@@ -11,6 +11,7 @@
 #import "KGRecentContactsController.h"
 #import "KGBaseWebViewController.h"
 #import "KGSettingViewController.h"
+#import "KGHostHeadViewCell.h"
 
 @interface KGHostTableViewController ()
 
@@ -60,12 +61,35 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
-    for (UIView *subview in [cell.contentView subviews]) {
-        if ([subview isKindOfClass:[KGBadgeView class]]) {
-            KGBadgeView *badgeView = (KGBadgeView *)subview;
-            [badgeView setBadgeValue:3];
+    switch (indexPath.section) {
+        case 0: {
+            if ([cell respondsToSelector:@selector(configCell)]) {
+                [cell performSelector:@selector(configCell) withObject:nil];
+            }
+            break;
         }
+        case 1:
+            break;
+        case 2: {
+            if (indexPath.row == 0) {
+                for (UIView *subview in [cell.contentView subviews]) {
+                    if ([subview isKindOfClass:[KGBadgeView class]]) {
+                        KGBadgeView *badgeView = (KGBadgeView *)subview;
+                        [badgeView setBadgeValue:99];
+                    }
+                }
+            }
+            break;
+        }
+        case 3:
+            break;
+        case 4: {
+            break;
+        }
+        default:
+            break;
     }
+
     return cell;
 }
 
@@ -84,46 +108,6 @@
     sectionHeaderView.backgroundColor = [UIColor clearColor];
     return sectionHeaderView;
 }
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 
 #pragma mark - Navigation
 

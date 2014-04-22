@@ -132,6 +132,7 @@
 		A190FCE318C89BB000A87329 /* nav_bar_item_back.png in Resources */ = {isa = PBXBuildFile; fileRef = A190FCE118C89BB000A87329 /* nav_bar_item_back.png */; };
 		A190FCE418C89BB000A87329 /* nav_bar_item_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A190FCE218C89BB000A87329 /* nav_bar_item_back@2x.png */; };
 		A1929ECA1906185300DDB66E /* KGSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1929EC91906185300DDB66E /* KGSettingViewController.m */; };
+		A1929ECD19061FDC00DDB66E /* KGHostHeadViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1929ECC19061FDC00DDB66E /* KGHostHeadViewCell.m */; };
 		A1930B2318CEFA66000D84A1 /* KGPicBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1930B2218CEFA66000D84A1 /* KGPicBottomView.m */; };
 		A1930B2518CEFB3E000D84A1 /* KGPicBottom.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1930B2418CEFB3E000D84A1 /* KGPicBottom.xib */; };
 		A1930B2818CEFD47000D84A1 /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = A1930B2618CEFD47000D84A1 /* chat.png */; };
@@ -390,6 +391,8 @@
 		A190FCE218C89BB000A87329 /* nav_bar_item_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_bar_item_back@2x.png"; sourceTree = "<group>"; };
 		A1929EC81906185300DDB66E /* KGSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGSettingViewController.h; sourceTree = "<group>"; };
 		A1929EC91906185300DDB66E /* KGSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGSettingViewController.m; sourceTree = "<group>"; };
+		A1929ECB19061FDC00DDB66E /* KGHostHeadViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGHostHeadViewCell.h; sourceTree = "<group>"; };
+		A1929ECC19061FDC00DDB66E /* KGHostHeadViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGHostHeadViewCell.m; sourceTree = "<group>"; };
 		A1930B2118CEFA66000D84A1 /* KGPicBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGPicBottomView.h; sourceTree = "<group>"; };
 		A1930B2218CEFA66000D84A1 /* KGPicBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGPicBottomView.m; sourceTree = "<group>"; };
 		A1930B2418CEFB3E000D84A1 /* KGPicBottom.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KGPicBottom.xib; sourceTree = "<group>"; };
@@ -950,6 +953,8 @@
 				A1A0DA0218FE662300E0C0E8 /* KGBaseMessageCell.m */,
 				A1C9C77C18F5675D00A081D0 /* KGChatTextMessageCell.h */,
 				A1C9C77D18F5675D00A081D0 /* KGChatTextMessageCell.m */,
+				A1929ECB19061FDC00DDB66E /* KGHostHeadViewCell.h */,
+				A1929ECC19061FDC00DDB66E /* KGHostHeadViewCell.m */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -1243,6 +1248,7 @@
 				A14300DF18BB252F0064DF87 /* KGViewController.m in Sources */,
 				A12D782518CECBED00873887 /* MWTapDetectingImageView.m in Sources */,
 				A1C9C77E18F5675D00A081D0 /* KGChatTextMessageCell.m in Sources */,
+				A1929ECD19061FDC00DDB66E /* KGHostHeadViewCell.m in Sources */,
 				A1DDFB7E18EEB4920078ED73 /* KGCascadeMenuRightCell.m in Sources */,
 				A1930B2318CEFA66000D84A1 /* KGPicBottomView.m in Sources */,
 				A1B287BA18ED955B00E44682 /* KGFilterView.m in Sources */,
