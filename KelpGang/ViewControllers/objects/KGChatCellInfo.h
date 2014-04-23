@@ -7,15 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KGMessageObject.h"
 
 static const CGFloat kMessageLableMaxWidth = 240.0;
 static const CGFloat kMessageLabelMarginTop = 21.0;
 static const CGFloat kMessageLabelMarginBottom = 21.0;
 static const CGFloat kTimeViewHeight = 28.0;
 
-@class KGMessageObject;
-
-@interface KGChatObject : NSObject
+@interface KGChatCellInfo : NSObject
 
 @property (nonatomic, strong) KGMessageObject *messageObj;
 @property (nonatomic, assign) BOOL showTime;
@@ -25,5 +24,7 @@ static const CGFloat kTimeViewHeight = 28.0;
 - (id)initWithMessage: (KGMessageObject *) msg;
 
 - (CGFloat)cellHeight;
+
+-(MessageType)messageType;
 
 @end

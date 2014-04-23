@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@class KGChatObject;
+@class KGChatCellInfo;
 
 @interface KGBaseMessageCell : UITableViewCell
 
-@property (nonatomic, strong) KGChatObject *chatObj;
+@property (nonatomic, strong) KGChatCellInfo *chatCellInfo;
 @property (nonatomic, strong) UIActivityIndicatorView *indicatorView;
 
-- (void)configCell:(KGChatObject *)chatObj;
+- (void)configCell:(KGChatCellInfo *)chatCellInfo;
 
 - (void)showMessageIndicator: (BOOL)display;
 

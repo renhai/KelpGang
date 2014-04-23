@@ -10,8 +10,7 @@
 
 #import "DDLog.h"
 #import "DDTTYLogger.h"
-#import "KGChatObject.h"
-#import "KGMessageObject.h"
+#import "KGChatCellInfo.h"
 #import "KGChatViewController.h"
 
 // Log levels: off, error, warn, info, verbose
@@ -439,8 +438,8 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
                 msgObj.from = displayName;
                 msgObj.date = [NSDate date];
                 msgObj.type = MessageTypeOther;
-                KGChatObject *chatObj = [[KGChatObject alloc] initWithMessage:msgObj];
-                [[NSNotificationCenter defaultCenter]postNotificationName:kXMPPNewMsgNotifaction object:chatObj];
+                KGChatCellInfo *chatCellInfo = [[KGChatCellInfo alloc] initWithMessage:msgObj];
+                [[NSNotificationCenter defaultCenter]postNotificationName:kXMPPNewMsgNotifaction object:chatCellInfo];
                 break;
             }
             case 2: {

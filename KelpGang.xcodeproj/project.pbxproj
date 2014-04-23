@@ -23,6 +23,7 @@
 		A106930A18C068CF003CC6BC /* head-line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A106930618C068CF003CC6BC /* head-line@2x.png */; };
 		A106930D18C06C32003CC6BC /* arrow-up.png in Resources */ = {isa = PBXBuildFile; fileRef = A106930B18C06C32003CC6BC /* arrow-up.png */; };
 		A106930E18C06C32003CC6BC /* arrow-up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A106930C18C06C32003CC6BC /* arrow-up@2x.png */; };
+		A110FA1B19077BED001651A3 /* KGChatTxtMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A110FA1A19077BED001651A3 /* KGChatTxtMessageCell.m */; };
 		A112770318E29445006F7CFA /* KGBuyerInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A112770218E29445006F7CFA /* KGBuyerInfoViewController.m */; };
 		A11E91641900D28100BBC1A2 /* KGRecentContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A11E91631900D28100BBC1A2 /* KGRecentContactsController.m */; };
 		A11E916E19011F3700BBC1A2 /* KGDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A11E916D19011F3700BBC1A2 /* KGDiscoverViewController.m */; };
@@ -151,7 +152,7 @@
 		A197503A18D84BF10062CAA7 /* UIWindow+RscExt.m in Sources */ = {isa = PBXBuildFile; fileRef = A197502618D84BF10062CAA7 /* UIWindow+RscExt.m */; };
 		A197503D18D85F920062CAA7 /* trip.png in Resources */ = {isa = PBXBuildFile; fileRef = A197503B18D85F920062CAA7 /* trip.png */; };
 		A197503E18D85F920062CAA7 /* trip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A197503C18D85F920062CAA7 /* trip@2x.png */; };
-		A199395818FBD687002E7E51 /* KGChatObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A199395718FBD687002E7E51 /* KGChatObject.m */; };
+		A199395818FBD687002E7E51 /* KGChatCellInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A199395718FBD687002E7E51 /* KGChatCellInfo.m */; };
 		A19F0EC318E2AE0D00C2944D /* KGBuyerRefPicturesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A19F0EC218E2AE0D00C2944D /* KGBuyerRefPicturesCell.m */; };
 		A19F0EC618E2B33B00C2944D /* KGBuyerDescriptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A19F0EC518E2B33B00C2944D /* KGBuyerDescriptionCell.m */; };
 		A19F0EC918E2B47800C2944D /* KGBuyerCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A19F0EC818E2B47800C2944D /* KGBuyerCommentCell.m */; };
@@ -195,7 +196,6 @@
 		A1BBB08618D6EE86002C8BD2 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BBB08418D6EE86002C8BD2 /* search.png */; };
 		A1BBB08718D6EE86002C8BD2 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BBB08518D6EE86002C8BD2 /* search@2x.png */; };
 		A1C0ACFB18C759010092E3B4 /* XMPPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C0ACFA18C759010092E3B4 /* XMPPManager.m */; };
-		A1C9C77E18F5675D00A081D0 /* KGChatTextMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C9C77D18F5675D00A081D0 /* KGChatTextMessageCell.m */; };
 		A1CA060018DAF32D00B1F3A6 /* KGJourneyPictureContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CA05FF18DAF32D00B1F3A6 /* KGJourneyPictureContainerView.m */; };
 		A1CF104A18F655F600B9F6B1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1CF104918F655F600B9F6B1 /* QuartzCore.framework */; };
 		A1CF105118F68E3600B9F6B1 /* KGChatTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CF105018F68E3600B9F6B1 /* KGChatTextField.m */; };
@@ -232,7 +232,7 @@
 /* Begin PBXFileReference section */
 		71B7D4768EEC4B5B9F048CA3 /* Pods-KelpGang.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KelpGang.xcconfig"; path = "Pods/Pods-KelpGang.xcconfig"; sourceTree = "<group>"; };
 		A10150C818CB6445004A729D /* KGChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGChatViewController.h; sourceTree = "<group>"; };
-		A10150C918CB6445004A729D /* KGChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGChatViewController.m; sourceTree = "<group>"; };
+		A10150C918CB6445004A729D /* KGChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = KGChatViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		A10150DF18CB8BA7004A729D /* default_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_line.png; sourceTree = "<group>"; };
 		A10150E018CB8BA7004A729D /* default_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default_line@2x.png"; sourceTree = "<group>"; };
 		A10150E118CB8BA7004A729D /* selected_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selected_line.png; sourceTree = "<group>"; };
@@ -247,6 +247,8 @@
 		A106930618C068CF003CC6BC /* head-line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "head-line@2x.png"; sourceTree = "<group>"; };
 		A106930B18C06C32003CC6BC /* arrow-up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-up.png"; sourceTree = "<group>"; };
 		A106930C18C06C32003CC6BC /* arrow-up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-up@2x.png"; sourceTree = "<group>"; };
+		A110FA1919077BED001651A3 /* KGChatTxtMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = KGChatTxtMessageCell.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		A110FA1A19077BED001651A3 /* KGChatTxtMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = KGChatTxtMessageCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		A112770118E29445006F7CFA /* KGBuyerInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGBuyerInfoViewController.h; sourceTree = "<group>"; };
 		A112770218E29445006F7CFA /* KGBuyerInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGBuyerInfoViewController.m; sourceTree = "<group>"; };
 		A11E91621900D28100BBC1A2 /* KGRecentContactsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGRecentContactsController.h; sourceTree = "<group>"; };
@@ -424,8 +426,8 @@
 		A197502618D84BF10062CAA7 /* UIWindow+RscExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+RscExt.m"; sourceTree = "<group>"; };
 		A197503B18D85F920062CAA7 /* trip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trip.png; sourceTree = "<group>"; };
 		A197503C18D85F920062CAA7 /* trip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trip@2x.png"; sourceTree = "<group>"; };
-		A199395618FBD687002E7E51 /* KGChatObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGChatObject.h; sourceTree = "<group>"; };
-		A199395718FBD687002E7E51 /* KGChatObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGChatObject.m; sourceTree = "<group>"; };
+		A199395618FBD687002E7E51 /* KGChatCellInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGChatCellInfo.h; sourceTree = "<group>"; };
+		A199395718FBD687002E7E51 /* KGChatCellInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGChatCellInfo.m; sourceTree = "<group>"; };
 		A19F0EC118E2AE0D00C2944D /* KGBuyerRefPicturesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGBuyerRefPicturesCell.h; sourceTree = "<group>"; };
 		A19F0EC218E2AE0D00C2944D /* KGBuyerRefPicturesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGBuyerRefPicturesCell.m; sourceTree = "<group>"; };
 		A19F0EC418E2B33B00C2944D /* KGBuyerDescriptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGBuyerDescriptionCell.h; sourceTree = "<group>"; };
@@ -450,8 +452,8 @@
 		A1A003F918F3F60500B5A1D7 /* chat-view-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat-view-background@2x.png"; sourceTree = "<group>"; };
 		A1A06F4C18FFCD9200C9EAC3 /* MTStatusBarOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTStatusBarOverlay.h; sourceTree = "<group>"; };
 		A1A06F4D18FFCD9200C9EAC3 /* MTStatusBarOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTStatusBarOverlay.m; sourceTree = "<group>"; };
-		A1A0DA0118FE662300E0C0E8 /* KGBaseMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGBaseMessageCell.h; sourceTree = "<group>"; };
-		A1A0DA0218FE662300E0C0E8 /* KGBaseMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGBaseMessageCell.m; sourceTree = "<group>"; };
+		A1A0DA0118FE662300E0C0E8 /* KGBaseMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = KGBaseMessageCell.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		A1A0DA0218FE662300E0C0E8 /* KGBaseMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = KGBaseMessageCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		A1A1DAF718C9AE7C00F03E04 /* follow-btn-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "follow-btn-bg.png"; sourceTree = "<group>"; };
 		A1A1DAF818C9AE7C00F03E04 /* follow-btn-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "follow-btn-bg@2x.png"; sourceTree = "<group>"; };
 		A1A1DAFB18C9CCD200F03E04 /* KGUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGUtils.h; sourceTree = "<group>"; };
@@ -487,8 +489,6 @@
 		A1BBB08518D6EE86002C8BD2 /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
 		A1C0ACF918C759010092E3B4 /* XMPPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPManager.h; sourceTree = "<group>"; };
 		A1C0ACFA18C759010092E3B4 /* XMPPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPManager.m; sourceTree = "<group>"; };
-		A1C9C77C18F5675D00A081D0 /* KGChatTextMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGChatTextMessageCell.h; sourceTree = "<group>"; };
-		A1C9C77D18F5675D00A081D0 /* KGChatTextMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGChatTextMessageCell.m; sourceTree = "<group>"; };
 		A1CA05FE18DAF32D00B1F3A6 /* KGJourneyPictureContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGJourneyPictureContainerView.h; sourceTree = "<group>"; };
 		A1CA05FF18DAF32D00B1F3A6 /* KGJourneyPictureContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGJourneyPictureContainerView.m; sourceTree = "<group>"; };
 		A1CF104918F655F600B9F6B1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -946,8 +946,8 @@
 				A18A2B9118E1793500FDFB8E /* KGAddressObject.m */,
 				A1A003F518F3F0BC00B5A1D7 /* KGMessageObject.h */,
 				A1A003F618F3F0BC00B5A1D7 /* KGMessageObject.m */,
-				A199395618FBD687002E7E51 /* KGChatObject.h */,
-				A199395718FBD687002E7E51 /* KGChatObject.m */,
+				A199395618FBD687002E7E51 /* KGChatCellInfo.h */,
+				A199395718FBD687002E7E51 /* KGChatCellInfo.m */,
 				A14B63721906656400C14A15 /* KGRecentContactObject.h */,
 				A14B63731906656400C14A15 /* KGRecentContactObject.m */,
 			);
@@ -971,12 +971,12 @@
 				A19F0EC818E2B47800C2944D /* KGBuyerCommentCell.m */,
 				A1A0DA0118FE662300E0C0E8 /* KGBaseMessageCell.h */,
 				A1A0DA0218FE662300E0C0E8 /* KGBaseMessageCell.m */,
-				A1C9C77C18F5675D00A081D0 /* KGChatTextMessageCell.h */,
-				A1C9C77D18F5675D00A081D0 /* KGChatTextMessageCell.m */,
 				A1929ECB19061FDC00DDB66E /* KGHostHeadViewCell.h */,
 				A1929ECC19061FDC00DDB66E /* KGHostHeadViewCell.m */,
 				A1929ECE19063C3000DDB66E /* KGRecentContactsCell.h */,
 				A1929ECF19063C3000DDB66E /* KGRecentContactsCell.m */,
+				A110FA1919077BED001651A3 /* KGChatTxtMessageCell.h */,
+				A110FA1A19077BED001651A3 /* KGChatTxtMessageCell.m */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -1274,13 +1274,13 @@
 				A19F85E618EA6C300089B14F /* KGTaskTableViewController.m in Sources */,
 				A14300DF18BB252F0064DF87 /* KGViewController.m in Sources */,
 				A12D782518CECBED00873887 /* MWTapDetectingImageView.m in Sources */,
-				A1C9C77E18F5675D00A081D0 /* KGChatTextMessageCell.m in Sources */,
 				A1929ECD19061FDC00DDB66E /* KGHostHeadViewCell.m in Sources */,
 				A1DDFB7E18EEB4920078ED73 /* KGCascadeMenuRightCell.m in Sources */,
 				A1930B2318CEFA66000D84A1 /* KGPicBottomView.m in Sources */,
 				A1B287BA18ED955B00E44682 /* KGFilterView.m in Sources */,
 				A1CF105118F68E3600B9F6B1 /* KGChatTextField.m in Sources */,
 				A14155AB1904F4BB0045D641 /* KGBaseWebViewController.m in Sources */,
+				A110FA1B19077BED001651A3 /* KGChatTxtMessageCell.m in Sources */,
 				A11E91641900D28100BBC1A2 /* KGRecentContactsController.m in Sources */,
 				A14300D918BB252F0064DF87 /* KGAppDelegate.m in Sources */,
 				A1F13E0018EE46E50013B183 /* KGCascadeMenu.m in Sources */,
@@ -1293,7 +1293,7 @@
 				A11E916E19011F3700BBC1A2 /* KGDiscoverViewController.m in Sources */,
 				A14300D518BB252F0064DF87 /* main.m in Sources */,
 				A18A2B9B18E18D8C00FDFB8E /* KGBadgeView.m in Sources */,
-				A199395818FBD687002E7E51 /* KGChatObject.m in Sources */,
+				A199395818FBD687002E7E51 /* KGChatCellInfo.m in Sources */,
 				A16FBEED18DC178C009E2F66 /* KGMaskView.m in Sources */,
 				A1A003F718F3F0BC00B5A1D7 /* KGMessageObject.m in Sources */,
 				A1C0ACFB18C759010092E3B4 /* XMPPManager.m in Sources */,

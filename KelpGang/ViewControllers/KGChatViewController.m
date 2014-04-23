@@ -7,11 +7,10 @@
 //
 
 #import "KGChatViewController.h"
-#import "KGChatTextMessageCell.h"
 #import "KGChatTextField.h"
-#import "KGMessageObject.h"
-#import "KGChatObject.h"
+#import "KGChatCellInfo.h"
 #import "XMPPManager.h"
+#import "KGChatTxtMessageCell.h"
 
 static const CGFloat kMaxChatTextViewHeight = 99.0;
 static const NSInteger kHeaderTipViewTag = 1;
@@ -28,7 +27,7 @@ static const NSInteger kHeaderRefreshViewTag = 2;
 @property (weak, nonatomic) IBOutlet UITextView *chatTextView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 
-@property (nonatomic, strong) NSMutableArray *chatObjArr;
+@property (nonatomic, strong) NSMutableArray *chatCellInfoArr;
 @property (nonatomic, assign) CGFloat currKeyboardHeight;
 @property (nonatomic, strong) UIView *headerView;
 
@@ -56,7 +55,7 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     [super viewDidLoad];
     [self setLeftBarbuttonItem];
     [self.navigationItem setTitle:@"myrenhai"];
-    self.chatObjArr = [[NSMutableArray alloc] init];
+    self.chatCellInfoArr = [[NSMutableArray alloc] init];
     [self mockData];
 
     self.tableView.delegate = self;
@@ -79,8 +78,8 @@ static const NSInteger kHeaderRefreshViewTag = 2;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if (self.chatObjArr && self.chatObjArr.count > 0) {
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.chatObjArr.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    if (self.chatCellInfoArr && self.chatCellInfoArr.count > 0) {
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.chatCellInfoArr.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     }
 }
 
@@ -95,25 +94,25 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     obj1.content = @"帮带的东西很好，希望还能继续合作，剩了不少钱，还是海带划算啊。。。。";
     obj1.type = MessageTypeOther;
     obj1.date = [NSDate dateWithTimeInterval:-200 sinceDate:[NSDate date]];
-    KGChatObject *chatObj1 = [[KGChatObject alloc] initWithMessage:obj1];
+    KGChatCellInfo *chatCellInfo1 = [[KGChatCellInfo alloc] initWithMessage:obj1];
 
     KGMessageObject *obj2 = [[KGMessageObject alloc]init];
     obj2.content = @"剩了不少钱，还是海带划算啊";
     obj2.type = MessageTypeOther;
     obj2.date = [NSDate dateWithTimeInterval:-150 sinceDate:[NSDate date]];
-    KGChatObject *chatObj2 = [[KGChatObject alloc] initWithMessage:obj2];
+    KGChatCellInfo *chatCellInfo2 = [[KGChatCellInfo alloc] initWithMessage:obj2];
 
     KGMessageObject *obj3 = [[KGMessageObject alloc]init];
     obj3.content = @"剩了不少钱，还是海带划算啊剩了不少钱，还是海带划算啊剩了不少钱";
     obj3.type = MessageTypeMe;
     obj3.date = [NSDate dateWithTimeInterval:-100 sinceDate:[NSDate date]];
-    KGChatObject *chatObj3 = [[KGChatObject alloc] initWithMessage:obj3];
+    KGChatCellInfo *chatCellInfo3 = [[KGChatCellInfo alloc] initWithMessage:obj3];
 
-    [self.chatObjArr addObject:chatObj1];
-    [self.chatObjArr addObject:chatObj2];
-    [self.chatObjArr addObject:chatObj3];
+    [self.chatCellInfoArr addObject:chatCellInfo1];
+    [self.chatCellInfoArr addObject:chatCellInfo2];
+    [self.chatCellInfoArr addObject:chatCellInfo3];
 
-    [self handleShowTime:self.chatObjArr];
+    [self handleShowTime:self.chatCellInfoArr];
 }
 
 - (void)handleShowTime: (NSMutableArray *)msgArr {
@@ -121,9 +120,9 @@ static const NSInteger kHeaderRefreshViewTag = 2;
         return;
     }
     NSString *preTime = nil;
-    for (KGChatObject *chatObj in msgArr) {
-        chatObj.showTime = ![preTime isEqualToString:chatObj.time];
-        preTime = chatObj.time;
+    for (KGChatCellInfo *chatCellInfo in msgArr) {
+        chatCellInfo.showTime = ![preTime isEqualToString:chatCellInfo.time];
+        preTime = chatCellInfo.time;
     }
 }
 
@@ -188,20 +187,22 @@ static const NSInteger kHeaderRefreshViewTag = 2;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.chatObjArr.count;
+    return self.chatCellInfoArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell;
-    cell = [tableView dequeueReusableCellWithIdentifier:@"kChatMessageOtherCell"];
-    if (!cell) {
-        cell = [[KGChatTextMessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"kChatMessageOtherCell"];
-    }
-    cell.backgroundColor = [UIColor clearColor];
-    KGChatTextMessageCell *mCell = (KGChatTextMessageCell *)cell;
-    KGChatObject *chatObj = self.chatObjArr[indexPath.row];
-    [mCell configCell:chatObj];
+//    UITableViewCell *cell;
+//    cell = [tableView dequeueReusableCellWithIdentifier:@"kChatMessageOtherCell"];
+//    if (!cell) {
+//        cell = [[KGChatTextMessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"kChatMessageOtherCell"];
+//    }
+//    cell.backgroundColor = [UIColor clearColor];
+//    KGChatTextMessageCell *mCell = (KGChatTextMessageCell *)cell;
+
+    KGChatTxtMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"kChatTxtMessageCell"];
+    KGChatCellInfo *chatCellInfo = self.chatCellInfoArr[indexPath.row];
+    [cell configCell:chatCellInfo];
 
     return cell;
 }
@@ -209,8 +210,8 @@ static const NSInteger kHeaderRefreshViewTag = 2;
 #pragma UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    KGChatObject *msgObj = self.chatObjArr[indexPath.row];
-    return [msgObj cellHeight];
+    KGChatCellInfo *msgObj = self.chatCellInfoArr[indexPath.row];
+    return msgObj.cellHeight;
 }
 
 
@@ -259,8 +260,8 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     [UIView animateWithDuration:[note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{
         [self.bottomView setTop:self.view.height - self.bottomView.height - endRect.size.height];
         [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, endRect.size.height, 0)];
-        if (self.chatObjArr && self.chatObjArr.count > 0) {
-            NSIndexPath *lastRow = [NSIndexPath indexPathForRow:self.chatObjArr.count - 1 inSection:0];
+        if (self.chatCellInfoArr && self.chatCellInfoArr.count > 0) {
+            NSIndexPath *lastRow = [NSIndexPath indexPathForRow:self.chatCellInfoArr.count - 1 inSection:0];
             [self.tableView scrollToRowAtIndexPath:lastRow atScrollPosition:UITableViewScrollPositionBottom animated:YES];
         }
 
@@ -292,17 +293,18 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     obj.content = textField.text;
     obj.type = MessageTypeMe;
     obj.date = [NSDate date];
-    KGChatObject *chatObj = [[KGChatObject alloc] initWithMessage:obj];
-    chatObj.showIndicator = NO;
-    [self.chatObjArr addObject:chatObj];
+    KGChatCellInfo *chatCellInfo = [[KGChatCellInfo alloc] initWithMessage:obj];
+    chatCellInfo.showIndicator = NO;
+    [self.chatCellInfoArr addObject:chatCellInfo];
 
-    [self handleShowTime:self.chatObjArr];
+    [self handleShowTime:self.chatCellInfoArr];
 
-    NSIndexPath *lastRow = [NSIndexPath indexPathForRow:self.chatObjArr.count - 1 inSection:0];
-    [self.tableView beginUpdates];
-    [self.tableView insertRowsAtIndexPaths:@[lastRow] withRowAnimation:UITableViewRowAnimationNone];
-    [self.tableView endUpdates];
-//    [self.tableView reloadData];
+    NSIndexPath *lastRow = [NSIndexPath indexPathForRow:self.chatCellInfoArr.count - 1 inSection:0];
+//    [self.tableView beginUpdates];
+//    [self.tableView insertRowsAtIndexPaths:@[lastRow] withRowAnimation:UITableViewRowAnimationNone];
+//    [self.tableView endUpdates];
+    //碰到一个很奇怪的问题，在7.1环境会闪一下
+    [self.tableView reloadData];
     [self.tableView scrollToRowAtIndexPath:lastRow atScrollPosition:UITableViewScrollPositionNone animated:YES];
 
     XMPPElement *body = [XMPPElement elementWithName:@"body"];
@@ -344,13 +346,13 @@ static const NSInteger kHeaderRefreshViewTag = 2;
         KGMessageObject *obj = [[KGMessageObject alloc]init];
         obj.content = textView.text;
         obj.type = MessageTypeMe;
-        KGChatObject *chatObj = [[KGChatObject alloc] initWithMessage:obj];
-        [self.chatObjArr addObject:chatObj];
+        KGChatCellInfo *chatCellInfo = [[KGChatCellInfo alloc] initWithMessage:obj];
+        [self.chatCellInfoArr addObject:chatCellInfo];
         [self.tableView beginUpdates];
-        NSIndexPath *lastRow = [NSIndexPath indexPathForRow:self.chatObjArr.count - 1 inSection:0];
-        [self.tableView insertRowsAtIndexPaths:@[lastRow] withRowAnimation:UITableViewRowAnimationFade];
+        NSIndexPath *lastRow = [NSIndexPath indexPathForRow:self.chatCellInfoArr.count - 1 inSection:0];
+        [self.tableView insertRowsAtIndexPaths:@[lastRow] withRowAnimation:UITableViewRowAnimationNone];
         [self.tableView endUpdates];
-        [self.tableView scrollToRowAtIndexPath:lastRow atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+        [self.tableView scrollToRowAtIndexPath:lastRow atScrollPosition:UITableViewScrollPositionNone animated:YES];
         textView.text = @"";
 
         self.chatTextView.height = 33;
@@ -363,13 +365,14 @@ static const NSInteger kHeaderRefreshViewTag = 2;
 
 
 - (void)newMsgCome:(NSNotification *)notifacation {
-    KGChatObject *chatObj = notifacation.object;
-    [self.chatObjArr addObject:chatObj];
-    [self handleShowTime:self.chatObjArr];
-    NSIndexPath *lastRow = [NSIndexPath indexPathForRow:self.chatObjArr.count - 1 inSection:0];
-    [self.tableView beginUpdates];
-    [self.tableView insertRowsAtIndexPaths:@[lastRow] withRowAnimation:UITableViewRowAnimationNone];
-    [self.tableView endUpdates];
+    KGChatCellInfo *chatCellInfo = notifacation.object;
+    [self.chatCellInfoArr addObject:chatCellInfo];
+    [self handleShowTime:self.chatCellInfoArr];
+    NSIndexPath *lastRow = [NSIndexPath indexPathForRow:self.chatCellInfoArr.count - 1 inSection:0];
+//    [self.tableView beginUpdates];
+//    [self.tableView insertRowsAtIndexPaths:@[lastRow] withRowAnimation:UITableViewRowAnimationNone];
+//    [self.tableView endUpdates];
+    [self.tableView reloadData];
     [self.tableView scrollToRowAtIndexPath:lastRow atScrollPosition:UITableViewScrollPositionNone animated:YES];
 }
 
@@ -391,7 +394,7 @@ static const NSInteger kHeaderRefreshViewTag = 2;
 }
 
 - (void)addChatMessages:(NSArray *)moreMsgs completion:(void (^)(void))completionBlock {
-    [self.chatObjArr insertObjects:moreMsgs atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, moreMsgs.count)]];
+    [self.chatCellInfoArr insertObjects:moreMsgs atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, moreMsgs.count)]];
 
     [self.tableView reloadData];
 
@@ -417,8 +420,8 @@ static const NSInteger kHeaderRefreshViewTag = 2;
         obj.content = [NSString stringWithFormat:@"%i,帮带的东西很好%i", i, arc4random()];
         obj.type = i % 2;
         obj.date = [NSDate dateWithTimeInterval:-100*i sinceDate:[NSDate date]];
-        KGChatObject *chatObj = [[KGChatObject alloc] initWithMessage:obj];
-        [moreMsgs addObject:chatObj];
+        KGChatCellInfo *chatCellInfo = [[KGChatCellInfo alloc] initWithMessage:obj];
+        [moreMsgs addObject:chatCellInfo];
     }
     [self handleShowTime:moreMsgs];
 

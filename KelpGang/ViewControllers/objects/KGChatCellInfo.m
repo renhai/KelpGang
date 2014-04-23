@@ -6,10 +6,9 @@
 //  Copyright (c) 2014年 renren. All rights reserved.
 //
 
-#import "KGChatObject.h"
-#import "KGMessageObject.h"
+#import "KGChatCellInfo.h"
 
-@implementation KGChatObject
+@implementation KGChatCellInfo
 
 - (id)initWithMessage:(KGMessageObject *) msg {
     self = [super init];
@@ -34,6 +33,11 @@
 
     return cellHeight;
 }
+
+-(MessageType)messageType {
+    return self.messageObj.type;
+}
+
 
 
 @end

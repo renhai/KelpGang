@@ -7,7 +7,7 @@
 //
 
 #import "KGBaseMessageCell.h"
-#import "KGChatObject.h"
+#import "KGChatCellInfo.h"
 
 @implementation KGBaseMessageCell
 
@@ -32,14 +32,14 @@
     // Configure the view for the selected state
 }
 
-- (void)configCell:(KGChatObject *) chatObj {
-    self.chatObj = chatObj;
+- (void)configCell:(KGChatCellInfo *) chatCellInfo {
+    self.chatCellInfo = chatCellInfo;
     UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleGray];
     indicatorView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin |UIViewAutoresizingFlexibleBottomMargin
     | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     [self addSubview:indicatorView];
     self.indicatorView = indicatorView;
-    [self showMessageIndicator:chatObj.showIndicator];
+    [self showMessageIndicator:chatCellInfo.showIndicator];
 }
 
 - (void)showMessageIndicator: (BOOL)display {
