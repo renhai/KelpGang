@@ -24,6 +24,10 @@
 		A106930D18C06C32003CC6BC /* arrow-up.png in Resources */ = {isa = PBXBuildFile; fileRef = A106930B18C06C32003CC6BC /* arrow-up.png */; };
 		A106930E18C06C32003CC6BC /* arrow-up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A106930C18C06C32003CC6BC /* arrow-up@2x.png */; };
 		A110FA1B19077BED001651A3 /* KGChatTxtMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A110FA1A19077BED001651A3 /* KGChatTxtMessageCell.m */; };
+		A110FA1E1907A879001651A3 /* order.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A110FA1D1907A879001651A3 /* order.storyboard */; };
+		A110FA211907AB95001651A3 /* KGOrderListController.m in Sources */ = {isa = PBXBuildFile; fileRef = A110FA201907AB95001651A3 /* KGOrderListController.m */; };
+		A110FA241907C33B001651A3 /* KGOrderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A110FA231907C33B001651A3 /* KGOrderListCell.m */; };
+		A110FA271907C57B001651A3 /* KGOrderSummaryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A110FA261907C57B001651A3 /* KGOrderSummaryObject.m */; };
 		A112770318E29445006F7CFA /* KGBuyerInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A112770218E29445006F7CFA /* KGBuyerInfoViewController.m */; };
 		A11E91641900D28100BBC1A2 /* KGRecentContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A11E91631900D28100BBC1A2 /* KGRecentContactsController.m */; };
 		A11E916E19011F3700BBC1A2 /* KGDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A11E916D19011F3700BBC1A2 /* KGDiscoverViewController.m */; };
@@ -249,6 +253,13 @@
 		A106930C18C06C32003CC6BC /* arrow-up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-up@2x.png"; sourceTree = "<group>"; };
 		A110FA1919077BED001651A3 /* KGChatTxtMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = KGChatTxtMessageCell.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		A110FA1A19077BED001651A3 /* KGChatTxtMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = KGChatTxtMessageCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		A110FA1D1907A879001651A3 /* order.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = order.storyboard; sourceTree = "<group>"; };
+		A110FA1F1907AB95001651A3 /* KGOrderListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGOrderListController.h; sourceTree = "<group>"; };
+		A110FA201907AB95001651A3 /* KGOrderListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGOrderListController.m; sourceTree = "<group>"; };
+		A110FA221907C33B001651A3 /* KGOrderListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGOrderListCell.h; sourceTree = "<group>"; };
+		A110FA231907C33B001651A3 /* KGOrderListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGOrderListCell.m; sourceTree = "<group>"; };
+		A110FA251907C57B001651A3 /* KGOrderSummaryObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGOrderSummaryObject.h; sourceTree = "<group>"; };
+		A110FA261907C57B001651A3 /* KGOrderSummaryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGOrderSummaryObject.m; sourceTree = "<group>"; };
 		A112770118E29445006F7CFA /* KGBuyerInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGBuyerInfoViewController.h; sourceTree = "<group>"; };
 		A112770218E29445006F7CFA /* KGBuyerInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGBuyerInfoViewController.m; sourceTree = "<group>"; };
 		A11E91621900D28100BBC1A2 /* KGRecentContactsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGRecentContactsController.h; sourceTree = "<group>"; };
@@ -584,6 +595,20 @@
 			path = views;
 			sourceTree = "<group>";
 		};
+		A110FA1C1907A850001651A3 /* order */ = {
+			isa = PBXGroup;
+			children = (
+				A110FA1D1907A879001651A3 /* order.storyboard */,
+				A110FA1F1907AB95001651A3 /* KGOrderListController.h */,
+				A110FA201907AB95001651A3 /* KGOrderListController.m */,
+				A110FA221907C33B001651A3 /* KGOrderListCell.h */,
+				A110FA231907C33B001651A3 /* KGOrderListCell.m */,
+				A110FA251907C57B001651A3 /* KGOrderSummaryObject.h */,
+				A110FA261907C57B001651A3 /* KGOrderSummaryObject.m */,
+			);
+			path = order;
+			sourceTree = "<group>";
+		};
 		A12D780A18CECBED00873887 /* MWPhotoBrowser */ = {
 			isa = PBXGroup;
 			children = (
@@ -896,6 +921,7 @@
 		A144159418C0E98F0053456D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				A110FA1C1907A850001651A3 /* order */,
 				A18A2B8118E1325D00FDFB8E /* cells */,
 				A18A2B7D18E131EA00FDFB8E /* objects */,
 				A10150CB18CB6D41004A729D /* views */,
@@ -1092,6 +1118,7 @@
 				A190FCD618C87B1700A87329 /* star_1@2x.png in Resources */,
 				A1036BB618BF336200FA7358 /* test-head.jpg in Resources */,
 				A106930A18C068CF003CC6BC /* head-line@2x.png in Resources */,
+				A110FA1E1907A879001651A3 /* order.storyboard in Resources */,
 				A180C0F718C8BFD900116DCF /* me_active.png in Resources */,
 				A16FBF0118DC4F3A009E2F66 /* recent-contact.png in Resources */,
 				A1F8A65718C9826700ECDABB /* tab-bar@2x.png in Resources */,
@@ -1303,6 +1330,7 @@
 				A19F0EC618E2B33B00C2944D /* KGBuyerDescriptionCell.m in Sources */,
 				A14415A218C0EA590053456D /* KGBuyerListViewController.m in Sources */,
 				A1DDFB7B18EEAF670078ED73 /* KGCascadeMenuLeftCell.m in Sources */,
+				A110FA241907C33B001651A3 /* KGOrderListCell.m in Sources */,
 				A19F0EC318E2AE0D00C2944D /* KGBuyerRefPicturesCell.m in Sources */,
 				A197503218D84BF10062CAA7 /* UIDevice+Addtional.m in Sources */,
 				A1311F4518CA2E0800D1A40F /* SwipeView.m in Sources */,
@@ -1313,6 +1341,7 @@
 				A18A2B9218E1793500FDFB8E /* KGAddressObject.m in Sources */,
 				A1BBB08018D6B4E1002C8BD2 /* KGTaskListViewController.m in Sources */,
 				A1A06F4E18FFCD9200C9EAC3 /* MTStatusBarOverlay.m in Sources */,
+				A110FA211907AB95001651A3 /* KGOrderListController.m in Sources */,
 				A1CA060018DAF32D00B1F3A6 /* KGJourneyPictureContainerView.m in Sources */,
 				A12D782718CECBED00873887 /* MWZoomingScrollView.m in Sources */,
 				A18A2B8918E1325D00FDFB8E /* KGJourneyAddImgTableViewCell.m in Sources */,
@@ -1327,6 +1356,7 @@
 				A12D782218CECBED00873887 /* MWGridViewController.m in Sources */,
 				A143012618BB461A0064DF87 /* UIImage+PKImage.m in Sources */,
 				A19F0ECC18E2B86200C2944D /* KGCommentListViewController.m in Sources */,
+				A110FA271907C57B001651A3 /* KGOrderSummaryObject.m in Sources */,
 				A1929ECA1906185300DDB66E /* KGSettingViewController.m in Sources */,
 				A12D782C18CECC5F00873887 /* DACircularProgressView.m in Sources */,
 				A18F6FD018ED50C60029F762 /* KGFilterItem.m in Sources */,

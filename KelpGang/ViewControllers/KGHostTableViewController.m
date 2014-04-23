@@ -131,7 +131,13 @@
         case 1:
             break;
         case 2: {
-            if (indexPath.row == 1) {//我的任务
+            if (indexPath.row == 0) {
+                UIStoryboard *orderBoard = [UIStoryboard storyboardWithName:@"order" bundle:nil];
+                UIViewController *orderController = orderBoard.instantiateInitialViewController;
+                [orderController setLeftBarbuttonItem];
+                orderController.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:orderController animated:YES];
+            } else if (indexPath.row == 1) {//我的任务
                 KGBaseWebViewController *taskController = [[KGBaseWebViewController alloc] initWithWebPath:@"/html/gj_task.htm"];
                 taskController.hidesBottomBarWhenPushed = YES;
                 taskController.isPullToRefresh = YES;
