@@ -18,6 +18,8 @@
 @property (nonatomic, strong) UILabel *timeLabel;
 @property (nonatomic, strong) UIImageView *badgeView;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier contactInfo: (KGRecentContactObject *)contactInfo;
+@property (nonatomic, strong) KGRecentContactObject* contactObj;
+
+- (void)configCell: (KGRecentContactObject *)contactObj;
 
 @end

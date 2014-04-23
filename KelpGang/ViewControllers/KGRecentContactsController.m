@@ -62,6 +62,18 @@
     obj2.lastMsgTime = [NSDate dateWithTimeIntervalSinceNow:-1000000];
     obj2.hasRead = YES;
     [self.contacts addObject:obj2];
+
+    for (NSInteger i = 0; i < 20; i ++) {
+        KGRecentContactObject *obj = [[KGRecentContactObject alloc]init];
+        obj.uid = i;
+        obj.uname = [NSString stringWithFormat:@"帮帮用户%i", i];
+        obj.gender = i % 2;
+        obj.headUrl = @"http://b.hiphotos.baidu.com/image/w%3D2048/sign=d21da2634f4a20a4311e3bc7a46a9822/3b87e950352ac65c81339c02fbf2b21193138a89.jpg";
+        obj.lastMsg = [NSString stringWithFormat:@"%i这位朋友特别热心，帮带的东西很好，下次继续合作。", i];
+        obj.lastMsgTime = [NSDate date];
+        obj.hasRead = i % 2;
+        [self.contacts addObject:obj];
+    }
 }
 
 
@@ -85,9 +97,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"kRecentContactsCell" forIndexPath:indexPath];
+    NSString *reuseIdentifier = @"kRecentContactsCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+    if (!cell) {
+        cell = [[KGRecentContactsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+    } else {
+        DLog(@"cell reused!!!!!!!!!!!");
+    }
     KGRecentContactObject *obj = self.contacts[indexPath.row];
-    KGRecentContactsCell *cell = [[KGRecentContactsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"kRecentContactsCell" contactInfo:obj];
+    if ([cell isKindOfClass:[KGRecentContactsCell class]]) {
+        [cell performSelector:@selector(configCell:) withObject:obj];
+    }
     return cell;
 }
 
