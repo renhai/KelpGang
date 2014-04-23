@@ -26,7 +26,39 @@ static const CGFloat kHeaderImageHeight = 25.0;
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        UIView *bgView = [[UIView alloc] initWithFrame:CGRectZero];
+        bgView.layer.cornerRadius = 4;
+        self.bgView = bgView;
 
+        UILabel *msgLabel = [[UILabel alloc]initWithFrame:CGRectZero];
+        msgLabel.backgroundColor = [UIColor clearColor];
+        msgLabel.font = [UIFont systemFontOfSize:16];
+        msgLabel.numberOfLines = 0;
+        self.msgLabel = msgLabel;
+
+        UIImageView *headView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kHeaderImageWidth, kHeaderImageHeight)];
+        headView.image = [UIImage imageNamed:@"test-head.jpg"];
+        headView.clipsToBounds = YES;
+        headView.contentMode = UIViewContentModeScaleAspectFill;
+        headView.layer.cornerRadius = headView.width / 2;
+        self.headView = headView;
+
+        UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        timeLabel.backgroundColor = [UIColor clearColor];
+        timeLabel.textColor = [UIColor whiteColor];
+        timeLabel.font = [UIFont systemFontOfSize:10];
+        self.timeLabel = timeLabel;
+
+        UIView *timeView = [[UIView alloc] initWithFrame:CGRectZero];
+        timeView.backgroundColor = RGBACOLOR(0, 0, 0, 0.12);
+        timeView.layer.cornerRadius = 4;
+        [timeView addSubview:timeLabel];
+
+
+        [self addSubview:self.bgView];
+        [self addSubview:self.msgLabel];
+        [self addSubview:self.headView];
+        [self addSubview:timeView];
     }
     return self;
 }
@@ -67,6 +99,18 @@ static const CGFloat kHeaderImageHeight = 25.0;
         [self.indicatorView setLeft:self.bgView.left - self.indicatorView.width - 3];
         [self.indicatorView setTop:self.bgView.top + (self.bgView.height - self.indicatorView.height) / 2];
     }
+    if (self.chatObj.showTime) {
+        UIView *timeView = self.timeLabel.superview;
+        [timeView setHidden:NO];
+        [self.timeLabel sizeToFit];
+        timeView.width = self.timeLabel.width + 10;
+        timeView.height = self.timeLabel.height + 6;
+        timeView.left = (self.width - timeView.width) / 2;
+        self.timeLabel.left = (timeView.width - self.timeLabel.width) / 2;
+        self.timeLabel.top = (timeView.height - self.timeLabel.height) / 2;
+    } else {
+        [self.timeLabel.superview setHidden:YES];
+    }
 }
 
 - (void)awakeFromNib
@@ -83,42 +127,9 @@ static const CGFloat kHeaderImageHeight = 25.0;
 
 - (void)configCell:(KGChatObject *) chatObj {
     [super configCell:chatObj];
-    UIView *bgView = [[UIView alloc] initWithFrame:CGRectZero];
-    bgView.layer.cornerRadius = 4;
-    self.bgView = bgView;
-
-    UILabel *msgLabel = [[UILabel alloc]initWithFrame:CGRectZero];
-    msgLabel.backgroundColor = [UIColor clearColor];
-    msgLabel.text = chatObj.messageObj.content;
-    msgLabel.font = [UIFont systemFontOfSize:16];
-    msgLabel.numberOfLines = 0;
-    self.msgLabel = msgLabel;
-
-    UIImageView *headView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kHeaderImageWidth, kHeaderImageHeight)];
-    headView.image = [UIImage imageNamed:@"test-head.jpg"];
-    headView.clipsToBounds = YES;
-    headView.contentMode = UIViewContentModeScaleAspectFill;
-    headView.layer.cornerRadius = headView.width / 2;
-    self.headView = headView;
-
-    [self addSubview:self.bgView];
-    [self addSubview:self.msgLabel];
-    [self addSubview:self.headView];
+    self.msgLabel.text = chatObj.messageObj.content;
     if (chatObj.showTime) {
-        UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        timeLabel.backgroundColor = [UIColor clearColor];
-        timeLabel.text = chatObj.time;
-        timeLabel.textColor = [UIColor whiteColor];
-        timeLabel.font = [UIFont systemFontOfSize:10];
-        [timeLabel sizeToFit];
-        UIView *timeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, timeLabel.width + 10, timeLabel.height + 6)];
-        timeView.backgroundColor = RGBACOLOR(0, 0, 0, 0.12);
-        timeView.layer.cornerRadius = 4;
-        timeView.left = (self.width - timeView.width) / 2;
-        [timeView addSubview:timeLabel];
-        timeLabel.left = (timeView.width - timeLabel.width) / 2;
-        timeLabel.top = (timeView.height - timeLabel.height) / 2;
-        [self addSubview:timeView];
+        self.timeLabel.text = chatObj.time;
     }
 }
 

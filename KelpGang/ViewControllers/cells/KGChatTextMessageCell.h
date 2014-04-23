@@ -14,5 +14,6 @@
 @property (nonatomic, strong) UIView *bgView;
 @property (nonatomic, strong) UILabel *msgLabel;
 @property (nonatomic, strong) UIImageView *headView;
+@property (nonatomic, strong) UILabel *timeLabel;
 
 @end
