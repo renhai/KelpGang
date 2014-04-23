@@ -37,7 +37,7 @@
 }
 
 - (void)configCell {
-    [self.headImageView setImageWithURL:[NSURL URLWithString:@"http://c.hiphotos.baidu.com/image/w%3D2048/sign=9d361bfa7b310a55c424d9f4837d43a9/a8014c086e061d95607bb63179f40ad162d9cafe.jpg"] placeholderImage: [UIImage imageNamed:@"avatar-male"]];
+    [self.headImageView setImageWithURL:[NSURL URLWithString:@"http://c.hiphotos.baidu.com/image/w%3D2048/sign=9d361bfa7b310a55c424d9f4837d43a9/a8014c086e061d95607bb63179f40ad162d9cafe.jpg"] placeholderImage: [UIImage imageNamed:kAvatarMale]];
 }
 
 
