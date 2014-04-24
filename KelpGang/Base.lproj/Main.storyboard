@@ -1363,10 +1363,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="154" y="733"/>
         </scene>
-        <!--Host Table View Controller - 我-->
+        <!--Host View Controller - 我-->
         <scene sceneID="9zT-kx-AMW">
             <objects>
-                <tableViewController id="XmP-JS-RxX" customClass="KGHostTableViewController" sceneMemberID="viewController">
+                <tableViewController id="XmP-JS-RxX" customClass="KGHostViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="y7n-TS-RwJ">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

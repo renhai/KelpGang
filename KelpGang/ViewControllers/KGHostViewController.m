@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 renren. All rights reserved.
 //
 
-#import "KGHostTableViewController.h"
+#import "KGHostViewController.h"
 #import "KGBadgeView.h"
 #import "KGRecentContactsController.h"
 #import "KGBaseWebViewController.h"
@@ -15,13 +15,13 @@
 #import "KGUserObject.h"
 #import "KGHostDetailController.h"
 
-@interface KGHostTableViewController ()
+@interface KGHostViewController ()
 
 @property (nonatomic, strong) KGUserObject *userObj;
 
 @end
 
-@implementation KGHostTableViewController
+@implementation KGHostViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

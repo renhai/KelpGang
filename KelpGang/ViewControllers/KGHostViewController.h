@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KGHostTableViewController : UITableViewController
+@interface KGHostViewController : UITableViewController
 
 @end
