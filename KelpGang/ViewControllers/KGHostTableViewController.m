@@ -141,17 +141,20 @@
             if (indexPath.row == 0) {
                 UIStoryboard *orderBoard = [UIStoryboard storyboardWithName:@"order" bundle:nil];
                 UIViewController *orderController = orderBoard.instantiateInitialViewController;
+                orderController.hidesBottomBarWhenPushed = YES;
                 [orderController setLeftBarbuttonItem];
                 [self.navigationController pushViewController:orderController animated:YES];
             } else if (indexPath.row == 1) {//我的任务
                 KGBaseWebViewController *taskController = [[KGBaseWebViewController alloc] initWithWebPath:@"/html/gj_task.htm"];
                 taskController.isPullToRefresh = YES;
+                taskController.hidesBottomBarWhenPushed = YES;
                 [taskController setLeftBarbuttonItem];
                 [taskController setTitle:@"我的任务"];
                 [self.navigationController pushViewController:taskController animated:YES];
             } else if (indexPath.row == 2) {//我的收藏
                 KGBaseWebViewController *collectController = [[KGBaseWebViewController alloc] initWithWebPath:@"/html/gj_collect.htm"];
                 collectController.isPullToRefresh = YES;
+                collectController.hidesBottomBarWhenPushed = YES;
                 [collectController setLeftBarbuttonItem];
                 [collectController setTitle:@"我的收藏"];
                 [self.navigationController pushViewController:collectController animated:YES];
@@ -164,6 +167,7 @@
             KGSettingViewController *settingController = [[KGSettingViewController alloc] initWithWebPath:@"/html/gj_set.htm"];
             [settingController setLeftBarbuttonItem];
             [settingController setTitle:@"设置"];
+            settingController.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:settingController animated:YES];
             break;
         }
