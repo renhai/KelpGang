@@ -206,7 +206,7 @@
 		A1CF104A18F655F600B9F6B1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1CF104918F655F600B9F6B1 /* QuartzCore.framework */; };
 		A1CF105118F68E3600B9F6B1 /* KGChatTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CF105018F68E3600B9F6B1 /* KGChatTextField.m */; };
 		A1DD134C18E03229000F52C2 /* KGHostDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DD134B18E03229000F52C2 /* KGHostDetailTableViewController.m */; };
-		A1DD134F18E04C7A000F52C2 /* KGDeliveryAddressTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DD134E18E04C7A000F52C2 /* KGDeliveryAddressTableViewController.m */; };
+		A1DD134F18E04C7A000F52C2 /* KGDeliveryAddressController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DD134E18E04C7A000F52C2 /* KGDeliveryAddressController.m */; };
 		A1DD135218E0538E000F52C2 /* add-white.png in Resources */ = {isa = PBXBuildFile; fileRef = A1DD135018E0538E000F52C2 /* add-white.png */; };
 		A1DD135318E0538E000F52C2 /* add-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1DD135118E0538E000F52C2 /* add-white@2x.png */; };
 		A1DD135618E05562000F52C2 /* selected-tablecell.png in Resources */ = {isa = PBXBuildFile; fileRef = A1DD135418E05562000F52C2 /* selected-tablecell.png */; };
@@ -513,8 +513,8 @@
 		A1CF105018F68E3600B9F6B1 /* KGChatTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGChatTextField.m; sourceTree = "<group>"; };
 		A1DD134A18E03229000F52C2 /* KGHostDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGHostDetailTableViewController.h; sourceTree = "<group>"; };
 		A1DD134B18E03229000F52C2 /* KGHostDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGHostDetailTableViewController.m; sourceTree = "<group>"; };
-		A1DD134D18E04C7A000F52C2 /* KGDeliveryAddressTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGDeliveryAddressTableViewController.h; sourceTree = "<group>"; };
-		A1DD134E18E04C7A000F52C2 /* KGDeliveryAddressTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGDeliveryAddressTableViewController.m; sourceTree = "<group>"; };
+		A1DD134D18E04C7A000F52C2 /* KGDeliveryAddressController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGDeliveryAddressController.h; sourceTree = "<group>"; };
+		A1DD134E18E04C7A000F52C2 /* KGDeliveryAddressController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGDeliveryAddressController.m; sourceTree = "<group>"; };
 		A1DD135018E0538E000F52C2 /* add-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-white.png"; sourceTree = "<group>"; };
 		A1DD135118E0538E000F52C2 /* add-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-white@2x.png"; sourceTree = "<group>"; };
 		A1DD135418E05562000F52C2 /* selected-tablecell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selected-tablecell.png"; sourceTree = "<group>"; };
@@ -947,8 +947,8 @@
 				A16FBEEF18DC1FA6009E2F66 /* KGHostTableViewController.m */,
 				A1DD134A18E03229000F52C2 /* KGHostDetailTableViewController.h */,
 				A1DD134B18E03229000F52C2 /* KGHostDetailTableViewController.m */,
-				A1DD134D18E04C7A000F52C2 /* KGDeliveryAddressTableViewController.h */,
-				A1DD134E18E04C7A000F52C2 /* KGDeliveryAddressTableViewController.m */,
+				A1DD134D18E04C7A000F52C2 /* KGDeliveryAddressController.h */,
+				A1DD134E18E04C7A000F52C2 /* KGDeliveryAddressController.m */,
 				A18A2B8B18E1334200FDFB8E /* KGAddAddressTableViewController.h */,
 				A18A2B8C18E1334200FDFB8E /* KGAddAddressTableViewController.m */,
 				A19F0ECA18E2B86200C2944D /* KGCommentListViewController.h */,
@@ -1348,7 +1348,7 @@
 				A1DD135C18E0690D000F52C2 /* UIImage+Addtional.m in Sources */,
 				A197503A18D84BF10062CAA7 /* UIWindow+RscExt.m in Sources */,
 				A12D782318CECBED00873887 /* MWPhoto.m in Sources */,
-				A1DD134F18E04C7A000F52C2 /* KGDeliveryAddressTableViewController.m in Sources */,
+				A1DD134F18E04C7A000F52C2 /* KGDeliveryAddressController.m in Sources */,
 				A18A2B9218E1793500FDFB8E /* KGAddressObject.m in Sources */,
 				A1BBB08018D6B4E1002C8BD2 /* KGTaskListViewController.m in Sources */,
 				A1A06F4E18FFCD9200C9EAC3 /* MTStatusBarOverlay.m in Sources */,

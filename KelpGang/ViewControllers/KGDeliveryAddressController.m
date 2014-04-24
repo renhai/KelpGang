@@ -6,17 +6,17 @@
 //  Copyright (c) 2014年 renren. All rights reserved.
 //
 
-#import "KGDeliveryAddressTableViewController.h"
+#import "KGDeliveryAddressController.h"
 #import "KGDeliveryAddressCell.h"
 #import "KGAddressObject.h"
 
-@interface KGDeliveryAddressTableViewController ()
+@interface KGDeliveryAddressController ()
 
 @property(nonatomic, strong) NSMutableArray *datasource;
 
 @end
 
-@implementation KGDeliveryAddressTableViewController
+@implementation KGDeliveryAddressController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

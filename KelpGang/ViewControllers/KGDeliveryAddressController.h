@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KGDeliveryAddressTableViewController : UITableViewController
+@interface KGDeliveryAddressController : UITableViewController
 
 @end
