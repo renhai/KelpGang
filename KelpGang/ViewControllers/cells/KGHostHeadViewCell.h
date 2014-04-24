@@ -8,14 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class KGUserObject;
+
 @interface KGHostHeadViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *vipImageView;
 @property (weak, nonatomic) IBOutlet UILabel *followLabel;
+@property (weak, nonatomic) IBOutlet UIView *levelView;
 
 
-- (void)configCell;
+- (void)configCell: (KGUserObject *)user;
 
 @end

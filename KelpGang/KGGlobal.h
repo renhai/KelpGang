@@ -26,6 +26,9 @@ self.navigationItem.leftBarButtonItem = buttonItem;\
 #define kTabBarIndexHome        3;
 #define kAvatarMale @"avatar-male"
 #define kAvatarFemale @"avatar-female"
+#define kHarfHeart @"half_heart"
+#define kFullHeart @"full_heart"
+
 
 typedef enum {
     MALE =      0,

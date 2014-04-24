@@ -20,6 +20,6 @@
 @property(nonatomic,strong) NSString *street;
 @property(nonatomic,strong) NSString *areaCode;
 
-@property(nonatomic,assign) BOOL isDefault;
+@property(nonatomic,assign,getter = isDefaultAddr) BOOL defaultAddr;
 
 @end

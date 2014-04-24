@@ -8,6 +8,13 @@
 
 #import "KGHostHeadViewCell.h"
 #import "UIImageView+WebCache.h"
+#import "KGUserObject.h"
+
+@interface KGHostHeadViewCell()
+
+@property (nonatomic, strong) KGUserObject *user;
+
+@end
 
 @implementation KGHostHeadViewCell
 
@@ -27,17 +34,46 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    self.headImageView.layer.cornerRadius = self.headImageView.width / 2;
+    [self.nameLabel sizeToFit];
+    self.vipImageView.left = self.nameLabel.right + 10;
+    [self.followLabel sizeToFit];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-
 }
 
-- (void)configCell {
-    [self.headImageView setImageWithURL:[NSURL URLWithString:@"http://c.hiphotos.baidu.com/image/w%3D2048/sign=9d361bfa7b310a55c424d9f4837d43a9/a8014c086e061d95607bb63179f40ad162d9cafe.jpg"] placeholderImage: [UIImage imageNamed:kAvatarMale]];
+- (void)configCell: (KGUserObject *)user {
+    self.user = user;
+    [self.headImageView setImageWithURL:[NSURL URLWithString:user.avatarUrl] placeholderImage: [UIImage imageNamed:user.gender == MALE ? kAvatarMale : kAvatarFemale]];
+    self.headImageView.layer.cornerRadius = self.headImageView.width / 2;
+    self.nameLabel.text = user.uname;
+    self.vipImageView.hidden = !user.isVip;
+    [self configLevelView];
+    NSString *followText = [NSString stringWithFormat:@"关注%i人", user.followCount];
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString: followText];
+    [attrString addAttribute: NSForegroundColorAttributeName value: MAIN_COLOR range: [followText rangeOfString:I2S(user.followCount)]];
+    self.followLabel.attributedText = attrString;
+}
+
+- (void)configLevelView {
+    for (UIView *subView in self.levelView.subviews) {
+        [subView removeFromSuperview];
+    }
+    self.levelView.clipsToBounds = NO;
+    NSInteger level = self.user.level;
+    NSInteger heartCount = ceil(level / 2.0);
+    CGFloat margin = 2.0;
+    BOOL isLastHeartFull = level % 2 == 0;
+    for (NSInteger i = 0; i < heartCount; i ++) {
+        UIImageView *heartView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kFullHeart]];
+        if (i == heartCount - 1 && !isLastHeartFull) {
+            heartView.image = [UIImage imageNamed:kHarfHeart];
+        }
+        heartView.left = (heartView.width + margin) * i;
+        [self.levelView addSubview:heartView];
+    }
 }
 
 

@@ -46,7 +46,7 @@
     self.nameLabel.text = addrObj.consignee;
     self.districtLabel.text = [NSString stringWithFormat:@"%@%@%@", addrObj.province, addrObj.city, addrObj.district];
     self.detailAddrLabel.text = addrObj.street;
-    self.defaultAddrImageView.hidden = !addrObj.isDefault;
+    self.defaultAddrImageView.hidden = !addrObj.isDefaultAddr;
 }
 
 @end

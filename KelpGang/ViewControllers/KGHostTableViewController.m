@@ -12,8 +12,11 @@
 #import "KGBaseWebViewController.h"
 #import "KGSettingViewController.h"
 #import "KGHostHeadViewCell.h"
+#import "KGUserObject.h"
 
 @interface KGHostTableViewController ()
+
+@property (nonatomic, strong) KGUserObject *userObj;
 
 @end
 
@@ -31,12 +34,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self mockData];
+}
+
+- (void)mockData {
+    KGUserObject *userObj = [[KGUserObject alloc] init];
+    userObj.uid = 12121;
+    userObj.uname = @"Andy Ren";
+    userObj.gender = MALE;
+    userObj.avatarUrl = @"http://c.hiphotos.baidu.com/image/w%3D2048/sign=9d361bfa7b310a55c424d9f4837d43a9/a8014c086e061d95607bb63179f40ad162d9cafe.jpg";
+    userObj.vip = YES;
+    userObj.level = 7;
+    userObj.followCount = 1212121;
+    self.userObj = userObj;
 }
 
 - (void)didReceiveMemoryWarning
@@ -63,9 +73,8 @@
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
     switch (indexPath.section) {
         case 0: {
-            if ([cell respondsToSelector:@selector(configCell)]) {
-                [cell performSelector:@selector(configCell) withObject:nil];
-            }
+            KGHostHeadViewCell *hCell = (KGHostHeadViewCell *)cell;
+            [hCell configCell:self.userObj];
             break;
         }
         case 1:

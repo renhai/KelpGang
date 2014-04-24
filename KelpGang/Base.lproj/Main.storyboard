@@ -1418,10 +1418,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                             <color key="textColor" red="0.44705882352941173" green="0.44705882352941173" blue="0.44705882352941173" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="full_heart.png" id="tCe-oI-Xo5">
-                                                            <rect key="frame" x="0.0" y="40" width="11" height="10"/>
+                                                        <view contentMode="scaleToFill" id="7Rp-7a-vy7" userLabel="level View">
+                                                            <rect key="frame" x="0.0" y="40" width="50" height="10"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        </imageView>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        </view>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.96470588239999999" green="0.98431372549999996" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
@@ -1432,6 +1433,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         <connections>
                                             <outlet property="followLabel" destination="VZ8-is-qfr" id="1xW-RX-pYj"/>
                                             <outlet property="headImageView" destination="ApQ-ui-CeD" id="nSy-cx-THC"/>
+                                            <outlet property="levelView" destination="7Rp-7a-vy7" id="rK1-Go-3qk"/>
                                             <outlet property="nameLabel" destination="8IP-Sn-qfB" id="G0K-aF-8Pt"/>
                                             <outlet property="vipImageView" destination="0Tg-fu-zIE" id="rab-Qr-MU0"/>
                                             <segue destination="3ce-tb-lAT" kind="push" id="yI7-RC-Z6l"/>
@@ -2452,7 +2454,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="delete_img.png" width="26" height="26"/>
         <image name="down-arrow-big.png" width="13" height="7"/>
         <image name="follow-btn-bg.png" width="55" height="20"/>
-        <image name="full_heart.png" width="11" height="10"/>
         <image name="i-am-buyer.png" width="22" height="22"/>
         <image name="me_gray.png" width="24" height="24"/>
         <image name="my-collect.png" width="22" height="21"/>

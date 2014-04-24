@@ -51,7 +51,7 @@
     obj1.district = @"盐山县";
     obj1.street = @"圣诞节法拉盛江东父老就撒旦法离开就撒旦法离开家拉屎大富科技圣诞节发牢骚";
     obj1.areaCode = @"343899";
-    obj1.isDefault = NO;
+    obj1.defaultAddr = NO;
 
     KGAddressObject *obj2 = [[KGAddressObject alloc] init];
     obj2.consignee = @"任海";
@@ -61,7 +61,7 @@
     obj2.district = @"朝阳区";
     obj2.street = @"酒仙桥中路18号 国投创意产业园";
     obj2.areaCode = @"231387";
-    obj2.isDefault = YES;
+    obj2.defaultAddr = YES;
 
     KGAddressObject *obj3 = [[KGAddressObject alloc] init];
     obj3.consignee = @"谁谁谁谁谁谁";
@@ -71,7 +71,7 @@
     obj3.district = @"甘井子区";
     obj3.street = @"所发生的离开房间乱收费的 水电费加拉斯的";
     obj3.areaCode = @"327487";
-    obj3.isDefault = NO;
+    obj3.defaultAddr = NO;
 
     [self.datasource addObject:obj1];
     [self.datasource addObject:obj2];
