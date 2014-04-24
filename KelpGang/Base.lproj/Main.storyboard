@@ -1852,10 +1852,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="1065" y="2346"/>
         </scene>
-        <!--Host Detail Table View Controller - 个人信息-->
+        <!--Host Detail Controller - 个人信息-->
         <scene sceneID="yFe-AA-Kq5">
             <objects>
-                <tableViewController id="3ce-tb-lAT" customClass="KGHostDetailTableViewController" sceneMemberID="viewController">
+                <tableViewController id="3ce-tb-lAT" customClass="KGHostDetailController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="VjN-vX-WgT">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

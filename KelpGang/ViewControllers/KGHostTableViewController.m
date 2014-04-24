@@ -13,7 +13,7 @@
 #import "KGSettingViewController.h"
 #import "KGHostHeadViewCell.h"
 #import "KGUserObject.h"
-#import "KGHostDetailTableViewController.h"
+#import "KGHostDetailController.h"
 
 @interface KGHostTableViewController ()
 
@@ -127,8 +127,8 @@
     UIViewController *destController = segue.destinationViewController;
     destController.hidesBottomBarWhenPushed = YES;
 
-    if ([destController isKindOfClass:[KGHostDetailTableViewController class]]) {
-        KGHostDetailTableViewController *hostDetailController = (KGHostDetailTableViewController *) destController;
+    if ([destController isKindOfClass:[KGHostDetailController class]]) {
+        KGHostDetailController *hostDetailController = (KGHostDetailController *) destController;
         hostDetailController.user = self.userObj;
     }
 }

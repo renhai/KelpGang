@@ -205,7 +205,7 @@
 		A1CA060018DAF32D00B1F3A6 /* KGJourneyPictureContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CA05FF18DAF32D00B1F3A6 /* KGJourneyPictureContainerView.m */; };
 		A1CF104A18F655F600B9F6B1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1CF104918F655F600B9F6B1 /* QuartzCore.framework */; };
 		A1CF105118F68E3600B9F6B1 /* KGChatTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CF105018F68E3600B9F6B1 /* KGChatTextField.m */; };
-		A1DD134C18E03229000F52C2 /* KGHostDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DD134B18E03229000F52C2 /* KGHostDetailTableViewController.m */; };
+		A1DD134C18E03229000F52C2 /* KGHostDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DD134B18E03229000F52C2 /* KGHostDetailController.m */; };
 		A1DD134F18E04C7A000F52C2 /* KGDeliveryAddressController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DD134E18E04C7A000F52C2 /* KGDeliveryAddressController.m */; };
 		A1DD135218E0538E000F52C2 /* add-white.png in Resources */ = {isa = PBXBuildFile; fileRef = A1DD135018E0538E000F52C2 /* add-white.png */; };
 		A1DD135318E0538E000F52C2 /* add-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1DD135118E0538E000F52C2 /* add-white@2x.png */; };
@@ -511,8 +511,8 @@
 		A1CF104918F655F600B9F6B1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A1CF104F18F68E3600B9F6B1 /* KGChatTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGChatTextField.h; sourceTree = "<group>"; };
 		A1CF105018F68E3600B9F6B1 /* KGChatTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGChatTextField.m; sourceTree = "<group>"; };
-		A1DD134A18E03229000F52C2 /* KGHostDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGHostDetailTableViewController.h; sourceTree = "<group>"; };
-		A1DD134B18E03229000F52C2 /* KGHostDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGHostDetailTableViewController.m; sourceTree = "<group>"; };
+		A1DD134A18E03229000F52C2 /* KGHostDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGHostDetailController.h; sourceTree = "<group>"; };
+		A1DD134B18E03229000F52C2 /* KGHostDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGHostDetailController.m; sourceTree = "<group>"; };
 		A1DD134D18E04C7A000F52C2 /* KGDeliveryAddressController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGDeliveryAddressController.h; sourceTree = "<group>"; };
 		A1DD134E18E04C7A000F52C2 /* KGDeliveryAddressController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGDeliveryAddressController.m; sourceTree = "<group>"; };
 		A1DD135018E0538E000F52C2 /* add-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-white.png"; sourceTree = "<group>"; };
@@ -945,8 +945,8 @@
 				A1A948BB18D93E84006DCF6E /* KGCreateJourneyController.m */,
 				A16FBEEE18DC1FA6009E2F66 /* KGHostTableViewController.h */,
 				A16FBEEF18DC1FA6009E2F66 /* KGHostTableViewController.m */,
-				A1DD134A18E03229000F52C2 /* KGHostDetailTableViewController.h */,
-				A1DD134B18E03229000F52C2 /* KGHostDetailTableViewController.m */,
+				A1DD134A18E03229000F52C2 /* KGHostDetailController.h */,
+				A1DD134B18E03229000F52C2 /* KGHostDetailController.m */,
 				A1DD134D18E04C7A000F52C2 /* KGDeliveryAddressController.h */,
 				A1DD134E18E04C7A000F52C2 /* KGDeliveryAddressController.m */,
 				A18A2B8B18E1334200FDFB8E /* KGAddAddressController.h */,
@@ -1324,7 +1324,7 @@
 				A112770318E29445006F7CFA /* KGBuyerInfoViewController.m in Sources */,
 				A10150CA18CB6445004A729D /* KGChatViewController.m in Sources */,
 				A143012418BB461A0064DF87 /* UIColor+PKColor.m in Sources */,
-				A1DD134C18E03229000F52C2 /* KGHostDetailTableViewController.m in Sources */,
+				A1DD134C18E03229000F52C2 /* KGHostDetailController.m in Sources */,
 				A18A2B8818E1325D00FDFB8E /* KGBuyerListViewCell.m in Sources */,
 				A1A948BC18D93E84006DCF6E /* KGCreateJourneyController.m in Sources */,
 				A11E916E19011F3700BBC1A2 /* KGDiscoverViewController.m in Sources */,

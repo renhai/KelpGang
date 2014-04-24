@@ -6,17 +6,17 @@
 //  Copyright (c) 2014年 renren. All rights reserved.
 //
 
-#import "KGHostDetailTableViewController.h"
+#import "KGHostDetailController.h"
 #import "UIImageView+WebCache.h"
 #import "KGUserObject.h"
 
-@interface KGHostDetailTableViewController () <UITextFieldDelegate, UITextViewDelegate>
+@interface KGHostDetailController () <UITextFieldDelegate, UITextViewDelegate>
 
 @property (nonatomic, assign) BOOL sexExpand;
 
 @end
 
-@implementation KGHostDetailTableViewController
+@implementation KGHostDetailController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

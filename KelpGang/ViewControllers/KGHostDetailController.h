@@ -10,7 +10,7 @@
 
 @class KGUserObject;
 
-@interface KGHostDetailTableViewController : UITableViewController
+@interface KGHostDetailController : UITableViewController
 
 @property (nonatomic, strong) KGUserObject *user;
 
