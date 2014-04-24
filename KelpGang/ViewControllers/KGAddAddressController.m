@@ -6,10 +6,10 @@
 //  Copyright (c) 2014年 renren. All rights reserved.
 //
 
-#import "KGAddAddressTableViewController.h"
+#import "KGAddAddressController.h"
 #import "KGAddressObject.h"
 
-@interface KGAddAddressTableViewController ()
+@interface KGAddAddressController ()
 
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 @property (nonatomic, assign) BOOL areaExpand;
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation KGAddAddressTableViewController
+@implementation KGAddAddressController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

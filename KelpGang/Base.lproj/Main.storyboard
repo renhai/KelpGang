@@ -2166,10 +2166,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="1481" y="1439"/>
         </scene>
-        <!--Add Address Table View Controller - 新增地址管理-->
+        <!--Add Address Controller - 新增地址管理-->
         <scene sceneID="m2P-fQ-vQi">
             <objects>
-                <tableViewController id="ggo-cb-fWs" customClass="KGAddAddressTableViewController" sceneMemberID="viewController">
+                <tableViewController id="ggo-cb-fWs" customClass="KGAddAddressController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8lb-pM-ssA">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

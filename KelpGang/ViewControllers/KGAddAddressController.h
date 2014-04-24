@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KGAddAddressTableViewController : UITableViewController
+@interface KGAddAddressController : UITableViewController
 
 @end

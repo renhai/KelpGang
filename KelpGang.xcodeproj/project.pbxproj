@@ -112,7 +112,7 @@
 		A18A2B8818E1325D00FDFB8E /* KGBuyerListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A18A2B8318E1325D00FDFB8E /* KGBuyerListViewCell.m */; };
 		A18A2B8918E1325D00FDFB8E /* KGJourneyAddImgTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A18A2B8518E1325D00FDFB8E /* KGJourneyAddImgTableViewCell.m */; };
 		A18A2B8A18E1325D00FDFB8E /* KGTaskListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A18A2B8718E1325D00FDFB8E /* KGTaskListViewCell.m */; };
-		A18A2B8D18E1334200FDFB8E /* KGAddAddressTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A18A2B8C18E1334200FDFB8E /* KGAddAddressTableViewController.m */; };
+		A18A2B8D18E1334200FDFB8E /* KGAddAddressController.m in Sources */ = {isa = PBXBuildFile; fileRef = A18A2B8C18E1334200FDFB8E /* KGAddAddressController.m */; };
 		A18A2B8F18E1653B00FDFB8E /* area.plist in Resources */ = {isa = PBXBuildFile; fileRef = A18A2B8E18E1653B00FDFB8E /* area.plist */; };
 		A18A2B9218E1793500FDFB8E /* KGAddressObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A18A2B9118E1793500FDFB8E /* KGAddressObject.m */; };
 		A18A2B9518E1873500FDFB8E /* bubble-big.png in Resources */ = {isa = PBXBuildFile; fileRef = A18A2B9318E1873500FDFB8E /* bubble-big.png */; };
@@ -383,8 +383,8 @@
 		A18A2B8518E1325D00FDFB8E /* KGJourneyAddImgTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGJourneyAddImgTableViewCell.m; sourceTree = "<group>"; };
 		A18A2B8618E1325D00FDFB8E /* KGTaskListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGTaskListViewCell.h; sourceTree = "<group>"; };
 		A18A2B8718E1325D00FDFB8E /* KGTaskListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGTaskListViewCell.m; sourceTree = "<group>"; };
-		A18A2B8B18E1334200FDFB8E /* KGAddAddressTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGAddAddressTableViewController.h; sourceTree = "<group>"; };
-		A18A2B8C18E1334200FDFB8E /* KGAddAddressTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGAddAddressTableViewController.m; sourceTree = "<group>"; };
+		A18A2B8B18E1334200FDFB8E /* KGAddAddressController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGAddAddressController.h; sourceTree = "<group>"; };
+		A18A2B8C18E1334200FDFB8E /* KGAddAddressController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGAddAddressController.m; sourceTree = "<group>"; };
 		A18A2B8E18E1653B00FDFB8E /* area.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = area.plist; sourceTree = "<group>"; };
 		A18A2B9018E1793500FDFB8E /* KGAddressObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGAddressObject.h; sourceTree = "<group>"; };
 		A18A2B9118E1793500FDFB8E /* KGAddressObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGAddressObject.m; sourceTree = "<group>"; };
@@ -949,8 +949,8 @@
 				A1DD134B18E03229000F52C2 /* KGHostDetailTableViewController.m */,
 				A1DD134D18E04C7A000F52C2 /* KGDeliveryAddressController.h */,
 				A1DD134E18E04C7A000F52C2 /* KGDeliveryAddressController.m */,
-				A18A2B8B18E1334200FDFB8E /* KGAddAddressTableViewController.h */,
-				A18A2B8C18E1334200FDFB8E /* KGAddAddressTableViewController.m */,
+				A18A2B8B18E1334200FDFB8E /* KGAddAddressController.h */,
+				A18A2B8C18E1334200FDFB8E /* KGAddAddressController.m */,
 				A19F0ECA18E2B86200C2944D /* KGCommentListViewController.h */,
 				A19F0ECB18E2B86200C2944D /* KGCommentListViewController.m */,
 				A1933C2518E3D3C9000FC0B4 /* KGPhotoBrowserViewController.h */,
@@ -1363,7 +1363,7 @@
 				A1A0DA0318FE662300E0C0E8 /* KGBaseMessageCell.m in Sources */,
 				A19F0ED118E2C6A400C2944D /* HudHelper.m in Sources */,
 				A1AD133B1908C1DF00DF17B6 /* KGDeliveryAddressCell.m in Sources */,
-				A18A2B8D18E1334200FDFB8E /* KGAddAddressTableViewController.m in Sources */,
+				A18A2B8D18E1334200FDFB8E /* KGAddAddressController.m in Sources */,
 				A12D782118CECBED00873887 /* MWGridCell.m in Sources */,
 				A12D782218CECBED00873887 /* MWGridViewController.m in Sources */,
 				A143012618BB461A0064DF87 /* UIImage+PKImage.m in Sources */,
