@@ -40,6 +40,7 @@
     self.nameLabel.top = self.headImageView.centerY - self.nameLabel.height / 2;
 
     [self.orderNumLabel sizeToFit];
+    self.orderDescLabel.width = 210;
     [self.orderDescLabel sizeToFit];
 }
 
