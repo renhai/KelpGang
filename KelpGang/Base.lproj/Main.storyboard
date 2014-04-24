@@ -2335,10 +2335,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="1913" y="1447"/>
         </scene>
-        <!--Create Journey Table View Controller - 发行程-->
+        <!--Create Journey Controller - 发行程-->
         <scene sceneID="BA3-k3-AG3">
             <objects>
-                <tableViewController id="f6u-L3-iGf" customClass="KGCreateJourneyTableViewController" sceneMemberID="viewController">
+                <tableViewController id="f6u-L3-iGf" customClass="KGCreateJourneyController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="XHD-lP-cLj">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 renren. All rights reserved.
 //
 
-#import "KGCreateJourneyTableViewController.h"
+#import "KGCreateJourneyController.h"
 #import "KGJourneyAddImgTableViewCell.h"
 #import "KGJourneyGoods.h"
 #import <AssetsLibrary/AssetsLibrary.h>
@@ -14,7 +14,7 @@
 #import "UIImage+Addtional.h"
 #import "KGPhotoBrowserViewController.h"
 
-@interface KGCreateJourneyTableViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, MWPhotoBrowserDelegate>
+@interface KGCreateJourneyController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, MWPhotoBrowserDelegate>
 
 @property (nonatomic, strong) NSMutableArray *goodsArr;
 //@property (nonatomic, assign) BOOL picExpanded;
@@ -29,7 +29,7 @@
 
 @end
 
-@implementation KGCreateJourneyTableViewController
+@implementation KGCreateJourneyController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

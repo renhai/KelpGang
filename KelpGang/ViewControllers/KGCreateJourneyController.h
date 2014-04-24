@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KGCreateJourneyTableViewController : UITableViewController
+@interface KGCreateJourneyController : UITableViewController
 
 @end
