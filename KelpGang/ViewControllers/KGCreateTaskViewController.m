@@ -11,7 +11,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "UIImage+Addtional.h"
 #import "KGPhotoBrowserViewController.h"
-#import "KGTaskTableViewController.h"
+#import "KGTaskViewController.h"
 
 
 @interface KGCreateTaskViewController () <UITextFieldDelegate, UITextViewDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, MWPhotoBrowserDelegate>
@@ -562,7 +562,7 @@
 }
 
 - (void)previewAction: (UIBarButtonItem *) btn {
-    KGTaskTableViewController *taskController = [self.storyboard instantiateViewControllerWithIdentifier:@"kTaskTableViewController"];
+    KGTaskViewController *taskController = [self.storyboard instantiateViewControllerWithIdentifier:@"kTaskTableViewController"];
     [taskController setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:taskController animated:YES];
 }

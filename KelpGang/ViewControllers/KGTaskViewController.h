@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KGTaskTableViewController : UITableViewController
+@interface KGTaskViewController : UITableViewController
 
 @end

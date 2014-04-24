@@ -6,15 +6,15 @@
 //  Copyright (c) 2014年 renren. All rights reserved.
 //
 
-#import "KGTaskTableViewController.h"
+#import "KGTaskViewController.h"
 #import "HudHelper.h"
 #import "KGBaseWebViewController.h"
 
-@interface KGTaskTableViewController ()
+@interface KGTaskViewController ()
 
 @end
 
-@implementation KGTaskTableViewController
+@implementation KGTaskViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
