@@ -7,6 +7,8 @@
 //
 
 #import "KGDeliveryAddressTableViewController.h"
+#import "KGDeliveryAddressCell.h"
+#import "KGAddressObject.h"
 
 @interface KGDeliveryAddressTableViewController ()
 
@@ -31,15 +33,49 @@
     [self setLeftBarbuttonItem];
 
     self.datasource = [[NSMutableArray alloc] init];
-    for (NSInteger i = 0; i < 3; i ++) {
-        [self.datasource addObject:[NSString stringWithFormat:@"%d", i]];
-    }
+    [self mockData];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)mockData {
+    KGAddressObject *obj1 = [[KGAddressObject alloc] init];
+    obj1.consignee = @"用户1";
+    obj1.mobile = @"12112127878";
+    obj1.province = @"河北省";
+    obj1.city = @"沧州市";
+    obj1.district = @"盐山县";
+    obj1.street = @"圣诞节法拉盛江东父老就撒旦法离开就撒旦法离开家拉屎大富科技圣诞节发牢骚";
+    obj1.areaCode = @"343899";
+    obj1.isDefault = NO;
+
+    KGAddressObject *obj2 = [[KGAddressObject alloc] init];
+    obj2.consignee = @"任海";
+    obj2.mobile = @"17612891239";
+    obj2.province = @"北京";
+    obj2.city = @"北京市";
+    obj2.district = @"朝阳区";
+    obj2.street = @"酒仙桥中路18号 国投创意产业园";
+    obj2.areaCode = @"231387";
+    obj2.isDefault = YES;
+
+    KGAddressObject *obj3 = [[KGAddressObject alloc] init];
+    obj3.consignee = @"谁谁谁谁谁谁";
+    obj3.mobile = @"12345678909";
+    obj3.province = @"辽宁省";
+    obj3.city = @"大连市";
+    obj3.district = @"甘井子区";
+    obj3.street = @"所发生的离开房间乱收费的 水电费加拉斯的";
+    obj3.areaCode = @"327487";
+    obj3.isDefault = NO;
+
+    [self.datasource addObject:obj1];
+    [self.datasource addObject:obj2];
+    [self.datasource addObject:obj3];
 }
 
 - (void)didReceiveMemoryWarning
@@ -63,8 +99,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"kDeliveryAddressTableViewCell" forIndexPath:indexPath];
-
+    KGDeliveryAddressCell *cell = [tableView dequeueReusableCellWithIdentifier:@"kDeliveryAddressTableViewCell" forIndexPath:indexPath];
+    KGAddressObject *obj = self.datasource[indexPath.row];
+    [cell setObject:obj];
     return cell;
 }
 
@@ -97,32 +134,5 @@
     }
 }
 
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

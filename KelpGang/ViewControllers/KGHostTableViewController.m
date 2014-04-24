@@ -115,9 +115,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     UIViewController *destController = segue.destinationViewController;
-    if ([destController isKindOfClass:[KGRecentContactsController class]]) {
-        destController.hidesBottomBarWhenPushed = YES;
-    }
+    destController.hidesBottomBarWhenPushed = YES;
 }
 
 
@@ -135,18 +133,15 @@
                 UIStoryboard *orderBoard = [UIStoryboard storyboardWithName:@"order" bundle:nil];
                 UIViewController *orderController = orderBoard.instantiateInitialViewController;
                 [orderController setLeftBarbuttonItem];
-                orderController.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:orderController animated:YES];
             } else if (indexPath.row == 1) {//我的任务
                 KGBaseWebViewController *taskController = [[KGBaseWebViewController alloc] initWithWebPath:@"/html/gj_task.htm"];
-                taskController.hidesBottomBarWhenPushed = YES;
                 taskController.isPullToRefresh = YES;
                 [taskController setLeftBarbuttonItem];
                 [taskController setTitle:@"我的任务"];
                 [self.navigationController pushViewController:taskController animated:YES];
             } else if (indexPath.row == 2) {//我的收藏
                 KGBaseWebViewController *collectController = [[KGBaseWebViewController alloc] initWithWebPath:@"/html/gj_collect.htm"];
-                collectController.hidesBottomBarWhenPushed = YES;
                 collectController.isPullToRefresh = YES;
                 [collectController setLeftBarbuttonItem];
                 [collectController setTitle:@"我的收藏"];
@@ -158,7 +153,6 @@
             break;
         case 4: {
             KGSettingViewController *settingController = [[KGSettingViewController alloc] initWithWebPath:@"/html/gj_set.htm"];
-            settingController.hidesBottomBarWhenPushed = YES;
             [settingController setLeftBarbuttonItem];
             [settingController setTitle:@"设置"];
             [self.navigationController pushViewController:settingController animated:YES];
