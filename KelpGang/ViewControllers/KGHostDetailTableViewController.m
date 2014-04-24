@@ -86,6 +86,12 @@
                         tv.text = self.user.intro;
                     }
                     tv.delegate = self;
+                } else if (indexPath.row == 3) {
+                    if (self.sexExpand) {
+                        cell.contentView.backgroundColor = RGBCOLOR(233, 243, 243);
+                    } else {
+                        cell.contentView.backgroundColor = [UIColor whiteColor];
+                    }
                 } else if (indexPath.row == 4) {
                     if (self.sexExpand) {
                         cell.contentView.backgroundColor = self.user.gender == FEMALE ? RGBCOLOR(166, 227, 218) : [UIColor whiteColor];
@@ -109,8 +115,8 @@
 #pragma UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
-    UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+//    UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
     NSArray *paths = @[[NSIndexPath indexPathForRow:4 inSection:indexPath.section], [NSIndexPath indexPathForRow:5 inSection:indexPath.section]];
 
     if (indexPath.section == 0) {
@@ -124,7 +130,7 @@
                 [self.tableView deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
             }
             [self.tableView endUpdates];
-            cell.contentView.backgroundColor = [UIColor whiteColor];
+            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:3 inSection:indexPath.section]] withRowAnimation:UITableViewRowAnimationNone];
         } else if (indexPath.row == 4) {
             if (self.sexExpand) {
                 self.user.gender = FEMALE;
@@ -177,5 +183,15 @@
     return YES;
 }
 
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    textView.backgroundColor = [UIColor whiteColor];
+}
+
+
+#pragma UIScrollViewDelegate
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    [self.view endEditing:YES];
+}
 
 @end

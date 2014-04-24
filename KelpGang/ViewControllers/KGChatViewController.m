@@ -244,13 +244,6 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-
-#pragma UIScrollViewDelegate
-
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-    [self.view endEditing:YES];
-}
-
 #pragma mark - 键盘处理
 - (void)keyBoardWillShow:(NSNotification *)note{
     CGRect beginRect = [note.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue];
@@ -377,6 +370,10 @@ static const NSInteger kHeaderRefreshViewTag = 2;
 }
 
 #pragma UIScrollViewDelegate
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    [self.view endEditing:YES];
+}
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     DLog(@"%@", scrollView);
