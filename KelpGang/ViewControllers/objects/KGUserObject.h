@@ -18,4 +18,10 @@
 @property (nonatomic, assign) NSInteger level;
 @property (nonatomic, assign) NSInteger followCount;
 
+@property (nonatomic, strong) NSString *nickName;
+@property (nonatomic, strong) NSString *intro;
+@property (nonatomic, strong) NSString *cellPhone;
+@property (nonatomic, strong) NSString *email;
+@property (nonatomic, strong) NSString *password;
+
 @end

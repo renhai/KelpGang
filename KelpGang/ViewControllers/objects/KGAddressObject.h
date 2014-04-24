@@ -10,6 +10,7 @@
 
 @interface KGAddressObject : NSObject
 
+@property(nonatomic,assign) NSInteger uid;
 @property(nonatomic,strong) NSString *consignee;
 @property(nonatomic,strong) NSString *mobile;
 

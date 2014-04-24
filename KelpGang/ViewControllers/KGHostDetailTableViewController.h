@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class KGUserObject;
+
 @interface KGHostDetailTableViewController : UITableViewController
+
+@property (nonatomic, strong) KGUserObject *user;
 
 @end
