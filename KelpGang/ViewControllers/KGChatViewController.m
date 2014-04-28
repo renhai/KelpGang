@@ -200,7 +200,7 @@ static const NSInteger kHeaderRefreshViewTag = 2;
 //    cell.backgroundColor = [UIColor clearColor];
 //    KGChatTextMessageCell *mCell = (KGChatTextMessageCell *)cell;
 
-    KGChatTxtMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"kChatTxtMessageCell"];
+    KGChatTxtMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"kChatTxtMessageCell" forIndexPath:indexPath];
     KGChatCellInfo *chatCellInfo = self.chatCellInfoArr[indexPath.row];
     [cell configCell:chatCellInfo];
 

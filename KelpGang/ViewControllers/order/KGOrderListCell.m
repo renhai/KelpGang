@@ -40,8 +40,14 @@
     self.nameLabel.top = self.headImageView.centerY - self.nameLabel.height / 2;
 
     [self.orderNumLabel sizeToFit];
+
     self.orderDescLabel.width = 210;
     [self.orderDescLabel sizeToFit];
+
+    [self.orderStatusLabel sizeToFit];
+    self.orderStatusLabel.width += 4;
+    self.orderStatusLabel.height += 2;
+    self.orderStatusLabel.right = 300;
 }
 
 - (void)setObject: (KGOrderSummaryObject *)orderSummaryObj {
@@ -59,7 +65,7 @@
 
     self.orderStatusLabel.layer.cornerRadius = 4;
     self.orderStatusLabel.layer.borderWidth = 1;
-    if (orderSummaryObj.orderStatus != PENDING_COMMENT) {
+    if (orderSummaryObj.orderStatus == COMPLETED) {
         self.orderStatusLabel.textColor = RGBCOLOR(187, 187, 187);
         self.orderStatusLabel.layer.borderColor = RGBCOLOR(187, 187, 187).CGColor;
     } else {
@@ -67,14 +73,23 @@
         self.orderStatusLabel.layer.borderColor = MAIN_COLOR.CGColor;
     }
     switch (orderSummaryObj.orderStatus) {
-        case ALREADY_COMPLETE:
+        case WAITING_CONFIRM:
+            self.orderStatusLabel.text = @"待确认";
+            break;
+        case WAITING_PAID:
+            self.orderStatusLabel.text = @"待付款";
+            break;
+        case PURCHASING:
+            self.orderStatusLabel.text = @"采购中";
+            break;
+        case RETURNING:
+            self.orderStatusLabel.text = @"返程中";
+            break;
+        case WAITING_RECEIPT:
+            self.orderStatusLabel.text = @"等待买家确认收货";
+            break;
+        case COMPLETED:
             self.orderStatusLabel.text = @"已完成";
-            break;
-        case PENDING_COMMENT:
-            self.orderStatusLabel.text = @"待评价";
-            break;
-        case ALREADY_PAID:
-            self.orderStatusLabel.text = @"已付款";
             break;
         default:
             break;

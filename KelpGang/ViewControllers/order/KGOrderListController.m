@@ -49,7 +49,7 @@
         obj.orderDesc = i % 2 == 0 ? @"凯夫拉束带结发拉丝机东方丽景阿斯顿发科技阿什利的客服经理说大家发了卡士大夫" : @"水电费加拉斯的减肥圣";
         obj.orderMoney = 200 + i;
         obj.orderImageUrl = @"http://b.hiphotos.baidu.com/image/w%3D2048/sign=5e82a4e40846f21fc9345953c21c6a60/cb8065380cd791231e957e6baf345982b2b780bc.jpg";
-        obj.orderStatus = i % 3;
+        obj.orderStatus = i % 6;
         obj.ownerId = i;
         obj.ownerName = [NSString stringWithFormat:@"用户%i", i];
         obj.ownerAvatar = @"http://f.hiphotos.baidu.com/image/w%3D2048/sign=bd17fb17be315c6043956cefb989ca13/c83d70cf3bc79f3da535b332b8a1cd11738b29df.jpg";
