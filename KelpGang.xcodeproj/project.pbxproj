@@ -19,8 +19,6 @@
 		A1036BBC18BF3DCF00FA7358 /* location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1036BBA18BF3DCF00FA7358 /* location@2x.png */; };
 		A106930718C068CF003CC6BC /* head-indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = A106930318C068CF003CC6BC /* head-indicator.png */; };
 		A106930818C068CF003CC6BC /* head-indicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A106930418C068CF003CC6BC /* head-indicator@2x.png */; };
-		A106930918C068CF003CC6BC /* head-line.png in Resources */ = {isa = PBXBuildFile; fileRef = A106930518C068CF003CC6BC /* head-line.png */; };
-		A106930A18C068CF003CC6BC /* head-line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A106930618C068CF003CC6BC /* head-line@2x.png */; };
 		A106930D18C06C32003CC6BC /* arrow-up.png in Resources */ = {isa = PBXBuildFile; fileRef = A106930B18C06C32003CC6BC /* arrow-up.png */; };
 		A106930E18C06C32003CC6BC /* arrow-up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A106930C18C06C32003CC6BC /* arrow-up@2x.png */; };
 		A110FA1B19077BED001651A3 /* KGChatTxtMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A110FA1A19077BED001651A3 /* KGChatTxtMessageCell.m */; };
@@ -151,6 +149,8 @@
 		A1930B2C18CEFDC7000D84A1 /* collect.png in Resources */ = {isa = PBXBuildFile; fileRef = A1930B2A18CEFDC7000D84A1 /* collect.png */; };
 		A1930B2D18CEFDC7000D84A1 /* collect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1930B2B18CEFDC7000D84A1 /* collect@2x.png */; };
 		A1933C2718E3D3C9000FC0B4 /* KGPhotoBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1933C2618E3D3C9000FC0B4 /* KGPhotoBrowserViewController.m */; };
+		A195420F190E6564009F5318 /* check-mark-white.png in Resources */ = {isa = PBXBuildFile; fileRef = A195420D190E6564009F5318 /* check-mark-white.png */; };
+		A1954210190E6564009F5318 /* check-mark-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A195420E190E6564009F5318 /* check-mark-white@2x.png */; };
 		A197503218D84BF10062CAA7 /* UIDevice+Addtional.m in Sources */ = {isa = PBXBuildFile; fileRef = A197501618D84BF10062CAA7 /* UIDevice+Addtional.m */; };
 		A197503918D84BF10062CAA7 /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = A197502418D84BF10062CAA7 /* UIView+Additions.m */; };
 		A197503A18D84BF10062CAA7 /* UIWindow+RscExt.m in Sources */ = {isa = PBXBuildFile; fileRef = A197502618D84BF10062CAA7 /* UIWindow+RscExt.m */; };
@@ -249,8 +249,6 @@
 		A1036BBA18BF3DCF00FA7358 /* location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location@2x.png"; sourceTree = "<group>"; };
 		A106930318C068CF003CC6BC /* head-indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "head-indicator.png"; sourceTree = "<group>"; };
 		A106930418C068CF003CC6BC /* head-indicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "head-indicator@2x.png"; sourceTree = "<group>"; };
-		A106930518C068CF003CC6BC /* head-line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "head-line.png"; sourceTree = "<group>"; };
-		A106930618C068CF003CC6BC /* head-line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "head-line@2x.png"; sourceTree = "<group>"; };
 		A106930B18C06C32003CC6BC /* arrow-up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-up.png"; sourceTree = "<group>"; };
 		A106930C18C06C32003CC6BC /* arrow-up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-up@2x.png"; sourceTree = "<group>"; };
 		A110FA1919077BED001651A3 /* KGChatTxtMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = KGChatTxtMessageCell.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -431,6 +429,8 @@
 		A1930B2B18CEFDC7000D84A1 /* collect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "collect@2x.png"; sourceTree = "<group>"; };
 		A1933C2518E3D3C9000FC0B4 /* KGPhotoBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGPhotoBrowserViewController.h; sourceTree = "<group>"; };
 		A1933C2618E3D3C9000FC0B4 /* KGPhotoBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGPhotoBrowserViewController.m; sourceTree = "<group>"; };
+		A195420D190E6564009F5318 /* check-mark-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-mark-white.png"; sourceTree = "<group>"; };
+		A195420E190E6564009F5318 /* check-mark-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-mark-white@2x.png"; sourceTree = "<group>"; };
 		A197501518D84BF10062CAA7 /* UIDevice+Addtional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Addtional.h"; sourceTree = "<group>"; };
 		A197501618D84BF10062CAA7 /* UIDevice+Addtional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Addtional.m"; sourceTree = "<group>"; };
 		A197502318D84BF10062CAA7 /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
@@ -797,6 +797,8 @@
 		A143015E18BB5D7A0064DF87 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A195420D190E6564009F5318 /* check-mark-white.png */,
+				A195420E190E6564009F5318 /* check-mark-white@2x.png */,
 				A14B637719066B3800C14A15 /* avatar-female.png */,
 				A14B637819066B3800C14A15 /* avatar-female@2x.png */,
 				A14B637919066B3800C14A15 /* avatar-male.png */,
@@ -910,8 +912,6 @@
 				A106930C18C06C32003CC6BC /* arrow-up@2x.png */,
 				A106930318C068CF003CC6BC /* head-indicator.png */,
 				A106930418C068CF003CC6BC /* head-indicator@2x.png */,
-				A106930518C068CF003CC6BC /* head-line.png */,
-				A106930618C068CF003CC6BC /* head-line@2x.png */,
 				A1036BB918BF3DCF00FA7358 /* location.png */,
 				A1036BBA18BF3DCF00FA7358 /* location@2x.png */,
 				A1036BB718BF3A1700FA7358 /* test-canada-flag.png */,
@@ -1127,7 +1127,6 @@
 				A182A2B818E1267F00B63470 /* my-follow@2x.png in Resources */,
 				A190FCD618C87B1700A87329 /* star_1@2x.png in Resources */,
 				A1036BB618BF336200FA7358 /* test-head.jpg in Resources */,
-				A106930A18C068CF003CC6BC /* head-line@2x.png in Resources */,
 				A110FA1E1907A879001651A3 /* order.storyboard in Resources */,
 				A180C0F718C8BFD900116DCF /* me_active.png in Resources */,
 				A16FBF0118DC4F3A009E2F66 /* recent-contact.png in Resources */,
@@ -1144,6 +1143,7 @@
 				A1A003EF18F3CE9E00B5A1D7 /* chat-voice.png in Resources */,
 				A14B637B19066B3800C14A15 /* avatar-female.png in Resources */,
 				A16FBEFB18DC255A009E2F66 /* half_heart.png in Resources */,
+				A1954210190E6564009F5318 /* check-mark-white@2x.png in Resources */,
 				A1DD135618E05562000F52C2 /* selected-tablecell.png in Resources */,
 				A1A003EE18F3CE9E00B5A1D7 /* chat-emotion@2x.png in Resources */,
 				A182A2AB18E125FC00B63470 /* my-orders.png in Resources */,
@@ -1152,7 +1152,6 @@
 				A1036BBC18BF3DCF00FA7358 /* location@2x.png in Resources */,
 				A180C0FB18C8BFD900116DCF /* more_active.png in Resources */,
 				A182A2AC18E125FC00B63470 /* my-orders@2x.png in Resources */,
-				A106930918C068CF003CC6BC /* head-line.png in Resources */,
 				A1BBB08618D6EE86002C8BD2 /* search.png in Resources */,
 				A1A003FB18F3F60500B5A1D7 /* chat-view-background@2x.png in Resources */,
 				A12ADE4618D3225F0009B225 /* close-active@2x.png in Resources */,
@@ -1167,6 +1166,7 @@
 				A14B637D19066B3800C14A15 /* avatar-male.png in Resources */,
 				A1A6231818BDC4F400D8E9A0 /* arrow-down.png in Resources */,
 				A16FBEF818DC255A009E2F66 /* empty_heart@2x.png in Resources */,
+				A195420F190E6564009F5318 /* check-mark-white.png in Resources */,
 				A1B22C5018D16BED00953EE5 /* down-arrow-big.png in Resources */,
 				A1930B2518CEFB3E000D84A1 /* KGPicBottom.xib in Resources */,
 				A12ADE4918D323A10009B225 /* delete_img.png in Resources */,

@@ -17,6 +17,12 @@
     self.navigationItem.leftBarButtonItem = buttonItem;
 }
 
+- (void)setRightBarbuttonItem: (UIImage *)image selector: (SEL)selector {
+    UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStyleBordered target:self action:selector];
+    buttonItem.tintColor = [UIColor whiteColor];
+    self.navigationItem.rightBarButtonItem = buttonItem;
+}
+
 - (void)goBack:(UIBarButtonItem *)sender {
     NSArray *controllers = self.navigationController.viewControllers;
     if (controllers.count > 1) {

@@ -11,6 +11,7 @@
 @interface UIViewController (Additions)
 
 - (void)setLeftBarbuttonItem;
+- (void)setRightBarbuttonItem: (UIImage *)image selector: (SEL)selector;
 - (void)goBack:(UIBarButtonItem *)sender;
 
 @end
