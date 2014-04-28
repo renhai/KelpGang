@@ -47,6 +47,9 @@
     userObj.vip = YES;
     userObj.level = 7;
     userObj.followCount = 1212121;
+
+    userObj.cellPhone = @"12312341234";
+    userObj.email = @"hai.ren@renren-inc.com";
     self.userObj = userObj;
 }
 

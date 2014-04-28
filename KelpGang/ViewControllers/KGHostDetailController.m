@@ -94,11 +94,21 @@
                     }
                 } else if (indexPath.row == 4) {
                     if (self.sexExpand) {
-                        cell.contentView.backgroundColor = self.user.gender == FEMALE ? RGBCOLOR(166, 227, 218) : [UIColor whiteColor];
+                        UIImageView *selectedView = (UIImageView *)[cell viewWithTag:1];
+                        selectedView.hidden = self.user.gender == FEMALE ? NO : YES;
+                    } else {
+                        UITextField *tf = (UITextField *)[cell viewWithTag:1];
+                        tf.text = self.user.cellPhone;
+                        tf.delegate = self;
                     }
                 } else if (indexPath.row == 5) {
                     if (self.sexExpand) {
-                        cell.contentView.backgroundColor = self.user.gender == MALE ? RGBCOLOR(166, 227, 218) : [UIColor whiteColor];
+                        UIImageView *selectedView = (UIImageView *)[cell viewWithTag:1];
+                        selectedView.hidden = self.user.gender == MALE ? NO : YES;
+                    } else {
+                        UITextField *tf = (UITextField *)[cell viewWithTag:1];
+                        tf.text = self.user.email;
+                        tf.delegate = self;
                     }
                 }
                 break;
