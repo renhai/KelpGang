@@ -25,9 +25,9 @@ typedef enum {
 @property (nonatomic, assign) NSInteger orderMoney;
 @property (nonatomic, strong) NSString *orderImageUrl;
 @property (nonatomic, assign) OrderStatus orderStatus;
-@property (nonatomic, assign) NSInteger ownerId;
-@property (nonatomic, strong) NSString *ownerName;
-@property (nonatomic, strong) NSString *ownerAvatar;
+@property (nonatomic, assign) NSInteger userId;
+@property (nonatomic, strong) NSString *userName;
+@property (nonatomic, strong) NSString *userAvatar;
 @property (nonatomic, assign) BOOL hasNewNotification;
 
 

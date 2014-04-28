@@ -37,7 +37,7 @@
     [super layoutSubviews];
     [self.nameLabel sizeToFit];
     self.nameLabel.left = self.headImageView.right + 5;
-    self.nameLabel.top = self.headImageView.centerY - self.nameLabel.height / 2;
+    self.nameLabel.centerY = self.headImageView.centerY;
 
     [self.orderNumLabel sizeToFit];
 
@@ -52,9 +52,11 @@
 
 - (void)setObject: (KGOrderSummaryObject *)orderSummaryObj {
     self.orderSummaryObj = orderSummaryObj;
-    [self.headImageView setImageWithURL:[NSURL URLWithString:orderSummaryObj.ownerAvatar]];
+    [self.headImageView setImageWithURL:[NSURL URLWithString:orderSummaryObj.userAvatar]];
     self.headImageView.layer.cornerRadius = self.headImageView.width / 2;
-    self.nameLabel.text = orderSummaryObj.ownerName;
+    self.headImageView.userInteractionEnabled = YES;
+    self.nameLabel.text = orderSummaryObj.userName;
+    self.nameLabel.userInteractionEnabled = YES;
     self.badgeView.hidden = !orderSummaryObj.hasNewNotification;
     [self.orderImageView setImageWithURL:[NSURL URLWithString:orderSummaryObj.orderImageUrl]];
     self.orderImageView.layer.borderWidth = 1;

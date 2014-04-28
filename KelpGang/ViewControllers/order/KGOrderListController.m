@@ -50,9 +50,9 @@
         obj.orderMoney = 200 + i;
         obj.orderImageUrl = @"http://b.hiphotos.baidu.com/image/w%3D2048/sign=5e82a4e40846f21fc9345953c21c6a60/cb8065380cd791231e957e6baf345982b2b780bc.jpg";
         obj.orderStatus = i % 6;
-        obj.ownerId = i;
-        obj.ownerName = [NSString stringWithFormat:@"用户%i", i];
-        obj.ownerAvatar = @"http://f.hiphotos.baidu.com/image/w%3D2048/sign=bd17fb17be315c6043956cefb989ca13/c83d70cf3bc79f3da535b332b8a1cd11738b29df.jpg";
+        obj.userId = i;
+        obj.userName = [NSString stringWithFormat:@"用户%i", i];
+        obj.userAvatar = @"http://f.hiphotos.baidu.com/image/w%3D2048/sign=bd17fb17be315c6043956cefb989ca13/c83d70cf3bc79f3da535b332b8a1cd11738b29df.jpg";
         obj.hasNewNotification = i % 2;
         [self.orderList addObject:obj];
     }
@@ -81,6 +81,10 @@
     KGOrderListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"kOrderListCell" forIndexPath:indexPath];
     KGOrderSummaryObject *obj = self.orderList[indexPath.row];
     [cell setObject: obj];
+    UITapGestureRecognizer *gesture1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHeader:)];
+    [cell.nameLabel addGestureRecognizer:gesture1];
+    UITapGestureRecognizer *gesture2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHeader:)];
+    [cell.headImageView addGestureRecognizer:gesture2];
     return cell;
 }
 
@@ -131,5 +135,17 @@
     DLog(@"%@", seg);
 }
 
+
+#pragma tap header 
+
+- (void)tapHeader: (UITapGestureRecognizer *)gesture {
+    CGPoint point = [gesture.view convertPoint:CGPointZero toView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
+    KGOrderListCell *cell = (KGOrderListCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    NSLog(@"%@", cell.orderSummaryObj.userName);
+    UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *chatController = [main instantiateViewControllerWithIdentifier:@"kChatViewController"];
+    [self.navigationController pushViewController:chatController animated:YES];
+}
 
 @end
