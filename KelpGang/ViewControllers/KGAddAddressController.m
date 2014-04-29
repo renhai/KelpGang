@@ -16,7 +16,6 @@
 - (IBAction)setDefaultAddr:(UIButton *)sender;
 @property (nonatomic, assign) BOOL areaExpand;
 @property (nonatomic, strong) NSArray *provinces, *cities, *areas;
-@property (nonatomic, strong) KGAddressObject *addrObj;
 
 @end
 
@@ -71,12 +70,25 @@
     if (!self.areaExpand && indexPath.row > 2) {
         cell = [super tableView:tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row + 1 inSection:indexPath.section]];
     }
+    if (indexPath.row == 0) {
+        UITextField *tf = (UITextField *)[cell viewWithTag:1];
+        tf.text = [self.addrObj consignee];
+    }
+    if (indexPath.row == 1) {
+        UITextField *tf = (UITextField *)[cell viewWithTag:1];
+        tf.text = [self.addrObj mobile];
+    }
     if (indexPath.row == 2) {
         UIImageView *imageView = (UIImageView *)[cell viewWithTag:1];
         UIButton *button = (UIButton *)[cell viewWithTag:2];
+        UILabel *label = (UILabel *)[cell viewWithTag:3];
         [button sizeToFit];
         button.right = 305;
         [button addTarget:self action:@selector(finishSelectDistrict:) forControlEvents:UIControlEventTouchUpInside];
+        if (self.addrObj) {
+            label.text = [NSString stringWithFormat:@"%@%@%@", self.addrObj.province, self.addrObj.city, self.addrObj.district];
+            [label sizeToFit];
+        }
         if (self.areaExpand) {
             button.hidden = NO;
             imageView.hidden = YES;
@@ -85,6 +97,14 @@
             imageView.hidden = NO;
             imageView.image = [UIImage imageNamed:@"down-arrow-big"];
         }
+    }
+    if (indexPath.row == 3 && !self.areaExpand) {
+        UITextField *tf = (UITextField *)[cell viewWithTag:1];
+        tf.text = [self.addrObj street];
+    }
+    if (indexPath.row == 4 && !self.areaExpand) {
+        UITextField *tf = (UITextField *)[cell viewWithTag:1];
+        tf.text = [self.addrObj areaCode];
     }
     return cell;
 }
@@ -99,10 +119,6 @@
             self.areaExpand = YES;
             [self.tableView insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
         }
-//        else {
-//            self.areaExpand = NO;
-//            [self.tableView deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-//        }
         [self.tableView endUpdates];
         [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:2 inSection:indexPath.section]] withRowAnimation:UITableViewRowAnimationNone];
     }
@@ -138,15 +154,14 @@
     if (!self.addrObj) {
         KGAddressObject *addrObj = [[KGAddressObject alloc] init];
         self.addrObj = addrObj;
+        self.addrObj.province = self.provinces[0][@"state"];
+        self.addrObj.city = self.cities[0][@"city"];
+        if (self.areas.count > 0) {
+            self.addrObj.district = self.areas[0];
+        } else{
+            self.addrObj.district = @"";
+        }
     }
-    self.addrObj.province = self.provinces[0][@"state"];
-    self.addrObj.city = self.cities[0][@"city"];
-    if (self.areas.count > 0) {
-        self.addrObj.district = self.areas[0];
-    } else{
-        self.addrObj.district = @"";
-    }
-
 }
 
 #pragma UIPickerViewDataSource

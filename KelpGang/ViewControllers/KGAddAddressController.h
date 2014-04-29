@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class KGAddressObject;
+
 @interface KGAddAddressController : UITableViewController
+
+@property (nonatomic, strong) KGAddressObject *addrObj;
 
 @end

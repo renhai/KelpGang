@@ -9,6 +9,7 @@
 #import "KGDeliveryAddressController.h"
 #import "KGDeliveryAddressCell.h"
 #import "KGAddressObject.h"
+#import "KGAddAddressController.h"
 
 @interface KGDeliveryAddressController ()
 
@@ -131,6 +132,18 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.datasource removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    KGAddAddressController *desController = segue.destinationViewController;
+    if ([@"kAddAddrSegue" isEqualToString:segue.identifier]) {
+        desController.addrObj = nil;
+    } else if ([@"kModAddrSegue" isEqualToString:segue.identifier]) {
+        KGAddressObject *addrObj = self.datasource[[self.tableView indexPathForSelectedRow].row];
+        desController.addrObj = addrObj;
     }
 }
 
