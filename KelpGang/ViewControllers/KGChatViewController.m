@@ -11,6 +11,7 @@
 #import "KGChatCellInfo.h"
 #import "XMPPManager.h"
 #import "KGChatTxtMessageCell.h"
+#import "KGCreateOrderController.h"
 
 static const CGFloat kMaxChatTextViewHeight = 99.0;
 static const NSInteger kHeaderTipViewTag = 1;
@@ -38,7 +39,7 @@ static const NSInteger kHeaderRefreshViewTag = 2;
 - (void)dealloc
 {
     NSLog(@"KGChatViewController dealloc");
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -66,7 +67,13 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     [self initHeaderView];
     [self initGoodsView];
     [self initChatTextField];
+}
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (self.chatCellInfoArr && self.chatCellInfoArr.count > 0) {
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.chatCellInfoArr.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -76,17 +83,11 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(newMsgCome:) name:kXMPPNewMsgNotifaction object:nil];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    if (self.chatCellInfoArr && self.chatCellInfoArr.count > 0) {
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.chatCellInfoArr.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-    }
-}
-
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.chatTextField resignFirstResponder];
     [self.chatTextView resignFirstResponder];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)mockData {
@@ -239,8 +240,8 @@ static const NSInteger kHeaderRefreshViewTag = 2;
 }
 
 - (void)tapHeader:(UIControl *) controll {
-    UIViewController *controller = [[UIViewController alloc]init];
-    controller.view.backgroundColor = [UIColor whiteColor];
+    UIStoryboard *board = [UIStoryboard storyboardWithName:@"order" bundle:nil];
+    KGCreateOrderController *controller = [board instantiateViewControllerWithIdentifier:@"kCreateOrderController"];
     [self.navigationController pushViewController:controller animated:YES];
 }
 

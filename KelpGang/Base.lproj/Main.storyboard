@@ -2111,7 +2111,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <!--Delivery Address Controller - 收货地址管理-->
         <scene sceneID="DwD-NC-dNG">
             <objects>
-                <tableViewController id="4na-FF-oWj" customClass="KGDeliveryAddressController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="kDeliveryAddressController" id="4na-FF-oWj" customClass="KGDeliveryAddressController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="rA7-hu-uQd">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

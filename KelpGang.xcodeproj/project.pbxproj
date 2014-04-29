@@ -94,6 +94,11 @@
 		A180C0FE18C8BFD900116DCF /* search_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A180C0F418C8BFD900116DCF /* search_active@2x.png */; };
 		A180C0FF18C8BFD900116DCF /* write_active.png in Resources */ = {isa = PBXBuildFile; fileRef = A180C0F518C8BFD900116DCF /* write_active.png */; };
 		A180C10018C8BFD900116DCF /* write_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A180C0F618C8BFD900116DCF /* write_active@2x.png */; };
+		A180E43D190F6DB5003347F8 /* KGCreateOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = A180E43C190F6DB5003347F8 /* KGCreateOrderController.m */; };
+		A180E440190F78B4003347F8 /* KGCreateOrderConsigneeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A180E43F190F78B4003347F8 /* KGCreateOrderConsigneeCell.m */; };
+		A180E443190F91FB003347F8 /* KGCreateOrderBuyerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A180E442190F91FB003347F8 /* KGCreateOrderBuyerCell.m */; };
+		A180E446190F944A003347F8 /* KGCreateOrderTaskNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A180E445190F944A003347F8 /* KGCreateOrderTaskNameCell.m */; };
+		A180E449190F9FA5003347F8 /* KGCreateOrderUploadPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A180E448190F9FA5003347F8 /* KGCreateOrderUploadPhotoCell.m */; };
 		A182A2AB18E125FC00B63470 /* my-orders.png in Resources */ = {isa = PBXBuildFile; fileRef = A182A2A918E125FC00B63470 /* my-orders.png */; };
 		A182A2AC18E125FC00B63470 /* my-orders@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A182A2AA18E125FC00B63470 /* my-orders@2x.png */; };
 		A182A2B518E1267F00B63470 /* my-collect.png in Resources */ = {isa = PBXBuildFile; fileRef = A182A2AD18E1267F00B63470 /* my-collect.png */; };
@@ -361,6 +366,16 @@
 		A180C0F418C8BFD900116DCF /* search_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search_active@2x.png"; sourceTree = "<group>"; };
 		A180C0F518C8BFD900116DCF /* write_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = write_active.png; sourceTree = "<group>"; };
 		A180C0F618C8BFD900116DCF /* write_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "write_active@2x.png"; sourceTree = "<group>"; };
+		A180E43B190F6DB5003347F8 /* KGCreateOrderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCreateOrderController.h; sourceTree = "<group>"; };
+		A180E43C190F6DB5003347F8 /* KGCreateOrderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCreateOrderController.m; sourceTree = "<group>"; };
+		A180E43E190F78B4003347F8 /* KGCreateOrderConsigneeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCreateOrderConsigneeCell.h; sourceTree = "<group>"; };
+		A180E43F190F78B4003347F8 /* KGCreateOrderConsigneeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCreateOrderConsigneeCell.m; sourceTree = "<group>"; };
+		A180E441190F91FB003347F8 /* KGCreateOrderBuyerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCreateOrderBuyerCell.h; sourceTree = "<group>"; };
+		A180E442190F91FB003347F8 /* KGCreateOrderBuyerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCreateOrderBuyerCell.m; sourceTree = "<group>"; };
+		A180E444190F944A003347F8 /* KGCreateOrderTaskNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCreateOrderTaskNameCell.h; sourceTree = "<group>"; };
+		A180E445190F944A003347F8 /* KGCreateOrderTaskNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCreateOrderTaskNameCell.m; sourceTree = "<group>"; };
+		A180E447190F9FA5003347F8 /* KGCreateOrderUploadPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCreateOrderUploadPhotoCell.h; sourceTree = "<group>"; };
+		A180E448190F9FA5003347F8 /* KGCreateOrderUploadPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCreateOrderUploadPhotoCell.m; sourceTree = "<group>"; };
 		A182A2A918E125FC00B63470 /* my-orders.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "my-orders.png"; sourceTree = "<group>"; };
 		A182A2AA18E125FC00B63470 /* my-orders@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "my-orders@2x.png"; sourceTree = "<group>"; };
 		A182A2AD18E1267F00B63470 /* my-collect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "my-collect.png"; sourceTree = "<group>"; };
@@ -611,6 +626,16 @@
 				A110FA231907C33B001651A3 /* KGOrderListCell.m */,
 				A110FA251907C57B001651A3 /* KGOrderSummaryObject.h */,
 				A110FA261907C57B001651A3 /* KGOrderSummaryObject.m */,
+				A180E43B190F6DB5003347F8 /* KGCreateOrderController.h */,
+				A180E43C190F6DB5003347F8 /* KGCreateOrderController.m */,
+				A180E43E190F78B4003347F8 /* KGCreateOrderConsigneeCell.h */,
+				A180E43F190F78B4003347F8 /* KGCreateOrderConsigneeCell.m */,
+				A180E441190F91FB003347F8 /* KGCreateOrderBuyerCell.h */,
+				A180E442190F91FB003347F8 /* KGCreateOrderBuyerCell.m */,
+				A180E444190F944A003347F8 /* KGCreateOrderTaskNameCell.h */,
+				A180E445190F944A003347F8 /* KGCreateOrderTaskNameCell.m */,
+				A180E447190F9FA5003347F8 /* KGCreateOrderUploadPhotoCell.h */,
+				A180E448190F9FA5003347F8 /* KGCreateOrderUploadPhotoCell.m */,
 			);
 			path = order;
 			sourceTree = "<group>";
@@ -1330,8 +1355,10 @@
 				A11E916E19011F3700BBC1A2 /* KGDiscoverViewController.m in Sources */,
 				A14300D518BB252F0064DF87 /* main.m in Sources */,
 				A18A2B9B18E18D8C00FDFB8E /* KGBadgeView.m in Sources */,
+				A180E446190F944A003347F8 /* KGCreateOrderTaskNameCell.m in Sources */,
 				A199395818FBD687002E7E51 /* KGChatCellInfo.m in Sources */,
 				A16FBEED18DC178C009E2F66 /* KGMaskView.m in Sources */,
+				A180E440190F78B4003347F8 /* KGCreateOrderConsigneeCell.m in Sources */,
 				A1A003F718F3F0BC00B5A1D7 /* KGMessageObject.m in Sources */,
 				A1C0ACFB18C759010092E3B4 /* XMPPManager.m in Sources */,
 				A12D782418CECBED00873887 /* MWPhotoBrowser.m in Sources */,
@@ -1339,11 +1366,13 @@
 				A1929ED019063C3000DDB66E /* KGRecentContactsCell.m in Sources */,
 				A19F0EC618E2B33B00C2944D /* KGBuyerDescriptionCell.m in Sources */,
 				A14415A218C0EA590053456D /* KGBuyerListViewController.m in Sources */,
+				A180E43D190F6DB5003347F8 /* KGCreateOrderController.m in Sources */,
 				A1DDFB7B18EEAF670078ED73 /* KGCascadeMenuLeftCell.m in Sources */,
 				A110FA241907C33B001651A3 /* KGOrderListCell.m in Sources */,
 				A19F0EC318E2AE0D00C2944D /* KGBuyerRefPicturesCell.m in Sources */,
 				A197503218D84BF10062CAA7 /* UIDevice+Addtional.m in Sources */,
 				A1AD133E1908D8BD00DF17B6 /* KGUserObject.m in Sources */,
+				A180E443190F91FB003347F8 /* KGCreateOrderBuyerCell.m in Sources */,
 				A1311F4518CA2E0800D1A40F /* SwipeView.m in Sources */,
 				A1DD135C18E0690D000F52C2 /* UIImage+Addtional.m in Sources */,
 				A197503A18D84BF10062CAA7 /* UIWindow+RscExt.m in Sources */,
@@ -1378,6 +1407,7 @@
 				A197503918D84BF10062CAA7 /* UIView+Additions.m in Sources */,
 				A12D782618CECBED00873887 /* MWTapDetectingView.m in Sources */,
 				A12D782018CECBED00873887 /* MWCaptionView.m in Sources */,
+				A180E449190F9FA5003347F8 /* KGCreateOrderUploadPhotoCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
