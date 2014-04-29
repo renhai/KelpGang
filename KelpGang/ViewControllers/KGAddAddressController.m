@@ -112,13 +112,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     //    UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
-    if (indexPath.row == 2) {
+    if (indexPath.row == 2 && !self.areaExpand) {
+        self.areaExpand = YES;
         NSArray *paths = @[[NSIndexPath indexPathForRow:3 inSection:indexPath.section]];
         [self.tableView beginUpdates];
-        if (!self.areaExpand) {
-            self.areaExpand = YES;
-            [self.tableView insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-        }
+        [self.tableView insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
         [self.tableView endUpdates];
         [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:2 inSection:indexPath.section]] withRowAnimation:UITableViewRowAnimationNone];
     }
