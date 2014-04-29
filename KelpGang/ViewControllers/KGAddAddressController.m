@@ -21,6 +21,11 @@
 
 @implementation KGAddAddressController
 
+- (void)dealloc
+{
+    DLog(@"KGAddAddressController dealloc");
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -84,6 +89,7 @@
         UILabel *label = (UILabel *)[cell viewWithTag:3];
         [button sizeToFit];
         button.right = 305;
+        button.centerY = cell.height / 2;
         [button addTarget:self action:@selector(finishSelectDistrict:) forControlEvents:UIControlEventTouchUpInside];
         if (self.addrObj) {
             label.text = [NSString stringWithFormat:@"%@%@%@", self.addrObj.province, self.addrObj.city, self.addrObj.district];
