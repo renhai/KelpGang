@@ -36,6 +36,8 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     [xmppmgr setupStream];
     BOOL connect = [xmppmgr connect];
     NSLog(@"connect: %d", connect);
+    [[IQKeyboardManager sharedManager] setShouldResignOnTouchOutside:YES];
+    [[IQKeyboardManager sharedManager] setShouldShowTextFieldPlaceholder:NO];
 
     return YES;
 }

@@ -39,7 +39,6 @@ static const NSInteger kHeaderRefreshViewTag = 2;
 - (void)dealloc
 {
     NSLog(@"KGChatViewController dealloc");
-//    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -81,6 +80,7 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChanged:) name: UITextViewTextDidChangeNotification object:nil];
 
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(newMsgCome:) name:kXMPPNewMsgNotifaction object:nil];
+    [[IQKeyboardManager sharedManager] setEnable:NO];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -88,6 +88,7 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     [self.chatTextField resignFirstResponder];
     [self.chatTextView resignFirstResponder];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[IQKeyboardManager sharedManager] setEnable:YES];
 }
 
 - (void)mockData {
@@ -132,11 +133,13 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     self.chatTextField.layer.borderWidth = LINE_HEIGHT;
     self.chatTextField.layer.borderColor = RGBCOLOR(211, 220, 224).CGColor;
     self.chatTextField.hidden = NO;
+    self.chatTextField.inputAccessoryView = [[UIView alloc] init];
 
     self.chatTextView.layer.cornerRadius = 10;
     self.chatTextView.layer.borderWidth = LINE_HEIGHT;
     self.chatTextView.layer.borderColor = RGBCOLOR(211, 220, 224).CGColor;
     self.chatTextView.hidden = YES;
+    self.chatTextField.inputAccessoryView = [[UIView alloc] init];
 }
 
 -(void)initHeaderView {

@@ -187,7 +187,7 @@
                                             <outlet property="mobileLabel" destination="GgE-Fy-GoM" id="syq-8r-dpv"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="buyerCell" rowHeight="45" id="Yuo-yq-YOs" customClass="KGCreateOrderBuyerCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="buyerCell" rowHeight="45" id="Yuo-yq-YOs" customClass="KGCreateOrderBuyerCell">
                                         <rect key="frame" x="0.0" y="119" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yuo-yq-YOs" id="CgF-23-I4u">
@@ -217,7 +217,7 @@
                                             <outlet property="buyerValueLabel" destination="yuG-jE-pF8" id="SLw-2j-Bf2"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskNameCell" rowHeight="65" id="gaI-qG-Vwl" customClass="KGCreateOrderTaskNameCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="taskNameCell" rowHeight="65" id="gaI-qG-Vwl" customClass="KGCreateOrderTaskNameCell">
                                         <rect key="frame" x="0.0" y="164" width="320" height="65"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gaI-qG-Vwl" id="uVO-nP-ULl">
@@ -247,7 +247,7 @@
                                             <outlet property="taskValueTextView" destination="VWM-Lh-QcI" id="MWw-45-M5O"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="uploadPhotoLabelCell" rowHeight="47" id="7lV-2p-biB">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="uploadPhotoLabelCell" rowHeight="47" id="7lV-2p-biB">
                                         <rect key="frame" x="0.0" y="229" width="320" height="47"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7lV-2p-biB" id="0kd-wo-7JB">
@@ -265,7 +265,7 @@
                                             <color key="backgroundColor" red="0.91372549020000005" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="uploadPhotoCell" rowHeight="40" id="q2J-lh-bIf" customClass="KGCreateOrderUploadPhotoCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="uploadPhotoCell" rowHeight="40" id="q2J-lh-bIf" customClass="KGCreateOrderUploadPhotoCell">
                                         <rect key="frame" x="0.0" y="276" width="320" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="q2J-lh-bIf" id="JSK-mS-SnD">
@@ -277,7 +277,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="textColor" red="0.12941176469999999" green="0.72549019609999998" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ntn-tV-eo1">
                                                     <rect key="frame" x="277" y="5" width="26" height="26"/>

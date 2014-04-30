@@ -19,6 +19,7 @@
     #import "UIView+Additions.h"
     #import "UIImage+Addtional.h"
     #import "UIViewController+Additions.h"
+    #import "IQKeyboardManager.h"
 #endif
 
 #define HAVE_XMPP_SUBSPEC_RECONNECT

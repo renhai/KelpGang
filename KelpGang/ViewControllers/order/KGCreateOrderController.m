@@ -13,13 +13,12 @@
 #import "KGCreateOrderBuyerCell.h"
 #import "KGCreateOrderTaskNameCell.h"
 #import "KGCreateOrderUploadPhotoCell.h"
+#import "IQUIView+Hierarchy.h"
+
 
 @interface KGCreateOrderController () <UITextViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *createButton;
-
-@property (nonatomic, strong) UITextView *taskNameTextView;
-@property (nonatomic, strong) UITextField *photoNameTextField;
 
 @end
 
@@ -49,8 +48,14 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.taskNameTextView resignFirstResponder];
-    [self.photoNameTextField resignFirstResponder];
+
+    NSArray *textFields = [self.tableView deepResponderViews];
+    if (textFields) {
+        for (UIView *view in textFields) {
+            [view resignFirstResponder];
+        }
+    }
+
 }
 
 - (void)mockData {
@@ -105,14 +110,12 @@
             KGCreateOrderTaskNameCell *tCell = (KGCreateOrderTaskNameCell *)cell;
             [tCell setObject:self.taskName];
             tCell.taskValueTextView.delegate = self;
-            self.taskNameTextView = tCell.taskValueTextView;
         } else if (indexPath.row == 2) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"uploadPhotoLabelCell" forIndexPath:indexPath];
         } else if (indexPath.row == 3) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"uploadPhotoCell" forIndexPath:indexPath];
             KGCreateOrderUploadPhotoCell *uCell = (KGCreateOrderUploadPhotoCell *)cell;
             uCell.photoNameTextField.delegate = self;
-            self.photoNameTextField = uCell.photoNameTextField;
         }
         else {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"testcell"];
@@ -180,12 +183,6 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
-    [self.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
-    return YES;
-}
-
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    [self.tableView setContentOffset:CGPointMake(0, 120) animated:YES];
     return YES;
 }
 
