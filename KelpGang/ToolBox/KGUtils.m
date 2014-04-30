@@ -67,4 +67,10 @@
         }
     }
 }
+
++ (void)setExtraCellLineHidden: (UITableView *)tableView {
+    UIView *view = [[UIView alloc] init];
+    view.backgroundColor = [UIColor clearColor];
+    [tableView setTableFooterView:view];
+}
 @end

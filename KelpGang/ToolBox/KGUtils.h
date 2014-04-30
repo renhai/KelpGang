@@ -18,4 +18,6 @@
 
 + (void)removeMaskViewFromWindow;
 
++ (void)setExtraCellLineHidden: (UITableView *)tableView;
+
 @end
