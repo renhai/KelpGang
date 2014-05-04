@@ -7,12 +7,18 @@ PODS:
   - CocoaLumberjack/Core (1.6.5.1)
   - CocoaLumberjack/Extensions (1.6.5.1):
     - CocoaLumberjack/Core
+  - DACircularProgress (2.2.0)
   - EGOCache (2.0)
   - IQKeyboardManager (3.0.4)
   - MagicalRecord (2.2):
     - MagicalRecord/Core
   - MagicalRecord/Core (2.2)
   - MBProgressHUD (0.8)
+  - MWPhotoBrowser (1.4.0):
+    - DACircularProgress
+    - MBProgressHUD (~> 0.8)
+    - PSTCollectionView (~> 1.2)
+    - SDWebImage (~> 3.5.4)
   - OHAttributedLabel (3.5.3)
   - PSTCollectionView (1.2.0)
   - Reachability (3.1.1)
@@ -177,6 +183,7 @@ DEPENDENCIES:
   - IQKeyboardManager (~> 3.0.4)
   - MagicalRecord (~> 2.2)
   - MBProgressHUD (~> 0.8)
+  - MWPhotoBrowser
   - OHAttributedLabel
   - PSTCollectionView (~> 1.2.0)
   - Reachability (~> 3.1.1)
@@ -192,10 +199,12 @@ SPEC CHECKSUMS:
   AFNetworking: e403d4333a4e1956cb3fe42364c3c879f820c9a0
   CocoaAsyncSocket: 534d09416f992fd51efb23f534742ce70b3a7999
   CocoaLumberjack: 17803afbade3126a377d32b8d23367264b44ced6
+  DACircularProgress: 659d6fd11b5fc099c13ba9350239d9dca324916a
   EGOCache: c7116e8a6692eecb542f001a9c71f9b71ae9644b
   IQKeyboardManager: 7f7d9ac326ff0908499d5304645338baf846f4d2
   MagicalRecord: 95d49d74ef752cd52f6ad87bcb474817fc3978cf
   MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
+  MWPhotoBrowser: b85e89fcf0575062f32c472d389265dce1f068e1
   OHAttributedLabel: 985e4b57eec0dc6add79179ac47ec888b8a914e7
   PSTCollectionView: fb2ad2790c6efa306b2caf10315b2c1464d1f5c6
   Reachability: be4883bb93f31e38266ae3365e5600a317aae735
