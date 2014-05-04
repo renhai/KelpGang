@@ -126,7 +126,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *sectionHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 10)];
-    sectionHeaderView.backgroundColor = RGBCOLOR(233, 243, 243);
+    sectionHeaderView.backgroundColor = CLEARCOLOR;
     return sectionHeaderView;
 }
 
