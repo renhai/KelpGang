@@ -14,11 +14,15 @@
 #import "KGCreateOrderTaskNameCell.h"
 #import "KGCreateOrderUploadPhotoCell.h"
 #import "IQUIView+Hierarchy.h"
+#import "KGCreateOrderPhotoCell.h"
+#import "KGCreateOrderTextFieldCell.h"
 
 
-@interface KGCreateOrderController () <UITextViewDelegate, UITextFieldDelegate>
+@interface KGCreateOrderController () <UITextViewDelegate, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *createButton;
+
+@property (nonatomic, strong) NSMutableArray *photos;
 
 @end
 
@@ -44,6 +48,12 @@
     [self setLeftBarbuttonItem];
     [self setTitle:@"创建订单"];
     [self mockData];
+    self.photos = [[NSMutableArray alloc] init];
+    [self.photos addObject:@(1)];
+    [self.photos addObject:@(1)];
+    [self.photos addObject:@(1)];
+    [self.photos addObject:@(1)];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -116,9 +126,28 @@
             cell = [tableView dequeueReusableCellWithIdentifier:@"uploadPhotoCell" forIndexPath:indexPath];
             KGCreateOrderUploadPhotoCell *uCell = (KGCreateOrderUploadPhotoCell *)cell;
             uCell.photoNameTextField.delegate = self;
-        }
-        else {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"testcell"];
+            uCell.photosView.delegate = self;
+            uCell.photosView.dataSource = self;
+            [uCell.deleteAllPhotosButton addTarget:self action:@selector(deleteAllPhotos:) forControlEvents:UIControlEventTouchUpInside];
+        } else if (indexPath.row > 3 && indexPath.row < 7) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"textFieldCell" forIndexPath:indexPath];
+            KGCreateOrderTextFieldCell *tCell = (KGCreateOrderTextFieldCell *)cell;
+            tCell.textField.delegate = self;
+            NSString *title;
+            NSString *text;
+            if (indexPath.row == 4) {
+                title = @"跑腿费比例：";
+                text = @"10%";
+            } else if (indexPath.row == 5) {
+                title = @"任务金额：";
+                text = @"￥100";
+            } else {
+                title = @"任务描述：";
+                text = @"白色榴莲味面霜，2倍浓度";
+            }
+            [tCell configCell:title text:text];
+        } else {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"priceCell" forIndexPath:indexPath];
         }
     }
     return cell;
@@ -137,10 +166,10 @@
         } else if (indexPath.row == 2) {
             return 47;
         } else if (indexPath.row == 3) {
-            return 40;
+            return 162;
         }
     }
-    return 50;
+    return 46;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -184,6 +213,43 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
+}
+
+#pragma UICollectionViewDataSource
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return [self.photos count] + 1;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell;
+    if (indexPath.row == [self.photos count]) {
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"kAddPhotoCell" forIndexPath:indexPath];
+    } else {
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"kPhotoCell" forIndexPath:indexPath];
+//        KGCreateOrderPhotoCell *pCell = (KGCreateOrderPhotoCell *)cell;
+
+    }
+    return cell;
+}
+
+#pragma UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    DLog(@"indexPath: %@", indexPath);
+}
+
+
+- (void)deleteAllPhotos: (UIButton *)sender {
+    [self.photos removeAllObjects];
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:1]];
+    KGCreateOrderUploadPhotoCell *uCell = (KGCreateOrderUploadPhotoCell *)cell;
+    [uCell.photosView reloadData];
 }
 
 @end

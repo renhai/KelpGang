@@ -1,14 +1,14 @@
 //
-//  KGCreateOrderUploadPhotoCell.m
+//  KGCreateOrderTextFieldCell.m
 //  KelpGang
 //
-//  Created by Andy on 14-4-29.
+//  Created by Andy on 14-5-4.
 //  Copyright (c) 2014年 renren. All rights reserved.
 //
 
-#import "KGCreateOrderUploadPhotoCell.h"
+#import "KGCreateOrderTextFieldCell.h"
 
-@implementation KGCreateOrderUploadPhotoCell
+@implementation KGCreateOrderTextFieldCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -28,16 +28,18 @@
 {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    self.photoNameTextField.top = 7;
-    self.photoNameTextField.left = 20;
-    self.deleteAllPhotosButton.top = self.photoNameTextField.top;
-    self.deleteAllPhotosButton.right = self.width - 20;
-    self.photosView.top = self.photoNameTextField.bottom + 15;
+    [self.label sizeToFit];
+    self.textField.left = self.label.right;
 }
+
+- (void)configCell: (NSString *)title text: (NSString *)text {
+    self.label.text = title;
+    self.textField.text = text;
+}
+
 
 @end

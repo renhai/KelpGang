@@ -27,6 +27,8 @@
 		A110FA241907C33B001651A3 /* KGOrderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A110FA231907C33B001651A3 /* KGOrderListCell.m */; };
 		A110FA271907C57B001651A3 /* KGOrderSummaryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A110FA261907C57B001651A3 /* KGOrderSummaryObject.m */; };
 		A112770318E29445006F7CFA /* KGBuyerInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A112770218E29445006F7CFA /* KGBuyerInfoViewController.m */; };
+		A11AB58A1915EF0800754031 /* KGCreateOrderPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A11AB5891915EF0800754031 /* KGCreateOrderPhotoCell.m */; };
+		A11AB58D19160C1100754031 /* KGCreateOrderTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A11AB58C19160C1100754031 /* KGCreateOrderTextFieldCell.m */; };
 		A11E91641900D28100BBC1A2 /* KGRecentContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A11E91631900D28100BBC1A2 /* KGRecentContactsController.m */; };
 		A11E916E19011F3700BBC1A2 /* KGDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A11E916D19011F3700BBC1A2 /* KGDiscoverViewController.m */; };
 		A12ADE4518D3225F0009B225 /* close-active.png in Resources */ = {isa = PBXBuildFile; fileRef = A12ADE4318D3225F0009B225 /* close-active.png */; };
@@ -277,6 +279,10 @@
 		A110FA261907C57B001651A3 /* KGOrderSummaryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGOrderSummaryObject.m; sourceTree = "<group>"; };
 		A112770118E29445006F7CFA /* KGBuyerInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGBuyerInfoViewController.h; sourceTree = "<group>"; };
 		A112770218E29445006F7CFA /* KGBuyerInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGBuyerInfoViewController.m; sourceTree = "<group>"; };
+		A11AB5881915EF0800754031 /* KGCreateOrderPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCreateOrderPhotoCell.h; sourceTree = "<group>"; };
+		A11AB5891915EF0800754031 /* KGCreateOrderPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCreateOrderPhotoCell.m; sourceTree = "<group>"; };
+		A11AB58B19160C1100754031 /* KGCreateOrderTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCreateOrderTextFieldCell.h; sourceTree = "<group>"; };
+		A11AB58C19160C1100754031 /* KGCreateOrderTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCreateOrderTextFieldCell.m; sourceTree = "<group>"; };
 		A11E91621900D28100BBC1A2 /* KGRecentContactsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGRecentContactsController.h; sourceTree = "<group>"; };
 		A11E91631900D28100BBC1A2 /* KGRecentContactsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGRecentContactsController.m; sourceTree = "<group>"; };
 		A11E91691900F4F800BBC1A2 /* KGMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGMacro.h; sourceTree = "<group>"; };
@@ -667,6 +673,10 @@
 				A180E445190F944A003347F8 /* KGCreateOrderTaskNameCell.m */,
 				A180E447190F9FA5003347F8 /* KGCreateOrderUploadPhotoCell.h */,
 				A180E448190F9FA5003347F8 /* KGCreateOrderUploadPhotoCell.m */,
+				A11AB5881915EF0800754031 /* KGCreateOrderPhotoCell.h */,
+				A11AB5891915EF0800754031 /* KGCreateOrderPhotoCell.m */,
+				A11AB58B19160C1100754031 /* KGCreateOrderTextFieldCell.h */,
+				A11AB58C19160C1100754031 /* KGCreateOrderTextFieldCell.m */,
 			);
 			path = order;
 			sourceTree = "<group>";
@@ -1446,6 +1456,8 @@
 				A1DD135C18E0690D000F52C2 /* UIImage+Addtional.m in Sources */,
 				A197503A18D84BF10062CAA7 /* UIWindow+RscExt.m in Sources */,
 				A12D782318CECBED00873887 /* MWPhoto.m in Sources */,
+				A11AB58D19160C1100754031 /* KGCreateOrderTextFieldCell.m in Sources */,
+				A11AB58A1915EF0800754031 /* KGCreateOrderPhotoCell.m in Sources */,
 				A1DD134F18E04C7A000F52C2 /* KGDeliveryAddressController.m in Sources */,
 				A18A2B9218E1793500FDFB8E /* KGAddressObject.m in Sources */,
 				A1BBB08018D6B4E1002C8BD2 /* KGTaskListViewController.m in Sources */,
