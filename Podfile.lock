@@ -8,6 +8,7 @@ PODS:
   - CocoaLumberjack/Extensions (1.6.5.1):
     - CocoaLumberjack/Core
   - EGOCache (2.0)
+  - IQKeyboardManager (3.0.4)
   - MagicalRecord (2.2):
     - MagicalRecord/Core
   - MagicalRecord/Core (2.2)
@@ -173,6 +174,7 @@ PODS:
 
 DEPENDENCIES:
   - EGOCache (~> 2.0)
+  - IQKeyboardManager (~> 3.0.4)
   - MagicalRecord (~> 2.2)
   - MBProgressHUD (~> 0.8)
   - OHAttributedLabel
@@ -191,6 +193,7 @@ SPEC CHECKSUMS:
   CocoaAsyncSocket: 534d09416f992fd51efb23f534742ce70b3a7999
   CocoaLumberjack: 17803afbade3126a377d32b8d23367264b44ced6
   EGOCache: c7116e8a6692eecb542f001a9c71f9b71ae9644b
+  IQKeyboardManager: 7f7d9ac326ff0908499d5304645338baf846f4d2
   MagicalRecord: 95d49d74ef752cd52f6ad87bcb474817fc3978cf
   MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
   OHAttributedLabel: 985e4b57eec0dc6add79179ac47ec888b8a914e7
