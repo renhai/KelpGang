@@ -232,8 +232,8 @@
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"kAddPhotoCell" forIndexPath:indexPath];
     } else {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"kPhotoCell" forIndexPath:indexPath];
-//        KGCreateOrderPhotoCell *pCell = (KGCreateOrderPhotoCell *)cell;
-
+        KGCreateOrderPhotoCell *pCell = (KGCreateOrderPhotoCell *)cell;
+        [pCell.delButton addTarget:self action:@selector(delPhoto:) forControlEvents:UIControlEventTouchUpInside];
     }
     return cell;
 }
@@ -249,6 +249,16 @@
     [self.photos removeAllObjects];
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:1]];
     KGCreateOrderUploadPhotoCell *uCell = (KGCreateOrderUploadPhotoCell *)cell;
+    [uCell.photosView reloadData];
+}
+
+- (void)delPhoto: (UIButton *)sender {
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:1]];
+    KGCreateOrderUploadPhotoCell *uCell = (KGCreateOrderUploadPhotoCell *)cell;
+    KGCreateOrderPhotoCell *pCell = (KGCreateOrderPhotoCell *)sender.superview.superview;
+    NSIndexPath *indexPath = [uCell.photosView indexPathForCell:pCell];
+    NSLog(@"%@", indexPath);
+    [self.photos removeObjectAtIndex:indexPath.row];
     [uCell.photosView reloadData];
 }
 
