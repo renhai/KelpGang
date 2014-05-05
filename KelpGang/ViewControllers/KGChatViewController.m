@@ -379,13 +379,13 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     [self.view endEditing:YES];
 }
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    DLog(@"%@", scrollView);
-    LOGBOOL(decelerate);
-    if (scrollView.contentOffset.y <= 0) {
-
-    }
-}
+//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+//    DLog(@"%@", scrollView);
+//    LOGBOOL(decelerate);
+//    if (scrollView.contentOffset.y <= 0) {
+//
+//    }
+//}
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     DLog("%@", scrollView);
