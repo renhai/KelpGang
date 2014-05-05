@@ -38,7 +38,8 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     NSLog(@"connect: %d", connect);
     [[IQKeyboardManager sharedManager] setShouldResignOnTouchOutside:YES];
     [[IQKeyboardManager sharedManager] setShouldShowTextFieldPlaceholder:NO];
-
+    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
+    [[IQKeyboardManager sharedManager] setEnable:YES];
     return YES;
 }
 							
