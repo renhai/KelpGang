@@ -245,6 +245,7 @@ static const NSInteger kHeaderRefreshViewTag = 2;
 - (void)tapHeader:(UIControl *) controll {
     UIStoryboard *board = [UIStoryboard storyboardWithName:@"order" bundle:nil];
     KGCreateOrderController *controller = [board instantiateViewControllerWithIdentifier:@"kCreateOrderController"];
+    controller.title = @"创建订单";
     [self.navigationController pushViewController:controller animated:YES];
 }
 

@@ -185,12 +185,13 @@
 - (void)tapActionButton: (UIButton *)sender {
     switch (self.orderObj.orderStatus) {
         case WAITING_CONFIRM: {
-//            KGCreateOrderController *creatController = [self.storyboard instantiateViewControllerWithIdentifier:@"kCreateOrderController"];
-//            [self.navigationController pushViewController:creatController animated:YES];
-//
-//            NSMutableArray *controllers = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
-//            [controllers removeObjectAtIndex:controllers.count - 2];
-//            [self.navigationController setViewControllers:controllers];
+            KGCreateOrderController *creatController = [self.storyboard instantiateViewControllerWithIdentifier:@"kCreateOrderController"];
+            creatController.title = @"编辑订单";
+            [self.navigationController pushViewController:creatController animated:YES];
+
+            NSMutableArray *controllers = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
+            [controllers removeObjectAtIndex:controllers.count - 2];
+            [self.navigationController setViewControllers:controllers];
             break;
         }
         default:

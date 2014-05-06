@@ -18,6 +18,7 @@
 #import "KGCreateOrderTextFieldCell.h"
 #import "KGCompletedOrderController.h"
 #import "KGOrderObject.h"
+#import "HudHelper.h"
 
 
 @interface KGCreateOrderController () <UITextViewDelegate, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
@@ -48,7 +49,7 @@
 {
     [super viewDidLoad];
     [self setLeftBarbuttonItem];
-    [self setTitle:@"创建订单"];
+//    [self setTitle:@"创建订单"];
     [self mockData];
     self.photos = [[NSMutableArray alloc] init];
     [self.photos addObject:@(1)];
@@ -267,15 +268,25 @@
 }
 
 - (void)createOrder: (UIButton *)sender {
-    KGCompletedOrderController *destController = [self.storyboard instantiateViewControllerWithIdentifier:@"kCompletedOrderController"];
-    KGOrderObject *obj = [[KGOrderObject alloc]init];
-    obj.orderStatus = WAITING_CONFIRM;
-    destController.orderObj = obj;
-    [self.navigationController pushViewController:destController animated:YES];
+    [[HudHelper getInstance] showHudOnView:self.view caption:@"正在创建" image:nil acitivity:YES autoHideTime:0.0];
+    __weak typeof(self) weakSelf = self;
+    int64_t delayInSeconds = 2.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [[HudHelper getInstance]hideHudInView:self.view];
+        KGCompletedOrderController *destController = [self.storyboard instantiateViewControllerWithIdentifier:@"kCompletedOrderController"];
+        KGOrderObject *obj = [[KGOrderObject alloc]init];
+        obj.orderStatus = WAITING_CONFIRM;
+        destController.orderObj = obj;
+        [weakSelf.navigationController pushViewController:destController animated:YES];
 
-//    NSMutableArray *controllers = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
-//    [controllers removeObjectAtIndex:controllers.count - 2];
-//    [self.navigationController setViewControllers:controllers];
+        NSMutableArray *controllers = [NSMutableArray arrayWithArray:weakSelf.navigationController.viewControllers];
+        [controllers removeObjectAtIndex:controllers.count - 2];
+        [weakSelf.navigationController setViewControllers:controllers];
+    });
+
+
+
 }
 
 @end
