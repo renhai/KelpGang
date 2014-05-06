@@ -16,6 +16,8 @@
 #import "IQ_UIView+Hierarchy.h"
 #import "KGCreateOrderPhotoCell.h"
 #import "KGCreateOrderTextFieldCell.h"
+#import "KGCompletedOrderController.h"
+#import "KGOrderObject.h"
 
 
 @interface KGCreateOrderController () <UITextViewDelegate, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
@@ -53,6 +55,8 @@
     [self.photos addObject:@(1)];
     [self.photos addObject:@(1)];
     [self.photos addObject:@(1)];
+
+    [self.createButton addTarget:self action:@selector(createOrder:) forControlEvents:UIControlEventTouchUpInside];
 
 }
 
@@ -260,6 +264,18 @@
     NSLog(@"%@", indexPath);
     [self.photos removeObjectAtIndex:indexPath.row];
     [uCell.photosView reloadData];
+}
+
+- (void)createOrder: (UIButton *)sender {
+    KGCompletedOrderController *destController = [self.storyboard instantiateViewControllerWithIdentifier:@"kCompletedOrderController"];
+    KGOrderObject *obj = [[KGOrderObject alloc]init];
+    obj.orderStatus = WAITING_CONFIRM;
+    destController.orderObj = obj;
+    [self.navigationController pushViewController:destController animated:YES];
+
+//    NSMutableArray *controllers = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
+//    [controllers removeObjectAtIndex:controllers.count - 2];
+//    [self.navigationController setViewControllers:controllers];
 }
 
 @end

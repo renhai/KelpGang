@@ -9,6 +9,7 @@
 #import "KGOrderListController.h"
 #import "KGOrderListCell.h"
 #import "KGOrderSummaryObject.h"
+#import "KGCompletedOrderController.h"
 
 @interface KGOrderListController ()
 
@@ -125,6 +126,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+    KGCompletedOrderController *destController = [self.storyboard instantiateViewControllerWithIdentifier:@"kCompletedOrderController"];
+    destController.orderId = 111;
+    [self.navigationController pushViewController:destController animated:YES];
 }
 
 

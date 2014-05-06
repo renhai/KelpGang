@@ -35,4 +35,13 @@ typedef enum {
     FEMALE =    1
 } Gender;
 
+typedef enum {
+    WAITING_CONFIRM =       0,//待确认
+    WAITING_PAID =          1,//待付款
+    PURCHASING =            2,//采购中
+    RETURNING =             3,//返程中
+    WAITING_RECEIPT =       4,//等待买家确认收货
+    COMPLETED =             5,//已完成
+} OrderStatus;
+
 
