@@ -10,11 +10,11 @@
 #import "KGBuyerListViewCell.h"
 #import "KGBuyerInfoViewController.h"
 #import "XMPPManager.h"
-#import "UIImageView+WebCache.h"
 #import "SVPullToRefresh.h"
 #import "HudHelper.h"
 #import "KGFilterItem.h"
 #import "KGFilterBar.h"
+#import "KGBuyerSummaryObject.h"
 
 
 static NSString * const kFindKelpCell = @"kFindKelpCell";
@@ -52,21 +52,6 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.countryArr = @[@{@"firstLevel": @"热门国家",@"secondLevel": @[@"日本",@"韩国",@"美国",@"法国",@"意大利",@"德国",@"加拿大",@"澳大利亚",@"泰国"]},
-                        @{@"firstLevel": @"亚洲",@"secondLevel": @[@"日本",@"韩国",@"泰国"]},
-                        @{@"firstLevel": @"欧洲",@"secondLevel": @[@"英国",@"法国",@"意大利",@"德国"]},
-                        @{@"firstLevel": @"非洲",@"secondLevel": @[@"南非",@"埃及",@"阿尔及利亚",@"刚果"]},
-                        @{@"firstLevel": @"北美洲",@"secondLevel": @[@"美国",@"加拿大",@"墨西哥",@"哥斯达黎加"]},
-                        @{@"firstLevel": @"南美洲",@"secondLevel": @[@"巴西",@"阿根廷",@"哥伦比亚",@"厄瓜多尔",@"委内瑞拉",@"乌拉圭"]},
-                        @{@"firstLevel": @"大洋洲",@"secondLevel": @[@"澳大利亚",@"新西兰",@"六个字的国家",@"七个字的国家啊", @"八个字的国家啊哈"]}];
-    self.cityArr = @[@{@"firstLevel": @"热门城市",@"secondLevel": @[@"北京",@"上海",@"广州",@"深圳",@"武汉",@"长春",@"东莞",@"吉林",@"延吉"]},
-                     @{@"firstLevel": @"华东",@"secondLevel": @[@"石家庄",@"邯郸",@"北京"]},
-                     @{@"firstLevel": @"华北",@"secondLevel": @[@"英国",@"法国",@"意大利",@"德国"]},
-                     @{@"firstLevel": @"华南",@"secondLevel": @[@"南非",@"埃及",@"阿尔及利亚",@"刚果"]},
-                     @{@"firstLevel": @"西部",@"secondLevel": @[@"美国",@"加拿大",@"墨西哥",@"哥斯达黎加"]},
-                     @{@"firstLevel": @"其他",@"secondLevel": @[@"巴西",@"阿根廷",@"哥伦比亚",@"厄瓜多尔",@"委内瑞拉",@"乌拉圭"]}];
-    self.timeArr = @[@"3天内", @"1周内", @"2周内", @"1月内", @"常驻"];
-
 
     [self initFilterBar];
 
@@ -85,12 +70,45 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
     self.tableView.showsInfiniteScrolling = NO;
 }
 
+- (void)mockData {
+    for (NSInteger i = 0; i < 20; i ++) {
+        KGBuyerSummaryObject *obj = [[KGBuyerSummaryObject alloc]init];
+        obj.userId = i;
+        obj.userName = [NSString stringWithFormat:@"用户%i", i];
+        obj.avatarUrl = @"http://d.hiphotos.baidu.com/image/pic/item/ac6eddc451da81cb5ab9c2ac5066d01609243177.jpg";
+        obj.gender = i % 2;
+        obj.level = i % 10;
+        obj.country = @"台湾";
+        obj.routeDuration = @"11.12-3.20";
+        obj.fromCountry = @"加拿大";
+        obj.toCountry = @"澳大利亚";
+        obj.desc = @"是对伐啦圣诞节法拉盛地方时间段飞拉萨京东方流口水";
+        [self.datasource addObject:obj];
+    }
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.filterBar closeCurrFilterView];
 }
 
 - (void)initFilterBar {
+    self.countryArr = @[@{@"firstLevel": @"热门国家",@"secondLevel": @[@"日本",@"韩国",@"美国",@"法国",@"意大利",@"德国",@"加拿大",@"澳大利亚",@"泰国"]},
+                        @{@"firstLevel": @"亚洲",@"secondLevel": @[@"日本",@"韩国",@"泰国"]},
+                        @{@"firstLevel": @"欧洲",@"secondLevel": @[@"英国",@"法国",@"意大利",@"德国"]},
+                        @{@"firstLevel": @"非洲",@"secondLevel": @[@"南非",@"埃及",@"阿尔及利亚",@"刚果"]},
+                        @{@"firstLevel": @"北美洲",@"secondLevel": @[@"美国",@"加拿大",@"墨西哥",@"哥斯达黎加"]},
+                        @{@"firstLevel": @"南美洲",@"secondLevel": @[@"巴西",@"阿根廷",@"哥伦比亚",@"厄瓜多尔",@"委内瑞拉",@"乌拉圭"]},
+                        @{@"firstLevel": @"大洋洲",@"secondLevel": @[@"澳大利亚",@"新西兰",@"六个字的国家",@"七个字的国家啊", @"八个字的国家啊哈"]}];
+    self.cityArr = @[@{@"firstLevel": @"热门城市",@"secondLevel": @[@"北京",@"上海",@"广州",@"深圳",@"武汉",@"长春",@"东莞",@"吉林",@"延吉"]},
+                     @{@"firstLevel": @"华东",@"secondLevel": @[@"石家庄",@"邯郸",@"北京"]},
+                     @{@"firstLevel": @"华北",@"secondLevel": @[@"英国",@"法国",@"意大利",@"德国"]},
+                     @{@"firstLevel": @"华南",@"secondLevel": @[@"南非",@"埃及",@"阿尔及利亚",@"刚果"]},
+                     @{@"firstLevel": @"西部",@"secondLevel": @[@"美国",@"加拿大",@"墨西哥",@"哥斯达黎加"]},
+                     @{@"firstLevel": @"其他",@"secondLevel": @[@"巴西",@"阿根廷",@"哥伦比亚",@"厄瓜多尔",@"委内瑞拉",@"乌拉圭"]}];
+    self.timeArr = @[@"3天内", @"1周内", @"2周内", @"1月内", @"常驻"];
+
+
     CGFloat itemWidth = 320.0 / 3;
     CGFloat itemHeight = self.conditionBar.height - 1;
     KGFilterItem *item1 = [[KGFilterItem alloc] initWithFrame:CGRectMake(0, 0, itemWidth, itemHeight) text:@"目的国家" data:self.countryArr];
@@ -124,9 +142,7 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
         int64_t delayInSeconds = 1.0;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            for (NSInteger i = 0; i < 5; i ++) {
-                [weakSelf.datasource addObject: [NSString stringWithFormat:@"%d", i]];
-            }
+            [weakSelf mockData];
             [weakSelf.tableView reloadData];
             [[HudHelper getInstance] hideHudInView:self.view];
             if (weakSelf.datasource.count >= 5) {
@@ -143,9 +159,7 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
             [self.datasource removeAllObjects];
-            for (NSInteger i = 0; i < 5; i ++) {
-                [weakSelf.datasource addObject: [NSString stringWithFormat:@"%d", i]];
-            }
+            [self mockData];
             [weakSelf.tableView reloadData];
             [weakSelf.tableView.pullToRefreshView stopAnimating];
             if (weakSelf.datasource.count >= 5) {
@@ -164,8 +178,24 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
             [weakSelf.tableView beginUpdates];
-            [weakSelf.datasource addObject: [NSString stringWithFormat:@"%d", 0]];
-            [weakSelf.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:weakSelf.datasource.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+            NSInteger count = [self.datasource count];
+            NSMutableArray *indexPaths = [[NSMutableArray alloc] init];
+            for (NSInteger i = 0; i < 20; i ++) {
+                KGBuyerSummaryObject *obj = [[KGBuyerSummaryObject alloc]init];
+                obj.userId = i;
+                obj.userName = [NSString stringWithFormat:@"用户%i", i];
+                obj.avatarUrl = @"";
+                obj.gender = i % 2;
+                obj.level = i % 5;
+                obj.country = @"澳大利亚";
+                obj.routeDuration = @"12.12-12.25";
+                obj.fromCountry = @"";
+                obj.toCountry = @"常驻澳大利亚";
+                obj.desc = @"是对伐啦圣诞节法拉盛地方时间段飞拉萨京东方流口水";
+                [self.datasource addObject:obj];
+                [indexPaths addObject:[NSIndexPath indexPathForRow:count + i  inSection:0]];
+            }
+            [weakSelf.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
             [weakSelf.tableView endUpdates];
 
             [weakSelf.tableView.infiniteScrollingView stopAnimating];
@@ -201,13 +231,8 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
     static NSString *CellIdentifier = @"kBuyerListViewCell";
 
     KGBuyerListViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[KGBuyerListViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-    cell.headImageView.clipsToBounds = YES;
-    cell.headImageView.ContentMode = UIViewContentModeScaleAspectFill;
-    cell.headImageView.layer.cornerRadius = cell.headImageView.frame.size.width / 2;
-    [cell.headImageView setImageWithURL:[NSURL URLWithString:@"http://b.hiphotos.baidu.com/image/w%3D2048/sign=828c8a708544ebf86d71633fedc1d62a/5882b2b7d0a20cf4d8414dac74094b36adaf99f4.jpg"] placeholderImage:[UIImage imageNamed:@"test-head.jpg"]];
+    KGBuyerSummaryObject *obj = self.datasource[indexPath.row];
+    [cell setObject:obj];
     return cell;
 }
 
@@ -222,6 +247,7 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 - (void) didSelectFilter:(NSInteger)index item: (NSString *) item {
     NSLog(@"selected index: %d, item : %@", index, item);
     if (self.tableView.pullToRefreshView.state == SVPullToRefreshStateStopped) {
+        [self.tableView setContentOffset:CGPointMake(0, 0)];
         [self.tableView triggerPullToRefresh];
     }
 }

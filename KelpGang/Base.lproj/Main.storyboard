@@ -132,13 +132,14 @@
                                                             <rect key="frame" x="5" y="10" width="50" height="50"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star_3.png" id="jeW-UU-O48">
-                                                            <rect key="frame" x="13" y="62" width="34" height="10"/>
+                                                        <view contentMode="scaleToFill" id="Vik-GG-VpG">
+                                                            <rect key="frame" x="15" y="63" width="30" height="10"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        </imageView>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                        </view>
                                                     </subviews>
                                                 </view>
-                                                <view contentMode="scaleToFill" id="E6z-ZJ-r5W" userLabel="User Info View">
+                                                <view clipsSubviews="YES" contentMode="scaleToFill" id="E6z-ZJ-r5W" userLabel="User Info View">
                                                     <rect key="frame" x="89" y="0.0" width="160" height="79"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
@@ -194,8 +195,13 @@
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
+                                            <outlet property="countryImgView" destination="6l7-Wl-3HF" id="EHx-d6-qIE"/>
+                                            <outlet property="descLabel" destination="37b-9m-Ter" id="duD-ed-d91"/>
+                                            <outlet property="durationLabel" destination="KaR-rr-TEP" id="moJ-M6-QTG"/>
                                             <outlet property="fromCityLabel" destination="ZlM-lb-JNW" id="fFe-PE-Bv6"/>
                                             <outlet property="headImageView" destination="EcG-1T-Pyq" id="Ibe-jc-xUF"/>
+                                            <outlet property="levelView" destination="Vik-GG-VpG" id="WgD-FA-kHN"/>
+                                            <outlet property="nameLabel" destination="02t-IJ-Yoi" id="mdf-T9-Qoo"/>
                                             <outlet property="planeImgView" destination="Dvi-Ze-L59" id="Pc5-IC-Cu6"/>
                                             <outlet property="toCityLabel" destination="vue-F4-vBH" id="ZK6-YR-SzF"/>
                                             <segue destination="qWW-jf-0kw" kind="push" id="XC1-ke-5GK"/>

@@ -151,6 +151,427 @@
 		A197503A18D84BF10062CAA7 /* UIWindow+RscExt.m in Sources */ = {isa = PBXBuildFile; fileRef = A197502618D84BF10062CAA7 /* UIWindow+RscExt.m */; };
 		A197503D18D85F920062CAA7 /* trip.png in Resources */ = {isa = PBXBuildFile; fileRef = A197503B18D85F920062CAA7 /* trip.png */; };
 		A197503E18D85F920062CAA7 /* trip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A197503C18D85F920062CAA7 /* trip@2x.png */; };
+		A1986D45191A367B0064CC6C /* KGBuyerSummaryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A1986D44191A367B0064CC6C /* KGBuyerSummaryObject.m */; };
+		A1986EEB191A3EA20064CC6C /* 不丹.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D47191A3EA10064CC6C /* 不丹.png */; };
+		A1986EEC191A3EA20064CC6C /* 不丹@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D48191A3EA10064CC6C /* 不丹@2x.png */; };
+		A1986EED191A3EA20064CC6C /* 东帝汶.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D49191A3EA10064CC6C /* 东帝汶.png */; };
+		A1986EEE191A3EA20064CC6C /* 东帝汶@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D4A191A3EA10064CC6C /* 东帝汶@2x.png */; };
+		A1986EEF191A3EA20064CC6C /* 中国.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D4B191A3EA10064CC6C /* 中国.png */; };
+		A1986EF0191A3EA20064CC6C /* 中国@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D4C191A3EA10064CC6C /* 中国@2x.png */; };
+		A1986EF1191A3EA20064CC6C /* 中非共和国.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D4D191A3EA10064CC6C /* 中非共和国.png */; };
+		A1986EF2191A3EA20064CC6C /* 中非共和国@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D4E191A3EA10064CC6C /* 中非共和国@2x.png */; };
+		A1986EF3191A3EA20064CC6C /* 丹麦.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D4F191A3EA10064CC6C /* 丹麦.png */; };
+		A1986EF4191A3EA20064CC6C /* 丹麦@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D50191A3EA10064CC6C /* 丹麦@2x.png */; };
+		A1986EF5191A3EA20064CC6C /* 乌克兰.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D51191A3EA10064CC6C /* 乌克兰.png */; };
+		A1986EF6191A3EA20064CC6C /* 乌克兰@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D52191A3EA10064CC6C /* 乌克兰@2x.png */; };
+		A1986EF7191A3EA20064CC6C /* 乌兹别克斯坦.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D53191A3EA10064CC6C /* 乌兹别克斯坦.png */; };
+		A1986EF8191A3EA20064CC6C /* 乌兹别克斯坦@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D54191A3EA10064CC6C /* 乌兹别克斯坦@2x.png */; };
+		A1986EF9191A3EA20064CC6C /* 乌干达.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D55191A3EA10064CC6C /* 乌干达.png */; };
+		A1986EFA191A3EA20064CC6C /* 乌干达@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D56191A3EA10064CC6C /* 乌干达@2x.png */; };
+		A1986EFB191A3EA20064CC6C /* 乌拉圭.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D57191A3EA10064CC6C /* 乌拉圭.png */; };
+		A1986EFC191A3EA20064CC6C /* 乌拉圭@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D58191A3EA10064CC6C /* 乌拉圭@2x.png */; };
+		A1986EFD191A3EA20064CC6C /* 乍得共和国.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D59191A3EA10064CC6C /* 乍得共和国.png */; };
+		A1986EFE191A3EA20064CC6C /* 乍得共和国@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D5A191A3EA10064CC6C /* 乍得共和国@2x.png */; };
+		A1986EFF191A3EA20064CC6C /* 也门.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D5B191A3EA10064CC6C /* 也门.png */; };
+		A1986F00191A3EA20064CC6C /* 也门@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D5C191A3EA10064CC6C /* 也门@2x.png */; };
+		A1986F01191A3EA20064CC6C /* 亚美尼亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D5D191A3EA10064CC6C /* 亚美尼亚.png */; };
+		A1986F02191A3EA20064CC6C /* 亚美尼亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D5E191A3EA10064CC6C /* 亚美尼亚@2x.png */; };
+		A1986F03191A3EA20064CC6C /* 以色列.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D5F191A3EA10064CC6C /* 以色列.png */; };
+		A1986F04191A3EA20064CC6C /* 以色列@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D60191A3EA10064CC6C /* 以色列@2x.png */; };
+		A1986F05191A3EA20064CC6C /* 伊拉克.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D61191A3EA10064CC6C /* 伊拉克.png */; };
+		A1986F06191A3EA20064CC6C /* 伊拉克@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D62191A3EA10064CC6C /* 伊拉克@2x.png */; };
+		A1986F07191A3EA20064CC6C /* 伊朗.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D63191A3EA10064CC6C /* 伊朗.png */; };
+		A1986F08191A3EA20064CC6C /* 伊朗@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D64191A3EA10064CC6C /* 伊朗@2x.png */; };
+		A1986F09191A3EA20064CC6C /* 伯利兹.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D65191A3EA10064CC6C /* 伯利兹.png */; };
+		A1986F0A191A3EA20064CC6C /* 伯利兹@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D66191A3EA10064CC6C /* 伯利兹@2x.png */; };
+		A1986F0B191A3EA20064CC6C /* 佛得角.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D67191A3EA10064CC6C /* 佛得角.png */; };
+		A1986F0C191A3EA20064CC6C /* 佛得角@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D68191A3EA10064CC6C /* 佛得角@2x.png */; };
+		A1986F0D191A3EA20064CC6C /* 俄罗斯.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D69191A3EA10064CC6C /* 俄罗斯.png */; };
+		A1986F0E191A3EA20064CC6C /* 俄罗斯@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D6A191A3EA10064CC6C /* 俄罗斯@2x.png */; };
+		A1986F0F191A3EA20064CC6C /* 保加利亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D6B191A3EA10064CC6C /* 保加利亚.png */; };
+		A1986F10191A3EA20064CC6C /* 保加利亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D6C191A3EA10064CC6C /* 保加利亚@2x.png */; };
+		A1986F11191A3EA20064CC6C /* 克罗地亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D6D191A3EA10064CC6C /* 克罗地亚.png */; };
+		A1986F12191A3EA20064CC6C /* 克罗地亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D6E191A3EA10064CC6C /* 克罗地亚@2x.png */; };
+		A1986F13191A3EA20064CC6C /* 冈比亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D6F191A3EA10064CC6C /* 冈比亚.png */; };
+		A1986F14191A3EA20064CC6C /* 冈比亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D70191A3EA10064CC6C /* 冈比亚@2x.png */; };
+		A1986F15191A3EA20064CC6C /* 冰岛.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D71191A3EA10064CC6C /* 冰岛.png */; };
+		A1986F16191A3EA20064CC6C /* 冰岛@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D72191A3EA10064CC6C /* 冰岛@2x.png */; };
+		A1986F17191A3EA20064CC6C /* 几内亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D73191A3EA10064CC6C /* 几内亚.png */; };
+		A1986F18191A3EA20064CC6C /* 几内亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D74191A3EA10064CC6C /* 几内亚@2x.png */; };
+		A1986F19191A3EA20064CC6C /* 几内亚比绍.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D75191A3EA10064CC6C /* 几内亚比绍.png */; };
+		A1986F1A191A3EA20064CC6C /* 几内亚比绍@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D76191A3EA10064CC6C /* 几内亚比绍@2x.png */; };
+		A1986F1B191A3EA20064CC6C /* 列支敦斯登.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D77191A3EA10064CC6C /* 列支敦斯登.png */; };
+		A1986F1C191A3EA20064CC6C /* 列支敦斯登@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D78191A3EA10064CC6C /* 列支敦斯登@2x.png */; };
+		A1986F1D191A3EA20064CC6C /* 刚果（布）.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D79191A3EA10064CC6C /* 刚果（布）.png */; };
+		A1986F1E191A3EA20064CC6C /* 刚果（布）@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D7A191A3EA10064CC6C /* 刚果（布）@2x.png */; };
+		A1986F1F191A3EA20064CC6C /* 刚果（金）.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D7B191A3EA10064CC6C /* 刚果（金）.png */; };
+		A1986F20191A3EA20064CC6C /* 刚果（金）@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D7C191A3EA10064CC6C /* 刚果（金）@2x.png */; };
+		A1986F21191A3EA20064CC6C /* 利比里亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D7D191A3EA10064CC6C /* 利比里亚.png */; };
+		A1986F22191A3EA20064CC6C /* 利比里亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D7E191A3EA10064CC6C /* 利比里亚@2x.png */; };
+		A1986F23191A3EA20064CC6C /* 加拿大.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D7F191A3EA10064CC6C /* 加拿大.png */; };
+		A1986F24191A3EA20064CC6C /* 加拿大@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D80191A3EA10064CC6C /* 加拿大@2x.png */; };
+		A1986F25191A3EA20064CC6C /* 加泰罗尼亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D81191A3EA10064CC6C /* 加泰罗尼亚.png */; };
+		A1986F26191A3EA20064CC6C /* 加泰罗尼亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D82191A3EA10064CC6C /* 加泰罗尼亚@2x.png */; };
+		A1986F27191A3EA20064CC6C /* 加纳.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D83191A3EA10064CC6C /* 加纳.png */; };
+		A1986F28191A3EA20064CC6C /* 加纳@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D84191A3EA10064CC6C /* 加纳@2x.png */; };
+		A1986F29191A3EA20064CC6C /* 加蓬.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D85191A3EA10064CC6C /* 加蓬.png */; };
+		A1986F2A191A3EA20064CC6C /* 加蓬@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D86191A3EA10064CC6C /* 加蓬@2x.png */; };
+		A1986F2B191A3EA20064CC6C /* 匈牙利.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D87191A3EA10064CC6C /* 匈牙利.png */; };
+		A1986F2C191A3EA20064CC6C /* 匈牙利@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D88191A3EA10064CC6C /* 匈牙利@2x.png */; };
+		A1986F2D191A3EA20064CC6C /* 北爱尔兰.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D89191A3EA10064CC6C /* 北爱尔兰.png */; };
+		A1986F2E191A3EA20064CC6C /* 北爱尔兰@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D8A191A3EA10064CC6C /* 北爱尔兰@2x.png */; };
+		A1986F2F191A3EA20064CC6C /* 南极洲.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D8B191A3EA10064CC6C /* 南极洲.png */; };
+		A1986F30191A3EA20064CC6C /* 南极洲@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D8C191A3EA10064CC6C /* 南极洲@2x.png */; };
+		A1986F31191A3EA20064CC6C /* 南非.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D8D191A3EA10064CC6C /* 南非.png */; };
+		A1986F32191A3EA20064CC6C /* 南非@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D8E191A3EA10064CC6C /* 南非@2x.png */; };
+		A1986F33191A3EA20064CC6C /* 博茨瓦纳.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D8F191A3EA10064CC6C /* 博茨瓦纳.png */; };
+		A1986F34191A3EA20064CC6C /* 博茨瓦纳@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D90191A3EA10064CC6C /* 博茨瓦纳@2x.png */; };
+		A1986F35191A3EA20064CC6C /* 卡塔尔.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D91191A3EA10064CC6C /* 卡塔尔.png */; };
+		A1986F36191A3EA20064CC6C /* 卡塔尔@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D92191A3EA10064CC6C /* 卡塔尔@2x.png */; };
+		A1986F37191A3EA20064CC6C /* 卢旺达.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D93191A3EA10064CC6C /* 卢旺达.png */; };
+		A1986F38191A3EA20064CC6C /* 卢旺达@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D94191A3EA10064CC6C /* 卢旺达@2x.png */; };
+		A1986F39191A3EA20064CC6C /* 卢森堡.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D95191A3EA10064CC6C /* 卢森堡.png */; };
+		A1986F3A191A3EA20064CC6C /* 卢森堡@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D96191A3EA10064CC6C /* 卢森堡@2x.png */; };
+		A1986F3B191A3EA20064CC6C /* 印度.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D97191A3EA10064CC6C /* 印度.png */; };
+		A1986F3C191A3EA20064CC6C /* 印度@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D98191A3EA10064CC6C /* 印度@2x.png */; };
+		A1986F3D191A3EA20064CC6C /* 印度尼西亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D99191A3EA10064CC6C /* 印度尼西亚.png */; };
+		A1986F3E191A3EA20064CC6C /* 印度尼西亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D9A191A3EA10064CC6C /* 印度尼西亚@2x.png */; };
+		A1986F3F191A3EA20064CC6C /* 危地马拉.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D9B191A3EA10064CC6C /* 危地马拉.png */; };
+		A1986F40191A3EA20064CC6C /* 危地马拉@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D9C191A3EA10064CC6C /* 危地马拉@2x.png */; };
+		A1986F41191A3EA20064CC6C /* 厄瓜多尔.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D9D191A3EA10064CC6C /* 厄瓜多尔.png */; };
+		A1986F42191A3EA20064CC6C /* 厄瓜多尔@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D9E191A3EA10064CC6C /* 厄瓜多尔@2x.png */; };
+		A1986F43191A3EA20064CC6C /* 厄立特里亚国.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986D9F191A3EA10064CC6C /* 厄立特里亚国.png */; };
+		A1986F44191A3EA20064CC6C /* 厄立特里亚国@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DA0191A3EA10064CC6C /* 厄立特里亚国@2x.png */; };
+		A1986F45191A3EA20064CC6C /* 叙利亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DA1191A3EA10064CC6C /* 叙利亚.png */; };
+		A1986F46191A3EA20064CC6C /* 叙利亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DA2191A3EA10064CC6C /* 叙利亚@2x.png */; };
+		A1986F47191A3EA20064CC6C /* 古巴.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DA3191A3EA10064CC6C /* 古巴.png */; };
+		A1986F48191A3EA20064CC6C /* 古巴@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DA4191A3EA10064CC6C /* 古巴@2x.png */; };
+		A1986F49191A3EA20064CC6C /* 台湾.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DA5191A3EA10064CC6C /* 台湾.png */; };
+		A1986F4A191A3EA20064CC6C /* 台湾@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DA6191A3EA10064CC6C /* 台湾@2x.png */; };
+		A1986F4B191A3EA20064CC6C /* 吉尔吉斯斯坦.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DA7191A3EA10064CC6C /* 吉尔吉斯斯坦.png */; };
+		A1986F4C191A3EA20064CC6C /* 吉尔吉斯斯坦@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DA8191A3EA10064CC6C /* 吉尔吉斯斯坦@2x.png */; };
+		A1986F4D191A3EA20064CC6C /* 吉布提.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DA9191A3EA10064CC6C /* 吉布提.png */; };
+		A1986F4E191A3EA20064CC6C /* 吉布提@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DAA191A3EA10064CC6C /* 吉布提@2x.png */; };
+		A1986F4F191A3EA20064CC6C /* 吕底亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DAB191A3EA10064CC6C /* 吕底亚.png */; };
+		A1986F50191A3EA20064CC6C /* 吕底亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DAC191A3EA10064CC6C /* 吕底亚@2x.png */; };
+		A1986F51191A3EA20064CC6C /* 哈萨克斯坦.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DAD191A3EA10064CC6C /* 哈萨克斯坦.png */; };
+		A1986F52191A3EA20064CC6C /* 哈萨克斯坦@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DAE191A3EA10064CC6C /* 哈萨克斯坦@2x.png */; };
+		A1986F53191A3EA20064CC6C /* 哥伦比亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DAF191A3EA10064CC6C /* 哥伦比亚.png */; };
+		A1986F54191A3EA20064CC6C /* 哥伦比亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DB0191A3EA10064CC6C /* 哥伦比亚@2x.png */; };
+		A1986F55191A3EA20064CC6C /* 哥斯达黎加.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DB1191A3EA10064CC6C /* 哥斯达黎加.png */; };
+		A1986F56191A3EA20064CC6C /* 哥斯达黎加@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DB2191A3EA10064CC6C /* 哥斯达黎加@2x.png */; };
+		A1986F57191A3EA20064CC6C /* 喀麦隆.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DB3191A3EA10064CC6C /* 喀麦隆.png */; };
+		A1986F58191A3EA20064CC6C /* 喀麦隆@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DB4191A3EA10064CC6C /* 喀麦隆@2x.png */; };
+		A1986F59191A3EA20064CC6C /* 图瓦卢.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DB5191A3EA10064CC6C /* 图瓦卢.png */; };
+		A1986F5A191A3EA20064CC6C /* 图瓦卢@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DB6191A3EA10064CC6C /* 图瓦卢@2x.png */; };
+		A1986F5B191A3EA20064CC6C /* 土库曼斯坦.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DB7191A3EA10064CC6C /* 土库曼斯坦.png */; };
+		A1986F5C191A3EA20064CC6C /* 土库曼斯坦@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DB8191A3EA10064CC6C /* 土库曼斯坦@2x.png */; };
+		A1986F5D191A3EA20064CC6C /* 土耳其.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DB9191A3EA10064CC6C /* 土耳其.png */; };
+		A1986F5E191A3EA20064CC6C /* 土耳其@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DBA191A3EA10064CC6C /* 土耳其@2x.png */; };
+		A1986F5F191A3EA20064CC6C /* 圣卢西亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DBB191A3EA10064CC6C /* 圣卢西亚.png */; };
+		A1986F60191A3EA20064CC6C /* 圣卢西亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DBC191A3EA10064CC6C /* 圣卢西亚@2x.png */; };
+		A1986F61191A3EA20064CC6C /* 圣基茨和尼维斯.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DBD191A3EA10064CC6C /* 圣基茨和尼维斯.png */; };
+		A1986F62191A3EA20064CC6C /* 圣基茨和尼维斯@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DBE191A3EA10064CC6C /* 圣基茨和尼维斯@2x.png */; };
+		A1986F63191A3EA20064CC6C /* 圣多美和普林西比.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DBF191A3EA10064CC6C /* 圣多美和普林西比.png */; };
+		A1986F64191A3EA20064CC6C /* 圣多美和普林西比@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DC0191A3EA10064CC6C /* 圣多美和普林西比@2x.png */; };
+		A1986F65191A3EA20064CC6C /* 圣文森特和格林纳丁斯.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DC1191A3EA10064CC6C /* 圣文森特和格林纳丁斯.png */; };
+		A1986F66191A3EA20064CC6C /* 圣文森特和格林纳丁斯@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DC2191A3EA10064CC6C /* 圣文森特和格林纳丁斯@2x.png */; };
+		A1986F67191A3EA20064CC6C /* 圣马力诺.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DC3191A3EA10064CC6C /* 圣马力诺.png */; };
+		A1986F68191A3EA20064CC6C /* 圣马力诺@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DC4191A3EA10064CC6C /* 圣马力诺@2x.png */; };
+		A1986F69191A3EA20064CC6C /* 圭亚那.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DC5191A3EA10064CC6C /* 圭亚那.png */; };
+		A1986F6A191A3EA20064CC6C /* 圭亚那@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DC6191A3EA10064CC6C /* 圭亚那@2x.png */; };
+		A1986F6B191A3EA20064CC6C /* 坦桑尼亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DC7191A3EA10064CC6C /* 坦桑尼亚.png */; };
+		A1986F6C191A3EA20064CC6C /* 坦桑尼亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DC8191A3EA10064CC6C /* 坦桑尼亚@2x.png */; };
+		A1986F6D191A3EA20064CC6C /* 埃及.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DC9191A3EA10064CC6C /* 埃及.png */; };
+		A1986F6E191A3EA20064CC6C /* 埃及@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DCA191A3EA10064CC6C /* 埃及@2x.png */; };
+		A1986F6F191A3EA20064CC6C /* 埃塞俄比亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DCB191A3EA10064CC6C /* 埃塞俄比亚.png */; };
+		A1986F70191A3EA20064CC6C /* 埃塞俄比亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DCC191A3EA10064CC6C /* 埃塞俄比亚@2x.png */; };
+		A1986F71191A3EA20064CC6C /* 基里巴斯.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DCD191A3EA10064CC6C /* 基里巴斯.png */; };
+		A1986F72191A3EA20064CC6C /* 基里巴斯@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DCE191A3EA10064CC6C /* 基里巴斯@2x.png */; };
+		A1986F73191A3EA20064CC6C /* 塔吉克斯坦.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DCF191A3EA10064CC6C /* 塔吉克斯坦.png */; };
+		A1986F74191A3EA20064CC6C /* 塔吉克斯坦@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DD0191A3EA10064CC6C /* 塔吉克斯坦@2x.png */; };
+		A1986F75191A3EA20064CC6C /* 塞内加尔.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DD1191A3EA10064CC6C /* 塞内加尔.png */; };
+		A1986F76191A3EA20064CC6C /* 塞内加尔@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DD2191A3EA10064CC6C /* 塞内加尔@2x.png */; };
+		A1986F77191A3EA20064CC6C /* 塞尔维亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DD3191A3EA10064CC6C /* 塞尔维亚.png */; };
+		A1986F78191A3EA20064CC6C /* 塞尔维亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DD4191A3EA10064CC6C /* 塞尔维亚@2x.png */; };
+		A1986F79191A3EA20064CC6C /* 塞拉利昂.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DD5191A3EA10064CC6C /* 塞拉利昂.png */; };
+		A1986F7A191A3EA20064CC6C /* 塞拉利昂@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DD6191A3EA10064CC6C /* 塞拉利昂@2x.png */; };
+		A1986F7B191A3EA20064CC6C /* 塞浦路斯.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DD7191A3EA10064CC6C /* 塞浦路斯.png */; };
+		A1986F7C191A3EA20064CC6C /* 塞浦路斯@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DD8191A3EA10064CC6C /* 塞浦路斯@2x.png */; };
+		A1986F7D191A3EA20064CC6C /* 塞舌尔.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DD9191A3EA10064CC6C /* 塞舌尔.png */; };
+		A1986F7E191A3EA20064CC6C /* 塞舌尔@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DDA191A3EA10064CC6C /* 塞舌尔@2x.png */; };
+		A1986F7F191A3EA20064CC6C /* 墨西哥.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DDB191A3EA10064CC6C /* 墨西哥.png */; };
+		A1986F80191A3EA20064CC6C /* 墨西哥@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DDC191A3EA10064CC6C /* 墨西哥@2x.png */; };
+		A1986F81191A3EA20064CC6C /* 多哥.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DDD191A3EA10064CC6C /* 多哥.png */; };
+		A1986F82191A3EA20064CC6C /* 多哥@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DDE191A3EA10064CC6C /* 多哥@2x.png */; };
+		A1986F83191A3EA20064CC6C /* 多米尼克.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DDF191A3EA10064CC6C /* 多米尼克.png */; };
+		A1986F84191A3EA20064CC6C /* 多米尼克@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DE0191A3EA10064CC6C /* 多米尼克@2x.png */; };
+		A1986F85191A3EA20064CC6C /* 多米尼加共和国.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DE1191A3EA10064CC6C /* 多米尼加共和国.png */; };
+		A1986F86191A3EA20064CC6C /* 多米尼加共和国@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DE2191A3EA10064CC6C /* 多米尼加共和国@2x.png */; };
+		A1986F87191A3EA20064CC6C /* 奥地利.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DE3191A3EA10064CC6C /* 奥地利.png */; };
+		A1986F88191A3EA20064CC6C /* 奥地利@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DE4191A3EA10064CC6C /* 奥地利@2x.png */; };
+		A1986F89191A3EA20064CC6C /* 委内瑞拉.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DE5191A3EA10064CC6C /* 委内瑞拉.png */; };
+		A1986F8A191A3EA20064CC6C /* 委内瑞拉@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DE6191A3EA10064CC6C /* 委内瑞拉@2x.png */; };
+		A1986F8B191A3EA20064CC6C /* 威尔士.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DE7191A3EA10064CC6C /* 威尔士.png */; };
+		A1986F8C191A3EA20064CC6C /* 威尔士@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DE8191A3EA10064CC6C /* 威尔士@2x.png */; };
+		A1986F8D191A3EA20064CC6C /* 孟加拉.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DE9191A3EA10064CC6C /* 孟加拉.png */; };
+		A1986F8E191A3EA20064CC6C /* 孟加拉@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DEA191A3EA10064CC6C /* 孟加拉@2x.png */; };
+		A1986F8F191A3EA20064CC6C /* 安哥拉.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DEB191A3EA10064CC6C /* 安哥拉.png */; };
+		A1986F90191A3EA20064CC6C /* 安哥拉@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DEC191A3EA10064CC6C /* 安哥拉@2x.png */; };
+		A1986F91191A3EA20064CC6C /* 安提瓜和巴布达.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DED191A3EA10064CC6C /* 安提瓜和巴布达.png */; };
+		A1986F92191A3EA20064CC6C /* 安提瓜和巴布达@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DEE191A3EA10064CC6C /* 安提瓜和巴布达@2x.png */; };
+		A1986F93191A3EA20064CC6C /* 安道尔共和国.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DEF191A3EA10064CC6C /* 安道尔共和国.png */; };
+		A1986F94191A3EA20064CC6C /* 安道尔共和国@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DF0191A3EA10064CC6C /* 安道尔共和国@2x.png */; };
+		A1986F95191A3EA20064CC6C /* 密克罗尼西亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DF1191A3EA10064CC6C /* 密克罗尼西亚.png */; };
+		A1986F96191A3EA20064CC6C /* 密克罗尼西亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DF2191A3EA10064CC6C /* 密克罗尼西亚@2x.png */; };
+		A1986F97191A3EA20064CC6C /* 尼加拉瓜.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DF3191A3EA10064CC6C /* 尼加拉瓜.png */; };
+		A1986F98191A3EA20064CC6C /* 尼加拉瓜@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DF4191A3EA10064CC6C /* 尼加拉瓜@2x.png */; };
+		A1986F99191A3EA20064CC6C /* 尼日利亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DF5191A3EA10064CC6C /* 尼日利亚.png */; };
+		A1986F9A191A3EA20064CC6C /* 尼日利亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DF6191A3EA10064CC6C /* 尼日利亚@2x.png */; };
+		A1986F9B191A3EA20064CC6C /* 尼日尔.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DF7191A3EA10064CC6C /* 尼日尔.png */; };
+		A1986F9C191A3EA20064CC6C /* 尼日尔@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DF8191A3EA10064CC6C /* 尼日尔@2x.png */; };
+		A1986F9D191A3EA20064CC6C /* 尼泊尔.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DF9191A3EA10064CC6C /* 尼泊尔.png */; };
+		A1986F9E191A3EA20064CC6C /* 尼泊尔@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DFA191A3EA10064CC6C /* 尼泊尔@2x.png */; };
+		A1986F9F191A3EA20064CC6C /* 巴勒斯坦.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DFB191A3EA10064CC6C /* 巴勒斯坦.png */; };
+		A1986FA0191A3EA20064CC6C /* 巴勒斯坦@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DFC191A3EA10064CC6C /* 巴勒斯坦@2x.png */; };
+		A1986FA1191A3EA20064CC6C /* 巴哈马.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DFD191A3EA10064CC6C /* 巴哈马.png */; };
+		A1986FA2191A3EA20064CC6C /* 巴哈马@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DFE191A3EA10064CC6C /* 巴哈马@2x.png */; };
+		A1986FA3191A3EA20064CC6C /* 巴基斯坦.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986DFF191A3EA10064CC6C /* 巴基斯坦.png */; };
+		A1986FA4191A3EA20064CC6C /* 巴基斯坦@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E00191A3EA10064CC6C /* 巴基斯坦@2x.png */; };
+		A1986FA5191A3EA20064CC6C /* 巴巴多斯.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E01191A3EA10064CC6C /* 巴巴多斯.png */; };
+		A1986FA6191A3EA20064CC6C /* 巴巴多斯@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E02191A3EA10064CC6C /* 巴巴多斯@2x.png */; };
+		A1986FA7191A3EA20064CC6C /* 巴布亚新几内亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E03191A3EA10064CC6C /* 巴布亚新几内亚.png */; };
+		A1986FA8191A3EA20064CC6C /* 巴布亚新几内亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E04191A3EA10064CC6C /* 巴布亚新几内亚@2x.png */; };
+		A1986FA9191A3EA20064CC6C /* 巴拉圭.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E05191A3EA10064CC6C /* 巴拉圭.png */; };
+		A1986FAA191A3EA20064CC6C /* 巴拉圭@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E06191A3EA10064CC6C /* 巴拉圭@2x.png */; };
+		A1986FAB191A3EA20064CC6C /* 巴拿马.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E07191A3EA10064CC6C /* 巴拿马.png */; };
+		A1986FAC191A3EA20064CC6C /* 巴拿马@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E08191A3EA10064CC6C /* 巴拿马@2x.png */; };
+		A1986FAD191A3EA20064CC6C /* 巴林.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E09191A3EA10064CC6C /* 巴林.png */; };
+		A1986FAE191A3EA20064CC6C /* 巴林@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E0A191A3EA10064CC6C /* 巴林@2x.png */; };
+		A1986FAF191A3EA20064CC6C /* 巴西.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E0B191A3EA10064CC6C /* 巴西.png */; };
+		A1986FB0191A3EA20064CC6C /* 巴西@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E0C191A3EA10064CC6C /* 巴西@2x.png */; };
+		A1986FB1191A3EA20064CC6C /* 布基纳法索.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E0D191A3EA10064CC6C /* 布基纳法索.png */; };
+		A1986FB2191A3EA20064CC6C /* 布基纳法索@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E0E191A3EA10064CC6C /* 布基纳法索@2x.png */; };
+		A1986FB3191A3EA20064CC6C /* 布隆迪.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E0F191A3EA10064CC6C /* 布隆迪.png */; };
+		A1986FB4191A3EA20064CC6C /* 布隆迪@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E10191A3EA10064CC6C /* 布隆迪@2x.png */; };
+		A1986FB5191A3EA20064CC6C /* 希腊.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E11191A3EA10064CC6C /* 希腊.png */; };
+		A1986FB6191A3EA20064CC6C /* 希腊@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E12191A3EA10064CC6C /* 希腊@2x.png */; };
+		A1986FB7191A3EA20064CC6C /* 帕劳.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E13191A3EA10064CC6C /* 帕劳.png */; };
+		A1986FB8191A3EA20064CC6C /* 帕劳@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E14191A3EA10064CC6C /* 帕劳@2x.png */; };
+		A1986FB9191A3EA20064CC6C /* 德国.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E15191A3EA10064CC6C /* 德国.png */; };
+		A1986FBA191A3EA20064CC6C /* 德国@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E16191A3EA10064CC6C /* 德国@2x.png */; };
+		A1986FBB191A3EA20064CC6C /* 意大利.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E17191A3EA10064CC6C /* 意大利.png */; };
+		A1986FBC191A3EA20064CC6C /* 意大利@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E18191A3EA10064CC6C /* 意大利@2x.png */; };
+		A1986FBD191A3EA20064CC6C /* 所罗门群岛.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E19191A3EA10064CC6C /* 所罗门群岛.png */; };
+		A1986FBE191A3EA20064CC6C /* 所罗门群岛@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E1A191A3EA10064CC6C /* 所罗门群岛@2x.png */; };
+		A1986FBF191A3EA20064CC6C /* 拉脱维亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E1B191A3EA10064CC6C /* 拉脱维亚.png */; };
+		A1986FC0191A3EA20064CC6C /* 拉脱维亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E1C191A3EA10064CC6C /* 拉脱维亚@2x.png */; };
+		A1986FC1191A3EA20064CC6C /* 挪威.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E1D191A3EA10064CC6C /* 挪威.png */; };
+		A1986FC2191A3EA20064CC6C /* 挪威@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E1E191A3EA10064CC6C /* 挪威@2x.png */; };
+		A1986FC3191A3EA20064CC6C /* 捷克共和国.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E1F191A3EA10064CC6C /* 捷克共和国.png */; };
+		A1986FC4191A3EA20064CC6C /* 捷克共和国@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E20191A3EA20064CC6C /* 捷克共和国@2x.png */; };
+		A1986FC5191A3EA20064CC6C /* 摩尔多瓦.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E21191A3EA20064CC6C /* 摩尔多瓦.png */; };
+		A1986FC6191A3EA20064CC6C /* 摩尔多瓦@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E22191A3EA20064CC6C /* 摩尔多瓦@2x.png */; };
+		A1986FC7191A3EA20064CC6C /* 摩洛哥.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E23191A3EA20064CC6C /* 摩洛哥.png */; };
+		A1986FC8191A3EA20064CC6C /* 摩洛哥@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E24191A3EA20064CC6C /* 摩洛哥@2x.png */; };
+		A1986FC9191A3EA20064CC6C /* 摩纳哥.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E25191A3EA20064CC6C /* 摩纳哥.png */; };
+		A1986FCA191A3EA20064CC6C /* 摩纳哥@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E26191A3EA20064CC6C /* 摩纳哥@2x.png */; };
+		A1986FCB191A3EA20064CC6C /* 文莱.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E27191A3EA20064CC6C /* 文莱.png */; };
+		A1986FCC191A3EA20064CC6C /* 文莱@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E28191A3EA20064CC6C /* 文莱@2x.png */; };
+		A1986FCD191A3EA20064CC6C /* 斐济.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E29191A3EA20064CC6C /* 斐济.png */; };
+		A1986FCE191A3EA20064CC6C /* 斐济@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E2A191A3EA20064CC6C /* 斐济@2x.png */; };
+		A1986FCF191A3EA20064CC6C /* 斯威士兰.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E2B191A3EA20064CC6C /* 斯威士兰.png */; };
+		A1986FD0191A3EA20064CC6C /* 斯威士兰@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E2C191A3EA20064CC6C /* 斯威士兰@2x.png */; };
+		A1986FD1191A3EA20064CC6C /* 斯洛伐克.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E2D191A3EA20064CC6C /* 斯洛伐克.png */; };
+		A1986FD2191A3EA20064CC6C /* 斯洛伐克@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E2E191A3EA20064CC6C /* 斯洛伐克@2x.png */; };
+		A1986FD3191A3EA20064CC6C /* 斯洛文尼亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E2F191A3EA20064CC6C /* 斯洛文尼亚.png */; };
+		A1986FD4191A3EA20064CC6C /* 斯洛文尼亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E30191A3EA20064CC6C /* 斯洛文尼亚@2x.png */; };
+		A1986FD5191A3EA20064CC6C /* 斯里兰卡.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E31191A3EA20064CC6C /* 斯里兰卡.png */; };
+		A1986FD6191A3EA20064CC6C /* 斯里兰卡@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E32191A3EA20064CC6C /* 斯里兰卡@2x.png */; };
+		A1986FD7191A3EA20064CC6C /* 新加坡.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E33191A3EA20064CC6C /* 新加坡.png */; };
+		A1986FD8191A3EA20064CC6C /* 新加坡@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E34191A3EA20064CC6C /* 新加坡@2x.png */; };
+		A1986FD9191A3EA20064CC6C /* 新西兰.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E35191A3EA20064CC6C /* 新西兰.png */; };
+		A1986FDA191A3EA20064CC6C /* 新西兰@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E36191A3EA20064CC6C /* 新西兰@2x.png */; };
+		A1986FDB191A3EA20064CC6C /* 日本.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E37191A3EA20064CC6C /* 日本.png */; };
+		A1986FDC191A3EA20064CC6C /* 日本@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E38191A3EA20064CC6C /* 日本@2x.png */; };
+		A1986FDD191A3EA20064CC6C /* 智利.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E39191A3EA20064CC6C /* 智利.png */; };
+		A1986FDE191A3EA20064CC6C /* 智利@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E3A191A3EA20064CC6C /* 智利@2x.png */; };
+		A1986FDF191A3EA20064CC6C /* 朝鲜.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E3B191A3EA20064CC6C /* 朝鲜.png */; };
+		A1986FE0191A3EA20064CC6C /* 朝鲜@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E3C191A3EA20064CC6C /* 朝鲜@2x.png */; };
+		A1986FE1191A3EA20064CC6C /* 柬埔寨.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E3D191A3EA20064CC6C /* 柬埔寨.png */; };
+		A1986FE2191A3EA20064CC6C /* 柬埔寨@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E3E191A3EA20064CC6C /* 柬埔寨@2x.png */; };
+		A1986FE3191A3EA20064CC6C /* 格林纳达.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E3F191A3EA20064CC6C /* 格林纳达.png */; };
+		A1986FE4191A3EA20064CC6C /* 格林纳达@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E40191A3EA20064CC6C /* 格林纳达@2x.png */; };
+		A1986FE5191A3EA20064CC6C /* 格陵兰.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E41191A3EA20064CC6C /* 格陵兰.png */; };
+		A1986FE6191A3EA20064CC6C /* 格陵兰@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E42191A3EA20064CC6C /* 格陵兰@2x.png */; };
+		A1986FE7191A3EA20064CC6C /* 格鲁吉亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E43191A3EA20064CC6C /* 格鲁吉亚.png */; };
+		A1986FE8191A3EA20064CC6C /* 格鲁吉亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E44191A3EA20064CC6C /* 格鲁吉亚@2x.png */; };
+		A1986FE9191A3EA20064CC6C /* 梵蒂冈城国.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E45191A3EA20064CC6C /* 梵蒂冈城国.png */; };
+		A1986FEA191A3EA20064CC6C /* 梵蒂冈城国@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E46191A3EA20064CC6C /* 梵蒂冈城国@2x.png */; };
+		A1986FEB191A3EA20064CC6C /* 欧盟.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E47191A3EA20064CC6C /* 欧盟.png */; };
+		A1986FEC191A3EA20064CC6C /* 欧盟@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E48191A3EA20064CC6C /* 欧盟@2x.png */; };
+		A1986FED191A3EA20064CC6C /* 比利时.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E49191A3EA20064CC6C /* 比利时.png */; };
+		A1986FEE191A3EA20064CC6C /* 比利时@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E4A191A3EA20064CC6C /* 比利时@2x.png */; };
+		A1986FEF191A3EA20064CC6C /* 毛里塔尼亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E4B191A3EA20064CC6C /* 毛里塔尼亚.png */; };
+		A1986FF0191A3EA20064CC6C /* 毛里塔尼亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E4C191A3EA20064CC6C /* 毛里塔尼亚@2x.png */; };
+		A1986FF1191A3EA20064CC6C /* 毛里求斯.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E4D191A3EA20064CC6C /* 毛里求斯.png */; };
+		A1986FF2191A3EA20064CC6C /* 毛里求斯@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E4E191A3EA20064CC6C /* 毛里求斯@2x.png */; };
+		A1986FF3191A3EA20064CC6C /* 汤加.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E4F191A3EA20064CC6C /* 汤加.png */; };
+		A1986FF4191A3EA20064CC6C /* 汤加@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E50191A3EA20064CC6C /* 汤加@2x.png */; };
+		A1986FF5191A3EA20064CC6C /* 沙特阿拉伯.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E51191A3EA20064CC6C /* 沙特阿拉伯.png */; };
+		A1986FF6191A3EA20064CC6C /* 沙特阿拉伯@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E52191A3EA20064CC6C /* 沙特阿拉伯@2x.png */; };
+		A1986FF7191A3EA20064CC6C /* 法国.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E53191A3EA20064CC6C /* 法国.png */; };
+		A1986FF8191A3EA20064CC6C /* 法国@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E54191A3EA20064CC6C /* 法国@2x.png */; };
+		A1986FF9191A3EA20064CC6C /* 法罗群岛.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E55191A3EA20064CC6C /* 法罗群岛.png */; };
+		A1986FFA191A3EA20064CC6C /* 法罗群岛@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E56191A3EA20064CC6C /* 法罗群岛@2x.png */; };
+		A1986FFB191A3EA20064CC6C /* 波兰.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E57191A3EA20064CC6C /* 波兰.png */; };
+		A1986FFC191A3EA20064CC6C /* 波兰@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E58191A3EA20064CC6C /* 波兰@2x.png */; };
+		A1986FFD191A3EA20064CC6C /* 波多黎各.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E59191A3EA20064CC6C /* 波多黎各.png */; };
+		A1986FFE191A3EA20064CC6C /* 波多黎各@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E5A191A3EA20064CC6C /* 波多黎各@2x.png */; };
+		A1986FFF191A3EA20064CC6C /* 波黑.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E5B191A3EA20064CC6C /* 波黑.png */; };
+		A1987000191A3EA20064CC6C /* 波黑@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E5C191A3EA20064CC6C /* 波黑@2x.png */; };
+		A1987001191A3EA20064CC6C /* 泰国.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E5D191A3EA20064CC6C /* 泰国.png */; };
+		A1987002191A3EA20064CC6C /* 泰国@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E5E191A3EA20064CC6C /* 泰国@2x.png */; };
+		A1987003191A3EA20064CC6C /* 津巴布韦.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E5F191A3EA20064CC6C /* 津巴布韦.png */; };
+		A1987004191A3EA20064CC6C /* 津巴布韦@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E60191A3EA20064CC6C /* 津巴布韦@2x.png */; };
+		A1987005191A3EA20064CC6C /* 洪都拉斯.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E61191A3EA20064CC6C /* 洪都拉斯.png */; };
+		A1987006191A3EA20064CC6C /* 洪都拉斯@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E62191A3EA20064CC6C /* 洪都拉斯@2x.png */; };
+		A1987007191A3EA20064CC6C /* 海地.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E63191A3EA20064CC6C /* 海地.png */; };
+		A1987008191A3EA20064CC6C /* 海地@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E64191A3EA20064CC6C /* 海地@2x.png */; };
+		A1987009191A3EA20064CC6C /* 澳大利亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E65191A3EA20064CC6C /* 澳大利亚.png */; };
+		A198700A191A3EA20064CC6C /* 澳大利亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E66191A3EA20064CC6C /* 澳大利亚@2x.png */; };
+		A198700B191A3EA20064CC6C /* 澳门.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E67191A3EA20064CC6C /* 澳门.png */; };
+		A198700C191A3EA20064CC6C /* 澳门@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E68191A3EA20064CC6C /* 澳门@2x.png */; };
+		A198700D191A3EA20064CC6C /* 爱尔兰.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E69191A3EA20064CC6C /* 爱尔兰.png */; };
+		A198700E191A3EA20064CC6C /* 爱尔兰@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E6A191A3EA20064CC6C /* 爱尔兰@2x.png */; };
+		A198700F191A3EA20064CC6C /* 爱沙尼亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E6B191A3EA20064CC6C /* 爱沙尼亚.png */; };
+		A1987010191A3EA20064CC6C /* 爱沙尼亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E6C191A3EA20064CC6C /* 爱沙尼亚@2x.png */; };
+		A1987011191A3EA20064CC6C /* 牙买加.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E6D191A3EA20064CC6C /* 牙买加.png */; };
+		A1987012191A3EA20064CC6C /* 牙买加@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E6E191A3EA20064CC6C /* 牙买加@2x.png */; };
+		A1987013191A3EA20064CC6C /* 特立尼达和多巴哥.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E6F191A3EA20064CC6C /* 特立尼达和多巴哥.png */; };
+		A1987014191A3EA20064CC6C /* 特立尼达和多巴哥@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E70191A3EA20064CC6C /* 特立尼达和多巴哥@2x.png */; };
+		A1987015191A3EA20064CC6C /* 玻利维亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E71191A3EA20064CC6C /* 玻利维亚.png */; };
+		A1987016191A3EA20064CC6C /* 玻利维亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E72191A3EA20064CC6C /* 玻利维亚@2x.png */; };
+		A1987017191A3EA20064CC6C /* 瑙鲁.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E73191A3EA20064CC6C /* 瑙鲁.png */; };
+		A1987018191A3EA20064CC6C /* 瑙鲁@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E74191A3EA20064CC6C /* 瑙鲁@2x.png */; };
+		A1987019191A3EA20064CC6C /* 瑞典.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E75191A3EA20064CC6C /* 瑞典.png */; };
+		A198701A191A3EA20064CC6C /* 瑞典@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E76191A3EA20064CC6C /* 瑞典@2x.png */; };
+		A198701B191A3EA20064CC6C /* 瑞士.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E77191A3EA20064CC6C /* 瑞士.png */; };
+		A198701C191A3EA20064CC6C /* 瑞士@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E78191A3EA20064CC6C /* 瑞士@2x.png */; };
+		A198701D191A3EA20064CC6C /* 瓦努阿图.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E79191A3EA20064CC6C /* 瓦努阿图.png */; };
+		A198701E191A3EA20064CC6C /* 瓦努阿图@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E7A191A3EA20064CC6C /* 瓦努阿图@2x.png */; };
+		A198701F191A3EA20064CC6C /* 白俄罗斯.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E7B191A3EA20064CC6C /* 白俄罗斯.png */; };
+		A1987020191A3EA20064CC6C /* 白俄罗斯@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E7C191A3EA20064CC6C /* 白俄罗斯@2x.png */; };
+		A1987021191A3EA20064CC6C /* 直布罗陀.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E7D191A3EA20064CC6C /* 直布罗陀.png */; };
+		A1987022191A3EA20064CC6C /* 直布罗陀@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E7E191A3EA20064CC6C /* 直布罗陀@2x.png */; };
+		A1987023191A3EA20064CC6C /* 科威特.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E7F191A3EA20064CC6C /* 科威特.png */; };
+		A1987024191A3EA20064CC6C /* 科威特@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E80191A3EA20064CC6C /* 科威特@2x.png */; };
+		A1987025191A3EA20064CC6C /* 科摩罗.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E81191A3EA20064CC6C /* 科摩罗.png */; };
+		A1987026191A3EA20064CC6C /* 科摩罗@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E82191A3EA20064CC6C /* 科摩罗@2x.png */; };
+		A1987027191A3EA20064CC6C /* 科特廸亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E83191A3EA20064CC6C /* 科特廸亚.png */; };
+		A1987028191A3EA20064CC6C /* 科特廸亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E84191A3EA20064CC6C /* 科特廸亚@2x.png */; };
+		A1987029191A3EA20064CC6C /* 秘鲁.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E85191A3EA20064CC6C /* 秘鲁.png */; };
+		A198702A191A3EA20064CC6C /* 秘鲁@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E86191A3EA20064CC6C /* 秘鲁@2x.png */; };
+		A198702B191A3EA20064CC6C /* 突尼斯.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E87191A3EA20064CC6C /* 突尼斯.png */; };
+		A198702C191A3EA20064CC6C /* 突尼斯@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E88191A3EA20064CC6C /* 突尼斯@2x.png */; };
+		A198702D191A3EA20064CC6C /* 立陶宛.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E89191A3EA20064CC6C /* 立陶宛.png */; };
+		A198702E191A3EA20064CC6C /* 立陶宛@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E8A191A3EA20064CC6C /* 立陶宛@2x.png */; };
+		A198702F191A3EA20064CC6C /* 索马里.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E8B191A3EA20064CC6C /* 索马里.png */; };
+		A1987030191A3EA20064CC6C /* 索马里@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E8C191A3EA20064CC6C /* 索马里@2x.png */; };
+		A1987031191A3EA20064CC6C /* 约旦.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E8D191A3EA20064CC6C /* 约旦.png */; };
+		A1987032191A3EA20064CC6C /* 约旦@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E8E191A3EA20064CC6C /* 约旦@2x.png */; };
+		A1987033191A3EA20064CC6C /* 纳米比亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E8F191A3EA20064CC6C /* 纳米比亚.png */; };
+		A1987034191A3EA20064CC6C /* 纳米比亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E90191A3EA20064CC6C /* 纳米比亚@2x.png */; };
+		A1987035191A3EA20064CC6C /* 缅甸.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E91191A3EA20064CC6C /* 缅甸.png */; };
+		A1987036191A3EA20064CC6C /* 缅甸@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E92191A3EA20064CC6C /* 缅甸@2x.png */; };
+		A1987037191A3EA20064CC6C /* 罗马尼亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E93191A3EA20064CC6C /* 罗马尼亚.png */; };
+		A1987038191A3EA20064CC6C /* 罗马尼亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E94191A3EA20064CC6C /* 罗马尼亚@2x.png */; };
+		A1987039191A3EA20064CC6C /* 美国.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E95191A3EA20064CC6C /* 美国.png */; };
+		A198703A191A3EA20064CC6C /* 美国@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E96191A3EA20064CC6C /* 美国@2x.png */; };
+		A198703B191A3EA20064CC6C /* 美国阿拉斯酋长.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E97191A3EA20064CC6C /* 美国阿拉斯酋长.png */; };
+		A198703C191A3EA20064CC6C /* 美国阿拉斯酋长@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E98191A3EA20064CC6C /* 美国阿拉斯酋长@2x.png */; };
+		A198703D191A3EA20064CC6C /* 老挝.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E99191A3EA20064CC6C /* 老挝.png */; };
+		A198703E191A3EA20064CC6C /* 老挝@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E9A191A3EA20064CC6C /* 老挝@2x.png */; };
+		A198703F191A3EA20064CC6C /* 肯尼亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E9B191A3EA20064CC6C /* 肯尼亚.png */; };
+		A1987040191A3EA20064CC6C /* 肯尼亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E9C191A3EA20064CC6C /* 肯尼亚@2x.png */; };
+		A1987041191A3EA20064CC6C /* 芬兰.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E9D191A3EA20064CC6C /* 芬兰.png */; };
+		A1987042191A3EA20064CC6C /* 芬兰@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E9E191A3EA20064CC6C /* 芬兰@2x.png */; };
+		A1987043191A3EA20064CC6C /* 苏丹.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986E9F191A3EA20064CC6C /* 苏丹.png */; };
+		A1987044191A3EA20064CC6C /* 苏丹@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EA0191A3EA20064CC6C /* 苏丹@2x.png */; };
+		A1987045191A3EA20064CC6C /* 苏格兰.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EA1191A3EA20064CC6C /* 苏格兰.png */; };
+		A1987046191A3EA20064CC6C /* 苏格兰@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EA2191A3EA20064CC6C /* 苏格兰@2x.png */; };
+		A1987047191A3EA20064CC6C /* 苏里南.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EA3191A3EA20064CC6C /* 苏里南.png */; };
+		A1987048191A3EA20064CC6C /* 苏里南@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EA4191A3EA20064CC6C /* 苏里南@2x.png */; };
+		A1987049191A3EA20064CC6C /* 英国.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EA5191A3EA20064CC6C /* 英国.png */; };
+		A198704A191A3EA20064CC6C /* 英国@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EA6191A3EA20064CC6C /* 英国@2x.png */; };
+		A198704B191A3EA20064CC6C /* 英格兰.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EA7191A3EA20064CC6C /* 英格兰.png */; };
+		A198704C191A3EA20064CC6C /* 英格兰@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EA8191A3EA20064CC6C /* 英格兰@2x.png */; };
+		A198704D191A3EA20064CC6C /* 荷兰.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EA9191A3EA20064CC6C /* 荷兰.png */; };
+		A198704E191A3EA20064CC6C /* 荷兰@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EAA191A3EA20064CC6C /* 荷兰@2x.png */; };
+		A198704F191A3EA20064CC6C /* 莫桑比克.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EAB191A3EA20064CC6C /* 莫桑比克.png */; };
+		A1987050191A3EA20064CC6C /* 莫桑比克@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EAC191A3EA20064CC6C /* 莫桑比克@2x.png */; };
+		A1987051191A3EA20064CC6C /* 莱索托.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EAD191A3EA20064CC6C /* 莱索托.png */; };
+		A1987052191A3EA20064CC6C /* 莱索托@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EAE191A3EA20064CC6C /* 莱索托@2x.png */; };
+		A1987053191A3EA20064CC6C /* 菲律宾.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EAF191A3EA20064CC6C /* 菲律宾.png */; };
+		A1987054191A3EA20064CC6C /* 菲律宾@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EB0191A3EA20064CC6C /* 菲律宾@2x.png */; };
+		A1987055191A3EA20064CC6C /* 萨尔瓦多.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EB1191A3EA20064CC6C /* 萨尔瓦多.png */; };
+		A1987056191A3EA20064CC6C /* 萨尔瓦多@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EB2191A3EA20064CC6C /* 萨尔瓦多@2x.png */; };
+		A1987057191A3EA20064CC6C /* 萨摩亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EB3191A3EA20064CC6C /* 萨摩亚.png */; };
+		A1987058191A3EA20064CC6C /* 萨摩亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EB4191A3EA20064CC6C /* 萨摩亚@2x.png */; };
+		A1987059191A3EA20064CC6C /* 葡萄牙.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EB5191A3EA20064CC6C /* 葡萄牙.png */; };
+		A198705A191A3EA20064CC6C /* 葡萄牙@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EB6191A3EA20064CC6C /* 葡萄牙@2x.png */; };
+		A198705B191A3EA20064CC6C /* 蒙古.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EB7191A3EA20064CC6C /* 蒙古.png */; };
+		A198705C191A3EA20064CC6C /* 蒙古@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EB8191A3EA20064CC6C /* 蒙古@2x.png */; };
+		A198705D191A3EA20064CC6C /* 西撒哈拉.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EB9191A3EA20064CC6C /* 西撒哈拉.png */; };
+		A198705E191A3EA20064CC6C /* 西撒哈拉@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EBA191A3EA20064CC6C /* 西撒哈拉@2x.png */; };
+		A198705F191A3EA20064CC6C /* 西班牙.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EBB191A3EA20064CC6C /* 西班牙.png */; };
+		A1987060191A3EA20064CC6C /* 西班牙@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EBC191A3EA20064CC6C /* 西班牙@2x.png */; };
+		A1987061191A3EA20064CC6C /* 贝宁.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EBD191A3EA20064CC6C /* 贝宁.png */; };
+		A1987062191A3EA20064CC6C /* 贝宁@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EBE191A3EA20064CC6C /* 贝宁@2x.png */; };
+		A1987063191A3EA20064CC6C /* 赞比亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EBF191A3EA20064CC6C /* 赞比亚.png */; };
+		A1987064191A3EA20064CC6C /* 赞比亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EC0191A3EA20064CC6C /* 赞比亚@2x.png */; };
+		A1987065191A3EA20064CC6C /* 赤道几内亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EC1191A3EA20064CC6C /* 赤道几内亚.png */; };
+		A1987066191A3EA20064CC6C /* 赤道几内亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EC2191A3EA20064CC6C /* 赤道几内亚@2x.png */; };
+		A1987067191A3EA20064CC6C /* 越南.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EC3191A3EA20064CC6C /* 越南.png */; };
+		A1987068191A3EA20064CC6C /* 越南@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EC4191A3EA20064CC6C /* 越南@2x.png */; };
+		A1987069191A3EA20064CC6C /* 阿塞拜疆.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EC5191A3EA20064CC6C /* 阿塞拜疆.png */; };
+		A198706A191A3EA20064CC6C /* 阿塞拜疆@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EC6191A3EA20064CC6C /* 阿塞拜疆@2x.png */; };
+		A198706B191A3EA20064CC6C /* 阿富汗.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EC7191A3EA20064CC6C /* 阿富汗.png */; };
+		A198706C191A3EA20064CC6C /* 阿富汗@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EC8191A3EA20064CC6C /* 阿富汗@2x.png */; };
+		A198706D191A3EA20064CC6C /* 阿尔及利亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EC9191A3EA20064CC6C /* 阿尔及利亚.png */; };
+		A198706E191A3EA20064CC6C /* 阿尔及利亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986ECA191A3EA20064CC6C /* 阿尔及利亚@2x.png */; };
+		A198706F191A3EA20064CC6C /* 阿尔巴尼亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986ECB191A3EA20064CC6C /* 阿尔巴尼亚.png */; };
+		A1987070191A3EA20064CC6C /* 阿尔巴尼亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986ECC191A3EA20064CC6C /* 阿尔巴尼亚@2x.png */; };
+		A1987071191A3EA20064CC6C /* 阿曼.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986ECD191A3EA20064CC6C /* 阿曼.png */; };
+		A1987072191A3EA20064CC6C /* 阿曼@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986ECE191A3EA20064CC6C /* 阿曼@2x.png */; };
+		A1987073191A3EA20064CC6C /* 阿根廷.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986ECF191A3EA20064CC6C /* 阿根廷.png */; };
+		A1987074191A3EA20064CC6C /* 阿根廷@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986ED0191A3EA20064CC6C /* 阿根廷@2x.png */; };
+		A1987075191A3EA20064CC6C /* 阿鲁巴岛.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986ED1191A3EA20064CC6C /* 阿鲁巴岛.png */; };
+		A1987076191A3EA20064CC6C /* 阿鲁巴岛@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986ED2191A3EA20064CC6C /* 阿鲁巴岛@2x.png */; };
+		A1987077191A3EA20064CC6C /* 韩国.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986ED3191A3EA20064CC6C /* 韩国.png */; };
+		A1987078191A3EA20064CC6C /* 韩国@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986ED4191A3EA20064CC6C /* 韩国@2x.png */; };
+		A1987079191A3EA20064CC6C /* 香港.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986ED5191A3EA20064CC6C /* 香港.png */; };
+		A198707A191A3EA20064CC6C /* 香港@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986ED6191A3EA20064CC6C /* 香港@2x.png */; };
+		A198707B191A3EA20064CC6C /* 马其顿.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986ED7191A3EA20064CC6C /* 马其顿.png */; };
+		A198707C191A3EA20064CC6C /* 马其顿@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986ED8191A3EA20064CC6C /* 马其顿@2x.png */; };
+		A198707D191A3EA20064CC6C /* 马尔代夫.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986ED9191A3EA20064CC6C /* 马尔代夫.png */; };
+		A198707E191A3EA20064CC6C /* 马尔代夫@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EDA191A3EA20064CC6C /* 马尔代夫@2x.png */; };
+		A198707F191A3EA20064CC6C /* 马拉维.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EDB191A3EA20064CC6C /* 马拉维.png */; };
+		A1987080191A3EA20064CC6C /* 马拉维@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EDC191A3EA20064CC6C /* 马拉维@2x.png */; };
+		A1987081191A3EA20064CC6C /* 马来西亚.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EDD191A3EA20064CC6C /* 马来西亚.png */; };
+		A1987082191A3EA20064CC6C /* 马来西亚@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EDE191A3EA20064CC6C /* 马来西亚@2x.png */; };
+		A1987083191A3EA20064CC6C /* 马绍尔群岛.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EDF191A3EA20064CC6C /* 马绍尔群岛.png */; };
+		A1987084191A3EA20064CC6C /* 马绍尔群岛@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EE0191A3EA20064CC6C /* 马绍尔群岛@2x.png */; };
+		A1987085191A3EA20064CC6C /* 马耳他.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EE1191A3EA20064CC6C /* 马耳他.png */; };
+		A1987086191A3EA20064CC6C /* 马耳他@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EE2191A3EA20064CC6C /* 马耳他@2x.png */; };
+		A1987087191A3EA20064CC6C /* 马达加斯加.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EE3191A3EA20064CC6C /* 马达加斯加.png */; };
+		A1987088191A3EA20064CC6C /* 马达加斯加@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EE4191A3EA20064CC6C /* 马达加斯加@2x.png */; };
+		A1987089191A3EA20064CC6C /* 马里.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EE5191A3EA20064CC6C /* 马里.png */; };
+		A198708A191A3EA20064CC6C /* 马里@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EE6191A3EA20064CC6C /* 马里@2x.png */; };
+		A198708B191A3EA20064CC6C /* 黎巴嫩.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EE7191A3EA20064CC6C /* 黎巴嫩.png */; };
+		A198708C191A3EA20064CC6C /* 黎巴嫩@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EE8191A3EA20064CC6C /* 黎巴嫩@2x.png */; };
+		A198708D191A3EA20064CC6C /* 黑山.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EE9191A3EA20064CC6C /* 黑山.png */; };
+		A198708E191A3EA20064CC6C /* 黑山@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EEA191A3EA20064CC6C /* 黑山@2x.png */; };
 		A199395818FBD687002E7E51 /* KGChatCellInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A199395718FBD687002E7E51 /* KGChatCellInfo.m */; };
 		A19F0EC318E2AE0D00C2944D /* KGBuyerRefPicturesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A19F0EC218E2AE0D00C2944D /* KGBuyerRefPicturesCell.m */; };
 		A19F0EC618E2B33B00C2944D /* KGBuyerDescriptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A19F0EC518E2B33B00C2944D /* KGBuyerDescriptionCell.m */; };
@@ -432,6 +853,428 @@
 		A197502618D84BF10062CAA7 /* UIWindow+RscExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+RscExt.m"; sourceTree = "<group>"; };
 		A197503B18D85F920062CAA7 /* trip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trip.png; sourceTree = "<group>"; };
 		A197503C18D85F920062CAA7 /* trip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trip@2x.png"; sourceTree = "<group>"; };
+		A1986D43191A367B0064CC6C /* KGBuyerSummaryObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGBuyerSummaryObject.h; sourceTree = "<group>"; };
+		A1986D44191A367B0064CC6C /* KGBuyerSummaryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGBuyerSummaryObject.m; sourceTree = "<group>"; };
+		A1986D47191A3EA10064CC6C /* 不丹.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "不丹.png"; sourceTree = "<group>"; };
+		A1986D48191A3EA10064CC6C /* 不丹@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "不丹@2x.png"; sourceTree = "<group>"; };
+		A1986D49191A3EA10064CC6C /* 东帝汶.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "东帝汶.png"; sourceTree = "<group>"; };
+		A1986D4A191A3EA10064CC6C /* 东帝汶@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "东帝汶@2x.png"; sourceTree = "<group>"; };
+		A1986D4B191A3EA10064CC6C /* 中国.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "中国.png"; sourceTree = "<group>"; };
+		A1986D4C191A3EA10064CC6C /* 中国@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "中国@2x.png"; sourceTree = "<group>"; };
+		A1986D4D191A3EA10064CC6C /* 中非共和国.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "中非共和国.png"; sourceTree = "<group>"; };
+		A1986D4E191A3EA10064CC6C /* 中非共和国@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "中非共和国@2x.png"; sourceTree = "<group>"; };
+		A1986D4F191A3EA10064CC6C /* 丹麦.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "丹麦.png"; sourceTree = "<group>"; };
+		A1986D50191A3EA10064CC6C /* 丹麦@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "丹麦@2x.png"; sourceTree = "<group>"; };
+		A1986D51191A3EA10064CC6C /* 乌克兰.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "乌克兰.png"; sourceTree = "<group>"; };
+		A1986D52191A3EA10064CC6C /* 乌克兰@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "乌克兰@2x.png"; sourceTree = "<group>"; };
+		A1986D53191A3EA10064CC6C /* 乌兹别克斯坦.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "乌兹别克斯坦.png"; sourceTree = "<group>"; };
+		A1986D54191A3EA10064CC6C /* 乌兹别克斯坦@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "乌兹别克斯坦@2x.png"; sourceTree = "<group>"; };
+		A1986D55191A3EA10064CC6C /* 乌干达.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "乌干达.png"; sourceTree = "<group>"; };
+		A1986D56191A3EA10064CC6C /* 乌干达@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "乌干达@2x.png"; sourceTree = "<group>"; };
+		A1986D57191A3EA10064CC6C /* 乌拉圭.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "乌拉圭.png"; sourceTree = "<group>"; };
+		A1986D58191A3EA10064CC6C /* 乌拉圭@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "乌拉圭@2x.png"; sourceTree = "<group>"; };
+		A1986D59191A3EA10064CC6C /* 乍得共和国.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "乍得共和国.png"; sourceTree = "<group>"; };
+		A1986D5A191A3EA10064CC6C /* 乍得共和国@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "乍得共和国@2x.png"; sourceTree = "<group>"; };
+		A1986D5B191A3EA10064CC6C /* 也门.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "也门.png"; sourceTree = "<group>"; };
+		A1986D5C191A3EA10064CC6C /* 也门@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "也门@2x.png"; sourceTree = "<group>"; };
+		A1986D5D191A3EA10064CC6C /* 亚美尼亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "亚美尼亚.png"; sourceTree = "<group>"; };
+		A1986D5E191A3EA10064CC6C /* 亚美尼亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "亚美尼亚@2x.png"; sourceTree = "<group>"; };
+		A1986D5F191A3EA10064CC6C /* 以色列.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "以色列.png"; sourceTree = "<group>"; };
+		A1986D60191A3EA10064CC6C /* 以色列@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "以色列@2x.png"; sourceTree = "<group>"; };
+		A1986D61191A3EA10064CC6C /* 伊拉克.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "伊拉克.png"; sourceTree = "<group>"; };
+		A1986D62191A3EA10064CC6C /* 伊拉克@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "伊拉克@2x.png"; sourceTree = "<group>"; };
+		A1986D63191A3EA10064CC6C /* 伊朗.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "伊朗.png"; sourceTree = "<group>"; };
+		A1986D64191A3EA10064CC6C /* 伊朗@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "伊朗@2x.png"; sourceTree = "<group>"; };
+		A1986D65191A3EA10064CC6C /* 伯利兹.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "伯利兹.png"; sourceTree = "<group>"; };
+		A1986D66191A3EA10064CC6C /* 伯利兹@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "伯利兹@2x.png"; sourceTree = "<group>"; };
+		A1986D67191A3EA10064CC6C /* 佛得角.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "佛得角.png"; sourceTree = "<group>"; };
+		A1986D68191A3EA10064CC6C /* 佛得角@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "佛得角@2x.png"; sourceTree = "<group>"; };
+		A1986D69191A3EA10064CC6C /* 俄罗斯.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "俄罗斯.png"; sourceTree = "<group>"; };
+		A1986D6A191A3EA10064CC6C /* 俄罗斯@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "俄罗斯@2x.png"; sourceTree = "<group>"; };
+		A1986D6B191A3EA10064CC6C /* 保加利亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "保加利亚.png"; sourceTree = "<group>"; };
+		A1986D6C191A3EA10064CC6C /* 保加利亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "保加利亚@2x.png"; sourceTree = "<group>"; };
+		A1986D6D191A3EA10064CC6C /* 克罗地亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "克罗地亚.png"; sourceTree = "<group>"; };
+		A1986D6E191A3EA10064CC6C /* 克罗地亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "克罗地亚@2x.png"; sourceTree = "<group>"; };
+		A1986D6F191A3EA10064CC6C /* 冈比亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "冈比亚.png"; sourceTree = "<group>"; };
+		A1986D70191A3EA10064CC6C /* 冈比亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "冈比亚@2x.png"; sourceTree = "<group>"; };
+		A1986D71191A3EA10064CC6C /* 冰岛.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "冰岛.png"; sourceTree = "<group>"; };
+		A1986D72191A3EA10064CC6C /* 冰岛@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "冰岛@2x.png"; sourceTree = "<group>"; };
+		A1986D73191A3EA10064CC6C /* 几内亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "几内亚.png"; sourceTree = "<group>"; };
+		A1986D74191A3EA10064CC6C /* 几内亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "几内亚@2x.png"; sourceTree = "<group>"; };
+		A1986D75191A3EA10064CC6C /* 几内亚比绍.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "几内亚比绍.png"; sourceTree = "<group>"; };
+		A1986D76191A3EA10064CC6C /* 几内亚比绍@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "几内亚比绍@2x.png"; sourceTree = "<group>"; };
+		A1986D77191A3EA10064CC6C /* 列支敦斯登.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "列支敦斯登.png"; sourceTree = "<group>"; };
+		A1986D78191A3EA10064CC6C /* 列支敦斯登@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "列支敦斯登@2x.png"; sourceTree = "<group>"; };
+		A1986D79191A3EA10064CC6C /* 刚果（布）.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "刚果（布）.png"; sourceTree = "<group>"; };
+		A1986D7A191A3EA10064CC6C /* 刚果（布）@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "刚果（布）@2x.png"; sourceTree = "<group>"; };
+		A1986D7B191A3EA10064CC6C /* 刚果（金）.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "刚果（金）.png"; sourceTree = "<group>"; };
+		A1986D7C191A3EA10064CC6C /* 刚果（金）@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "刚果（金）@2x.png"; sourceTree = "<group>"; };
+		A1986D7D191A3EA10064CC6C /* 利比里亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "利比里亚.png"; sourceTree = "<group>"; };
+		A1986D7E191A3EA10064CC6C /* 利比里亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "利比里亚@2x.png"; sourceTree = "<group>"; };
+		A1986D7F191A3EA10064CC6C /* 加拿大.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "加拿大.png"; sourceTree = "<group>"; };
+		A1986D80191A3EA10064CC6C /* 加拿大@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "加拿大@2x.png"; sourceTree = "<group>"; };
+		A1986D81191A3EA10064CC6C /* 加泰罗尼亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "加泰罗尼亚.png"; sourceTree = "<group>"; };
+		A1986D82191A3EA10064CC6C /* 加泰罗尼亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "加泰罗尼亚@2x.png"; sourceTree = "<group>"; };
+		A1986D83191A3EA10064CC6C /* 加纳.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "加纳.png"; sourceTree = "<group>"; };
+		A1986D84191A3EA10064CC6C /* 加纳@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "加纳@2x.png"; sourceTree = "<group>"; };
+		A1986D85191A3EA10064CC6C /* 加蓬.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "加蓬.png"; sourceTree = "<group>"; };
+		A1986D86191A3EA10064CC6C /* 加蓬@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "加蓬@2x.png"; sourceTree = "<group>"; };
+		A1986D87191A3EA10064CC6C /* 匈牙利.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "匈牙利.png"; sourceTree = "<group>"; };
+		A1986D88191A3EA10064CC6C /* 匈牙利@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "匈牙利@2x.png"; sourceTree = "<group>"; };
+		A1986D89191A3EA10064CC6C /* 北爱尔兰.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "北爱尔兰.png"; sourceTree = "<group>"; };
+		A1986D8A191A3EA10064CC6C /* 北爱尔兰@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "北爱尔兰@2x.png"; sourceTree = "<group>"; };
+		A1986D8B191A3EA10064CC6C /* 南极洲.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "南极洲.png"; sourceTree = "<group>"; };
+		A1986D8C191A3EA10064CC6C /* 南极洲@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "南极洲@2x.png"; sourceTree = "<group>"; };
+		A1986D8D191A3EA10064CC6C /* 南非.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "南非.png"; sourceTree = "<group>"; };
+		A1986D8E191A3EA10064CC6C /* 南非@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "南非@2x.png"; sourceTree = "<group>"; };
+		A1986D8F191A3EA10064CC6C /* 博茨瓦纳.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "博茨瓦纳.png"; sourceTree = "<group>"; };
+		A1986D90191A3EA10064CC6C /* 博茨瓦纳@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "博茨瓦纳@2x.png"; sourceTree = "<group>"; };
+		A1986D91191A3EA10064CC6C /* 卡塔尔.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "卡塔尔.png"; sourceTree = "<group>"; };
+		A1986D92191A3EA10064CC6C /* 卡塔尔@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "卡塔尔@2x.png"; sourceTree = "<group>"; };
+		A1986D93191A3EA10064CC6C /* 卢旺达.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "卢旺达.png"; sourceTree = "<group>"; };
+		A1986D94191A3EA10064CC6C /* 卢旺达@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "卢旺达@2x.png"; sourceTree = "<group>"; };
+		A1986D95191A3EA10064CC6C /* 卢森堡.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "卢森堡.png"; sourceTree = "<group>"; };
+		A1986D96191A3EA10064CC6C /* 卢森堡@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "卢森堡@2x.png"; sourceTree = "<group>"; };
+		A1986D97191A3EA10064CC6C /* 印度.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "印度.png"; sourceTree = "<group>"; };
+		A1986D98191A3EA10064CC6C /* 印度@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "印度@2x.png"; sourceTree = "<group>"; };
+		A1986D99191A3EA10064CC6C /* 印度尼西亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "印度尼西亚.png"; sourceTree = "<group>"; };
+		A1986D9A191A3EA10064CC6C /* 印度尼西亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "印度尼西亚@2x.png"; sourceTree = "<group>"; };
+		A1986D9B191A3EA10064CC6C /* 危地马拉.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "危地马拉.png"; sourceTree = "<group>"; };
+		A1986D9C191A3EA10064CC6C /* 危地马拉@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "危地马拉@2x.png"; sourceTree = "<group>"; };
+		A1986D9D191A3EA10064CC6C /* 厄瓜多尔.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "厄瓜多尔.png"; sourceTree = "<group>"; };
+		A1986D9E191A3EA10064CC6C /* 厄瓜多尔@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "厄瓜多尔@2x.png"; sourceTree = "<group>"; };
+		A1986D9F191A3EA10064CC6C /* 厄立特里亚国.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "厄立特里亚国.png"; sourceTree = "<group>"; };
+		A1986DA0191A3EA10064CC6C /* 厄立特里亚国@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "厄立特里亚国@2x.png"; sourceTree = "<group>"; };
+		A1986DA1191A3EA10064CC6C /* 叙利亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "叙利亚.png"; sourceTree = "<group>"; };
+		A1986DA2191A3EA10064CC6C /* 叙利亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "叙利亚@2x.png"; sourceTree = "<group>"; };
+		A1986DA3191A3EA10064CC6C /* 古巴.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "古巴.png"; sourceTree = "<group>"; };
+		A1986DA4191A3EA10064CC6C /* 古巴@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "古巴@2x.png"; sourceTree = "<group>"; };
+		A1986DA5191A3EA10064CC6C /* 台湾.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "台湾.png"; sourceTree = "<group>"; };
+		A1986DA6191A3EA10064CC6C /* 台湾@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "台湾@2x.png"; sourceTree = "<group>"; };
+		A1986DA7191A3EA10064CC6C /* 吉尔吉斯斯坦.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "吉尔吉斯斯坦.png"; sourceTree = "<group>"; };
+		A1986DA8191A3EA10064CC6C /* 吉尔吉斯斯坦@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "吉尔吉斯斯坦@2x.png"; sourceTree = "<group>"; };
+		A1986DA9191A3EA10064CC6C /* 吉布提.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "吉布提.png"; sourceTree = "<group>"; };
+		A1986DAA191A3EA10064CC6C /* 吉布提@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "吉布提@2x.png"; sourceTree = "<group>"; };
+		A1986DAB191A3EA10064CC6C /* 吕底亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "吕底亚.png"; sourceTree = "<group>"; };
+		A1986DAC191A3EA10064CC6C /* 吕底亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "吕底亚@2x.png"; sourceTree = "<group>"; };
+		A1986DAD191A3EA10064CC6C /* 哈萨克斯坦.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "哈萨克斯坦.png"; sourceTree = "<group>"; };
+		A1986DAE191A3EA10064CC6C /* 哈萨克斯坦@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "哈萨克斯坦@2x.png"; sourceTree = "<group>"; };
+		A1986DAF191A3EA10064CC6C /* 哥伦比亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "哥伦比亚.png"; sourceTree = "<group>"; };
+		A1986DB0191A3EA10064CC6C /* 哥伦比亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "哥伦比亚@2x.png"; sourceTree = "<group>"; };
+		A1986DB1191A3EA10064CC6C /* 哥斯达黎加.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "哥斯达黎加.png"; sourceTree = "<group>"; };
+		A1986DB2191A3EA10064CC6C /* 哥斯达黎加@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "哥斯达黎加@2x.png"; sourceTree = "<group>"; };
+		A1986DB3191A3EA10064CC6C /* 喀麦隆.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "喀麦隆.png"; sourceTree = "<group>"; };
+		A1986DB4191A3EA10064CC6C /* 喀麦隆@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "喀麦隆@2x.png"; sourceTree = "<group>"; };
+		A1986DB5191A3EA10064CC6C /* 图瓦卢.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图瓦卢.png"; sourceTree = "<group>"; };
+		A1986DB6191A3EA10064CC6C /* 图瓦卢@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图瓦卢@2x.png"; sourceTree = "<group>"; };
+		A1986DB7191A3EA10064CC6C /* 土库曼斯坦.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "土库曼斯坦.png"; sourceTree = "<group>"; };
+		A1986DB8191A3EA10064CC6C /* 土库曼斯坦@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "土库曼斯坦@2x.png"; sourceTree = "<group>"; };
+		A1986DB9191A3EA10064CC6C /* 土耳其.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "土耳其.png"; sourceTree = "<group>"; };
+		A1986DBA191A3EA10064CC6C /* 土耳其@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "土耳其@2x.png"; sourceTree = "<group>"; };
+		A1986DBB191A3EA10064CC6C /* 圣卢西亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "圣卢西亚.png"; sourceTree = "<group>"; };
+		A1986DBC191A3EA10064CC6C /* 圣卢西亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "圣卢西亚@2x.png"; sourceTree = "<group>"; };
+		A1986DBD191A3EA10064CC6C /* 圣基茨和尼维斯.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "圣基茨和尼维斯.png"; sourceTree = "<group>"; };
+		A1986DBE191A3EA10064CC6C /* 圣基茨和尼维斯@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "圣基茨和尼维斯@2x.png"; sourceTree = "<group>"; };
+		A1986DBF191A3EA10064CC6C /* 圣多美和普林西比.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "圣多美和普林西比.png"; sourceTree = "<group>"; };
+		A1986DC0191A3EA10064CC6C /* 圣多美和普林西比@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "圣多美和普林西比@2x.png"; sourceTree = "<group>"; };
+		A1986DC1191A3EA10064CC6C /* 圣文森特和格林纳丁斯.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "圣文森特和格林纳丁斯.png"; sourceTree = "<group>"; };
+		A1986DC2191A3EA10064CC6C /* 圣文森特和格林纳丁斯@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "圣文森特和格林纳丁斯@2x.png"; sourceTree = "<group>"; };
+		A1986DC3191A3EA10064CC6C /* 圣马力诺.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "圣马力诺.png"; sourceTree = "<group>"; };
+		A1986DC4191A3EA10064CC6C /* 圣马力诺@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "圣马力诺@2x.png"; sourceTree = "<group>"; };
+		A1986DC5191A3EA10064CC6C /* 圭亚那.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "圭亚那.png"; sourceTree = "<group>"; };
+		A1986DC6191A3EA10064CC6C /* 圭亚那@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "圭亚那@2x.png"; sourceTree = "<group>"; };
+		A1986DC7191A3EA10064CC6C /* 坦桑尼亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "坦桑尼亚.png"; sourceTree = "<group>"; };
+		A1986DC8191A3EA10064CC6C /* 坦桑尼亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "坦桑尼亚@2x.png"; sourceTree = "<group>"; };
+		A1986DC9191A3EA10064CC6C /* 埃及.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "埃及.png"; sourceTree = "<group>"; };
+		A1986DCA191A3EA10064CC6C /* 埃及@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "埃及@2x.png"; sourceTree = "<group>"; };
+		A1986DCB191A3EA10064CC6C /* 埃塞俄比亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "埃塞俄比亚.png"; sourceTree = "<group>"; };
+		A1986DCC191A3EA10064CC6C /* 埃塞俄比亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "埃塞俄比亚@2x.png"; sourceTree = "<group>"; };
+		A1986DCD191A3EA10064CC6C /* 基里巴斯.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "基里巴斯.png"; sourceTree = "<group>"; };
+		A1986DCE191A3EA10064CC6C /* 基里巴斯@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "基里巴斯@2x.png"; sourceTree = "<group>"; };
+		A1986DCF191A3EA10064CC6C /* 塔吉克斯坦.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "塔吉克斯坦.png"; sourceTree = "<group>"; };
+		A1986DD0191A3EA10064CC6C /* 塔吉克斯坦@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "塔吉克斯坦@2x.png"; sourceTree = "<group>"; };
+		A1986DD1191A3EA10064CC6C /* 塞内加尔.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "塞内加尔.png"; sourceTree = "<group>"; };
+		A1986DD2191A3EA10064CC6C /* 塞内加尔@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "塞内加尔@2x.png"; sourceTree = "<group>"; };
+		A1986DD3191A3EA10064CC6C /* 塞尔维亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "塞尔维亚.png"; sourceTree = "<group>"; };
+		A1986DD4191A3EA10064CC6C /* 塞尔维亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "塞尔维亚@2x.png"; sourceTree = "<group>"; };
+		A1986DD5191A3EA10064CC6C /* 塞拉利昂.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "塞拉利昂.png"; sourceTree = "<group>"; };
+		A1986DD6191A3EA10064CC6C /* 塞拉利昂@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "塞拉利昂@2x.png"; sourceTree = "<group>"; };
+		A1986DD7191A3EA10064CC6C /* 塞浦路斯.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "塞浦路斯.png"; sourceTree = "<group>"; };
+		A1986DD8191A3EA10064CC6C /* 塞浦路斯@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "塞浦路斯@2x.png"; sourceTree = "<group>"; };
+		A1986DD9191A3EA10064CC6C /* 塞舌尔.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "塞舌尔.png"; sourceTree = "<group>"; };
+		A1986DDA191A3EA10064CC6C /* 塞舌尔@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "塞舌尔@2x.png"; sourceTree = "<group>"; };
+		A1986DDB191A3EA10064CC6C /* 墨西哥.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "墨西哥.png"; sourceTree = "<group>"; };
+		A1986DDC191A3EA10064CC6C /* 墨西哥@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "墨西哥@2x.png"; sourceTree = "<group>"; };
+		A1986DDD191A3EA10064CC6C /* 多哥.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "多哥.png"; sourceTree = "<group>"; };
+		A1986DDE191A3EA10064CC6C /* 多哥@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "多哥@2x.png"; sourceTree = "<group>"; };
+		A1986DDF191A3EA10064CC6C /* 多米尼克.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "多米尼克.png"; sourceTree = "<group>"; };
+		A1986DE0191A3EA10064CC6C /* 多米尼克@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "多米尼克@2x.png"; sourceTree = "<group>"; };
+		A1986DE1191A3EA10064CC6C /* 多米尼加共和国.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "多米尼加共和国.png"; sourceTree = "<group>"; };
+		A1986DE2191A3EA10064CC6C /* 多米尼加共和国@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "多米尼加共和国@2x.png"; sourceTree = "<group>"; };
+		A1986DE3191A3EA10064CC6C /* 奥地利.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "奥地利.png"; sourceTree = "<group>"; };
+		A1986DE4191A3EA10064CC6C /* 奥地利@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "奥地利@2x.png"; sourceTree = "<group>"; };
+		A1986DE5191A3EA10064CC6C /* 委内瑞拉.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "委内瑞拉.png"; sourceTree = "<group>"; };
+		A1986DE6191A3EA10064CC6C /* 委内瑞拉@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "委内瑞拉@2x.png"; sourceTree = "<group>"; };
+		A1986DE7191A3EA10064CC6C /* 威尔士.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "威尔士.png"; sourceTree = "<group>"; };
+		A1986DE8191A3EA10064CC6C /* 威尔士@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "威尔士@2x.png"; sourceTree = "<group>"; };
+		A1986DE9191A3EA10064CC6C /* 孟加拉.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "孟加拉.png"; sourceTree = "<group>"; };
+		A1986DEA191A3EA10064CC6C /* 孟加拉@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "孟加拉@2x.png"; sourceTree = "<group>"; };
+		A1986DEB191A3EA10064CC6C /* 安哥拉.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "安哥拉.png"; sourceTree = "<group>"; };
+		A1986DEC191A3EA10064CC6C /* 安哥拉@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "安哥拉@2x.png"; sourceTree = "<group>"; };
+		A1986DED191A3EA10064CC6C /* 安提瓜和巴布达.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "安提瓜和巴布达.png"; sourceTree = "<group>"; };
+		A1986DEE191A3EA10064CC6C /* 安提瓜和巴布达@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "安提瓜和巴布达@2x.png"; sourceTree = "<group>"; };
+		A1986DEF191A3EA10064CC6C /* 安道尔共和国.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "安道尔共和国.png"; sourceTree = "<group>"; };
+		A1986DF0191A3EA10064CC6C /* 安道尔共和国@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "安道尔共和国@2x.png"; sourceTree = "<group>"; };
+		A1986DF1191A3EA10064CC6C /* 密克罗尼西亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "密克罗尼西亚.png"; sourceTree = "<group>"; };
+		A1986DF2191A3EA10064CC6C /* 密克罗尼西亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "密克罗尼西亚@2x.png"; sourceTree = "<group>"; };
+		A1986DF3191A3EA10064CC6C /* 尼加拉瓜.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "尼加拉瓜.png"; sourceTree = "<group>"; };
+		A1986DF4191A3EA10064CC6C /* 尼加拉瓜@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "尼加拉瓜@2x.png"; sourceTree = "<group>"; };
+		A1986DF5191A3EA10064CC6C /* 尼日利亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "尼日利亚.png"; sourceTree = "<group>"; };
+		A1986DF6191A3EA10064CC6C /* 尼日利亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "尼日利亚@2x.png"; sourceTree = "<group>"; };
+		A1986DF7191A3EA10064CC6C /* 尼日尔.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "尼日尔.png"; sourceTree = "<group>"; };
+		A1986DF8191A3EA10064CC6C /* 尼日尔@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "尼日尔@2x.png"; sourceTree = "<group>"; };
+		A1986DF9191A3EA10064CC6C /* 尼泊尔.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "尼泊尔.png"; sourceTree = "<group>"; };
+		A1986DFA191A3EA10064CC6C /* 尼泊尔@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "尼泊尔@2x.png"; sourceTree = "<group>"; };
+		A1986DFB191A3EA10064CC6C /* 巴勒斯坦.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "巴勒斯坦.png"; sourceTree = "<group>"; };
+		A1986DFC191A3EA10064CC6C /* 巴勒斯坦@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "巴勒斯坦@2x.png"; sourceTree = "<group>"; };
+		A1986DFD191A3EA10064CC6C /* 巴哈马.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "巴哈马.png"; sourceTree = "<group>"; };
+		A1986DFE191A3EA10064CC6C /* 巴哈马@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "巴哈马@2x.png"; sourceTree = "<group>"; };
+		A1986DFF191A3EA10064CC6C /* 巴基斯坦.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "巴基斯坦.png"; sourceTree = "<group>"; };
+		A1986E00191A3EA10064CC6C /* 巴基斯坦@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "巴基斯坦@2x.png"; sourceTree = "<group>"; };
+		A1986E01191A3EA10064CC6C /* 巴巴多斯.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "巴巴多斯.png"; sourceTree = "<group>"; };
+		A1986E02191A3EA10064CC6C /* 巴巴多斯@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "巴巴多斯@2x.png"; sourceTree = "<group>"; };
+		A1986E03191A3EA10064CC6C /* 巴布亚新几内亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "巴布亚新几内亚.png"; sourceTree = "<group>"; };
+		A1986E04191A3EA10064CC6C /* 巴布亚新几内亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "巴布亚新几内亚@2x.png"; sourceTree = "<group>"; };
+		A1986E05191A3EA10064CC6C /* 巴拉圭.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "巴拉圭.png"; sourceTree = "<group>"; };
+		A1986E06191A3EA10064CC6C /* 巴拉圭@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "巴拉圭@2x.png"; sourceTree = "<group>"; };
+		A1986E07191A3EA10064CC6C /* 巴拿马.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "巴拿马.png"; sourceTree = "<group>"; };
+		A1986E08191A3EA10064CC6C /* 巴拿马@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "巴拿马@2x.png"; sourceTree = "<group>"; };
+		A1986E09191A3EA10064CC6C /* 巴林.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "巴林.png"; sourceTree = "<group>"; };
+		A1986E0A191A3EA10064CC6C /* 巴林@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "巴林@2x.png"; sourceTree = "<group>"; };
+		A1986E0B191A3EA10064CC6C /* 巴西.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "巴西.png"; sourceTree = "<group>"; };
+		A1986E0C191A3EA10064CC6C /* 巴西@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "巴西@2x.png"; sourceTree = "<group>"; };
+		A1986E0D191A3EA10064CC6C /* 布基纳法索.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "布基纳法索.png"; sourceTree = "<group>"; };
+		A1986E0E191A3EA10064CC6C /* 布基纳法索@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "布基纳法索@2x.png"; sourceTree = "<group>"; };
+		A1986E0F191A3EA10064CC6C /* 布隆迪.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "布隆迪.png"; sourceTree = "<group>"; };
+		A1986E10191A3EA10064CC6C /* 布隆迪@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "布隆迪@2x.png"; sourceTree = "<group>"; };
+		A1986E11191A3EA10064CC6C /* 希腊.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "希腊.png"; sourceTree = "<group>"; };
+		A1986E12191A3EA10064CC6C /* 希腊@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "希腊@2x.png"; sourceTree = "<group>"; };
+		A1986E13191A3EA10064CC6C /* 帕劳.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "帕劳.png"; sourceTree = "<group>"; };
+		A1986E14191A3EA10064CC6C /* 帕劳@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "帕劳@2x.png"; sourceTree = "<group>"; };
+		A1986E15191A3EA10064CC6C /* 德国.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "德国.png"; sourceTree = "<group>"; };
+		A1986E16191A3EA10064CC6C /* 德国@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "德国@2x.png"; sourceTree = "<group>"; };
+		A1986E17191A3EA10064CC6C /* 意大利.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "意大利.png"; sourceTree = "<group>"; };
+		A1986E18191A3EA10064CC6C /* 意大利@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "意大利@2x.png"; sourceTree = "<group>"; };
+		A1986E19191A3EA10064CC6C /* 所罗门群岛.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "所罗门群岛.png"; sourceTree = "<group>"; };
+		A1986E1A191A3EA10064CC6C /* 所罗门群岛@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "所罗门群岛@2x.png"; sourceTree = "<group>"; };
+		A1986E1B191A3EA10064CC6C /* 拉脱维亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "拉脱维亚.png"; sourceTree = "<group>"; };
+		A1986E1C191A3EA10064CC6C /* 拉脱维亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "拉脱维亚@2x.png"; sourceTree = "<group>"; };
+		A1986E1D191A3EA10064CC6C /* 挪威.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "挪威.png"; sourceTree = "<group>"; };
+		A1986E1E191A3EA10064CC6C /* 挪威@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "挪威@2x.png"; sourceTree = "<group>"; };
+		A1986E1F191A3EA10064CC6C /* 捷克共和国.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "捷克共和国.png"; sourceTree = "<group>"; };
+		A1986E20191A3EA20064CC6C /* 捷克共和国@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "捷克共和国@2x.png"; sourceTree = "<group>"; };
+		A1986E21191A3EA20064CC6C /* 摩尔多瓦.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "摩尔多瓦.png"; sourceTree = "<group>"; };
+		A1986E22191A3EA20064CC6C /* 摩尔多瓦@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "摩尔多瓦@2x.png"; sourceTree = "<group>"; };
+		A1986E23191A3EA20064CC6C /* 摩洛哥.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "摩洛哥.png"; sourceTree = "<group>"; };
+		A1986E24191A3EA20064CC6C /* 摩洛哥@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "摩洛哥@2x.png"; sourceTree = "<group>"; };
+		A1986E25191A3EA20064CC6C /* 摩纳哥.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "摩纳哥.png"; sourceTree = "<group>"; };
+		A1986E26191A3EA20064CC6C /* 摩纳哥@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "摩纳哥@2x.png"; sourceTree = "<group>"; };
+		A1986E27191A3EA20064CC6C /* 文莱.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "文莱.png"; sourceTree = "<group>"; };
+		A1986E28191A3EA20064CC6C /* 文莱@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "文莱@2x.png"; sourceTree = "<group>"; };
+		A1986E29191A3EA20064CC6C /* 斐济.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "斐济.png"; sourceTree = "<group>"; };
+		A1986E2A191A3EA20064CC6C /* 斐济@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "斐济@2x.png"; sourceTree = "<group>"; };
+		A1986E2B191A3EA20064CC6C /* 斯威士兰.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "斯威士兰.png"; sourceTree = "<group>"; };
+		A1986E2C191A3EA20064CC6C /* 斯威士兰@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "斯威士兰@2x.png"; sourceTree = "<group>"; };
+		A1986E2D191A3EA20064CC6C /* 斯洛伐克.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "斯洛伐克.png"; sourceTree = "<group>"; };
+		A1986E2E191A3EA20064CC6C /* 斯洛伐克@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "斯洛伐克@2x.png"; sourceTree = "<group>"; };
+		A1986E2F191A3EA20064CC6C /* 斯洛文尼亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "斯洛文尼亚.png"; sourceTree = "<group>"; };
+		A1986E30191A3EA20064CC6C /* 斯洛文尼亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "斯洛文尼亚@2x.png"; sourceTree = "<group>"; };
+		A1986E31191A3EA20064CC6C /* 斯里兰卡.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "斯里兰卡.png"; sourceTree = "<group>"; };
+		A1986E32191A3EA20064CC6C /* 斯里兰卡@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "斯里兰卡@2x.png"; sourceTree = "<group>"; };
+		A1986E33191A3EA20064CC6C /* 新加坡.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新加坡.png"; sourceTree = "<group>"; };
+		A1986E34191A3EA20064CC6C /* 新加坡@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新加坡@2x.png"; sourceTree = "<group>"; };
+		A1986E35191A3EA20064CC6C /* 新西兰.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新西兰.png"; sourceTree = "<group>"; };
+		A1986E36191A3EA20064CC6C /* 新西兰@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新西兰@2x.png"; sourceTree = "<group>"; };
+		A1986E37191A3EA20064CC6C /* 日本.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "日本.png"; sourceTree = "<group>"; };
+		A1986E38191A3EA20064CC6C /* 日本@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "日本@2x.png"; sourceTree = "<group>"; };
+		A1986E39191A3EA20064CC6C /* 智利.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "智利.png"; sourceTree = "<group>"; };
+		A1986E3A191A3EA20064CC6C /* 智利@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "智利@2x.png"; sourceTree = "<group>"; };
+		A1986E3B191A3EA20064CC6C /* 朝鲜.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "朝鲜.png"; sourceTree = "<group>"; };
+		A1986E3C191A3EA20064CC6C /* 朝鲜@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "朝鲜@2x.png"; sourceTree = "<group>"; };
+		A1986E3D191A3EA20064CC6C /* 柬埔寨.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "柬埔寨.png"; sourceTree = "<group>"; };
+		A1986E3E191A3EA20064CC6C /* 柬埔寨@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "柬埔寨@2x.png"; sourceTree = "<group>"; };
+		A1986E3F191A3EA20064CC6C /* 格林纳达.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "格林纳达.png"; sourceTree = "<group>"; };
+		A1986E40191A3EA20064CC6C /* 格林纳达@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "格林纳达@2x.png"; sourceTree = "<group>"; };
+		A1986E41191A3EA20064CC6C /* 格陵兰.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "格陵兰.png"; sourceTree = "<group>"; };
+		A1986E42191A3EA20064CC6C /* 格陵兰@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "格陵兰@2x.png"; sourceTree = "<group>"; };
+		A1986E43191A3EA20064CC6C /* 格鲁吉亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "格鲁吉亚.png"; sourceTree = "<group>"; };
+		A1986E44191A3EA20064CC6C /* 格鲁吉亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "格鲁吉亚@2x.png"; sourceTree = "<group>"; };
+		A1986E45191A3EA20064CC6C /* 梵蒂冈城国.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "梵蒂冈城国.png"; sourceTree = "<group>"; };
+		A1986E46191A3EA20064CC6C /* 梵蒂冈城国@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "梵蒂冈城国@2x.png"; sourceTree = "<group>"; };
+		A1986E47191A3EA20064CC6C /* 欧盟.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "欧盟.png"; sourceTree = "<group>"; };
+		A1986E48191A3EA20064CC6C /* 欧盟@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "欧盟@2x.png"; sourceTree = "<group>"; };
+		A1986E49191A3EA20064CC6C /* 比利时.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "比利时.png"; sourceTree = "<group>"; };
+		A1986E4A191A3EA20064CC6C /* 比利时@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "比利时@2x.png"; sourceTree = "<group>"; };
+		A1986E4B191A3EA20064CC6C /* 毛里塔尼亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "毛里塔尼亚.png"; sourceTree = "<group>"; };
+		A1986E4C191A3EA20064CC6C /* 毛里塔尼亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "毛里塔尼亚@2x.png"; sourceTree = "<group>"; };
+		A1986E4D191A3EA20064CC6C /* 毛里求斯.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "毛里求斯.png"; sourceTree = "<group>"; };
+		A1986E4E191A3EA20064CC6C /* 毛里求斯@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "毛里求斯@2x.png"; sourceTree = "<group>"; };
+		A1986E4F191A3EA20064CC6C /* 汤加.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "汤加.png"; sourceTree = "<group>"; };
+		A1986E50191A3EA20064CC6C /* 汤加@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "汤加@2x.png"; sourceTree = "<group>"; };
+		A1986E51191A3EA20064CC6C /* 沙特阿拉伯.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "沙特阿拉伯.png"; sourceTree = "<group>"; };
+		A1986E52191A3EA20064CC6C /* 沙特阿拉伯@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "沙特阿拉伯@2x.png"; sourceTree = "<group>"; };
+		A1986E53191A3EA20064CC6C /* 法国.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "法国.png"; sourceTree = "<group>"; };
+		A1986E54191A3EA20064CC6C /* 法国@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "法国@2x.png"; sourceTree = "<group>"; };
+		A1986E55191A3EA20064CC6C /* 法罗群岛.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "法罗群岛.png"; sourceTree = "<group>"; };
+		A1986E56191A3EA20064CC6C /* 法罗群岛@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "法罗群岛@2x.png"; sourceTree = "<group>"; };
+		A1986E57191A3EA20064CC6C /* 波兰.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "波兰.png"; sourceTree = "<group>"; };
+		A1986E58191A3EA20064CC6C /* 波兰@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "波兰@2x.png"; sourceTree = "<group>"; };
+		A1986E59191A3EA20064CC6C /* 波多黎各.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "波多黎各.png"; sourceTree = "<group>"; };
+		A1986E5A191A3EA20064CC6C /* 波多黎各@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "波多黎各@2x.png"; sourceTree = "<group>"; };
+		A1986E5B191A3EA20064CC6C /* 波黑.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "波黑.png"; sourceTree = "<group>"; };
+		A1986E5C191A3EA20064CC6C /* 波黑@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "波黑@2x.png"; sourceTree = "<group>"; };
+		A1986E5D191A3EA20064CC6C /* 泰国.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "泰国.png"; sourceTree = "<group>"; };
+		A1986E5E191A3EA20064CC6C /* 泰国@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "泰国@2x.png"; sourceTree = "<group>"; };
+		A1986E5F191A3EA20064CC6C /* 津巴布韦.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "津巴布韦.png"; sourceTree = "<group>"; };
+		A1986E60191A3EA20064CC6C /* 津巴布韦@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "津巴布韦@2x.png"; sourceTree = "<group>"; };
+		A1986E61191A3EA20064CC6C /* 洪都拉斯.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "洪都拉斯.png"; sourceTree = "<group>"; };
+		A1986E62191A3EA20064CC6C /* 洪都拉斯@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "洪都拉斯@2x.png"; sourceTree = "<group>"; };
+		A1986E63191A3EA20064CC6C /* 海地.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "海地.png"; sourceTree = "<group>"; };
+		A1986E64191A3EA20064CC6C /* 海地@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "海地@2x.png"; sourceTree = "<group>"; };
+		A1986E65191A3EA20064CC6C /* 澳大利亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "澳大利亚.png"; sourceTree = "<group>"; };
+		A1986E66191A3EA20064CC6C /* 澳大利亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "澳大利亚@2x.png"; sourceTree = "<group>"; };
+		A1986E67191A3EA20064CC6C /* 澳门.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "澳门.png"; sourceTree = "<group>"; };
+		A1986E68191A3EA20064CC6C /* 澳门@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "澳门@2x.png"; sourceTree = "<group>"; };
+		A1986E69191A3EA20064CC6C /* 爱尔兰.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "爱尔兰.png"; sourceTree = "<group>"; };
+		A1986E6A191A3EA20064CC6C /* 爱尔兰@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "爱尔兰@2x.png"; sourceTree = "<group>"; };
+		A1986E6B191A3EA20064CC6C /* 爱沙尼亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "爱沙尼亚.png"; sourceTree = "<group>"; };
+		A1986E6C191A3EA20064CC6C /* 爱沙尼亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "爱沙尼亚@2x.png"; sourceTree = "<group>"; };
+		A1986E6D191A3EA20064CC6C /* 牙买加.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "牙买加.png"; sourceTree = "<group>"; };
+		A1986E6E191A3EA20064CC6C /* 牙买加@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "牙买加@2x.png"; sourceTree = "<group>"; };
+		A1986E6F191A3EA20064CC6C /* 特立尼达和多巴哥.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "特立尼达和多巴哥.png"; sourceTree = "<group>"; };
+		A1986E70191A3EA20064CC6C /* 特立尼达和多巴哥@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "特立尼达和多巴哥@2x.png"; sourceTree = "<group>"; };
+		A1986E71191A3EA20064CC6C /* 玻利维亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "玻利维亚.png"; sourceTree = "<group>"; };
+		A1986E72191A3EA20064CC6C /* 玻利维亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "玻利维亚@2x.png"; sourceTree = "<group>"; };
+		A1986E73191A3EA20064CC6C /* 瑙鲁.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑙鲁.png"; sourceTree = "<group>"; };
+		A1986E74191A3EA20064CC6C /* 瑙鲁@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑙鲁@2x.png"; sourceTree = "<group>"; };
+		A1986E75191A3EA20064CC6C /* 瑞典.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑞典.png"; sourceTree = "<group>"; };
+		A1986E76191A3EA20064CC6C /* 瑞典@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑞典@2x.png"; sourceTree = "<group>"; };
+		A1986E77191A3EA20064CC6C /* 瑞士.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑞士.png"; sourceTree = "<group>"; };
+		A1986E78191A3EA20064CC6C /* 瑞士@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑞士@2x.png"; sourceTree = "<group>"; };
+		A1986E79191A3EA20064CC6C /* 瓦努阿图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瓦努阿图.png"; sourceTree = "<group>"; };
+		A1986E7A191A3EA20064CC6C /* 瓦努阿图@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瓦努阿图@2x.png"; sourceTree = "<group>"; };
+		A1986E7B191A3EA20064CC6C /* 白俄罗斯.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "白俄罗斯.png"; sourceTree = "<group>"; };
+		A1986E7C191A3EA20064CC6C /* 白俄罗斯@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "白俄罗斯@2x.png"; sourceTree = "<group>"; };
+		A1986E7D191A3EA20064CC6C /* 直布罗陀.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "直布罗陀.png"; sourceTree = "<group>"; };
+		A1986E7E191A3EA20064CC6C /* 直布罗陀@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "直布罗陀@2x.png"; sourceTree = "<group>"; };
+		A1986E7F191A3EA20064CC6C /* 科威特.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "科威特.png"; sourceTree = "<group>"; };
+		A1986E80191A3EA20064CC6C /* 科威特@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "科威特@2x.png"; sourceTree = "<group>"; };
+		A1986E81191A3EA20064CC6C /* 科摩罗.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "科摩罗.png"; sourceTree = "<group>"; };
+		A1986E82191A3EA20064CC6C /* 科摩罗@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "科摩罗@2x.png"; sourceTree = "<group>"; };
+		A1986E83191A3EA20064CC6C /* 科特廸亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "科特廸亚.png"; sourceTree = "<group>"; };
+		A1986E84191A3EA20064CC6C /* 科特廸亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "科特廸亚@2x.png"; sourceTree = "<group>"; };
+		A1986E85191A3EA20064CC6C /* 秘鲁.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "秘鲁.png"; sourceTree = "<group>"; };
+		A1986E86191A3EA20064CC6C /* 秘鲁@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "秘鲁@2x.png"; sourceTree = "<group>"; };
+		A1986E87191A3EA20064CC6C /* 突尼斯.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "突尼斯.png"; sourceTree = "<group>"; };
+		A1986E88191A3EA20064CC6C /* 突尼斯@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "突尼斯@2x.png"; sourceTree = "<group>"; };
+		A1986E89191A3EA20064CC6C /* 立陶宛.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "立陶宛.png"; sourceTree = "<group>"; };
+		A1986E8A191A3EA20064CC6C /* 立陶宛@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "立陶宛@2x.png"; sourceTree = "<group>"; };
+		A1986E8B191A3EA20064CC6C /* 索马里.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "索马里.png"; sourceTree = "<group>"; };
+		A1986E8C191A3EA20064CC6C /* 索马里@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "索马里@2x.png"; sourceTree = "<group>"; };
+		A1986E8D191A3EA20064CC6C /* 约旦.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "约旦.png"; sourceTree = "<group>"; };
+		A1986E8E191A3EA20064CC6C /* 约旦@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "约旦@2x.png"; sourceTree = "<group>"; };
+		A1986E8F191A3EA20064CC6C /* 纳米比亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "纳米比亚.png"; sourceTree = "<group>"; };
+		A1986E90191A3EA20064CC6C /* 纳米比亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "纳米比亚@2x.png"; sourceTree = "<group>"; };
+		A1986E91191A3EA20064CC6C /* 缅甸.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "缅甸.png"; sourceTree = "<group>"; };
+		A1986E92191A3EA20064CC6C /* 缅甸@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "缅甸@2x.png"; sourceTree = "<group>"; };
+		A1986E93191A3EA20064CC6C /* 罗马尼亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "罗马尼亚.png"; sourceTree = "<group>"; };
+		A1986E94191A3EA20064CC6C /* 罗马尼亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "罗马尼亚@2x.png"; sourceTree = "<group>"; };
+		A1986E95191A3EA20064CC6C /* 美国.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "美国.png"; sourceTree = "<group>"; };
+		A1986E96191A3EA20064CC6C /* 美国@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "美国@2x.png"; sourceTree = "<group>"; };
+		A1986E97191A3EA20064CC6C /* 美国阿拉斯酋长.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "美国阿拉斯酋长.png"; sourceTree = "<group>"; };
+		A1986E98191A3EA20064CC6C /* 美国阿拉斯酋长@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "美国阿拉斯酋长@2x.png"; sourceTree = "<group>"; };
+		A1986E99191A3EA20064CC6C /* 老挝.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "老挝.png"; sourceTree = "<group>"; };
+		A1986E9A191A3EA20064CC6C /* 老挝@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "老挝@2x.png"; sourceTree = "<group>"; };
+		A1986E9B191A3EA20064CC6C /* 肯尼亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "肯尼亚.png"; sourceTree = "<group>"; };
+		A1986E9C191A3EA20064CC6C /* 肯尼亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "肯尼亚@2x.png"; sourceTree = "<group>"; };
+		A1986E9D191A3EA20064CC6C /* 芬兰.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "芬兰.png"; sourceTree = "<group>"; };
+		A1986E9E191A3EA20064CC6C /* 芬兰@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "芬兰@2x.png"; sourceTree = "<group>"; };
+		A1986E9F191A3EA20064CC6C /* 苏丹.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "苏丹.png"; sourceTree = "<group>"; };
+		A1986EA0191A3EA20064CC6C /* 苏丹@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "苏丹@2x.png"; sourceTree = "<group>"; };
+		A1986EA1191A3EA20064CC6C /* 苏格兰.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "苏格兰.png"; sourceTree = "<group>"; };
+		A1986EA2191A3EA20064CC6C /* 苏格兰@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "苏格兰@2x.png"; sourceTree = "<group>"; };
+		A1986EA3191A3EA20064CC6C /* 苏里南.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "苏里南.png"; sourceTree = "<group>"; };
+		A1986EA4191A3EA20064CC6C /* 苏里南@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "苏里南@2x.png"; sourceTree = "<group>"; };
+		A1986EA5191A3EA20064CC6C /* 英国.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "英国.png"; sourceTree = "<group>"; };
+		A1986EA6191A3EA20064CC6C /* 英国@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "英国@2x.png"; sourceTree = "<group>"; };
+		A1986EA7191A3EA20064CC6C /* 英格兰.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "英格兰.png"; sourceTree = "<group>"; };
+		A1986EA8191A3EA20064CC6C /* 英格兰@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "英格兰@2x.png"; sourceTree = "<group>"; };
+		A1986EA9191A3EA20064CC6C /* 荷兰.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "荷兰.png"; sourceTree = "<group>"; };
+		A1986EAA191A3EA20064CC6C /* 荷兰@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "荷兰@2x.png"; sourceTree = "<group>"; };
+		A1986EAB191A3EA20064CC6C /* 莫桑比克.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "莫桑比克.png"; sourceTree = "<group>"; };
+		A1986EAC191A3EA20064CC6C /* 莫桑比克@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "莫桑比克@2x.png"; sourceTree = "<group>"; };
+		A1986EAD191A3EA20064CC6C /* 莱索托.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "莱索托.png"; sourceTree = "<group>"; };
+		A1986EAE191A3EA20064CC6C /* 莱索托@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "莱索托@2x.png"; sourceTree = "<group>"; };
+		A1986EAF191A3EA20064CC6C /* 菲律宾.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "菲律宾.png"; sourceTree = "<group>"; };
+		A1986EB0191A3EA20064CC6C /* 菲律宾@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "菲律宾@2x.png"; sourceTree = "<group>"; };
+		A1986EB1191A3EA20064CC6C /* 萨尔瓦多.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "萨尔瓦多.png"; sourceTree = "<group>"; };
+		A1986EB2191A3EA20064CC6C /* 萨尔瓦多@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "萨尔瓦多@2x.png"; sourceTree = "<group>"; };
+		A1986EB3191A3EA20064CC6C /* 萨摩亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "萨摩亚.png"; sourceTree = "<group>"; };
+		A1986EB4191A3EA20064CC6C /* 萨摩亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "萨摩亚@2x.png"; sourceTree = "<group>"; };
+		A1986EB5191A3EA20064CC6C /* 葡萄牙.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "葡萄牙.png"; sourceTree = "<group>"; };
+		A1986EB6191A3EA20064CC6C /* 葡萄牙@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "葡萄牙@2x.png"; sourceTree = "<group>"; };
+		A1986EB7191A3EA20064CC6C /* 蒙古.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "蒙古.png"; sourceTree = "<group>"; };
+		A1986EB8191A3EA20064CC6C /* 蒙古@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "蒙古@2x.png"; sourceTree = "<group>"; };
+		A1986EB9191A3EA20064CC6C /* 西撒哈拉.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "西撒哈拉.png"; sourceTree = "<group>"; };
+		A1986EBA191A3EA20064CC6C /* 西撒哈拉@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "西撒哈拉@2x.png"; sourceTree = "<group>"; };
+		A1986EBB191A3EA20064CC6C /* 西班牙.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "西班牙.png"; sourceTree = "<group>"; };
+		A1986EBC191A3EA20064CC6C /* 西班牙@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "西班牙@2x.png"; sourceTree = "<group>"; };
+		A1986EBD191A3EA20064CC6C /* 贝宁.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "贝宁.png"; sourceTree = "<group>"; };
+		A1986EBE191A3EA20064CC6C /* 贝宁@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "贝宁@2x.png"; sourceTree = "<group>"; };
+		A1986EBF191A3EA20064CC6C /* 赞比亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "赞比亚.png"; sourceTree = "<group>"; };
+		A1986EC0191A3EA20064CC6C /* 赞比亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "赞比亚@2x.png"; sourceTree = "<group>"; };
+		A1986EC1191A3EA20064CC6C /* 赤道几内亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "赤道几内亚.png"; sourceTree = "<group>"; };
+		A1986EC2191A3EA20064CC6C /* 赤道几内亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "赤道几内亚@2x.png"; sourceTree = "<group>"; };
+		A1986EC3191A3EA20064CC6C /* 越南.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "越南.png"; sourceTree = "<group>"; };
+		A1986EC4191A3EA20064CC6C /* 越南@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "越南@2x.png"; sourceTree = "<group>"; };
+		A1986EC5191A3EA20064CC6C /* 阿塞拜疆.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "阿塞拜疆.png"; sourceTree = "<group>"; };
+		A1986EC6191A3EA20064CC6C /* 阿塞拜疆@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "阿塞拜疆@2x.png"; sourceTree = "<group>"; };
+		A1986EC7191A3EA20064CC6C /* 阿富汗.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "阿富汗.png"; sourceTree = "<group>"; };
+		A1986EC8191A3EA20064CC6C /* 阿富汗@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "阿富汗@2x.png"; sourceTree = "<group>"; };
+		A1986EC9191A3EA20064CC6C /* 阿尔及利亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "阿尔及利亚.png"; sourceTree = "<group>"; };
+		A1986ECA191A3EA20064CC6C /* 阿尔及利亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "阿尔及利亚@2x.png"; sourceTree = "<group>"; };
+		A1986ECB191A3EA20064CC6C /* 阿尔巴尼亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "阿尔巴尼亚.png"; sourceTree = "<group>"; };
+		A1986ECC191A3EA20064CC6C /* 阿尔巴尼亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "阿尔巴尼亚@2x.png"; sourceTree = "<group>"; };
+		A1986ECD191A3EA20064CC6C /* 阿曼.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "阿曼.png"; sourceTree = "<group>"; };
+		A1986ECE191A3EA20064CC6C /* 阿曼@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "阿曼@2x.png"; sourceTree = "<group>"; };
+		A1986ECF191A3EA20064CC6C /* 阿根廷.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "阿根廷.png"; sourceTree = "<group>"; };
+		A1986ED0191A3EA20064CC6C /* 阿根廷@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "阿根廷@2x.png"; sourceTree = "<group>"; };
+		A1986ED1191A3EA20064CC6C /* 阿鲁巴岛.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "阿鲁巴岛.png"; sourceTree = "<group>"; };
+		A1986ED2191A3EA20064CC6C /* 阿鲁巴岛@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "阿鲁巴岛@2x.png"; sourceTree = "<group>"; };
+		A1986ED3191A3EA20064CC6C /* 韩国.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "韩国.png"; sourceTree = "<group>"; };
+		A1986ED4191A3EA20064CC6C /* 韩国@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "韩国@2x.png"; sourceTree = "<group>"; };
+		A1986ED5191A3EA20064CC6C /* 香港.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "香港.png"; sourceTree = "<group>"; };
+		A1986ED6191A3EA20064CC6C /* 香港@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "香港@2x.png"; sourceTree = "<group>"; };
+		A1986ED7191A3EA20064CC6C /* 马其顿.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "马其顿.png"; sourceTree = "<group>"; };
+		A1986ED8191A3EA20064CC6C /* 马其顿@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "马其顿@2x.png"; sourceTree = "<group>"; };
+		A1986ED9191A3EA20064CC6C /* 马尔代夫.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "马尔代夫.png"; sourceTree = "<group>"; };
+		A1986EDA191A3EA20064CC6C /* 马尔代夫@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "马尔代夫@2x.png"; sourceTree = "<group>"; };
+		A1986EDB191A3EA20064CC6C /* 马拉维.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "马拉维.png"; sourceTree = "<group>"; };
+		A1986EDC191A3EA20064CC6C /* 马拉维@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "马拉维@2x.png"; sourceTree = "<group>"; };
+		A1986EDD191A3EA20064CC6C /* 马来西亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "马来西亚.png"; sourceTree = "<group>"; };
+		A1986EDE191A3EA20064CC6C /* 马来西亚@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "马来西亚@2x.png"; sourceTree = "<group>"; };
+		A1986EDF191A3EA20064CC6C /* 马绍尔群岛.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "马绍尔群岛.png"; sourceTree = "<group>"; };
+		A1986EE0191A3EA20064CC6C /* 马绍尔群岛@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "马绍尔群岛@2x.png"; sourceTree = "<group>"; };
+		A1986EE1191A3EA20064CC6C /* 马耳他.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "马耳他.png"; sourceTree = "<group>"; };
+		A1986EE2191A3EA20064CC6C /* 马耳他@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "马耳他@2x.png"; sourceTree = "<group>"; };
+		A1986EE3191A3EA20064CC6C /* 马达加斯加.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "马达加斯加.png"; sourceTree = "<group>"; };
+		A1986EE4191A3EA20064CC6C /* 马达加斯加@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "马达加斯加@2x.png"; sourceTree = "<group>"; };
+		A1986EE5191A3EA20064CC6C /* 马里.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "马里.png"; sourceTree = "<group>"; };
+		A1986EE6191A3EA20064CC6C /* 马里@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "马里@2x.png"; sourceTree = "<group>"; };
+		A1986EE7191A3EA20064CC6C /* 黎巴嫩.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "黎巴嫩.png"; sourceTree = "<group>"; };
+		A1986EE8191A3EA20064CC6C /* 黎巴嫩@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "黎巴嫩@2x.png"; sourceTree = "<group>"; };
+		A1986EE9191A3EA20064CC6C /* 黑山.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "黑山.png"; sourceTree = "<group>"; };
+		A1986EEA191A3EA20064CC6C /* 黑山@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "黑山@2x.png"; sourceTree = "<group>"; };
 		A199395618FBD687002E7E51 /* KGChatCellInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGChatCellInfo.h; sourceTree = "<group>"; };
 		A199395718FBD687002E7E51 /* KGChatCellInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGChatCellInfo.m; sourceTree = "<group>"; };
 		A19F0EC118E2AE0D00C2944D /* KGBuyerRefPicturesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGBuyerRefPicturesCell.h; sourceTree = "<group>"; };
@@ -766,6 +1609,7 @@
 		A143015E18BB5D7A0064DF87 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A1986D46191A3EA10064CC6C /* country */,
 				A195420D190E6564009F5318 /* check-mark-white.png */,
 				A195420E190E6564009F5318 /* check-mark-white@2x.png */,
 				A14B637719066B3800C14A15 /* avatar-female.png */,
@@ -953,6 +1797,8 @@
 				A14B63731906656400C14A15 /* KGRecentContactObject.m */,
 				A1AD133C1908D8BD00DF17B6 /* KGUserObject.h */,
 				A1AD133D1908D8BD00DF17B6 /* KGUserObject.m */,
+				A1986D43191A367B0064CC6C /* KGBuyerSummaryObject.h */,
+				A1986D44191A367B0064CC6C /* KGBuyerSummaryObject.m */,
 			);
 			path = objects;
 			sourceTree = "<group>";
@@ -1001,6 +1847,433 @@
 				A174CD661904CFAC00D910C5 /* UIViewController+Additions.m */,
 			);
 			path = Addtional;
+			sourceTree = "<group>";
+		};
+		A1986D46191A3EA10064CC6C /* country */ = {
+			isa = PBXGroup;
+			children = (
+				A1986D47191A3EA10064CC6C /* 不丹.png */,
+				A1986D48191A3EA10064CC6C /* 不丹@2x.png */,
+				A1986D49191A3EA10064CC6C /* 东帝汶.png */,
+				A1986D4A191A3EA10064CC6C /* 东帝汶@2x.png */,
+				A1986D4B191A3EA10064CC6C /* 中国.png */,
+				A1986D4C191A3EA10064CC6C /* 中国@2x.png */,
+				A1986D4D191A3EA10064CC6C /* 中非共和国.png */,
+				A1986D4E191A3EA10064CC6C /* 中非共和国@2x.png */,
+				A1986D4F191A3EA10064CC6C /* 丹麦.png */,
+				A1986D50191A3EA10064CC6C /* 丹麦@2x.png */,
+				A1986D51191A3EA10064CC6C /* 乌克兰.png */,
+				A1986D52191A3EA10064CC6C /* 乌克兰@2x.png */,
+				A1986D53191A3EA10064CC6C /* 乌兹别克斯坦.png */,
+				A1986D54191A3EA10064CC6C /* 乌兹别克斯坦@2x.png */,
+				A1986D55191A3EA10064CC6C /* 乌干达.png */,
+				A1986D56191A3EA10064CC6C /* 乌干达@2x.png */,
+				A1986D57191A3EA10064CC6C /* 乌拉圭.png */,
+				A1986D58191A3EA10064CC6C /* 乌拉圭@2x.png */,
+				A1986D59191A3EA10064CC6C /* 乍得共和国.png */,
+				A1986D5A191A3EA10064CC6C /* 乍得共和国@2x.png */,
+				A1986D5B191A3EA10064CC6C /* 也门.png */,
+				A1986D5C191A3EA10064CC6C /* 也门@2x.png */,
+				A1986D5D191A3EA10064CC6C /* 亚美尼亚.png */,
+				A1986D5E191A3EA10064CC6C /* 亚美尼亚@2x.png */,
+				A1986D5F191A3EA10064CC6C /* 以色列.png */,
+				A1986D60191A3EA10064CC6C /* 以色列@2x.png */,
+				A1986D61191A3EA10064CC6C /* 伊拉克.png */,
+				A1986D62191A3EA10064CC6C /* 伊拉克@2x.png */,
+				A1986D63191A3EA10064CC6C /* 伊朗.png */,
+				A1986D64191A3EA10064CC6C /* 伊朗@2x.png */,
+				A1986D65191A3EA10064CC6C /* 伯利兹.png */,
+				A1986D66191A3EA10064CC6C /* 伯利兹@2x.png */,
+				A1986D67191A3EA10064CC6C /* 佛得角.png */,
+				A1986D68191A3EA10064CC6C /* 佛得角@2x.png */,
+				A1986D69191A3EA10064CC6C /* 俄罗斯.png */,
+				A1986D6A191A3EA10064CC6C /* 俄罗斯@2x.png */,
+				A1986D6B191A3EA10064CC6C /* 保加利亚.png */,
+				A1986D6C191A3EA10064CC6C /* 保加利亚@2x.png */,
+				A1986D6D191A3EA10064CC6C /* 克罗地亚.png */,
+				A1986D6E191A3EA10064CC6C /* 克罗地亚@2x.png */,
+				A1986D6F191A3EA10064CC6C /* 冈比亚.png */,
+				A1986D70191A3EA10064CC6C /* 冈比亚@2x.png */,
+				A1986D71191A3EA10064CC6C /* 冰岛.png */,
+				A1986D72191A3EA10064CC6C /* 冰岛@2x.png */,
+				A1986D73191A3EA10064CC6C /* 几内亚.png */,
+				A1986D74191A3EA10064CC6C /* 几内亚@2x.png */,
+				A1986D75191A3EA10064CC6C /* 几内亚比绍.png */,
+				A1986D76191A3EA10064CC6C /* 几内亚比绍@2x.png */,
+				A1986D77191A3EA10064CC6C /* 列支敦斯登.png */,
+				A1986D78191A3EA10064CC6C /* 列支敦斯登@2x.png */,
+				A1986D79191A3EA10064CC6C /* 刚果（布）.png */,
+				A1986D7A191A3EA10064CC6C /* 刚果（布）@2x.png */,
+				A1986D7B191A3EA10064CC6C /* 刚果（金）.png */,
+				A1986D7C191A3EA10064CC6C /* 刚果（金）@2x.png */,
+				A1986D7D191A3EA10064CC6C /* 利比里亚.png */,
+				A1986D7E191A3EA10064CC6C /* 利比里亚@2x.png */,
+				A1986D7F191A3EA10064CC6C /* 加拿大.png */,
+				A1986D80191A3EA10064CC6C /* 加拿大@2x.png */,
+				A1986D81191A3EA10064CC6C /* 加泰罗尼亚.png */,
+				A1986D82191A3EA10064CC6C /* 加泰罗尼亚@2x.png */,
+				A1986D83191A3EA10064CC6C /* 加纳.png */,
+				A1986D84191A3EA10064CC6C /* 加纳@2x.png */,
+				A1986D85191A3EA10064CC6C /* 加蓬.png */,
+				A1986D86191A3EA10064CC6C /* 加蓬@2x.png */,
+				A1986D87191A3EA10064CC6C /* 匈牙利.png */,
+				A1986D88191A3EA10064CC6C /* 匈牙利@2x.png */,
+				A1986D89191A3EA10064CC6C /* 北爱尔兰.png */,
+				A1986D8A191A3EA10064CC6C /* 北爱尔兰@2x.png */,
+				A1986D8B191A3EA10064CC6C /* 南极洲.png */,
+				A1986D8C191A3EA10064CC6C /* 南极洲@2x.png */,
+				A1986D8D191A3EA10064CC6C /* 南非.png */,
+				A1986D8E191A3EA10064CC6C /* 南非@2x.png */,
+				A1986D8F191A3EA10064CC6C /* 博茨瓦纳.png */,
+				A1986D90191A3EA10064CC6C /* 博茨瓦纳@2x.png */,
+				A1986D91191A3EA10064CC6C /* 卡塔尔.png */,
+				A1986D92191A3EA10064CC6C /* 卡塔尔@2x.png */,
+				A1986D93191A3EA10064CC6C /* 卢旺达.png */,
+				A1986D94191A3EA10064CC6C /* 卢旺达@2x.png */,
+				A1986D95191A3EA10064CC6C /* 卢森堡.png */,
+				A1986D96191A3EA10064CC6C /* 卢森堡@2x.png */,
+				A1986D97191A3EA10064CC6C /* 印度.png */,
+				A1986D98191A3EA10064CC6C /* 印度@2x.png */,
+				A1986D99191A3EA10064CC6C /* 印度尼西亚.png */,
+				A1986D9A191A3EA10064CC6C /* 印度尼西亚@2x.png */,
+				A1986D9B191A3EA10064CC6C /* 危地马拉.png */,
+				A1986D9C191A3EA10064CC6C /* 危地马拉@2x.png */,
+				A1986D9D191A3EA10064CC6C /* 厄瓜多尔.png */,
+				A1986D9E191A3EA10064CC6C /* 厄瓜多尔@2x.png */,
+				A1986D9F191A3EA10064CC6C /* 厄立特里亚国.png */,
+				A1986DA0191A3EA10064CC6C /* 厄立特里亚国@2x.png */,
+				A1986DA1191A3EA10064CC6C /* 叙利亚.png */,
+				A1986DA2191A3EA10064CC6C /* 叙利亚@2x.png */,
+				A1986DA3191A3EA10064CC6C /* 古巴.png */,
+				A1986DA4191A3EA10064CC6C /* 古巴@2x.png */,
+				A1986DA5191A3EA10064CC6C /* 台湾.png */,
+				A1986DA6191A3EA10064CC6C /* 台湾@2x.png */,
+				A1986DA7191A3EA10064CC6C /* 吉尔吉斯斯坦.png */,
+				A1986DA8191A3EA10064CC6C /* 吉尔吉斯斯坦@2x.png */,
+				A1986DA9191A3EA10064CC6C /* 吉布提.png */,
+				A1986DAA191A3EA10064CC6C /* 吉布提@2x.png */,
+				A1986DAB191A3EA10064CC6C /* 吕底亚.png */,
+				A1986DAC191A3EA10064CC6C /* 吕底亚@2x.png */,
+				A1986DAD191A3EA10064CC6C /* 哈萨克斯坦.png */,
+				A1986DAE191A3EA10064CC6C /* 哈萨克斯坦@2x.png */,
+				A1986DAF191A3EA10064CC6C /* 哥伦比亚.png */,
+				A1986DB0191A3EA10064CC6C /* 哥伦比亚@2x.png */,
+				A1986DB1191A3EA10064CC6C /* 哥斯达黎加.png */,
+				A1986DB2191A3EA10064CC6C /* 哥斯达黎加@2x.png */,
+				A1986DB3191A3EA10064CC6C /* 喀麦隆.png */,
+				A1986DB4191A3EA10064CC6C /* 喀麦隆@2x.png */,
+				A1986DB5191A3EA10064CC6C /* 图瓦卢.png */,
+				A1986DB6191A3EA10064CC6C /* 图瓦卢@2x.png */,
+				A1986DB7191A3EA10064CC6C /* 土库曼斯坦.png */,
+				A1986DB8191A3EA10064CC6C /* 土库曼斯坦@2x.png */,
+				A1986DB9191A3EA10064CC6C /* 土耳其.png */,
+				A1986DBA191A3EA10064CC6C /* 土耳其@2x.png */,
+				A1986DBB191A3EA10064CC6C /* 圣卢西亚.png */,
+				A1986DBC191A3EA10064CC6C /* 圣卢西亚@2x.png */,
+				A1986DBD191A3EA10064CC6C /* 圣基茨和尼维斯.png */,
+				A1986DBE191A3EA10064CC6C /* 圣基茨和尼维斯@2x.png */,
+				A1986DBF191A3EA10064CC6C /* 圣多美和普林西比.png */,
+				A1986DC0191A3EA10064CC6C /* 圣多美和普林西比@2x.png */,
+				A1986DC1191A3EA10064CC6C /* 圣文森特和格林纳丁斯.png */,
+				A1986DC2191A3EA10064CC6C /* 圣文森特和格林纳丁斯@2x.png */,
+				A1986DC3191A3EA10064CC6C /* 圣马力诺.png */,
+				A1986DC4191A3EA10064CC6C /* 圣马力诺@2x.png */,
+				A1986DC5191A3EA10064CC6C /* 圭亚那.png */,
+				A1986DC6191A3EA10064CC6C /* 圭亚那@2x.png */,
+				A1986DC7191A3EA10064CC6C /* 坦桑尼亚.png */,
+				A1986DC8191A3EA10064CC6C /* 坦桑尼亚@2x.png */,
+				A1986DC9191A3EA10064CC6C /* 埃及.png */,
+				A1986DCA191A3EA10064CC6C /* 埃及@2x.png */,
+				A1986DCB191A3EA10064CC6C /* 埃塞俄比亚.png */,
+				A1986DCC191A3EA10064CC6C /* 埃塞俄比亚@2x.png */,
+				A1986DCD191A3EA10064CC6C /* 基里巴斯.png */,
+				A1986DCE191A3EA10064CC6C /* 基里巴斯@2x.png */,
+				A1986DCF191A3EA10064CC6C /* 塔吉克斯坦.png */,
+				A1986DD0191A3EA10064CC6C /* 塔吉克斯坦@2x.png */,
+				A1986DD1191A3EA10064CC6C /* 塞内加尔.png */,
+				A1986DD2191A3EA10064CC6C /* 塞内加尔@2x.png */,
+				A1986DD3191A3EA10064CC6C /* 塞尔维亚.png */,
+				A1986DD4191A3EA10064CC6C /* 塞尔维亚@2x.png */,
+				A1986DD5191A3EA10064CC6C /* 塞拉利昂.png */,
+				A1986DD6191A3EA10064CC6C /* 塞拉利昂@2x.png */,
+				A1986DD7191A3EA10064CC6C /* 塞浦路斯.png */,
+				A1986DD8191A3EA10064CC6C /* 塞浦路斯@2x.png */,
+				A1986DD9191A3EA10064CC6C /* 塞舌尔.png */,
+				A1986DDA191A3EA10064CC6C /* 塞舌尔@2x.png */,
+				A1986DDB191A3EA10064CC6C /* 墨西哥.png */,
+				A1986DDC191A3EA10064CC6C /* 墨西哥@2x.png */,
+				A1986DDD191A3EA10064CC6C /* 多哥.png */,
+				A1986DDE191A3EA10064CC6C /* 多哥@2x.png */,
+				A1986DDF191A3EA10064CC6C /* 多米尼克.png */,
+				A1986DE0191A3EA10064CC6C /* 多米尼克@2x.png */,
+				A1986DE1191A3EA10064CC6C /* 多米尼加共和国.png */,
+				A1986DE2191A3EA10064CC6C /* 多米尼加共和国@2x.png */,
+				A1986DE3191A3EA10064CC6C /* 奥地利.png */,
+				A1986DE4191A3EA10064CC6C /* 奥地利@2x.png */,
+				A1986DE5191A3EA10064CC6C /* 委内瑞拉.png */,
+				A1986DE6191A3EA10064CC6C /* 委内瑞拉@2x.png */,
+				A1986DE7191A3EA10064CC6C /* 威尔士.png */,
+				A1986DE8191A3EA10064CC6C /* 威尔士@2x.png */,
+				A1986DE9191A3EA10064CC6C /* 孟加拉.png */,
+				A1986DEA191A3EA10064CC6C /* 孟加拉@2x.png */,
+				A1986DEB191A3EA10064CC6C /* 安哥拉.png */,
+				A1986DEC191A3EA10064CC6C /* 安哥拉@2x.png */,
+				A1986DED191A3EA10064CC6C /* 安提瓜和巴布达.png */,
+				A1986DEE191A3EA10064CC6C /* 安提瓜和巴布达@2x.png */,
+				A1986DEF191A3EA10064CC6C /* 安道尔共和国.png */,
+				A1986DF0191A3EA10064CC6C /* 安道尔共和国@2x.png */,
+				A1986DF1191A3EA10064CC6C /* 密克罗尼西亚.png */,
+				A1986DF2191A3EA10064CC6C /* 密克罗尼西亚@2x.png */,
+				A1986DF3191A3EA10064CC6C /* 尼加拉瓜.png */,
+				A1986DF4191A3EA10064CC6C /* 尼加拉瓜@2x.png */,
+				A1986DF5191A3EA10064CC6C /* 尼日利亚.png */,
+				A1986DF6191A3EA10064CC6C /* 尼日利亚@2x.png */,
+				A1986DF7191A3EA10064CC6C /* 尼日尔.png */,
+				A1986DF8191A3EA10064CC6C /* 尼日尔@2x.png */,
+				A1986DF9191A3EA10064CC6C /* 尼泊尔.png */,
+				A1986DFA191A3EA10064CC6C /* 尼泊尔@2x.png */,
+				A1986DFB191A3EA10064CC6C /* 巴勒斯坦.png */,
+				A1986DFC191A3EA10064CC6C /* 巴勒斯坦@2x.png */,
+				A1986DFD191A3EA10064CC6C /* 巴哈马.png */,
+				A1986DFE191A3EA10064CC6C /* 巴哈马@2x.png */,
+				A1986DFF191A3EA10064CC6C /* 巴基斯坦.png */,
+				A1986E00191A3EA10064CC6C /* 巴基斯坦@2x.png */,
+				A1986E01191A3EA10064CC6C /* 巴巴多斯.png */,
+				A1986E02191A3EA10064CC6C /* 巴巴多斯@2x.png */,
+				A1986E03191A3EA10064CC6C /* 巴布亚新几内亚.png */,
+				A1986E04191A3EA10064CC6C /* 巴布亚新几内亚@2x.png */,
+				A1986E05191A3EA10064CC6C /* 巴拉圭.png */,
+				A1986E06191A3EA10064CC6C /* 巴拉圭@2x.png */,
+				A1986E07191A3EA10064CC6C /* 巴拿马.png */,
+				A1986E08191A3EA10064CC6C /* 巴拿马@2x.png */,
+				A1986E09191A3EA10064CC6C /* 巴林.png */,
+				A1986E0A191A3EA10064CC6C /* 巴林@2x.png */,
+				A1986E0B191A3EA10064CC6C /* 巴西.png */,
+				A1986E0C191A3EA10064CC6C /* 巴西@2x.png */,
+				A1986E0D191A3EA10064CC6C /* 布基纳法索.png */,
+				A1986E0E191A3EA10064CC6C /* 布基纳法索@2x.png */,
+				A1986E0F191A3EA10064CC6C /* 布隆迪.png */,
+				A1986E10191A3EA10064CC6C /* 布隆迪@2x.png */,
+				A1986E11191A3EA10064CC6C /* 希腊.png */,
+				A1986E12191A3EA10064CC6C /* 希腊@2x.png */,
+				A1986E13191A3EA10064CC6C /* 帕劳.png */,
+				A1986E14191A3EA10064CC6C /* 帕劳@2x.png */,
+				A1986E15191A3EA10064CC6C /* 德国.png */,
+				A1986E16191A3EA10064CC6C /* 德国@2x.png */,
+				A1986E17191A3EA10064CC6C /* 意大利.png */,
+				A1986E18191A3EA10064CC6C /* 意大利@2x.png */,
+				A1986E19191A3EA10064CC6C /* 所罗门群岛.png */,
+				A1986E1A191A3EA10064CC6C /* 所罗门群岛@2x.png */,
+				A1986E1B191A3EA10064CC6C /* 拉脱维亚.png */,
+				A1986E1C191A3EA10064CC6C /* 拉脱维亚@2x.png */,
+				A1986E1D191A3EA10064CC6C /* 挪威.png */,
+				A1986E1E191A3EA10064CC6C /* 挪威@2x.png */,
+				A1986E1F191A3EA10064CC6C /* 捷克共和国.png */,
+				A1986E20191A3EA20064CC6C /* 捷克共和国@2x.png */,
+				A1986E21191A3EA20064CC6C /* 摩尔多瓦.png */,
+				A1986E22191A3EA20064CC6C /* 摩尔多瓦@2x.png */,
+				A1986E23191A3EA20064CC6C /* 摩洛哥.png */,
+				A1986E24191A3EA20064CC6C /* 摩洛哥@2x.png */,
+				A1986E25191A3EA20064CC6C /* 摩纳哥.png */,
+				A1986E26191A3EA20064CC6C /* 摩纳哥@2x.png */,
+				A1986E27191A3EA20064CC6C /* 文莱.png */,
+				A1986E28191A3EA20064CC6C /* 文莱@2x.png */,
+				A1986E29191A3EA20064CC6C /* 斐济.png */,
+				A1986E2A191A3EA20064CC6C /* 斐济@2x.png */,
+				A1986E2B191A3EA20064CC6C /* 斯威士兰.png */,
+				A1986E2C191A3EA20064CC6C /* 斯威士兰@2x.png */,
+				A1986E2D191A3EA20064CC6C /* 斯洛伐克.png */,
+				A1986E2E191A3EA20064CC6C /* 斯洛伐克@2x.png */,
+				A1986E2F191A3EA20064CC6C /* 斯洛文尼亚.png */,
+				A1986E30191A3EA20064CC6C /* 斯洛文尼亚@2x.png */,
+				A1986E31191A3EA20064CC6C /* 斯里兰卡.png */,
+				A1986E32191A3EA20064CC6C /* 斯里兰卡@2x.png */,
+				A1986E33191A3EA20064CC6C /* 新加坡.png */,
+				A1986E34191A3EA20064CC6C /* 新加坡@2x.png */,
+				A1986E35191A3EA20064CC6C /* 新西兰.png */,
+				A1986E36191A3EA20064CC6C /* 新西兰@2x.png */,
+				A1986E37191A3EA20064CC6C /* 日本.png */,
+				A1986E38191A3EA20064CC6C /* 日本@2x.png */,
+				A1986E39191A3EA20064CC6C /* 智利.png */,
+				A1986E3A191A3EA20064CC6C /* 智利@2x.png */,
+				A1986E3B191A3EA20064CC6C /* 朝鲜.png */,
+				A1986E3C191A3EA20064CC6C /* 朝鲜@2x.png */,
+				A1986E3D191A3EA20064CC6C /* 柬埔寨.png */,
+				A1986E3E191A3EA20064CC6C /* 柬埔寨@2x.png */,
+				A1986E3F191A3EA20064CC6C /* 格林纳达.png */,
+				A1986E40191A3EA20064CC6C /* 格林纳达@2x.png */,
+				A1986E41191A3EA20064CC6C /* 格陵兰.png */,
+				A1986E42191A3EA20064CC6C /* 格陵兰@2x.png */,
+				A1986E43191A3EA20064CC6C /* 格鲁吉亚.png */,
+				A1986E44191A3EA20064CC6C /* 格鲁吉亚@2x.png */,
+				A1986E45191A3EA20064CC6C /* 梵蒂冈城国.png */,
+				A1986E46191A3EA20064CC6C /* 梵蒂冈城国@2x.png */,
+				A1986E47191A3EA20064CC6C /* 欧盟.png */,
+				A1986E48191A3EA20064CC6C /* 欧盟@2x.png */,
+				A1986E49191A3EA20064CC6C /* 比利时.png */,
+				A1986E4A191A3EA20064CC6C /* 比利时@2x.png */,
+				A1986E4B191A3EA20064CC6C /* 毛里塔尼亚.png */,
+				A1986E4C191A3EA20064CC6C /* 毛里塔尼亚@2x.png */,
+				A1986E4D191A3EA20064CC6C /* 毛里求斯.png */,
+				A1986E4E191A3EA20064CC6C /* 毛里求斯@2x.png */,
+				A1986E4F191A3EA20064CC6C /* 汤加.png */,
+				A1986E50191A3EA20064CC6C /* 汤加@2x.png */,
+				A1986E51191A3EA20064CC6C /* 沙特阿拉伯.png */,
+				A1986E52191A3EA20064CC6C /* 沙特阿拉伯@2x.png */,
+				A1986E53191A3EA20064CC6C /* 法国.png */,
+				A1986E54191A3EA20064CC6C /* 法国@2x.png */,
+				A1986E55191A3EA20064CC6C /* 法罗群岛.png */,
+				A1986E56191A3EA20064CC6C /* 法罗群岛@2x.png */,
+				A1986E57191A3EA20064CC6C /* 波兰.png */,
+				A1986E58191A3EA20064CC6C /* 波兰@2x.png */,
+				A1986E59191A3EA20064CC6C /* 波多黎各.png */,
+				A1986E5A191A3EA20064CC6C /* 波多黎各@2x.png */,
+				A1986E5B191A3EA20064CC6C /* 波黑.png */,
+				A1986E5C191A3EA20064CC6C /* 波黑@2x.png */,
+				A1986E5D191A3EA20064CC6C /* 泰国.png */,
+				A1986E5E191A3EA20064CC6C /* 泰国@2x.png */,
+				A1986E5F191A3EA20064CC6C /* 津巴布韦.png */,
+				A1986E60191A3EA20064CC6C /* 津巴布韦@2x.png */,
+				A1986E61191A3EA20064CC6C /* 洪都拉斯.png */,
+				A1986E62191A3EA20064CC6C /* 洪都拉斯@2x.png */,
+				A1986E63191A3EA20064CC6C /* 海地.png */,
+				A1986E64191A3EA20064CC6C /* 海地@2x.png */,
+				A1986E65191A3EA20064CC6C /* 澳大利亚.png */,
+				A1986E66191A3EA20064CC6C /* 澳大利亚@2x.png */,
+				A1986E67191A3EA20064CC6C /* 澳门.png */,
+				A1986E68191A3EA20064CC6C /* 澳门@2x.png */,
+				A1986E69191A3EA20064CC6C /* 爱尔兰.png */,
+				A1986E6A191A3EA20064CC6C /* 爱尔兰@2x.png */,
+				A1986E6B191A3EA20064CC6C /* 爱沙尼亚.png */,
+				A1986E6C191A3EA20064CC6C /* 爱沙尼亚@2x.png */,
+				A1986E6D191A3EA20064CC6C /* 牙买加.png */,
+				A1986E6E191A3EA20064CC6C /* 牙买加@2x.png */,
+				A1986E6F191A3EA20064CC6C /* 特立尼达和多巴哥.png */,
+				A1986E70191A3EA20064CC6C /* 特立尼达和多巴哥@2x.png */,
+				A1986E71191A3EA20064CC6C /* 玻利维亚.png */,
+				A1986E72191A3EA20064CC6C /* 玻利维亚@2x.png */,
+				A1986E73191A3EA20064CC6C /* 瑙鲁.png */,
+				A1986E74191A3EA20064CC6C /* 瑙鲁@2x.png */,
+				A1986E75191A3EA20064CC6C /* 瑞典.png */,
+				A1986E76191A3EA20064CC6C /* 瑞典@2x.png */,
+				A1986E77191A3EA20064CC6C /* 瑞士.png */,
+				A1986E78191A3EA20064CC6C /* 瑞士@2x.png */,
+				A1986E79191A3EA20064CC6C /* 瓦努阿图.png */,
+				A1986E7A191A3EA20064CC6C /* 瓦努阿图@2x.png */,
+				A1986E7B191A3EA20064CC6C /* 白俄罗斯.png */,
+				A1986E7C191A3EA20064CC6C /* 白俄罗斯@2x.png */,
+				A1986E7D191A3EA20064CC6C /* 直布罗陀.png */,
+				A1986E7E191A3EA20064CC6C /* 直布罗陀@2x.png */,
+				A1986E7F191A3EA20064CC6C /* 科威特.png */,
+				A1986E80191A3EA20064CC6C /* 科威特@2x.png */,
+				A1986E81191A3EA20064CC6C /* 科摩罗.png */,
+				A1986E82191A3EA20064CC6C /* 科摩罗@2x.png */,
+				A1986E83191A3EA20064CC6C /* 科特廸亚.png */,
+				A1986E84191A3EA20064CC6C /* 科特廸亚@2x.png */,
+				A1986E85191A3EA20064CC6C /* 秘鲁.png */,
+				A1986E86191A3EA20064CC6C /* 秘鲁@2x.png */,
+				A1986E87191A3EA20064CC6C /* 突尼斯.png */,
+				A1986E88191A3EA20064CC6C /* 突尼斯@2x.png */,
+				A1986E89191A3EA20064CC6C /* 立陶宛.png */,
+				A1986E8A191A3EA20064CC6C /* 立陶宛@2x.png */,
+				A1986E8B191A3EA20064CC6C /* 索马里.png */,
+				A1986E8C191A3EA20064CC6C /* 索马里@2x.png */,
+				A1986E8D191A3EA20064CC6C /* 约旦.png */,
+				A1986E8E191A3EA20064CC6C /* 约旦@2x.png */,
+				A1986E8F191A3EA20064CC6C /* 纳米比亚.png */,
+				A1986E90191A3EA20064CC6C /* 纳米比亚@2x.png */,
+				A1986E91191A3EA20064CC6C /* 缅甸.png */,
+				A1986E92191A3EA20064CC6C /* 缅甸@2x.png */,
+				A1986E93191A3EA20064CC6C /* 罗马尼亚.png */,
+				A1986E94191A3EA20064CC6C /* 罗马尼亚@2x.png */,
+				A1986E95191A3EA20064CC6C /* 美国.png */,
+				A1986E96191A3EA20064CC6C /* 美国@2x.png */,
+				A1986E97191A3EA20064CC6C /* 美国阿拉斯酋长.png */,
+				A1986E98191A3EA20064CC6C /* 美国阿拉斯酋长@2x.png */,
+				A1986E99191A3EA20064CC6C /* 老挝.png */,
+				A1986E9A191A3EA20064CC6C /* 老挝@2x.png */,
+				A1986E9B191A3EA20064CC6C /* 肯尼亚.png */,
+				A1986E9C191A3EA20064CC6C /* 肯尼亚@2x.png */,
+				A1986E9D191A3EA20064CC6C /* 芬兰.png */,
+				A1986E9E191A3EA20064CC6C /* 芬兰@2x.png */,
+				A1986E9F191A3EA20064CC6C /* 苏丹.png */,
+				A1986EA0191A3EA20064CC6C /* 苏丹@2x.png */,
+				A1986EA1191A3EA20064CC6C /* 苏格兰.png */,
+				A1986EA2191A3EA20064CC6C /* 苏格兰@2x.png */,
+				A1986EA3191A3EA20064CC6C /* 苏里南.png */,
+				A1986EA4191A3EA20064CC6C /* 苏里南@2x.png */,
+				A1986EA5191A3EA20064CC6C /* 英国.png */,
+				A1986EA6191A3EA20064CC6C /* 英国@2x.png */,
+				A1986EA7191A3EA20064CC6C /* 英格兰.png */,
+				A1986EA8191A3EA20064CC6C /* 英格兰@2x.png */,
+				A1986EA9191A3EA20064CC6C /* 荷兰.png */,
+				A1986EAA191A3EA20064CC6C /* 荷兰@2x.png */,
+				A1986EAB191A3EA20064CC6C /* 莫桑比克.png */,
+				A1986EAC191A3EA20064CC6C /* 莫桑比克@2x.png */,
+				A1986EAD191A3EA20064CC6C /* 莱索托.png */,
+				A1986EAE191A3EA20064CC6C /* 莱索托@2x.png */,
+				A1986EAF191A3EA20064CC6C /* 菲律宾.png */,
+				A1986EB0191A3EA20064CC6C /* 菲律宾@2x.png */,
+				A1986EB1191A3EA20064CC6C /* 萨尔瓦多.png */,
+				A1986EB2191A3EA20064CC6C /* 萨尔瓦多@2x.png */,
+				A1986EB3191A3EA20064CC6C /* 萨摩亚.png */,
+				A1986EB4191A3EA20064CC6C /* 萨摩亚@2x.png */,
+				A1986EB5191A3EA20064CC6C /* 葡萄牙.png */,
+				A1986EB6191A3EA20064CC6C /* 葡萄牙@2x.png */,
+				A1986EB7191A3EA20064CC6C /* 蒙古.png */,
+				A1986EB8191A3EA20064CC6C /* 蒙古@2x.png */,
+				A1986EB9191A3EA20064CC6C /* 西撒哈拉.png */,
+				A1986EBA191A3EA20064CC6C /* 西撒哈拉@2x.png */,
+				A1986EBB191A3EA20064CC6C /* 西班牙.png */,
+				A1986EBC191A3EA20064CC6C /* 西班牙@2x.png */,
+				A1986EBD191A3EA20064CC6C /* 贝宁.png */,
+				A1986EBE191A3EA20064CC6C /* 贝宁@2x.png */,
+				A1986EBF191A3EA20064CC6C /* 赞比亚.png */,
+				A1986EC0191A3EA20064CC6C /* 赞比亚@2x.png */,
+				A1986EC1191A3EA20064CC6C /* 赤道几内亚.png */,
+				A1986EC2191A3EA20064CC6C /* 赤道几内亚@2x.png */,
+				A1986EC3191A3EA20064CC6C /* 越南.png */,
+				A1986EC4191A3EA20064CC6C /* 越南@2x.png */,
+				A1986EC5191A3EA20064CC6C /* 阿塞拜疆.png */,
+				A1986EC6191A3EA20064CC6C /* 阿塞拜疆@2x.png */,
+				A1986EC7191A3EA20064CC6C /* 阿富汗.png */,
+				A1986EC8191A3EA20064CC6C /* 阿富汗@2x.png */,
+				A1986EC9191A3EA20064CC6C /* 阿尔及利亚.png */,
+				A1986ECA191A3EA20064CC6C /* 阿尔及利亚@2x.png */,
+				A1986ECB191A3EA20064CC6C /* 阿尔巴尼亚.png */,
+				A1986ECC191A3EA20064CC6C /* 阿尔巴尼亚@2x.png */,
+				A1986ECD191A3EA20064CC6C /* 阿曼.png */,
+				A1986ECE191A3EA20064CC6C /* 阿曼@2x.png */,
+				A1986ECF191A3EA20064CC6C /* 阿根廷.png */,
+				A1986ED0191A3EA20064CC6C /* 阿根廷@2x.png */,
+				A1986ED1191A3EA20064CC6C /* 阿鲁巴岛.png */,
+				A1986ED2191A3EA20064CC6C /* 阿鲁巴岛@2x.png */,
+				A1986ED3191A3EA20064CC6C /* 韩国.png */,
+				A1986ED4191A3EA20064CC6C /* 韩国@2x.png */,
+				A1986ED5191A3EA20064CC6C /* 香港.png */,
+				A1986ED6191A3EA20064CC6C /* 香港@2x.png */,
+				A1986ED7191A3EA20064CC6C /* 马其顿.png */,
+				A1986ED8191A3EA20064CC6C /* 马其顿@2x.png */,
+				A1986ED9191A3EA20064CC6C /* 马尔代夫.png */,
+				A1986EDA191A3EA20064CC6C /* 马尔代夫@2x.png */,
+				A1986EDB191A3EA20064CC6C /* 马拉维.png */,
+				A1986EDC191A3EA20064CC6C /* 马拉维@2x.png */,
+				A1986EDD191A3EA20064CC6C /* 马来西亚.png */,
+				A1986EDE191A3EA20064CC6C /* 马来西亚@2x.png */,
+				A1986EDF191A3EA20064CC6C /* 马绍尔群岛.png */,
+				A1986EE0191A3EA20064CC6C /* 马绍尔群岛@2x.png */,
+				A1986EE1191A3EA20064CC6C /* 马耳他.png */,
+				A1986EE2191A3EA20064CC6C /* 马耳他@2x.png */,
+				A1986EE3191A3EA20064CC6C /* 马达加斯加.png */,
+				A1986EE4191A3EA20064CC6C /* 马达加斯加@2x.png */,
+				A1986EE5191A3EA20064CC6C /* 马里.png */,
+				A1986EE6191A3EA20064CC6C /* 马里@2x.png */,
+				A1986EE7191A3EA20064CC6C /* 黎巴嫩.png */,
+				A1986EE8191A3EA20064CC6C /* 黎巴嫩@2x.png */,
+				A1986EE9191A3EA20064CC6C /* 黑山.png */,
+				A1986EEA191A3EA20064CC6C /* 黑山@2x.png */,
+			);
+			path = country;
 			sourceTree = "<group>";
 		};
 		A1A06F4B18FFCD9200C9EAC3 /* MTStatusBarOverlay */ = {
@@ -1135,134 +2408,554 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1987028191A3EA20064CC6C /* 科特廸亚@2x.png in Resources */,
+				A198704E191A3EA20064CC6C /* 荷兰@2x.png in Resources */,
+				A1986FED191A3EA20064CC6C /* 比利时.png in Resources */,
+				A1987043191A3EA20064CC6C /* 苏丹.png in Resources */,
+				A1986FB2191A3EA20064CC6C /* 布基纳法索@2x.png in Resources */,
+				A1986F6D191A3EA20064CC6C /* 埃及.png in Resources */,
+				A1986F47191A3EA20064CC6C /* 古巴.png in Resources */,
+				A198706F191A3EA20064CC6C /* 阿尔巴尼亚.png in Resources */,
 				A16FBEF718DC255A009E2F66 /* empty_heart.png in Resources */,
+				A1986FC0191A3EA20064CC6C /* 拉脱维亚@2x.png in Resources */,
+				A1986FAB191A3EA20064CC6C /* 巴拿马.png in Resources */,
+				A1986F87191A3EA20064CC6C /* 奥地利.png in Resources */,
 				A10150E318CB8BA7004A729D /* default_line.png in Resources */,
+				A1986F21191A3EA20064CC6C /* 利比里亚.png in Resources */,
+				A1986FF5191A3EA20064CC6C /* 沙特阿拉伯.png in Resources */,
 				A182A2B818E1267F00B63470 /* my-follow@2x.png in Resources */,
 				A190FCD618C87B1700A87329 /* star_1@2x.png in Resources */,
+				A1986F7F191A3EA20064CC6C /* 墨西哥.png in Resources */,
+				A1986FE6191A3EA20064CC6C /* 格陵兰@2x.png in Resources */,
+				A1987000191A3EA20064CC6C /* 波黑@2x.png in Resources */,
+				A198707D191A3EA20064CC6C /* 马尔代夫.png in Resources */,
 				A1036BB618BF336200FA7358 /* test-head.jpg in Resources */,
+				A1986F94191A3EA20064CC6C /* 安道尔共和国@2x.png in Resources */,
+				A1987018191A3EA20064CC6C /* 瑙鲁@2x.png in Resources */,
+				A1986F40191A3EA20064CC6C /* 危地马拉@2x.png in Resources */,
 				A110FA1E1907A879001651A3 /* order.storyboard in Resources */,
+				A1987007191A3EA20064CC6C /* 海地.png in Resources */,
+				A198704F191A3EA20064CC6C /* 莫桑比克.png in Resources */,
+				A1986F6C191A3EA20064CC6C /* 坦桑尼亚@2x.png in Resources */,
 				A180C0F718C8BFD900116DCF /* me_active.png in Resources */,
+				A1987008191A3EA20064CC6C /* 海地@2x.png in Resources */,
+				A1986FD8191A3EA20064CC6C /* 新加坡@2x.png in Resources */,
+				A1986F3A191A3EA20064CC6C /* 卢森堡@2x.png in Resources */,
+				A1987020191A3EA20064CC6C /* 白俄罗斯@2x.png in Resources */,
 				A16FBF0118DC4F3A009E2F66 /* recent-contact.png in Resources */,
+				A198705F191A3EA20064CC6C /* 西班牙.png in Resources */,
+				A1987069191A3EA20064CC6C /* 阿塞拜疆.png in Resources */,
 				A1F8A65718C9826700ECDABB /* tab-bar@2x.png in Resources */,
+				A1986F15191A3EA20064CC6C /* 冰岛.png in Resources */,
+				A198708D191A3EA20064CC6C /* 黑山.png in Resources */,
+				A1986F4D191A3EA20064CC6C /* 吉布提.png in Resources */,
 				A1A6232618BDE01E00D8E9A0 /* arrow-down@2x.png in Resources */,
+				A1986EFD191A3EA20064CC6C /* 乍得共和国.png in Resources */,
 				A190FCE418C89BB000A87329 /* nav_bar_item_back@2x.png in Resources */,
+				A198707B191A3EA20064CC6C /* 马其顿.png in Resources */,
+				A198708C191A3EA20064CC6C /* 黎巴嫩@2x.png in Resources */,
+				A1986EED191A3EA20064CC6C /* 东帝汶.png in Resources */,
+				A1986EFB191A3EA20064CC6C /* 乌拉圭.png in Resources */,
+				A1986F68191A3EA20064CC6C /* 圣马力诺@2x.png in Resources */,
 				A180C10018C8BFD900116DCF /* write_active@2x.png in Resources */,
+				A1986F44191A3EA20064CC6C /* 厄立特里亚国@2x.png in Resources */,
+				A1986F2C191A3EA20064CC6C /* 匈牙利@2x.png in Resources */,
+				A1987015191A3EA20064CC6C /* 玻利维亚.png in Resources */,
 				A182A2B618E1267F00B63470 /* my-collect@2x.png in Resources */,
+				A1986EF6191A3EA20064CC6C /* 乌克兰@2x.png in Resources */,
+				A1986FB1191A3EA20064CC6C /* 布基纳法索.png in Resources */,
+				A1986F42191A3EA20064CC6C /* 厄瓜多尔@2x.png in Resources */,
+				A1987047191A3EA20064CC6C /* 苏里南.png in Resources */,
+				A1986FF1191A3EA20064CC6C /* 毛里求斯.png in Resources */,
+				A1986FD7191A3EA20064CC6C /* 新加坡.png in Resources */,
+				A1987087191A3EA20064CC6C /* 马达加斯加.png in Resources */,
+				A1986F31191A3EA20064CC6C /* 南非.png in Resources */,
 				A1930B2C18CEFDC7000D84A1 /* collect.png in Resources */,
+				A1986FC8191A3EA20064CC6C /* 摩洛哥@2x.png in Resources */,
+				A1986F10191A3EA20064CC6C /* 保加利亚@2x.png in Resources */,
+				A1986F5A191A3EA20064CC6C /* 图瓦卢@2x.png in Resources */,
 				A10150E618CB8BA7004A729D /* selected_line@2x.png in Resources */,
+				A1986FEB191A3EA20064CC6C /* 欧盟.png in Resources */,
+				A1987081191A3EA20064CC6C /* 马来西亚.png in Resources */,
+				A1986FDB191A3EA20064CC6C /* 日本.png in Resources */,
 				A1036BB818BF3A1700FA7358 /* test-canada-flag.png in Resources */,
+				A1986F18191A3EA20064CC6C /* 几内亚@2x.png in Resources */,
+				A1986F96191A3EA20064CC6C /* 密克罗尼西亚@2x.png in Resources */,
+				A1987033191A3EA20064CC6C /* 纳米比亚.png in Resources */,
+				A1986F25191A3EA20064CC6C /* 加泰罗尼亚.png in Resources */,
 				A182A2BA18E1267F00B63470 /* my-settings@2x.png in Resources */,
+				A1986F5E191A3EA20064CC6C /* 土耳其@2x.png in Resources */,
+				A1987054191A3EA20064CC6C /* 菲律宾@2x.png in Resources */,
+				A1986F11191A3EA20064CC6C /* 克罗地亚.png in Resources */,
+				A1987068191A3EA20064CC6C /* 越南@2x.png in Resources */,
+				A198706E191A3EA20064CC6C /* 阿尔及利亚@2x.png in Resources */,
 				A106930818C068CF003CC6BC /* head-indicator@2x.png in Resources */,
+				A1986FF0191A3EA20064CC6C /* 毛里塔尼亚@2x.png in Resources */,
+				A1987035191A3EA20064CC6C /* 缅甸.png in Resources */,
 				A1A003EF18F3CE9E00B5A1D7 /* chat-voice.png in Resources */,
+				A1986F7A191A3EA20064CC6C /* 塞拉利昂@2x.png in Resources */,
 				A14B637B19066B3800C14A15 /* avatar-female.png in Resources */,
 				A16FBEFB18DC255A009E2F66 /* half_heart.png in Resources */,
+				A1986F4B191A3EA20064CC6C /* 吉尔吉斯斯坦.png in Resources */,
 				A1954210190E6564009F5318 /* check-mark-white@2x.png in Resources */,
+				A1986F78191A3EA20064CC6C /* 塞尔维亚@2x.png in Resources */,
+				A1986F99191A3EA20064CC6C /* 尼日利亚.png in Resources */,
+				A1986FC3191A3EA20064CC6C /* 捷克共和国.png in Resources */,
+				A1986F62191A3EA20064CC6C /* 圣基茨和尼维斯@2x.png in Resources */,
+				A1986F79191A3EA20064CC6C /* 塞拉利昂.png in Resources */,
+				A1986F07191A3EA20064CC6C /* 伊朗.png in Resources */,
+				A198702D191A3EA20064CC6C /* 立陶宛.png in Resources */,
+				A198703A191A3EA20064CC6C /* 美国@2x.png in Resources */,
+				A1986FA5191A3EA20064CC6C /* 巴巴多斯.png in Resources */,
+				A1986EFC191A3EA20064CC6C /* 乌拉圭@2x.png in Resources */,
+				A1986F73191A3EA20064CC6C /* 塔吉克斯坦.png in Resources */,
+				A198703F191A3EA20064CC6C /* 肯尼亚.png in Resources */,
+				A1987005191A3EA20064CC6C /* 洪都拉斯.png in Resources */,
+				A1986F8F191A3EA20064CC6C /* 安哥拉.png in Resources */,
+				A1986F2B191A3EA20064CC6C /* 匈牙利.png in Resources */,
+				A198706C191A3EA20064CC6C /* 阿富汗@2x.png in Resources */,
 				A1DD135618E05562000F52C2 /* selected-tablecell.png in Resources */,
+				A1986F0D191A3EA20064CC6C /* 俄罗斯.png in Resources */,
+				A1986F29191A3EA20064CC6C /* 加蓬.png in Resources */,
+				A1986F9D191A3EA20064CC6C /* 尼泊尔.png in Resources */,
+				A1987080191A3EA20064CC6C /* 马拉维@2x.png in Resources */,
+				A1986F17191A3EA20064CC6C /* 几内亚.png in Resources */,
+				A1987062191A3EA20064CC6C /* 贝宁@2x.png in Resources */,
+				A198706A191A3EA20064CC6C /* 阿塞拜疆@2x.png in Resources */,
 				A1A003EE18F3CE9E00B5A1D7 /* chat-emotion@2x.png in Resources */,
+				A1986F26191A3EA20064CC6C /* 加泰罗尼亚@2x.png in Resources */,
+				A198705A191A3EA20064CC6C /* 葡萄牙@2x.png in Resources */,
+				A1986F3C191A3EA20064CC6C /* 印度@2x.png in Resources */,
 				A182A2AB18E125FC00B63470 /* my-orders.png in Resources */,
+				A1987053191A3EA20064CC6C /* 菲律宾.png in Resources */,
+				A1986F55191A3EA20064CC6C /* 哥斯达黎加.png in Resources */,
+				A1987030191A3EA20064CC6C /* 索马里@2x.png in Resources */,
+				A1986FDF191A3EA20064CC6C /* 朝鲜.png in Resources */,
+				A1986EF3191A3EA20064CC6C /* 丹麦.png in Resources */,
+				A1986EF8191A3EA20064CC6C /* 乌兹别克斯坦@2x.png in Resources */,
+				A1987061191A3EA20064CC6C /* 贝宁.png in Resources */,
+				A1987025191A3EA20064CC6C /* 科摩罗.png in Resources */,
+				A1987023191A3EA20064CC6C /* 科威特.png in Resources */,
 				A1F8A66318C9A8B400ECDABB /* v-user-icon@2x.png in Resources */,
+				A1987058191A3EA20064CC6C /* 萨摩亚@2x.png in Resources */,
+				A1986FCD191A3EA20064CC6C /* 斐济.png in Resources */,
 				A1930B2918CEFD47000D84A1 /* chat@2x.png in Resources */,
+				A1986F1A191A3EA20064CC6C /* 几内亚比绍@2x.png in Resources */,
 				A1036BBC18BF3DCF00FA7358 /* location@2x.png in Resources */,
+				A1986FB6191A3EA20064CC6C /* 希腊@2x.png in Resources */,
 				A180C0FB18C8BFD900116DCF /* more_active.png in Resources */,
+				A198706B191A3EA20064CC6C /* 阿富汗.png in Resources */,
+				A1986FA7191A3EA20064CC6C /* 巴布亚新几内亚.png in Resources */,
+				A1986F4C191A3EA20064CC6C /* 吉尔吉斯斯坦@2x.png in Resources */,
+				A1986FF3191A3EA20064CC6C /* 汤加.png in Resources */,
+				A198700C191A3EA20064CC6C /* 澳门@2x.png in Resources */,
 				A182A2AC18E125FC00B63470 /* my-orders@2x.png in Resources */,
+				A1986F69191A3EA20064CC6C /* 圭亚那.png in Resources */,
 				A1BBB08618D6EE86002C8BD2 /* search.png in Resources */,
+				A1986F2A191A3EA20064CC6C /* 加蓬@2x.png in Resources */,
 				A1A003FB18F3F60500B5A1D7 /* chat-view-background@2x.png in Resources */,
+				A1986F9F191A3EA20064CC6C /* 巴勒斯坦.png in Resources */,
+				A1986FBA191A3EA20064CC6C /* 德国@2x.png in Resources */,
 				A12ADE4618D3225F0009B225 /* close-active@2x.png in Resources */,
+				A198707F191A3EA20064CC6C /* 马拉维.png in Resources */,
+				A1986F67191A3EA20064CC6C /* 圣马力诺.png in Resources */,
+				A1986FB3191A3EA20064CC6C /* 布隆迪.png in Resources */,
+				A1986F52191A3EA20064CC6C /* 哈萨克斯坦@2x.png in Resources */,
+				A1986EEE191A3EA20064CC6C /* 东帝汶@2x.png in Resources */,
 				A1B22C5418D1B96B00953EE5 /* add_img.png in Resources */,
 				A1A6231618BDA73B00D8E9A0 /* navbar-item-right.png in Resources */,
+				A1986F1B191A3EA20064CC6C /* 列支敦斯登.png in Resources */,
+				A1986F14191A3EA20064CC6C /* 冈比亚@2x.png in Resources */,
+				A1986FFA191A3EA20064CC6C /* 法罗群岛@2x.png in Resources */,
 				A180C0FC18C8BFD900116DCF /* more_active@2x.png in Resources */,
+				A1986FCA191A3EA20064CC6C /* 摩纳哥@2x.png in Resources */,
+				A1987050191A3EA20064CC6C /* 莫桑比克@2x.png in Resources */,
+				A1986F0C191A3EA20064CC6C /* 佛得角@2x.png in Resources */,
+				A1986F2F191A3EA20064CC6C /* 南极洲.png in Resources */,
+				A1987045191A3EA20064CC6C /* 苏格兰.png in Resources */,
 				A16FBEFA18DC255A009E2F66 /* full_heart@2x.png in Resources */,
 				A190FCDC18C87B1700A87329 /* star_4@2x.png in Resources */,
+				A1986FEA191A3EA20064CC6C /* 梵蒂冈城国@2x.png in Resources */,
+				A1987077191A3EA20064CC6C /* 韩国.png in Resources */,
+				A1986F41191A3EA20064CC6C /* 厄瓜多尔.png in Resources */,
+				A198703E191A3EA20064CC6C /* 老挝@2x.png in Resources */,
 				A1930B2D18CEFDC7000D84A1 /* collect@2x.png in Resources */,
+				A1986FA4191A3EA20064CC6C /* 巴基斯坦@2x.png in Resources */,
 				A18A2B9618E1873500FDFB8E /* bubble-big@2x.png in Resources */,
+				A1986FF7191A3EA20064CC6C /* 法国.png in Resources */,
+				A198708B191A3EA20064CC6C /* 黎巴嫩.png in Resources */,
 				A14B637D19066B3800C14A15 /* avatar-male.png in Resources */,
 				A1A6231818BDC4F400D8E9A0 /* arrow-down.png in Resources */,
+				A1986EF0191A3EA20064CC6C /* 中国@2x.png in Resources */,
+				A1986F4F191A3EA20064CC6C /* 吕底亚.png in Resources */,
+				A198704B191A3EA20064CC6C /* 英格兰.png in Resources */,
 				A16FBEF818DC255A009E2F66 /* empty_heart@2x.png in Resources */,
+				A1986F71191A3EA20064CC6C /* 基里巴斯.png in Resources */,
+				A1986F9E191A3EA20064CC6C /* 尼泊尔@2x.png in Resources */,
+				A1987037191A3EA20064CC6C /* 罗马尼亚.png in Resources */,
+				A1986F45191A3EA20064CC6C /* 叙利亚.png in Resources */,
 				A195420F190E6564009F5318 /* check-mark-white.png in Resources */,
+				A1987017191A3EA20064CC6C /* 瑙鲁.png in Resources */,
+				A198707C191A3EA20064CC6C /* 马其顿@2x.png in Resources */,
+				A1986F8B191A3EA20064CC6C /* 威尔士.png in Resources */,
 				A1B22C5018D16BED00953EE5 /* down-arrow-big.png in Resources */,
+				A1987012191A3EA20064CC6C /* 牙买加@2x.png in Resources */,
+				A1986F03191A3EA20064CC6C /* 以色列.png in Resources */,
+				A1986FEE191A3EA20064CC6C /* 比利时@2x.png in Resources */,
+				A1986F5D191A3EA20064CC6C /* 土耳其.png in Resources */,
+				A1986FE7191A3EA20064CC6C /* 格鲁吉亚.png in Resources */,
+				A1987027191A3EA20064CC6C /* 科特廸亚.png in Resources */,
+				A1986FCC191A3EA20064CC6C /* 文莱@2x.png in Resources */,
+				A1986F0A191A3EA20064CC6C /* 伯利兹@2x.png in Resources */,
+				A198700B191A3EA20064CC6C /* 澳门.png in Resources */,
+				A1986EFA191A3EA20064CC6C /* 乌干达@2x.png in Resources */,
+				A1986FA6191A3EA20064CC6C /* 巴巴多斯@2x.png in Resources */,
 				A1930B2518CEFB3E000D84A1 /* KGPicBottom.xib in Resources */,
+				A1987071191A3EA20064CC6C /* 阿曼.png in Resources */,
+				A1986F80191A3EA20064CC6C /* 墨西哥@2x.png in Resources */,
+				A1986F7B191A3EA20064CC6C /* 塞浦路斯.png in Resources */,
 				A12ADE4918D323A10009B225 /* delete_img.png in Resources */,
+				A1986FD0191A3EA20064CC6C /* 斯威士兰@2x.png in Resources */,
 				A1A2EED118D4A71C00CEFA96 /* up-arrow-big@2x.png in Resources */,
+				A1986F7D191A3EA20064CC6C /* 塞舌尔.png in Resources */,
+				A1986EEC191A3EA20064CC6C /* 不丹@2x.png in Resources */,
+				A1986FFB191A3EA20064CC6C /* 波兰.png in Resources */,
+				A1987072191A3EA20064CC6C /* 阿曼@2x.png in Resources */,
 				A180C0FD18C8BFD900116DCF /* search_active.png in Resources */,
+				A1987046191A3EA20064CC6C /* 苏格兰@2x.png in Resources */,
+				A1986F97191A3EA20064CC6C /* 尼加拉瓜.png in Resources */,
+				A1986F3B191A3EA20064CC6C /* 印度.png in Resources */,
+				A198702E191A3EA20064CC6C /* 立陶宛@2x.png in Resources */,
+				A1986FBE191A3EA20064CC6C /* 所罗门群岛@2x.png in Resources */,
+				A1986FAF191A3EA20064CC6C /* 巴西.png in Resources */,
 				A182A2B918E1267F00B63470 /* my-settings.png in Resources */,
+				A1986FB7191A3EA20064CC6C /* 帕劳.png in Resources */,
+				A1986F0B191A3EA20064CC6C /* 佛得角.png in Resources */,
+				A1986FA2191A3EA20064CC6C /* 巴哈马@2x.png in Resources */,
+				A1986FD6191A3EA20064CC6C /* 斯里兰卡@2x.png in Resources */,
+				A1986FFE191A3EA20064CC6C /* 波多黎各@2x.png in Resources */,
 				A1036BBB18BF3DCF00FA7358 /* location.png in Resources */,
+				A1986F76191A3EA20064CC6C /* 塞内加尔@2x.png in Resources */,
+				A1986F02191A3EA20064CC6C /* 亚美尼亚@2x.png in Resources */,
 				A197503E18D85F920062CAA7 /* trip@2x.png in Resources */,
+				A1987022191A3EA20064CC6C /* 直布罗陀@2x.png in Resources */,
+				A1986FBB191A3EA20064CC6C /* 意大利.png in Resources */,
+				A1986F48191A3EA20064CC6C /* 古巴@2x.png in Resources */,
 				A190FCC918C857C700A87329 /* more_gray.png in Resources */,
+				A1986F75191A3EA20064CC6C /* 塞内加尔.png in Resources */,
 				A190FCB918C8541F00A87329 /* search_someone_gray.png in Resources */,
+				A198708E191A3EA20064CC6C /* 黑山@2x.png in Resources */,
+				A1986FD2191A3EA20064CC6C /* 斯洛伐克@2x.png in Resources */,
+				A198700F191A3EA20064CC6C /* 爱沙尼亚.png in Resources */,
+				A1986FA1191A3EA20064CC6C /* 巴哈马.png in Resources */,
+				A198701F191A3EA20064CC6C /* 白俄罗斯.png in Resources */,
+				A1987002191A3EA20064CC6C /* 泰国@2x.png in Resources */,
 				A190FCC518C856D800A87329 /* me_gray.png in Resources */,
+				A1986FC2191A3EA20064CC6C /* 挪威@2x.png in Resources */,
+				A1986F77191A3EA20064CC6C /* 塞尔维亚.png in Resources */,
+				A1987057191A3EA20064CC6C /* 萨摩亚.png in Resources */,
+				A1986F05191A3EA20064CC6C /* 伊拉克.png in Resources */,
+				A1986FC7191A3EA20064CC6C /* 摩洛哥.png in Resources */,
+				A1986FE5191A3EA20064CC6C /* 格陵兰.png in Resources */,
+				A1987060191A3EA20064CC6C /* 西班牙@2x.png in Resources */,
 				A1A003FA18F3F60500B5A1D7 /* chat-view-background.png in Resources */,
+				A1986FAA191A3EA20064CC6C /* 巴拉圭@2x.png in Resources */,
 				A1930B2818CEFD47000D84A1 /* chat.png in Resources */,
+				A1987048191A3EA20064CC6C /* 苏里南@2x.png in Resources */,
+				A1986F39191A3EA20064CC6C /* 卢森堡.png in Resources */,
+				A1987082191A3EA20064CC6C /* 马来西亚@2x.png in Resources */,
+				A1986F09191A3EA20064CC6C /* 伯利兹.png in Resources */,
+				A1986FB5191A3EA20064CC6C /* 希腊.png in Resources */,
+				A1986FC9191A3EA20064CC6C /* 摩纳哥.png in Resources */,
 				A1B22C4818D1654D00953EE5 /* add.png in Resources */,
 				A14B637E19066B3800C14A15 /* avatar-male@2x.png in Resources */,
 				A1F8A66218C9A8B400ECDABB /* v-user-icon.png in Resources */,
+				A1986F89191A3EA20064CC6C /* 委内瑞拉.png in Resources */,
 				A190FCD918C87B1700A87329 /* star_3.png in Resources */,
 				A190FCC618C856D800A87329 /* me_gray@2x.png in Resources */,
+				A1987070191A3EA20064CC6C /* 阿尔巴尼亚@2x.png in Resources */,
+				A1986F35191A3EA20064CC6C /* 卡塔尔.png in Resources */,
+				A1986FF2191A3EA20064CC6C /* 毛里求斯@2x.png in Resources */,
+				A1987055191A3EA20064CC6C /* 萨尔瓦多.png in Resources */,
+				A1987011191A3EA20064CC6C /* 牙买加.png in Resources */,
+				A1986F12191A3EA20064CC6C /* 克罗地亚@2x.png in Resources */,
+				A1986F33191A3EA20064CC6C /* 博茨瓦纳.png in Resources */,
+				A198706D191A3EA20064CC6C /* 阿尔及利亚.png in Resources */,
+				A1986F98191A3EA20064CC6C /* 尼加拉瓜@2x.png in Resources */,
+				A1986F72191A3EA20064CC6C /* 基里巴斯@2x.png in Resources */,
+				A1986F46191A3EA20064CC6C /* 叙利亚@2x.png in Resources */,
+				A1986FAC191A3EA20064CC6C /* 巴拿马@2x.png in Resources */,
+				A1986FD1191A3EA20064CC6C /* 斯洛伐克.png in Resources */,
+				A1987010191A3EA20064CC6C /* 爱沙尼亚@2x.png in Resources */,
+				A1987066191A3EA20064CC6C /* 赤道几内亚@2x.png in Resources */,
+				A198705B191A3EA20064CC6C /* 蒙古.png in Resources */,
+				A1986FA3191A3EA20064CC6C /* 巴基斯坦.png in Resources */,
 				A16FBEFC18DC255A009E2F66 /* half_heart@2x.png in Resources */,
+				A1986FE4191A3EA20064CC6C /* 格林纳达@2x.png in Resources */,
 				A182A2BB18E1267F00B63470 /* my-task.png in Resources */,
+				A1986FCF191A3EA20064CC6C /* 斯威士兰.png in Resources */,
+				A198701E191A3EA20064CC6C /* 瓦努阿图@2x.png in Resources */,
+				A1987089191A3EA20064CC6C /* 马里.png in Resources */,
+				A1986F30191A3EA20064CC6C /* 南极洲@2x.png in Resources */,
+				A1987076191A3EA20064CC6C /* 阿鲁巴岛@2x.png in Resources */,
+				A198708A191A3EA20064CC6C /* 马里@2x.png in Resources */,
+				A1986EF9191A3EA20064CC6C /* 乌干达.png in Resources */,
 				A106930718C068CF003CC6BC /* head-indicator.png in Resources */,
+				A1986FCE191A3EA20064CC6C /* 斐济@2x.png in Resources */,
 				A1AFF97818D079160043E75E /* right-arrow.png in Resources */,
+				A198700D191A3EA20064CC6C /* 爱尔兰.png in Resources */,
+				A1987079191A3EA20064CC6C /* 香港.png in Resources */,
+				A1987004191A3EA20064CC6C /* 津巴布韦@2x.png in Resources */,
+				A1987019191A3EA20064CC6C /* 瑞典.png in Resources */,
+				A1986F90191A3EA20064CC6C /* 安哥拉@2x.png in Resources */,
+				A1986FA9191A3EA20064CC6C /* 巴拉圭.png in Resources */,
+				A1986F8E191A3EA20064CC6C /* 孟加拉@2x.png in Resources */,
+				A1986F6E191A3EA20064CC6C /* 埃及@2x.png in Resources */,
+				A1986F06191A3EA20064CC6C /* 伊拉克@2x.png in Resources */,
+				A1986FDD191A3EA20064CC6C /* 智利.png in Resources */,
+				A1986F08191A3EA20064CC6C /* 伊朗@2x.png in Resources */,
+				A1986F53191A3EA20064CC6C /* 哥伦比亚.png in Resources */,
 				A1DD135318E0538E000F52C2 /* add-white@2x.png in Resources */,
+				A1986FA0191A3EA20064CC6C /* 巴勒斯坦@2x.png in Resources */,
+				A1986F3F191A3EA20064CC6C /* 危地马拉.png in Resources */,
+				A1987034191A3EA20064CC6C /* 纳米比亚@2x.png in Resources */,
+				A1986FBF191A3EA20064CC6C /* 拉脱维亚.png in Resources */,
+				A1986F20191A3EA20064CC6C /* 刚果（金）@2x.png in Resources */,
 				A14B637C19066B3800C14A15 /* avatar-female@2x.png in Resources */,
+				A1987044191A3EA20064CC6C /* 苏丹@2x.png in Resources */,
 				A1A2EED018D4A71C00CEFA96 /* up-arrow-big.png in Resources */,
+				A1986FA8191A3EA20064CC6C /* 巴布亚新几内亚@2x.png in Resources */,
+				A1987031191A3EA20064CC6C /* 约旦.png in Resources */,
 				A190FCD818C87B1700A87329 /* star_2@2x.png in Resources */,
+				A1986F19191A3EA20064CC6C /* 几内亚比绍.png in Resources */,
+				A198704A191A3EA20064CC6C /* 英国@2x.png in Resources */,
+				A1986F1E191A3EA20064CC6C /* 刚果（布）@2x.png in Resources */,
+				A198703D191A3EA20064CC6C /* 老挝.png in Resources */,
+				A1986F1C191A3EA20064CC6C /* 列支敦斯登@2x.png in Resources */,
+				A198702C191A3EA20064CC6C /* 突尼斯@2x.png in Resources */,
 				A190FCC218C8566600A87329 /* write_gray@2x.png in Resources */,
+				A1987013191A3EA20064CC6C /* 特立尼达和多巴哥.png in Resources */,
 				A182A2C018E1280200B63470 /* i-am-buyer@2x.png in Resources */,
+				A1986EEF191A3EA20064CC6C /* 中国.png in Resources */,
+				A1987059191A3EA20064CC6C /* 葡萄牙.png in Resources */,
+				A1986F91191A3EA20064CC6C /* 安提瓜和巴布达.png in Resources */,
+				A1987086191A3EA20064CC6C /* 马耳他@2x.png in Resources */,
+				A198704D191A3EA20064CC6C /* 荷兰.png in Resources */,
+				A1986FFF191A3EA20064CC6C /* 波黑.png in Resources */,
+				A198702F191A3EA20064CC6C /* 索马里.png in Resources */,
 				A1F8A65318C9805A00ECDABB /* tab_bar_selected@2x.png in Resources */,
+				A1986F63191A3EA20064CC6C /* 圣多美和普林西比.png in Resources */,
+				A1986F8A191A3EA20064CC6C /* 委内瑞拉@2x.png in Resources */,
+				A1986F0E191A3EA20064CC6C /* 俄罗斯@2x.png in Resources */,
+				A1986F7C191A3EA20064CC6C /* 塞浦路斯@2x.png in Resources */,
+				A1986F5C191A3EA20064CC6C /* 土库曼斯坦@2x.png in Resources */,
+				A1986FEF191A3EA20064CC6C /* 毛里塔尼亚.png in Resources */,
+				A1986F93191A3EA20064CC6C /* 安道尔共和国.png in Resources */,
 				A1A1DAF918C9AE7C00F03E04 /* follow-btn-bg.png in Resources */,
+				A198701A191A3EA20064CC6C /* 瑞典@2x.png in Resources */,
+				A1987075191A3EA20064CC6C /* 阿鲁巴岛.png in Resources */,
 				A190FCDF18C8859400A87329 /* airplane.png in Resources */,
+				A198700E191A3EA20064CC6C /* 爱尔兰@2x.png in Resources */,
+				A1987006191A3EA20064CC6C /* 洪都拉斯@2x.png in Resources */,
+				A198707A191A3EA20064CC6C /* 香港@2x.png in Resources */,
 				A180C0EB18C8BE7800116DCF /* search_someone_active.png in Resources */,
+				A1986FBD191A3EA20064CC6C /* 所罗门群岛.png in Resources */,
+				A1986F22191A3EA20064CC6C /* 利比里亚@2x.png in Resources */,
+				A198700A191A3EA20064CC6C /* 澳大利亚@2x.png in Resources */,
+				A198701B191A3EA20064CC6C /* 瑞士.png in Resources */,
+				A1986FE0191A3EA20064CC6C /* 朝鲜@2x.png in Resources */,
+				A1987009191A3EA20064CC6C /* 澳大利亚.png in Resources */,
+				A1986FFD191A3EA20064CC6C /* 波多黎各.png in Resources */,
+				A1986FEC191A3EA20064CC6C /* 欧盟@2x.png in Resources */,
 				A190FCDA18C87B1700A87329 /* star_3@2x.png in Resources */,
+				A1987074191A3EA20064CC6C /* 阿根廷@2x.png in Resources */,
+				A198703C191A3EA20064CC6C /* 美国阿拉斯酋长@2x.png in Resources */,
 				A16FBEF918DC255A009E2F66 /* full_heart.png in Resources */,
 				A10150E418CB8BA7004A729D /* default_line@2x.png in Resources */,
+				A1986FD4191A3EA20064CC6C /* 斯洛文尼亚@2x.png in Resources */,
 				A1B22C5518D1B96B00953EE5 /* add_img@2x.png in Resources */,
+				A198702B191A3EA20064CC6C /* 突尼斯.png in Resources */,
+				A1986F59191A3EA20064CC6C /* 图瓦卢.png in Resources */,
+				A1986F58191A3EA20064CC6C /* 喀麦隆@2x.png in Resources */,
 				A190FCBD18C855F600A87329 /* search_gray.png in Resources */,
+				A198707E191A3EA20064CC6C /* 马尔代夫@2x.png in Resources */,
 				A1A003E618F3CE8D00B5A1D7 /* chat-add.png in Resources */,
+				A1987026191A3EA20064CC6C /* 科摩罗@2x.png in Resources */,
+				A1986F82191A3EA20064CC6C /* 多哥@2x.png in Resources */,
+				A1986F8D191A3EA20064CC6C /* 孟加拉.png in Resources */,
+				A1986F6F191A3EA20064CC6C /* 埃塞俄比亚.png in Resources */,
+				A1986F32191A3EA20064CC6C /* 南非@2x.png in Resources */,
+				A1986FD9191A3EA20064CC6C /* 新西兰.png in Resources */,
 				A1DD135718E05562000F52C2 /* selected-tablecell@2x.png in Resources */,
+				A1986F9C191A3EA20064CC6C /* 尼日尔@2x.png in Resources */,
+				A1986F83191A3EA20064CC6C /* 多米尼克.png in Resources */,
+				A1987032191A3EA20064CC6C /* 约旦@2x.png in Resources */,
+				A1986F4A191A3EA20064CC6C /* 台湾@2x.png in Resources */,
+				A1986FE8191A3EA20064CC6C /* 格鲁吉亚@2x.png in Resources */,
+				A1986F65191A3EA20064CC6C /* 圣文森特和格林纳丁斯.png in Resources */,
+				A1986F57191A3EA20064CC6C /* 喀麦隆.png in Resources */,
 				A182A2BF18E1280200B63470 /* i-am-buyer.png in Resources */,
+				A1987084191A3EA20064CC6C /* 马绍尔群岛@2x.png in Resources */,
+				A1986F56191A3EA20064CC6C /* 哥斯达黎加@2x.png in Resources */,
+				A1987042191A3EA20064CC6C /* 芬兰@2x.png in Resources */,
+				A1986EFF191A3EA20064CC6C /* 也门.png in Resources */,
+				A198701C191A3EA20064CC6C /* 瑞士@2x.png in Resources */,
+				A1986FC4191A3EA20064CC6C /* 捷克共和国@2x.png in Resources */,
+				A1986F92191A3EA20064CC6C /* 安提瓜和巴布达@2x.png in Resources */,
+				A1987016191A3EA20064CC6C /* 玻利维亚@2x.png in Resources */,
+				A1986FF9191A3EA20064CC6C /* 法罗群岛.png in Resources */,
 				A18A2B9518E1873500FDFB8E /* bubble-big.png in Resources */,
+				A1986FFC191A3EA20064CC6C /* 波兰@2x.png in Resources */,
 				A1B22C4C18D1670C00953EE5 /* add-active.png in Resources */,
+				A1986F60191A3EA20064CC6C /* 圣卢西亚@2x.png in Resources */,
+				A1986F28191A3EA20064CC6C /* 加纳@2x.png in Resources */,
+				A1987014191A3EA20064CC6C /* 特立尼达和多巴哥@2x.png in Resources */,
+				A1986F84191A3EA20064CC6C /* 多米尼克@2x.png in Resources */,
+				A1986FB4191A3EA20064CC6C /* 布隆迪@2x.png in Resources */,
+				A1986F16191A3EA20064CC6C /* 冰岛@2x.png in Resources */,
 				A197503D18D85F920062CAA7 /* trip.png in Resources */,
 				A190FCD718C87B1700A87329 /* star_2.png in Resources */,
+				A1986FD5191A3EA20064CC6C /* 斯里兰卡.png in Resources */,
+				A1986FE9191A3EA20064CC6C /* 梵蒂冈城国.png in Resources */,
+				A1986F85191A3EA20064CC6C /* 多米尼加共和国.png in Resources */,
+				A1987065191A3EA20064CC6C /* 赤道几内亚.png in Resources */,
+				A1986F50191A3EA20064CC6C /* 吕底亚@2x.png in Resources */,
+				A1986F27191A3EA20064CC6C /* 加纳.png in Resources */,
 				A14300E118BB252F0064DF87 /* Images.xcassets in Resources */,
+				A1986F9A191A3EA20064CC6C /* 尼日利亚@2x.png in Resources */,
+				A1986EF2191A3EA20064CC6C /* 中非共和国@2x.png in Resources */,
 				A190FCE018C8859400A87329 /* airplane@2x.png in Resources */,
 				A12ADE4518D3225F0009B225 /* close-active.png in Resources */,
 				A1B22C4918D1654D00953EE5 /* add@2x.png in Resources */,
+				A1986EEB191A3EA20064CC6C /* 不丹.png in Resources */,
+				A1987083191A3EA20064CC6C /* 马绍尔群岛.png in Resources */,
+				A1986EFE191A3EA20064CC6C /* 乍得共和国@2x.png in Resources */,
+				A1986F00191A3EA20064CC6C /* 也门@2x.png in Resources */,
 				A1B22C5118D16BED00953EE5 /* down-arrow-big@2x.png in Resources */,
+				A1986F24191A3EA20064CC6C /* 加拿大@2x.png in Resources */,
+				A1986FC1191A3EA20064CC6C /* 挪威.png in Resources */,
+				A1986F5B191A3EA20064CC6C /* 土库曼斯坦.png in Resources */,
+				A1986FE3191A3EA20064CC6C /* 格林纳达.png in Resources */,
 				A180C0FF18C8BFD900116DCF /* write_active.png in Resources */,
+				A1986F5F191A3EA20064CC6C /* 圣卢西亚.png in Resources */,
+				A1986FF8191A3EA20064CC6C /* 法国@2x.png in Resources */,
+				A1987036191A3EA20064CC6C /* 缅甸@2x.png in Resources */,
+				A1986F01191A3EA20064CC6C /* 亚美尼亚.png in Resources */,
+				A1986F13191A3EA20064CC6C /* 冈比亚.png in Resources */,
 				A190FCC118C8566600A87329 /* write_gray.png in Resources */,
 				A106930D18C06C32003CC6BC /* arrow-up.png in Resources */,
+				A1986F38191A3EA20064CC6C /* 卢旺达@2x.png in Resources */,
+				A1986F64191A3EA20064CC6C /* 圣多美和普林西比@2x.png in Resources */,
+				A1987078191A3EA20064CC6C /* 韩国@2x.png in Resources */,
+				A1986F3E191A3EA20064CC6C /* 印度尼西亚@2x.png in Resources */,
+				A1986FB9191A3EA20064CC6C /* 德国.png in Resources */,
+				A1986FF4191A3EA20064CC6C /* 汤加@2x.png in Resources */,
 				A14300D318BB252F0064DF87 /* InfoPlist.strings in Resources */,
+				A1987021191A3EA20064CC6C /* 直布罗陀.png in Resources */,
+				A1986FB0191A3EA20064CC6C /* 巴西@2x.png in Resources */,
+				A1986FBC191A3EA20064CC6C /* 意大利@2x.png in Resources */,
+				A1986F51191A3EA20064CC6C /* 哈萨克斯坦.png in Resources */,
 				A190FCCA18C857C700A87329 /* more_gray@2x.png in Resources */,
+				A1986FC5191A3EA20064CC6C /* 摩尔多瓦.png in Resources */,
+				A1986F88191A3EA20064CC6C /* 奥地利@2x.png in Resources */,
 				A143012918BB4C4E0064DF87 /* common.bundle in Resources */,
+				A198705C191A3EA20064CC6C /* 蒙古@2x.png in Resources */,
 				A1A003F018F3CE9E00B5A1D7 /* chat-voice@2x.png in Resources */,
+				A1987063191A3EA20064CC6C /* 赞比亚.png in Resources */,
 				A16FBF0218DC4F3A009E2F66 /* recent-contact@2x.png in Resources */,
+				A1987064191A3EA20064CC6C /* 赞比亚@2x.png in Resources */,
 				A106930E18C06C32003CC6BC /* arrow-up@2x.png in Resources */,
+				A1986EF1191A3EA20064CC6C /* 中非共和国.png in Resources */,
+				A1986F6A191A3EA20064CC6C /* 圭亚那@2x.png in Resources */,
 				A14B637119064E0200C14A15 /* bubble-small@2x.png in Resources */,
+				A1987085191A3EA20064CC6C /* 马耳他.png in Resources */,
 				A10150E518CB8BA7004A729D /* selected_line.png in Resources */,
+				A1987051191A3EA20064CC6C /* 莱索托.png in Resources */,
+				A1986F36191A3EA20064CC6C /* 卡塔尔@2x.png in Resources */,
+				A1986F7E191A3EA20064CC6C /* 塞舌尔@2x.png in Resources */,
+				A1987001191A3EA20064CC6C /* 泰国.png in Resources */,
+				A1987040191A3EA20064CC6C /* 肯尼亚@2x.png in Resources */,
 				A190FCDB18C87B1700A87329 /* star_4.png in Resources */,
 				A1DD135218E0538E000F52C2 /* add-white.png in Resources */,
+				A1987039191A3EA20064CC6C /* 美国.png in Resources */,
 				A180C0EC18C8BE7800116DCF /* search_someone_active@2x.png in Resources */,
+				A198702A191A3EA20064CC6C /* 秘鲁@2x.png in Resources */,
 				A1A003ED18F3CE9E00B5A1D7 /* chat-emotion.png in Resources */,
+				A1986FC6191A3EA20064CC6C /* 摩尔多瓦@2x.png in Resources */,
+				A198703B191A3EA20064CC6C /* 美国阿拉斯酋长.png in Resources */,
+				A1986F8C191A3EA20064CC6C /* 威尔士@2x.png in Resources */,
+				A1986F49191A3EA20064CC6C /* 台湾.png in Resources */,
+				A1987038191A3EA20064CC6C /* 罗马尼亚@2x.png in Resources */,
+				A1986FAE191A3EA20064CC6C /* 巴林@2x.png in Resources */,
+				A1986FAD191A3EA20064CC6C /* 巴林.png in Resources */,
+				A1987029191A3EA20064CC6C /* 秘鲁.png in Resources */,
+				A1986F43191A3EA20064CC6C /* 厄立特里亚国.png in Resources */,
 				A1AFF97918D079160043E75E /* right-arrow@2x.png in Resources */,
+				A1986F37191A3EA20064CC6C /* 卢旺达.png in Resources */,
+				A1987003191A3EA20064CC6C /* 津巴布韦.png in Resources */,
 				A190FCD518C87B1700A87329 /* star_1.png in Resources */,
+				A1986F2E191A3EA20064CC6C /* 北爱尔兰@2x.png in Resources */,
+				A1986FD3191A3EA20064CC6C /* 斯洛文尼亚.png in Resources */,
+				A1986F54191A3EA20064CC6C /* 哥伦比亚@2x.png in Resources */,
+				A1986F70191A3EA20064CC6C /* 埃塞俄比亚@2x.png in Resources */,
+				A1986F81191A3EA20064CC6C /* 多哥.png in Resources */,
+				A1987049191A3EA20064CC6C /* 英国.png in Resources */,
+				A1986F1D191A3EA20064CC6C /* 刚果（布）.png in Resources */,
 				A180C0F818C8BFD900116DCF /* me_active@2x.png in Resources */,
+				A1986F95191A3EA20064CC6C /* 密克罗尼西亚.png in Resources */,
+				A1986FE2191A3EA20064CC6C /* 柬埔寨@2x.png in Resources */,
+				A1987052191A3EA20064CC6C /* 莱索托@2x.png in Resources */,
+				A1986F61191A3EA20064CC6C /* 圣基茨和尼维斯.png in Resources */,
+				A1986F0F191A3EA20064CC6C /* 保加利亚.png in Resources */,
+				A1986F74191A3EA20064CC6C /* 塔吉克斯坦@2x.png in Resources */,
 				A12ADE4A18D323A10009B225 /* delete_img@2x.png in Resources */,
+				A1986FE1191A3EA20064CC6C /* 柬埔寨.png in Resources */,
 				A1F8A65218C9805A00ECDABB /* tab_bar_selected.png in Resources */,
 				A182A2BC18E1267F00B63470 /* my-task@2x.png in Resources */,
+				A1986F3D191A3EA20064CC6C /* 印度尼西亚.png in Resources */,
 				A1B22C4D18D1670C00953EE5 /* add-active@2x.png in Resources */,
+				A1986F04191A3EA20064CC6C /* 以色列@2x.png in Resources */,
+				A198705E191A3EA20064CC6C /* 西撒哈拉@2x.png in Resources */,
+				A1986F1F191A3EA20064CC6C /* 刚果（金）.png in Resources */,
 				A1F8A65618C9826700ECDABB /* tab-bar.png in Resources */,
+				A1986FDA191A3EA20064CC6C /* 新西兰@2x.png in Resources */,
 				A182A2B718E1267F00B63470 /* my-follow.png in Resources */,
+				A1987088191A3EA20064CC6C /* 马达加斯加@2x.png in Resources */,
+				A1986FCB191A3EA20064CC6C /* 文莱.png in Resources */,
+				A1986FF6191A3EA20064CC6C /* 沙特阿拉伯@2x.png in Resources */,
+				A1987041191A3EA20064CC6C /* 芬兰.png in Resources */,
 				A1A1DAFA18C9AE7C00F03E04 /* follow-btn-bg@2x.png in Resources */,
+				A1986EF7191A3EA20064CC6C /* 乌兹别克斯坦.png in Resources */,
+				A1986EF5191A3EA20064CC6C /* 乌克兰.png in Resources */,
+				A1986F86191A3EA20064CC6C /* 多米尼加共和国@2x.png in Resources */,
+				A1986EF4191A3EA20064CC6C /* 丹麦@2x.png in Resources */,
 				A190FCBE18C855F600A87329 /* search_gray@2x.png in Resources */,
+				A1986F4E191A3EA20064CC6C /* 吉布提@2x.png in Resources */,
+				A1987073191A3EA20064CC6C /* 阿根廷.png in Resources */,
+				A198701D191A3EA20064CC6C /* 瓦努阿图.png in Resources */,
+				A1986FB8191A3EA20064CC6C /* 帕劳@2x.png in Resources */,
+				A1987056191A3EA20064CC6C /* 萨尔瓦多@2x.png in Resources */,
 				A182A2B518E1267F00B63470 /* my-collect.png in Resources */,
 				A14B637019064E0200C14A15 /* bubble-small.png in Resources */,
 				A1BBB08718D6EE86002C8BD2 /* search@2x.png in Resources */,
+				A1987067191A3EA20064CC6C /* 越南.png in Resources */,
+				A198704C191A3EA20064CC6C /* 英格兰@2x.png in Resources */,
+				A198705D191A3EA20064CC6C /* 西撒哈拉.png in Resources */,
+				A1986F34191A3EA20064CC6C /* 博茨瓦纳@2x.png in Resources */,
+				A1986F23191A3EA20064CC6C /* 加拿大.png in Resources */,
 				A190FCE318C89BB000A87329 /* nav_bar_item_back.png in Resources */,
+				A1986F66191A3EA20064CC6C /* 圣文森特和格林纳丁斯@2x.png in Resources */,
 				A190FCBA18C8541F00A87329 /* search_someone_gray@2x.png in Resources */,
 				A18A2B8F18E1653B00FDFB8E /* area.plist in Resources */,
+				A1986F2D191A3EA20064CC6C /* 北爱尔兰.png in Resources */,
+				A1986F9B191A3EA20064CC6C /* 尼日尔.png in Resources */,
 				A180C0FE18C8BFD900116DCF /* search_active@2x.png in Resources */,
+				A1986F6B191A3EA20064CC6C /* 坦桑尼亚.png in Resources */,
 				A1A003EC18F3CE9E00B5A1D7 /* chat-add@2x.png in Resources */,
+				A1986FDE191A3EA20064CC6C /* 智利@2x.png in Resources */,
 				A14300DC18BB252F0064DF87 /* Main.storyboard in Resources */,
+				A1987024191A3EA20064CC6C /* 科威特@2x.png in Resources */,
+				A1986FDC191A3EA20064CC6C /* 日本@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1342,6 +3035,7 @@
 				A143012418BB461A0064DF87 /* UIColor+PKColor.m in Sources */,
 				A1DD134C18E03229000F52C2 /* KGHostDetailController.m in Sources */,
 				A18A2B8818E1325D00FDFB8E /* KGBuyerListViewCell.m in Sources */,
+				A1986D45191A367B0064CC6C /* KGBuyerSummaryObject.m in Sources */,
 				A1A948BC18D93E84006DCF6E /* KGCreateJourneyController.m in Sources */,
 				A11E916E19011F3700BBC1A2 /* KGDiscoverViewController.m in Sources */,
 				A14300D518BB252F0064DF87 /* main.m in Sources */,
