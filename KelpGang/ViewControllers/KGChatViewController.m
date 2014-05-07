@@ -31,6 +31,9 @@ static const NSInteger kHeaderRefreshViewTag = 2;
 @property (nonatomic, strong) NSMutableArray *chatCellInfoArr;
 @property (nonatomic, assign) CGFloat currKeyboardHeight;
 @property (nonatomic, strong) UIView *headerView;
+@property (nonatomic, strong) NSMutableArray *taskList;
+@property (nonatomic, strong) UIView *taskView;
+@property (nonatomic, assign) BOOL taskViewDisplay;
 
 @end
 
@@ -56,6 +59,7 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     [self setLeftBarbuttonItem];
     [self.navigationItem setTitle:@"myrenhai"];
     self.chatCellInfoArr = [[NSMutableArray alloc] init];
+    self.taskList = [[NSMutableArray alloc] init];
     [self mockData];
 
     self.tableView.delegate = self;
@@ -64,7 +68,7 @@ static const NSInteger kHeaderRefreshViewTag = 2;
 //    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;//TEST
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chat-view-background"]];
     [self initHeaderView];
-    [self initGoodsView];
+    [self initTopView];
     [self initChatTextField];
 }
 
@@ -115,6 +119,10 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     [self.chatCellInfoArr addObject:chatCellInfo3];
 
     [self handleShowTime:self.chatCellInfoArr];
+
+    for (NSInteger i = 0; i < 10; i ++) {
+        [self.taskList addObject:[NSString stringWithFormat:@"%i 求带奶粉一箱 撒的发生的发送到发送到法师打发第三方", i]];
+    }
 }
 
 - (void)handleShowTime: (NSMutableArray *)msgArr {
@@ -182,6 +190,99 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     self.tableView.tableHeaderView = self.headerView;
 }
 
+- (void)initTopView {
+    UIButton *topButton = [[UIButton alloc] initWithFrame:self.topView.frame];
+    [topButton setBackgroundImage:[UIImage imageWithColor:RGBACOLOR(0, 0, 0, 0.12)] forState:UIControlStateHighlighted];
+    topButton.backgroundColor = RGB(246, 251, 249);
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+    label.text = @"从我的任务选择";
+    label.textColor = MAIN_COLOR;
+    label.font = [UIFont systemFontOfSize:16];
+    label.backgroundColor = CLEARCOLOR;
+    [label sizeToFit];
+    label.width = 270;
+    [label setLeft:15];
+    [label setCenterY:self.topView.height / 2];
+    label.tag = 1002;
+    [topButton addSubview:label];
+
+    UIImageView *arrowView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"down-arrow-big"]];
+    arrowView.centerY = self.topView.height / 2;
+    arrowView.right = self.topView.width - 15;
+    arrowView.tag = 1003;
+    [topButton addSubview:arrowView];
+
+    UIView *bottomLine = [KGUtils seperatorWithFrame:CGRectMake(0, topButton.height - LINE_HEIGHT, topButton.width, LINE_HEIGHT)];
+    [topButton addSubview:bottomLine];
+
+    [topButton addTarget:self action:@selector(tapTopView:) forControlEvents:UIControlEventTouchUpInside];
+    topButton.tag = 1001;
+    [self.topView addSubview:topButton];
+}
+
+- (void)tapTopView:(UIButton *) sender {
+    //    UIStoryboard *board = [UIStoryboard storyboardWithName:@"order" bundle:nil];
+    //    KGCreateOrderController *controller = [board instantiateViewControllerWithIdentifier:@"kCreateOrderController"];
+    //    controller.title = @"创建订单";
+    //    [self.navigationController pushViewController:controller animated:YES];
+    CGFloat itemHeight = 35.0;
+    CGFloat currY = 0;
+    if (self.taskViewDisplay) {
+        [self.taskView removeFromSuperview];
+        self.taskViewDisplay = NO;
+        UIImageView *arrowView = (UIImageView *)[self.topView viewWithTag:1003];
+        arrowView.image = [UIImage imageNamed:@"down-arrow-big"];
+    } else {
+        CGFloat containerHeight = MIN([self.taskList count] * itemHeight, 5 * itemHeight);
+        UIScrollView *container = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.tableView.width, containerHeight)];
+        container.scrollEnabled = YES;
+        container.contentSize = CGSizeMake(self.tableView.width, [self.taskList count] * itemHeight);
+        container.backgroundColor = RGB(246, 251, 249);
+        container.opaque = NO;
+        container.alpha = 0.95;
+        for (NSInteger i = 0; i < self.taskList.count; i ++) {
+            NSString *item = self.taskList[i];
+            UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, currY, self.tableView.width, itemHeight)];
+            [button setBackgroundImage:[UIImage imageWithColor:RGBACOLOR(0, 0, 0, 0.12)] forState:UIControlStateHighlighted];
+            UIView *line = [KGUtils seperatorWithFrame:CGRectMake(0, button.height - LINE_HEIGHT, button.width, LINE_HEIGHT)];
+            [button addSubview:line];
+            UILabel *label = [[UILabel alloc]initWithFrame:CGRectZero];
+            label.text = item;
+            label.font = [UIFont systemFontOfSize:16];
+            label.textColor = RGBCOLOR(114, 114, 114);
+            label.backgroundColor = CLEARCOLOR;
+            [label sizeToFit];
+            label.width = 280;
+            label.left = 20;
+            label.centerY = itemHeight / 2;
+            [button addSubview:label];
+            currY += itemHeight;
+            button.tag = i;
+            [button addTarget:self action:@selector(tapTaskItem:) forControlEvents:UIControlEventTouchUpInside];
+            [container addSubview:button];
+        }
+        container.top = self.topView.bottom;
+        self.taskView = container;
+        [self.view addSubview:self.taskView];
+        self.taskViewDisplay = YES;
+        UIImageView *arrowView = (UIImageView *)[self.topView viewWithTag:1003];
+        arrowView.image = [UIImage imageNamed:@"up-arrow-big"];
+    }
+}
+
+- (void)tapTaskItem:(UIButton *)sender {
+    NSLog(@"selected task index: %i, item: %@", sender.tag, self.taskList[sender.tag]);
+    [self.taskView removeFromSuperview];
+    self.taskViewDisplay = NO;
+    UIImageView *arrowView = (UIImageView *)[self.topView viewWithTag:1003];
+    arrowView.image = [UIImage imageNamed:@"down-arrow-big"];
+
+    NSString *title = self.taskList[sender.tag];
+    UIButton *topButton = (UIButton *)[self.topView viewWithTag:1001];
+    UILabel *label = (UILabel *)[topButton viewWithTag:1002];
+    label.text = title;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -216,37 +317,6 @@ static const NSInteger kHeaderRefreshViewTag = 2;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     KGChatCellInfo *msgObj = self.chatCellInfoArr[indexPath.row];
     return msgObj.cellHeight;
-}
-
-
-- (void)initGoodsView {
-    UIButton *topView = [[UIButton alloc] initWithFrame:self.topView.frame];
-    [topView setBackgroundImage:[UIImage imageWithColor:RGBACOLOR(0, 0, 0, 0.12)] forState:UIControlStateHighlighted];
-    topView.backgroundColor = [UIColor whiteColor];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-    label.text = @"美国版ipad mini 代购，快来大家快来买吧!";
-    label.textColor = RGBCOLOR(33, 185, 162);
-    label.font = [UIFont systemFontOfSize:16];
-    [label sizeToFit];
-    [label setWidth:130];
-    [label setLeft:15];
-    [label setTop:10];
-    [topView addSubview:label];
-
-    UIImageView *arrowView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"right-arrow"]];
-    [arrowView setTop:13];
-    [arrowView setLeft:293];
-    [topView addSubview:arrowView];
-
-    [topView addTarget:self action:@selector(tapHeader:) forControlEvents:UIControlEventTouchUpInside];
-    [self.topView addSubview:topView];
-}
-
-- (void)tapHeader:(UIControl *) controll {
-    UIStoryboard *board = [UIStoryboard storyboardWithName:@"order" bundle:nil];
-    KGCreateOrderController *controller = [board instantiateViewControllerWithIdentifier:@"kCreateOrderController"];
-    controller.title = @"创建订单";
-    [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark - 键盘处理
