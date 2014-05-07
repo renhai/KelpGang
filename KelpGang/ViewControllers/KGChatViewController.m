@@ -57,7 +57,7 @@ static const NSInteger kHeaderRefreshViewTag = 2;
 {
     [super viewDidLoad];
     [self setLeftBarbuttonItem];
-    [self.navigationItem setTitle:@"myrenhai"];
+    [self setTitle:@"myrenhai"];
     self.chatCellInfoArr = [[NSMutableArray alloc] init];
     self.taskList = [[NSMutableArray alloc] init];
     [self mockData];
@@ -221,10 +221,6 @@ static const NSInteger kHeaderRefreshViewTag = 2;
 }
 
 - (void)tapTopView:(UIButton *) sender {
-    //    UIStoryboard *board = [UIStoryboard storyboardWithName:@"order" bundle:nil];
-    //    KGCreateOrderController *controller = [board instantiateViewControllerWithIdentifier:@"kCreateOrderController"];
-    //    controller.title = @"创建订单";
-    //    [self.navigationController pushViewController:controller animated:YES];
     CGFloat itemHeight = 35.0;
     CGFloat currY = 0;
     if (self.taskViewDisplay) {
@@ -275,12 +271,23 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     [self.taskView removeFromSuperview];
     self.taskViewDisplay = NO;
     UIImageView *arrowView = (UIImageView *)[self.topView viewWithTag:1003];
-    arrowView.image = [UIImage imageNamed:@"down-arrow-big"];
+    arrowView.image = [UIImage imageNamed:@"right-arrow"];
+    [arrowView sizeToFit];
+    arrowView.centerY = self.topView.height / 2;
 
     NSString *title = self.taskList[sender.tag];
     UIButton *topButton = (UIButton *)[self.topView viewWithTag:1001];
     UILabel *label = (UILabel *)[topButton viewWithTag:1002];
     label.text = title;
+    [topButton removeTarget:self action:@selector(tapTopView:) forControlEvents:UIControlEventTouchUpInside];
+    [topButton addTarget:self action:@selector(createOrderAction:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)createOrderAction: (UIButton *)sender {
+    UIStoryboard *board = [UIStoryboard storyboardWithName:@"order" bundle:nil];
+    KGCreateOrderController *controller = [board instantiateViewControllerWithIdentifier:@"kCreateOrderController"];
+    controller.title = @"创建订单";
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark - Table view data source
