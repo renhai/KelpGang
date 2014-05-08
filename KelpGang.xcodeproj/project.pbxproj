@@ -17,6 +17,7 @@
 		A1036BB818BF3A1700FA7358 /* test-canada-flag.png in Resources */ = {isa = PBXBuildFile; fileRef = A1036BB718BF3A1700FA7358 /* test-canada-flag.png */; };
 		A1036BBB18BF3DCF00FA7358 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = A1036BB918BF3DCF00FA7358 /* location.png */; };
 		A1036BBC18BF3DCF00FA7358 /* location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1036BBA18BF3DCF00FA7358 /* location@2x.png */; };
+		A10635E2191B80430069F8E4 /* KGLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A10635E1191B80430069F8E4 /* KGLocationManager.m */; };
 		A106930718C068CF003CC6BC /* head-indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = A106930318C068CF003CC6BC /* head-indicator.png */; };
 		A106930818C068CF003CC6BC /* head-indicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A106930418C068CF003CC6BC /* head-indicator@2x.png */; };
 		A106930D18C06C32003CC6BC /* arrow-up.png in Resources */ = {isa = PBXBuildFile; fileRef = A106930B18C06C32003CC6BC /* arrow-up.png */; };
@@ -673,6 +674,8 @@
 		A1036BB718BF3A1700FA7358 /* test-canada-flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test-canada-flag.png"; sourceTree = "<group>"; };
 		A1036BB918BF3DCF00FA7358 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
 		A1036BBA18BF3DCF00FA7358 /* location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location@2x.png"; sourceTree = "<group>"; };
+		A10635E0191B80430069F8E4 /* KGLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGLocationManager.h; sourceTree = "<group>"; };
+		A10635E1191B80430069F8E4 /* KGLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGLocationManager.m; sourceTree = "<group>"; };
 		A106930318C068CF003CC6BC /* head-indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "head-indicator.png"; sourceTree = "<group>"; };
 		A106930418C068CF003CC6BC /* head-indicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "head-indicator@2x.png"; sourceTree = "<group>"; };
 		A106930B18C06C32003CC6BC /* arrow-up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-up.png"; sourceTree = "<group>"; };
@@ -1578,6 +1581,8 @@
 				A1A1DAFC18C9CCD200F03E04 /* KGUtils.m */,
 				A19F0ECF18E2C6A400C2944D /* HudHelper.h */,
 				A19F0ED018E2C6A400C2944D /* HudHelper.m */,
+				A10635E0191B80430069F8E4 /* KGLocationManager.h */,
+				A10635E1191B80430069F8E4 /* KGLocationManager.m */,
 			);
 			path = ToolBox;
 			sourceTree = "<group>";
@@ -3055,6 +3060,7 @@
 				A1AD133E1908D8BD00DF17B6 /* KGUserObject.m in Sources */,
 				A1311F4518CA2E0800D1A40F /* SwipeView.m in Sources */,
 				A1CA59E61917616200D9A429 /* KGCreateOrderTextFieldCell.m in Sources */,
+				A10635E2191B80430069F8E4 /* KGLocationManager.m in Sources */,
 				A1DD135C18E0690D000F52C2 /* UIImage+Addtional.m in Sources */,
 				A197503A18D84BF10062CAA7 /* UIWindow+RscExt.m in Sources */,
 				A1DD134F18E04C7A000F52C2 /* KGDeliveryAddressController.m in Sources */,
