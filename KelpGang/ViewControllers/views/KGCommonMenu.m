@@ -18,10 +18,6 @@
 
 @implementation KGCommonMenu
 
-- (void)dealloc {
-    NSLog(@"KGCommonMenu dealloc");
-}
-
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];

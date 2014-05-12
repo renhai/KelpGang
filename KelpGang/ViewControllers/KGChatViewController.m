@@ -225,6 +225,7 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     CGFloat currY = 0;
     if (self.taskViewDisplay) {
         [self.taskView removeFromSuperview];
+        self.taskView = nil;
         self.taskViewDisplay = NO;
         UIImageView *arrowView = (UIImageView *)[self.topView viewWithTag:1003];
         arrowView.image = [UIImage imageNamed:@"down-arrow-big"];
@@ -269,6 +270,7 @@ static const NSInteger kHeaderRefreshViewTag = 2;
 - (void)tapTaskItem:(UIButton *)sender {
     NSLog(@"selected task index: %i, item: %@", sender.tag, self.taskList[sender.tag]);
     [self.taskView removeFromSuperview];
+    self.taskView = nil;
     self.taskViewDisplay = NO;
     UIImageView *arrowView = (UIImageView *)[self.topView viewWithTag:1003];
     arrowView.image = [UIImage imageNamed:@"right-arrow"];

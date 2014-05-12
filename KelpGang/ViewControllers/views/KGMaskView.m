@@ -10,6 +10,11 @@
 
 @implementation KGMaskView
 
+- (void)dealloc
+{
+    NSLog(@"");
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];

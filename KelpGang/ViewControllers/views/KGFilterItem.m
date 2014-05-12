@@ -129,6 +129,7 @@ static CGFloat const kMaxTextLabelMarginLeft = 10.0;
 - (void)closeFilterView {
     if (self.filterView) {
         [self.filterView removeFromSuperview];
+        self.filterView = nil;
     }
     [self removeMask];
     self.indImgView.hidden = YES;
@@ -154,6 +155,7 @@ static CGFloat const kMaxTextLabelMarginLeft = 10.0;
 
 - (void) removeMask {
     [self.maskView removeFromSuperview];
+    self.maskView = nil;
 }
 
 #pragma KGFilterViewDelegate

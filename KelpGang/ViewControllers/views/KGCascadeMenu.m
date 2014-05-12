@@ -24,10 +24,6 @@ static NSString * const kCountryKey = @"secondLevel";
 
 @implementation KGCascadeMenu
 
-- (void)dealloc {
-    NSLog(@"KGCascadeMenu dealloc");
-}
-
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
