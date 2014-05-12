@@ -101,9 +101,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
     if (!cell) {
         cell = [[KGRecentContactsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
-    } else {
-        DLog(@"cell reused!!!!!!!!!!!");
-    }
+    } 
     KGRecentContactObject *obj = self.contacts[indexPath.row];
     if ([cell isKindOfClass:[KGRecentContactsCell class]]) {
         [cell performSelector:@selector(configCell:) withObject:obj];
