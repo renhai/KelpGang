@@ -7,7 +7,6 @@
 //
 
 #import "KGHostHeadViewCell.h"
-#import "UIImageView+WebCache.h"
 #import "KGUserObject.h"
 
 @interface KGHostHeadViewCell()

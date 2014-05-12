@@ -7,7 +7,6 @@
 //
 
 #import "KGCompletedOrderPhotoInfoCell.h"
-#import "UIImageView+WebCache.h"
 
 @implementation KGCompletedOrderPhotoInfoCell
 
@@ -47,7 +46,7 @@
 }
 
 - (void)setOrderImage: (NSString *)url desc: (NSString *)desc {
-    [self.orderImageView setImageWithURL:[NSURL URLWithString:url]];
+    [self.orderImageView setImageWithURL:[NSURL URLWithString:url] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.orderImageView.layer.borderColor = RGBCOLOR(187, 187, 187).CGColor;
     self.orderImageView.layer.borderWidth = 1;
     self.orderDescLabel.text = desc;

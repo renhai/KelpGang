@@ -18,5 +18,6 @@ target :'KelpGang' do
     pod 'Reachability', '~> 3.1.1'
     pod 'IQKeyboardManager', '~>3.0.4'
     pod 'MWPhotoBrowser'
+    pod 'UIActivityIndicator-for-SDWebImage'
 end
 

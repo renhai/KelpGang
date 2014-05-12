@@ -11,7 +11,6 @@
 #import "KGBuyerDescriptionCell.h"
 #import "KGBuyerCommentCell.h"
 #import "MWPhotoBrowser.h"
-#import "UIImageView+WebCache.h"
 #import "KGPicBottomView.h"
 #import "KGChatViewController.h"
 #import "KGCommentListViewController.h"
@@ -185,7 +184,7 @@
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 95, 95)];
     [imageView setContentMode:UIViewContentModeScaleAspectFill];
     [imageView setClipsToBounds:YES];
-    [imageView setImageWithURL:[NSURL URLWithString:[self.imageUrls objectAtIndex:index]] placeholderImage:[UIImage imageNamed:@"test-head.jpg"]];
+    [imageView setImageWithURL:[NSURL URLWithString:[self.imageUrls objectAtIndex:index]] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [containerView addSubview:imageView];
 
     view = containerView;

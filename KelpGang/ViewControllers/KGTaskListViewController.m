@@ -8,7 +8,6 @@
 
 #import "KGTaskListViewController.h"
 #import "KGTaskListViewCell.h"
-#import "UIImageView+WebCache.h"
 #import "KGMaskView.h"
 #import "KGFilterItem.h"
 #import "KGFilterBar.h"
@@ -126,7 +125,7 @@
     cell.headImageView.clipsToBounds = YES;
     cell.headImageView.ContentMode = UIViewContentModeScaleAspectFill;
     cell.headImageView.layer.cornerRadius = cell.headImageView.frame.size.width / 2;
-    [cell.headImageView setImageWithURL:[NSURL URLWithString:@"http://b.hiphotos.baidu.com/image/w%3D2048/sign=828c8a708544ebf86d71633fedc1d62a/5882b2b7d0a20cf4d8414dac74094b36adaf99f4.jpg"] placeholderImage:[UIImage imageNamed:@"test-head.jpg"]];
+    [cell.headImageView setImageWithURL:[NSURL URLWithString:@"http://b.hiphotos.baidu.com/image/w%3D2048/sign=828c8a708544ebf86d71633fedc1d62a/5882b2b7d0a20cf4d8414dac74094b36adaf99f4.jpg"] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     return cell;
 }
 

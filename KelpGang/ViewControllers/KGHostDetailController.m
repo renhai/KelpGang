@@ -7,7 +7,6 @@
 //
 
 #import "KGHostDetailController.h"
-#import "UIImageView+WebCache.h"
 #import "KGUserObject.h"
 
 @interface KGHostDetailController () <UITextFieldDelegate, UITextViewDelegate>
@@ -73,7 +72,7 @@
             case 0: {
                 if (indexPath.row == 0) {
                     UIImageView *headView = (UIImageView *)[cell viewWithTag:1];
-                    [headView setImageWithURL:[NSURL URLWithString:self.user.avatarUrl]];
+                    [headView setImageWithURL:[NSURL URLWithString:self.user.avatarUrl] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
                     headView.layer.cornerRadius = headView.width / 2;
                 } else if (indexPath.row == 1) {
                     UITextField *tf = (UITextField *)[cell viewWithTag:1];

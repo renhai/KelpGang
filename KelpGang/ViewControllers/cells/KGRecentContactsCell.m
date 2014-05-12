@@ -8,7 +8,6 @@
 
 #import "KGRecentContactsCell.h"
 #import "KGRecentContactObject.h"
-#import "UIImageView+WebCache.h"
 
 static const CGFloat kCellHeight = 68;
 

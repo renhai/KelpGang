@@ -8,7 +8,6 @@
 
 #import "KGBuyerListViewCell.h"
 #import "KGBuyerSummaryObject.h"
-#import "UIImageView+WebCache.h"
 
 @interface KGBuyerListViewCell ()
 

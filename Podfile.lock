@@ -47,6 +47,8 @@ PODS:
   - SVPullToRefresh (0.4.1)
   - SVSegmentedControl (0.2)
   - TransitionKit (1.1.1)
+  - UIActivityIndicator-for-SDWebImage (1.0.5):
+    - SDWebImage (~> 3.2)
   - XMPPFramework (3.6.4):
     - XMPPFramework/Authentication
     - XMPPFramework/BandwidthMonitor
@@ -193,6 +195,7 @@ DEPENDENCIES:
   - SDWebImage (~> 3.5.2)
   - SVPullToRefresh (~> 0.4.1)
   - SVSegmentedControl (~> 0.2)
+  - UIActivityIndicator-for-SDWebImage
   - XMPPFramework (~> 3.6.4)
 
 SPEC CHECKSUMS:
@@ -214,6 +217,7 @@ SPEC CHECKSUMS:
   SVPullToRefresh: 61a0e4bd12bd6f8e3465909810b0fbeb1a28d5f2
   SVSegmentedControl: e874fc56c2a1efb9f597ddf0908101393f53fe96
   TransitionKit: d0e3344aac92991395d4c2e72d9c5a8ceeb12910
+  UIActivityIndicator-for-SDWebImage: 6ab42f95a4066339e2338c3326679a526ce2ef64
   XMPPFramework: eee9ed80df314067fac613c24223ad73834306b0
 
 COCOAPODS: 0.32.1

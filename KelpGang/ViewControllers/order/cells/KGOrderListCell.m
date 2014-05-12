@@ -8,7 +8,6 @@
 
 #import "KGOrderListCell.h"
 #import "KGOrderSummaryObject.h"
-#import "UIImageView+WebCache.h"
 
 @implementation KGOrderListCell
 
@@ -52,13 +51,13 @@
 
 - (void)setObject: (KGOrderSummaryObject *)orderSummaryObj {
     self.orderSummaryObj = orderSummaryObj;
-    [self.headImageView setImageWithURL:[NSURL URLWithString:orderSummaryObj.userAvatar]];
+    [self.headImageView setImageWithURL:[NSURL URLWithString:orderSummaryObj.userAvatar] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.headImageView.layer.cornerRadius = self.headImageView.width / 2;
     self.headImageView.userInteractionEnabled = YES;
     self.nameLabel.text = orderSummaryObj.userName;
     self.nameLabel.userInteractionEnabled = YES;
     self.badgeView.hidden = !orderSummaryObj.hasNewNotification;
-    [self.orderImageView setImageWithURL:[NSURL URLWithString:orderSummaryObj.orderImageUrl]];
+    [self.orderImageView setImageWithURL:[NSURL URLWithString:orderSummaryObj.orderImageUrl] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.orderImageView.layer.borderWidth = 1;
     self.orderImageView.layer.borderColor = RGBCOLOR(201, 201, 201).CGColor;
     self.orderNumLabel.text = [NSString stringWithFormat:@"订单号 %@", orderSummaryObj.orderNumber];
