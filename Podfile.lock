@@ -1,5 +1,23 @@
 PODS:
-  - AFNetworking (1.3.4)
+  - AFNetworking (2.2.3):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+    - AFNetworking/UIKit
+  - AFNetworking/NSURLConnection (2.2.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.2.3):
+    - AFNetworking/NSURLConnection
+  - AFNetworking/Reachability (2.2.3)
+  - AFNetworking/Security (2.2.3)
+  - AFNetworking/Serialization (2.2.3)
+  - AFNetworking/UIKit (2.2.3):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
   - CocoaAsyncSocket (7.3.4)
   - CocoaLumberjack (1.6.5.1):
     - CocoaLumberjack/Core
@@ -22,31 +40,11 @@ PODS:
   - OHAttributedLabel (3.5.3)
   - PSTCollectionView (1.2.0)
   - Reachability (3.1.1)
-  - RestKit (0.20.3):
-    - RestKit/Core
-  - RestKit/Core (0.20.3):
-    - RestKit/CoreData
-    - RestKit/Network
-    - RestKit/ObjectMapping
-  - RestKit/CoreData (0.20.3)
-  - RestKit/Network (0.20.3):
-    - AFNetworking (~> 1.3.0)
-    - RestKit/ObjectMapping
-    - RestKit/Support
-    - SOCKit
-  - RestKit/ObjectMapping (0.20.3)
-  - RestKit/Search (0.20.3):
-    - RestKit/CoreData
-  - RestKit/Support (0.20.3):
-    - TransitionKit (= 1.1.1)
-  - RestKit/Testing (0.20.3)
   - SDWebImage (3.5.4):
     - SDWebImage/Core
   - SDWebImage/Core (3.5.4)
-  - SOCKit (1.1)
   - SVPullToRefresh (0.4.1)
   - SVSegmentedControl (0.2)
-  - TransitionKit (1.1.1)
   - UIActivityIndicator-for-SDWebImage (1.0.5):
     - SDWebImage (~> 3.2)
   - XMPPFramework (3.6.4):
@@ -181,6 +179,7 @@ PODS:
     - XMPPFramework/Core
 
 DEPENDENCIES:
+  - AFNetworking (~> 2.0)
   - EGOCache (~> 2.0)
   - IQKeyboardManager (~> 3.0.4)
   - MagicalRecord (~> 2.2)
@@ -189,9 +188,6 @@ DEPENDENCIES:
   - OHAttributedLabel
   - PSTCollectionView (~> 1.2.0)
   - Reachability (~> 3.1.1)
-  - RestKit (~> 0.20.3)
-  - RestKit/Search (~> 0.20.3)
-  - RestKit/Testing (~> 0.20.3)
   - SDWebImage (~> 3.5.2)
   - SVPullToRefresh (~> 0.4.1)
   - SVSegmentedControl (~> 0.2)
@@ -199,7 +195,7 @@ DEPENDENCIES:
   - XMPPFramework (~> 3.6.4)
 
 SPEC CHECKSUMS:
-  AFNetworking: e403d4333a4e1956cb3fe42364c3c879f820c9a0
+  AFNetworking: ae513199cca79e9d7af2708ccabe2ed075550c42
   CocoaAsyncSocket: 534d09416f992fd51efb23f534742ce70b3a7999
   CocoaLumberjack: 17803afbade3126a377d32b8d23367264b44ced6
   DACircularProgress: 659d6fd11b5fc099c13ba9350239d9dca324916a
@@ -211,12 +207,9 @@ SPEC CHECKSUMS:
   OHAttributedLabel: 985e4b57eec0dc6add79179ac47ec888b8a914e7
   PSTCollectionView: fb2ad2790c6efa306b2caf10315b2c1464d1f5c6
   Reachability: be4883bb93f31e38266ae3365e5600a317aae735
-  RestKit: 1f181c180105a92f11ec4f6cd7de37625e516d83
   SDWebImage: 1a62010700adbba823b621fc217906739dbf6aa5
-  SOCKit: 8871d058926a6c6cc144f0c5eee82c5d0ec274a3
   SVPullToRefresh: 61a0e4bd12bd6f8e3465909810b0fbeb1a28d5f2
   SVSegmentedControl: e874fc56c2a1efb9f597ddf0908101393f53fe96
-  TransitionKit: d0e3344aac92991395d4c2e72d9c5a8ceeb12910
   UIActivityIndicator-for-SDWebImage: 6ab42f95a4066339e2338c3326679a526ce2ef64
   XMPPFramework: eee9ed80df314067fac613c24223ad73834306b0
 

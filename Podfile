@@ -12,12 +12,13 @@ target :'KelpGang' do
     pod 'EGOCache', '~> 2.0'
     pod 'MBProgressHUD', '~> 0.8'
     pod 'OHAttributedLabel'
-    pod 'RestKit', '~> 0.20.3'
-    pod 'RestKit/Search', '~> 0.20.3'
-    pod 'RestKit/Testing', '~> 0.20.3'
+    #pod 'RestKit', '~> 0.20.3'
+    #pod 'RestKit/Search', '~> 0.20.3'
+    #pod 'RestKit/Testing', '~> 0.20.3'
     pod 'Reachability', '~> 3.1.1'
     pod 'IQKeyboardManager', '~>3.0.4'
     pod 'MWPhotoBrowser'
     pod 'UIActivityIndicator-for-SDWebImage'
+    pod 'AFNetworking', '~> 2.0'
 end
 

@@ -15,6 +15,7 @@
 #import "KGFilterItem.h"
 #import "KGFilterBar.h"
 #import "KGBuyerSummaryObject.h"
+#import "AFHTTPRequestOperationManager.h"
 
 
 static NSString * const kFindKelpCell = @"kFindKelpCell";
@@ -85,6 +86,38 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
         obj.desc = @"是对伐啦圣诞节法拉盛地方时间段飞拉萨京东方流口水";
         [self.datasource addObject:obj];
     }
+
+//    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc]initWithBaseURL:[NSURL URLWithString:kWebServerBaseURL]];
+//    [manager POST:@"/mobile/common/getCountryList" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        NSDictionary *dic = (NSDictionary *)responseObject;
+//        NSLog(@"Result: %@", dic);
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        NSLog(@"Error: %@", error);
+//    }];
+
+    NSMutableArray *mutableOperations = [NSMutableArray array];
+    NSArray *requestUrls = @[@"/mobile/common/getCountryList",
+                             @"/mobile/common/getCityList"];
+    for (NSString *path in requestUrls) {
+        NSMutableURLRequest *req = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@", kWebServerBaseURL, path] parameters:nil error:nil];
+        AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:req];
+        op.responseSerializer = [AFJSONResponseSerializer serializer];
+        [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"%@", responseObject);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"%@", error);
+        }];
+        [mutableOperations addObject:op];
+    }
+
+    NSArray *operations = [AFURLConnectionOperation batchOfRequestOperations:mutableOperations progressBlock:^(NSUInteger numberOfFinishedOperations, NSUInteger totalNumberOfOperations) {
+        NSLog(@"%i of %i complete", numberOfFinishedOperations, totalNumberOfOperations);
+    } completionBlock:^(NSArray *operations) {
+        NSLog(@"All operations in batch complete");
+    }];
+
+    [[NSOperationQueue mainQueue] addOperations:operations waitUntilFinished:NO];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

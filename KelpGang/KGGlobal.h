@@ -19,6 +19,7 @@ self.navigationItem.leftBarButtonItem = buttonItem;\
 #define kChatHostPort 5222
 #define kChatHostURL @"10.2.45.77:5222"
 #define kWebHTML5Url @"http://10.2.24.140"
+#define kWebServerBaseURL @"http://10.3.20.160:55641"
 
 #define kTabBarIndexFind        0;
 #define kTabBarIndexDiscover    1;

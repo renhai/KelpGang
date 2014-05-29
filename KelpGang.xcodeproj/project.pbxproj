@@ -79,6 +79,8 @@
 		A16FBF0118DC4F3A009E2F66 /* recent-contact.png in Resources */ = {isa = PBXBuildFile; fileRef = A16FBEFF18DC4F3A009E2F66 /* recent-contact.png */; };
 		A16FBF0218DC4F3A009E2F66 /* recent-contact@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A16FBF0018DC4F3A009E2F66 /* recent-contact@2x.png */; };
 		A174CD671904CFAC00D910C5 /* UIViewController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = A174CD661904CFAC00D910C5 /* UIViewController+Additions.m */; };
+		A179E6B91921EB28006A72BD /* login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A179E6B81921EB28006A72BD /* login.storyboard */; };
+		A179E6BC1921F221006A72BD /* KGLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A179E6BB1921F221006A72BD /* KGLoginController.m */; };
 		A180C0EB18C8BE7800116DCF /* search_someone_active.png in Resources */ = {isa = PBXBuildFile; fileRef = A180C0E918C8BE7800116DCF /* search_someone_active.png */; };
 		A180C0EC18C8BE7800116DCF /* search_someone_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A180C0EA18C8BE7800116DCF /* search_someone_active@2x.png */; };
 		A180C0F718C8BFD900116DCF /* me_active.png in Resources */ = {isa = PBXBuildFile; fileRef = A180C0ED18C8BFD900116DCF /* me_active.png */; };
@@ -766,6 +768,9 @@
 		A16FBF0018DC4F3A009E2F66 /* recent-contact@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "recent-contact@2x.png"; sourceTree = "<group>"; };
 		A174CD651904CFAC00D910C5 /* UIViewController+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Additions.h"; sourceTree = "<group>"; };
 		A174CD661904CFAC00D910C5 /* UIViewController+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Additions.m"; sourceTree = "<group>"; };
+		A179E6B81921EB28006A72BD /* login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = login.storyboard; sourceTree = "<group>"; };
+		A179E6BA1921F221006A72BD /* KGLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGLoginController.h; sourceTree = "<group>"; };
+		A179E6BB1921F221006A72BD /* KGLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGLoginController.m; sourceTree = "<group>"; };
 		A180C0E918C8BE7800116DCF /* search_someone_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_someone_active.png; sourceTree = "<group>"; };
 		A180C0EA18C8BE7800116DCF /* search_someone_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search_someone_active@2x.png"; sourceTree = "<group>"; };
 		A180C0ED18C8BFD900116DCF /* me_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = me_active.png; sourceTree = "<group>"; };
@@ -1745,6 +1750,7 @@
 		A144159418C0E98F0053456D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				A179E6B71921EB0A006A72BD /* login */,
 				A110FA1C1907A850001651A3 /* order */,
 				A18A2B8118E1325D00FDFB8E /* cells */,
 				A18A2B7D18E131EA00FDFB8E /* objects */,
@@ -1785,6 +1791,16 @@
 				A1929EC91906185300DDB66E /* KGSettingViewController.m */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		A179E6B71921EB0A006A72BD /* login */ = {
+			isa = PBXGroup;
+			children = (
+				A179E6B81921EB28006A72BD /* login.storyboard */,
+				A179E6BA1921F221006A72BD /* KGLoginController.h */,
+				A179E6BB1921F221006A72BD /* KGLoginController.m */,
+			);
+			path = login;
 			sourceTree = "<group>";
 		};
 		A18A2B7D18E131EA00FDFB8E /* objects */ = {
@@ -2857,6 +2873,7 @@
 				A1986FF4191A3EA20064CC6C /* 汤加@2x.png in Resources */,
 				A14300D318BB252F0064DF87 /* InfoPlist.strings in Resources */,
 				A1987021191A3EA20064CC6C /* 直布罗陀.png in Resources */,
+				A179E6B91921EB28006A72BD /* login.storyboard in Resources */,
 				A1986FB0191A3EA20064CC6C /* 巴西@2x.png in Resources */,
 				A1986FBC191A3EA20064CC6C /* 意大利@2x.png in Resources */,
 				A1986F51191A3EA20064CC6C /* 哈萨克斯坦.png in Resources */,
@@ -3038,6 +3055,7 @@
 				A112770318E29445006F7CFA /* KGBuyerInfoViewController.m in Sources */,
 				A10150CA18CB6445004A729D /* KGChatViewController.m in Sources */,
 				A143012418BB461A0064DF87 /* UIColor+PKColor.m in Sources */,
+				A179E6BC1921F221006A72BD /* KGLoginController.m in Sources */,
 				A1DD134C18E03229000F52C2 /* KGHostDetailController.m in Sources */,
 				A18A2B8818E1325D00FDFB8E /* KGBuyerListViewCell.m in Sources */,
 				A1986D45191A367B0064CC6C /* KGBuyerSummaryObject.m in Sources */,
