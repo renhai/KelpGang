@@ -59,7 +59,6 @@
 		A143012518BB461A0064DF87 /* UIFont+PKFont.m in Sources */ = {isa = PBXBuildFile; fileRef = A143011E18BB461A0064DF87 /* UIFont+PKFont.m */; };
 		A143012618BB461A0064DF87 /* UIImage+PKImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A143012018BB461A0064DF87 /* UIImage+PKImage.m */; };
 		A143012718BB461A0064DF87 /* PKResManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A143012218BB461A0064DF87 /* PKResManager.m */; };
-		A143012918BB4C4E0064DF87 /* common.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A143012818BB4C4E0064DF87 /* common.bundle */; };
 		A14415A218C0EA590053456D /* KGBuyerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A144159D18C0EA590053456D /* KGBuyerListViewController.m */; };
 		A14B637019064E0200C14A15 /* bubble-small.png in Resources */ = {isa = PBXBuildFile; fileRef = A14B636E19064E0200C14A15 /* bubble-small.png */; };
 		A14B637119064E0200C14A15 /* bubble-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A14B636F19064E0200C14A15 /* bubble-small@2x.png */; };
@@ -743,7 +742,6 @@
 		A143012118BB461A0064DF87 /* PKResManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKResManager.h; sourceTree = "<group>"; };
 		A143012218BB461A0064DF87 /* PKResManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKResManager.m; sourceTree = "<group>"; };
 		A143012318BB461A0064DF87 /* PKResManagerKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKResManagerKit.h; sourceTree = "<group>"; };
-		A143012818BB4C4E0064DF87 /* common.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = common.bundle; path = ../common.bundle; sourceTree = "<group>"; };
 		A144159C18C0EA590053456D /* KGBuyerListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGBuyerListViewController.h; sourceTree = "<group>"; };
 		A144159D18C0EA590053456D /* KGBuyerListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGBuyerListViewController.m; sourceTree = "<group>"; };
 		A14B636E19064E0200C14A15 /* bubble-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble-small.png"; sourceTree = "<group>"; };
@@ -1742,7 +1740,6 @@
 				A1A6232518BDE01E00D8E9A0 /* arrow-down@2x.png */,
 				A1A6231718BDC4F400D8E9A0 /* arrow-down.png */,
 				A1A6231518BDA73B00D8E9A0 /* navbar-item-right.png */,
-				A143012818BB4C4E0064DF87 /* common.bundle */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -2880,7 +2877,6 @@
 				A190FCCA18C857C700A87329 /* more_gray@2x.png in Resources */,
 				A1986FC5191A3EA20064CC6C /* 摩尔多瓦.png in Resources */,
 				A1986F88191A3EA20064CC6C /* 奥地利@2x.png in Resources */,
-				A143012918BB4C4E0064DF87 /* common.bundle in Resources */,
 				A198705C191A3EA20064CC6C /* 蒙古@2x.png in Resources */,
 				A1A003F018F3CE9E00B5A1D7 /* chat-voice@2x.png in Resources */,
 				A1987063191A3EA20064CC6C /* 赞比亚.png in Resources */,
