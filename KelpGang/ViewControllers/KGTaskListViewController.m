@@ -10,9 +10,8 @@
 #import "KGTaskListViewCell.h"
 #import "KGMaskView.h"
 #import "KGFilterItem.h"
-#import "KGFilterBar.h"
 
-@interface KGTaskListViewController () <KGFilterBarDelegate>
+@interface KGTaskListViewController ()
 @property (weak, nonatomic) IBOutlet UIView *conditionBar;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *rightBarButtonItem;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -20,7 +19,7 @@
 @property (nonatomic, strong) NSArray *countryArr;
 @property (nonatomic, strong) NSArray *cityArr;
 @property (nonatomic, strong) NSArray *timeArr;
-@property (nonatomic, strong) KGFilterBar *filterBar;
+//@property (nonatomic, strong) KGFilterBar *filterBar;
 
 @end
 
@@ -75,10 +74,10 @@
     item3.index = 2;
     item3.type = KGFilterViewCascadeStyle;
 
-    KGFilterBar *filterBar = [[KGFilterBar alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 37) items:@[item1, item2, item3]];
-    filterBar.delegate = self;
-    self.filterBar = filterBar;
-    [self.conditionBar addSubview:self.filterBar];
+//    KGFilterBar *filterBar = [[KGFilterBar alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 37) items:@[item1, item2, item3]];
+//    filterBar.delegate = self;
+//    self.filterBar = filterBar;
+//    [self.conditionBar addSubview:self.filterBar];
 }
 
 - (void)setRightBarButtonItems {
@@ -91,7 +90,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.filterBar closeCurrFilterView];
+//    [self.filterBar closeCurrFilterView];
 }
 
 - (void)didReceiveMemoryWarning

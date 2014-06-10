@@ -77,6 +77,7 @@
 		A16FBEFC18DC255A009E2F66 /* half_heart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A16FBEF618DC255A009E2F66 /* half_heart@2x.png */; };
 		A16FBF0118DC4F3A009E2F66 /* recent-contact.png in Resources */ = {isa = PBXBuildFile; fileRef = A16FBEFF18DC4F3A009E2F66 /* recent-contact.png */; };
 		A16FBF0218DC4F3A009E2F66 /* recent-contact@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A16FBF0018DC4F3A009E2F66 /* recent-contact@2x.png */; };
+		A174B7B01941A09D0067B8FA /* KGNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A174B7AF1941A09D0067B8FA /* KGNetworkManager.m */; };
 		A174CD671904CFAC00D910C5 /* UIViewController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = A174CD661904CFAC00D910C5 /* UIViewController+Additions.m */; };
 		A179E6B91921EB28006A72BD /* login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A179E6B81921EB28006A72BD /* login.storyboard */; };
 		A179E6BC1921F221006A72BD /* KGLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A179E6BB1921F221006A72BD /* KGLoginController.m */; };
@@ -615,7 +616,6 @@
 		A1B22C5418D1B96B00953EE5 /* add_img.png in Resources */ = {isa = PBXBuildFile; fileRef = A1B22C5218D1B96B00953EE5 /* add_img.png */; };
 		A1B22C5518D1B96B00953EE5 /* add_img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1B22C5318D1B96B00953EE5 /* add_img@2x.png */; };
 		A1B287BA18ED955B00E44682 /* KGFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B287B918ED955B00E44682 /* KGFilterView.m */; };
-		A1B287BD18ED9A2600E44682 /* KGFilterBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B287BC18ED9A2600E44682 /* KGFilterBar.m */; };
 		A1BBB08018D6B4E1002C8BD2 /* KGTaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BBB07F18D6B4E1002C8BD2 /* KGTaskListViewController.m */; };
 		A1BBB08618D6EE86002C8BD2 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BBB08418D6EE86002C8BD2 /* search.png */; };
 		A1BBB08718D6EE86002C8BD2 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BBB08518D6EE86002C8BD2 /* search@2x.png */; };
@@ -764,6 +764,8 @@
 		A16FBEF618DC255A009E2F66 /* half_heart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "half_heart@2x.png"; sourceTree = "<group>"; };
 		A16FBEFF18DC4F3A009E2F66 /* recent-contact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "recent-contact.png"; sourceTree = "<group>"; };
 		A16FBF0018DC4F3A009E2F66 /* recent-contact@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "recent-contact@2x.png"; sourceTree = "<group>"; };
+		A174B7AE1941A09D0067B8FA /* KGNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGNetworkManager.h; sourceTree = "<group>"; };
+		A174B7AF1941A09D0067B8FA /* KGNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGNetworkManager.m; sourceTree = "<group>"; };
 		A174CD651904CFAC00D910C5 /* UIViewController+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Additions.h"; sourceTree = "<group>"; };
 		A174CD661904CFAC00D910C5 /* UIViewController+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Additions.m"; sourceTree = "<group>"; };
 		A179E6B81921EB28006A72BD /* login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = login.storyboard; sourceTree = "<group>"; };
@@ -1340,8 +1342,6 @@
 		A1B22C5718D1CD1D00953EE5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		A1B287B818ED955B00E44682 /* KGFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGFilterView.h; sourceTree = "<group>"; };
 		A1B287B918ED955B00E44682 /* KGFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGFilterView.m; sourceTree = "<group>"; };
-		A1B287BB18ED9A2600E44682 /* KGFilterBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGFilterBar.h; sourceTree = "<group>"; };
-		A1B287BC18ED9A2600E44682 /* KGFilterBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGFilterBar.m; sourceTree = "<group>"; };
 		A1BBB07E18D6B4E1002C8BD2 /* KGTaskListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGTaskListViewController.h; sourceTree = "<group>"; };
 		A1BBB07F18D6B4E1002C8BD2 /* KGTaskListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGTaskListViewController.m; sourceTree = "<group>"; };
 		A1BBB08418D6EE86002C8BD2 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
@@ -1445,8 +1445,6 @@
 				A18F6FCF18ED50C60029F762 /* KGFilterItem.m */,
 				A1B287B818ED955B00E44682 /* KGFilterView.h */,
 				A1B287B918ED955B00E44682 /* KGFilterView.m */,
-				A1B287BB18ED9A2600E44682 /* KGFilterBar.h */,
-				A1B287BC18ED9A2600E44682 /* KGFilterBar.m */,
 				A1F13DFE18EE46E50013B183 /* KGCascadeMenu.h */,
 				A1F13DFF18EE46E50013B183 /* KGCascadeMenu.m */,
 				A1DDFB7918EEAF670078ED73 /* KGCascadeMenuLeftCell.h */,
@@ -1586,6 +1584,8 @@
 				A19F0ED018E2C6A400C2944D /* HudHelper.m */,
 				A10635E0191B80430069F8E4 /* KGLocationManager.h */,
 				A10635E1191B80430069F8E4 /* KGLocationManager.m */,
+				A174B7AE1941A09D0067B8FA /* KGNetworkManager.h */,
+				A174B7AF1941A09D0067B8FA /* KGNetworkManager.m */,
 			);
 			path = ToolBox;
 			sourceTree = "<group>";
@@ -3031,10 +3031,10 @@
 				A18A2B8018E131EA00FDFB8E /* KGJourneyGoods.m in Sources */,
 				A19F0EC918E2B47800C2944D /* KGBuyerCommentCell.m in Sources */,
 				A1F13E0618EE954F0013B183 /* KGCommonMenuCell.m in Sources */,
-				A1B287BD18ED9A2600E44682 /* KGFilterBar.m in Sources */,
 				A14B63741906656400C14A15 /* KGRecentContactObject.m in Sources */,
 				A112DF3F19187DEA00108FAD /* KGCompletedOrderConsigneeCell.m in Sources */,
 				A19F85E618EA6C300089B14F /* KGTaskViewController.m in Sources */,
+				A174B7B01941A09D0067B8FA /* KGNetworkManager.m in Sources */,
 				A14300DF18BB252F0064DF87 /* KGViewController.m in Sources */,
 				A1929ECD19061FDC00DDB66E /* KGHostHeadViewCell.m in Sources */,
 				A1DDFB7E18EEB4920078ED73 /* KGCascadeMenuRightCell.m in Sources */,

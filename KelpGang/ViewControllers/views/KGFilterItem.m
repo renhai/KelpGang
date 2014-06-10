@@ -85,7 +85,7 @@ static CGFloat const kMaxTextLabelMarginLeft = 10.0;
 
     CGRect indFrame = self.indImgView.frame;
     indFrame.origin.x = (self.width - indFrame.size.width) / 2;
-    indFrame.origin.y = self.height - indFrame.size.height + 1;
+    indFrame.origin.y = self.height - indFrame.size.height + LINE_HEIGHT;
     self.indImgView.frame = indFrame;
 
     CGRect arrowFrame = self.arrowImgView.frame;
@@ -93,9 +93,9 @@ static CGFloat const kMaxTextLabelMarginLeft = 10.0;
     arrowFrame.origin.y = (self.height - arrowFrame.size.height) / 2;
     self.arrowImgView.frame = arrowFrame;
 
-    if (!self.data) {
-        self.arrowImgView.hidden = YES;
-    }
+//    if (!self.data) {
+//        self.arrowImgView.hidden = YES;
+//    }
 }
 
 - (void)openFilterView {
@@ -129,7 +129,7 @@ static CGFloat const kMaxTextLabelMarginLeft = 10.0;
 - (void)closeFilterView {
     if (self.filterView) {
         [self.filterView removeFromSuperview];
-        self.filterView = nil;
+//        self.filterView = nil;
     }
     [self removeMask];
     self.indImgView.hidden = YES;
@@ -163,7 +163,9 @@ static CGFloat const kMaxTextLabelMarginLeft = 10.0;
 - (void)didSelectFilterViewCell:(NSString *)item {
     self.textLabel.text = item;
     [self.textLabel sizeToFit];
-    [self.delegate didSelectFilterItem:self.index item:item];
+    if (self.selectDoneBlock) {
+        self.selectDoneBlock(self.index, item);
+    }
 }
 
 

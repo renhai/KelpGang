@@ -9,22 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "KGFilterView.h"
 
-@protocol KGFilterItemDelegate <NSObject>
+typedef void(^SelectDoneBlock)(NSInteger, NSString *);
 
-@required
-- (void)didSelectFilterItem:(NSInteger)index item: (NSString *)item;
-
-@end
-
-@interface KGFilterItem : UIView
+@interface KGFilterItem : UIControl
 
 @property (nonatomic, weak) UIView* canvasView;
 @property (nonatomic, assign) NSInteger index;
 @property (nonatomic, assign) NSInteger type;
 @property (nonatomic, strong) NSArray *data;
 @property (nonatomic, strong) NSString *text;
-
-@property (nonatomic, weak) id<KGFilterItemDelegate> delegate;
+@property (nonatomic, strong) NSString *url;
+@property (nonatomic, copy) SelectDoneBlock selectDoneBlock;
 
 - (id)initWithFrame:(CGRect)frame text: (NSString *) text data: (NSArray *)data;
 - (void)openFilterView;
