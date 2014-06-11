@@ -108,7 +108,20 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 
     __weak typeof(self) weakSelf = self;
     SelectDoneBlock doneBlock = ^(NSInteger index, NSString *item) {
-        [weakSelf didSelectFilterItem:index item:item];
+        [weakSelf closeItemByIndex:self.currTapIndex];
+        NSLog(@"selected index: %d, item : %@", index, item);
+        if (weakSelf.tableView.pullToRefreshView.state == SVPullToRefreshStateStopped) {
+            [weakSelf.tableView setContentOffset:CGPointMake(0, 0)];
+            [weakSelf.tableView triggerPullToRefresh];
+        }
+    };
+
+    VoidBlock closeBlock = ^ () {
+        weakSelf.currTapIndex = -1;
+    };
+
+    OpenBlock openBlock = ^ (NSInteger index) {
+        weakSelf.currTapIndex = index;
     };
 
     CGFloat itemWidth = self.conditionBar.width / 3;
@@ -120,6 +133,8 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
     item1.type = KGFilterViewCascadeStyle;
     item1.url = @"/mobile/common/getCountryList";
     item1.selectDoneBlock = doneBlock;
+    item1.closeBlock = closeBlock;
+    item1.openBlock = openBlock;
     [item1 addTarget:self action:@selector(didTap:) forControlEvents:UIControlEventTouchUpInside];
 
     KGFilterItem *item2 = [[KGFilterItem alloc] initWithFrame:CGRectMake(itemWidth, 0, itemWidth, itemHeight) text:@"回国时间" data: timeArr];
@@ -127,6 +142,8 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
     item2.index = 1;
     item2.type = KGFilterViewCommonStyle;
     item2.selectDoneBlock = doneBlock;
+    item2.closeBlock = closeBlock;
+    item2.openBlock = openBlock;
     [item2 addTarget:self action:@selector(didTap:) forControlEvents:UIControlEventTouchUpInside];
 
     KGFilterItem *item3 = [[KGFilterItem alloc] initWithFrame:CGRectMake(itemWidth * 2, 0, itemWidth, itemHeight) text:@"所在城市" data:nil];
@@ -135,6 +152,8 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
     item3.type = KGFilterViewCascadeStyle;
     item3.url = @"/mobile/common/getCityList";
     item3.selectDoneBlock = doneBlock;
+    item3.closeBlock = closeBlock;
+    item3.openBlock = openBlock;
     [item3 addTarget:self action:@selector(didTap:) forControlEvents:UIControlEventTouchUpInside];
 
     UIView *bottomLine = [KGUtils seperatorWithFrame:CGRectMake(0, self.conditionBar.height - 1, self.conditionBar.width, LINE_HEIGHT)];
@@ -255,34 +274,18 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
-- (void)didSelectFilterItem:(NSInteger)index item: (NSString *)item {
-    [self closeItemByIndex:self.currTapIndex];
-    NSLog(@"selected index: %d, item : %@", index, item);
-    if (self.tableView.pullToRefreshView.state == SVPullToRefreshStateStopped) {
-        [self.tableView setContentOffset:CGPointMake(0, 0)];
-        [self.tableView triggerPullToRefresh];
-    }
-}
-
-
 - (void)didTap: (KGFilterItem *)item {
     if (self.currTapIndex == -1) {
         [self openItem:item];
     } else if (self.currTapIndex == item.index) {
-        [self closeItem:item];
+        [item closeFilterView];
     } else {
         [self closeItemByIndex:self.currTapIndex];
         [self openItem:item];
     }
 }
 
-- (void)closeItem:(KGFilterItem *) item {
-    self.currTapIndex = -1;
-    [item closeFilterView];
-}
-
 - (void)openItem:(KGFilterItem *) item {
-    self.currTapIndex = item.index;
     if (item.data) {
         [item openFilterView];
     } else {
@@ -355,7 +358,7 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
         if ([view isKindOfClass:[KGFilterItem class]]) {
             KGFilterItem *fItem = (KGFilterItem *)view;
             if (fItem.index == index) {
-                [self closeItem:fItem];
+                [fItem closeFilterView];
                 break;
             }
         }

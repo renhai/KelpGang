@@ -10,6 +10,7 @@
 #import "KGFilterView.h"
 
 typedef void(^SelectDoneBlock)(NSInteger, NSString *);
+typedef void(^OpenBlock)(NSInteger);
 
 @interface KGFilterItem : UIControl
 
@@ -20,6 +21,9 @@ typedef void(^SelectDoneBlock)(NSInteger, NSString *);
 @property (nonatomic, strong) NSString *text;
 @property (nonatomic, strong) NSString *url;
 @property (nonatomic, copy) SelectDoneBlock selectDoneBlock;
+@property (nonatomic, copy) VoidBlock closeBlock;
+@property (nonatomic, copy) OpenBlock openBlock;
+
 
 - (id)initWithFrame:(CGRect)frame text: (NSString *) text data: (NSArray *)data;
 - (void)openFilterView;

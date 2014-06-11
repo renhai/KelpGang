@@ -99,6 +99,9 @@ static CGFloat const kMaxTextLabelMarginLeft = 10.0;
 }
 
 - (void)openFilterView {
+    if (self.openBlock) {
+        self.openBlock(self.index);
+    }
     if (!self.filterView) {
         CGFloat y = self.origin.y + self.height + 1;
         CGRect frame;
@@ -129,12 +132,14 @@ static CGFloat const kMaxTextLabelMarginLeft = 10.0;
 - (void)closeFilterView {
     if (self.filterView) {
         [self.filterView removeFromSuperview];
-//        self.filterView = nil;
     }
     [self removeMask];
     self.indImgView.hidden = YES;
     UIImage *downArrow = [UIImage imageNamed:@"arrow-down"];
     self.arrowImgView.image = downArrow;
+    if (self.closeBlock) {
+        self.closeBlock();
+    }
 }
 
 - (void)showMask: (CGRect) frame {
