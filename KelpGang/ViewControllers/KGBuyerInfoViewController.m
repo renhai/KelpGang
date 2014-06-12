@@ -20,8 +20,14 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSArray *comments;
-@property (nonatomic, strong) NSArray *imageUrls;
+//@property (nonatomic, strong) NSArray *imageUrls;
 @property (nonatomic, strong) NSMutableArray *photos;
+
+
+@property (nonatomic, strong) NSDictionary *user_info;
+@property (nonatomic, strong) NSDictionary *travel_info;
+@property (nonatomic, strong) NSArray *good_info;
+@property (nonatomic, assign) NSInteger currAlbumIndex;
 
 @end
 
@@ -43,14 +49,27 @@
 
     //for test
     self.comments = @[@"1", @"2", @"3", @"4", @"5"];
-    self.imageUrls = @[@"http://e.hiphotos.baidu.com/image/w%3D2048/sign=6fb2d513d60735fa91f049b9aa690eb3/f703738da977391277b1f269fa198618367ae227.jpg",
-                       @"http://b.hiphotos.baidu.com/image/w%3D2048/sign=c6c8dc509c2f07085f052d00dd1cb899/472309f7905298223310f7dcd5ca7bcb0a46d48a.jpg",
-                       @"http://g.hiphotos.baidu.com/image/w%3D2048/sign=3577b2edd762853592e0d521a4d776c6/6d81800a19d8bc3e1f12ced5808ba61ea8d34593.jpg",
-                       @"http://b.hiphotos.baidu.com/image/w%3D2048/sign=807be20a544e9258a63481eea8bad058/4610b912c8fcc3ce4aa5c35d9045d688d43f2072.jpg",
-                       @"http://h.hiphotos.baidu.com/image/w%3D2048/sign=bc8f94038544ebf86d71633fedc1d62a/5882b2b7d0a20cf4e64253df74094b36adaf99e4.jpg",
-                       @"http://c.hiphotos.baidu.com/image/w%3D2048/sign=908c963b938fa0ec7fc7630d12af58ee/d52a2834349b033ba9e9a8d217ce36d3d539bd51.jpg",
-                       @"http://a.hiphotos.baidu.com/image/w%3D2048/sign=c2974a1513dfa9ecfd2e511756e8f603/1b4c510fd9f9d72a501d3814d62a2834349bbbb9.jpg"];
+//    self.imageUrls = @[@"http://e.hiphotos.baidu.com/image/w%3D2048/sign=6fb2d513d60735fa91f049b9aa690eb3/f703738da977391277b1f269fa198618367ae227.jpg",
+//                       @"http://b.hiphotos.baidu.com/image/w%3D2048/sign=c6c8dc509c2f07085f052d00dd1cb899/472309f7905298223310f7dcd5ca7bcb0a46d48a.jpg",
+//                       @"http://g.hiphotos.baidu.com/image/w%3D2048/sign=3577b2edd762853592e0d521a4d776c6/6d81800a19d8bc3e1f12ced5808ba61ea8d34593.jpg",
+//                       @"http://b.hiphotos.baidu.com/image/w%3D2048/sign=807be20a544e9258a63481eea8bad058/4610b912c8fcc3ce4aa5c35d9045d688d43f2072.jpg",
+//                       @"http://h.hiphotos.baidu.com/image/w%3D2048/sign=bc8f94038544ebf86d71633fedc1d62a/5882b2b7d0a20cf4e64253df74094b36adaf99e4.jpg",
+//                       @"http://c.hiphotos.baidu.com/image/w%3D2048/sign=908c963b938fa0ec7fc7630d12af58ee/d52a2834349b033ba9e9a8d217ce36d3d539bd51.jpg",
+//                       @"http://a.hiphotos.baidu.com/image/w%3D2048/sign=c2974a1513dfa9ecfd2e511756e8f603/1b4c510fd9f9d72a501d3814d62a2834349bbbb9.jpg"];
     self.photos = [[NSMutableArray alloc] init];
+
+    NSDictionary *params = @{@"user_id": @0, @"travel_id": @(self.travelId)};
+    [[KGNetworkManager sharedInstance] postRequest:@"/mobile/travel/getUserTravel" params:params success:^(id responseObject) {
+        NSLog(@"%@", responseObject);
+        NSDictionary *dic = (NSDictionary *)responseObject;
+        NSDictionary *data = dic[@"data"];
+        self.user_info = data[@"user_info"];
+        self.travel_info = data[@"travel_info"];
+        self.good_info = data[@"good_info"];
+        [self.tableView reloadData];
+    } failure:^(NSError *error) {
+        NSLog(@"%@", error);
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -102,6 +121,7 @@
             pCell.swipeView.delegate = self;
             pCell.swipeView.dataSource = self;
             pCell.swipeView.alignment = SwipeViewAlignmentEdge;
+            [pCell.swipeView reloadData];
         }
     } else {
         if (indexPath.row == 0) {
@@ -175,7 +195,7 @@
 #pragma SwipViewDataSource
 - (NSInteger)numberOfItemsInSwipeView:(SwipeView *)swipeView
 {
-    return [self.imageUrls count];
+    return [self.good_info count];
 }
 
 - (UIView *)swipeView:(SwipeView *)swipeView viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
@@ -184,7 +204,8 @@
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 95, 95)];
     [imageView setContentMode:UIViewContentModeScaleAspectFill];
     [imageView setClipsToBounds:YES];
-    [imageView setImageWithURL:[NSURL URLWithString:[self.imageUrls objectAtIndex:index]] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    NSString *imageUrl = self.good_info[index][@"good_default_head_url"];
+    [imageView setImageWithURL:[NSURL URLWithString:imageUrl] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [containerView addSubview:imageView];
 
     view = containerView;
@@ -198,9 +219,11 @@
     //    [[SDImageCache sharedImageCache] clearDisk];
     //    [[SDImageCache sharedImageCache] clearMemory];
 
+    self.currAlbumIndex = index;
     [self.photos removeAllObjects];
-    for (NSString *url in self.imageUrls) {
-        [self.photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:url]]];
+    NSArray *imgArry = self.good_info[index][@"good_photos"];
+    for (NSDictionary *one in imgArry) {
+        [self.photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:one[@"good_photo_url"]]]];
     }
 
     MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
@@ -215,7 +238,7 @@
     browser.enableSwipeToDismiss = YES;
     browser.alwaysShowControls = NO;
     browser.delayToHideElements = -1;
-    [browser setCurrentPhotoIndex:index];
+    [browser setCurrentPhotoIndex:0];
 
     UIImage *normalImage = [UIImage imageNamed:@"nav_bar_item_back"];
     UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithImage:normalImage style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
@@ -244,7 +267,8 @@
 
 - (MWCaptionView *)photoBrowser:(MWPhotoBrowser *)photoBrowser captionViewForPhotoAtIndex:(NSUInteger)index {
     MWPhoto *photo = [self.photos objectAtIndex:index];
-    KGPicBottomView *captionView = [[KGPicBottomView alloc] initWithPhoto:photo index:index count:self.photos.count title:[NSString stringWithFormat:@"photo title - %i", index] chatBlock:^(UIButton *sender) {
+    NSString *title = self.good_info[self.currAlbumIndex][@"good_name"];
+    KGPicBottomView *captionView = [[KGPicBottomView alloc] initWithPhoto:photo index:index count:self.photos.count title:title chatBlock:^(UIButton *sender) {
         KGChatViewController *chatViewController = (KGChatViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"kChatViewController"];
         self.navigationController.navigationBar.translucent = NO;
         [self.navigationController pushViewController:chatViewController animated:YES];
