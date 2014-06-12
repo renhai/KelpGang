@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSArray *comments;
+
 @property (nonatomic, strong) NSMutableArray *photos;
 
 
