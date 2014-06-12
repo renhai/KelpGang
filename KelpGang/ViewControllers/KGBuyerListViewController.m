@@ -21,10 +21,9 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 
 @property (weak, nonatomic) IBOutlet UIView *conditionBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
 @property (nonatomic, strong) NSMutableArray *datasource;
-
 @property (nonatomic, assign) NSInteger currTapIndex;
+@property (nonatomic, assign) BOOL hasmore;
 
 @end
 
@@ -46,9 +45,7 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.currTapIndex = -1;
     [self initFilterBar];
-    [self initDatasource];
 
     __weak typeof(self) weakSelf = self;
     [self.tableView addPullToRefreshWithActionHandler:^{
@@ -59,6 +56,9 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
     }];
     self.tableView.showsPullToRefresh = YES;
     self.tableView.showsInfiniteScrolling = NO;
+
+    self.datasource = [[NSMutableArray alloc] init];
+    [self.tableView triggerPullToRefresh];
 }
 
 - (void)mockData {
@@ -76,27 +76,6 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
         obj.desc = @"是对伐啦圣诞节法拉盛地方时间段飞拉萨京东方流口水";
         [self.datasource addObject:obj];
     }
-
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString *documentsDirectory = [paths objectAtIndex:0];
-//    [[KGNetworkManager sharedInstance] postRequest:@"/mobile/common/getCountryList" params:nil success:^(id responseObject) {
-//        NSDictionary *dic = (NSDictionary *)responseObject;
-//        NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"latest-country.plist"];
-//        BOOL result = [dic writeToFile:filePath atomically:YES];
-//        LOGBOOL(result);
-//    } failure:^(NSError *error) {
-//        NSLog(@"Error: %@", error);
-//    }];
-//
-//    [[KGNetworkManager sharedInstance] postRequest:@"/mobile/common/getCityList" params:nil success:^(id responseObject) {
-//        NSDictionary *dic = (NSDictionary *)responseObject;
-//        NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"latest-city.plist"];
-//        BOOL result = [dic writeToFile:filePath atomically:YES];
-//        LOGBOOL(result);
-//    } failure:^(NSError *error) {
-//        NSLog(@"Error: %@", error);
-//    }];
-
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -104,6 +83,7 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 }
 
 - (void)initFilterBar {
+    self.currTapIndex = -1;
     NSArray *timeArr = @[@"3天内", @"1周内", @"2周内", @"1月内", @"常驻"];
 
     __weak typeof(self) weakSelf = self;
@@ -166,40 +146,25 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 
 }
 
-- (void)initDatasource {
-    self.datasource = [[NSMutableArray alloc] init];
-
-    if ([KGUtils checkIsNetworkConnectionAvailableAndNotify:self.view]) {
-        [[HudHelper getInstance] showHudOnView:self.view caption:@"Loading" image:nil acitivity:YES autoHideTime:0.0];
-        //TODO
-        int64_t delayInSeconds = 1.0;
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            [self mockData];
-            [self.tableView reloadData];
-            [[HudHelper getInstance] hideHudInView:self.view];
-            if (self.datasource.count >= 5) {
-                self.tableView.showsInfiniteScrolling = YES;
-            }
-        });
-    }
-}
-
 - (void)refreshDatasource {
     if ([KGUtils checkIsNetworkConnectionAvailableAndNotify:self.view]) {
-        int64_t delayInSeconds = 2.0;
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        NSDictionary *params = @{@"user_id": @0, @"endId": @0, @"limit": @20};
+        [[KGNetworkManager sharedInstance] postRequest:@"/mobile/travel/index" params:params success:^(id responseObject) {
+            NSLog(@"%@", responseObject);
             [self.datasource removeAllObjects];
-            [self mockData];
+            NSDictionary *dic = (NSDictionary *)responseObject;
+            self.hasmore = [dic[@"hasmore"] boolValue];
+            NSArray *data = [self convertBuyerSummary:dic];
+
+            [self.datasource addObjectsFromArray:data];
             [self.tableView reloadData];
-            [self.tableView.pullToRefreshView stopAnimating];
-            if (self.datasource.count >= 5) {
+            [self.tableView.pullToRefreshView performSelector:@selector(stopAnimating) withObject:nil afterDelay:0.5];
+            if (self.hasmore) {
                 self.tableView.showsInfiniteScrolling = YES;
             }
-        });
-    } else {
-        [self.tableView.pullToRefreshView stopAnimating];
+        } failure:^(NSError *error) {
+            NSLog(@"%@", error);
+        }];
     }
 }
 
@@ -289,21 +254,23 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
     if (item.data) {
         [item openFilterView];
     } else {
-        [[HudHelper getInstance] showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
-        [[KGNetworkManager sharedInstance] postRequest:item.url params:nil success:^(id responseObject) {
-            NSDictionary *dic = (NSDictionary *)responseObject;
-            NSLog(@"%@", dic);
-            if (item.index == 0) {
-                item.data = [self convertCountryData:dic];
-            } else if (item.index == 2) {
-                item.data = [self convertCityData:dic];
-            }
-            [item openFilterView];
-            [[HudHelper getInstance] hideHudInView:self.view];
-        } failure:^(NSError *error) {
-            NSLog(@"Error: %@", error);
-            [[HudHelper getInstance] showHudOnView:self.view caption:@"系统错误" image:nil acitivity:NO autoHideTime:1.6];
-        }];
+        if ([KGUtils checkIsNetworkConnectionAvailableAndNotify:self.view]) {
+            [[HudHelper getInstance] showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
+            [[KGNetworkManager sharedInstance] postRequest:item.url params:nil success:^(id responseObject) {
+                NSDictionary *dic = (NSDictionary *)responseObject;
+                NSLog(@"%@", dic);
+                if (item.index == 0) {
+                    item.data = [self convertCountryData:dic];
+                } else if (item.index == 2) {
+                    item.data = [self convertCityData:dic];
+                }
+                [item openFilterView];
+                [[HudHelper getInstance] hideHudInView:self.view];
+            } failure:^(NSError *error) {
+                NSLog(@"Error: %@", error);
+                [[HudHelper getInstance] showHudOnView:self.view caption:@"系统错误,请稍后再试" image:nil acitivity:NO autoHideTime:1.6];
+            }];
+        }
     }
 }
 
@@ -363,6 +330,49 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
             }
         }
     }
+}
+
+- (NSArray *)convertBuyerSummary: (NSDictionary *)dic {
+    NSMutableArray *result = [NSMutableArray array];
+    NSArray *data = dic[@"data"];
+    if (data) {
+        for (NSDictionary *one in data) {
+            KGBuyerSummaryObject *obj = [[KGBuyerSummaryObject alloc]init];
+            NSDictionary *travelInfo = one[@"travel_info"];
+            if (travelInfo) {
+                obj.travelId = [travelInfo[@"travel_id"] integerValue];
+                obj.fromCountry = travelInfo[@"from"];
+                obj.toCountry = travelInfo[@"to"];
+                if (!obj.fromCountry || [@"" isEqualToString:obj.fromCountry]) {
+                    obj.toCountry = [NSString stringWithFormat:@"常驻%@", obj.toCountry];
+                }
+                obj.desc = travelInfo[@"travel_desc"];
+                double startTime = [travelInfo[@"travel_start_time"] doubleValue];
+                double endTime = [travelInfo[@"travel_back_time"] doubleValue];
+                obj.routeDuration = [self routeDuration:startTime endTime:endTime];
+            }
+            NSDictionary *userInfo = one[@"user_info"];
+            if (userInfo) {
+                obj.userId = [userInfo[@"user_id"] integerValue];
+                obj.userName = userInfo[@"user_name"];
+                obj.avatarUrl = userInfo[@"head_url"];
+                obj.gender = [@"M" isEqualToString:userInfo[@"user_sex"]] ? MALE : FEMALE;
+                obj.level = [userInfo[@"user_star"] integerValue];
+                obj.country = @"中国";//TODO
+            }
+            [result addObject:obj];
+        }
+    }
+    return result;
+}
+
+- (NSString *)routeDuration: (double) startTime endTime: (double)endTime {
+    NSDate *startDate = [NSDate dateWithTimeIntervalSince1970:startTime];
+    NSDate *endDate = [NSDate dateWithTimeIntervalSince1970:endTime];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"M.d"];
+    NSString *result = [NSString stringWithFormat:@"%@-%@", [formatter stringFromDate:startDate], [formatter stringFromDate:endDate]];
+    return result;
 }
 
 

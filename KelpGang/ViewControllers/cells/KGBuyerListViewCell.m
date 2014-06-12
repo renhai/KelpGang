@@ -47,7 +47,7 @@
     self.nameLabel.left = 5;
     self.nameLabel.top = self.headImageView.top;
 
-    if ([@"" isEqualToString:self.summaryObj.fromCountry]) {
+    if (!self.summaryObj.fromCountry || [@"" isEqualToString:self.summaryObj.fromCountry]) {
         self.fromCityLabel.hidden = YES;
         self.planeImgView.hidden = YES;
         [self.toCityLabel sizeToFit];
