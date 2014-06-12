@@ -69,7 +69,6 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
         obj.avatarUrl = @"http://d.hiphotos.baidu.com/image/pic/item/ac6eddc451da81cb5ab9c2ac5066d01609243177.jpg";
         obj.gender = i % 2;
         obj.level = i % 10;
-        obj.country = @"台湾";
         obj.routeDuration = @"11.12-3.20";
         obj.fromCountry = @"加拿大";
         obj.toCountry = @"澳大利亚";
@@ -150,7 +149,7 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
     if ([KGUtils checkIsNetworkConnectionAvailableAndNotify:self.view]) {
         NSDictionary *params = @{@"user_id": @0, @"endId": @0, @"limit": @20};
         [[KGNetworkManager sharedInstance] postRequest:@"/mobile/travel/index" params:params success:^(id responseObject) {
-            NSLog(@"%@", responseObject);
+//            NSLog(@"%@", responseObject);
             [self.datasource removeAllObjects];
             NSDictionary *dic = (NSDictionary *)responseObject;
             self.hasmore = [dic[@"hasmore"] boolValue];
@@ -164,6 +163,7 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
             }
         } failure:^(NSError *error) {
             NSLog(@"%@", error);
+            [[HudHelper getInstance] showHudOnView:self.view caption:@"系统错误,请稍后再试" image:nil acitivity:NO autoHideTime:1.6];
         }];
     }
 }
@@ -184,10 +184,9 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
                 obj.avatarUrl = @"";
                 obj.gender = i % 2;
                 obj.level = i % 5;
-                obj.country = @"澳大利亚";
                 obj.routeDuration = @"12.12-12.25";
                 obj.fromCountry = @"";
-                obj.toCountry = @"常驻澳大利亚";
+                obj.toCountry = @"澳大利亚";
                 obj.desc = @"是对伐啦圣诞节法拉盛地方时间段飞拉萨京东方流口水";
                 [self.datasource addObject:obj];
                 [indexPaths addObject:[NSIndexPath indexPathForRow:count + i  inSection:0]];
@@ -209,7 +208,10 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    KGBuyerSummaryObject *obj = self.datasource[indexPath.row];
     KGBuyerInfoViewController *detailController = segue.destinationViewController;
+    detailController.travelId = obj.travelId;
     [detailController setHidesBottomBarWhenPushed:YES];
 
 //    BOOL connect = [[XMPPManager sharedInstance] connect];
@@ -258,7 +260,7 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
             [[HudHelper getInstance] showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
             [[KGNetworkManager sharedInstance] postRequest:item.url params:nil success:^(id responseObject) {
                 NSDictionary *dic = (NSDictionary *)responseObject;
-                NSLog(@"%@", dic);
+//                NSLog(@"%@", dic);
                 if (item.index == 0) {
                     item.data = [self convertCountryData:dic];
                 } else if (item.index == 2) {
@@ -267,7 +269,7 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
                 [item openFilterView];
                 [[HudHelper getInstance] hideHudInView:self.view];
             } failure:^(NSError *error) {
-                NSLog(@"Error: %@", error);
+//                NSLog(@"Error: %@", error);
                 [[HudHelper getInstance] showHudOnView:self.view caption:@"系统错误,请稍后再试" image:nil acitivity:NO autoHideTime:1.6];
             }];
         }
@@ -343,9 +345,6 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
                 obj.travelId = [travelInfo[@"travel_id"] integerValue];
                 obj.fromCountry = travelInfo[@"from"];
                 obj.toCountry = travelInfo[@"to"];
-                if (!obj.fromCountry || [@"" isEqualToString:obj.fromCountry]) {
-                    obj.toCountry = [NSString stringWithFormat:@"常驻%@", obj.toCountry];
-                }
                 obj.desc = travelInfo[@"travel_desc"];
                 double startTime = [travelInfo[@"travel_start_time"] doubleValue];
                 double endTime = [travelInfo[@"travel_back_time"] doubleValue];
@@ -358,7 +357,6 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
                 obj.avatarUrl = userInfo[@"head_url"];
                 obj.gender = [@"M" isEqualToString:userInfo[@"user_sex"]] ? MALE : FEMALE;
                 obj.level = [userInfo[@"user_star"] integerValue];
-                obj.country = @"中国";//TODO
             }
             [result addObject:obj];
         }

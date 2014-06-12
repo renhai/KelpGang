@@ -16,7 +16,6 @@
 @property (nonatomic, strong)NSString *avatarUrl;
 @property (nonatomic, assign)Gender gender;
 @property (nonatomic, assign)NSInteger level;
-@property (nonatomic, strong)NSString *country;
 @property (nonatomic, strong)NSString *routeDuration;
 @property (nonatomic, strong)NSString *fromCountry;
 @property (nonatomic, strong)NSString *toCountry;

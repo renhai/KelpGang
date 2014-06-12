@@ -81,7 +81,7 @@
 
 - (void)setObject: (KGBuyerSummaryObject *)obj {
     self.summaryObj = obj;
-    self.countryImgView.image = [UIImage imageNamed:obj.country];
+    self.countryImgView.image = [UIImage imageNamed:obj.toCountry];
     [self.headImageView setImageWithURL:[NSURL URLWithString:obj.avatarUrl] placeholderImage:[UIImage imageNamed:obj.gender == MALE ? kAvatarMale : kAvatarFemale]];
     self.headImageView.layer.cornerRadius = self.headImageView.width / 2;
     self.nameLabel.text = obj.userName;
@@ -89,6 +89,9 @@
     [self configLevelView:obj.level];
     self.fromCityLabel.text = obj.fromCountry;
     self.toCityLabel.text = obj.toCountry;
+    if (!obj.fromCountry || [@"" isEqualToString:obj.fromCountry]) {
+        self.toCityLabel.text = [NSString stringWithFormat:@"常驻%@", obj.toCountry];
+    }
     self.descLabel.text = obj.desc;
     self.durationLabel.text = obj.routeDuration;
 }

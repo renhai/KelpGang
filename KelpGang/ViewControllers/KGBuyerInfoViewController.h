@@ -10,4 +10,6 @@
 
 @interface KGBuyerInfoViewController : UIViewController
 
+@property (nonatomic, assign) NSInteger travelId;
+
 @end
