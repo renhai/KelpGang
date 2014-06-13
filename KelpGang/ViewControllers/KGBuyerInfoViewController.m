@@ -19,7 +19,7 @@
 @interface KGBuyerInfoViewController () <SwipeViewDataSource, SwipeViewDelegate, MWPhotoBrowserDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property (nonatomic, strong) NSArray *comments;
+//@property (nonatomic, strong) NSArray *comments;
 
 @property (nonatomic, strong) NSMutableArray *photos;
 
@@ -27,6 +27,8 @@
 @property (nonatomic, strong) NSDictionary *user_info;
 @property (nonatomic, strong) NSDictionary *travel_info;
 @property (nonatomic, strong) NSArray *good_info;
+@property (nonatomic, strong) NSArray *comment_info;
+@property (nonatomic, assign) NSInteger comment_number;
 @property (nonatomic, assign) NSInteger currAlbumIndex;
 
 @end
@@ -48,7 +50,7 @@
     [self setLeftBarbuttonItem];
 
     //for test
-    self.comments = @[@"1", @"2", @"3", @"4", @"5"];
+//    self.comments = @[@"1", @"2", @"3", @"4", @"5"];
     self.photos = [[NSMutableArray alloc] init];
 
     NSDictionary *params = @{@"user_id": @0, @"travel_id": @(self.travelId)};
@@ -59,6 +61,8 @@
         self.user_info = data[@"user_info"];
         self.travel_info = data[@"travel_info"];
         self.good_info = data[@"good_info"];
+        self.comment_info = data[@"comment_info"];
+        self.comment_number = [data[@"comment_number"] integerValue];
         [self.tableView reloadData];
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
@@ -93,7 +97,7 @@
     if (section == 0) {
         return 3;
     } else {
-        return self.comments.count + 1;
+        return self.comment_info.count + 1;
     }
 }
 
@@ -119,10 +123,13 @@
     } else {
         if (indexPath.row == 0) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"kBuyerCommentTitleCell" forIndexPath:indexPath];
+            UILabel *label = (UILabel *)[cell viewWithTag:1];
+            label.text = [NSString stringWithFormat:@"评论%i", self.comment_number];
+            [label sizeToFit];
         } else {
             cell = [tableView dequeueReusableCellWithIdentifier:@"kBuyerCommentCell" forIndexPath:indexPath];
             KGBuyerCommentCell *cCell = (KGBuyerCommentCell *)cell;
-            cCell.headImgView.layer.cornerRadius = cCell.headImgView.frame.size.width / 2;
+            [cCell setcommentInfo:self.comment_info[indexPath.row - 1]];
         }
     }
 

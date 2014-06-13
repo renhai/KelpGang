@@ -10,5 +10,9 @@
 
 @interface KGBuyerCommentCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *headImgView;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *commentLabel;
+
+- (void)setcommentInfo: (NSDictionary *)info;
 
 @end

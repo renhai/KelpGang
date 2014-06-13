@@ -31,4 +31,23 @@
     // Configure the view for the selected state
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+}
+
+- (void)setcommentInfo: (NSDictionary *)info {
+    self.commentLabel.text = info[@"comment_content"];
+    NSString *userName = @"未知用户";
+    NSString *headUrl = @"";
+    NSDictionary *user_info = info[@"user_info"];
+    if (user_info) {
+        userName = user_info[@"user_name"];
+        headUrl = user_info[@"head_url"];
+    }
+    self.nameLabel.text = userName;
+    self.headImgView.layer.cornerRadius = self.headImgView.width / 2;
+    [self.headImgView setImageWithURL: [NSURL URLWithString:headUrl] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+
+}
+
 @end
