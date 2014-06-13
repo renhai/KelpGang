@@ -7,7 +7,6 @@
 //
 
 #import "KGTaskViewController.h"
-#import "HudHelper.h"
 #import "KGBaseWebViewController.h"
 
 @interface KGTaskViewController ()

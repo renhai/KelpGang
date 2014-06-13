@@ -7,7 +7,6 @@
 //
 
 #import "KGBaseWebViewController.h"
-#import "HudHelper.h"
 #import "SVPullToRefresh.h"
 
 @interface KGBaseWebViewController () <UIWebViewDelegate>

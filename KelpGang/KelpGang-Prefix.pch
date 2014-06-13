@@ -23,6 +23,7 @@
     #import "UIImageView+UIActivityIndicatorForSDWebImage.h"
 //    #import "RestKit/RestKit.h"
     #import "KGNetworkManager.h"
+    #import "HudHelper.h"
 #endif
 
 #define HAVE_XMPP_SUBSPEC_RECONNECT

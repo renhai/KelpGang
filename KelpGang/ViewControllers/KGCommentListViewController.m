@@ -7,7 +7,6 @@
 //
 
 #import "KGCommentListViewController.h"
-#import "HudHelper.h"
 
 @interface KGCommentListViewController ()
 @property (weak, nonatomic) IBOutlet UIView *chatView;

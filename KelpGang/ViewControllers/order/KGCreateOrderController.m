@@ -18,7 +18,6 @@
 #import "KGCreateOrderTextFieldCell.h"
 #import "KGCompletedOrderController.h"
 #import "KGOrderObject.h"
-#import "HudHelper.h"
 
 
 @interface KGCreateOrderController () <UITextViewDelegate, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource>

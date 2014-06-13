@@ -11,7 +11,6 @@
 #import "KGBuyerInfoViewController.h"
 #import "XMPPManager.h"
 #import "SVPullToRefresh.h"
-#import "HudHelper.h"
 #import "KGFilterItem.h"
 #import "KGBuyerSummaryObject.h"
 

@@ -15,7 +15,6 @@
 #import "KGChatViewController.h"
 #import "KGCommentListViewController.h"
 #import "KGBuyerRouteCell.h"
-#import "HudHelper.h"
 
 
 @interface KGBuyerInfoViewController () <SwipeViewDataSource, SwipeViewDelegate, MWPhotoBrowserDelegate>
