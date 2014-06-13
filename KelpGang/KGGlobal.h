@@ -29,6 +29,7 @@ self.navigationItem.leftBarButtonItem = buttonItem;\
 #define kAvatarFemale @"avatar-female"
 #define kHarfHeart @"half_heart"
 #define kFullHeart @"full_heart"
+#define kLoadingText @"Loading"
 
 
 typedef enum {

@@ -301,7 +301,7 @@
                                             <outlet property="vipImageView" destination="aZS-Mt-8sh" id="AAb-uZ-BMc"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="kBuyerRouteCell" rowHeight="87" id="ia9-Jm-ete">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="kBuyerRouteCell" rowHeight="87" id="ia9-Jm-ete" customClass="KGBuyerRouteCell">
                                         <rect key="frame" x="0.0" y="128" width="320" height="87"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ia9-Jm-ete" id="2IR-hb-Pmy">
@@ -344,6 +344,13 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                        <connections>
+                                            <outlet property="airplaneLabel" destination="4GD-Ew-nC9" id="KIl-7H-LgM"/>
+                                            <outlet property="descLabel" destination="c05-U2-fU7" id="evs-64-HlY"/>
+                                            <outlet property="durationLabel" destination="7jC-cL-JJj" id="7V9-pm-pir"/>
+                                            <outlet property="fromLabel" destination="UKa-rz-dLu" id="Lay-LU-S9A"/>
+                                            <outlet property="toLabel" destination="99W-yP-uTZ" id="FuF-vk-QWd"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="kBuyerPictureCell" rowHeight="138" id="yWN-dj-qQx" customClass="KGBuyerRefPicturesCell">
                                         <rect key="frame" x="0.0" y="215" width="320" height="138"/>

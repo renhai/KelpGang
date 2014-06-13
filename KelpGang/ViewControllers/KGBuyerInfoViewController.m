@@ -14,15 +14,14 @@
 #import "KGPicBottomView.h"
 #import "KGChatViewController.h"
 #import "KGCommentListViewController.h"
+#import "KGBuyerRouteCell.h"
+#import "HudHelper.h"
 
 
 @interface KGBuyerInfoViewController () <SwipeViewDataSource, SwipeViewDelegate, MWPhotoBrowserDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-//@property (nonatomic, strong) NSArray *comments;
-
 @property (nonatomic, strong) NSMutableArray *photos;
-
 
 @property (nonatomic, strong) NSDictionary *user_info;
 @property (nonatomic, strong) NSDictionary *travel_info;
@@ -49,10 +48,8 @@
     [super viewDidLoad];
     [self setLeftBarbuttonItem];
 
-    //for test
-//    self.comments = @[@"1", @"2", @"3", @"4", @"5"];
+    [[HudHelper getInstance] showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
     self.photos = [[NSMutableArray alloc] init];
-
     NSDictionary *params = @{@"user_id": @0, @"travel_id": @(self.travelId)};
     [[KGNetworkManager sharedInstance] postRequest:@"/mobile/travel/getUserTravel" params:params success:^(id responseObject) {
         NSLog(@"%@", responseObject);
@@ -64,6 +61,7 @@
         self.comment_info = data[@"comment_info"];
         self.comment_number = [data[@"comment_number"] integerValue];
         [self.tableView reloadData];
+        [[HudHelper getInstance] hideHudInView:self.view];
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
     }];
@@ -112,6 +110,8 @@
             [dCell setUserInfo:self.user_info];
         } else if (indexPath.row == 1) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"kBuyerRouteCell" forIndexPath:indexPath];
+            KGBuyerRouteCell *rCell = (KGBuyerRouteCell *)cell;
+            [rCell setRouteInfo:self.travel_info];
         } else if (indexPath.row == 2) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"kBuyerPictureCell" forIndexPath:indexPath];
             KGBuyerRefPicturesCell *pCell = (KGBuyerRefPicturesCell *)cell;

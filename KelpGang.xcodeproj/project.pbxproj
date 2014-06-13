@@ -619,6 +619,7 @@
 		A1BBB08018D6B4E1002C8BD2 /* KGTaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BBB07F18D6B4E1002C8BD2 /* KGTaskListViewController.m */; };
 		A1BBB08618D6EE86002C8BD2 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BBB08418D6EE86002C8BD2 /* search.png */; };
 		A1BBB08718D6EE86002C8BD2 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BBB08518D6EE86002C8BD2 /* search@2x.png */; };
+		A1BCF764194AD6C6008319C4 /* KGBuyerRouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BCF763194AD6C6008319C4 /* KGBuyerRouteCell.m */; };
 		A1C0ACFB18C759010092E3B4 /* XMPPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C0ACFA18C759010092E3B4 /* XMPPManager.m */; };
 		A1CA060018DAF32D00B1F3A6 /* KGJourneyPictureContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CA05FF18DAF32D00B1F3A6 /* KGJourneyPictureContainerView.m */; };
 		A1CA59E21917616200D9A429 /* KGCreateOrderBuyerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CA59D51917616200D9A429 /* KGCreateOrderBuyerCell.m */; };
@@ -1346,6 +1347,8 @@
 		A1BBB07F18D6B4E1002C8BD2 /* KGTaskListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGTaskListViewController.m; sourceTree = "<group>"; };
 		A1BBB08418D6EE86002C8BD2 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
 		A1BBB08518D6EE86002C8BD2 /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
+		A1BCF762194AD6C6008319C4 /* KGBuyerRouteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGBuyerRouteCell.h; sourceTree = "<group>"; };
+		A1BCF763194AD6C6008319C4 /* KGBuyerRouteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGBuyerRouteCell.m; sourceTree = "<group>"; };
 		A1C0ACF918C759010092E3B4 /* XMPPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPManager.h; sourceTree = "<group>"; };
 		A1C0ACFA18C759010092E3B4 /* XMPPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPManager.m; sourceTree = "<group>"; };
 		A1CA05FE18DAF32D00B1F3A6 /* KGJourneyPictureContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGJourneyPictureContainerView.h; sourceTree = "<group>"; };
@@ -1834,6 +1837,8 @@
 				A19F0EC218E2AE0D00C2944D /* KGBuyerRefPicturesCell.m */,
 				A19F0EC418E2B33B00C2944D /* KGBuyerDescriptionCell.h */,
 				A19F0EC518E2B33B00C2944D /* KGBuyerDescriptionCell.m */,
+				A1BCF762194AD6C6008319C4 /* KGBuyerRouteCell.h */,
+				A1BCF763194AD6C6008319C4 /* KGBuyerRouteCell.m */,
 				A19F0EC718E2B47800C2944D /* KGBuyerCommentCell.h */,
 				A19F0EC818E2B47800C2944D /* KGBuyerCommentCell.m */,
 				A1A0DA0118FE662300E0C0E8 /* KGBaseMessageCell.h */,
@@ -3098,6 +3103,7 @@
 				A112DF481918C98600108FAD /* KGCompletedOrderLabelCell.m in Sources */,
 				A1A0DA0318FE662300E0C0E8 /* KGBaseMessageCell.m in Sources */,
 				A19F0ED118E2C6A400C2944D /* HudHelper.m in Sources */,
+				A1BCF764194AD6C6008319C4 /* KGBuyerRouteCell.m in Sources */,
 				A1AD133B1908C1DF00DF17B6 /* KGDeliveryAddressCell.m in Sources */,
 				A1CA59EC191762A000D9A429 /* KGOrderSummaryObject.m in Sources */,
 				A18A2B8D18E1334200FDFB8E /* KGAddAddressController.m in Sources */,
