@@ -109,7 +109,7 @@
         if (indexPath.row == 0) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"kBuyerDescriptionCell" forIndexPath:indexPath];
             KGBuyerDescriptionCell *dCell = (KGBuyerDescriptionCell *)cell;
-            dCell.headImgView.layer.cornerRadius = dCell.headImgView.frame.size.width / 2;
+            [dCell setUserInfo:self.user_info];
         } else if (indexPath.row == 1) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"kBuyerRouteCell" forIndexPath:indexPath];
         } else if (indexPath.row == 2) {
