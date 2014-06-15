@@ -11,7 +11,7 @@ target :'KelpGang' do
     pod 'XMPPFramework', '~> 3.6.4'
     pod 'EGOCache', '~> 2.0'
     pod 'MBProgressHUD', '~> 0.8'
-    pod 'OHAttributedLabel'
+    #pod 'OHAttributedLabel'
     #pod 'RestKit', '~> 0.20.3'
     #pod 'RestKit/Search', '~> 0.20.3'
     #pod 'RestKit/Testing', '~> 0.20.3'

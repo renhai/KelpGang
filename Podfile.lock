@@ -1,24 +1,26 @@
 PODS:
-  - AFNetworking (2.2.3):
+  - AFNetworking (2.3.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
     - AFNetworking/UIKit
-  - AFNetworking/NSURLConnection (2.2.3):
+  - AFNetworking/NSURLConnection (2.3.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.2.3):
-    - AFNetworking/NSURLConnection
-  - AFNetworking/Reachability (2.2.3)
-  - AFNetworking/Security (2.2.3)
-  - AFNetworking/Serialization (2.2.3)
-  - AFNetworking/UIKit (2.2.3):
+  - AFNetworking/NSURLSession (2.3.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.3.1)
+  - AFNetworking/Security (2.3.1)
+  - AFNetworking/Serialization (2.3.1)
+  - AFNetworking/UIKit (2.3.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - CocoaAsyncSocket (7.3.4)
+  - CocoaAsyncSocket (7.3.5)
   - CocoaLumberjack (1.6.5.1):
     - CocoaLumberjack/Core
     - CocoaLumberjack/Extensions
@@ -26,8 +28,8 @@ PODS:
   - CocoaLumberjack/Extensions (1.6.5.1):
     - CocoaLumberjack/Core
   - DACircularProgress (2.2.0)
-  - EGOCache (2.0)
-  - IQKeyboardManager (3.0.4)
+  - EGOCache (2.1)
+  - IQKeyboardManager (3.0.5)
   - MagicalRecord (2.2):
     - MagicalRecord/Core
   - MagicalRecord/Core (2.2)
@@ -37,8 +39,7 @@ PODS:
     - MBProgressHUD (~> 0.8)
     - PSTCollectionView (~> 1.2)
     - SDWebImage (~> 3.5.4)
-  - OHAttributedLabel (3.5.3)
-  - PSTCollectionView (1.2.0)
+  - PSTCollectionView (1.2.1)
   - Reachability (3.1.1)
   - SDWebImage (3.5.4):
     - SDWebImage/Core
@@ -185,7 +186,6 @@ DEPENDENCIES:
   - MagicalRecord (~> 2.2)
   - MBProgressHUD (~> 0.8)
   - MWPhotoBrowser
-  - OHAttributedLabel
   - PSTCollectionView (~> 1.2.0)
   - Reachability (~> 3.1.1)
   - SDWebImage (~> 3.5.2)
@@ -195,22 +195,21 @@ DEPENDENCIES:
   - XMPPFramework (~> 3.6.4)
 
 SPEC CHECKSUMS:
-  AFNetworking: ae513199cca79e9d7af2708ccabe2ed075550c42
-  CocoaAsyncSocket: 534d09416f992fd51efb23f534742ce70b3a7999
-  CocoaLumberjack: 17803afbade3126a377d32b8d23367264b44ced6
-  DACircularProgress: 659d6fd11b5fc099c13ba9350239d9dca324916a
-  EGOCache: c7116e8a6692eecb542f001a9c71f9b71ae9644b
-  IQKeyboardManager: 7f7d9ac326ff0908499d5304645338baf846f4d2
-  MagicalRecord: 95d49d74ef752cd52f6ad87bcb474817fc3978cf
-  MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
-  MWPhotoBrowser: b85e89fcf0575062f32c472d389265dce1f068e1
-  OHAttributedLabel: 985e4b57eec0dc6add79179ac47ec888b8a914e7
-  PSTCollectionView: fb2ad2790c6efa306b2caf10315b2c1464d1f5c6
-  Reachability: be4883bb93f31e38266ae3365e5600a317aae735
-  SDWebImage: 1a62010700adbba823b621fc217906739dbf6aa5
-  SVPullToRefresh: 61a0e4bd12bd6f8e3465909810b0fbeb1a28d5f2
-  SVSegmentedControl: e874fc56c2a1efb9f597ddf0908101393f53fe96
-  UIActivityIndicator-for-SDWebImage: 6ab42f95a4066339e2338c3326679a526ce2ef64
-  XMPPFramework: eee9ed80df314067fac613c24223ad73834306b0
+  AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
+  CocoaAsyncSocket: 45bdbbc1c0a5ed0640ff4c42af325ba43a2f099a
+  CocoaLumberjack: baf4a09a3bcbdfea3363556a90104e026d3504e2
+  DACircularProgress: 3b41941891a56dc6aa17971f5322a9a38a6f446e
+  EGOCache: bf414333c425fe47f5182351d1dd47ebf72d8352
+  IQKeyboardManager: 89009bd8df979ad116a9c9326875ecf4c000fef0
+  MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
+  MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
+  MWPhotoBrowser: 4efcdb9da34751f97992128a5356f3929d1af537
+  PSTCollectionView: a63299550ad566b579479d07cb5e2bf61148686b
+  Reachability: 8e9635e3cb4f98e7f825e51147f677ecc694d0e7
+  SDWebImage: 571295c8acbb699505a0f68e54506147c3de9ea7
+  SVPullToRefresh: d5161ebc833a38b465364412e5e307ca80bbb190
+  SVSegmentedControl: 755a9721054734a77841147de3cc8babf09ba7f1
+  UIActivityIndicator-for-SDWebImage: d9e46f1592d04cfbeda67bb6d7bba5348558697b
+  XMPPFramework: 15ca7fcceb7d22c2580ecf6f6e69744dbe2ba25b
 
-COCOAPODS: 0.32.1
+COCOAPODS: 0.33.1

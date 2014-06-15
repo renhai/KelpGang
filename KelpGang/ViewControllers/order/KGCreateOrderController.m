@@ -13,7 +13,7 @@
 #import "KGCreateOrderBuyerCell.h"
 #import "KGCreateOrderTaskNameCell.h"
 #import "KGCreateOrderUploadPhotoCell.h"
-#import "IQ_UIView+Hierarchy.h"
+#import "IQUIView+Hierarchy.h"
 #import "KGCreateOrderPhotoCell.h"
 #import "KGCreateOrderTextFieldCell.h"
 #import "KGCompletedOrderController.h"
