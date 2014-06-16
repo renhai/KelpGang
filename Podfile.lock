@@ -29,7 +29,6 @@ PODS:
     - CocoaLumberjack/Core
   - DACircularProgress (2.2.0)
   - EGOCache (2.1)
-  - IQKeyboardManager (3.0.5)
   - MagicalRecord (2.2):
     - MagicalRecord/Core
   - MagicalRecord/Core (2.2)
@@ -182,7 +181,6 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - EGOCache (~> 2.0)
-  - IQKeyboardManager (~> 3.0.4)
   - MagicalRecord (~> 2.2)
   - MBProgressHUD (~> 0.8)
   - MWPhotoBrowser
@@ -200,7 +198,6 @@ SPEC CHECKSUMS:
   CocoaLumberjack: baf4a09a3bcbdfea3363556a90104e026d3504e2
   DACircularProgress: 3b41941891a56dc6aa17971f5322a9a38a6f446e
   EGOCache: bf414333c425fe47f5182351d1dd47ebf72d8352
-  IQKeyboardManager: 89009bd8df979ad116a9c9326875ecf4c000fef0
   MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
   MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
   MWPhotoBrowser: 4efcdb9da34751f97992128a5356f3929d1af537

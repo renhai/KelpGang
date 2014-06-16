@@ -19,7 +19,6 @@
     #import "UIView+Additions.h"
     #import "UIImage+Addtional.h"
     #import "UIViewController+Additions.h"
-    #import "IQKeyboardManager.h"
     #import "UIImageView+UIActivityIndicatorForSDWebImage.h"
 //    #import "RestKit/RestKit.h"
     #import "KGNetworkManager.h"

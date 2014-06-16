@@ -10,6 +10,7 @@
 #import "DDLog.h"
 #import "DDTTYLogger.h"
 #import "XMPPManager.h"
+#import "IQKeyboardManager.h"
 
 // Log levels: off, error, warn, info, verbose
 #if DEBUG

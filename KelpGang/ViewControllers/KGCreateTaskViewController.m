@@ -12,6 +12,7 @@
 #import "UIImage+Addtional.h"
 #import "KGPhotoBrowserViewController.h"
 #import "KGTaskViewController.h"
+#import "IQKeyboardManager.h"
 
 
 @interface KGCreateTaskViewController () <UITextFieldDelegate, UITextViewDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, MWPhotoBrowserDelegate>
