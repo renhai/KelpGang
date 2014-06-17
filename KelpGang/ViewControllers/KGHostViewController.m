@@ -14,6 +14,7 @@
 #import "KGHostHeadViewCell.h"
 #import "KGUserObject.h"
 #import "KGHostDetailController.h"
+#import "KGLoginController.h"
 
 @interface KGHostViewController ()
 
@@ -136,14 +137,30 @@
     }
 }
 
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    if (![APPCONTEXT checkLogin]) {
+        return NO;
+    }
+//    if ([identifier isEqualToString:@"kHostDetailSegue"]) {
+//        return YES;
+//    }
+    return YES;
+}
+
 
 #pragma UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     switch (indexPath.section) {
-        case 0:
+        case 0: {
+            if (![APPCONTEXT checkLogin]) {
+                KGLoginController *loginController = [UIStoryboard storyboardWithName:@"login" bundle:nil].instantiateInitialViewController;
+                UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:loginController];
+                [self presentViewController:nc animated:YES completion:nil];
+            }
             break;
+        }
         case 1:
             break;
         case 2: {

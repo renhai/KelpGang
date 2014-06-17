@@ -24,4 +24,8 @@
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *password;
 
+@property (nonatomic, strong) NSString *sessionKey;
+
+- (BOOL)isLogin;
+
 @end

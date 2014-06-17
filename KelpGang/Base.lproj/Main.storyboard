@@ -1457,7 +1457,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <outlet property="levelView" destination="7Rp-7a-vy7" id="rK1-Go-3qk"/>
                                             <outlet property="nameLabel" destination="8IP-Sn-qfB" id="G0K-aF-8Pt"/>
                                             <outlet property="vipImageView" destination="0Tg-fu-zIE" id="rab-Qr-MU0"/>
-                                            <segue destination="3ce-tb-lAT" kind="push" id="yI7-RC-Z6l"/>
+                                            <segue destination="3ce-tb-lAT" kind="push" identifier="kHostDetailSegue" id="yI7-RC-Z6l"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>

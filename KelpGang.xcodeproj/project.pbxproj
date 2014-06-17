@@ -626,6 +626,7 @@
 		A1B22C5418D1B96B00953EE5 /* add_img.png in Resources */ = {isa = PBXBuildFile; fileRef = A1B22C5218D1B96B00953EE5 /* add_img.png */; };
 		A1B22C5518D1B96B00953EE5 /* add_img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1B22C5318D1B96B00953EE5 /* add_img@2x.png */; };
 		A1B287BA18ED955B00E44682 /* KGFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B287B918ED955B00E44682 /* KGFilterView.m */; };
+		A1B4F74D195033E900D48B09 /* AppContext.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B4F74C195033E900D48B09 /* AppContext.m */; };
 		A1BBB08018D6B4E1002C8BD2 /* KGTaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BBB07F18D6B4E1002C8BD2 /* KGTaskListViewController.m */; };
 		A1BBB08618D6EE86002C8BD2 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BBB08418D6EE86002C8BD2 /* search.png */; };
 		A1BBB08718D6EE86002C8BD2 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BBB08518D6EE86002C8BD2 /* search@2x.png */; };
@@ -1374,6 +1375,8 @@
 		A1B22C5718D1CD1D00953EE5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		A1B287B818ED955B00E44682 /* KGFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGFilterView.h; sourceTree = "<group>"; };
 		A1B287B918ED955B00E44682 /* KGFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGFilterView.m; sourceTree = "<group>"; };
+		A1B4F74B195033E900D48B09 /* AppContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppContext.h; sourceTree = "<group>"; };
+		A1B4F74C195033E900D48B09 /* AppContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppContext.m; sourceTree = "<group>"; };
 		A1BBB07E18D6B4E1002C8BD2 /* KGTaskListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGTaskListViewController.h; sourceTree = "<group>"; };
 		A1BBB07F18D6B4E1002C8BD2 /* KGTaskListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGTaskListViewController.m; sourceTree = "<group>"; };
 		A1BBB08418D6EE86002C8BD2 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
@@ -1621,6 +1624,8 @@
 				A10635E1191B80430069F8E4 /* KGLocationManager.m */,
 				A174B7AE1941A09D0067B8FA /* KGNetworkManager.h */,
 				A174B7AF1941A09D0067B8FA /* KGNetworkManager.m */,
+				A1B4F74B195033E900D48B09 /* AppContext.h */,
+				A1B4F74C195033E900D48B09 /* AppContext.m */,
 			);
 			path = ToolBox;
 			sourceTree = "<group>";
@@ -3168,6 +3173,7 @@
 				A1A1DAFD18C9CCD200F03E04 /* KGUtils.m in Sources */,
 				A16FBEF018DC1FA6009E2F66 /* KGHostViewController.m in Sources */,
 				A112DF481918C98600108FAD /* KGCompletedOrderLabelCell.m in Sources */,
+				A1B4F74D195033E900D48B09 /* AppContext.m in Sources */,
 				A1A0DA0318FE662300E0C0E8 /* KGBaseMessageCell.m in Sources */,
 				A19F0ED118E2C6A400C2944D /* HudHelper.m in Sources */,
 				A1BCF764194AD6C6008319C4 /* KGBuyerRouteCell.m in Sources */,

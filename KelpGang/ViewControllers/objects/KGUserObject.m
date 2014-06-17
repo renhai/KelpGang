@@ -10,4 +10,11 @@
 
 @implementation KGUserObject
 
+- (BOOL)isLogin{
+    if (self.sessionKey && self.sessionKey.length > 0) {
+        return YES;
+    }
+    return NO;
+}
+
 @end

@@ -30,6 +30,7 @@ self.navigationItem.leftBarButtonItem = buttonItem;\
 #define kHarfHeart @"half_heart"
 #define kFullHeart @"full_heart"
 #define kLoadingText @"Loading"
+#define APPCONTEXT  [AppContext sharedInstance]
 
 
 typedef enum {

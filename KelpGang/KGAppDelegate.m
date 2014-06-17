@@ -25,6 +25,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 {
     [[UITabBar appearance] setTintColor:MAIN_COLOR];
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:MAIN_COLOR] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor], UITextAttributeFont: [UIFont systemFontOfSize:20]}];
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
         [[UIBarButtonItem appearance] setBackgroundImage:[UIImage new]
                                                 forState:UIControlStateNormal
