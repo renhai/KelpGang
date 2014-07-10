@@ -7,8 +7,19 @@
 //
 
 #import "KGRegisterController.h"
+#import<CommonCrypto/CommonDigest.h>
 
 @interface KGRegisterController ()
+
+@property (weak, nonatomic) IBOutlet UITextField *nicknameTF;
+@property (weak, nonatomic) IBOutlet UITextField *phoneNumTF;
+@property (weak, nonatomic) IBOutlet UIButton *verifyBtn;
+@property (weak, nonatomic) IBOutlet UITextField *verifyCodeTF;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTF;
+@property (weak, nonatomic) IBOutlet UIButton *registerBtn;
+
+@property (nonatomic, assign) Gender gender;
+
 
 @end
 
@@ -28,18 +39,15 @@
     [super viewDidLoad];
     [self setLeftBarbuttonItem];
     self.title = @"手机注册";
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.tableView.backgroundColor = RGB(233, 243, 243);
+    self.gender = FEMALE;
+    [self.verifyBtn addTarget:self action:@selector(verifyPhone) forControlEvents:UIControlEventTouchUpInside];
+    [self.registerBtn addTarget:self action:@selector(doRegister) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -54,64 +62,84 @@
     return [super tableView:tableView numberOfRowsInSection:section];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    cell.contentView.backgroundColor = [UIColor whiteColor];
+    if (indexPath.section == 0 && indexPath.row == 1) {
+        cell.contentView.backgroundColor = RGB(233, 243, 243);
+    }
+    if (indexPath.section == 0 && indexPath.row == 2) {
+        UIImageView *selectView = (UIImageView *)[cell viewWithTag:1];
+        selectView.hidden = self.gender == MALE;
+    }
+    if (indexPath.section == 0 && indexPath.row == 3) {
+        UIImageView *selectView = (UIImageView *)[cell viewWithTag:1];
+        selectView.hidden = self.gender == FEMALE;
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 1) {
+        return 10.0;
+    } else {
+        return 0.0;
+    }
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *sectionHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.width, 10)];
+    sectionHeaderView.backgroundColor = [UIColor clearColor];
+    return sectionHeaderView;
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        if (indexPath.row == 2) {
+            self.gender = FEMALE;
+            [tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone];
+        }
+        if (indexPath.row == 3) {
+            self.gender = MALE;
+            [tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone];
+        }
+    }
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+
+- (void)verifyPhone {
+    NSString *phone = self.phoneNumTF.text;
+    NSDictionary *params = @{@"phone": phone, @"time": @"0", @"sign": @""};
+    [[KGNetworkManager sharedInstance] postRequest:@"/mobile/register/verifyCode" params:params success:^(id responseObject) {
+        DLog(@"%@", responseObject);
+    } failure:^(NSError *error) {
+        DLog(@"%@", error);
+    }];
+
 }
-*/
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)doRegister {
+    NSString *password = self.passwordTF.text;
+    if (!password || [@"" isEqualToString:password]) {
+        return;
+    }
+    NSString *md5Password = [self md5HexDigest:password];
+    DLog(@"%@", md5Password);
 }
-*/
+
+- (NSString *)md5HexDigest:(NSString *)orig {
+    const char *original_str = [orig UTF8String];
+    unsigned char result[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(original_str, strlen(original_str), result);
+    NSMutableString *hash = [NSMutableString string];
+    for (int i = 0; i < 16; i++)
+        [hash appendFormat:@"%02X", result[i]];
+    return [hash lowercaseString];
+}
+
+
 
 @end
