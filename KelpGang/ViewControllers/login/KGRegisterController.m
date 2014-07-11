@@ -111,12 +111,20 @@
 
 
 - (void)verifyPhone {
+    [self.phoneNumTF resignFirstResponder];
     NSString *phone = self.phoneNumTF.text;
+    if (!phone || [@"" isEqualToString:phone]) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"手机号码不能为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alertView show];
+        return;
+    }
     NSDictionary *params = @{@"phone": phone, @"time": @"0", @"sign": @""};
     [[KGNetworkManager sharedInstance] postRequest:@"/mobile/register/verifyCode" params:params success:^(id responseObject) {
         DLog(@"%@", responseObject);
     } failure:^(NSError *error) {
         DLog(@"%@", error);
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"服务器错误，请稍后再试" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alertView show];
     }];
 
 }
@@ -124,6 +132,8 @@
 - (void)doRegister {
     NSString *password = self.passwordTF.text;
     if (!password || [@"" isEqualToString:password]) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"密码不能为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alertView show];
         return;
     }
     NSString *md5Password = [self md5HexDigest:password];
