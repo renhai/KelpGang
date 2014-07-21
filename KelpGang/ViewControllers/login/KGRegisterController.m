@@ -130,6 +130,41 @@
 }
 
 - (void)doRegister {
+    NSString *name = self.nicknameTF.text;
+    if (!name || [@"" isEqualToString:name]) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"昵称不能为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alertView show];
+        return;
+    }
+
+//    [[KGNetworkManager sharedInstance] postRequest:@"/mobile/register/isUserNameExists" params:@{@"name": name} success:^(id responseObject) {
+//        DLog(@"%@", responseObject);
+//        NSDictionary *dic = (NSDictionary *)responseObject;
+//        NSString *msg = [dic objectForKey:@"msg"];
+//        if ([[dic objectForKey:@"code"] integerValue] != 0) {
+//            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//            [alertView show];
+//            return;
+//        }
+//    } failure:^(NSError *error) {
+//        DLog(@"%@", error);
+//        return;
+//    }];
+
+    NSString *phone = self.phoneNumTF.text;
+    if (!phone || [@"" isEqualToString:phone]) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"手机号不能为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alertView show];
+        return;
+    }
+
+    NSString *verifyCode = self.verifyCodeTF.text;
+    if (!verifyCode || [@"" isEqualToString:verifyCode]) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"验证码不能为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alertView show];
+        return;
+    }
+
     NSString *password = self.passwordTF.text;
     if (!password || [@"" isEqualToString:password]) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"密码不能为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
@@ -138,6 +173,16 @@
     }
     NSString *md5Password = [self md5HexDigest:password];
     DLog(@"%@", md5Password);
+
+
+
+//    NSString *sex = self.gender == MALE ? @"M" : @"F";
+//    NSDictionary *params = @{@"name": name, @"sex": sex, @"phone": phone, @"code": verifyCode, @"password_md5": md5Password};
+//    [[KGNetworkManager sharedInstance] postRequest:@"/mobile/register/register" params:params success:^(id responseObject) {
+//        DLog(@"%@", responseObject);
+//    } failure:^(NSError *error) {
+//        DLog(@"%@", error);
+//    }];
 }
 
 - (NSString *)md5HexDigest:(NSString *)orig {
