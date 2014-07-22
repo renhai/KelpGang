@@ -9,6 +9,9 @@
 #import "KGLoginController.h"
 
 @interface KGLoginController ()
+@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
+@property (weak, nonatomic) IBOutlet UITextField *accountTF;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTF;
 
 @end
 
@@ -28,6 +31,7 @@
     [super viewDidLoad];
     [self setLeftBarbuttonItem];
     [self setTitle:@"登录"];
+    [self.loginBtn addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
     
 
     // Uncomment the following line to preserve selection between presentations.
@@ -60,6 +64,34 @@
 {
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
     return cell;
+}
+
+- (void)login: (UIButton *) sender {
+    NSString *account = self.accountTF.text;
+    NSString *password = self.passwordTF.text;
+    NSString *md5Password = [KGUtils md5HexDigest:password];
+    NSDictionary *params = @{@"account": account, @"password_md5": md5Password};
+    [[KGNetworkManager sharedInstance] postRequest:@"/mobile/home/login" params:params success:^(id responseObject) {
+        DLog(@"%@", responseObject);
+        NSDictionary *dic = (NSDictionary *)responseObject;
+        NSInteger code = [dic[@"code"] integerValue];
+        NSString *msg = dic[@"msg"];
+        if (code == 0) {
+            NSDictionary *data = dic[@"data"];
+            NSInteger userId = [data[@"id"] integerValue];
+            NSString *sessionKey = data[@"session_key"];
+            [[NSUserDefaults standardUserDefaults] setInteger:userId forKey:kCurrentUserId];
+            [[NSUserDefaults standardUserDefaults] setObject:sessionKey forKey:kCurrentSessionKey];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        } else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+    } failure:^(NSError *error) {
+        DLog(@"%@", error);
+
+    }];
 }
 
 @end

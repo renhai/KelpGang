@@ -20,4 +20,6 @@
 
 + (void)setExtraCellLineHidden: (UITableView *)tableView;
 
++ (NSString *)md5HexDigest:(NSString *)orig;
+
 @end

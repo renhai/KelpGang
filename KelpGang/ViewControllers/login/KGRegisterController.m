@@ -7,7 +7,6 @@
 //
 
 #import "KGRegisterController.h"
-#import<CommonCrypto/CommonDigest.h>
 
 @interface KGRegisterController ()
 
@@ -171,7 +170,7 @@
         [alertView show];
         return;
     }
-    NSString *md5Password = [self md5HexDigest:password];
+    NSString *md5Password = [KGUtils md5HexDigest:password];
     DLog(@"%@", md5Password);
 
 
@@ -195,17 +194,6 @@
         DLog(@"%@", error);
     }];
 }
-
-- (NSString *)md5HexDigest:(NSString *)orig {
-    const char *original_str = [orig UTF8String];
-    unsigned char result[CC_MD5_DIGEST_LENGTH];
-    CC_MD5(original_str, strlen(original_str), result);
-    NSMutableString *hash = [NSMutableString string];
-    for (int i = 0; i < 16; i++)
-        [hash appendFormat:@"%02X", result[i]];
-    return [hash lowercaseString];
-}
-
 
 
 @end

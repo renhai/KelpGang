@@ -31,7 +31,8 @@ self.navigationItem.leftBarButtonItem = buttonItem;\
 #define kFullHeart @"full_heart"
 #define kLoadingText @"Loading"
 #define APPCONTEXT  [AppContext sharedInstance]
-
+#define kCurrentUserId @"kCurrentUserId"
+#define kCurrentSessionKey @"kCurrentSessionKey"
 
 typedef enum {
     MALE =      0,
