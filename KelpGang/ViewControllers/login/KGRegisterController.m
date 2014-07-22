@@ -176,13 +176,24 @@
 
 
 
-//    NSString *sex = self.gender == MALE ? @"M" : @"F";
-//    NSDictionary *params = @{@"name": name, @"sex": sex, @"phone": phone, @"code": verifyCode, @"password_md5": md5Password};
-//    [[KGNetworkManager sharedInstance] postRequest:@"/mobile/register/register" params:params success:^(id responseObject) {
-//        DLog(@"%@", responseObject);
-//    } failure:^(NSError *error) {
-//        DLog(@"%@", error);
-//    }];
+    NSString *sex = self.gender == MALE ? @"M" : @"F";
+    NSDictionary *params = @{@"name": name, @"sex": sex, @"phone": phone, @"code": verifyCode, @"password_md5": md5Password};
+    [[KGNetworkManager sharedInstance] postRequest:@"/mobile/register/register" params:params success:^(id responseObject) {
+        DLog(@"%@", responseObject);
+        NSDictionary *dic = (NSDictionary *)responseObject;
+        NSInteger code = [dic[@"code"] integerValue];
+        NSString *msg = dic[@"msg"];
+        if (code == 0) {
+            [self.navigationController popViewControllerAnimated:YES];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"注册成功,请登陆" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alert show];
+        } else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+    } failure:^(NSError *error) {
+        DLog(@"%@", error);
+    }];
 }
 
 - (NSString *)md5HexDigest:(NSString *)orig {
