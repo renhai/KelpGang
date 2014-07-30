@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KGUserObject.h"
 
 @class KGUserObject;
 
@@ -17,6 +18,8 @@
 +(AppContext *)sharedInstance;
 
 - (BOOL)checkLogin;
+
+- (void)userPersist;
 
 
 @end

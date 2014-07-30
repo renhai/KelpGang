@@ -33,6 +33,9 @@ self.navigationItem.leftBarButtonItem = buttonItem;\
 #define APPCONTEXT  [AppContext sharedInstance]
 #define kCurrentUserId @"kCurrentUserId"
 #define kCurrentSessionKey @"kCurrentSessionKey"
+#define kPersistDir  @"persist"
+#define kLoginUserKey         @"kX2UserKey"
+
 
 typedef enum {
     MALE =      0,

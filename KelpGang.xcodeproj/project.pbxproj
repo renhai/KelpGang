@@ -88,6 +88,7 @@
 		A16FBEFC18DC255A009E2F66 /* half_heart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A16FBEF618DC255A009E2F66 /* half_heart@2x.png */; };
 		A16FBF0118DC4F3A009E2F66 /* recent-contact.png in Resources */ = {isa = PBXBuildFile; fileRef = A16FBEFF18DC4F3A009E2F66 /* recent-contact.png */; };
 		A16FBF0218DC4F3A009E2F66 /* recent-contact@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A16FBF0018DC4F3A009E2F66 /* recent-contact@2x.png */; };
+		A1711BD9197FB7EC00721862 /* AppStartup.m in Sources */ = {isa = PBXBuildFile; fileRef = A1711BD8197FB7EC00721862 /* AppStartup.m */; };
 		A174B7B01941A09D0067B8FA /* KGNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A174B7AF1941A09D0067B8FA /* KGNetworkManager.m */; };
 		A174CD671904CFAC00D910C5 /* UIViewController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = A174CD661904CFAC00D910C5 /* UIViewController+Additions.m */; };
 		A179E6B91921EB28006A72BD /* login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A179E6B81921EB28006A72BD /* login.storyboard */; };
@@ -800,6 +801,8 @@
 		A16FBEF618DC255A009E2F66 /* half_heart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "half_heart@2x.png"; sourceTree = "<group>"; };
 		A16FBEFF18DC4F3A009E2F66 /* recent-contact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "recent-contact.png"; sourceTree = "<group>"; };
 		A16FBF0018DC4F3A009E2F66 /* recent-contact@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "recent-contact@2x.png"; sourceTree = "<group>"; };
+		A1711BD7197FB7EC00721862 /* AppStartup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppStartup.h; sourceTree = "<group>"; };
+		A1711BD8197FB7EC00721862 /* AppStartup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppStartup.m; sourceTree = "<group>"; };
 		A174B7AE1941A09D0067B8FA /* KGNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGNetworkManager.h; sourceTree = "<group>"; };
 		A174B7AF1941A09D0067B8FA /* KGNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGNetworkManager.m; sourceTree = "<group>"; };
 		A174CD651904CFAC00D910C5 /* UIViewController+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Additions.h"; sourceTree = "<group>"; };
@@ -1629,6 +1632,8 @@
 				A174B7AF1941A09D0067B8FA /* KGNetworkManager.m */,
 				A1B4F74B195033E900D48B09 /* AppContext.h */,
 				A1B4F74C195033E900D48B09 /* AppContext.m */,
+				A1711BD7197FB7EC00721862 /* AppStartup.h */,
+				A1711BD8197FB7EC00721862 /* AppStartup.m */,
 			);
 			path = ToolBox;
 			sourceTree = "<group>";
@@ -3144,6 +3149,7 @@
 				A16FBEED18DC178C009E2F66 /* KGMaskView.m in Sources */,
 				A1A003F718F3F0BC00B5A1D7 /* KGMessageObject.m in Sources */,
 				A1C0ACFB18C759010092E3B4 /* XMPPManager.m in Sources */,
+				A1711BD9197FB7EC00721862 /* AppStartup.m in Sources */,
 				A143012718BB461A0064DF87 /* PKResManager.m in Sources */,
 				A1929ED019063C3000DDB66E /* KGRecentContactsCell.m in Sources */,
 				A19F0EC618E2B33B00C2944D /* KGBuyerDescriptionCell.m in Sources */,

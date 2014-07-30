@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface KGUserObject : NSObject
+@interface KGUserObject : NSObject<NSCoding>
 
 @property (nonatomic, assign) NSInteger uid;
 @property (nonatomic, strong) NSString *uname;

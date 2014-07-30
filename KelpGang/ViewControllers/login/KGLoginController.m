@@ -80,9 +80,14 @@
             NSDictionary *data = dic[@"data"];
             NSInteger userId = [data[@"id"] integerValue];
             NSString *sessionKey = data[@"session_key"];
+            NSDictionary *info = data[@"user_info"];
+
             [[NSUserDefaults standardUserDefaults] setInteger:userId forKey:kCurrentUserId];
             [[NSUserDefaults standardUserDefaults] setObject:sessionKey forKey:kCurrentSessionKey];
             [[NSUserDefaults standardUserDefaults] synchronize];
+
+            [self userLogin:info sessionKey:sessionKey];
+            
             [self dismissViewControllerAnimated:YES completion:nil];
         } else {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
@@ -93,5 +98,22 @@
 
     }];
 }
+
+- (void)userLogin: (NSDictionary *)info sessionKey: (NSString *) sessionKey {
+
+    if (!APPCONTEXT.currUser) {
+        APPCONTEXT.currUser = [[KGUserObject alloc] init];
+    }
+
+    APPCONTEXT.currUser.sessionKey = sessionKey;
+    APPCONTEXT.currUser.uid = [[info objectForKey:@"id"] integerValue];
+    APPCONTEXT.currUser.uname = [info objectForKey:@"name"];
+    APPCONTEXT.currUser.avatarUrl = [info objectForKey:@"head_url"];
+    NSString *sex = [info valueForKeyPath:@"userDetail.sex"];
+    APPCONTEXT.currUser.gender = [sex isEqualToString:@"F"] ? FEMALE : MALE;
+
+    [APPCONTEXT userPersist];
+}
+
 
 @end
