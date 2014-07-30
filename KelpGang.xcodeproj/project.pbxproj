@@ -149,7 +149,6 @@
 		A190FCE018C8859400A87329 /* airplane@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A190FCDE18C8859400A87329 /* airplane@2x.png */; };
 		A190FCE318C89BB000A87329 /* nav_bar_item_back.png in Resources */ = {isa = PBXBuildFile; fileRef = A190FCE118C89BB000A87329 /* nav_bar_item_back.png */; };
 		A190FCE418C89BB000A87329 /* nav_bar_item_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A190FCE218C89BB000A87329 /* nav_bar_item_back@2x.png */; };
-		A1929ECA1906185300DDB66E /* KGSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1929EC91906185300DDB66E /* KGSettingViewController.m */; };
 		A1929ECD19061FDC00DDB66E /* KGHostHeadViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1929ECC19061FDC00DDB66E /* KGHostHeadViewCell.m */; };
 		A1929ED019063C3000DDB66E /* KGRecentContactsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1929ECF19063C3000DDB66E /* KGRecentContactsCell.m */; };
 		A1930B2318CEFA66000D84A1 /* KGPicBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1930B2218CEFA66000D84A1 /* KGPicBottomView.m */; };
@@ -656,6 +655,7 @@
 		A1DD135C18E0690D000F52C2 /* UIImage+Addtional.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DD135B18E0690D000F52C2 /* UIImage+Addtional.m */; };
 		A1DDFB7B18EEAF670078ED73 /* KGCascadeMenuLeftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DDFB7A18EEAF670078ED73 /* KGCascadeMenuLeftCell.m */; };
 		A1DDFB7E18EEB4920078ED73 /* KGCascadeMenuRightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DDFB7D18EEB4920078ED73 /* KGCascadeMenuRightCell.m */; };
+		A1EADC6E19889620005F7D95 /* KGSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EADC6D19889620005F7D95 /* KGSettingsViewController.m */; };
 		A1F13E0018EE46E50013B183 /* KGCascadeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A1F13DFF18EE46E50013B183 /* KGCascadeMenu.m */; };
 		A1F13E0318EE47830013B183 /* KGCommonMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A1F13E0218EE47830013B183 /* KGCommonMenu.m */; };
 		A1F13E0618EE954F0013B183 /* KGCommonMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1F13E0518EE954F0013B183 /* KGCommonMenuCell.m */; };
@@ -875,8 +875,6 @@
 		A190FCDE18C8859400A87329 /* airplane@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "airplane@2x.png"; sourceTree = "<group>"; };
 		A190FCE118C89BB000A87329 /* nav_bar_item_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_bar_item_back.png; sourceTree = "<group>"; };
 		A190FCE218C89BB000A87329 /* nav_bar_item_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_bar_item_back@2x.png"; sourceTree = "<group>"; };
-		A1929EC81906185300DDB66E /* KGSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGSettingViewController.h; sourceTree = "<group>"; };
-		A1929EC91906185300DDB66E /* KGSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGSettingViewController.m; sourceTree = "<group>"; };
 		A1929ECB19061FDC00DDB66E /* KGHostHeadViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGHostHeadViewCell.h; sourceTree = "<group>"; };
 		A1929ECC19061FDC00DDB66E /* KGHostHeadViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGHostHeadViewCell.m; sourceTree = "<group>"; };
 		A1929ECE19063C3000DDB66E /* KGRecentContactsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGRecentContactsCell.h; sourceTree = "<group>"; };
@@ -1430,6 +1428,8 @@
 		A1DDFB7A18EEAF670078ED73 /* KGCascadeMenuLeftCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCascadeMenuLeftCell.m; sourceTree = "<group>"; };
 		A1DDFB7C18EEB4920078ED73 /* KGCascadeMenuRightCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCascadeMenuRightCell.h; sourceTree = "<group>"; };
 		A1DDFB7D18EEB4920078ED73 /* KGCascadeMenuRightCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCascadeMenuRightCell.m; sourceTree = "<group>"; };
+		A1EADC6C19889620005F7D95 /* KGSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGSettingsViewController.h; sourceTree = "<group>"; };
+		A1EADC6D19889620005F7D95 /* KGSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGSettingsViewController.m; sourceTree = "<group>"; };
 		A1F13DFE18EE46E50013B183 /* KGCascadeMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCascadeMenu.h; sourceTree = "<group>"; };
 		A1F13DFF18EE46E50013B183 /* KGCascadeMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCascadeMenu.m; sourceTree = "<group>"; };
 		A1F13E0118EE47830013B183 /* KGCommonMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCommonMenu.h; sourceTree = "<group>"; };
@@ -1832,8 +1832,8 @@
 				A11E916D19011F3700BBC1A2 /* KGDiscoverViewController.m */,
 				A14155A91904F4BB0045D641 /* KGBaseWebViewController.h */,
 				A14155AA1904F4BB0045D641 /* KGBaseWebViewController.m */,
-				A1929EC81906185300DDB66E /* KGSettingViewController.h */,
-				A1929EC91906185300DDB66E /* KGSettingViewController.m */,
+				A1EADC6C19889620005F7D95 /* KGSettingsViewController.h */,
+				A1EADC6D19889620005F7D95 /* KGSettingsViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -3196,8 +3196,8 @@
 				A112DF451918979600108FAD /* KGCompletedOrderPhotoInfoCell.m in Sources */,
 				A143012618BB461A0064DF87 /* UIImage+PKImage.m in Sources */,
 				A19F0ECC18E2B86200C2944D /* KGCommentListViewController.m in Sources */,
-				A1929ECA1906185300DDB66E /* KGSettingViewController.m in Sources */,
 				A164DA2F194EA249008B26E8 /* IQKeyboardManager.m in Sources */,
+				A1EADC6E19889620005F7D95 /* KGSettingsViewController.m in Sources */,
 				A18F6FD018ED50C60029F762 /* KGFilterItem.m in Sources */,
 				A174CD671904CFAC00D910C5 /* UIViewController+Additions.m in Sources */,
 				A143012518BB461A0064DF87 /* UIFont+PKFont.m in Sources */,

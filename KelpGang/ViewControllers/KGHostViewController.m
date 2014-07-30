@@ -10,7 +10,7 @@
 #import "KGBadgeView.h"
 #import "KGRecentContactsController.h"
 #import "KGBaseWebViewController.h"
-#import "KGSettingViewController.h"
+//#import "KGSettingViewController.h"
 #import "KGHostHeadViewCell.h"
 #import "KGUserObject.h"
 #import "KGHostDetailController.h"
@@ -138,6 +138,9 @@
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    if ([identifier isEqualToString:@"kSettingsSegue"]) {
+        return YES;
+    }
     if (![APPCONTEXT checkLogin]) {
         return NO;
     }
@@ -190,11 +193,11 @@
         case 3:
             break;
         case 4: {
-            KGSettingViewController *settingController = [[KGSettingViewController alloc] initWithWebPath:@"/html/gj_set.htm"];
-            [settingController setLeftBarbuttonItem];
-            [settingController setTitle:@"设置"];
-            settingController.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:settingController animated:YES];
+//            KGSettingViewController *settingController = [[KGSettingViewController alloc] initWithWebPath:@"/html/gj_set.htm"];
+//            [settingController setLeftBarbuttonItem];
+//            [settingController setTitle:@"设置"];
+//            settingController.hidesBottomBarWhenPushed = YES;
+//            [self.navigationController pushViewController:settingController animated:YES];
             break;
         }
         default:
