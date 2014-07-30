@@ -11,8 +11,6 @@
 
 @interface KGHostDetailController () <UITextFieldDelegate, UITextViewDelegate>
 
-@property (nonatomic, assign) BOOL sexExpand;
-
 @end
 
 @implementation KGHostDetailController
@@ -30,12 +28,50 @@
 {
     [super viewDidLoad];
     [self setLeftBarbuttonItem];
+    self.user = [[KGUserObject alloc] init];
+    if ([APPCONTEXT checkLogin]) {
+        NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"session_key": APPCONTEXT.currUser.sessionKey};
+        [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/getUser" params: params success:^(id responseObject) {
+            DLog(@"%@", responseObject);
+            NSDictionary *dic = (NSDictionary *)responseObject;
+            if ([self checkResult:dic]) {
+                NSDictionary *data = dic[@"data"];
+                self.user.uname = [data valueForKeyPath:@"user_info.user_name"];
+                self.user.cellPhone = [data valueForKeyPath:@"user_info.user_phone"];
+                self.user.gender = [self convertGender:[data valueForKeyPath:@"user_info.user_sex"]];
+                self.user.avatarUrl = [data valueForKeyPath:@"user_info.head_url"];
+                self.user.vip = [[data valueForKeyPath:@"user_info.user_v"] boolValue];
+                self.user.level = [[data valueForKeyPath:@"user_info.user_star"] integerValue];
+                self.user.nickName = [data valueForKeyPath:@"user_info.user_name"];
+                self.user.intro = [data valueForKeyPath:@"user_info.user_desc"];
+                self.user.email = [data valueForKeyPath:@"user_info.user_email"];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+                [self.tableView reloadData];
+            }
+        } failure:^(NSError *error) {
+            DLog(@"%@", error);
+        }];
+    }
+}
+
+- (BOOL)checkResult: (NSDictionary *)info {
+    NSInteger code = [info[@"code"] integerValue];
+    NSString *msg = info[@"msg"];
+    if (code != 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
+- (Gender)convertGender: (id)sex {
+    if ([@"F" isEqualToString:sex]) {
+        return FEMALE;
+    } else {
+        return MALE;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,11 +89,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) {
-        if (!self.sexExpand) {
-            return 6;
-        }
-    }
     return [super tableView:tableView numberOfRowsInSection:section];
 }
 
@@ -65,14 +96,12 @@
 {
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
     if (indexPath.section == 0) {
-        if (!self.sexExpand && indexPath.row > 3) {
-            cell = [super tableView:tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row + 2 inSection:indexPath.section]];
-        }
+        cell = [super tableView:tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section]];
         switch (indexPath.section) {
             case 0: {
                 if (indexPath.row == 0) {
                     UIImageView *headView = (UIImageView *)[cell viewWithTag:1];
-                    [headView setImageWithURL:[NSURL URLWithString:self.user.avatarUrl] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+                    [headView setImageWithURL:[NSURL URLWithString:self.user.avatarUrl] placeholderImage: [UIImage imageNamed:self.user.gender == MALE ? kAvatarMale : kAvatarFemale] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
                     headView.layer.cornerRadius = headView.width / 2;
                 } else if (indexPath.row == 1) {
                     UITextField *tf = (UITextField *)[cell viewWithTag:1];
@@ -86,29 +115,21 @@
                     }
                     tv.delegate = self;
                 } else if (indexPath.row == 3) {
-                    if (self.sexExpand) {
-                        cell.contentView.backgroundColor = RGBCOLOR(233, 243, 243);
-                    } else {
-                        cell.contentView.backgroundColor = [UIColor whiteColor];
-                    }
+                    cell.contentView.backgroundColor = [UIColor whiteColor];
                 } else if (indexPath.row == 4) {
-                    if (self.sexExpand) {
-                        UIImageView *selectedView = (UIImageView *)[cell viewWithTag:1];
-                        selectedView.hidden = self.user.gender == FEMALE ? NO : YES;
-                    } else {
-                        UITextField *tf = (UITextField *)[cell viewWithTag:1];
-                        tf.text = self.user.cellPhone;
-                        tf.delegate = self;
-                    }
+                    UIImageView *selectedView = (UIImageView *)[cell viewWithTag:1];
+                    selectedView.hidden = self.user.gender == FEMALE ? NO : YES;
                 } else if (indexPath.row == 5) {
-                    if (self.sexExpand) {
-                        UIImageView *selectedView = (UIImageView *)[cell viewWithTag:1];
-                        selectedView.hidden = self.user.gender == MALE ? NO : YES;
-                    } else {
-                        UITextField *tf = (UITextField *)[cell viewWithTag:1];
-                        tf.text = self.user.email;
-                        tf.delegate = self;
-                    }
+                    UIImageView *selectedView = (UIImageView *)[cell viewWithTag:1];
+                    selectedView.hidden = self.user.gender == MALE ? NO : YES;
+                } else if (indexPath.row == 6) {
+                    UITextField *tf = (UITextField *)[cell viewWithTag:1];
+                    tf.text = self.user.cellPhone;
+                    tf.delegate = self;
+                } else if (indexPath.row == 7) {
+                    UITextField *tf = (UITextField *)[cell viewWithTag:1];
+                    tf.text = self.user.email;
+                    tf.delegate = self;
                 }
                 break;
             }
@@ -129,27 +150,12 @@
     NSArray *paths = @[[NSIndexPath indexPathForRow:4 inSection:indexPath.section], [NSIndexPath indexPathForRow:5 inSection:indexPath.section]];
 
     if (indexPath.section == 0) {
-        if (indexPath.row == 3) {
-            [self.tableView beginUpdates];
-            if (!self.sexExpand) {
-                self.sexExpand = YES;
-                [self.tableView insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-            } else {
-                self.sexExpand = NO;
-                [self.tableView deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-            }
-            [self.tableView endUpdates];
-            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:3 inSection:indexPath.section]] withRowAnimation:UITableViewRowAnimationNone];
-        } else if (indexPath.row == 4) {
-            if (self.sexExpand) {
-                self.user.gender = FEMALE;
-                [self.tableView reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationNone];
-            }
+        if (indexPath.row == 4) {
+            self.user.gender = FEMALE;
+            [self.tableView reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationNone];
         } else if (indexPath.row == 5) {
-            if (self.sexExpand) {
-                self.user.gender = MALE;
-                [self.tableView reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationNone];
-            }
+            self.user.gender = MALE;
+            [self.tableView reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationNone];
         }
     }
 

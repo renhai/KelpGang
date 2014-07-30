@@ -48,6 +48,10 @@
     [self.headImageView setImageWithURL:[NSURL URLWithString:user.avatarUrl] placeholderImage: [UIImage imageNamed:user.gender == MALE ? kAvatarMale : kAvatarFemale]];
     self.headImageView.layer.cornerRadius = self.headImageView.width / 2;
     self.nameLabel.text = user.uname;
+    if (!user.uname || [@"" isEqualToString:user.uname]) {
+        self.nameLabel.text = @"未登录用户";
+    }
+    self.nameLabel.textColor = user.gender == FEMALE ? RGB(255, 133, 133) : RGB(33, 185, 162);
     self.vipImageView.hidden = !user.isVip;
     [self configLevelView];
     NSString *followText = [NSString stringWithFormat:@"关注%i人", user.followCount];

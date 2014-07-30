@@ -86,8 +86,8 @@
             [[NSUserDefaults standardUserDefaults] setObject:sessionKey forKey:kCurrentSessionKey];
             [[NSUserDefaults standardUserDefaults] synchronize];
 
-            [self userLogin:info sessionKey:sessionKey];
-            
+            [self userLogin:info sessionKey:sessionKey password:md5Password];
+
             [self dismissViewControllerAnimated:YES completion:nil];
         } else {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
@@ -99,18 +99,26 @@
     }];
 }
 
-- (void)userLogin: (NSDictionary *)info sessionKey: (NSString *) sessionKey {
+- (void)userLogin: (NSDictionary *)info
+       sessionKey: (NSString *) sessionKey
+         password: (NSString *) passwordMd5 {
 
     if (!APPCONTEXT.currUser) {
         APPCONTEXT.currUser = [[KGUserObject alloc] init];
     }
 
     APPCONTEXT.currUser.sessionKey = sessionKey;
-    APPCONTEXT.currUser.uid = [[info objectForKey:@"id"] integerValue];
-    APPCONTEXT.currUser.uname = [info objectForKey:@"name"];
+    APPCONTEXT.currUser.password = passwordMd5;
+    APPCONTEXT.currUser.uid = [[info objectForKey:@"user_id"] integerValue];
+    APPCONTEXT.currUser.uname = [info objectForKey:@"user_name"];
     APPCONTEXT.currUser.avatarUrl = [info objectForKey:@"head_url"];
-    NSString *sex = [info valueForKeyPath:@"userDetail.sex"];
-    APPCONTEXT.currUser.gender = [sex isEqualToString:@"F"] ? FEMALE : MALE;
+    APPCONTEXT.currUser.gender = [@"F" isEqualToString:[info objectForKey:@"user_sex"]] ? FEMALE : MALE;
+    APPCONTEXT.currUser.vip = [[info objectForKey:@"user_v"] boolValue];
+    APPCONTEXT.currUser.level = [[info objectForKey:@"user_star"] integerValue];
+    APPCONTEXT.currUser.nickName = [info objectForKey:@"user_name"];
+    APPCONTEXT.currUser.intro = [info objectForKey:@"user_desc"];
+    APPCONTEXT.currUser.cellPhone = [info objectForKey:@"user_phone"];
+    APPCONTEXT.currUser.email = [info valueForKeyPath:@"user_email"];
 
     [APPCONTEXT userPersist];
 }

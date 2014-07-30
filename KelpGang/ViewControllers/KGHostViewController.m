@@ -10,15 +10,12 @@
 #import "KGBadgeView.h"
 #import "KGRecentContactsController.h"
 #import "KGBaseWebViewController.h"
-//#import "KGSettingViewController.h"
 #import "KGHostHeadViewCell.h"
 #import "KGUserObject.h"
 #import "KGHostDetailController.h"
 #import "KGLoginController.h"
 
 @interface KGHostViewController ()
-
-@property (nonatomic, strong) KGUserObject *userObj;
 
 @end
 
@@ -36,22 +33,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self mockData];
 }
 
-- (void)mockData {
-    KGUserObject *userObj = [[KGUserObject alloc] init];
-    userObj.uid = 12121;
-    userObj.uname = @"Andy Ren";
-    userObj.gender = MALE;
-    userObj.avatarUrl = @"http://c.hiphotos.baidu.com/image/w%3D2048/sign=9d361bfa7b310a55c424d9f4837d43a9/a8014c086e061d95607bb63179f40ad162d9cafe.jpg";
-    userObj.vip = YES;
-    userObj.level = 7;
-    userObj.followCount = 1212121;
-
-    userObj.cellPhone = @"12312341234";
-    userObj.email = @"hai.ren@renren-inc.com";
-    self.userObj = userObj;
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -79,7 +65,7 @@
     switch (indexPath.section) {
         case 0: {
             KGHostHeadViewCell *hCell = (KGHostHeadViewCell *)cell;
-            [hCell configCell:self.userObj];
+            [hCell configCell:APPCONTEXT.currUser];
             break;
         }
         case 1:
@@ -132,8 +118,8 @@
     destController.hidesBottomBarWhenPushed = YES;
 
     if ([destController isKindOfClass:[KGHostDetailController class]]) {
-        KGHostDetailController *hostDetailController = (KGHostDetailController *) destController;
-        hostDetailController.user = self.userObj;
+//        KGHostDetailController *hostDetailController = (KGHostDetailController *) destController;
+//        hostDetailController.user = self.userObj;
     }
 }
 
