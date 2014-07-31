@@ -2239,6 +2239,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="个人信息" id="31u-ce-ll3"/>
+                    <connections>
+                        <outlet property="cellphoneTF" destination="etl-KU-bGP" id="SUa-ud-hY3"/>
+                        <outlet property="emailTF" destination="PIW-9Q-Xem" id="6Kj-ul-kLK"/>
+                        <outlet property="introTV" destination="mjy-tM-Goe" id="MgW-Pp-5fU"/>
+                        <outlet property="nicknameTF" destination="gkk-Jh-bDz" id="Jix-uM-jlL"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TQz-YE-qo1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

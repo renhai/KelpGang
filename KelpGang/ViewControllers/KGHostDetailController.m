@@ -9,7 +9,11 @@
 #import "KGHostDetailController.h"
 #import "KGUserObject.h"
 
-@interface KGHostDetailController () <UITextFieldDelegate, UITextViewDelegate>
+@interface KGHostDetailController () <UITextFieldDelegate, UITextViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *nicknameTF;
+@property (weak, nonatomic) IBOutlet UITextView *introTV;
+@property (weak, nonatomic) IBOutlet UITextField *cellphoneTF;
+@property (weak, nonatomic) IBOutlet UITextField *emailTF;
 
 @end
 
@@ -28,17 +32,21 @@
 {
     [super viewDidLoad];
     [self setLeftBarbuttonItem];
+//    self.nicknameTF.enabled = NO;
+    self.cellphoneTF.enabled = NO;
     self.user = [[KGUserObject alloc] init];
     if ([APPCONTEXT checkLogin]) {
+        [[HudHelper getInstance] showHudOnView:self.tableView caption:nil image:nil acitivity:YES autoHideTime:0.0];
         NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"session_key": APPCONTEXT.currUser.sessionKey};
         [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/getUser" params: params success:^(id responseObject) {
             DLog(@"%@", responseObject);
+            [[HudHelper getInstance] hideHudInView:self.tableView];
             NSDictionary *dic = (NSDictionary *)responseObject;
-            if ([self checkResult:dic]) {
+            if ([KGUtils checkResult:dic]) {
                 NSDictionary *data = dic[@"data"];
                 self.user.uname = [data valueForKeyPath:@"user_info.user_name"];
                 self.user.cellPhone = [data valueForKeyPath:@"user_info.user_phone"];
-                self.user.gender = [self convertGender:[data valueForKeyPath:@"user_info.user_sex"]];
+                self.user.gender = [KGUtils convertGender:[data valueForKeyPath:@"user_info.user_sex"]];
                 self.user.avatarUrl = [data valueForKeyPath:@"user_info.head_url"];
                 self.user.vip = [[data valueForKeyPath:@"user_info.user_v"] boolValue];
                 self.user.level = [[data valueForKeyPath:@"user_info.user_star"] integerValue];
@@ -50,27 +58,8 @@
             }
         } failure:^(NSError *error) {
             DLog(@"%@", error);
+            [[HudHelper getInstance] hideHudInView:self.tableView];
         }];
-    }
-}
-
-- (BOOL)checkResult: (NSDictionary *)info {
-    NSInteger code = [info[@"code"] integerValue];
-    NSString *msg = info[@"msg"];
-    if (code != 0) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [alert show];
-        return NO;
-    } else {
-        return YES;
-    }
-}
-
-- (Gender)convertGender: (id)sex {
-    if ([@"F" isEqualToString:sex]) {
-        return FEMALE;
-    } else {
-        return MALE;
     }
 }
 
@@ -146,16 +135,42 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
-//    UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
     NSArray *paths = @[[NSIndexPath indexPathForRow:4 inSection:indexPath.section], [NSIndexPath indexPathForRow:5 inSection:indexPath.section]];
 
     if (indexPath.section == 0) {
-        if (indexPath.row == 4) {
-            self.user.gender = FEMALE;
-            [self.tableView reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationNone];
+
+        if (indexPath.row == 0) {
+            [self showActionSheet];
+        } else if (indexPath.row == 4) {
+            [[HudHelper getInstance] showHudOnView:self.tableView caption:nil image:nil acitivity:YES autoHideTime:0.0];
+            NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"sex": @"F", @"session_key": APPCONTEXT.currUser.sessionKey};
+            [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/setSex" params:params success:^(id responseObject) {
+                [[HudHelper getInstance] hideHudInView:self.view];
+                if ([KGUtils checkResult:responseObject]) {
+                    self.user.gender = FEMALE;
+                    [self.tableView reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationNone];
+                    APPCONTEXT.currUser.gender = FEMALE;
+                    [APPCONTEXT userPersist];
+                }
+            } failure:^(NSError *error) {
+                DLog(@"error: %@", error);
+                [[HudHelper getInstance] hideHudInView:self.tableView];
+            }];
         } else if (indexPath.row == 5) {
-            self.user.gender = MALE;
-            [self.tableView reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationNone];
+            [[HudHelper getInstance] showHudOnView:self.tableView caption:nil image:nil acitivity:YES autoHideTime:0.0];
+            NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"sex": @"M", @"session_key": APPCONTEXT.currUser.sessionKey};
+            [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/setSex" params:params success:^(id responseObject) {
+                [[HudHelper getInstance] hideHudInView:self.view];
+                if ([KGUtils checkResult:responseObject]) {
+                    self.user.gender = MALE;
+                    [self.tableView reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationNone];
+                    APPCONTEXT.currUser.gender = MALE;
+                    [APPCONTEXT userPersist];
+                }
+            } failure:^(NSError *error) {
+                DLog(@"error: %@", error);
+                [[HudHelper getInstance] hideHudInView:self.tableView];
+            }];
         }
     }
 
@@ -177,10 +192,39 @@
 #pragma UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.emailTF) {
+        NSString *email = textField.text;
+        NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"email": email, @"session_key": APPCONTEXT.currUser.sessionKey};
+        [[HudHelper getInstance] showHudOnView:self.tableView caption:nil image:nil acitivity:YES autoHideTime:0.0];
+        [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/setEmail" params:params success:^(id responseObject) {
+            [[HudHelper getInstance] hideHudInView:self.view];
+            if ([KGUtils checkResult:responseObject]) {
+                APPCONTEXT.currUser.email = email;
+                [APPCONTEXT userPersist];
+            }
+        } failure:^(NSError *error) {
+            DLog(@"error: %@", error);
+            [[HudHelper getInstance] hideHudInView:self.tableView];
+        }];
+    } else if (textField == self.nicknameTF) {
+        NSString *nickName = textField.text;
+        NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"name": nickName, @"session_key": APPCONTEXT.currUser.sessionKey};
+        [[HudHelper getInstance] showHudOnView:self.tableView caption:nil image:nil acitivity:YES autoHideTime:0.0];
+        [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/setName" params:params success:^(id responseObject) {
+            [[HudHelper getInstance] hideHudInView:self.view];
+            if ([KGUtils checkResult:responseObject]) {
+                APPCONTEXT.currUser.nickName = nickName;
+                APPCONTEXT.currUser.uname = nickName;
+                [APPCONTEXT userPersist];
+            }
+        } failure:^(NSError *error) {
+            DLog(@"error: %@", error);
+            [[HudHelper getInstance] hideHudInView:self.tableView];
+        }];
+    }
     [textField resignFirstResponder];
     return YES;
 }
-
 
 #pragma UITextViewDelegate
 
@@ -193,6 +237,21 @@
     if ([text isEqualToString:@"\n"]) {
         [textView resignFirstResponder];
         textView.backgroundColor = [UIColor whiteColor];
+
+        NSString *intro = textView.text;
+        NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"desc": intro, @"session_key": APPCONTEXT.currUser.sessionKey};
+        [[HudHelper getInstance] showHudOnView:self.tableView caption:nil image:nil acitivity:YES autoHideTime:0.0];
+        [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/setDesc" params:params success:^(id responseObject) {
+            [[HudHelper getInstance] hideHudInView:self.view];
+            if ([KGUtils checkResult:responseObject]) {
+                APPCONTEXT.currUser.intro = intro;
+                [APPCONTEXT userPersist];
+            }
+        } failure:^(NSError *error) {
+            DLog(@"error: %@", error);
+            [[HudHelper getInstance] hideHudInView:self.tableView];
+        }];
+
         return NO;
     }
     return YES;
@@ -208,5 +267,95 @@
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     [self.view endEditing:YES];
 }
+
+
+
+
+- (void)showActionSheet {
+    UIActionSheet *choiceSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                             delegate:self
+                                                    cancelButtonTitle:@"取消"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"拍照", @"从相册中选取", nil];
+    [choiceSheet showInView:self.view.window];
+}
+
+#pragma UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        // 拍照
+        if ([UIDevice supportCamera]) {
+            UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+            controller.sourceType = UIImagePickerControllerSourceTypeCamera;
+            controller.delegate = self;
+            [self presentViewController:controller
+                               animated:YES
+                             completion:^(void){
+                                 NSLog(@"Picker View Controller is presented");
+                             }];
+        }
+    } else if (buttonIndex == 1) {
+        if ([self isPhotoLibraryAvailable]) {
+            UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+            controller.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+            controller.allowsEditing = YES;
+            controller.delegate = self;
+            [self presentViewController:controller
+                               animated:YES
+                             completion:^(void){
+                                 NSLog(@"Picker View Controller is presented");
+                             }];
+        }
+
+    }
+}
+
+#pragma UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [[HudHelper getInstance] showHudOnView:self.tableView caption:@"上传头像中" image:nil acitivity:YES autoHideTime:0.0];
+    [picker dismissViewControllerAnimated:YES completion:^() {
+        UIImage *oriImage = [info objectForKey:@"UIImagePickerControllerEditedImage"];
+        if (!oriImage) {
+            oriImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+        }
+        NSData *imageData = UIImageJPEGRepresentation(oriImage, 0.5);
+        NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"session_key": APPCONTEXT.currUser.sessionKey};
+
+        [[KGNetworkManager sharedInstance] uploadPhoto:@"/mobile/user/setHeadurl"
+                                                params:params
+                                                  name:@"head_url"
+                                              filename:@"head_url.jpg"
+                                                 image:imageData
+                                               success:^(id responseObject) {
+                                                   [[HudHelper getInstance] hideHudInView:self.tableView];
+                                                   DLog(@"result: %@", responseObject);
+                                                   if ([KGUtils checkResult:responseObject]) {
+                                                       NSDictionary *data = responseObject[@"data"];
+                                                       NSString *headUrl = data[@"head_url"];
+                                                       self.user.avatarUrl = headUrl;
+                                                       [self.tableView reloadData];
+                                                       APPCONTEXT.currUser.avatarUrl = headUrl;
+                                                       [APPCONTEXT userPersist];
+                                                   }
+                                               }
+                                               failure:^(NSError *error) {
+                                                   [[HudHelper getInstance] hideHudInView:self.tableView];
+                                                   DLog(@"error: %@", error);
+                                               }];
+
+    }];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (BOOL)isPhotoLibraryAvailable{
+    return [UIImagePickerController isSourceTypeAvailable:
+            UIImagePickerControllerSourceTypePhotoLibrary];
+}
+
 
 @end

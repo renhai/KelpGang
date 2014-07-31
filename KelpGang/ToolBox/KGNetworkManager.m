@@ -38,4 +38,35 @@
       }];
 }
 
+- (void)uploadPhoto:(NSString *)path
+             params:(NSDictionary *)params
+               name:(NSString *)name
+           filename:(NSString *)filename
+              image:(NSData *)imageData
+            success: (ResponseBlock)success
+            failure:(FailureBlock)failure {
+    AFHTTPRequestOperationManager *mgr = [[AFHTTPRequestOperationManager alloc]initWithBaseURL:[NSURL URLWithString:kWebServerBaseURL]];
+    [mgr POST:path parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        [formData appendPartWithFileData:imageData name:name fileName:filename mimeType:@"image/jpeg"];
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (success) {
+            success(responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    [mgr POST:path parameters:params
+      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+          if (success) {
+              success(responseObject);
+          }
+      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+          if (failure) {
+              failure(error);
+          }
+      }];
+}
+
 @end

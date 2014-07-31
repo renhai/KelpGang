@@ -18,6 +18,7 @@
     #import "KGUtils.h"
     #import "UIView+Additions.h"
     #import "UIImage+Addtional.h"
+    #import "UIDevice+Addtional.h"
     #import "UIViewController+Additions.h"
     #import "UIImageView+UIActivityIndicatorForSDWebImage.h"
 //    #import "RestKit/RestKit.h"
