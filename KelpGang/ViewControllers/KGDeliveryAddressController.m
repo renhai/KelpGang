@@ -32,10 +32,30 @@
 {
     [super viewDidLoad];
     [self setLeftBarbuttonItem];
-
     self.datasource = [[NSMutableArray alloc] init];
-    [self mockData];
-    [KGUtils setExtraCellLineHidden:self.tableView];
+//    [self mockData];
+
+    [[HudHelper getInstance] showHudOnView:self.tableView caption:nil image:nil acitivity:YES autoHideTime:0.0];
+    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"session_key": APPCONTEXT.currUser.sessionKey};
+    [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/getAddressList" params:params success:^(id responseObject) {
+        [[HudHelper getInstance] hideHudInView:self.tableView];
+        if ([KGUtils checkResult:responseObject]) {
+            NSDictionary *data = responseObject[@"data"];
+            NSArray *addressArr = data[@"address_info"];
+            if (!addressArr) {
+                addressArr = @[];
+            }
+            [self.datasource removeAllObjects];
+            [self.datasource addObjectsFromArray:addressArr];
+            [self.tableView reloadData];
+        }
+        DLog(@"result: %@", responseObject);
+    } failure:^(NSError *error) {
+        [[HudHelper getInstance] hideHudInView:self.tableView];
+        DLog(@"error: %@", error);
+    }];
+
+//    [KGUtils setExtraCellLineHidden:self.tableView];
 }
 
 - (void)mockData {
