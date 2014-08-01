@@ -11,6 +11,7 @@
 #import "DDTTYLogger.h"
 #import "XMPPManager.h"
 #import "IQKeyboardManager.h"
+#import "AppStartup.h"
 
 // Log levels: off, error, warn, info, verbose
 #if DEBUG
@@ -42,6 +43,9 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     [[IQKeyboardManager sharedManager] setShouldShowTextFieldPlaceholder:NO];
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
     [[IQKeyboardManager sharedManager] setEnable:YES];
+
+    [AppStartup startup];
+
     return YES;
 }
 							

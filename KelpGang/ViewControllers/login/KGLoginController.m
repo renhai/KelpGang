@@ -73,11 +73,8 @@
     NSDictionary *params = @{@"account": account, @"password_md5": md5Password};
     [[KGNetworkManager sharedInstance] postRequest:@"/mobile/home/login" params:params success:^(id responseObject) {
         DLog(@"%@", responseObject);
-        NSDictionary *dic = (NSDictionary *)responseObject;
-        NSInteger code = [dic[@"code"] integerValue];
-        NSString *msg = dic[@"msg"];
-        if (code == 0) {
-            NSDictionary *data = dic[@"data"];
+        if ([KGUtils checkResult:responseObject]) {
+            NSDictionary *data = responseObject[@"data"];
             NSInteger userId = [data[@"id"] integerValue];
             NSString *sessionKey = data[@"session_key"];
             NSDictionary *info = data[@"user_info"];
@@ -89,13 +86,9 @@
             [self userLogin:info sessionKey:sessionKey password:md5Password];
 
             [self dismissViewControllerAnimated:YES completion:nil];
-        } else {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-            [alert show];
         }
     } failure:^(NSError *error) {
         DLog(@"%@", error);
-
     }];
 }
 
