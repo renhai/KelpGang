@@ -142,6 +142,9 @@
         if (indexPath.row == 0) {
             [self showActionSheet];
         } else if (indexPath.row == 4) {
+            if (APPCONTEXT.currUser.gender == FEMALE) {
+                return;
+            }
             [[HudHelper getInstance] showHudOnView:self.tableView caption:nil image:nil acitivity:YES autoHideTime:0.0];
             NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"sex": @"F", @"session_key": APPCONTEXT.currUser.sessionKey};
             [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/setSex" params:params success:^(id responseObject) {
@@ -157,6 +160,9 @@
                 [[HudHelper getInstance] hideHudInView:self.tableView];
             }];
         } else if (indexPath.row == 5) {
+            if (APPCONTEXT.currUser.gender == MALE) {
+                return;
+            }
             [[HudHelper getInstance] showHudOnView:self.tableView caption:nil image:nil acitivity:YES autoHideTime:0.0];
             NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"sex": @"M", @"session_key": APPCONTEXT.currUser.sessionKey};
             [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/setSex" params:params success:^(id responseObject) {
@@ -192,8 +198,12 @@
 #pragma UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
     if (textField == self.emailTF) {
         NSString *email = textField.text;
+        if ([email isEqualToString:APPCONTEXT.currUser.email]) {
+            return NO;
+        }
         NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"email": email, @"session_key": APPCONTEXT.currUser.sessionKey};
         [[HudHelper getInstance] showHudOnView:self.tableView caption:nil image:nil acitivity:YES autoHideTime:0.0];
         [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/setEmail" params:params success:^(id responseObject) {
@@ -208,6 +218,9 @@
         }];
     } else if (textField == self.nicknameTF) {
         NSString *nickName = textField.text;
+        if ([nickName isEqualToString:APPCONTEXT.currUser.uname]) {
+            return NO;
+        }
         NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"name": nickName, @"session_key": APPCONTEXT.currUser.sessionKey};
         [[HudHelper getInstance] showHudOnView:self.tableView caption:nil image:nil acitivity:YES autoHideTime:0.0];
         [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/setName" params:params success:^(id responseObject) {
@@ -222,7 +235,6 @@
             [[HudHelper getInstance] hideHudInView:self.tableView];
         }];
     }
-    [textField resignFirstResponder];
     return YES;
 }
 
