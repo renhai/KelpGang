@@ -8,7 +8,7 @@
 
 #import "KGAddAddressController.h"
 #import "KGAddressObject.h"
-#import <sqlite3.h>
+#import "FMDB.h"
 #import "KGProvince.h"
 #import "KGCity.h"
 #import "KGZone.h"
@@ -301,99 +301,68 @@
 
 - (NSMutableArray *)queryProvince {
     NSMutableArray *resultList = [[NSMutableArray alloc] init];
-    sqlite3 *database;
-    if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
-        sqlite3_close(database);
-        DLog(@"Failed to open database");
+    FMDatabase *db  = [FMDatabase databaseWithPath:[self dataFilePath]];
+    if (![db open]) {
+        NSLog(@"Open database failed");
         return resultList;
     }
-
-    NSString *query = @"select ProName, ProSort, ProRemark from T_Province";
-    sqlite3_stmt *statement;
-    if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
-        while (sqlite3_step(statement) == SQLITE_ROW) {
-            char *proName = (char *)sqlite3_column_text(statement, 0);
-            NSString *proNameStr = [[NSString alloc] initWithUTF8String:proName];
-            char *proSort = (char *)sqlite3_column_text(statement, 1);
-            NSString *proSortStr = [[NSString alloc] initWithUTF8String:proSort];
-            char *proRemark = (char *)sqlite3_column_text(statement, 2);
-            NSString *proRemarkStr = [[NSString alloc] initWithUTF8String:proRemark];
-            DLog(@"%@-%@-%@", proNameStr, proSortStr, proRemarkStr);
-            KGProvince *province = [[KGProvince alloc] init];
-            province.proName = proNameStr;
-            province.proId = proSortStr;
-            province.proRemark = proRemarkStr;
-            [resultList addObject:province];
-        }
-        sqlite3_finalize(statement);
-    } else {
-        DLog(@"error !!!!!");
+    FMResultSet *rs = [db executeQuery:@"select ProName, ProSort, ProRemark from T_Province"];
+    while ([rs next]) {
+        NSString *proName = [rs stringForColumn:@"ProName"];
+        NSString *proSort = [rs stringForColumn:@"ProSort"];
+        NSString *proRemark = [rs stringForColumn:@"ProRemark"];
+        DLog(@"province: %@-%@-%@", proName, proSort, proRemark);
+        KGProvince *province = [[KGProvince alloc] init];
+        province.proName = proName;
+        province.proId = proSort;
+        province.proRemark = proRemark;
+        [resultList addObject:province];
     }
-    sqlite3_close(database);
+    [db close];
     return resultList;
 }
 
 - (NSMutableArray *)queryCity: (NSString *)proId {
     NSMutableArray *resultList = [[NSMutableArray alloc] init];
-    sqlite3 *database;
-    if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
-        sqlite3_close(database);
-        DLog(@"Failed to open database");
+    FMDatabase *db  = [FMDatabase databaseWithPath:[self dataFilePath]];
+    if (![db open]) {
+        NSLog(@"Open database failed");
         return resultList;
     }
+    FMResultSet *rs = [db executeQuery:[NSString stringWithFormat:@"select CityName, CitySort from T_City where ProId = %@", proId]];
 
-    NSString *query = @"select CityName, CitySort from T_City where ProId = ?";
-    sqlite3_stmt *statement;
-    if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
-        sqlite3_bind_text(statement, 1, [proId UTF8String], -1, NULL);
-        while (sqlite3_step(statement) == SQLITE_ROW) {
-            char *cityName = (char *)sqlite3_column_text(statement, 0);
-            NSString *cityNameStr = [[NSString alloc] initWithUTF8String:cityName];
-            char *citySort = (char *)sqlite3_column_text(statement, 1);
-            NSString *citySortStr = [[NSString alloc] initWithUTF8String:citySort];
-            DLog(@"%@-%@", cityNameStr, citySortStr);
-            KGCity *city = [[KGCity alloc] init];
-            city.cityName = cityNameStr;
-            city.cityId = citySortStr;
-            [resultList addObject:city];
-        }
-        sqlite3_finalize(statement);
-    } else {
-        DLog(@"error !!!!!");
+    while ([rs next]) {
+        NSString *cityName = [rs stringForColumn:@"CityName"];
+        NSString *cityId = [rs stringForColumn:@"CitySort"];
+        DLog(@"city: %@-%@", cityId, cityName);
+        KGCity *city = [[KGCity alloc] init];
+        city.cityName = cityName;
+        city.cityId = cityId;
+        [resultList addObject:city];
     }
-    sqlite3_close(database);
+    [db close];
     return resultList;
 }
 
 - (NSMutableArray *)queryZone: (NSString *)cityId {
     NSMutableArray *resultList = [[NSMutableArray alloc] init];
-    sqlite3 *database;
-    if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
-        sqlite3_close(database);
-        DLog(@"Failed to open database");
+    FMDatabase *db  = [FMDatabase databaseWithPath:[self dataFilePath]];
+    if (![db open]) {
+        NSLog(@"Open database failed");
         return resultList;
     }
+    FMResultSet *rs = [db executeQuery:[NSString stringWithFormat:@"select ZoneID, ZoneName from T_Zone where CityID = %@", cityId]];
 
-    NSString *query = @"select ZoneID, ZoneName from T_Zone where CityID = ?";
-    sqlite3_stmt *statement;
-    if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
-        sqlite3_bind_text(statement, 1, [cityId UTF8String], -1, NULL);
-        while (sqlite3_step(statement) == SQLITE_ROW) {
-            char *zoneId = (char *)sqlite3_column_text(statement, 0);
-            NSString *zoneIdStr = [[NSString alloc] initWithUTF8String:zoneId];
-            char *zoneName = (char *)sqlite3_column_text(statement, 1);
-            NSString *zoneNameStr = [[NSString alloc] initWithUTF8String:zoneName];
-            DLog(@"%@-%@", zoneIdStr, zoneNameStr);
-            KGZone *zone = [[KGZone alloc] init];
-            zone.zoneId = zoneIdStr;
-            zone.zoneName = zoneNameStr;
-            [resultList addObject:zone];
-        }
-        sqlite3_finalize(statement);
-    } else {
-        DLog(@"error !!!!!");
+    while ([rs next]) {
+        NSString *zoneId = [rs stringForColumn:@"ZoneID"];
+        NSString *zoneName = [rs stringForColumn:@"ZoneName"];
+        DLog(@"%@-%@", zoneId, zoneName);
+        KGZone *zone = [[KGZone alloc] init];
+        zone.zoneId = zoneId;
+        zone.zoneName = zoneName;
+        [resultList addObject:zone];
     }
-    sqlite3_close(database);
+    [db close];
     return resultList;
 }
 
