@@ -82,7 +82,7 @@
 - (void)setObject: (KGBuyerSummaryObject *)obj {
     self.summaryObj = obj;
     self.countryImgView.image = [UIImage imageNamed:obj.toCountry];
-    [self.headImageView setImageWithURL:[NSURL URLWithString:obj.avatarUrl] placeholderImage:[UIImage imageNamed:obj.gender == MALE ? kAvatarMale : kAvatarFemale]];
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:obj.avatarUrl] placeholderImage:[UIImage imageNamed:obj.gender == MALE ? kAvatarMale : kAvatarFemale]];
     self.headImageView.layer.cornerRadius = self.headImageView.width / 2;
     self.nameLabel.text = obj.userName;
     self.nameLabel.textColor = obj.gender == FEMALE ? RGB(255, 133, 133) : RGB(114, 114, 114);

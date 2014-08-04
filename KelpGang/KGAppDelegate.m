@@ -46,6 +46,8 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
     [AppStartup startup];
 
+    [self moveDBFileToSandbox];
+
     return YES;
 }
 							
@@ -114,6 +116,25 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     }
 
     [[UIApplication sharedApplication] cancelLocalNotification:notification];
+}
+
+- (void)moveDBFileToSandbox {
+    NSString *sourcesPath = [[NSBundle mainBundle] pathForResource:@"china_province_city_zone"ofType:@"sqlite"];
+
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentPath = [paths objectAtIndex:0];
+    NSString *desPath = [documentPath stringByAppendingPathComponent:@"china_province_city_zone.sqlite"];
+
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if (![fileManager fileExistsAtPath:desPath]) {
+        NSError *error ;
+        if ([fileManager copyItemAtPath:sourcesPath toPath:desPath error:&error]) {
+            NSLog(@"数据库移动成功");
+        } else {
+            NSLog(@"数据库移动失败");
+        }
+    }
+    
 }
 
 @end

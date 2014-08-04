@@ -8,6 +8,11 @@
 
 #import "KGAddAddressController.h"
 #import "KGAddressObject.h"
+#import <sqlite3.h>
+#import "KGProvince.h"
+#import "KGCity.h"
+#import "KGZone.h"
+
 
 @interface KGAddAddressController () <UITextFieldDelegate>
 
@@ -15,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *finishBtn;
 - (IBAction)setDefaultAddr:(UIButton *)sender;
 @property (nonatomic, assign) BOOL areaExpand;
-@property (nonatomic, strong) NSArray *provinces, *cities, *areas;
+@property (nonatomic, strong) NSArray *provinceArr, *cityArr, *zoneArr;
 
 @end
 
@@ -94,6 +99,9 @@
         if (self.addrObj) {
             label.text = [NSString stringWithFormat:@"%@%@%@", self.addrObj.province, self.addrObj.city, self.addrObj.district];
             [label sizeToFit];
+            if (label.width > 180) {
+                label.width = 180;
+            }
         }
         if (self.areaExpand) {
             button.hidden = NO;
@@ -150,22 +158,11 @@
 
 
 - (void)initAreaData {
-    NSArray *data = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"area" ofType:@"plist"]];
-    self.provinces = data;
-    self.cities = self.provinces[0][@"cities"];
-    self.areas = self.cities[0][@"areas"];
-
-    if (!self.addrObj) {
-        KGAddressObject *addrObj = [[KGAddressObject alloc] init];
-        self.addrObj = addrObj;
-        self.addrObj.province = self.provinces[0][@"state"];
-        self.addrObj.city = self.cities[0][@"city"];
-        if (self.areas.count > 0) {
-            self.addrObj.district = self.areas[0];
-        } else{
-            self.addrObj.district = @"";
-        }
-    }
+    self.provinceArr = [self queryProvince];
+    KGProvince *province = self.provinceArr[0];
+    self.cityArr = [self queryCity:province.proId];
+    KGCity *city = self.cityArr[0];
+    self.zoneArr = [self queryZone:city.cityId];
 }
 
 #pragma UIPickerViewDataSource
@@ -178,13 +175,13 @@
     NSInteger num = 0;
     switch (component) {
         case 0:
-            num = [self.provinces count];
+            num = [self.provinceArr count];
             break;
         case 1:
-            num = [self.cities count];
+            num = [self.cityArr count];
             break;
         case 2:
-            num = [self.areas count];
+            num = [self.zoneArr count];
             break;
         default:
             break;
@@ -197,17 +194,21 @@
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     NSString *title;
     switch (component) {
-        case 0:
-            title = self.provinces[row][@"state"];
+        case 0: {
+            KGProvince *province = self.provinceArr[row];
+            title = province.proName;
             break;
-        case 1:
-            title = self.cities[row][@"city"];
+        }
+        case 1: {
+            KGCity *city = self.cityArr[row];
+            title = city.cityName;
             break;
-        case 2:
-            if (self.areas.count > 0) {
-                title = self.areas[row];
-            }
+        }
+        case 2: {
+            KGZone *zone = self.zoneArr[row];
+            title = zone.zoneName;
             break;
+        }
         default:
             break;
     }
@@ -216,42 +217,34 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     switch (component) {
-        case 0:
-            self.cities = [[self.provinces objectAtIndex:row] objectForKey:@"cities"];
+        case 0: {
+            KGProvince *province = self.provinceArr[row];
+            NSString *proId = province.proId;
+            NSArray *cityArr = [self queryCity:proId];
+            self.cityArr = cityArr;
             [self.pickerView selectRow:0 inComponent:1 animated:YES];
             [self.pickerView reloadComponent:1];
 
-            self.areas = [[self.cities objectAtIndex:0] objectForKey:@"areas"];
+            KGCity *city = self.cityArr[0];
+            NSString *cityId = city.cityId;
+            NSArray *zoneArr = [self queryZone:cityId];
+            self.zoneArr = zoneArr;
             [self.pickerView selectRow:0 inComponent:2 animated:YES];
             [self.pickerView reloadComponent:2];
-
-            self.addrObj.province = [[self.provinces objectAtIndex:row] objectForKey:@"state"];
-            self.addrObj.city = [[self.cities objectAtIndex:0] objectForKey:@"city"];
-            if ([self.areas count] > 0) {
-                self.addrObj.district = [self.areas objectAtIndex:0];
-            } else{
-                self.addrObj.district = @"";
-            }
             break;
-        case 1:
-            self.areas = [[self.cities objectAtIndex:row] objectForKey:@"areas"];
+        }
+        case 1: {
+            KGCity *city = self.cityArr[row];
+            NSString *cityId = city.cityId;
+            NSArray *zoneArr = [self queryZone:cityId];
+            self.zoneArr = zoneArr;
             [self.pickerView selectRow:0 inComponent:2 animated:YES];
             [self.pickerView reloadComponent:2];
-
-            self.addrObj.city = [[self.cities objectAtIndex:row] objectForKey:@"city"];
-            if ([self.areas count] > 0) {
-                self.addrObj.district = [self.areas objectAtIndex:0];
-            } else{
-                self.addrObj.district = @"";
-            }
             break;
-        case 2:
-            if ([self.areas count] > 0) {
-                self.addrObj.district = [self.areas objectAtIndex:row];
-            } else{
-                self.addrObj.district = @"";
-            }
+        }
+        case 2: {
             break;
+        }
         default:
             break;
     }
@@ -266,7 +259,7 @@
 
 #pragma UIScrollViewDelegate
 
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     [self.view endEditing:YES];
 }
 
@@ -276,9 +269,132 @@
 }
 
 - (void)finishSelectDistrict:(UIButton *)sender {
+    KGProvince *province = self.provinceArr[[self.pickerView selectedRowInComponent:0]];
+    self.addrObj.province = province.proName;
+    KGCity *city = self.cityArr[[self.pickerView selectedRowInComponent:1]];
+    self.addrObj.city = city.cityName;
+    if ([@"直辖市" isEqualToString: province.proRemark]
+        || [@"特别行政区" isEqualToString: province.proRemark] ) {
+        self.addrObj.city = @"";
+    }
+    NSInteger zoneIndex = [self.pickerView selectedRowInComponent:2];
+    if ([self.zoneArr count] > 0) {
+        KGZone *zone = self.zoneArr[zoneIndex];
+        self.addrObj.district = zone.zoneName;
+    } else {
+        self.addrObj.district = @"";
+    }
+
     self.areaExpand = NO;
     NSArray *paths = @[[NSIndexPath indexPathForRow:3 inSection:0]];
     [self.tableView deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
     [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:2 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
+
+- (NSString *)dataFilePath {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                         NSUserDomainMask,
+                                                         YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    return [documentsDirectory stringByAppendingPathComponent:@"china_province_city_zone.sqlite"];
+}
+
+- (NSMutableArray *)queryProvince {
+    NSMutableArray *resultList = [[NSMutableArray alloc] init];
+    sqlite3 *database;
+    if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
+        sqlite3_close(database);
+        DLog(@"Failed to open database");
+        return resultList;
+    }
+
+    NSString *query = @"select ProName, ProSort, ProRemark from T_Province";
+    sqlite3_stmt *statement;
+    if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            char *proName = (char *)sqlite3_column_text(statement, 0);
+            NSString *proNameStr = [[NSString alloc] initWithUTF8String:proName];
+            char *proSort = (char *)sqlite3_column_text(statement, 1);
+            NSString *proSortStr = [[NSString alloc] initWithUTF8String:proSort];
+            char *proRemark = (char *)sqlite3_column_text(statement, 2);
+            NSString *proRemarkStr = [[NSString alloc] initWithUTF8String:proRemark];
+            DLog(@"%@-%@-%@", proNameStr, proSortStr, proRemarkStr);
+            KGProvince *province = [[KGProvince alloc] init];
+            province.proName = proNameStr;
+            province.proId = proSortStr;
+            province.proRemark = proRemarkStr;
+            [resultList addObject:province];
+        }
+        sqlite3_finalize(statement);
+    } else {
+        DLog(@"error !!!!!");
+    }
+    sqlite3_close(database);
+    return resultList;
+}
+
+- (NSMutableArray *)queryCity: (NSString *)proId {
+    NSMutableArray *resultList = [[NSMutableArray alloc] init];
+    sqlite3 *database;
+    if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
+        sqlite3_close(database);
+        DLog(@"Failed to open database");
+        return resultList;
+    }
+
+    NSString *query = @"select CityName, CitySort from T_City where ProId = ?";
+    sqlite3_stmt *statement;
+    if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
+        sqlite3_bind_text(statement, 1, [proId UTF8String], -1, NULL);
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            char *cityName = (char *)sqlite3_column_text(statement, 0);
+            NSString *cityNameStr = [[NSString alloc] initWithUTF8String:cityName];
+            char *citySort = (char *)sqlite3_column_text(statement, 1);
+            NSString *citySortStr = [[NSString alloc] initWithUTF8String:citySort];
+            DLog(@"%@-%@", cityNameStr, citySortStr);
+            KGCity *city = [[KGCity alloc] init];
+            city.cityName = cityNameStr;
+            city.cityId = citySortStr;
+            [resultList addObject:city];
+        }
+        sqlite3_finalize(statement);
+    } else {
+        DLog(@"error !!!!!");
+    }
+    sqlite3_close(database);
+    return resultList;
+}
+
+- (NSMutableArray *)queryZone: (NSString *)cityId {
+    NSMutableArray *resultList = [[NSMutableArray alloc] init];
+    sqlite3 *database;
+    if (sqlite3_open([[self dataFilePath] UTF8String], &database) != SQLITE_OK) {
+        sqlite3_close(database);
+        DLog(@"Failed to open database");
+        return resultList;
+    }
+
+    NSString *query = @"select ZoneID, ZoneName from T_Zone where CityID = ?";
+    sqlite3_stmt *statement;
+    if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil) == SQLITE_OK) {
+        sqlite3_bind_text(statement, 1, [cityId UTF8String], -1, NULL);
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            char *zoneId = (char *)sqlite3_column_text(statement, 0);
+            NSString *zoneIdStr = [[NSString alloc] initWithUTF8String:zoneId];
+            char *zoneName = (char *)sqlite3_column_text(statement, 1);
+            NSString *zoneNameStr = [[NSString alloc] initWithUTF8String:zoneName];
+            DLog(@"%@-%@", zoneIdStr, zoneNameStr);
+            KGZone *zone = [[KGZone alloc] init];
+            zone.zoneId = zoneIdStr;
+            zone.zoneName = zoneNameStr;
+            [resultList addObject:zone];
+        }
+        sqlite3_finalize(statement);
+    } else {
+        DLog(@"error !!!!!");
+    }
+    sqlite3_close(database);
+    return resultList;
+}
+
 @end

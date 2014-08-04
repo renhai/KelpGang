@@ -90,7 +90,7 @@ static const CGFloat kCellHeight = 68;
 - (void)configCell: (KGRecentContactObject *)contactObj {
     self.contactObj = contactObj;
     UIImage *placeHolderImg = self.contactObj.gender == MALE ? [UIImage imageNamed:kAvatarMale] : [UIImage imageNamed:kAvatarFemale];
-    [self.headImageView setImageWithURL:[NSURL URLWithString:self.contactObj.headUrl]placeholderImage:placeHolderImg];
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:self.contactObj.headUrl]placeholderImage:placeHolderImg];
 
     self.badgeView.hidden = self.contactObj.hasRead;
 

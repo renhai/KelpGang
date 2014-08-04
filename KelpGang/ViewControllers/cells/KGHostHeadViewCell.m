@@ -45,7 +45,7 @@
 
 - (void)configCell: (KGUserObject *)user {
     self.user = user;
-    [self.headImageView setImageWithURL:[NSURL URLWithString:user.avatarUrl] placeholderImage: [UIImage imageNamed:user.gender == MALE ? kAvatarMale : kAvatarFemale]];
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:user.avatarUrl] placeholderImage: [UIImage imageNamed:user.gender == MALE ? kAvatarMale : kAvatarFemale]];
     self.headImageView.layer.cornerRadius = self.headImageView.width / 2;
     self.nameLabel.text = user.uname;
     if (!user.uname || [@"" isEqualToString:user.uname]) {

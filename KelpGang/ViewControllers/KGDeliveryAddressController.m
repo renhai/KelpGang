@@ -47,6 +47,7 @@
             }
             [self.datasource removeAllObjects];
             [self.datasource addObjectsFromArray:addressArr];
+            [self mockData];
             [self.tableView reloadData];
         }
         DLog(@"result: %@", responseObject);
