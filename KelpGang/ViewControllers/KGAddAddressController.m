@@ -97,7 +97,11 @@
         button.centerY = cell.height / 2;
         [button addTarget:self action:@selector(finishSelectDistrict:) forControlEvents:UIControlEventTouchUpInside];
         if (self.addrObj) {
-            label.text = [NSString stringWithFormat:@"%@%@%@", self.addrObj.province, self.addrObj.city, self.addrObj.district];
+            NSString *address = [NSString stringWithFormat:@"%@%@%@", self.addrObj.province, self.addrObj.city, self.addrObj.district];
+            if (!address) {
+                address = @"";
+            }
+            label.text = address;
             [label sizeToFit];
             if (label.width > 180) {
                 label.width = 180;
@@ -163,6 +167,10 @@
     self.cityArr = [self queryCity:province.proId];
     KGCity *city = self.cityArr[0];
     self.zoneArr = [self queryZone:city.cityId];
+
+    if (!self.addrObj) {
+        self.addrObj = [[KGAddressObject alloc] init];
+    }
 }
 
 #pragma UIPickerViewDataSource
