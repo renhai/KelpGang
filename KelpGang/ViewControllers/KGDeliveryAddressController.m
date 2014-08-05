@@ -134,8 +134,22 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.datasource removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        KGAddressObject *addrObj = [self.datasource objectAtIndex:indexPath.row];
+        NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
+                                 @"address_id":@(addrObj.addressId),
+                                 @"session_key":APPCONTEXT.currUser.sessionKey};
+        [[HudHelper getInstance] showHudOnView:self.tableView caption:nil image:nil acitivity:YES autoHideTime:0.0];
+        [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/deleteAddress" params:params success:^(id responseObject) {
+            [[HudHelper getInstance] hideHudInView:self.tableView];
+            DLog(@"%@", responseObject);
+            if ([KGUtils checkResult:responseObject]) {
+                [self.datasource removeObjectAtIndex:indexPath.row];
+                [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            }
+        } failure:^(NSError *error) {
+            [[HudHelper getInstance] hideHudInView:self.tableView];
+            DLog(@"%@", error);
+        }];
     }
 }
 
