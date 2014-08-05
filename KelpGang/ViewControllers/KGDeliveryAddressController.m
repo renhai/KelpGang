@@ -158,10 +158,10 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     KGAddAddressController *desController = segue.destinationViewController;
     if ([@"kAddAddrSegue" isEqualToString:segue.identifier]) {
-        desController.addrObj = nil;
+        desController.addressId = 0;
     } else if ([@"kModAddrSegue" isEqualToString:segue.identifier]) {
         KGAddressObject *addrObj = self.datasource[[self.tableView indexPathForSelectedRow].row];
-        desController.addrObj = addrObj;
+        desController.addressId = addrObj.addressId;
     }
 }
 

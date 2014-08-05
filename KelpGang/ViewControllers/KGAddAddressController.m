@@ -25,6 +25,8 @@
 - (IBAction)setDefaultAddr:(UIButton *)sender;
 @property (nonatomic, strong) NSArray *provinceArr, *cityArr, *zoneArr;
 
+@property (nonatomic, strong) KGAddressObject *addrObj;
+
 @end
 
 @implementation KGAddAddressController
@@ -49,6 +51,40 @@
     [self setLeftBarbuttonItem];
     [self setRightBarbuttonItem:[UIImage imageNamed:@"check-mark-white"] selector:@selector(finishAddAddress:)];
     [self initAreaData];
+    if (self.addressId > 0) {
+        NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
+                                 @"address_id": @(self.addressId),
+                                 @"session_key": APPCONTEXT.currUser.sessionKey};
+        [[HudHelper getInstance] showHudOnView:self.tableView caption:nil image:nil acitivity:YES autoHideTime:0.0];
+        [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/getAddress" params:params success:^(id responseObject) {
+            [[HudHelper getInstance] hideHudInView:self.tableView];
+            DLog(@"%@", responseObject);
+            if ([KGUtils checkResult:responseObject]) {
+                KGAddressObject *obj = [[KGAddressObject alloc] init];
+                NSArray *addrArr = [responseObject valueForKeyPath:@"data.address_info"];
+                if (addrArr && [addrArr count] > 0) {
+                    NSDictionary *info = addrArr[0];
+                    obj.addressId = [info[@"address_id"] integerValue];
+                    obj.consignee = info[@"receiver_name"];
+                    obj.mobile = info[@"tel"];
+                    obj.uid = [info[@"user_id"] integerValue];
+                    obj.areaCode = info[@"zipcode"];
+                    obj.defaultAddr = [info[@"address_is_default"] boolValue];
+                    obj.province = [info valueForKeyPath:@"address_detail.province"];
+                    obj.city = [info valueForKeyPath:@"address_detail.city"];
+                    obj.district = [info valueForKeyPath:@"address_detail.county"];
+                    obj.street = [info valueForKeyPath:@"address_detail.street"];
+                }
+                self.addrObj = obj;
+                [self.tableView reloadData];
+            }
+        } failure:^(NSError *error) {
+            [[HudHelper getInstance] hideHudInView:self.tableView];
+            DLog(@"%@", error);
+        }];
+    } else {
+        self.addrObj = [[KGAddressObject alloc] init];
+    }
 }
 
 - (void)finishAddAddress: (UIBarButtonItem *)sender {
@@ -209,10 +245,6 @@
     self.cityArr = [self queryCity:province.proId];
     KGCity *city = self.cityArr[0];
     self.zoneArr = [self queryZone:city.cityId];
-
-    if (!self.addrObj) {
-        self.addrObj = [[KGAddressObject alloc] init];
-    }
 }
 
 #pragma UIPickerViewDataSource

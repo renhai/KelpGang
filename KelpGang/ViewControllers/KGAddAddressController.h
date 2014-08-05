@@ -12,6 +12,6 @@
 
 @interface KGAddAddressController : UITableViewController
 
-@property (nonatomic, strong) KGAddressObject *addrObj;
+@property (nonatomic, assign) NSInteger addressId;
 
 @end

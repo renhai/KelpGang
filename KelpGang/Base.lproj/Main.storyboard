@@ -2756,7 +2756,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="jkA-9y-eMr"/>
         <segue reference="t6T-2x-Aa7"/>
+        <segue reference="jkA-9y-eMr"/>
     </inferredMetricsTieBreakers>
 </document>
