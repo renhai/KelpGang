@@ -36,6 +36,7 @@ self.navigationItem.leftBarButtonItem = buttonItem;\
 #define kPersistDir  @"persist"
 #define kLoginUserKey   @"kX2UserKey"
 #define kAlertViewTip   @"提示"
+#define kUpdateAddress  @"kUpdateAddress"
 
 
 typedef enum {

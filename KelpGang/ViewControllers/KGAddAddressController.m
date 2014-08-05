@@ -14,12 +14,15 @@
 #import "KGZone.h"
 
 
-@interface KGAddAddressController () <UITextFieldDelegate>
+@interface KGAddAddressController () <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
-@property (weak, nonatomic) IBOutlet UIButton *finishBtn;
+@property (strong, nonatomic) UIPickerView *pickerView;
+@property (weak, nonatomic) IBOutlet UITextField *consigneeTF;
+@property (weak, nonatomic) IBOutlet UITextField *mobileTF;
+@property (weak, nonatomic) IBOutlet UITextField *districtTF;
+@property (weak, nonatomic) IBOutlet UITextField *streetTF;
+@property (weak, nonatomic) IBOutlet UITextField *areaCodeTF;
 - (IBAction)setDefaultAddr:(UIButton *)sender;
-@property (nonatomic, assign) BOOL areaExpand;
 @property (nonatomic, strong) NSArray *provinceArr, *cityArr, *zoneArr;
 
 @end
@@ -45,12 +48,72 @@
     [super viewDidLoad];
     [self setLeftBarbuttonItem];
     [self setRightBarbuttonItem:[UIImage imageNamed:@"check-mark-white"] selector:@selector(finishAddAddress:)];
-    self.finishBtn.layer.cornerRadius = 4;
     [self initAreaData];
 }
 
 - (void)finishAddAddress: (UIBarButtonItem *)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    if (![self checkAddressInfo]) {
+        return;
+    }
+    NSDictionary *common = @{@"user_id": @(APPCONTEXT.currUser.uid),
+                             @"receiver_name": self.addrObj.consignee,
+                             @"tel": self.addrObj.mobile,
+                             @"province": self.addrObj.province,
+                             @"city": self.addrObj.city,
+                             @"county": self.addrObj.district,
+                             @"street": self.addrObj.street,
+                             @"zipcode": self.addrObj.areaCode,
+                             @"is_default": @(self.addrObj.isDefaultAddr),
+                             @"session_key": APPCONTEXT.currUser.sessionKey};
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:common];
+    NSString *postUrl = @"/mobile/user/addAddress";
+    if (self.addrObj.addressId > 0) {
+        postUrl = @"/mobile/user/updateAddress";
+        [params setValue:@(self.addrObj.addressId) forKey:@"address_id"];
+    }
+    [[HudHelper getInstance] showHudOnView:self.tableView caption:nil image:nil acitivity:YES autoHideTime:0.0];
+    [[KGNetworkManager sharedInstance] postRequest:postUrl
+                                            params:params
+                                           success:^(id responseObject) {
+                                               [[HudHelper getInstance] hideHudInView:self.tableView];
+                                               DLog(@"%@", responseObject);
+                                               if ([KGUtils checkResult:responseObject]) {
+                                                   [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateAddress object:nil];
+                                                   [self.navigationController popViewControllerAnimated:YES];
+                                               }
+                                        } failure:^(NSError *error) {
+                                            DLog(@"%@", error);
+                                            [[HudHelper getInstance] hideHudInView:self.tableView];
+                                        }];
+}
+
+- (BOOL)checkAddressInfo {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    if ([self.consigneeTF.text isEqualToString:@""]) {
+        alert.title = @"收件人不能为空";
+        [alert show];
+        return NO;
+    }
+    if ([self.mobileTF.text isEqualToString:@""]) {
+        alert.title = @"联系电话不能为空";
+        [alert show];
+        return NO;
+    }
+    if ([self.districtTF.text isEqualToString:@""]) {
+        alert.title = @"所在地区不能为空";
+        [alert show];
+        return NO;
+    }
+    if ([self.streetTF.text isEqualToString:@""]) {
+        alert.title = @"详细地址不能为空";
+        [alert show];
+        return NO;
+    }
+    self.addrObj.consignee = self.consigneeTF.text;
+    self.addrObj.mobile = self.mobileTF.text;
+    self.addrObj.street = self.streetTF.text;
+    self.addrObj.areaCode = self.areaCodeTF.text;
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,83 +131,62 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (!self.areaExpand) {
-        return 5;
-    }
     return [super tableView:tableView numberOfRowsInSection:section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
-    if (!self.areaExpand && indexPath.row > 2) {
-        cell = [super tableView:tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row + 1 inSection:indexPath.section]];
-    }
     if (indexPath.row == 0) {
-        UITextField *tf = (UITextField *)[cell viewWithTag:1];
-        tf.text = [self.addrObj consignee];
+        self.consigneeTF.text = [self.addrObj consignee];
     }
     if (indexPath.row == 1) {
-        UITextField *tf = (UITextField *)[cell viewWithTag:1];
-        tf.text = [self.addrObj mobile];
+        self.mobileTF.text = [self.addrObj mobile];
     }
     if (indexPath.row == 2) {
-        UIImageView *imageView = (UIImageView *)[cell viewWithTag:1];
-        UIButton *button = (UIButton *)[cell viewWithTag:2];
-        UILabel *label = (UILabel *)[cell viewWithTag:3];
-        [button sizeToFit];
-        button.right = 305;
-        button.centerY = cell.height / 2;
-        [button addTarget:self action:@selector(finishSelectDistrict:) forControlEvents:UIControlEventTouchUpInside];
-        if (self.addrObj) {
-            NSString *address = [NSString stringWithFormat:@"%@%@%@", self.addrObj.province, self.addrObj.city, self.addrObj.district];
-            if (!address) {
-                address = @"";
-            }
-            label.text = address;
-            [label sizeToFit];
-            if (label.width > 180) {
-                label.width = 180;
-            }
+        NSString *address = [NSString stringWithFormat:@"%@%@%@", self.addrObj.province, self.addrObj.city, self.addrObj.district];
+        if (!address) {
+            address = @"";
         }
-        if (self.areaExpand) {
-            button.hidden = NO;
-            imageView.hidden = YES;
-        } else {
-            button.hidden = YES;
-            imageView.hidden = NO;
-            imageView.image = [UIImage imageNamed:@"down-arrow-big"];
-        }
+        self.districtTF.text = address;
+
+        UIToolbar *topView = [[UIToolbar alloc]initWithFrame:CGRectZero];
+        [topView setBarStyle:UIBarStyleBlack];
+
+        UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]initWithTitle:@"取消" style:UIBarButtonItemStyleDone target:self action:@selector(cancelSelectDistrict:)];
+
+        UIBarButtonItem *spaceButton = [[UIBarButtonItem  alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(finishSelectDistrict:)];
+
+        NSArray *buttonsArray = [NSArray arrayWithObjects:cancelButton,spaceButton,doneButton,nil];
+        [topView setItems:buttonsArray];
+        [topView sizeToFit];
+
+        UIPickerView *pickerView = [[UIPickerView alloc]initWithFrame:CGRectZero];
+        pickerView.showsSelectionIndicator = YES;
+        pickerView.dataSource = self;
+        pickerView.delegate = self;
+
+        self.pickerView = pickerView;
+        self.districtTF.inputView = self.pickerView;
+        self.districtTF.inputAccessoryView = topView;
     }
-    if (indexPath.row == 3 && !self.areaExpand) {
-        UITextField *tf = (UITextField *)[cell viewWithTag:1];
-        tf.text = [self.addrObj street];
+    if (indexPath.row == 3) {
+        self.streetTF.text = [self.addrObj street];
     }
-    if (indexPath.row == 4 && !self.areaExpand) {
-        UITextField *tf = (UITextField *)[cell viewWithTag:1];
-        tf.text = [self.addrObj areaCode];
+    if (indexPath.row == 4) {
+        self.areaCodeTF.text = [self.addrObj areaCode];
     }
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
-    //    UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
-    if (indexPath.row == 2 && !self.areaExpand) {
-        self.areaExpand = YES;
-        NSArray *paths = @[[NSIndexPath indexPathForRow:3 inSection:indexPath.section]];
-        [self.tableView beginUpdates];
-        [self.tableView insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-        [self.tableView endUpdates];
-        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:2 inSection:indexPath.section]] withRowAnimation:UITableViewRowAnimationNone];
-    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat height = [super tableView:tableView heightForRowAtIndexPath:indexPath];
-    if (!self.areaExpand && indexPath.row > 2) {
-        height = [super tableView:tableView heightForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row + 1 inSection:indexPath.section]];;
-    }
     return height;
 }
 
@@ -276,7 +318,9 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)finishSelectDistrict:(UIButton *)sender {
+- (void)finishSelectDistrict:(UIBarButtonItem *)sender {
+    [self.districtTF resignFirstResponder];
+
     KGProvince *province = self.provinceArr[[self.pickerView selectedRowInComponent:0]];
     self.addrObj.province = province.proName;
     KGCity *city = self.cityArr[[self.pickerView selectedRowInComponent:1]];
@@ -293,10 +337,12 @@
         self.addrObj.district = @"";
     }
 
-    self.areaExpand = NO;
-    NSArray *paths = @[[NSIndexPath indexPathForRow:3 inSection:0]];
-    [self.tableView deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:2 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    NSString *address = [NSString stringWithFormat:@"%@%@%@", self.addrObj.province, self.addrObj.city, self.addrObj.district];
+    self.districtTF.text = address;
+}
+
+- (void)cancelSelectDistrict:(UIBarButtonItem *)sender {
+    [self.districtTF resignFirstResponder];
 }
 
 - (NSString *)dataFilePath {

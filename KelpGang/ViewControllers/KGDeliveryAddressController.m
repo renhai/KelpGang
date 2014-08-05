@@ -19,6 +19,10 @@
 
 @implementation KGDeliveryAddressController
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -31,10 +35,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTableView:) name:kUpdateAddress object:nil];
     [self setLeftBarbuttonItem];
     self.datasource = [[NSMutableArray alloc] init];
-//    [self mockData];
+    [self refeshAddrList];
+}
 
+- (void)refeshAddrList {
     [[HudHelper getInstance] showHudOnView:self.tableView caption:nil image:nil acitivity:YES autoHideTime:0.0];
     NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"session_key": APPCONTEXT.currUser.sessionKey};
     [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/getAddressList" params:params success:^(id responseObject) {
@@ -46,8 +53,7 @@
                 addressArr = @[];
             }
             [self.datasource removeAllObjects];
-            [self.datasource addObjectsFromArray:addressArr];
-            [self mockData];
+            [self.datasource addObjectsFromArray:[self convertAddrInfo:addressArr]];
             [self.tableView reloadData];
         }
         DLog(@"result: %@", responseObject);
@@ -56,43 +62,25 @@
         DLog(@"error: %@", error);
     }];
 
-//    [KGUtils setExtraCellLineHidden:self.tableView];
 }
 
-- (void)mockData {
-    KGAddressObject *obj1 = [[KGAddressObject alloc] init];
-    obj1.consignee = @"用户1";
-    obj1.mobile = @"12112127878";
-    obj1.province = @"河北省";
-    obj1.city = @"沧州市";
-    obj1.district = @"盐山县";
-    obj1.street = @"圣诞节法拉盛江东父老就撒旦法离开就撒旦法离开家拉屎大富科技圣诞节发牢骚";
-    obj1.areaCode = @"343899";
-    obj1.defaultAddr = NO;
-
-    KGAddressObject *obj2 = [[KGAddressObject alloc] init];
-    obj2.consignee = @"任海";
-    obj2.mobile = @"17612891239";
-    obj2.province = @"北京";
-    obj2.city = @"北京市";
-    obj2.district = @"朝阳区";
-    obj2.street = @"酒仙桥中路18号 国投创意产业园";
-    obj2.areaCode = @"231387";
-    obj2.defaultAddr = YES;
-
-    KGAddressObject *obj3 = [[KGAddressObject alloc] init];
-    obj3.consignee = @"谁谁谁谁谁谁";
-    obj3.mobile = @"12345678909";
-    obj3.province = @"辽宁省";
-    obj3.city = @"大连市";
-    obj3.district = @"甘井子区";
-    obj3.street = @"所发生的离开房间乱收费的 水电费加拉斯的";
-    obj3.areaCode = @"327487";
-    obj3.defaultAddr = NO;
-
-    [self.datasource addObject:obj1];
-    [self.datasource addObject:obj2];
-    [self.datasource addObject:obj3];
+- (NSMutableArray *)convertAddrInfo: (NSArray *)addrArr {
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    for (NSDictionary *info in addrArr) {
+        KGAddressObject *obj = [[KGAddressObject alloc] init];
+        obj.addressId = [info[@"address_id"] integerValue];
+        obj.consignee = info[@"receiver_name"];
+        obj.mobile = info[@"tel"];
+        obj.uid = [info[@"user_id"] integerValue];
+        obj.areaCode = info[@"zipcode"];
+        obj.defaultAddr = [info[@"address_is_default"] boolValue];
+        obj.province = [info valueForKeyPath:@"address_detail.province"];
+        obj.city = [info valueForKeyPath:@"address_detail.city"];
+        obj.district = [info valueForKeyPath:@"address_detail.county"];
+        obj.street = [info valueForKeyPath:@"address_detail.street"];
+        [result addObject:obj];
+    }
+    return result;
 }
 
 - (void)didReceiveMemoryWarning
@@ -163,5 +151,8 @@
     }
 }
 
+- (void)refreshTableView: (NSNotification *)noti {
+    [self refeshAddrList];
+}
 
 @end
