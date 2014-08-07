@@ -1,5 +1,5 @@
 //
-//  KGDiscoverViewController.h
+//  KGDiscoverCell.h
 //  KelpGang
 //
 //  Created by Andy on 14-8-7.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KGDiscoverViewController : UITableViewController
+@interface KGDiscoverCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet UIImageView *pictureView;
 
 @end

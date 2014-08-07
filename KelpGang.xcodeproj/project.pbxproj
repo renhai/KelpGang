@@ -34,7 +34,6 @@
 		A112DF4B1918CCED00108FAD /* KGCompletedOrderPriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A112DF4A1918CCED00108FAD /* KGCompletedOrderPriceCell.m */; };
 		A112DF4E1918D2A600108FAD /* KGOrderObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A112DF4D1918D2A600108FAD /* KGOrderObject.m */; };
 		A11E91641900D28100BBC1A2 /* KGRecentContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A11E91631900D28100BBC1A2 /* KGRecentContactsController.m */; };
-		A11E916E19011F3700BBC1A2 /* KGDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A11E916D19011F3700BBC1A2 /* KGDiscoverViewController.m */; };
 		A121F387198F3CDD00260E73 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A121F386198F3CDD00260E73 /* libsqlite3.0.dylib */; };
 		A121F38A198F5DA600260E73 /* KGProvince.m in Sources */ = {isa = PBXBuildFile; fileRef = A121F389198F5DA600260E73 /* KGProvince.m */; };
 		A121F38D198F5E5E00260E73 /* KGCity.m in Sources */ = {isa = PBXBuildFile; fileRef = A121F38C198F5E5E00260E73 /* KGCity.m */; };
@@ -96,6 +95,8 @@
 		A14B637D19066B3800C14A15 /* avatar-male.png in Resources */ = {isa = PBXBuildFile; fileRef = A14B637919066B3800C14A15 /* avatar-male.png */; };
 		A14B637E19066B3800C14A15 /* avatar-male@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A14B637A19066B3800C14A15 /* avatar-male@2x.png */; };
 		A15D676B1952871F00056F5E /* KGRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = A15D676A1952871F00056F5E /* KGRegisterController.m */; };
+		A1610CB319936564001F9DAA /* KGDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1610CB219936564001F9DAA /* KGDiscoverViewController.m */; };
+		A1610CB6199367C0001F9DAA /* KGDiscoverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1610CB5199367C0001F9DAA /* KGDiscoverCell.m */; };
 		A164DA2E194EA249008B26E8 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A164DA19194EA249008B26E8 /* IQKeyboardManager.bundle */; };
 		A164DA2F194EA249008B26E8 /* IQKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A164DA1B194EA249008B26E8 /* IQKeyboardManager.m */; };
 		A164DA30194EA249008B26E8 /* IQNSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = A164DA1F194EA249008B26E8 /* IQNSArray+Sort.m */; };
@@ -745,8 +746,6 @@
 		A11E91621900D28100BBC1A2 /* KGRecentContactsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGRecentContactsController.h; sourceTree = "<group>"; };
 		A11E91631900D28100BBC1A2 /* KGRecentContactsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGRecentContactsController.m; sourceTree = "<group>"; };
 		A11E91691900F4F800BBC1A2 /* KGMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGMacro.h; sourceTree = "<group>"; };
-		A11E916C19011F3700BBC1A2 /* KGDiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGDiscoverViewController.h; sourceTree = "<group>"; };
-		A11E916D19011F3700BBC1A2 /* KGDiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGDiscoverViewController.m; sourceTree = "<group>"; };
 		A121F386198F3CDD00260E73 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		A121F388198F5DA600260E73 /* KGProvince.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGProvince.h; sourceTree = "<group>"; };
 		A121F389198F5DA600260E73 /* KGProvince.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGProvince.m; sourceTree = "<group>"; };
@@ -853,6 +852,10 @@
 		A14B637A19066B3800C14A15 /* avatar-male@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar-male@2x.png"; sourceTree = "<group>"; };
 		A15D67691952871F00056F5E /* KGRegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGRegisterController.h; sourceTree = "<group>"; };
 		A15D676A1952871F00056F5E /* KGRegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGRegisterController.m; sourceTree = "<group>"; };
+		A1610CB119936564001F9DAA /* KGDiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGDiscoverViewController.h; sourceTree = "<group>"; };
+		A1610CB219936564001F9DAA /* KGDiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGDiscoverViewController.m; sourceTree = "<group>"; };
+		A1610CB4199367C0001F9DAA /* KGDiscoverCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGDiscoverCell.h; sourceTree = "<group>"; };
+		A1610CB5199367C0001F9DAA /* KGDiscoverCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGDiscoverCell.m; sourceTree = "<group>"; };
 		A164DA19194EA249008B26E8 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
 		A164DA1A194EA249008B26E8 /* IQKeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManager.h; sourceTree = "<group>"; };
 		A164DA1B194EA249008B26E8 /* IQKeyboardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQKeyboardManager.m; sourceTree = "<group>"; };
@@ -2004,12 +2007,12 @@
 				A19F85E518EA6C300089B14F /* KGTaskViewController.m */,
 				A11E91621900D28100BBC1A2 /* KGRecentContactsController.h */,
 				A11E91631900D28100BBC1A2 /* KGRecentContactsController.m */,
-				A11E916C19011F3700BBC1A2 /* KGDiscoverViewController.h */,
-				A11E916D19011F3700BBC1A2 /* KGDiscoverViewController.m */,
 				A14155A91904F4BB0045D641 /* KGBaseWebViewController.h */,
 				A14155AA1904F4BB0045D641 /* KGBaseWebViewController.m */,
 				A1EADC6C19889620005F7D95 /* KGSettingsViewController.h */,
 				A1EADC6D19889620005F7D95 /* KGSettingsViewController.m */,
+				A1610CB119936564001F9DAA /* KGDiscoverViewController.h */,
+				A1610CB219936564001F9DAA /* KGDiscoverViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -2108,6 +2111,8 @@
 				A110FA1A19077BED001651A3 /* KGChatTxtMessageCell.m */,
 				A1AD13391908C1DF00DF17B6 /* KGDeliveryAddressCell.h */,
 				A1AD133A1908C1DF00DF17B6 /* KGDeliveryAddressCell.m */,
+				A1610CB4199367C0001F9DAA /* KGDiscoverCell.h */,
+				A1610CB5199367C0001F9DAA /* KGDiscoverCell.m */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -3290,6 +3295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A112DF4219188C6300108FAD /* KGCompletedOrderBuyerCell.m in Sources */,
+				A1610CB319936564001F9DAA /* KGDiscoverViewController.m in Sources */,
 				A1CA59E21917616200D9A429 /* KGCreateOrderBuyerCell.m in Sources */,
 				A164DA37194EA249008B26E8 /* IQUIWindow+Hierarchy.m in Sources */,
 				A1AFF97518D0494B0043E75E /* KGCreateTaskViewController.m in Sources */,
@@ -3332,7 +3338,6 @@
 				A18A2B8818E1325D00FDFB8E /* KGBuyerListViewCell.m in Sources */,
 				A1986D45191A367B0064CC6C /* KGBuyerSummaryObject.m in Sources */,
 				A1A948BC18D93E84006DCF6E /* KGCreateJourneyController.m in Sources */,
-				A11E916E19011F3700BBC1A2 /* KGDiscoverViewController.m in Sources */,
 				A121F390198F5EDB00260E73 /* KGZone.m in Sources */,
 				A164DA30194EA249008B26E8 /* IQNSArray+Sort.m in Sources */,
 				A14300D518BB252F0064DF87 /* main.m in Sources */,
@@ -3353,6 +3358,7 @@
 				A180E43D190F6DB5003347F8 /* KGCreateOrderController.m in Sources */,
 				A121F38D198F5E5E00260E73 /* KGCity.m in Sources */,
 				A1DDFB7B18EEAF670078ED73 /* KGCascadeMenuLeftCell.m in Sources */,
+				A1610CB6199367C0001F9DAA /* KGDiscoverCell.m in Sources */,
 				A19F0EC318E2AE0D00C2944D /* KGBuyerRefPicturesCell.m in Sources */,
 				A197503218D84BF10062CAA7 /* UIDevice+Addtional.m in Sources */,
 				A121F417198F778400260E73 /* MWGridCell.m in Sources */,

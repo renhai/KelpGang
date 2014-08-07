@@ -2,31 +2,26 @@
 //  KGDiscoverViewController.m
 //  KelpGang
 //
-//  Created by Andy on 14-4-18.
+//  Created by Andy on 14-8-7.
 //  Copyright (c) 2014年 renren. All rights reserved.
 //
 
 #import "KGDiscoverViewController.h"
+#import "KGDiscoverCell.h"
 
 @interface KGDiscoverViewController ()
+
+@property(nonatomic, strong) NSArray *datasource;
+
 @end
 
 @implementation KGDiscoverViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithStyle:(UITableViewStyle)style
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-    }
-    return self;
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        self.webPath = @"/html/gj_saohuo.htm";
-        self.isPullToRefresh = YES;
     }
     return self;
 }
@@ -34,31 +29,51 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.webView.height = SCREEN_HEIGHT - NAVIGATIONBAR_IOS7_HEIGHT - TABBAR_HEIGHT;
+    self.datasource = @[@"http://www.geekpics.net/images/2012/09/16/jlR.jpg",
+                        @"http://it-eproducts.com/images/3-1347760443.jpg",
+                        @"http://i.imgbox.com/adznyVlI.jpg",
+                        @"http://img14.poco.cn/mypoco/myphoto/20130303/01/17323654220130303015619030.jpg",
+                        @"https://umfgea.bn1.livefilestore.com/y2p05SNB6HWB4lytSmmpSsH8SbSF77FGd8xpeJjcWu9UsLIyhQcsj4RJjYgzNUh8nTYj5XmmKZIHcJEdvfSogY1eG2iBUqpqknIVtee2roboe0/m9.jpg?psid=1",
+                        @"http://ww3.sinaimg.cn/large/703be3b1jw1e2yw7ec64xj.jpg",
+                        @"http://i1154.photobucket.com/albums/p534/zmingcx/U300S_6.jpg"];
 }
-
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
-#pragma UIWebViewDelegate
+#pragma mark - Table view data source
 
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    NSString *url = request.URL.absoluteString;
-    DLog(@"%@", url);
-    NSString *suffix = @"/html/gj_saohuo2_1.htm";
-    if ([url hasSuffix:suffix]) {
-        KGBaseWebViewController *webController = [[KGBaseWebViewController alloc] initWithWebPath:suffix];
-        webController.isPullToRefresh = YES;
-        webController.hidesBottomBarWhenPushed = YES;
-        [webController setLeftBarbuttonItem];
-        [webController setTitle:@"英国海淘指南"];
-        [self.navigationController pushViewController:webController animated:YES];
-        return NO;
-    }
-    return YES;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.datasource count];
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    KGDiscoverCell *cell = [tableView dequeueReusableCellWithIdentifier:@"kDiscoverCell" forIndexPath:indexPath];
+    NSString *imageUrl = self.datasource[indexPath.row];
+    [cell.pictureView setImageWithURL:[NSURL URLWithString:imageUrl] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    return cell;
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 120;
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
 }
 
 

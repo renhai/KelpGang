@@ -64,7 +64,7 @@
                         </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="Lg3-Un-PeJ" kind="relationship" relationship="rootViewController" id="Ivt-7U-rw8"/>
+                        <segue destination="YmX-7r-t2X" kind="relationship" relationship="rootViewController" id="NNh-lH-CcH"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gdc-6k-z3c" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -72,19 +72,43 @@
             <point key="canvasLocation" x="146" y="-113"/>
         </scene>
         <!--Discover View Controller - 发现-->
-        <scene sceneID="xL2-FD-Qyr">
+        <scene sceneID="id2-hv-cNS">
             <objects>
-                <viewController id="Lg3-Un-PeJ" customClass="KGDiscoverViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="R33-su-a2M">
+                <tableViewController id="YmX-7r-t2X" customClass="KGDiscoverViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ERS-is-v4V">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="发现" id="wRa-C2-U2Q"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YCv-q3-d0E" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="kDiscoverCell" rowHeight="120" id="b2e-Vv-XT1" customClass="KGDiscoverCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="120"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b2e-Vv-XT1" id="ebj-ba-hby">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="119"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="iqp-J5-ERJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="119"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="pictureView" destination="iqp-J5-ERJ" id="jb7-dq-dsD"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="YmX-7r-t2X" id="nyt-TV-tSS"/>
+                            <outlet property="delegate" destination="YmX-7r-t2X" id="Xen-hW-YbG"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="发现" id="vuq-vk-yne"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kZJ-Dx-Wrf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="547" y="-113"/>
+            <point key="canvasLocation" x="553" y="-113"/>
         </scene>
         <!--Buyer List View Controller - 帮帮-->
         <scene sceneID="iX6-z6-A3N">
