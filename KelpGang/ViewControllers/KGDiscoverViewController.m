@@ -8,6 +8,7 @@
 
 #import "KGDiscoverViewController.h"
 #import "KGDiscoverCell.h"
+#import "KGDiscoverDetailViewController.h"
 
 @interface KGDiscoverViewController ()
 
@@ -69,11 +70,19 @@
     return 120;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+}
+
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    
+    KGDiscoverDetailViewController *destController = segue.destinationViewController;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+    NSString *imageUrl = self.datasource[indexPath.row];
+    destController.imageUrl = imageUrl;
 }
 
 

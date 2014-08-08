@@ -34,6 +34,7 @@
 		A112DF4B1918CCED00108FAD /* KGCompletedOrderPriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A112DF4A1918CCED00108FAD /* KGCompletedOrderPriceCell.m */; };
 		A112DF4E1918D2A600108FAD /* KGOrderObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A112DF4D1918D2A600108FAD /* KGOrderObject.m */; };
 		A11E91641900D28100BBC1A2 /* KGRecentContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A11E91631900D28100BBC1A2 /* KGRecentContactsController.m */; };
+		A11F3CD51994C462007B615D /* KGDiscoverDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A11F3CD41994C462007B615D /* KGDiscoverDetailCell.m */; };
 		A121F387198F3CDD00260E73 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A121F386198F3CDD00260E73 /* libsqlite3.0.dylib */; };
 		A121F38A198F5DA600260E73 /* KGProvince.m in Sources */ = {isa = PBXBuildFile; fileRef = A121F389198F5DA600260E73 /* KGProvince.m */; };
 		A121F38D198F5E5E00260E73 /* KGCity.m in Sources */ = {isa = PBXBuildFile; fileRef = A121F38C198F5E5E00260E73 /* KGCity.m */; };
@@ -97,6 +98,7 @@
 		A15D676B1952871F00056F5E /* KGRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = A15D676A1952871F00056F5E /* KGRegisterController.m */; };
 		A1610CB319936564001F9DAA /* KGDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1610CB219936564001F9DAA /* KGDiscoverViewController.m */; };
 		A1610CB6199367C0001F9DAA /* KGDiscoverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1610CB5199367C0001F9DAA /* KGDiscoverCell.m */; };
+		A1610CC019938B95001F9DAA /* KGDiscoverDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1610CBF19938B95001F9DAA /* KGDiscoverDetailViewController.m */; };
 		A164DA2E194EA249008B26E8 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A164DA19194EA249008B26E8 /* IQKeyboardManager.bundle */; };
 		A164DA2F194EA249008B26E8 /* IQKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A164DA1B194EA249008B26E8 /* IQKeyboardManager.m */; };
 		A164DA30194EA249008B26E8 /* IQNSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = A164DA1F194EA249008B26E8 /* IQNSArray+Sort.m */; };
@@ -746,6 +748,8 @@
 		A11E91621900D28100BBC1A2 /* KGRecentContactsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGRecentContactsController.h; sourceTree = "<group>"; };
 		A11E91631900D28100BBC1A2 /* KGRecentContactsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGRecentContactsController.m; sourceTree = "<group>"; };
 		A11E91691900F4F800BBC1A2 /* KGMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGMacro.h; sourceTree = "<group>"; };
+		A11F3CD31994C462007B615D /* KGDiscoverDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGDiscoverDetailCell.h; sourceTree = "<group>"; };
+		A11F3CD41994C462007B615D /* KGDiscoverDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGDiscoverDetailCell.m; sourceTree = "<group>"; };
 		A121F386198F3CDD00260E73 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		A121F388198F5DA600260E73 /* KGProvince.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGProvince.h; sourceTree = "<group>"; };
 		A121F389198F5DA600260E73 /* KGProvince.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGProvince.m; sourceTree = "<group>"; };
@@ -856,6 +860,8 @@
 		A1610CB219936564001F9DAA /* KGDiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGDiscoverViewController.m; sourceTree = "<group>"; };
 		A1610CB4199367C0001F9DAA /* KGDiscoverCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGDiscoverCell.h; sourceTree = "<group>"; };
 		A1610CB5199367C0001F9DAA /* KGDiscoverCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGDiscoverCell.m; sourceTree = "<group>"; };
+		A1610CBE19938B95001F9DAA /* KGDiscoverDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGDiscoverDetailViewController.h; sourceTree = "<group>"; };
+		A1610CBF19938B95001F9DAA /* KGDiscoverDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGDiscoverDetailViewController.m; sourceTree = "<group>"; };
 		A164DA19194EA249008B26E8 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
 		A164DA1A194EA249008B26E8 /* IQKeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManager.h; sourceTree = "<group>"; };
 		A164DA1B194EA249008B26E8 /* IQKeyboardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQKeyboardManager.m; sourceTree = "<group>"; };
@@ -2013,6 +2019,8 @@
 				A1EADC6D19889620005F7D95 /* KGSettingsViewController.m */,
 				A1610CB119936564001F9DAA /* KGDiscoverViewController.h */,
 				A1610CB219936564001F9DAA /* KGDiscoverViewController.m */,
+				A1610CBE19938B95001F9DAA /* KGDiscoverDetailViewController.h */,
+				A1610CBF19938B95001F9DAA /* KGDiscoverDetailViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -2113,6 +2121,8 @@
 				A1AD133A1908C1DF00DF17B6 /* KGDeliveryAddressCell.m */,
 				A1610CB4199367C0001F9DAA /* KGDiscoverCell.h */,
 				A1610CB5199367C0001F9DAA /* KGDiscoverCell.m */,
+				A11F3CD31994C462007B615D /* KGDiscoverDetailCell.h */,
+				A11F3CD41994C462007B615D /* KGDiscoverDetailCell.m */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -3299,6 +3309,7 @@
 				A1CA59E21917616200D9A429 /* KGCreateOrderBuyerCell.m in Sources */,
 				A164DA37194EA249008B26E8 /* IQUIWindow+Hierarchy.m in Sources */,
 				A1AFF97518D0494B0043E75E /* KGCreateTaskViewController.m in Sources */,
+				A11F3CD51994C462007B615D /* KGDiscoverDetailCell.m in Sources */,
 				A18A2B8018E131EA00FDFB8E /* KGJourneyGoods.m in Sources */,
 				A19F0EC918E2B47800C2944D /* KGBuyerCommentCell.m in Sources */,
 				A1F13E0618EE954F0013B183 /* KGCommonMenuCell.m in Sources */,
@@ -3307,6 +3318,7 @@
 				A112DF3F19187DEA00108FAD /* KGCompletedOrderConsigneeCell.m in Sources */,
 				A121F42A198F778400260E73 /* PSTGridLayoutRow.m in Sources */,
 				A19F85E618EA6C300089B14F /* KGTaskViewController.m in Sources */,
+				A1610CC019938B95001F9DAA /* KGDiscoverDetailViewController.m in Sources */,
 				A121F418198F778400260E73 /* MWGridViewController.m in Sources */,
 				A121F427198F778400260E73 /* PSTCollectionViewUpdateItem.m in Sources */,
 				A15D676B1952871F00056F5E /* KGRegisterController.m in Sources */,
