@@ -21,7 +21,6 @@
         self.headImageView.clipsToBounds = YES;
         self.headImageView.layer.cornerRadius = self.headImageView.width / 2;
 
-        self.nameLabel.textColor = RGB(33, 185, 162);
         self.nameLabel.font = [UIFont systemFontOfSize:10];
         [self addSubview:self.headImageView];
         [self addSubview:self.nameLabel];
@@ -37,6 +36,13 @@
     [self.nameLabel sizeToFit];
     self.nameLabel.centerX = self.headImageView.centerX;
     self.nameLabel.top = self.headImageView.bottom + 5;
+
+    Gender gender = [KGUtils convertGender:info[@"gender"]];
+    if (gender == MALE) {
+        self.nameLabel.textColor = RGB(33, 185, 162);
+    } else {
+        self.nameLabel.textColor = RGB(255, 133, 133);
+    }
 }
 
 

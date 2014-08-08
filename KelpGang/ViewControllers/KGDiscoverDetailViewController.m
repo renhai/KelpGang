@@ -39,9 +39,9 @@
     NSDictionary *one = @{@"userName": @"王帮主", @"gender":@"M", @"imageUrl": @"http://b.hiphotos.baidu.com/image/pic/item/32fa828ba61ea8d3345fa68b950a304e241f58c4.jpg"};
     NSDictionary *two = @{@"userName": @"哈哈哈是", @"gender":@"F", @"imageUrl": @"http://f.hiphotos.baidu.com/image/pic/item/eaf81a4c510fd9f9c2ae5789272dd42a2934a490.jpg"};
     NSDictionary *three = @{@"userName": @"andy ren", @"gender":@"M", @"imageUrl": @"http://d.hiphotos.baidu.com/image/pic/item/42166d224f4a20a40503fcc392529822720ed091.jpg"};
-    NSDictionary *four = @{@"userName": @"myrenhai", @"gender":@"M", @"imageUrl": @"http://b.hiphotos.baidu.com/image/pic/item/4d086e061d950a7b2b8b8dc008d162d9f2d3c97c.jpg"};
+    NSDictionary *four = @{@"userName": @"myrenhai", @"gender":@"F", @"imageUrl": @"http://b.hiphotos.baidu.com/image/pic/item/4d086e061d950a7b2b8b8dc008d162d9f2d3c97c.jpg"};
     NSDictionary *five = @{@"userName": @"任海", @"gender":@"M", @"imageUrl": @"http://c.hiphotos.baidu.com/image/pic/item/314e251f95cad1c865143c237d3e6709c93d5103.jpg"};
-    NSDictionary *six = @{@"userName": @"kongzhihui", @"gender":@"M", @"imageUrl": @"http://d.hiphotos.baidu.com/image/pic/item/0df3d7ca7bcb0a46b99c483d6963f6246b60af7c.jpg"};
+    NSDictionary *six = @{@"userName": @"kongzhihui", @"gender":@"F", @"imageUrl": @"http://d.hiphotos.baidu.com/image/pic/item/0df3d7ca7bcb0a46b99c483d6963f6246b60af7c.jpg"};
     self.userArr = @[one, two, three, four, five, six];
 }
 
