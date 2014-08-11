@@ -13,24 +13,21 @@
 #import "KGPhotoBrowserViewController.h"
 #import "KGTaskViewController.h"
 #import "KGCreateTaskRequest.h"
-//#import "IQKeyboardManager.h"
 
 
 @interface KGCreateTaskViewController () <UITextFieldDelegate, UITextViewDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, MWPhotoBrowserDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *commionTextField;
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
-@property (weak, nonatomic) IBOutlet UIDatePicker *deadlinePicker;
-@property (weak, nonatomic) IBOutlet UILabel *deadlineLabel;
-@property (weak, nonatomic) IBOutlet UIButton *deadlineCompleteBtn;
 @property (weak, nonatomic) IBOutlet UITextView *descTextView;
 @property (weak, nonatomic) IBOutlet UICollectionView *picCollectionView;
 @property (weak, nonatomic) IBOutlet UITextField *expectCountryTextField;
 @property (weak, nonatomic) IBOutlet UITextField *maxMoneyTextField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *previewBarBtn;
+@property (weak, nonatomic) IBOutlet UITextField *deadlineTextField;
+@property (strong, nonatomic) UIDatePicker *deadlinePicker;
 
 @property (nonatomic, assign) BOOL picExpanded;
 @property (nonatomic, assign) BOOL moreInfoExpanded;
-@property (nonatomic, assign) BOOL deadlineTimeExpanded;
 
 @property (nonatomic, strong) NSMutableArray *imgThumbs;
 @property (nonatomic, strong) NSMutableArray *imgUrls;
@@ -74,7 +71,7 @@
     self.expectCountryTextField.delegate = self;
     self.maxMoneyTextField.delegate = self;
 
-    [self.deadlineCompleteBtn addTarget:self action:@selector(datePickerDoneClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self initDatePicker];
 
     [self.previewBarBtn setTarget:self];
     [self.previewBarBtn setAction:@selector(previewAction:)];
@@ -83,14 +80,29 @@
 
 }
 
+- (void)initDatePicker {
+    self.deadlinePicker = [[UIDatePicker alloc] init];
+    self.deadlinePicker.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"Chinese"];
+    self.deadlinePicker.datePickerMode = UIDatePickerModeDate;
+    self.deadlineTextField.inputView = self.deadlinePicker;
+
+    UIToolbar *topView = [[UIToolbar alloc]initWithFrame:CGRectZero];
+    [topView setBarStyle:UIBarStyleBlack];
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]initWithTitle:@"取消" style:UIBarButtonItemStyleDone target:self action:@selector(datePickerCancelClicked:)];
+    UIBarButtonItem *spaceButton = [[UIBarButtonItem  alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(datePickerDoneClicked:)];
+    NSArray *buttonsArray = [NSArray arrayWithObjects:cancelButton,spaceButton,doneButton,nil];
+    [topView setItems:buttonsArray];
+    [topView sizeToFit];
+    self.deadlineTextField.inputAccessoryView = topView;
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-//    [[IQKeyboardManager sharedManager] setEnable:NO];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-//    [[IQKeyboardManager sharedManager] setEnable:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -112,7 +124,7 @@
         return 1;
     } else if (section == 3 && !self.moreInfoExpanded) {
         return 1;
-    } else if (section == 0 && !self.deadlineTimeExpanded) {
+    } else if (section == 0) {
         return 4;
     }
     return [super tableView:tableView numberOfRowsInSection:section];
@@ -164,20 +176,14 @@
         UIImageView *imageView = (UIImageView *)[cell viewWithTag:1];
         [self expandMoreInfoView:imageView];
     } else if (indexPath.section == 0 && indexPath.row == 3) {
-        if (!self.deadlineTimeExpanded) {
-            NSArray *paths = @[[NSIndexPath indexPathForRow:indexPath.row + 1 inSection:indexPath.section]];
-            self.deadlineTimeExpanded = YES;
-            self.deadlineCompleteBtn.hidden = NO;
-            [self.tableView beginUpdates];
-            [self.tableView insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-            [self.tableView endUpdates];
-        }
+
     }
 }
 
 #pragma UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
     if (textField == self.titleTextField) {
 
     } else if (textField == self.expectCountryTextField) {
@@ -185,23 +191,21 @@
     } else if (textField == self.maxMoneyTextField) {
 
     } else if (textField == self.commionTextField) {
-        textField.text = [NSString stringWithFormat:@"%@%%", textField.text];
+
     }
     return YES;
 }
 
-- (void)datePickerDoneClicked:(UIButton *) btn {
-    self.deadlineCompleteBtn.hidden = YES;
+- (void)datePickerCancelClicked:(UIBarButtonItem *) sender {
+    [self.deadlineTextField resignFirstResponder];
+}
+
+- (void)datePickerDoneClicked:(UIBarButtonItem *) sender {
+    [self.deadlineTextField resignFirstResponder];
     NSDateFormatter *formattor = [[NSDateFormatter alloc] init];
     formattor.dateFormat = @"YYYY/M/d";
     NSString *timestamp = [formattor stringFromDate:self.deadlinePicker.date];
-    self.deadlineLabel.text = timestamp;
-
-    NSArray *paths = @[[NSIndexPath indexPathForRow: 4 inSection:0]];
-    self.deadlineTimeExpanded = NO;
-    [self.tableView beginUpdates];
-    [self.tableView deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
-    [self.tableView endUpdates];
+    self.deadlineTextField.text = timestamp;
 }
 
 #pragma UITextViewDelegate

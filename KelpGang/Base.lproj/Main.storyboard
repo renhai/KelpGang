@@ -951,22 +951,13 @@
                                                             <color key="textColor" red="0.73333333329999995" green="0.73333333329999995" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ERJ-fb-Sc9">
-                                                            <rect key="frame" x="270" y="13" width="32" height="20"/>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="DCk-lC-x2m">
+                                                            <rect key="frame" x="87" y="13" width="197" height="20"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                            <state key="normal" title="完成">
-                                                                <color key="titleColor" red="0.12941176469999999" green="0.72549019609999998" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </state>
-                                                        </button>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PMD-0h-kwu">
-                                                            <rect key="frame" x="87" y="13" width="74" height="20"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <color key="textColor" red="0.12941176469999999" green="0.72549019609999998" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                        </textField>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                 </view>
@@ -975,52 +966,12 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="163" id="e45-E9-nTl">
-                                        <rect key="frame" x="0.0" y="186" width="320" height="163"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e45-E9-nTl" id="P5j-c2-N4E">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="162"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="30" id="s1m-AJ-Xi9">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="162"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                                    <date key="date" timeIntervalSinceReferenceDate="417945440.28401601">
-                                                        <!--2014-03-31 07:57:20 +0000-->
-                                                    </date>
-                                                    <locale key="locale" localeIdentifier="zh-Hans"/>
-                                                    <timeZone key="timeZone" name="America/Los_Angeles">
-                                                        <data key="data">
-VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
-y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
-5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
-8n/BkPNvwKD0X6OQ9U+ioPY/hZD3L4Sg+CiiEPkPZqD6CIQQ+viDIPvoZhD82GUg/chIEP64RyD/qCoQ
-AJgpIAGIDBACeAsgA3EokARhJ6AFUQqQBkEJoAcw7JAHjUOgCRDOkAmtvyAK8LCQC+CvoAzZzRANwJGg
-DrmvEA+priAQmZEQEYmQIBJ5cxATaXIgFFlVEBVJVCAWOTcQFyk2IBgiU5AZCRggGgI1kBryNKAb4heQ
-HNIWoB3B+ZAesfigH6HbkCB2KyAhgb2QIlYNICNq2hAkNe8gJUq8ECYV0SAnKp4QJ/7toCkKgBAp3s+g
-KupiECu+saAs036QLZ6ToC6zYJAvfnWgMJNCkDFnkiAycySQM0d0IDRTBpA1J1YgNjLokDcHOCA4HAUQ
-OOcaIDn75xA6xvwgO9vJEDywGKA9u6sQPo/6oD+bjRBAb9ygQYSpkEJPvqBDZIuQRC+goEVEbZBF89Mg
-Ry2KEEfTtSBJDWwQSbOXIErtThBLnLOgTNZqkE18laBOtkyQT1x3oFCWLpBRPFmgUnYQkFMcO6BUVfKQ
-VPwdoFY11JBW5TogWB7xEFjFHCBZ/tMQWqT+IFvetRBchOAgXb6XEF5kwiBfnnkQYE3eoGGHlZBiLcCg
-Y2d3kGQNoqBlR1mQZe2EoGcnO5BnzWagaQcdkGmtSKBq5v+Qa5ZlIGzQHBBtdkcgbq/+EG9WKSBwj+AQ
-cTYLIHJvwhBzFe0gdE+kEHT/CaB2OMCQdt7roHgYopB4vs2gefiEkHqer6B72GaQfH6RoH24SJB+XnOg
-f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
-AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
-AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
-AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
-</data>
-                                                    </timeZone>
-                                                </datePicker>
-                                            </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection id="wpz-h6-w4S">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="64" id="XjJ-vB-50N">
-                                        <rect key="frame" x="0.0" y="349" width="320" height="64"/>
+                                        <rect key="frame" x="0.0" y="186" width="320" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XjJ-vB-50N" id="gZT-ie-ska">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
@@ -1056,7 +1007,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <tableViewSection id="CCe-kB-7LU">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="46" id="tgW-5p-IfT">
-                                        <rect key="frame" x="0.0" y="413" width="320" height="46"/>
+                                        <rect key="frame" x="0.0" y="250" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tgW-5p-IfT" id="jZS-kj-NWW">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
@@ -1085,7 +1036,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="1aI-nU-QBa">
-                                        <rect key="frame" x="0.0" y="459" width="320" height="120"/>
+                                        <rect key="frame" x="0.0" y="296" width="320" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1aI-nU-QBa" id="zOf-ye-ygu">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="119"/>
@@ -1150,7 +1101,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <tableViewSection id="omD-Ze-p2b">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="46" id="uNi-ID-PV4">
-                                        <rect key="frame" x="0.0" y="579" width="320" height="46"/>
+                                        <rect key="frame" x="0.0" y="416" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uNi-ID-PV4" id="4Oq-vm-mLf">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
@@ -1178,7 +1129,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="46" id="sQ2-dQ-tu7">
-                                        <rect key="frame" x="0.0" y="625" width="320" height="46"/>
+                                        <rect key="frame" x="0.0" y="462" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sQ2-dQ-tu7" id="R8d-Yo-vcN">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
@@ -1210,7 +1161,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="46" id="Ww7-cj-W6V">
-                                        <rect key="frame" x="0.0" y="671" width="320" height="46"/>
+                                        <rect key="frame" x="0.0" y="508" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ww7-cj-W6V" id="bdS-C8-nde">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
@@ -1256,9 +1207,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </navigationItem>
                     <connections>
                         <outlet property="commionTextField" destination="kjF-xp-GIO" id="IPV-Kc-c8S"/>
-                        <outlet property="deadlineCompleteBtn" destination="ERJ-fb-Sc9" id="PXf-E4-wEq"/>
-                        <outlet property="deadlineLabel" destination="PMD-0h-kwu" id="wN0-Gb-qra"/>
-                        <outlet property="deadlinePicker" destination="s1m-AJ-Xi9" id="QSH-WM-isp"/>
+                        <outlet property="deadlineTextField" destination="DCk-lC-x2m" id="bEU-Yz-ddY"/>
                         <outlet property="descTextView" destination="Ry4-iu-5aS" id="zv5-SN-dce"/>
                         <outlet property="expectCountryTextField" destination="ZE9-0E-rIA" id="Sff-wF-1A3"/>
                         <outlet property="maxMoneyTextField" destination="9N4-2G-745" id="wdC-wh-642"/>
