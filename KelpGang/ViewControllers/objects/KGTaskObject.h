@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface KGCreateTaskRequest : NSObject
+@interface KGTaskObject : NSObject
 
+@property (nonatomic, assign) NSInteger taskId;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, assign) CGFloat gratuity;
 @property (nonatomic, strong) NSDate *deadline;

@@ -8,8 +8,14 @@
 
 #import "KGTaskViewController.h"
 #import "KGBaseWebViewController.h"
+#import "KGTaskObject.h"
+#import "KGTaskViewHeadCell.h"
 
 @interface KGTaskViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *expectCountryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *maxMoneyLabel;
+@property (weak, nonatomic) IBOutlet UILabel *descLabel;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
 
@@ -27,6 +33,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self initLeftRightBar];
+
+    if (self.taskObj) {
+        if (self.taskObj.taskId > 0) {
+            // load task object
+        } else {
+            self.expectCountryLabel.text = self.taskObj.expectCountry;
+            [self.expectCountryLabel sizeToFit];
+            self.maxMoneyLabel.text = self.taskObj.maxMoney > 0 ? [NSString stringWithFormat:@"￥%0.1f",self.taskObj.maxMoney] : @"";
+            [self.maxMoneyLabel sizeToFit];
+            self.descLabel.text = self.taskObj.message;
+            [self.descLabel sizeToFit];
+
+
+        }
+    }
+}
+
+- (void)initLeftRightBar {
     UIBarButtonItem *leftBar = [[UIBarButtonItem alloc] initWithTitle:@"修改" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
     leftBar.tintColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = leftBar;
@@ -34,12 +59,6 @@
     UIBarButtonItem *rightBar = [[UIBarButtonItem alloc] initWithTitle:@"确认发布" style:UIBarButtonItemStyleBordered target:self action:@selector(publish:)];
     rightBar.tintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = rightBar;
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,6 +83,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        KGTaskViewHeadCell *aCell = (KGTaskViewHeadCell *)cell;
+        [aCell setObject:self.taskObj];
+    }
 
     return cell;
 }
@@ -121,11 +144,14 @@
 #pragma UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 5;
+    return [self.taskObj.imageArr count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"kTaskCollectionViewCell" forIndexPath:indexPath];
+    UIImage *image = self.taskObj.imageArr[indexPath.row];
+    UIImageView *imageView = (UIImageView *)[cell viewWithTag:1];
+    imageView.image = image;
     return cell;
     
 }

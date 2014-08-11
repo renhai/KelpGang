@@ -12,7 +12,7 @@
 #import "UIImage+Addtional.h"
 #import "KGPhotoBrowserViewController.h"
 #import "KGTaskViewController.h"
-#import "KGCreateTaskRequest.h"
+#import "KGTaskObject.h"
 
 
 @interface KGCreateTaskViewController () <UITextFieldDelegate, UITextViewDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, MWPhotoBrowserDelegate>
@@ -31,6 +31,7 @@
 
 @property (nonatomic, strong) NSMutableArray *imgThumbs;
 @property (nonatomic, strong) NSMutableArray *imgUrls;
+@property (nonatomic, strong) NSMutableArray *imgOrigins;
 
 @property (nonatomic, strong) ALAssetsLibrary *assetLibrary;
 @property (nonatomic, strong) NSMutableArray *assets;
@@ -68,6 +69,7 @@
     self.picCollectionView.dataSource = self;
     self.imgThumbs = [[NSMutableArray alloc] init];
     self.imgUrls = [[NSMutableArray alloc] init];
+    self.imgOrigins = [[NSMutableArray alloc] init];
     self.expectCountryTextField.delegate = self;
     self.maxMoneyTextField.delegate = self;
 
@@ -78,6 +80,9 @@
 
     [self loadAssets];
 
+    self.titleTextField.text = @"";
+    self.commionTextField.text = @"";
+    self.descTextView.text = @"";
 }
 
 - (void)initDatePicker {
@@ -235,6 +240,9 @@
         self.picExpanded = NO;
         [self.imgThumbs removeAllObjects];
         [self.imgUrls removeAllObjects];
+        [self.imgOrigins removeAllObjects];
+        _selections = nil;
+
         [self.picCollectionView reloadData];
         [self.tableView beginUpdates];
         [self.tableView deleteRowsAtIndexPaths:pathArr withRowAnimation:UITableViewRowAnimationFade];
@@ -291,19 +299,6 @@
                              }];
         }
     } else if (buttonIndex == 1) {
-        // 从相册中选取
-//        if ([self isPhotoLibraryAvailable]) {
-//            UIImagePickerController *controller = [[UIImagePickerController alloc] init];
-//            controller.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-//            controller.allowsEditing = NO;
-//            controller.delegate = self;
-//            [self presentViewController:controller
-//                               animated:YES
-//                             completion:^(void){
-//                                 NSLog(@"Picker View Controller is presented");
-//                             }];
-//        }
-
         NSMutableArray *photos = [[NSMutableArray alloc] init];
         NSMutableArray *thumbs = [[NSMutableArray alloc] init];
         @synchronized(_assets) {
@@ -328,9 +323,11 @@
         browser.enableSwipeToDismiss = NO;
         [browser setCurrentPhotoIndex:0];
 
-        _selections = [NSMutableArray new];
-        for (int i = 0; i < photos.count; i++) {
-            [_selections addObject:[NSNumber numberWithBool:NO]];
+        if (!_selections) {
+            _selections = [NSMutableArray new];
+            for (int i = 0; i < photos.count; i++) {
+                [_selections addObject:[NSNumber numberWithBool:NO]];
+            }
         }
 
         UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:browser];
@@ -351,6 +348,7 @@
         UIImage *oriImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
         UIImage *thumb = [UIImage scaleImage:oriImage toScale:0.1];
         [self.imgThumbs addObject:thumb];
+        [self.imgOrigins addObject:oriImage];
         [self.picCollectionView reloadData];
         [self.tableView reloadData];
         [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:2]
@@ -426,11 +424,7 @@
         KGPhotoBrowserViewController *controller = [[KGPhotoBrowserViewController alloc] initWithImgUrls:self.imgUrls index:indexPath.row];
         UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:controller];
         [self presentViewController:nc animated:YES completion:nil];
-
-//        [self.navigationController pushViewController:controller animated:YES];
-
     }
-
 }
 
 - (void) delPicture: (UIButton *) sender {
@@ -442,11 +436,8 @@
 - (void) delPictureAtIndex: (NSInteger) index {
     [self.imgThumbs removeObjectAtIndex:index];
     [self.imgUrls removeObjectAtIndex:index];
+    [self.imgOrigins removeObjectAtIndex:index];
     [self.picCollectionView reloadData];
-//    [self.tableView reloadData];
-//    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:2]
-//                          atScrollPosition:UITableViewScrollPositionTop
-//                                  animated:YES];
 }
 
 
@@ -475,10 +466,6 @@
                                        if (asset) {
                                            @synchronized(_assets) {
                                                [_assets addObject:asset];
-                                               if (_assets.count == 1) {
-                                                   // Added first asset so reload data
-                                                   [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-                                               }
                                            }
                                        }
                                    }
@@ -545,12 +532,17 @@
     NSLog(@"Did finish modal presentation");
     [self dismissViewControllerAnimated:YES completion:nil];
 
+    [self.imgThumbs removeAllObjects];
+    [self.imgUrls removeAllObjects];
+    [self.imgOrigins removeAllObjects];
     for (NSInteger i = 0; i < self.selections.count; i ++) {
         if ([self.selections[i] boolValue]) {
             ALAsset *asset = self.assets[i];
             UIImage *thumb = [UIImage imageWithCGImage:asset.thumbnail];
+            UIImage *originImage = [UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage];
             [self.imgThumbs addObject:thumb];
             [self.imgUrls addObject:asset.defaultRepresentation.url];
+            [self.imgOrigins addObject:originImage];
         }
     }
     [self.picCollectionView reloadData];
@@ -562,17 +554,58 @@
 }
 
 - (void)previewAction: (UIBarButtonItem *) btn {
-    KGCreateTaskRequest *req = [[KGCreateTaskRequest alloc] init];
+    if (![self checkTask]) {
+        return;
+    }
+    KGTaskObject *req = [[KGTaskObject alloc] init];
     req.title = self.titleTextField.text;
     req.gratuity = [self.commionTextField.text floatValue];
+    req.deadline = self.deadlinePicker.date;
+    req.message = self.descTextView.text;
+    req.expectCountry = self.expectCountryTextField.text;
+    req.maxMoney = [self.maxMoneyTextField.text floatValue];
+    req.imageArr = self.imgOrigins;
+
     KGTaskViewController *taskController = [self.storyboard instantiateViewControllerWithIdentifier:@"kTaskTableViewController"];
+    taskController.taskObj = req;
     [taskController setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:taskController animated:YES];
+}
+
+- (BOOL)checkTask {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    if ([self.titleTextField.text isEqualToString:@""]) {
+        alert.message = @"任务标题不能为空";
+        [alert show];
+        return NO;
+    }
+    if ([self.commionTextField.text isEqualToString:@""]) {
+        alert.message = @"跑腿费比例不能为空";
+        [alert show];
+        return NO;
+    }
+    if ([self.deadlineTextField.text isEqualToString:@""]) {
+        alert.message = @"失效时间不能为空";
+        [alert show];
+        return NO;
+    }
+    if ([self.descTextView.text isEqualToString:@""]) {
+        alert.message = @"任务描述不能为空";
+        [alert show];
+        return NO;
+    }
+    if (!self.imgThumbs || [self.imgThumbs count] == 0) {
+        alert.message = @"参考图片不能为空";
+        [alert show];
+        return NO;
+    }
+    return YES;
 }
 
 - (void)clearData:(NSNotification *) notification{
     [self.imgUrls removeAllObjects];
     [self.imgThumbs removeAllObjects];
+    [self.imgOrigins removeAllObjects];
     [self.picCollectionView reloadData];
     [self.tableView reloadData];
 }

@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class KGTaskObject;
+
 @interface KGTaskViewController : UITableViewController
+
+@property (nonatomic, strong) KGTaskObject *taskObj;
 
 @end

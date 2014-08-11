@@ -1248,7 +1248,7 @@
                         <sections>
                             <tableViewSection headerTitle="Section-1" id="Bh7-Cj-m7Z">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="123" id="MmC-oI-58o">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="123" id="MmC-oI-58o" customClass="KGTaskViewHeadCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="123"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MmC-oI-58o" id="kgK-3E-e8G">
@@ -1303,6 +1303,13 @@
                                                 </view>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="commissionLabel" destination="jA6-fh-Nyo" id="8OW-9J-li7"/>
+                                            <outlet property="deadlineLabel" destination="D3S-4X-gub" id="dIP-uy-998"/>
+                                            <outlet property="descLabel" destination="QEp-IL-fBc" id="85e-zl-N5y"/>
+                                            <outlet property="headImageView" destination="8el-2P-guf" id="f4D-NX-LsW"/>
+                                            <outlet property="nameLabel" destination="t8K-AV-xIK" id="GyS-t7-Ztz"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1322,7 +1329,7 @@
                                                     <color key="textColor" red="0.73333333329999995" green="0.73333333329999995" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="韩国" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="z7K-cR-cXn">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="韩国" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="z7K-cR-cXn">
                                                     <rect key="frame" x="119" y="10" width="32" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1348,7 +1355,7 @@
                                                     <color key="textColor" red="0.73333333329999995" green="0.73333333329999995" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥200" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RZd-Zv-8Xw">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥200" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RZd-Zv-8Xw">
                                                     <rect key="frame" x="119" y="10" width="44" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1374,7 +1381,7 @@
                                                     <color key="textColor" red="0.73333333329999995" green="0.73333333329999995" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="谁帮我带，哪天回来啊，等用哎~谁谁谁？" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FBi-By-9Kq">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="谁帮我带，哪天回来啊，等用哎~谁谁谁？" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FBi-By-9Kq">
                                                     <rect key="frame" x="120" y="10" width="180" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1433,7 +1440,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="95" height="95"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test-head.jpg" id="Gmh-Zx-PO0">
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test-head.jpg" id="Gmh-Zx-PO0">
                                                                         <rect key="frame" x="0.0" y="0.0" width="95" height="95"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     </imageView>
@@ -1458,6 +1465,12 @@
                             <outlet property="delegate" destination="3zo-bT-D7b" id="fng-H7-suT"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="collectionView" destination="hVp-tl-QcW" id="iXW-9m-uFc"/>
+                        <outlet property="descLabel" destination="FBi-By-9Kq" id="lDS-s9-tBk"/>
+                        <outlet property="expectCountryLabel" destination="z7K-cR-cXn" id="j44-zu-5r2"/>
+                        <outlet property="maxMoneyLabel" destination="RZd-Zv-8Xw" id="Nfp-RM-GPV"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ziq-kE-9gq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
