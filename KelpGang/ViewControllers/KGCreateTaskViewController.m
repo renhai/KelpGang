@@ -12,7 +12,8 @@
 #import "UIImage+Addtional.h"
 #import "KGPhotoBrowserViewController.h"
 #import "KGTaskViewController.h"
-#import "IQKeyboardManager.h"
+#import "KGCreateTaskRequest.h"
+//#import "IQKeyboardManager.h"
 
 
 @interface KGCreateTaskViewController () <UITextFieldDelegate, UITextViewDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, MWPhotoBrowserDelegate>
@@ -84,12 +85,12 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [[IQKeyboardManager sharedManager] setEnable:NO];
+//    [[IQKeyboardManager sharedManager] setEnable:NO];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [[IQKeyboardManager sharedManager] setEnable:YES];
+//    [[IQKeyboardManager sharedManager] setEnable:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -178,25 +179,18 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == self.titleTextField) {
-        [textField resignFirstResponder];
+
     } else if (textField == self.expectCountryTextField) {
-        [textField resignFirstResponder];
+
     } else if (textField == self.maxMoneyTextField) {
-        [textField resignFirstResponder];
+
     } else if (textField == self.commionTextField) {
-        [textField resignFirstResponder];
+        textField.text = [NSString stringWithFormat:@"%@%%", textField.text];
     }
     return YES;
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    if (textField == self.commionTextField) {
-
-    }
-}
-
-- (void) datePickerDoneClicked:(UIButton *) btn
-{
+- (void)datePickerDoneClicked:(UIButton *) btn {
     self.deadlineCompleteBtn.hidden = YES;
     NSDateFormatter *formattor = [[NSDateFormatter alloc] init];
     formattor.dateFormat = @"YYYY/M/d";
@@ -564,6 +558,9 @@
 }
 
 - (void)previewAction: (UIBarButtonItem *) btn {
+    KGCreateTaskRequest *req = [[KGCreateTaskRequest alloc] init];
+    req.title = self.titleTextField.text;
+    req.gratuity = [self.commionTextField.text floatValue];
     KGTaskViewController *taskController = [self.storyboard instantiateViewControllerWithIdentifier:@"kTaskTableViewController"];
     [taskController setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:taskController animated:YES];

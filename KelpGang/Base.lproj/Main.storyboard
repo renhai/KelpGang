@@ -883,7 +883,7 @@
                                                             <color key="textColor" red="0.73333333333333328" green="0.73333333333333328" blue="0.73333333333333328" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请填写任务标题" minimumFontSize="17" id="3CJ-pD-SlA">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请填写任务标题" minimumFontSize="17" clearButtonMode="whileEditing" id="3CJ-pD-SlA">
                                                             <rect key="frame" x="87" y="13" width="218" height="20"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="textColor" red="0.12941176469999999" green="0.72549019609999998" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -917,12 +917,12 @@
                                                             <color key="textColor" red="0.73333333329999995" green="0.73333333329999995" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="10%" minimumFontSize="17" id="kjF-xp-GIO">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="%" minimumFontSize="17" clearButtonMode="whileEditing" id="kjF-xp-GIO">
                                                             <rect key="frame" x="103" y="13" width="197" height="20"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="textColor" red="0.12941176469999999" green="0.72549019609999998" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                            <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
                                                         </textField>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -1195,7 +1195,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                             <color key="textColor" red="0.73333333329999995" green="0.73333333329999995" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="全部" textAlignment="right" minimumFontSize="17" id="ZE9-0E-rIA">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="全部" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" id="ZE9-0E-rIA">
                                                             <rect key="frame" x="119" y="13" width="186" height="20"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="textColor" red="0.12941176469999999" green="0.72549019609999998" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1227,12 +1227,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                             <color key="textColor" red="0.73333333329999995" green="0.73333333329999995" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="￥" textAlignment="right" minimumFontSize="17" id="9N4-2G-745">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="￥" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" id="9N4-2G-745">
                                                             <rect key="frame" x="103" y="13" width="202" height="20"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="textColor" red="0.12941176469999999" green="0.72549019609999998" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                            <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
                                                         </textField>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
