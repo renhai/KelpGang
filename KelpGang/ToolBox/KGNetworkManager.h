@@ -23,9 +23,22 @@ typedef void(^FailureBlock)(NSError *error);
 - (void)uploadPhoto:(NSString *)path
              params:(NSDictionary *)params
                name:(NSString *)name
-           filename:(NSString *)filename
-              image:(NSData *)imageData
+              image:(UIImage *)image
             success: (ResponseBlock)success
             failure:(FailureBlock)failure;
+
+- (void)uploadMultiPhotos:(NSString *)path
+                   params:(NSDictionary *)params
+                     name:(NSString *)name
+                   images:(NSArray *)arrayImage
+                  success:(ResponseBlock)success
+                  failure:(FailureBlock)failure;
+
+- (void)uploadMultiPhotos2:(NSString *)path
+                   params:(NSDictionary *)params
+                     name:(NSString *)name
+                   images:(NSArray *)arrayImage
+                  success:(ResponseBlock)success
+                  failure:(FailureBlock)failure;
 
 @end

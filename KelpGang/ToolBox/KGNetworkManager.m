@@ -41,13 +41,16 @@
 - (void)uploadPhoto:(NSString *)path
              params:(NSDictionary *)params
                name:(NSString *)name
-           filename:(NSString *)filename
-              image:(NSData *)imageData
+              image:(UIImage *)image
             success: (ResponseBlock)success
             failure:(FailureBlock)failure {
     AFHTTPRequestOperationManager *mgr = [[AFHTTPRequestOperationManager alloc]initWithBaseURL:[NSURL URLWithString:kWebServerBaseURL]];
     [mgr POST:path parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        [formData appendPartWithFileData:imageData name:name fileName:filename mimeType:@"image/jpeg"];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyyMMddHHmmss";
+        NSString *fileName = [formatter stringFromDate:[NSDate date]];
+        NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
+        [formData appendPartWithFileData:imageData name:name fileName:[NSString stringWithFormat:@"%@.jpg", fileName] mimeType:@"image/jpeg"];
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (success) {
             success(responseObject);
@@ -57,16 +60,64 @@
             failure(error);
         }
     }];
-    [mgr POST:path parameters:params
-      success:^(AFHTTPRequestOperation *operation, id responseObject) {
-          if (success) {
-              success(responseObject);
-          }
-      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-          if (failure) {
-              failure(error);
-          }
-      }];
 }
+
+- (void)uploadMultiPhotos:(NSString *)path
+                   params:(NSDictionary *)params
+                     name:(NSString *)name
+                   images:(NSArray *)arrayImage
+                  success:(ResponseBlock)success
+                  failure:(FailureBlock)failure {
+    AFHTTPRequestOperationManager *mgr = [[AFHTTPRequestOperationManager alloc]initWithBaseURL:[NSURL URLWithString:kWebServerBaseURL]];
+    [mgr POST:path parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyyMMddHHmmss";
+        NSString *fileName = [formatter stringFromDate:[NSDate date]];
+        for (int i = 0; i < arrayImage.count; i++) {
+            UIImage *uploadImage = arrayImage[i];
+            [formData appendPartWithFileData:UIImageJPEGRepresentation(uploadImage, 0.5) name:name fileName:[NSString stringWithFormat:@"%@%d.jpg",fileName,i+1] mimeType:@"image/jpeg"];
+        }
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (success) {
+            success(responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
+- (void)uploadMultiPhotos2:(NSString *)path
+                   params:(NSDictionary *)params
+                     name:(NSString *)name
+                   images:(NSArray *)arrayImage
+                  success:(ResponseBlock)success
+                  failure:(FailureBlock)failure {
+    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
+    NSMutableURLRequest *request = [mgr.requestSerializer multipartFormRequestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@",kWebServerBaseURL,path] parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyyMMddHHmmss";
+        NSString *fileName = [formatter stringFromDate:[NSDate date]];
+        for (int i = 0; i < arrayImage.count; i++) {
+            UIImage *uploadImage = arrayImage[i];
+            [formData appendPartWithFileData:UIImageJPEGRepresentation(uploadImage, 0.5) name:name fileName:[NSString stringWithFormat:@"%@%d.jpg",fileName,i+1] mimeType:@"image/jpeg"];
+        }
+    } error:nil];
+
+    AFHTTPRequestOperation *opration = [[AFHTTPRequestOperation alloc]initWithRequest:request];
+    opration.responseSerializer = [AFJSONResponseSerializer serializer];
+    [opration setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (success) {
+            success(responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    [mgr.operationQueue addOperation:opration];
+}
+
 
 @end

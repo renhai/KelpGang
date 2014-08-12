@@ -331,14 +331,12 @@
         if (!oriImage) {
             oriImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
         }
-        NSData *imageData = UIImageJPEGRepresentation(oriImage, 0.5);
         NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"session_key": APPCONTEXT.currUser.sessionKey};
 
         [[KGNetworkManager sharedInstance] uploadPhoto:@"/mobile/user/setHeadurl"
                                                 params:params
                                                   name:@"head_url"
-                                              filename:@"head_url.jpg"
-                                                 image:imageData
+                                                 image:oriImage
                                                success:^(id responseObject) {
                                                    [[HudHelper getInstance] hideHudInView:self.tableView];
                                                    DLog(@"result: %@", responseObject);

@@ -607,6 +607,12 @@
     [self.imgThumbs removeAllObjects];
     [self.imgOrigins removeAllObjects];
     [self.picCollectionView reloadData];
+    self.titleTextField.text = @"";
+    self.commionTextField.text = @"";
+    self.deadlineTextField.text = @"";
+    self.descTextView.text = @"";
+    self.expectCountryTextField.text = @"";
+    self.maxMoneyTextField.text = @"";
     [self.tableView reloadData];
 }
 
