@@ -7,7 +7,7 @@
 //
 
 #import "KGNetworkManager.h"
-#import "AFHTTPRequestOperationManager.h"
+#import "AFHTTPRequestOperationManager+Timeout.h"
 
 @implementation KGNetworkManager
 
@@ -26,7 +26,7 @@
             success: (ResponseBlock) success
             failure:(FailureBlock)failure {
     AFHTTPRequestOperationManager *mgr = [[AFHTTPRequestOperationManager alloc]initWithBaseURL:[NSURL URLWithString:kWebServerBaseURL]];
-    [mgr POST:path parameters:params
+    [mgr POST:path parameters:params timeoutInterval: 5.0
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
           if (success) {
               success(responseObject);

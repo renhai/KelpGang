@@ -101,6 +101,8 @@
 		A1610CB319936564001F9DAA /* KGDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1610CB219936564001F9DAA /* KGDiscoverViewController.m */; };
 		A1610CB6199367C0001F9DAA /* KGDiscoverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1610CB5199367C0001F9DAA /* KGDiscoverCell.m */; };
 		A1610CC019938B95001F9DAA /* KGDiscoverDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1610CBF19938B95001F9DAA /* KGDiscoverDetailViewController.m */; };
+		A162DABD1999B2210038AE8B /* AFHTTPRequestOperationManager+timeout.m in Sources */ = {isa = PBXBuildFile; fileRef = A162DABA1999B2210038AE8B /* AFHTTPRequestOperationManager+timeout.m */; };
+		A162DABF1999B2210038AE8B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A162DABC1999B2210038AE8B /* README.md */; };
 		A164DA2E194EA249008B26E8 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A164DA19194EA249008B26E8 /* IQKeyboardManager.bundle */; };
 		A164DA2F194EA249008B26E8 /* IQKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A164DA1B194EA249008B26E8 /* IQKeyboardManager.m */; };
 		A164DA30194EA249008B26E8 /* IQNSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = A164DA1F194EA249008B26E8 /* IQNSArray+Sort.m */; };
@@ -869,6 +871,9 @@
 		A1610CB5199367C0001F9DAA /* KGDiscoverCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGDiscoverCell.m; sourceTree = "<group>"; };
 		A1610CBE19938B95001F9DAA /* KGDiscoverDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGDiscoverDetailViewController.h; sourceTree = "<group>"; };
 		A1610CBF19938B95001F9DAA /* KGDiscoverDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGDiscoverDetailViewController.m; sourceTree = "<group>"; };
+		A162DAB91999B2210038AE8B /* AFHTTPRequestOperationManager+timeout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPRequestOperationManager+timeout.h"; sourceTree = "<group>"; };
+		A162DABA1999B2210038AE8B /* AFHTTPRequestOperationManager+timeout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPRequestOperationManager+timeout.m"; sourceTree = "<group>"; };
+		A162DABC1999B2210038AE8B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		A164DA19194EA249008B26E8 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
 		A164DA1A194EA249008B26E8 /* IQKeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManager.h; sourceTree = "<group>"; };
 		A164DA1B194EA249008B26E8 /* IQKeyboardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQKeyboardManager.m; sourceTree = "<group>"; };
@@ -1810,6 +1815,7 @@
 		A143011818BB461A0064DF87 /* ToolBox */ = {
 			isa = PBXGroup;
 			children = (
+				A162DAB81999B2210038AE8B /* AFHTTPRequestOperationManager-Timeout */,
 				A121F3DF198F778400260E73 /* MWPhotoBrowser */,
 				A164DA18194EA249008B26E8 /* IQKeyBoardManager */,
 				A1A06F4B18FFCD9200C9EAC3 /* MTStatusBarOverlay */,
@@ -2032,6 +2038,16 @@
 				A1610CBF19938B95001F9DAA /* KGDiscoverDetailViewController.m */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		A162DAB81999B2210038AE8B /* AFHTTPRequestOperationManager-Timeout */ = {
+			isa = PBXGroup;
+			children = (
+				A162DAB91999B2210038AE8B /* AFHTTPRequestOperationManager+timeout.h */,
+				A162DABA1999B2210038AE8B /* AFHTTPRequestOperationManager+timeout.m */,
+				A162DABC1999B2210038AE8B /* README.md */,
+			);
+			path = "AFHTTPRequestOperationManager-Timeout";
 			sourceTree = "<group>";
 		};
 		A164DA18194EA249008B26E8 /* IQKeyBoardManager */ = {
@@ -2731,6 +2747,7 @@
 				A1986FAB191A3EA20064CC6C /* 巴拿马.png in Resources */,
 				A1986F87191A3EA20064CC6C /* 奥地利.png in Resources */,
 				A10150E318CB8BA7004A729D /* default_line.png in Resources */,
+				A162DABF1999B2210038AE8B /* README.md in Resources */,
 				A1986F21191A3EA20064CC6C /* 利比里亚.png in Resources */,
 				A1986FF5191A3EA20064CC6C /* 沙特阿拉伯.png in Resources */,
 				A182A2B818E1267F00B63470 /* my-follow@2x.png in Resources */,
@@ -3357,6 +3374,7 @@
 				A110FA1B19077BED001651A3 /* KGChatTxtMessageCell.m in Sources */,
 				A11E91641900D28100BBC1A2 /* KGRecentContactsController.m in Sources */,
 				A14300D918BB252F0064DF87 /* KGAppDelegate.m in Sources */,
+				A162DABD1999B2210038AE8B /* AFHTTPRequestOperationManager+timeout.m in Sources */,
 				A1F13E0018EE46E50013B183 /* KGCascadeMenu.m in Sources */,
 				A112770318E29445006F7CFA /* KGBuyerInfoViewController.m in Sources */,
 				A10150CA18CB6445004A729D /* KGChatViewController.m in Sources */,

@@ -60,22 +60,6 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
     [self.tableView triggerPullToRefresh];
 }
 
-- (void)mockData {
-    for (NSInteger i = 0; i < 20; i ++) {
-        KGBuyerSummaryObject *obj = [[KGBuyerSummaryObject alloc]init];
-        obj.userId = i;
-        obj.userName = [NSString stringWithFormat:@"用户%i", i];
-        obj.avatarUrl = @"http://d.hiphotos.baidu.com/image/pic/item/ac6eddc451da81cb5ab9c2ac5066d01609243177.jpg";
-        obj.gender = i % 2;
-        obj.level = i % 10;
-        obj.routeDuration = @"11.12-3.20";
-        obj.fromCountry = @"加拿大";
-        obj.toCountry = @"澳大利亚";
-        obj.desc = @"是对伐啦圣诞节法拉盛地方时间段飞拉萨京东方流口水";
-        [self.datasource addObject:obj];
-    }
-}
-
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
 }
@@ -148,7 +132,7 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
     if ([KGUtils checkIsNetworkConnectionAvailableAndNotify:self.view]) {
         NSDictionary *params = @{@"user_id": @0, @"endId": @0, @"limit": @20};
         [[KGNetworkManager sharedInstance] postRequest:@"/mobile/travel/index" params:params success:^(id responseObject) {
-//            NSLog(@"%@", responseObject);
+            NSLog(@"%@", responseObject);
             [self.datasource removeAllObjects];
             NSDictionary *dic = (NSDictionary *)responseObject;
             self.hasmore = [dic[@"hasmore"] boolValue];
@@ -162,6 +146,7 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
             }
         } failure:^(NSError *error) {
             NSLog(@"%@", error);
+            [self.tableView.pullToRefreshView stopAnimating];
             [[HudHelper getInstance] showHudOnView:self.view caption:@"系统错误,请稍后再试" image:nil acitivity:NO autoHideTime:1.6];
         }];
     }
