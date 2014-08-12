@@ -112,17 +112,6 @@
 
 
 - (void)publish: (UIBarButtonItem *)btn {
-//    __weak typeof(self) weakSelf = self;
-//    [[HudHelper getInstance] showHudOnWindow:@"正在发布..." image:nil acitivity:YES autoHideTime:0.0];
-//    int64_t delay = 2.0;
-//    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
-//    dispatch_after(popTime, dispatch_get_main_queue(), ^(void) {
-//        [[HudHelper getInstance] hideHudInWindow];
-//        [[NSNotificationCenter defaultCenter] postNotificationName:kPublishTask object:nil];
-//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"发布成功" delegate:weakSelf cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-//        [alertView show];
-//    });
-
     NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
                              @"title": self.taskObj.title,
                              @"gratuity": [NSString stringWithFormat:@"%0.1f", self.taskObj.gratuity],
@@ -134,7 +123,7 @@
     [[HudHelper getInstance] showHudOnView:self.tableView caption:@"正在发布..." image:nil acitivity:YES autoHideTime:0.0];
     [[KGNetworkManager sharedInstance]uploadMultiPhotos:@"/mobile/task/publish" params:params name:@"good_photos" images:self.taskObj.imageArr success:^(id responseObject) {
         DLog(@"%@", responseObject);
-        [[HudHelper getInstance] showHudOnView:self.view caption:@"系统错误,请稍后再试" image:nil acitivity:NO autoHideTime:1.6];
+        [[HudHelper getInstance] hideHudInView:self.tableView];
         if ([KGUtils checkResult:responseObject]) {
             [[NSNotificationCenter defaultCenter] postNotificationName:kPublishTask object:nil];
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"发布成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
