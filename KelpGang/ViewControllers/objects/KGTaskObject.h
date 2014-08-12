@@ -19,4 +19,6 @@
 @property (nonatomic, strong) NSString *expectCountry;
 @property (nonatomic, assign) CGFloat maxMoney;
 
+@property (nonatomic, strong) NSString *defaultImageUrl;
+
 @end

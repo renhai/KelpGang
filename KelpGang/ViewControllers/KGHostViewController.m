@@ -160,12 +160,12 @@
                 [orderController setLeftBarbuttonItem];
                 [self.navigationController pushViewController:orderController animated:YES];
             } else if (indexPath.row == 1) {//我的任务
-                KGBaseWebViewController *taskController = [[KGBaseWebViewController alloc] initWithWebPath:@"/html/gj_task.htm"];
-                taskController.isPullToRefresh = YES;
-                taskController.hidesBottomBarWhenPushed = YES;
-                [taskController setLeftBarbuttonItem];
-                [taskController setTitle:@"我的任务"];
-                [self.navigationController pushViewController:taskController animated:YES];
+//                KGBaseWebViewController *taskController = [[KGBaseWebViewController alloc] initWithWebPath:@"/html/gj_task.htm"];
+//                taskController.isPullToRefresh = YES;
+//                taskController.hidesBottomBarWhenPushed = YES;
+//                [taskController setLeftBarbuttonItem];
+//                [taskController setTitle:@"我的任务"];
+//                [self.navigationController pushViewController:taskController animated:YES];
             } else if (indexPath.row == 2) {//我的收藏
                 KGBaseWebViewController *collectController = [[KGBaseWebViewController alloc] initWithWebPath:@"/html/gj_collect.htm"];
                 collectController.isPullToRefresh = YES;

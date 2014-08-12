@@ -141,12 +141,10 @@
     UITabBarController *rootViewController = (UITabBarController *)window.rootViewController;
     [rootViewController setSelectedIndex:3];
     UINavigationController *navController = (UINavigationController *)(rootViewController.selectedViewController);
-    KGBaseWebViewController *taskController = [[KGBaseWebViewController alloc] initWithWebPath:@"/html/gj_task.htm"];
-    taskController.hidesBottomBarWhenPushed = YES;
-    taskController.isPullToRefresh = YES;
-    [taskController setLeftBarbuttonItem];
-    [taskController setTitle:@"我的任务"];
-    [navController pushViewController:taskController animated:YES];
+
+    UIViewController *myTaskController = [self.storyboard instantiateViewControllerWithIdentifier:@"kMyTaskController"];
+    myTaskController.hidesBottomBarWhenPushed = YES;
+    [navController pushViewController:myTaskController animated:YES];
 }
 
 

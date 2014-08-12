@@ -103,6 +103,8 @@
 		A1610CC019938B95001F9DAA /* KGDiscoverDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1610CBF19938B95001F9DAA /* KGDiscoverDetailViewController.m */; };
 		A162DABD1999B2210038AE8B /* AFHTTPRequestOperationManager+timeout.m in Sources */ = {isa = PBXBuildFile; fileRef = A162DABA1999B2210038AE8B /* AFHTTPRequestOperationManager+timeout.m */; };
 		A162DABF1999B2210038AE8B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A162DABC1999B2210038AE8B /* README.md */; };
+		A162DAC2199A15A80038AE8B /* KGMyTaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = A162DAC1199A15A80038AE8B /* KGMyTaskController.m */; };
+		A162DAC5199A19ED0038AE8B /* KGMyTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A162DAC4199A19ED0038AE8B /* KGMyTaskCell.m */; };
 		A164DA2E194EA249008B26E8 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A164DA19194EA249008B26E8 /* IQKeyboardManager.bundle */; };
 		A164DA2F194EA249008B26E8 /* IQKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A164DA1B194EA249008B26E8 /* IQKeyboardManager.m */; };
 		A164DA30194EA249008B26E8 /* IQNSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = A164DA1F194EA249008B26E8 /* IQNSArray+Sort.m */; };
@@ -874,6 +876,10 @@
 		A162DAB91999B2210038AE8B /* AFHTTPRequestOperationManager+timeout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPRequestOperationManager+timeout.h"; sourceTree = "<group>"; };
 		A162DABA1999B2210038AE8B /* AFHTTPRequestOperationManager+timeout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPRequestOperationManager+timeout.m"; sourceTree = "<group>"; };
 		A162DABC1999B2210038AE8B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		A162DAC0199A15A80038AE8B /* KGMyTaskController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGMyTaskController.h; sourceTree = "<group>"; };
+		A162DAC1199A15A80038AE8B /* KGMyTaskController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGMyTaskController.m; sourceTree = "<group>"; };
+		A162DAC3199A19ED0038AE8B /* KGMyTaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGMyTaskCell.h; sourceTree = "<group>"; };
+		A162DAC4199A19ED0038AE8B /* KGMyTaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGMyTaskCell.m; sourceTree = "<group>"; };
 		A164DA19194EA249008B26E8 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
 		A164DA1A194EA249008B26E8 /* IQKeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManager.h; sourceTree = "<group>"; };
 		A164DA1B194EA249008B26E8 /* IQKeyboardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQKeyboardManager.m; sourceTree = "<group>"; };
@@ -2036,6 +2042,8 @@
 				A1610CB219936564001F9DAA /* KGDiscoverViewController.m */,
 				A1610CBE19938B95001F9DAA /* KGDiscoverDetailViewController.h */,
 				A1610CBF19938B95001F9DAA /* KGDiscoverDetailViewController.m */,
+				A162DAC0199A15A80038AE8B /* KGMyTaskController.h */,
+				A162DAC1199A15A80038AE8B /* KGMyTaskController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -2154,6 +2162,8 @@
 				A11F3CD41994C462007B615D /* KGDiscoverDetailCell.m */,
 				A11C98861998BBCD00F82E2A /* KGTaskViewHeadCell.h */,
 				A11C98871998BBCD00F82E2A /* KGTaskViewHeadCell.m */,
+				A162DAC3199A19ED0038AE8B /* KGMyTaskCell.h */,
+				A162DAC4199A19ED0038AE8B /* KGMyTaskCell.m */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -3452,6 +3462,7 @@
 				A164DA33194EA249008B26E8 /* IQTitleBarButtonItem.m in Sources */,
 				A1CA59EC191762A000D9A429 /* KGOrderSummaryObject.m in Sources */,
 				A18A2B8D18E1334200FDFB8E /* KGAddAddressController.m in Sources */,
+				A162DAC5199A19ED0038AE8B /* KGMyTaskCell.m in Sources */,
 				A112DF451918979600108FAD /* KGCompletedOrderPhotoInfoCell.m in Sources */,
 				A143012618BB461A0064DF87 /* UIImage+PKImage.m in Sources */,
 				A19F0ECC18E2B86200C2944D /* KGCommentListViewController.m in Sources */,
@@ -3463,6 +3474,7 @@
 				A121F426198F778400260E73 /* PSTCollectionViewLayout.m in Sources */,
 				A143012518BB461A0064DF87 /* UIFont+PKFont.m in Sources */,
 				A1933C2718E3D3C9000FC0B4 /* KGPhotoBrowserViewController.m in Sources */,
+				A162DAC2199A15A80038AE8B /* KGMyTaskController.m in Sources */,
 				A197503918D84BF10062CAA7 /* UIView+Additions.m in Sources */,
 				A121F422198F778400260E73 /* PSTCollectionViewController.m in Sources */,
 				A164DA34194EA249008B26E8 /* IQToolbar.m in Sources */,
