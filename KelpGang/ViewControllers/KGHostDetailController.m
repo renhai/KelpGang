@@ -58,8 +58,7 @@
             }
         } failure:^(NSError *error) {
             DLog(@"%@", error);
-            [[HudHelper getInstance] hideHudInView:self.tableView];
-        }];
+            [[HudHelper getInstance] showHudOnView:self.tableView caption:@"系统错误,请稍后再试" image:nil acitivity:NO autoHideTime:1.6];        }];
     }
 }
 
