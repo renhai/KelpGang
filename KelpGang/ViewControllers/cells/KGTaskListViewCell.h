@@ -8,7 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class KGTaskObject;
+
 @interface KGTaskListViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
+@property (weak, nonatomic) IBOutlet UILabel *cityLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *commissionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *deadLineLabel;
+@property (weak, nonatomic) IBOutlet UILabel *descLabel;
+@property (weak, nonatomic) IBOutlet UILabel *xuyaoLabel;
+
+- (void)setObject: (KGTaskObject *)taskObj;
 
 @end

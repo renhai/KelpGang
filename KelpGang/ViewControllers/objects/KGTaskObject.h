@@ -21,4 +21,10 @@
 
 @property (nonatomic, strong) NSString *defaultImageUrl;
 
+@property (nonatomic, assign) NSInteger ownerId;
+@property (nonatomic, strong) NSString *ownerName;
+@property (nonatomic, strong) NSString *ownerHeadUrl;
+@property (nonatomic, strong) NSString *ownerCity;
+@property (nonatomic, assign) Gender ownerGender;
+
 @end

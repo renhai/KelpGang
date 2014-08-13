@@ -31,7 +31,13 @@
 {
     [super viewDidLoad];
     [self setLeftBarbuttonItem];
-    self.datasource = [[NSMutableArray alloc]init];
+    [self refreshDatasource];
+}
+
+- (void)refreshDatasource {
+    if (!self.datasource) {
+        self.datasource = [[NSMutableArray alloc]init];
+    }
 
     NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid)};
     [[HudHelper getInstance]showHudOnView:self.tableView caption:nil image:nil acitivity:YES autoHideTime:0.0];
@@ -39,6 +45,7 @@
         DLog(@"%@",responseObject);
         [[HudHelper getInstance] hideHudInView:self.tableView];
         if ([KGUtils checkResult:responseObject]) {
+            [self.datasource removeAllObjects];
             NSArray *taskArr = responseObject[@"data"];
             for (NSDictionary *info in taskArr) {
                 NSArray *goodsArr = [info valueForKeyPath:@"good_info"];
@@ -68,6 +75,7 @@
         DLog(@"%@",error);
         [[HudHelper getInstance] showHudOnView:self.view caption:@"系统错误,请稍后再试" image:nil acitivity:NO autoHideTime:1.6];
     }];
+
 }
 
 - (void)didReceiveMemoryWarning

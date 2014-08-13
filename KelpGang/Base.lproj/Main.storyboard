@@ -1902,8 +1902,8 @@
                                                             <color key="textColor" red="0.12941176469999999" green="0.72549019609999998" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="需要" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dMD-bS-qU2">
-                                                            <rect key="frame" x="66" y="10" width="24" height="16"/>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="需要" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PPR-HA-E0W">
+                                                            <rect key="frame" x="70" y="10" width="24" height="16"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" red="0.12941176469999999" green="0.72549019609999998" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1937,7 +1937,13 @@
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
+                                            <outlet property="cityLabel" destination="SZ1-TH-9uB" id="dOR-GG-vBe"/>
+                                            <outlet property="commissionLabel" destination="x4R-v3-hMt" id="pW1-ay-4HE"/>
+                                            <outlet property="deadLineLabel" destination="cXe-vq-8yA" id="c6Z-sh-DbZ"/>
+                                            <outlet property="descLabel" destination="Xka-9S-6QW" id="1Ok-f9-BhR"/>
                                             <outlet property="headImageView" destination="z5O-8a-naC" id="tY6-OC-LCS"/>
+                                            <outlet property="nameLabel" destination="XwL-Kg-I4n" id="ie3-XE-Lpi"/>
+                                            <outlet property="xuyaoLabel" destination="PPR-HA-E0W" id="6qe-Hk-nFE"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

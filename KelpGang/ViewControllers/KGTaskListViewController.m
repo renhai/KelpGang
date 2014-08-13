@@ -9,12 +9,14 @@
 #import "KGTaskListViewController.h"
 #import "KGTaskListViewCell.h"
 #import "KGFilterItem.h"
+#import "KGTaskObject.h"
 
 @interface KGTaskListViewController ()
 @property (weak, nonatomic) IBOutlet UIView *conditionBar;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *rightBarButtonItem;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, assign) NSInteger currTapIndex;
+@property (nonatomic, strong) NSMutableArray *datasource;
 
 @end
 
@@ -34,8 +36,59 @@
     [super viewDidLoad];
     [self setLeftBarbuttonItem];
     [self setRightBarButtonItems];
-
     [self initFilterBar];
+
+    [self refreshDatasource];
+}
+
+- (void)refreshDatasource {
+    if (!self.datasource) {
+        self.datasource = [[NSMutableArray alloc] init];
+    }
+
+    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
+                             @"end_id": @(0),
+                             @"limit":@(100)};
+    [[KGNetworkManager sharedInstance]postRequest:@"/mobile/task/index" params:params success:^(id responseObject) {
+        DLog(@"%@", responseObject);
+        if ([KGUtils checkResult:responseObject]) {
+            [self.datasource removeAllObjects];
+            NSArray *taskArr = responseObject[@"data"];
+            for (NSDictionary *info in taskArr) {
+                NSArray *goodsArr = info[@"good_info"];
+                NSDictionary *goodsInfo = @{};
+                if (goodsArr && [goodsArr count] > 0) {
+                    goodsInfo = goodsArr[0];
+                }
+                NSDictionary *task_info = info[@"task_info"];
+                NSDictionary *user_info = info[@"user_info"];
+                KGTaskObject *taskObj = [[KGTaskObject alloc] init];
+                taskObj.taskId = [task_info[@"task_id"] integerValue];
+                taskObj.title = task_info[@"task_title"];
+                taskObj.gratuity = [task_info[@"task_gratuity"] floatValue];
+                taskObj.deadline = [NSDate dateWithTimeIntervalSince1970:[task_info[@"task_deadline"] doubleValue]];
+                taskObj.message = task_info[@"task_message"];
+                taskObj.expectCountry = task_info[@"task_good_country"];
+                taskObj.maxMoney = [task_info[@"task_money"] floatValue];
+                taskObj.defaultImageUrl = goodsInfo[@"good_default_head_url"];
+                if (!taskObj.defaultImageUrl) {
+                    taskObj.defaultImageUrl = @"";
+                }
+                taskObj.ownerId = [user_info[@"user_id"] integerValue];
+                taskObj.ownerName = user_info[@"user_name"];
+                taskObj.ownerCity = task_info[@"task_live_city"];
+                if (!taskObj.ownerCity) {
+                    taskObj.ownerCity = @"";
+                }
+                taskObj.ownerHeadUrl = user_info[@"head_url"];
+                taskObj.ownerGender = [KGUtils convertGender:user_info[@"user_sex"]];
+                [self.datasource addObject:taskObj];
+            }
+            [self.tableView reloadData];
+        }
+    } failure:^(NSError *error) {
+        DLog(@"error: %@", error);
+    }];
 }
 
 - (void)initFilterBar {
@@ -122,20 +175,21 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return  20;
+    return  [self.datasource count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"kTaskListTableViewCell";
-
+    KGTaskObject *obj = self.datasource[indexPath.row];
     KGTaskListViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[KGTaskListViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-    cell.headImageView.clipsToBounds = YES;
-    cell.headImageView.ContentMode = UIViewContentModeScaleAspectFill;
-    cell.headImageView.layer.cornerRadius = cell.headImageView.frame.size.width / 2;
-    [cell.headImageView setImageWithURL:[NSURL URLWithString:@"http://b.hiphotos.baidu.com/image/w%3D2048/sign=828c8a708544ebf86d71633fedc1d62a/5882b2b7d0a20cf4d8414dac74094b36adaf99f4.jpg"] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [cell setObject:obj];
+//    if (cell == nil) {
+//        cell = [[KGTaskListViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+//    }
+//    cell.headImageView.clipsToBounds = YES;
+//    cell.headImageView.ContentMode = UIViewContentModeScaleAspectFill;
+//    cell.headImageView.layer.cornerRadius = cell.headImageView.frame.size.width / 2;
+//    [cell.headImageView setImageWithURL:[NSURL URLWithString:@"http://b.hiphotos.baidu.com/image/w%3D2048/sign=828c8a708544ebf86d71633fedc1d62a/5882b2b7d0a20cf4d8414dac74094b36adaf99f4.jpg"] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     return cell;
 }
 

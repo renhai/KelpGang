@@ -130,7 +130,7 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 
 - (void)refreshDatasource {
     if ([KGUtils checkIsNetworkConnectionAvailableAndNotify:self.view]) {
-        NSDictionary *params = @{@"user_id": @0, @"endId": @0, @"limit": @20};
+        NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"endId": @0, @"limit": @20};
         [[KGNetworkManager sharedInstance] postRequest:@"/mobile/travel/index" params:params success:^(id responseObject) {
             NSLog(@"%@", responseObject);
             [self.datasource removeAllObjects];
