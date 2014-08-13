@@ -562,7 +562,7 @@
     req.gratuity = [self.commionTextField.text floatValue];
     req.deadline = self.deadlinePicker.date;
     req.message = self.descTextView.text;
-    req.expectCountry = self.expectCountryTextField.text;
+    req.expectCountry = self.expectCountryTextField.text ? self.expectCountryTextField.text : @"";
     req.maxMoney = [self.maxMoneyTextField.text floatValue];
     req.imageArr = self.imgOrigins;
 
