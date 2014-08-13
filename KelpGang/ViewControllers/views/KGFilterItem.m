@@ -106,7 +106,11 @@ static CGFloat const kMaxTextLabelMarginLeft = 10.0;
         CGFloat y = self.origin.y + self.height + 1;
         CGRect frame;
         if (self.type == KGFilterViewCommonStyle) {
-            CGFloat height = iPhone5 ? 221 : 171;
+            CGFloat cellHeight = 44;
+            CGFloat height = self.data.count * cellHeight;
+            if (!iPhone5 && height > 170) {
+                height = 170;
+            }
             frame = CGRectMake(0, y, SCREEN_WIDTH, height);
             KGCommonMenu *menu = [[KGCommonMenu alloc]initWithFrame:frame data:self.data];
             menu.delegate = self;
