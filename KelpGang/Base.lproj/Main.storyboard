@@ -1235,10 +1235,10 @@
             </objects>
             <point key="canvasLocation" x="949" y="-113"/>
         </scene>
-        <!--Task View Controller-->
+        <!--Preview Task View Controller-->
         <scene sceneID="vFF-WD-tYD">
             <objects>
-                <tableViewController storyboardIdentifier="kTaskTableViewController" id="3zo-bT-D7b" customClass="KGTaskViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="kTaskTableViewController" id="3zo-bT-D7b" customClass="KGPreviewTaskViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="hg4-sc-Oee">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

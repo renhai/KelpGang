@@ -629,7 +629,7 @@
 		A19F0EC918E2B47800C2944D /* KGBuyerCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A19F0EC818E2B47800C2944D /* KGBuyerCommentCell.m */; };
 		A19F0ECC18E2B86200C2944D /* KGCommentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A19F0ECB18E2B86200C2944D /* KGCommentListViewController.m */; };
 		A19F0ED118E2C6A400C2944D /* HudHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A19F0ED018E2C6A400C2944D /* HudHelper.m */; };
-		A19F85E618EA6C300089B14F /* KGTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A19F85E518EA6C300089B14F /* KGTaskViewController.m */; };
+		A19F85E618EA6C300089B14F /* KGPreviewTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A19F85E518EA6C300089B14F /* KGPreviewTaskViewController.m */; };
 		A1A003E618F3CE8D00B5A1D7 /* chat-add.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A003E518F3CE8D00B5A1D7 /* chat-add.png */; };
 		A1A003EC18F3CE9E00B5A1D7 /* chat-add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A003E718F3CE9E00B5A1D7 /* chat-add@2x.png */; };
 		A1A003ED18F3CE9E00B5A1D7 /* chat-emotion.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A003E818F3CE9E00B5A1D7 /* chat-emotion.png */; };
@@ -1445,8 +1445,8 @@
 		A19F0ECB18E2B86200C2944D /* KGCommentListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCommentListViewController.m; sourceTree = "<group>"; };
 		A19F0ECF18E2C6A400C2944D /* HudHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HudHelper.h; sourceTree = "<group>"; };
 		A19F0ED018E2C6A400C2944D /* HudHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HudHelper.m; sourceTree = "<group>"; };
-		A19F85E418EA6C300089B14F /* KGTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGTaskViewController.h; sourceTree = "<group>"; };
-		A19F85E518EA6C300089B14F /* KGTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGTaskViewController.m; sourceTree = "<group>"; };
+		A19F85E418EA6C300089B14F /* KGPreviewTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGPreviewTaskViewController.h; sourceTree = "<group>"; };
+		A19F85E518EA6C300089B14F /* KGPreviewTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGPreviewTaskViewController.m; sourceTree = "<group>"; };
 		A1A003E518F3CE8D00B5A1D7 /* chat-add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat-add.png"; sourceTree = "<group>"; };
 		A1A003E718F3CE9E00B5A1D7 /* chat-add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat-add@2x.png"; sourceTree = "<group>"; };
 		A1A003E818F3CE9E00B5A1D7 /* chat-emotion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat-emotion.png"; sourceTree = "<group>"; };
@@ -2030,8 +2030,8 @@
 				A19F0ECB18E2B86200C2944D /* KGCommentListViewController.m */,
 				A1933C2518E3D3C9000FC0B4 /* KGPhotoBrowserViewController.h */,
 				A1933C2618E3D3C9000FC0B4 /* KGPhotoBrowserViewController.m */,
-				A19F85E418EA6C300089B14F /* KGTaskViewController.h */,
-				A19F85E518EA6C300089B14F /* KGTaskViewController.m */,
+				A19F85E418EA6C300089B14F /* KGPreviewTaskViewController.h */,
+				A19F85E518EA6C300089B14F /* KGPreviewTaskViewController.m */,
 				A11E91621900D28100BBC1A2 /* KGRecentContactsController.h */,
 				A11E91631900D28100BBC1A2 /* KGRecentContactsController.m */,
 				A14155A91904F4BB0045D641 /* KGBaseWebViewController.h */,
@@ -3359,7 +3359,7 @@
 				A121F423198F778400260E73 /* PSTCollectionViewData.m in Sources */,
 				A112DF3F19187DEA00108FAD /* KGCompletedOrderConsigneeCell.m in Sources */,
 				A121F42A198F778400260E73 /* PSTGridLayoutRow.m in Sources */,
-				A19F85E618EA6C300089B14F /* KGTaskViewController.m in Sources */,
+				A19F85E618EA6C300089B14F /* KGPreviewTaskViewController.m in Sources */,
 				A1610CC019938B95001F9DAA /* KGDiscoverDetailViewController.m in Sources */,
 				A121F418198F778400260E73 /* MWGridViewController.m in Sources */,
 				A121F427198F778400260E73 /* PSTCollectionViewUpdateItem.m in Sources */,

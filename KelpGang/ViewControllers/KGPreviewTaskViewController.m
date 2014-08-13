@@ -6,12 +6,12 @@
 //  Copyright (c) 2014年 renren. All rights reserved.
 //
 
-#import "KGTaskViewController.h"
+#import "KGPreviewTaskViewController.h"
 #import "KGBaseWebViewController.h"
 #import "KGTaskObject.h"
 #import "KGTaskViewHeadCell.h"
 
-@interface KGTaskViewController ()
+@interface KGPreviewTaskViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *expectCountryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *maxMoneyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descLabel;
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation KGTaskViewController
+@implementation KGPreviewTaskViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -34,19 +34,14 @@
 {
     [super viewDidLoad];
     [self initLeftRightBar];
+    self.title = @"任务预览";
 
-    if (self.taskObj) {
-        if (self.taskObj.taskId > 0) {
-            // load task object
-        } else {
-            self.expectCountryLabel.text = self.taskObj.expectCountry;
-            [self.expectCountryLabel sizeToFit];
-            self.maxMoneyLabel.text = self.taskObj.maxMoney > 0 ? [NSString stringWithFormat:@"￥%0.1f",self.taskObj.maxMoney] : @"";
-            [self.maxMoneyLabel sizeToFit];
-            self.descLabel.text = self.taskObj.message;
-            [self.descLabel sizeToFit];
-        }
-    }
+    self.expectCountryLabel.text = self.taskObj.expectCountry;
+    [self.expectCountryLabel sizeToFit];
+    self.maxMoneyLabel.text = self.taskObj.maxMoney > 0 ? [NSString stringWithFormat:@"￥%0.1f",self.taskObj.maxMoney] : @"";
+    [self.maxMoneyLabel sizeToFit];
+    self.descLabel.text = self.taskObj.message;
+    [self.descLabel sizeToFit];
 }
 
 - (void)initLeftRightBar {
@@ -103,13 +98,6 @@
     sectionHeaderView.backgroundColor = [UIColor clearColor];
     return sectionHeaderView;
 }
-
-#pragma UITableViewDelegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
-}
-
 
 - (void)publish: (UIBarButtonItem *)btn {
     NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),

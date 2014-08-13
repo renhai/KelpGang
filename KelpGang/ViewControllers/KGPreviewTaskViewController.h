@@ -10,7 +10,7 @@
 
 @class KGTaskObject;
 
-@interface KGTaskViewController : UITableViewController
+@interface KGPreviewTaskViewController : UITableViewController
 
 @property (nonatomic, strong) KGTaskObject *taskObj;
 

@@ -43,7 +43,6 @@
 - (void)setObject: (KGTaskObject *)obj {
     [self.headImageView setImageWithURL:[NSURL URLWithString:APPCONTEXT.currUser.avatarUrl] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.headImageView.layer.cornerRadius = self.headImageView.width / 2;
-//    self.nameLabel.text = APPCONTEXT.currUser.uname;
     NSString *tailStr = @"需要";
     NSString *nameText = [NSString stringWithFormat:@"%@ %@",APPCONTEXT.currUser.uname, tailStr];
     NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString: nameText];

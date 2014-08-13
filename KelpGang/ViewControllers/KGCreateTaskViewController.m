@@ -11,7 +11,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "UIImage+Addtional.h"
 #import "KGPhotoBrowserViewController.h"
-#import "KGTaskViewController.h"
+#import "KGPreviewTaskViewController.h"
 #import "KGTaskObject.h"
 
 
@@ -566,7 +566,7 @@
     req.maxMoney = [self.maxMoneyTextField.text floatValue];
     req.imageArr = self.imgOrigins;
 
-    KGTaskViewController *taskController = [self.storyboard instantiateViewControllerWithIdentifier:@"kTaskTableViewController"];
+    KGPreviewTaskViewController *taskController = [self.storyboard instantiateViewControllerWithIdentifier:@"kTaskTableViewController"];
     taskController.taskObj = req;
     [taskController setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:taskController animated:YES];
