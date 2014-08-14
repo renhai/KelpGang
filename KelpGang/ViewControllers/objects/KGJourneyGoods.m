@@ -16,6 +16,7 @@
         self.name = @"";
         self.localImgUrls = [[NSMutableArray alloc] init];
         self.thumbs = [[NSMutableArray alloc] init];
+        self.imgArr = [[NSMutableArray alloc] init];
     }
     return self;
 }

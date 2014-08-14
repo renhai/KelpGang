@@ -13,17 +13,20 @@
 #import "MWPhotoBrowser.h"
 #import "UIImage+Addtional.h"
 #import "KGPhotoBrowserViewController.h"
+#import "AFHTTPRequestOperationManager+Timeout.h"
+#import "KGJourneyObject.h"
 
-@interface KGCreateJourneyController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, MWPhotoBrowserDelegate>
+@interface KGCreateJourneyController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UITextViewDelegate, MWPhotoBrowserDelegate>
 
 @property (nonatomic, strong) NSMutableArray *goodsArr;
-//@property (nonatomic, assign) BOOL picExpanded;
+@property (nonatomic, strong) KGJourneyObject *journeyObj;
 @property (nonatomic, assign) NSInteger currTapCellIndex;
 @property (nonatomic, strong) ALAssetsLibrary *assetLibrary;
 @property (nonatomic, strong) NSMutableArray *assets;
 @property (nonatomic, strong) NSMutableArray *photos;
 @property (nonatomic, strong) NSMutableArray *thumbs;
 @property (nonatomic, strong) NSMutableArray *selections;
+- (IBAction)publishJourney:(UIBarButtonItem *)sender;
 
 - (IBAction)addGoods:(UIButton *)sender;
 
@@ -45,6 +48,7 @@
     [super viewDidLoad];
     [self setLeftBarbuttonItem];
     self.goodsArr = [[NSMutableArray alloc] init];
+    self.journeyObj = [[KGJourneyObject alloc] init];
     self.currTapCellIndex = 0;
 
     [self loadAssets];
@@ -87,15 +91,59 @@
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"kDesCountryCell" forIndexPath:indexPath];
+            UITextField *tf = (UITextField *)[cell viewWithTag:1];
+            tf.delegate = self;
+            [tf addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];
+            UISwitch *us = (UISwitch *)[cell viewWithTag:2];
+            [us addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
         } else if (indexPath.row == 1) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"kSrcCityCell" forIndexPath:indexPath];
+            UITextField *tf = (UITextField *)[cell viewWithTag:1];
+            tf.delegate = self;
+            [tf addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];
         } else if (indexPath.row == 2) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"kReturnTimeCell" forIndexPath:indexPath];
+            UITextField *tf = (UITextField *)[cell viewWithTag:1];
+            UIDatePicker *datePicker = [[UIDatePicker alloc] init];
+            datePicker.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"Chinese"];
+            datePicker.datePickerMode = UIDatePickerModeDate;
+            tf.inputView = datePicker;
+
+            UIToolbar *topView = [[UIToolbar alloc]initWithFrame:CGRectZero];
+            [topView setBarStyle:UIBarStyleBlack];
+            UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]initWithTitle:@"取消" style:UIBarButtonItemStyleDone target:self action:@selector(datePickerCancelClicked:)];
+            cancelButton.tag = 1001;
+            UIBarButtonItem *spaceButton = [[UIBarButtonItem  alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+            UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(datePickerDoneClicked:)];
+            doneButton.tag = 1002;
+            NSArray *buttonsArray = [NSArray arrayWithObjects:cancelButton,spaceButton,doneButton,nil];
+            [topView setItems:buttonsArray];
+            [topView sizeToFit];
+            tf.inputAccessoryView = topView;
         } else {
             cell = [tableView dequeueReusableCellWithIdentifier:@"kStartTimeCell" forIndexPath:indexPath];
+            UITextField *tf = (UITextField *)[cell viewWithTag:1];
+            UIDatePicker *datePicker = [[UIDatePicker alloc] init];
+            datePicker.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"Chinese"];
+            datePicker.datePickerMode = UIDatePickerModeDate;
+            tf.inputView = datePicker;
+
+            UIToolbar *topView = [[UIToolbar alloc]initWithFrame:CGRectZero];
+            [topView setBarStyle:UIBarStyleBlack];
+            UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]initWithTitle:@"取消" style:UIBarButtonItemStyleDone target:self action:@selector(datePickerCancelClicked:)];
+            cancelButton.tag = 2001;
+            UIBarButtonItem *spaceButton = [[UIBarButtonItem  alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+            UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(datePickerDoneClicked:)];
+            doneButton.tag = 2002;
+            NSArray *buttonsArray = [NSArray arrayWithObjects:cancelButton,spaceButton,doneButton,nil];
+            [topView setItems:buttonsArray];
+            [topView sizeToFit];
+            tf.inputAccessoryView = topView;
         }
     } else if (indexPath.section == 1) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"kDetailCell" forIndexPath:indexPath];
+        UITextView *tv = (UITextView *)[cell viewWithTag:1];
+        tv.delegate = self;
     } else if (indexPath.section == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"kAddPicturesCell" forIndexPath:indexPath];
     } else {
@@ -104,9 +152,9 @@
         KGJourneyGoods *goods = self.goodsArr[indexPath.row];
         [jCell setupData:goods];
         jCell.imgNameTextField.delegate = self;
+        [jCell.imgNameTextField addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];
 
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapPicture:)];
-//        jCell.imgScrollView.tag = indexPath.row;
         [jCell.imgScrollView addGestureRecognizer:tapGesture];
 
         [jCell.delGoodsBtn addTarget:self action:@selector(deleteGoods:) forControlEvents:UIControlEventTouchUpInside];
@@ -134,7 +182,6 @@
         cell = (UITableViewCell *)tapGesture.view.superview.superview;
     }
     NSIndexPath *tapPath = [self.tableView indexPathForCell:cell];
-//    self.currEditCellIndex = tapGesture.view.tag;
     self.currTapCellIndex = tapPath.row;
     NSLog(@"curr tap cell index: %d, image index: %d", self.currTapCellIndex, index);
     KGJourneyGoods *goods = self.goodsArr[self.currTapCellIndex];
@@ -180,19 +227,6 @@
     return sectionHeaderView;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-//    if (section == 3) {
-//        return 30;
-//    }
-//    return 0;
-//}
-//
-//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-//    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 30)];
-//    footerView.backgroundColor = [UIColor redColor];
-//    return footerView;
-//}
-
 #pragma UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -234,18 +268,6 @@
                              }];
         }
     } else if (buttonIndex == 1) {
-        // 从相册中选取
-//        if ([self isPhotoLibraryAvailable]) {
-//            UIImagePickerController *controller = [[UIImagePickerController alloc] init];
-//            controller.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-//            controller.allowsEditing = NO;
-//            controller.delegate = self;
-//            [self presentViewController:controller
-//                               animated:YES
-//                             completion:^(void){
-//                                 NSLog(@"Picker View Controller is presented");
-//                             }];
-//        }
         NSMutableArray *photos = [[NSMutableArray alloc] init];
         NSMutableArray *thumbs = [[NSMutableArray alloc] init];
         @synchronized(_assets) {
@@ -298,16 +320,6 @@
     return nil;
 }
 
-//- (MWCaptionView *)photoBrowser:(MWPhotoBrowser *)photoBrowser captionViewForPhotoAtIndex:(NSUInteger)index {
-//    MWPhoto *photo = [self.photos objectAtIndex:index];
-//    MWCaptionView *captionView = [[MWCaptionView alloc] initWithPhoto:photo];
-//    return [captionView autorelease];
-//}
-
-//- (void)photoBrowser:(MWPhotoBrowser *)photoBrowser actionButtonPressedForPhotoAtIndex:(NSUInteger)index {
-//    NSLog(@"ACTION!");
-//}
-
 - (void)photoBrowser:(MWPhotoBrowser *)photoBrowser didDisplayPhotoAtIndex:(NSUInteger)index {
     NSLog(@"Did start viewing photo at index %lu", (unsigned long)index);
 }
@@ -315,10 +327,6 @@
 - (BOOL)photoBrowser:(MWPhotoBrowser *)photoBrowser isPhotoSelectedAtIndex:(NSUInteger)index {
     return [[_selections objectAtIndex:index] boolValue];
 }
-
-//- (NSString *)photoBrowser:(MWPhotoBrowser *)photoBrowser titleForPhotoAtIndex:(NSUInteger)index {
-//    return [NSString stringWithFormat:@"Photo %lu", (unsigned long)index+1];
-//}
 
 - (void)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index selectedChanged:(BOOL)selected {
     [_selections replaceObjectAtIndex:index withObject:[NSNumber numberWithBool:selected]];
@@ -336,12 +344,11 @@
     for (NSInteger i = 0; i < self.selections.count; i ++) {
         if ([self.selections[i] boolValue]) {
             ALAsset *asset = self.assets[i];
-//            ALAssetRepresentation *representation = [asset defaultRepresentation];
-//            CGImageRef originalImage = [representation fullResolutionImage];
-//            UIImage *original = [UIImage imageWithCGImage:originalImage];
             UIImage *thumb = [UIImage imageWithCGImage:asset.thumbnail];
+            UIImage *oriImage = [UIImage imageWithCGImage:[asset.defaultRepresentation fullScreenImage]];
             [goods.thumbs addObject:thumb];
             [goods.localImgUrls addObject:asset.defaultRepresentation.url];
+            [goods.imgArr addObject: oriImage];
         }
     }
     [self reloadCurrentEditRow];
@@ -360,6 +367,7 @@
         }
         UIImage *thumb = [UIImage scaleImage:oriImage toScale:0.1];
         [goods.thumbs addObject:thumb];
+        [goods.imgArr addObject:oriImage];
         [self reloadCurrentEditRow];
         NSLog(@"%@",info);
 
@@ -396,55 +404,6 @@
 - (BOOL) isFrontCameraAvailable {
     return [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront];
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma UITextFieldDelegate
 
@@ -487,6 +446,7 @@
     if (goods && goods.thumbs && view.imgIndex < goods.thumbs.count) {
         [goods.thumbs removeObjectAtIndex:view.imgIndex];
         [goods.localImgUrls removeObjectAtIndex:view.imgIndex];
+        [goods.imgArr removeObjectAtIndex:view.imgIndex];
         [self reloadCurrentEditRow];
     }
 }
@@ -520,10 +480,6 @@
                                        if (asset) {
                                            @synchronized(_assets) {
                                                [_assets addObject:asset];
-                                               if (_assets.count == 1) {
-                                                   // Added first asset so reload data
-                                                   [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-                                               }
                                            }
                                        }
                                    }
@@ -553,4 +509,183 @@
     });
     
 }
+
+- (IBAction)publishJourney:(UIBarButtonItem *)sender {
+    if (![self checkJourney]) {
+        return;
+    }
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+    NSTimeInterval backTime = [self.journeyObj.backDate timeIntervalSince1970];
+    NSTimeInterval startTime = [self.journeyObj.startDate timeIntervalSince1970];
+    NSDictionary *basicParams = @{@"user_id": @(APPCONTEXT.currUser.uid),
+                             @"to_country": self.journeyObj.toCountry,
+                             @"resident": @(self.journeyObj.permanent),
+                             @"departure_city": self.journeyObj.fromCity,
+                             @"back_time": @([[NSNumber numberWithDouble:backTime] longLongValue]),
+                             @"start_time": @([[NSNumber numberWithDouble:startTime] longLongValue]),
+                             @"description": self.journeyObj.desc,
+                             @"session_key": APPCONTEXT.currUser.sessionKey};
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithDictionary:basicParams];
+    for (NSInteger i = 0; i < self.goodsArr.count; i ++) {
+        KGJourneyGoods *goods = self.goodsArr[i];
+        [params setValue:goods.name forKey:[NSString stringWithFormat:@"good_name_%d", i + 1]];
+    }
+    [[HudHelper getInstance] showHudOnView:self.tableView caption:nil image:nil acitivity:YES autoHideTime:0.0];
+    [self uploadMultiPhotos:@"/mobile/travel/publish" params:params success:^(id responseObject) {
+        [[HudHelper getInstance] hideHudInView:self.tableView];
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+        DLog(@"%@",responseObject);
+        if ([KGUtils checkResult:responseObject]) {
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"发布成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+    } failure:^(NSError *error) {
+        DLog(@"error:%@",error);
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+        [[HudHelper getInstance] showHudOnView:self.tableView caption:@"系统错误，请稍后重试" autoHideTime:1.6];
+    }];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    UIWindow *window = [[UIApplication sharedApplication].delegate window];
+    UITabBarController *rootViewController = (UITabBarController *)window.rootViewController;
+    [rootViewController setSelectedIndex:0];
+//    UINavigationController *navController = (UINavigationController *)(rootViewController.selectedViewController);
+//
+//    UIViewController *myTaskController = [self.storyboard instantiateViewControllerWithIdentifier:@"kMyTaskController"];
+//    myTaskController.hidesBottomBarWhenPushed = YES;
+//    [navController pushViewController:myTaskController animated:YES];
+}
+
+- (void)uploadMultiPhotos:(NSString *)path
+                   params:(NSDictionary *)params
+                  success:(ResponseBlock)success
+                  failure:(FailureBlock)failure {
+    AFHTTPRequestOperationManager *mgr = [[AFHTTPRequestOperationManager alloc]initWithBaseURL:[NSURL URLWithString:kWebServerBaseURL]];
+    [mgr POST:path parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyyMMddHHmmss";
+        NSString *fileName = [formatter stringFromDate:[NSDate date]];
+
+        for (NSInteger i = 0; i < self.goodsArr.count; i ++) {
+            KGJourneyGoods *goods = self.goodsArr[i];
+            NSString *iName = [NSString stringWithFormat:@"good_photos_%d", i + 1];
+            for (NSInteger j = 0; j < goods.imgArr.count; j ++) {
+                UIImage *goodsImage = goods.imgArr[j];
+                [formData appendPartWithFileData:UIImageJPEGRepresentation(goodsImage, 0.5) name:iName fileName:[NSString stringWithFormat:@"%@-%d-%d.jpg",fileName,i+1, j+1] mimeType:@"image/jpeg"];
+            }
+        }
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (success) {
+            success(responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
+- (void)textFieldChanged: (UITextField *)sender {
+    UITableViewCell *cell = (UITableViewCell *)sender.superview.superview.superview;
+    if (![KGUtils isHigherIOS7]) {
+        cell = (UITableViewCell *)sender.superview.superview;
+    }
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    if (indexPath.section == 0) {
+        switch (indexPath.row) {
+            case 0:
+                self.journeyObj.toCountry = sender.text;
+                break;
+            case 1:
+                self.journeyObj.fromCity = sender.text;
+                break;
+            default:
+                break;
+        }
+    } else if (indexPath.section == 3) {
+        KGJourneyGoods *goods = self.goodsArr[indexPath.row];
+        goods.name = sender.text;
+    }
+}
+
+- (void)datePickerDoneClicked: (UIBarButtonItem *)sender {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    formatter.dateFormat = @"yyyy/M/d";
+    if (sender.tag == 1002) {
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+        UITextField *tf = (UITextField *)[cell viewWithTag:1];
+        UIDatePicker *picker = (UIDatePicker *)tf.inputView;
+        NSDate *backDate = picker.date;
+        self.journeyObj.backDate = backDate;
+        tf.text = [formatter stringFromDate:backDate];
+        [tf resignFirstResponder];
+    } else if (sender.tag == 2002) {
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
+        UITextField *tf = (UITextField *)[cell viewWithTag:1];
+        UIDatePicker *picker = (UIDatePicker *)tf.inputView;
+        NSDate *startDate = picker.date;
+        self.journeyObj.startDate = startDate;
+        tf.text = [formatter stringFromDate:startDate];
+        [tf resignFirstResponder];
+    }
+}
+
+- (void)datePickerCancelClicked: (UIBarButtonItem *)sender {
+    if (sender.tag == 1001) {
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+        UITextField *tf = (UITextField *)[cell viewWithTag:1];
+        [tf resignFirstResponder];
+    } else if (sender.tag == 2001) {
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
+        UITextField *tf = (UITextField *)[cell viewWithTag:1];
+        [tf resignFirstResponder];
+    }
+}
+
+-(void)switchChanged:(UISwitch *)sender {
+    self.journeyObj.permanent = sender.isOn;
+}
+
+#pragma UITextViewDelegate
+
+- (void)textViewDidChange:(UITextView *)textView {
+    self.journeyObj.desc = textView.text;
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
+
+- (BOOL)checkJourney {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    if (!self.journeyObj.toCountry || [@"" isEqualToString:self.journeyObj.toCountry]) {
+        alert.message = @"去往国家不能为空";
+        [alert show];
+        return NO;
+    } else if (!self.journeyObj.permanent && (!self.journeyObj.fromCity || [@"" isEqualToString:self.journeyObj.fromCity])) {
+        alert.message = @"出发城市不能为空";
+        [alert show];
+        return NO;
+    } else if (!self.journeyObj.backDate) {
+        alert.message = @"回国时间不能为空";
+        [alert show];
+        return NO;
+    } else if (!self.journeyObj.startDate) {
+        alert.message = @"出发时间不能为空";
+        [alert show];
+        return NO;
+    } else if (!self.journeyObj.desc || [@"" isEqualToString:self.journeyObj.desc]) {
+        alert.message = @"描述不能为空";
+        [alert show];
+        return NO;
+    }
+    return YES;
+}
+
 @end

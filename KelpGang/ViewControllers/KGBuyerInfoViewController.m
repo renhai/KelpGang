@@ -257,6 +257,9 @@
 }
 
 - (MWCaptionView *)photoBrowser:(MWPhotoBrowser *)photoBrowser captionViewForPhotoAtIndex:(NSUInteger)index {
+    if (!self.photos || self.photos.count == 0) {
+        return nil;
+    }
     MWPhoto *photo = [self.photos objectAtIndex:index];
     NSString *title = self.good_info[self.currAlbumIndex][@"good_name"];
     KGPicBottomView *captionView = [[KGPicBottomView alloc] initWithPhoto:photo index:index count:self.photos.count title:title chatBlock:^(UIButton *sender) {

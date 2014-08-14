@@ -70,6 +70,7 @@
 		A12ADE4A18D323A10009B225 /* delete_img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A12ADE4818D323A10009B225 /* delete_img@2x.png */; };
 		A1311F4118CA27A300D1A40F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1311F4018CA27A300D1A40F /* MapKit.framework */; };
 		A1311F4518CA2E0800D1A40F /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1311F4418CA2E0800D1A40F /* SwipeView.m */; };
+		A1393978199CA4F50013891C /* KGJourneyObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A1393977199CA4F50013891C /* KGJourneyObject.m */; };
 		A14155AB1904F4BB0045D641 /* KGBaseWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A14155AA1904F4BB0045D641 /* KGBaseWebViewController.m */; };
 		A14300C918BB252F0064DF87 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14300C818BB252F0064DF87 /* Foundation.framework */; };
 		A14300CB18BB252F0064DF87 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14300CA18BB252F0064DF87 /* CoreGraphics.framework */; };
@@ -825,6 +826,8 @@
 		A1311F4018CA27A300D1A40F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A1311F4318CA2E0800D1A40F /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
 		A1311F4418CA2E0800D1A40F /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
+		A1393976199CA4F50013891C /* KGJourneyObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGJourneyObject.h; sourceTree = "<group>"; };
+		A1393977199CA4F50013891C /* KGJourneyObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGJourneyObject.m; sourceTree = "<group>"; };
 		A14155A91904F4BB0045D641 /* KGBaseWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGBaseWebViewController.h; sourceTree = "<group>"; };
 		A14155AA1904F4BB0045D641 /* KGBaseWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGBaseWebViewController.m; sourceTree = "<group>"; };
 		A14300C518BB252F0064DF87 /* KelpGang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KelpGang.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2125,6 +2128,8 @@
 				A19EE929199871A500D6C935 /* KGTaskObject.m */,
 				A11C98891998D9B200F82E2A /* KGImageObject.h */,
 				A11C988A1998D9B200F82E2A /* KGImageObject.m */,
+				A1393976199CA4F50013891C /* KGJourneyObject.h */,
+				A1393977199CA4F50013891C /* KGJourneyObject.m */,
 			);
 			path = objects;
 			sourceTree = "<group>";
@@ -3361,6 +3366,7 @@
 				A121F42A198F778400260E73 /* PSTGridLayoutRow.m in Sources */,
 				A19F85E618EA6C300089B14F /* KGPreviewTaskViewController.m in Sources */,
 				A1610CC019938B95001F9DAA /* KGDiscoverDetailViewController.m in Sources */,
+				A1393978199CA4F50013891C /* KGJourneyObject.m in Sources */,
 				A121F418198F778400260E73 /* MWGridViewController.m in Sources */,
 				A121F427198F778400260E73 /* PSTCollectionViewUpdateItem.m in Sources */,
 				A15D676B1952871F00056F5E /* KGRegisterController.m in Sources */,

@@ -34,8 +34,13 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
+}
 
-    // Configure the view for the selected state
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    self.imgNameTextField.origin = CGPointMake(15, 15);
+    self.delGoodsBtn.centerY = self.imgNameTextField.centerY;
+    self.imgScrollView.top = self.imgNameTextField.bottom + 15;
 }
 
 - (void)setupData: (KGJourneyGoods *) goods {
