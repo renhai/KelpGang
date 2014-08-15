@@ -132,7 +132,6 @@ static const NSInteger kLimit = 10;
     if ([KGUtils checkIsNetworkConnectionAvailableAndNotify:self.view]) {
         NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"end_id": @0, @"limit": @(kLimit)};
         [[KGNetworkManager sharedInstance] postRequest:@"/mobile/travel/index" params:params success:^(id responseObject) {
-            NSLog(@"%@", responseObject);
             if ([KGUtils checkResult:responseObject]) {
                 [self.datasource removeAllObjects];
                 NSDictionary *dic = (NSDictionary *)responseObject;

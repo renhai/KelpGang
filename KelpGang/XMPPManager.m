@@ -259,15 +259,11 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 		return YES;
 	}
 
-	NSString *myJID = [[NSUserDefaults standardUserDefaults] stringForKey:kXMPPmyJID];
-	NSString *myPassword = [[NSUserDefaults standardUserDefaults] stringForKey:kXMPPmyPassword];
+//	NSString *myJID = [[NSUserDefaults standardUserDefaults] stringForKey:kXMPPmyJID];
+//	NSString *myPassword = [[NSUserDefaults standardUserDefaults] stringForKey:kXMPPmyPassword];
 
-    if (!myJID) {
-        myJID = @"hai@pc-20120831ebrg";
-    }
-    if (!myPassword) {
-        myPassword = @"hai";
-    }
+    NSString *myJID = [NSString stringWithFormat:@"%d@%@", APPCONTEXT.currUser.uid, kChatHostName];
+    NSString *myPassword = APPCONTEXT.currUser.password;
 
 	//
 	// If you don't want to use the Settings view to set the JID,
@@ -429,7 +425,7 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
                     overlay.defaultStatusBarImage = nil;
                 }
                 overlay.hidesActivity = YES;
-                [overlay postMessage:[NSString stringWithFormat:@"%@(1)", displayName] duration:5.0];
+                [overlay postMessage:[NSString stringWithFormat:@"%@(1)", displayName] duration:10.0];
                 break;
             }
             case 1: {
@@ -458,6 +454,16 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 - (void)xmppStream:(XMPPStream *)sender didReceivePresence:(XMPPPresence *)presence
 {
 	DDLogVerbose(@"%@: %@ - %@", THIS_FILE, THIS_METHOD, [presence fromStr]);
+    NSString *presenceType = [presence type];
+    NSString *myUsername = [[sender myJID] user];
+    NSString *presenceFromUser = [[presence from] user];
+    if (![presenceFromUser isEqualToString:myUsername])
+    {
+        if  ([presenceType isEqualToString:@"subscribe"])
+        {
+            [xmppRoster subscribePresenceToUser:[presence from]];
+        }
+    }
 }
 
 - (void)xmppStream:(XMPPStream *)sender didReceiveError:(id)error
@@ -530,6 +536,16 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 	
 }
 
+- (void)xmppRoster:(XMPPRoster *)sender didReceivePresenceSubscriptionRequest:(XMPPPresence *)presence {
+    XMPPUserCoreDataStorageObject *user = [self.xmppRosterStorage
+                                           userForJID:[presence from]
+                                           xmppStream:self.xmppStream
+                                           managedObjectContext:[self managedObjectContext_roster]];
+    DDLogVerbose(@"didReceivePresenceSubscriptionRequest from user %@ ",
+                 user.jidStr);
+    [self.xmppRoster acceptPresenceSubscriptionRequestFrom:[presence from] andAddToRoster:YES];
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -552,7 +568,6 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 - (void)sendMessage:(XMPPElement *) message {
     [xmppStream sendElement:message];
 }
-
 
 - (void)statusBarOverlayDidRecognizeGesture:(UIGestureRecognizer *)gestureRecognizer {
     [[MTStatusBarOverlay sharedInstance] hide];

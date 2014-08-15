@@ -384,12 +384,14 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     [self.tableView reloadData];
     [self.tableView scrollToRowAtIndexPath:lastRow atScrollPosition:UITableViewScrollPositionNone animated:YES];
 
+    NSString *myJID = [NSString stringWithFormat:@"%d@%@", APPCONTEXT.currUser.uid, kChatHostName];
+    NSString *toJID = [NSString stringWithFormat:@"%d@%@", 2, kChatHostName];
     XMPPElement *body = [XMPPElement elementWithName:@"body"];
     [body setStringValue:textField.text];
     XMPPElement *mes = [XMPPElement elementWithName:@"message"];
     [mes addAttributeWithName:@"type" stringValue:@"chat"];
-    [mes addAttributeWithName:@"to" stringValue:@"andy@pc-20120831ebrg"];
-    [mes addAttributeWithName:@"from" stringValue:@"hai@pc-20120831ebrg"];
+    [mes addAttributeWithName:@"to" stringValue:toJID];
+    [mes addAttributeWithName:@"from" stringValue:myJID];
     [mes addChild:body];
     
     [[XMPPManager sharedInstance] sendMessage:mes];
