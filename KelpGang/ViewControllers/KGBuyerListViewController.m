@@ -14,7 +14,7 @@
 #import "KGFilterItem.h"
 #import "KGBuyerSummaryObject.h"
 
-static NSString * const kFindKelpCell = @"kFindKelpCell";
+static const NSInteger kLimit = 10;
 
 @interface KGBuyerListViewController ()
 
@@ -130,19 +130,21 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 
 - (void)refreshDatasource {
     if ([KGUtils checkIsNetworkConnectionAvailableAndNotify:self.view]) {
-        NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"endId": @0, @"limit": @20};
+        NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"end_id": @0, @"limit": @(kLimit)};
         [[KGNetworkManager sharedInstance] postRequest:@"/mobile/travel/index" params:params success:^(id responseObject) {
             NSLog(@"%@", responseObject);
-            [self.datasource removeAllObjects];
-            NSDictionary *dic = (NSDictionary *)responseObject;
-            self.hasmore = [dic[@"hasmore"] boolValue];
-            NSArray *data = [self convertBuyerSummary:dic];
+            if ([KGUtils checkResult:responseObject]) {
+                [self.datasource removeAllObjects];
+                NSDictionary *dic = (NSDictionary *)responseObject;
+                self.hasmore = [dic[@"hasmore"] boolValue];
+                NSArray *data = [self convertBuyerSummary:dic];
 
-            [self.datasource addObjectsFromArray:data];
-            [self.tableView reloadData];
-            [self.tableView.pullToRefreshView performSelector:@selector(stopAnimating) withObject:nil afterDelay:0.5];
-            if (self.hasmore) {
-                self.tableView.showsInfiniteScrolling = YES;
+                [self.datasource addObjectsFromArray:data];
+                [self.tableView reloadData];
+                [self.tableView.pullToRefreshView performSelector:@selector(stopAnimating) withObject:nil afterDelay:0.5];
+                if (self.hasmore) {
+                    self.tableView.showsInfiniteScrolling = YES;
+                }
             }
         } failure:^(NSError *error) {
             NSLog(@"%@", error);
@@ -153,35 +155,36 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
 }
 
 - (void)insertRowAtBottom {
-    __weak KGBuyerListViewController *weakSelf = self;
     if ([KGUtils checkIsNetworkConnectionAvailableAndNotify:self.view]) {
-        int64_t delayInSeconds = 2.0;
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            [weakSelf.tableView beginUpdates];
-            NSInteger count = [self.datasource count];
-            NSMutableArray *indexPaths = [[NSMutableArray alloc] init];
-            for (NSInteger i = 0; i < 20; i ++) {
-                KGBuyerSummaryObject *obj = [[KGBuyerSummaryObject alloc]init];
-                obj.userId = i;
-                obj.userName = [NSString stringWithFormat:@"用户%i", i];
-                obj.avatarUrl = @"";
-                obj.gender = i % 2;
-                obj.level = i % 5;
-                obj.routeDuration = @"12.12-12.25";
-                obj.fromCountry = @"";
-                obj.toCountry = @"澳大利亚";
-                obj.desc = @"是对伐啦圣诞节法拉盛地方时间段飞拉萨京东方流口水";
-                [self.datasource addObject:obj];
-                [indexPaths addObject:[NSIndexPath indexPathForRow:count + i  inSection:0]];
-            }
-            [weakSelf.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
-            [weakSelf.tableView endUpdates];
+        KGBuyerSummaryObject *lastObj = self.datasource.lastObject;
+        NSInteger endId = lastObj.travelId;
+        NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"end_id": @(endId), @"limit": @(kLimit)};
+        [[KGNetworkManager sharedInstance] postRequest:@"/mobile/travel/index" params:params success:^(id responseObject) {
+            NSLog(@"%@", responseObject);
+            if ([KGUtils checkResult:responseObject]) {
+                self.hasmore = [responseObject[@"hasmore"] boolValue];
+                NSArray *data = [self convertBuyerSummary:responseObject];
+                NSMutableArray *indexPaths = [[NSMutableArray alloc] init];
+                NSInteger count = [self.datasource count];
+                for (NSInteger i = 0; i < data.count; i ++) {
+                    [indexPaths addObject:[NSIndexPath indexPathForRow:count + i  inSection:0]];
+                }
+                [self.datasource addObjectsFromArray:data];
 
-            [weakSelf.tableView.infiniteScrollingView stopAnimating];
-        });
+                [self.tableView beginUpdates];
+                [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
+                [self.tableView endUpdates];
+                [self.tableView.infiniteScrollingView stopAnimating];
+                self.tableView.showsInfiniteScrolling = data.count > 0;
+            }
+        } failure:^(NSError *error) {
+            NSLog(@"%@", error);
+            [self.tableView.pullToRefreshView stopAnimating];
+            [self.tableView.infiniteScrollingView stopAnimating];
+            [[HudHelper getInstance] showHudOnView:self.view caption:@"系统错误,请稍后再试" image:nil acitivity:NO autoHideTime:1.6];
+        }];
     } else {
-        [weakSelf.tableView.infiniteScrollingView stopAnimating];
+        [self.tableView.infiniteScrollingView stopAnimating];
     }
 }
 
@@ -244,7 +247,6 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
             [[HudHelper getInstance] showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
             [[KGNetworkManager sharedInstance] postRequest:item.url params:nil success:^(id responseObject) {
                 NSDictionary *dic = (NSDictionary *)responseObject;
-//                NSLog(@"%@", dic);
                 if (item.index == 0) {
                     item.data = [self convertCountryData:dic];
                 } else if (item.index == 2) {
@@ -253,7 +255,6 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
                 [item openFilterView];
                 [[HudHelper getInstance] hideHudInView:self.view];
             } failure:^(NSError *error) {
-//                NSLog(@"Error: %@", error);
                 [[HudHelper getInstance] showHudOnView:self.view caption:@"系统错误,请稍后再试" image:nil acitivity:NO autoHideTime:1.6];
             }];
         }
@@ -356,7 +357,5 @@ static NSString * const kFindKelpCell = @"kFindKelpCell";
     NSString *result = [NSString stringWithFormat:@"%@-%@", [formatter stringFromDate:startDate], [formatter stringFromDate:endDate]];
     return result;
 }
-
-
 
 @end
