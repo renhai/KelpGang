@@ -7,6 +7,7 @@
 //
 
 #import "KGBuyerRouteCell.h"
+#import "KGJourneyObject.h"
 
 @implementation KGBuyerRouteCell
 
@@ -48,17 +49,15 @@
     }
 }
 
-- (void)setRouteInfo: (NSDictionary *)info {
-    self.fromLabel.text = info[@"from"];
-    self.toLabel.text = info[@"to"];
-    if (!info[@"from"] || [@"" isEqualToString:info[@"from"]]) {
-        self.toLabel.text = [NSString stringWithFormat:@"常驻%@", info[@"to"]];
+- (void)setRouteInfo: (KGJourneyObject *)info {
+    self.fromLabel.text = info.fromCity;
+    self.toLabel.text = info.toCountry;
+    if (!info.fromCity || [@"" isEqualToString:info.fromCity]) {
+        self.toLabel.text = [NSString stringWithFormat:@"常驻%@", info.toCountry];
     }
-    self.descLabel.text = info[@"travel_desc"];
-    double startTime = [info[@"travel_start_time"] doubleValue];
-    NSDate *startDate = [NSDate dateWithTimeIntervalSince1970:startTime];
-    double endTime = [info[@"travel_back_time"] doubleValue];
-    NSDate *endDate = [NSDate dateWithTimeIntervalSince1970:endTime];
+    self.descLabel.text = info.desc;
+    NSDate *startDate = info.startDate;
+    NSDate *endDate = info.backDate;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"M.d"];
     NSString *durStr = [NSString stringWithFormat:@"%@-%@", [formatter stringFromDate:startDate], [formatter stringFromDate:endDate]];

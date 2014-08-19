@@ -819,6 +819,67 @@
             </objects>
             <point key="canvasLocation" x="1096" y="3881"/>
         </scene>
+        <!--My Collect View Controller - 我的收藏-->
+        <scene sceneID="btI-vv-KdW">
+            <objects>
+                <tableViewController storyboardIdentifier="kMyCollectViewController" id="Ib0-Z9-Ig1" customClass="KGMyCollectViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="124" sectionHeaderHeight="22" sectionFooterHeight="22" id="d3V-g8-T8E">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="kMyCollectCell" rowHeight="124" id="D9E-0p-rvg" customClass="KGMyCollectViewCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="124"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D9E-0p-rvg" id="4m5-Rn-QzB">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="123"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="VPe-DH-65d">
+                                            <rect key="frame" x="9" y="10" width="100" height="103"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商品描述" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Xd4-JO-Xdk">
+                                            <rect key="frame" x="157" y="10" width="68" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="收藏人气" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yMD-G8-SpO">
+                                            <rect key="frame" x="127" y="62" width="68" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="216" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oB8-Jd-8pa">
+                                            <rect key="frame" x="216" y="62" width="29" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="descLabel" destination="Xd4-JO-Xdk" id="O3E-jC-mu8"/>
+                                    <outlet property="goodsImageView" destination="VPe-DH-65d" id="b4t-ro-H2D"/>
+                                    <outlet property="hotLabel" destination="yMD-G8-SpO" id="Cyi-PZ-CKz"/>
+                                    <outlet property="hotValueLabel" destination="oB8-Jd-8pa" id="T5d-E9-iPo"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Ib0-Z9-Ig1" id="tJF-aF-8yM"/>
+                            <outlet property="delegate" destination="Ib0-Z9-Ig1" id="mdg-8N-4V1"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="我的收藏" id="OWC-Ur-eGM"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6OX-tk-iJW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1104" y="5291"/>
+        </scene>
         <!--Create Task View Controller - 新任务-->
         <scene sceneID="23G-YY-Eaw">
             <objects>
@@ -1718,6 +1779,9 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                        <connections>
+                                            <segue destination="Ib0-Z9-Ig1" kind="push" id="OA3-Ya-iex"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="46" id="x8V-i3-CdC">
                                         <rect key="frame" x="0.0" y="342" width="320" height="46"/>

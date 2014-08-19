@@ -180,8 +180,10 @@
     } else if (indexPath.section == 3 && indexPath.row == 0) {
         UIImageView *imageView = (UIImageView *)[cell viewWithTag:1];
         [self expandMoreInfoView:imageView];
-    } else if (indexPath.section == 0 && indexPath.row == 3) {
-
+    } else if (indexPath.section == 0 && indexPath.row == 0) {
+        UIViewController *collectController = [self.storyboard instantiateViewControllerWithIdentifier:@"kMyCollectViewController"];
+        collectController.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:collectController animated:YES];
     }
 }
 

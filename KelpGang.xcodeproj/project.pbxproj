@@ -22,6 +22,7 @@
 		A106930818C068CF003CC6BC /* head-indicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A106930418C068CF003CC6BC /* head-indicator@2x.png */; };
 		A106930D18C06C32003CC6BC /* arrow-up.png in Resources */ = {isa = PBXBuildFile; fileRef = A106930B18C06C32003CC6BC /* arrow-up.png */; };
 		A106930E18C06C32003CC6BC /* arrow-up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A106930C18C06C32003CC6BC /* arrow-up@2x.png */; };
+		A108052319A352DE005674E7 /* KGCollectObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A108052219A352DE005674E7 /* KGCollectObject.m */; };
 		A10CDF32198B96FF00F7B0ED /* china_province_city_zone.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = A10CDF31198B96FF00F7B0ED /* china_province_city_zone.sqlite */; };
 		A110FA1B19077BED001651A3 /* KGChatTxtMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A110FA1A19077BED001651A3 /* KGChatTxtMessageCell.m */; };
 		A110FA1E1907A879001651A3 /* order.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A110FA1D1907A879001651A3 /* order.storyboard */; };
@@ -116,6 +117,10 @@
 		A164DA35194EA249008B26E8 /* IQUIView+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = A164DA29194EA249008B26E8 /* IQUIView+Hierarchy.m */; };
 		A164DA36194EA249008B26E8 /* IQUIView+IQKeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = A164DA2B194EA249008B26E8 /* IQUIView+IQKeyboardToolbar.m */; };
 		A164DA37194EA249008B26E8 /* IQUIWindow+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = A164DA2D194EA249008B26E8 /* IQUIWindow+Hierarchy.m */; };
+		A16873B719A2F5F400810275 /* KGMyCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16873B619A2F5F400810275 /* KGMyCollectViewController.m */; };
+		A16873BA19A2F80F00810275 /* KGMyCollectViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A16873B919A2F80F00810275 /* KGMyCollectViewCell.m */; };
+		A16873BD19A305A500810275 /* KGGoodsPhotoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A16873BC19A305A500810275 /* KGGoodsPhotoObject.m */; };
+		A16873C019A3064300810275 /* KGGoodsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A16873BF19A3064300810275 /* KGGoodsObject.m */; };
 		A16FBEED18DC178C009E2F66 /* KGMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = A16FBEEC18DC178C009E2F66 /* KGMaskView.m */; };
 		A16FBEF018DC1FA6009E2F66 /* KGHostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16FBEEF18DC1FA6009E2F66 /* KGHostViewController.m */; };
 		A16FBEF718DC255A009E2F66 /* empty_heart.png in Resources */ = {isa = PBXBuildFile; fileRef = A16FBEF118DC255A009E2F66 /* empty_heart.png */; };
@@ -733,6 +738,8 @@
 		A106930418C068CF003CC6BC /* head-indicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "head-indicator@2x.png"; sourceTree = "<group>"; };
 		A106930B18C06C32003CC6BC /* arrow-up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-up.png"; sourceTree = "<group>"; };
 		A106930C18C06C32003CC6BC /* arrow-up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-up@2x.png"; sourceTree = "<group>"; };
+		A108052119A352DE005674E7 /* KGCollectObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCollectObject.h; sourceTree = "<group>"; };
+		A108052219A352DE005674E7 /* KGCollectObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCollectObject.m; sourceTree = "<group>"; };
 		A10CDF31198B96FF00F7B0ED /* china_province_city_zone.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = china_province_city_zone.sqlite; sourceTree = "<group>"; };
 		A110FA1919077BED001651A3 /* KGChatTxtMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = KGChatTxtMessageCell.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		A110FA1A19077BED001651A3 /* KGChatTxtMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = KGChatTxtMessageCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -904,6 +911,14 @@
 		A164DA2B194EA249008B26E8 /* IQUIView+IQKeyboardToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIView+IQKeyboardToolbar.m"; sourceTree = "<group>"; };
 		A164DA2C194EA249008B26E8 /* IQUIWindow+Hierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIWindow+Hierarchy.h"; sourceTree = "<group>"; };
 		A164DA2D194EA249008B26E8 /* IQUIWindow+Hierarchy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIWindow+Hierarchy.m"; sourceTree = "<group>"; };
+		A16873B519A2F5F400810275 /* KGMyCollectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGMyCollectViewController.h; sourceTree = "<group>"; };
+		A16873B619A2F5F400810275 /* KGMyCollectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGMyCollectViewController.m; sourceTree = "<group>"; };
+		A16873B819A2F80F00810275 /* KGMyCollectViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGMyCollectViewCell.h; sourceTree = "<group>"; };
+		A16873B919A2F80F00810275 /* KGMyCollectViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGMyCollectViewCell.m; sourceTree = "<group>"; };
+		A16873BB19A305A500810275 /* KGGoodsPhotoObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGGoodsPhotoObject.h; sourceTree = "<group>"; };
+		A16873BC19A305A500810275 /* KGGoodsPhotoObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGGoodsPhotoObject.m; sourceTree = "<group>"; };
+		A16873BE19A3064300810275 /* KGGoodsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGGoodsObject.h; sourceTree = "<group>"; };
+		A16873BF19A3064300810275 /* KGGoodsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGGoodsObject.m; sourceTree = "<group>"; };
 		A16FBEEB18DC178C009E2F66 /* KGMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGMaskView.h; sourceTree = "<group>"; };
 		A16FBEEC18DC178C009E2F66 /* KGMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGMaskView.m; sourceTree = "<group>"; };
 		A16FBEEE18DC1FA6009E2F66 /* KGHostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGHostViewController.h; sourceTree = "<group>"; };
@@ -2047,6 +2062,8 @@
 				A1610CBF19938B95001F9DAA /* KGDiscoverDetailViewController.m */,
 				A162DAC0199A15A80038AE8B /* KGMyTaskController.h */,
 				A162DAC1199A15A80038AE8B /* KGMyTaskController.m */,
+				A16873B519A2F5F400810275 /* KGMyCollectViewController.h */,
+				A16873B619A2F5F400810275 /* KGMyCollectViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -2130,6 +2147,12 @@
 				A11C988A1998D9B200F82E2A /* KGImageObject.m */,
 				A1393976199CA4F50013891C /* KGJourneyObject.h */,
 				A1393977199CA4F50013891C /* KGJourneyObject.m */,
+				A16873BB19A305A500810275 /* KGGoodsPhotoObject.h */,
+				A16873BC19A305A500810275 /* KGGoodsPhotoObject.m */,
+				A16873BE19A3064300810275 /* KGGoodsObject.h */,
+				A16873BF19A3064300810275 /* KGGoodsObject.m */,
+				A108052119A352DE005674E7 /* KGCollectObject.h */,
+				A108052219A352DE005674E7 /* KGCollectObject.m */,
 			);
 			path = objects;
 			sourceTree = "<group>";
@@ -2169,6 +2192,8 @@
 				A11C98871998BBCD00F82E2A /* KGTaskViewHeadCell.m */,
 				A162DAC3199A19ED0038AE8B /* KGMyTaskCell.h */,
 				A162DAC4199A19ED0038AE8B /* KGMyTaskCell.m */,
+				A16873B819A2F80F00810275 /* KGMyCollectViewCell.h */,
+				A16873B919A2F80F00810275 /* KGMyCollectViewCell.m */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -3354,6 +3379,7 @@
 				A112DF4219188C6300108FAD /* KGCompletedOrderBuyerCell.m in Sources */,
 				A1610CB319936564001F9DAA /* KGDiscoverViewController.m in Sources */,
 				A1CA59E21917616200D9A429 /* KGCreateOrderBuyerCell.m in Sources */,
+				A108052319A352DE005674E7 /* KGCollectObject.m in Sources */,
 				A164DA37194EA249008B26E8 /* IQUIWindow+Hierarchy.m in Sources */,
 				A1AFF97518D0494B0043E75E /* KGCreateTaskViewController.m in Sources */,
 				A11F3CD51994C462007B615D /* KGDiscoverDetailCell.m in Sources */,
@@ -3369,6 +3395,7 @@
 				A1393978199CA4F50013891C /* KGJourneyObject.m in Sources */,
 				A121F418198F778400260E73 /* MWGridViewController.m in Sources */,
 				A121F427198F778400260E73 /* PSTCollectionViewUpdateItem.m in Sources */,
+				A16873C019A3064300810275 /* KGGoodsObject.m in Sources */,
 				A15D676B1952871F00056F5E /* KGRegisterController.m in Sources */,
 				A19EE92A199871A500D6C935 /* KGTaskObject.m in Sources */,
 				A174B7B01941A09D0067B8FA /* KGNetworkManager.m in Sources */,
@@ -3460,6 +3487,7 @@
 				A11C988B1998D9B200F82E2A /* KGImageObject.m in Sources */,
 				A112DF481918C98600108FAD /* KGCompletedOrderLabelCell.m in Sources */,
 				A1B4F74D195033E900D48B09 /* AppContext.m in Sources */,
+				A16873B719A2F5F400810275 /* KGMyCollectViewController.m in Sources */,
 				A1A0DA0318FE662300E0C0E8 /* KGBaseMessageCell.m in Sources */,
 				A19F0ED118E2C6A400C2944D /* HudHelper.m in Sources */,
 				A1BCF764194AD6C6008319C4 /* KGBuyerRouteCell.m in Sources */,
@@ -3468,10 +3496,12 @@
 				A164DA33194EA249008B26E8 /* IQTitleBarButtonItem.m in Sources */,
 				A1CA59EC191762A000D9A429 /* KGOrderSummaryObject.m in Sources */,
 				A18A2B8D18E1334200FDFB8E /* KGAddAddressController.m in Sources */,
+				A16873BD19A305A500810275 /* KGGoodsPhotoObject.m in Sources */,
 				A162DAC5199A19ED0038AE8B /* KGMyTaskCell.m in Sources */,
 				A112DF451918979600108FAD /* KGCompletedOrderPhotoInfoCell.m in Sources */,
 				A143012618BB461A0064DF87 /* UIImage+PKImage.m in Sources */,
 				A19F0ECC18E2B86200C2944D /* KGCommentListViewController.m in Sources */,
+				A16873BA19A2F80F00810275 /* KGMyCollectViewCell.m in Sources */,
 				A164DA2F194EA249008B26E8 /* IQKeyboardManager.m in Sources */,
 				A1EADC6E19889620005F7D95 /* KGSettingsViewController.m in Sources */,
 				A18F6FD018ED50C60029F762 /* KGFilterItem.m in Sources */,

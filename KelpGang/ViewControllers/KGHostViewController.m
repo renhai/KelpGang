@@ -167,12 +167,12 @@
 //                [taskController setTitle:@"我的任务"];
 //                [self.navigationController pushViewController:taskController animated:YES];
             } else if (indexPath.row == 2) {//我的收藏
-                KGBaseWebViewController *collectController = [[KGBaseWebViewController alloc] initWithWebPath:@"/html/gj_collect.htm"];
-                collectController.isPullToRefresh = YES;
-                collectController.hidesBottomBarWhenPushed = YES;
-                [collectController setLeftBarbuttonItem];
-                [collectController setTitle:@"我的收藏"];
-                [self.navigationController pushViewController:collectController animated:YES];
+//                KGBaseWebViewController *collectController = [[KGBaseWebViewController alloc] initWithWebPath:@"/html/gj_collect.htm"];
+//                collectController.isPullToRefresh = YES;
+//                collectController.hidesBottomBarWhenPushed = YES;
+//                [collectController setLeftBarbuttonItem];
+//                [collectController setTitle:@"我的收藏"];
+//                [self.navigationController pushViewController:collectController animated:YES];
             }
             break;
         }

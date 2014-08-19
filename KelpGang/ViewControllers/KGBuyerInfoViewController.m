@@ -15,6 +15,9 @@
 #import "KGChatViewController.h"
 #import "KGCommentListViewController.h"
 #import "KGBuyerRouteCell.h"
+#import "KGGoodsObject.h"
+#import "KGGoodsPhotoObject.h"
+#import "KGJourneyObject.h"
 
 
 @interface KGBuyerInfoViewController () <SwipeViewDataSource, SwipeViewDelegate, MWPhotoBrowserDelegate>
@@ -23,7 +26,7 @@
 @property (nonatomic, strong) NSMutableArray *photos;
 
 @property (nonatomic, strong) NSDictionary *user_info;
-@property (nonatomic, strong) NSDictionary *travel_info;
+@property (nonatomic, strong) KGJourneyObject *journeyObj;
 @property (nonatomic, strong) NSArray *good_info;
 @property (nonatomic, strong) NSArray *comment_info;
 @property (nonatomic, assign) NSInteger comment_number;
@@ -55,8 +58,8 @@
         NSDictionary *dic = (NSDictionary *)responseObject;
         NSDictionary *data = dic[@"data"];
         self.user_info = data[@"user_info"];
-        self.travel_info = data[@"travel_info"];
-        self.good_info = data[@"good_info"];
+        self.journeyObj = [self getJourneyObj:data[@"travel_info"]];
+        self.good_info = [self getGoodsList:data[@"good_info"]];
         self.comment_info = data[@"comment_info"];
         self.comment_number = [data[@"comment_number"] integerValue];
         [self.tableView reloadData];
@@ -110,7 +113,7 @@
         } else if (indexPath.row == 1) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"kBuyerRouteCell" forIndexPath:indexPath];
             KGBuyerRouteCell *rCell = (KGBuyerRouteCell *)cell;
-            [rCell setRouteInfo:self.travel_info];
+            [rCell setRouteInfo:self.journeyObj];
         } else if (indexPath.row == 2) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"kBuyerPictureCell" forIndexPath:indexPath];
             KGBuyerRefPicturesCell *pCell = (KGBuyerRefPicturesCell *)cell;
@@ -203,7 +206,7 @@
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 95, 95)];
     [imageView setContentMode:UIViewContentModeScaleAspectFill];
     [imageView setClipsToBounds:YES];
-    NSString *imageUrl = self.good_info[index][@"good_default_head_url"];
+    NSString *imageUrl = [self.good_info[index] valueForKey:@"good_default_head_url"];
     [imageView setImageWithURL:[NSURL URLWithString:imageUrl] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [containerView addSubview:imageView];
 
@@ -220,9 +223,9 @@
 
     self.currAlbumIndex = index;
     [self.photos removeAllObjects];
-    NSArray *imgArry = self.good_info[index][@"good_photos"];
-    for (NSDictionary *one in imgArry) {
-        [self.photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:one[@"good_photo_url"]]]];
+    NSArray *imgArry = [self.good_info[index] valueForKey:@"good_photos"];
+    for (KGGoodsPhotoObject *one in imgArry) {
+        [self.photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:one.good_photo_url]]];
     }
 
     MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
@@ -261,7 +264,8 @@
         return nil;
     }
     MWPhoto *photo = [self.photos objectAtIndex:index];
-    NSString *title = self.good_info[self.currAlbumIndex][@"good_name"];
+    KGGoodsObject *goodsObj = self.good_info[self.currAlbumIndex];
+    NSString *title = goodsObj.good_name;
     KGPicBottomView *captionView = [[KGPicBottomView alloc] initWithPhoto:photo index:index count:self.photos.count title:title chatBlock:^(UIButton *sender) {
         KGChatViewController *chatViewController = (KGChatViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"kChatViewController"];
         self.navigationController.navigationBar.translucent = NO;
@@ -270,6 +274,28 @@
         NSLog(@"do chat operation");
     } collectBlock:^(UIButton *sender) {
         NSLog(@"do collect operation");
+        NSInteger goodsId = goodsObj.goods_id;
+        KGGoodsPhotoObject *goodsPhoto = goodsObj.good_photos[index];
+        NSInteger photoId = goodsPhoto.good_photo_id;
+        NSInteger travelId = self.journeyObj.journeyId;
+        NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
+                                 @"photo_id": @(photoId),
+                                 @"good_id": @(goodsId),
+                                 @"travel_id": @(travelId),
+                                 @"session_key": APPCONTEXT.currUser.sessionKey};
+        [[HudHelper getInstance] showHudOnView:photoBrowser.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
+        [[KGNetworkManager sharedInstance] postRequest:@"/mobile/good/addCollection" params:params success:^(id responseObject) {
+            DLog(@"%@", responseObject);
+            if([KGUtils checkResult:responseObject]) {
+                [[HudHelper getInstance] showHudOnView:photoBrowser.view caption:@"收藏成功" autoHideTime:1.6];
+            } else {
+                [[HudHelper getInstance] hideHudInView:photoBrowser.view];
+            }
+
+        } failure:^(NSError *error) {
+            DLog(@"%@", error);
+            [[HudHelper getInstance] showHudOnView:photoBrowser.view caption:@"收藏失败" autoHideTime:1.6];
+        }];
     }];
     return captionView;
 }
@@ -287,5 +313,43 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (NSArray *)getGoodsList:(NSArray *)goodsInfo {
+    NSMutableArray *result = [[NSMutableArray alloc]init];
+    for (NSDictionary *info in goodsInfo) {
+        KGGoodsObject *obj = [[KGGoodsObject alloc]init];
+        obj.goods_id = [info[@"good_id"] integerValue];
+        obj.good_default_head_url = info[@"good_default_head_url"];
+        obj.good_default_main_url = info[@"good_default_main_url"];
+        obj.good_default_photo_url = info[@"good_default_photo_url"];
+        obj.good_default_tiny_url = info[@"good_default_tiny_url"];
+        obj.good_name = info[@"good_name"];
+        obj.good_is_collection = [info[@"good_is_collection"] boolValue];
+        NSArray *photoArr = info[@"good_photos"];
+        NSMutableArray *photos = [[NSMutableArray alloc]init];
+        for (NSDictionary *photoDic in photoArr) {
+            KGGoodsPhotoObject *photoObj = [[KGGoodsPhotoObject alloc]init];
+            photoObj.good_photo_id = [photoDic[@"good_photo_id"] integerValue];
+            photoObj.good_head_url = photoDic[@"good_head_url"];
+            photoObj.good_main_url = photoDic[@"good_main_url"];
+            photoObj.good_photo_url = photoDic[@"good_photo_url"];
+            photoObj.good_tiny_url = photoDic[@"good_tiny_url"];
+            [photos addObject:photoObj];
+        }
+        obj.good_photos = photos;
+        [result addObject:obj];
+    }
+    return result;
+}
+
+- (KGJourneyObject *)getJourneyObj: (NSDictionary *)info {
+    KGJourneyObject *result = [[KGJourneyObject alloc]init];
+    result.journeyId = [info[@"travel_id"] integerValue];
+    result.toCountry = info[@"to"];
+    result.fromCity = info[@"from"];
+    result.backDate = [NSDate dateWithTimeIntervalSince1970:[info[@"travel_back_time"] doubleValue]];
+    result.startDate = [NSDate dateWithTimeIntervalSince1970:[info[@"travel_start_time"] doubleValue]];
+    result.desc = info[@"travel_desc"];
+    return result;
+}
 
 @end

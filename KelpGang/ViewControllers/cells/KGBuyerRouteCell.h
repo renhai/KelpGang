@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class KGJourneyObject;
+
 @interface KGBuyerRouteCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *fromLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *airplaneLabel;
@@ -15,6 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *durationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descLabel;
 
-- (void)setRouteInfo: (NSDictionary *)info;
+- (void)setRouteInfo: (KGJourneyObject *)info;
 
 @end
