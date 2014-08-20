@@ -31,6 +31,7 @@
 @property (nonatomic, strong) NSArray *comment_info;
 @property (nonatomic, assign) NSInteger comment_number;
 @property (nonatomic, assign) NSInteger currAlbumIndex;
+@property (nonatomic, assign) BOOL isFollowed;
 
 @end
 
@@ -63,6 +64,7 @@
             self.good_info = [self getGoodsList:data[@"good_info"]];
             self.comment_info = data[@"comment_info"];
             self.comment_number = [data[@"comment_number"] integerValue];
+            self.isFollowed = [data[@"isFollowed"] boolValue];
             [self.tableView reloadData];
         }
     } failure:^(NSError *error) {
@@ -112,6 +114,7 @@
             cell = [tableView dequeueReusableCellWithIdentifier:@"kBuyerDescriptionCell" forIndexPath:indexPath];
             KGBuyerDescriptionCell *dCell = (KGBuyerDescriptionCell *)cell;
             [dCell setUserInfo:self.user_info];
+            [dCell.followButton setTitle:self.isFollowed ? @"取消关注" : @"关注" forState: UIControlStateNormal];
             [dCell.followButton addTarget:self action:@selector(followAction:) forControlEvents:UIControlEventTouchUpInside];
         } else if (indexPath.row == 1) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"kBuyerRouteCell" forIndexPath:indexPath];
@@ -361,6 +364,34 @@
 }
 
 - (void)followAction: (UIButton *)sender {
+    if (![APPCONTEXT checkLogin]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kAlertViewTip message:@"请先登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    NSInteger followId = [self.user_info[@"user_id"] integerValue];
+    if (followId == APPCONTEXT.currUser.uid) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kAlertViewTip message:@"不能关注自己哦" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
+                             @"follow_id": @(followId),
+                             @"session_key": APPCONTEXT.currUser.sessionKey};
+    [[HudHelper getInstance]showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
+    [[KGNetworkManager sharedInstance]postRequest:@"/mobile/user/follow" params:params success:^(id responseObject) {
+        DLog(@"%@", responseObject);
+        if ([KGUtils checkResult:responseObject]) {
+            [[HudHelper getInstance] showHudOnView:self.view caption:@"关注成功" image:nil acitivity:NO autoHideTime:1.6];
+            self.isFollowed = YES;
+            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]]withRowAnimation:UITableViewRowAnimationNone];
+        } else {
+            [[HudHelper getInstance] hideHudInView:self.view];
+        }
+    } failure:^(NSError *error) {
+        DLog(@"%@", error);
+        [[HudHelper getInstance] showHudOnView:self.view caption:@"系统错误,请稍后再试" image:nil acitivity:NO autoHideTime:1.6];
+    }];
 
 }
 
