@@ -52,20 +52,22 @@
 
     [[HudHelper getInstance] showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
     self.photos = [[NSMutableArray alloc] init];
-    NSDictionary *params = @{@"user_id": @0, @"travel_id": @(self.travelId)};
+    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"travel_id": @(self.travelId)};
     [[KGNetworkManager sharedInstance] postRequest:@"/mobile/travel/getUserTravel" params:params success:^(id responseObject) {
         NSLog(@"%@", responseObject);
-        NSDictionary *dic = (NSDictionary *)responseObject;
-        NSDictionary *data = dic[@"data"];
-        self.user_info = data[@"user_info"];
-        self.journeyObj = [self getJourneyObj:data[@"travel_info"]];
-        self.good_info = [self getGoodsList:data[@"good_info"]];
-        self.comment_info = data[@"comment_info"];
-        self.comment_number = [data[@"comment_number"] integerValue];
-        [self.tableView reloadData];
         [[HudHelper getInstance] hideHudInView:self.view];
+        if ([KGUtils checkResult:responseObject]) {
+            NSDictionary *data = responseObject[@"data"];
+            self.user_info = data[@"user_info"];
+            self.journeyObj = [self getJourneyObj:data[@"travel_info"]];
+            self.good_info = [self getGoodsList:data[@"good_info"]];
+            self.comment_info = data[@"comment_info"];
+            self.comment_number = [data[@"comment_number"] integerValue];
+            [self.tableView reloadData];
+        }
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
+        [[HudHelper getInstance] showHudOnView:self.view caption:@"系统错误,请稍后再试" image:nil acitivity:NO autoHideTime:1.6];
     }];
 }
 
@@ -110,6 +112,7 @@
             cell = [tableView dequeueReusableCellWithIdentifier:@"kBuyerDescriptionCell" forIndexPath:indexPath];
             KGBuyerDescriptionCell *dCell = (KGBuyerDescriptionCell *)cell;
             [dCell setUserInfo:self.user_info];
+            [dCell.followButton addTarget:self action:@selector(followAction:) forControlEvents:UIControlEventTouchUpInside];
         } else if (indexPath.row == 1) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"kBuyerRouteCell" forIndexPath:indexPath];
             KGBuyerRouteCell *rCell = (KGBuyerRouteCell *)cell;
@@ -274,6 +277,11 @@
         NSLog(@"do chat operation");
     } collectBlock:^(UIButton *sender) {
         NSLog(@"do collect operation");
+        if (![APPCONTEXT checkLogin]) {
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请先登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alert show];
+            return;
+        }
         NSInteger goodsId = goodsObj.goods_id;
         KGGoodsPhotoObject *goodsPhoto = goodsObj.good_photos[index];
         NSInteger photoId = goodsPhoto.good_photo_id;
@@ -350,6 +358,10 @@
     result.startDate = [NSDate dateWithTimeIntervalSince1970:[info[@"travel_start_time"] doubleValue]];
     result.desc = info[@"travel_desc"];
     return result;
+}
+
+- (void)followAction: (UIButton *)sender {
+
 }
 
 @end

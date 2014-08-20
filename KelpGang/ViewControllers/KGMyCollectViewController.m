@@ -58,7 +58,7 @@
                 collectObj.photoId = [collection_info[@"collection_photo_id"] integerValue];
                 collectObj.travelId = [collection_info[@"collection_travel_id"] integerValue];
                 collectObj.popularity = [collection_info[@"collection_popularity"] integerValue];
-                collectObj.goodsImageUrl = good_info[@"good_default_head_url"];
+                collectObj.goodsImageUrl = collection_info[@"good_head_url"];
                 collectObj.goodsName = good_info[@"good_name"];
                 [self.datasource addObject:collectObj];
             }
