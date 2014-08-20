@@ -8,6 +8,7 @@
 
 #import "KGMyFollowViewController.h"
 #import "KGMyFollowCell.h"
+#import "KGUserFollowObject.h"
 
 @interface KGMyFollowViewController ()
 
@@ -38,13 +39,26 @@
         self.datasource = [[NSMutableArray alloc]init];
     }
     [[HudHelper getInstance] showHudOnView:self.tableView caption:nil image:nil acitivity:YES autoHideTime:0.0];
-    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid)};
-    [[KGNetworkManager sharedInstance]postRequest:@"/mobile/user/getFollows" params:params success:^(id responseObject) {
+    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
+                             @"session_key": APPCONTEXT.currUser.sessionKey};
+    [[KGNetworkManager sharedInstance]postRequest:@"/mobile/user/getFollowUsers" params:params success:^(id responseObject) {
         DLog(@"%@",responseObject);
         [[HudHelper getInstance] hideHudInView:self.tableView];
         if ([KGUtils checkResult:responseObject]) {
             [self.datasource removeAllObjects];
-
+            NSDictionary *data = responseObject[@"data"];
+            NSArray *userArr = data[@"user_info"];
+            for (NSDictionary *info in userArr) {
+                KGUserFollowObject *userObj = [[KGUserFollowObject alloc]init];
+                userObj.uid = [info[@"user_id"] integerValue];
+                userObj.uname = info[@"user_name"];
+                userObj.avatarUrl = info[@"head_url"];
+                userObj.intro = info[@"user_desc"];
+                userObj.gender = [KGUtils convertGender:info[@"user_sex"]];
+                userObj.isFollowed = YES;
+                [self.datasource addObject:userObj];
+            }
+            [self.tableView reloadData];
         }
     } failure:^(NSError *error) {
         DLog(@"%@",error);
@@ -67,14 +81,16 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return [self.datasource count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     KGMyFollowCell *cell = [tableView dequeueReusableCellWithIdentifier:@"kMyFollowViewCell" forIndexPath:indexPath];
-
+    KGUserFollowObject *obj = self.datasource[indexPath.row];
+    [cell setObject:obj];
+    [cell.followBtn addTarget:self action:@selector(unfollow:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 
@@ -84,6 +100,46 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+}
+
+- (void)unfollow: (UIButton *)sender {
+    UITableViewCell *cell = (UITableViewCell *)sender.superview.superview.superview;
+    if (![KGUtils isHigherIOS7]) {
+        cell = (UITableViewCell *)sender.superview.superview;
+    }
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    KGUserFollowObject *userObj = self.datasource[indexPath.row];
+    NSInteger followId = userObj.uid;
+    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
+                             @"follow_id": @(followId),
+                             @"session_key": APPCONTEXT.currUser.sessionKey};
+    if (userObj.isFollowed) {
+        [[HudHelper getInstance]showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
+        [[KGNetworkManager sharedInstance]postRequest:@"/mobile/user/disFollow" params:params success:^(id responseObject) {
+            DLog(@"%@", responseObject);
+            [[HudHelper getInstance] hideHudInView:self.view];
+            if ([KGUtils checkResult:responseObject]) {
+                userObj.isFollowed = NO;
+                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+            }
+        } failure:^(NSError *error) {
+            DLog(@"%@", error);
+            [[HudHelper getInstance] showHudOnView:self.view caption:@"系统错误,请稍后再试" image:nil acitivity:NO autoHideTime:1.6];
+        }];
+    } else {
+        [[HudHelper getInstance]showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
+        [[KGNetworkManager sharedInstance]postRequest:@"/mobile/user/follow" params:params success:^(id responseObject) {
+            DLog(@"%@", responseObject);
+            [[HudHelper getInstance] hideHudInView:self.view];
+            if ([KGUtils checkResult:responseObject]) {
+                userObj.isFollowed = YES;
+                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+            }
+        } failure:^(NSError *error) {
+            DLog(@"%@", error);
+            [[HudHelper getInstance] showHudOnView:self.view caption:@"系统错误,请稍后再试" image:nil acitivity:NO autoHideTime:1.6];
+        }];
+    }
 }
 
 @end

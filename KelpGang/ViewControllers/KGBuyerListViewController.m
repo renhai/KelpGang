@@ -14,7 +14,7 @@
 #import "KGFilterItem.h"
 #import "KGBuyerSummaryObject.h"
 
-static const NSInteger kLimit = 10;
+static const NSInteger kLimit = 20;
 
 @interface KGBuyerListViewController ()
 

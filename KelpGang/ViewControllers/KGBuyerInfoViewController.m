@@ -378,12 +378,10 @@
         [[HudHelper getInstance]showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
         [[KGNetworkManager sharedInstance]postRequest:@"/mobile/user/disFollow" params:params success:^(id responseObject) {
             DLog(@"%@", responseObject);
+            [[HudHelper getInstance] hideHudInView:self.view];
             if ([KGUtils checkResult:responseObject]) {
-                [[HudHelper getInstance] showHudOnView:self.view caption:@"取消关注成功" image:nil acitivity:NO autoHideTime:1.6];
                 self.isFollowed = NO;
                 [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]]withRowAnimation:UITableViewRowAnimationNone];
-            } else {
-                [[HudHelper getInstance] hideHudInView:self.view];
             }
         } failure:^(NSError *error) {
             DLog(@"%@", error);
@@ -398,12 +396,10 @@
         [[HudHelper getInstance]showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
         [[KGNetworkManager sharedInstance]postRequest:@"/mobile/user/follow" params:params success:^(id responseObject) {
             DLog(@"%@", responseObject);
+            [[HudHelper getInstance] hideHudInView:self.view];
             if ([KGUtils checkResult:responseObject]) {
-                [[HudHelper getInstance] showHudOnView:self.view caption:@"关注成功" image:nil acitivity:NO autoHideTime:1.6];
                 self.isFollowed = YES;
                 [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]]withRowAnimation:UITableViewRowAnimationNone];
-            } else {
-                [[HudHelper getInstance] hideHudInView:self.view];
             }
         } failure:^(NSError *error) {
             DLog(@"%@", error);
