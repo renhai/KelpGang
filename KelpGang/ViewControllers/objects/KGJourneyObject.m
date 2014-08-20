@@ -16,6 +16,7 @@
         self.toCountry = @"";
         self.fromCity = @"";
         self.desc = @"";
+        self.defaultGoodsImgUrl = @"";
     }
     return self;
 }

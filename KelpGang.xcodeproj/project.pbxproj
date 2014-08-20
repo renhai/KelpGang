@@ -71,6 +71,7 @@
 		A12ADE4A18D323A10009B225 /* delete_img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A12ADE4818D323A10009B225 /* delete_img@2x.png */; };
 		A12BBF2219A47BD30041547A /* KGMyFollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A12BBF2119A47BD30041547A /* KGMyFollowViewController.m */; };
 		A12BBF2519A47EB40041547A /* KGMyFollowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A12BBF2419A47EB40041547A /* KGMyFollowCell.m */; };
+		A12BBF2819A490FC0041547A /* KGMyJourneyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A12BBF2719A490FC0041547A /* KGMyJourneyCell.m */; };
 		A1311F4118CA27A300D1A40F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1311F4018CA27A300D1A40F /* MapKit.framework */; };
 		A1311F4518CA2E0800D1A40F /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1311F4418CA2E0800D1A40F /* SwipeView.m */; };
 		A1393978199CA4F50013891C /* KGJourneyObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A1393977199CA4F50013891C /* KGJourneyObject.m */; };
@@ -836,6 +837,8 @@
 		A12BBF2119A47BD30041547A /* KGMyFollowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGMyFollowViewController.m; sourceTree = "<group>"; };
 		A12BBF2319A47EB40041547A /* KGMyFollowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGMyFollowCell.h; sourceTree = "<group>"; };
 		A12BBF2419A47EB40041547A /* KGMyFollowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGMyFollowCell.m; sourceTree = "<group>"; };
+		A12BBF2619A490FC0041547A /* KGMyJourneyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGMyJourneyCell.h; sourceTree = "<group>"; };
+		A12BBF2719A490FC0041547A /* KGMyJourneyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGMyJourneyCell.m; sourceTree = "<group>"; };
 		A1311F4018CA27A300D1A40F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A1311F4318CA2E0800D1A40F /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
 		A1311F4418CA2E0800D1A40F /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
@@ -2204,6 +2207,8 @@
 				A16873B919A2F80F00810275 /* KGMyCollectViewCell.m */,
 				A12BBF2319A47EB40041547A /* KGMyFollowCell.h */,
 				A12BBF2419A47EB40041547A /* KGMyFollowCell.m */,
+				A12BBF2619A490FC0041547A /* KGMyJourneyCell.h */,
+				A12BBF2719A490FC0041547A /* KGMyJourneyCell.m */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -3434,6 +3439,7 @@
 				A143012418BB461A0064DF87 /* UIColor+PKColor.m in Sources */,
 				A179E6BC1921F221006A72BD /* KGLoginController.m in Sources */,
 				A1DD134C18E03229000F52C2 /* KGHostDetailController.m in Sources */,
+				A12BBF2819A490FC0041547A /* KGMyJourneyCell.m in Sources */,
 				A18A2B8818E1325D00FDFB8E /* KGBuyerListViewCell.m in Sources */,
 				A1986D45191A367B0064CC6C /* KGBuyerSummaryObject.m in Sources */,
 				A1A948BC18D93E84006DCF6E /* KGCreateJourneyController.m in Sources */,

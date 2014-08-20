@@ -18,4 +18,6 @@
 @property (nonatomic, strong) NSDate *startDate;
 @property (nonatomic, strong) NSString *desc;
 
+@property (nonatomic, strong) NSString *defaultGoodsImgUrl;
+
 @end
