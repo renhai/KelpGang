@@ -12,7 +12,6 @@
 #import "XMPPManager.h"
 #import "KGChatTxtMessageCell.h"
 #import "KGCreateOrderController.h"
-#import "KGTaskObject.h"
 
 static const CGFloat kMaxChatTextViewHeight = 99.0;
 static const NSInteger kHeaderTipViewTag = 1;
@@ -65,7 +64,6 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.backgroundColor = [UIColor clearColor];
-//    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;//TEST
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chat-view-background"]];
     [self initHeaderView];
     [self initTopView];

@@ -390,7 +390,7 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 		NSString *body = [[message elementForName:@"body"] stringValue];
 		NSString *displayName = [user displayName];
 
-        NSInteger notifyType = 0;//0：前台运营，非聊天页面 1：聊天页面 2：后台运行
+        NSInteger notifyType = 0;//0：前台运行，非聊天页面 1：聊天页面 2：后台运行
 		if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive)
 		{
             UIWindow *window = [[UIApplication sharedApplication].delegate window];
@@ -426,6 +426,12 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
                 }
                 overlay.hidesActivity = YES;
                 [overlay postMessage:[NSString stringWithFormat:@"%@(1)", displayName] duration:10.0];
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:displayName
+                                                                    message:body
+                                                                   delegate:nil
+                                                          cancelButtonTitle:@"确定"
+                                                          otherButtonTitles:nil];
+                [alertView show];
                 break;
             }
             case 1: {
