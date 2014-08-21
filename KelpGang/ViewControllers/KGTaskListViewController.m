@@ -48,8 +48,9 @@
 
     NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
                              @"end_id": @(0),
-                             @"limit":@(100)};
-    [[KGNetworkManager sharedInstance]postRequest:@"/mobile/task/index" params:params success:^(id responseObject) {
+                             @"limit":@(100),
+                             @"goodCountry": @"英国"};
+    [[KGNetworkManager sharedInstance]postRequest:@"/mobile/task/index2" params:params success:^(id responseObject) {
         DLog(@"%@", responseObject);
         if ([KGUtils checkResult:responseObject]) {
             [self.datasource removeAllObjects];

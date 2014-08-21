@@ -10,4 +10,6 @@
 
 @interface KGChatViewController : UIViewController
 
+@property (nonatomic, assign) NSInteger toUserId;
+
 @end

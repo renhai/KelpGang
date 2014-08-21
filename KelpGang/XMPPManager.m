@@ -380,15 +380,16 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 	DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
 
 	// A simple example of inbound message handling.
-
+    DLog(@"message: %@", message);
 	if ([message isChatMessageWithBody])
 	{
-		XMPPUserCoreDataStorageObject *user = [xmppRosterStorage userForJID:[message from]
-		                                                         xmppStream:xmppStream
-		                                               managedObjectContext:[self managedObjectContext_roster]];
+//		XMPPUserCoreDataStorageObject *user = [xmppRosterStorage userForJID:[message from]
+//		                                                         xmppStream:xmppStream
+//		                                               managedObjectContext:[self managedObjectContext_roster]];
 
 		NSString *body = [[message elementForName:@"body"] stringValue];
-		NSString *displayName = [user displayName];
+//		NSString *displayName = [user displayName];
+        NSString *displayName = [[message elementForName:@"uname"] stringValue];
 
         NSInteger notifyType = 0;//0：前台运行，非聊天页面 1：聊天页面 2：后台运行
 		if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive)
@@ -467,7 +468,9 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
     {
         if  ([presenceType isEqualToString:@"subscribe"])
         {
-            [xmppRoster subscribePresenceToUser:[presence from]];
+//            [xmppRoster subscribePresenceToUser:[presence from]];
+            XMPPJID *jid = [XMPPJID jidWithString:[NSString stringWithFormat:@"%@",[presence from]]];
+            [xmppRoster acceptPresenceSubscriptionRequestFrom:jid andAddToRoster:YES];
         }
     }
 }
@@ -591,6 +594,12 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
         [navController pushViewController:recentContactsController animated:NO];
         [navController pushViewController:chatViewController animated:YES];
     }
+}
+
+- (void)addFriendSubscribe:(NSInteger) userId {
+    XMPPJID *jid = [XMPPJID jidWithString:[NSString stringWithFormat:@"%d@%@",userId,kChatHostName]];
+    //[presence addAttributeWithName:@"subscription" stringValue:@"好友"];
+    [xmppRoster subscribePresenceToUser:jid];
 }
 
 

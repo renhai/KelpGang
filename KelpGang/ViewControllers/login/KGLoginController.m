@@ -103,12 +103,12 @@
     APPCONTEXT.currUser.sessionKey = sessionKey;
     APPCONTEXT.currUser.password = passwordMd5;
     APPCONTEXT.currUser.uid = [[info objectForKey:@"user_id"] integerValue];
-    APPCONTEXT.currUser.uname = [info objectForKey:@"user_name"];
+    APPCONTEXT.currUser.uname = [info objectForKey:@"account"];
+    APPCONTEXT.currUser.nickName = [info objectForKey:@"user_name"];
     APPCONTEXT.currUser.avatarUrl = [info objectForKey:@"head_url"];
     APPCONTEXT.currUser.gender = [@"F" isEqualToString:[info objectForKey:@"user_sex"]] ? FEMALE : MALE;
     APPCONTEXT.currUser.vip = [[info objectForKey:@"user_v"] boolValue];
     APPCONTEXT.currUser.level = [[info objectForKey:@"user_star"] integerValue];
-    APPCONTEXT.currUser.nickName = [info objectForKey:@"user_name"];
     APPCONTEXT.currUser.intro = [info objectForKey:@"user_desc"];
     APPCONTEXT.currUser.cellPhone = [info objectForKey:@"user_phone"];
     APPCONTEXT.currUser.email = [info valueForKeyPath:@"user_email"];

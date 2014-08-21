@@ -85,7 +85,21 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    
+    UIViewController *destController = segue.destinationViewController;
+    if ([destController isKindOfClass:[KGChatViewController class]]) {
+        KGChatViewController *chatViewController = (KGChatViewController *)destController;
+        chatViewController.toUserId = [self.user_info[@"user_id"] integerValue];
+    }
+}
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    if ([@"kChatSegue" isEqualToString:identifier]) {
+        if (APPCONTEXT.currUser.uid == [self.user_info[@"user_id"] integerValue]) {
+            return NO;
+        }
+    }
+
+    return YES;
 }
 
 
@@ -273,7 +287,11 @@
     KGGoodsObject *goodsObj = self.good_info[self.currAlbumIndex];
     NSString *title = goodsObj.good_name;
     KGPicBottomView *captionView = [[KGPicBottomView alloc] initWithPhoto:photo index:index count:self.photos.count title:title chatBlock:^(UIButton *sender) {
+        if (APPCONTEXT.currUser.uid == [self.user_info[@"user_id"] integerValue]) {
+            return;
+        }
         KGChatViewController *chatViewController = (KGChatViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"kChatViewController"];
+        chatViewController.toUserId = [self.user_info[@"user_id"] integerValue];
         self.navigationController.navigationBar.translucent = NO;
         [self dismissViewControllerAnimated:NO completion:nil];
         [self.navigationController pushViewController:chatViewController animated:YES];

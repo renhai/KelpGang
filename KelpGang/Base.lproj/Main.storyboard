@@ -424,7 +424,7 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="ZAH-X8-gsB" kind="push" id="uAR-fs-fpu"/>
+                                            <segue destination="ZAH-X8-gsB" kind="push" identifier="kCommentSegue" id="uAR-fs-fpu"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="kBuyerCommentCell" rowHeight="85" id="Nn0-fo-fhg" customClass="KGBuyerCommentCell">
@@ -493,7 +493,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="cIg-QM-o4s" kind="push" id="aDv-BX-YPr"/>
+                                            <segue destination="cIg-QM-o4s" kind="push" identifier="kChatSegue" id="aDv-BX-YPr"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -3066,7 +3066,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="t6T-2x-Aa7"/>
         <segue reference="jkA-9y-eMr"/>
+        <segue reference="aDv-BX-YPr"/>
     </inferredMetricsTieBreakers>
 </document>

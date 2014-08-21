@@ -68,6 +68,12 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     [self initHeaderView];
     [self initTopView];
     [self initChatTextField];
+
+//    if (self.toUserId > 0) {
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//            [[XMPPManager sharedInstance] addFriendSubscribe:self.toUserId];
+//        });
+//    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -395,7 +401,7 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     [self.tableView scrollToRowAtIndexPath:lastRow atScrollPosition:UITableViewScrollPositionNone animated:YES];
 
     NSString *myJID = [NSString stringWithFormat:@"%d@%@", APPCONTEXT.currUser.uid, kChatHostName];
-    NSString *toJID = [NSString stringWithFormat:@"%d@%@", 2, kChatHostName];
+    NSString *toJID = [NSString stringWithFormat:@"%d@%@", self.toUserId, kChatHostName];
     XMPPElement *body = [XMPPElement elementWithName:@"body"];
     [body setStringValue:textField.text];
     XMPPElement *mes = [XMPPElement elementWithName:@"message"];
@@ -403,7 +409,15 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     [mes addAttributeWithName:@"to" stringValue:toJID];
     [mes addAttributeWithName:@"from" stringValue:myJID];
     [mes addChild:body];
-    
+
+    XMPPElement *uname = [XMPPElement elementWithName:@"uname"];
+    [uname setStringValue:APPCONTEXT.currUser.nickName];
+    [mes addChild:uname];
+
+    XMPPElement *userId = [XMPPElement elementWithName:@"uid"];
+    [userId setStringValue:[NSString stringWithFormat:@"%d", APPCONTEXT.currUser.uid]];
+    [mes addChild:userId];
+
     [[XMPPManager sharedInstance] sendMessage:mes];
 
     textField.text = @"";

@@ -31,7 +31,7 @@
 
 + (VoidBlock)autoLoginBlock {
     VoidBlock loginBlock = ^{
-        NSDictionary *params = @{@"account": APPCONTEXT.currUser.cellPhone, @"password_md5": APPCONTEXT.currUser.password};
+        NSDictionary *params = @{@"account": APPCONTEXT.currUser.uname, @"password_md5": APPCONTEXT.currUser.password};
         [[KGNetworkManager sharedInstance] postRequest:@"/mobile/home/login" params:params success:^(id responseObject) {
             if ([KGUtils checkResult:responseObject]) {
                 NSDictionary *data = responseObject[@"data"];
@@ -48,7 +48,7 @@
                 }
                 APPCONTEXT.currUser.sessionKey = sessionKey;
                 APPCONTEXT.currUser.uid = [[info objectForKey:@"user_id"] integerValue];
-                APPCONTEXT.currUser.uname = [info objectForKey:@"user_name"];
+                APPCONTEXT.currUser.uname = [info objectForKey:@"account"];
                 APPCONTEXT.currUser.nickName = [info objectForKey:@"user_name"];
                 APPCONTEXT.currUser.avatarUrl = [info objectForKey:@"head_url"];
                 APPCONTEXT.currUser.gender = [KGUtils convertGender:[info objectForKey:@"user_sex"]];

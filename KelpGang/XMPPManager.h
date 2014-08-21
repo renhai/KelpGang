@@ -59,6 +59,7 @@
 - (void)goOffline;
 
 - (void)sendMessage:(XMPPElement *) message;
+- (void)addFriendSubscribe:(NSInteger) userId;
 
 + (XMPPManager *)sharedInstance;
 
