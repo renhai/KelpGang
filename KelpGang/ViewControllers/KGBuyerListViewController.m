@@ -9,7 +9,7 @@
 #import "KGBuyerListViewController.h"
 #import "KGBuyerListViewCell.h"
 #import "KGBuyerInfoViewController.h"
-#import "XMPPManager.h"
+//#import "XMPPManager.h"
 #import "SVPullToRefresh.h"
 #import "KGFilterItem.h"
 #import "KGBuyerSummaryObject.h"
@@ -134,9 +134,8 @@ static const NSInteger kLimit = 20;
         [[KGNetworkManager sharedInstance] postRequest:@"/mobile/travel/index" params:params success:^(id responseObject) {
             if ([KGUtils checkResult:responseObject]) {
                 [self.datasource removeAllObjects];
-                NSDictionary *dic = (NSDictionary *)responseObject;
-                self.hasmore = [dic[@"hasmore"] boolValue];
-                NSArray *data = [self convertBuyerSummary:dic];
+                self.hasmore = [responseObject[@"hasmore"] boolValue];
+                NSArray *data = [self convertBuyerSummary:responseObject];
 
                 [self.datasource addObjectsFromArray:data];
                 [self.tableView reloadData];
