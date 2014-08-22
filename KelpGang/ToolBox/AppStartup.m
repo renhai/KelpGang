@@ -13,13 +13,31 @@
 
 @implementation AppStartup
 
-+ (void)startup {
++ (void)startup: (AppStartupType)type {
     NSArray *startupBlocks = nil;
-    if ([APPCONTEXT checkLogin]) {
-        startupBlocks = @[[[AppStartup autoLoginBlock] copy],
-                          [[AppStartup xmppInitBlock] copy],
-                          [[AppStartup moveDBFileToSandboxBlock] copy]];
+    switch (type) {
+        case APPSTARTUP_LAUNCH:
+            if ([APPCONTEXT checkLogin]) {
+                startupBlocks = @[[[AppStartup autoLoginBlock] copy],
+                                  [[AppStartup xmppInitBlock] copy],
+                                  [[AppStartup moveDBFileToSandboxBlock] copy]];
+            }
+            break;
+        case APPSTARTUP_BACKGROUND:
+            if ([APPCONTEXT checkLogin]) {
+                startupBlocks = @[[[AppStartup autoLoginBlock] copy],
+                                  [[AppStartup xmppConnectBlock] copy],];
+            }
+            break;
+        case APPSTARTUP_AFTER_LOGIN:
+            if ([APPCONTEXT checkLogin]) {
+                startupBlocks = @[[[AppStartup xmppConnectBlock] copy]];
+            }
+            break;
+        default:
+            break;
     }
+
 
     dispatch_queue_t startupQueue = dispatch_queue_create("com.renren.kelpgang.startup", NULL);
 
@@ -73,6 +91,15 @@
         [DDLog addLogger:[DDTTYLogger sharedInstance]];
         XMPPManager *xmppmgr = [XMPPManager sharedInstance];
         [xmppmgr setupStream];
+        [xmppmgr connect];
+    };
+    return xmppBlock;
+}
+
++ (VoidBlock)xmppConnectBlock {
+    VoidBlock xmppBlock = ^{
+        [DDLog addLogger:[DDTTYLogger sharedInstance]];
+        XMPPManager *xmppmgr = [XMPPManager sharedInstance];
         [xmppmgr connect];
     };
     return xmppBlock;

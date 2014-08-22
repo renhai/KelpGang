@@ -7,6 +7,7 @@
 //
 
 #import "KGLoginController.h"
+#import "AppStartup.h"
 
 @interface KGLoginController ()
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
@@ -84,6 +85,8 @@
             [[NSUserDefaults standardUserDefaults] synchronize];
 
             [self userLogin:info sessionKey:sessionKey password:md5Password];
+
+            [AppStartup startup:APPSTARTUP_AFTER_LOGIN];
 
             [self dismissViewControllerAnimated:YES completion:nil];
         }

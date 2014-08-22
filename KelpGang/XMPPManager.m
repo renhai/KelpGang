@@ -375,80 +375,58 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 	return NO;
 }
 
-- (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message
-{
+- (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message {
 	DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
-
-	// A simple example of inbound message handling.
     DLog(@"message: %@", message);
-	if ([message isChatMessageWithBody])
-	{
-//		XMPPUserCoreDataStorageObject *user = [xmppRosterStorage userForJID:[message from]
-//		                                                         xmppStream:xmppStream
-//		                                               managedObjectContext:[self managedObjectContext_roster]];
+
+    NSXMLElement *request = [message elementForName:@"request"];
+    if (request) {
+        if ([request.xmlns isEqualToString:@"urn:xmpp:receipts"]){
+            XMPPMessage *msg = [XMPPMessage messageWithType:[message attributeStringValueForName:@"type"] to:message.from elementID:[message attributeStringValueForName:@"id"]];
+            NSXMLElement *recieved = [NSXMLElement elementWithName:@"received" xmlns:@"urn:xmpp:receipts"];
+            [msg addChild:recieved];
+            [self.xmppStream sendElement:msg];
+        }
+    } else {
+        NSXMLElement *received = [message elementForName:@"received"];
+        if (received) {
+            if ([received.xmlns isEqualToString:@"urn:xmpp:receipts"]){
+                NSLog(@"message send success!");
+            }
+        }
+    }
+
+
+	if ([message isChatMessageWithBody]) {
+//		XMPPUserCoreDataStorageObject *user = [xmppRosterStorage userForJID:[message from] xmppStream:xmppStream managedObjectContext:[self managedObjectContext_roster]];
+//		NSString *displayName = [user displayName];
 
 		NSString *body = [[message elementForName:@"body"] stringValue];
-//		NSString *displayName = [user displayName];
-        NSString *displayName = [[message elementForName:@"uname"] stringValue];
+        NSXMLElement *fromInfo = [message elementForName:@"userinfo"];
+        NSString *fromUserName = [fromInfo attributeStringValueForName:@"nickname"];
+        NSInteger fromUserId = [fromInfo attributeIntegerValueForName:@"uid"];
+        NSString *avatarUrl = [fromInfo attributeStringValueForName:@"avatarurl"];
 
-        NSInteger notifyType = 0;//0：前台运行，非聊天页面 1：聊天页面 2：后台运行
-		if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive)
-		{
-            UIWindow *window = [[UIApplication sharedApplication].delegate window];
-            UITabBarController *rootViewController = (UITabBarController *)window.rootViewController;
-            UIViewController *selectViewController = rootViewController.selectedViewController;
-            if ([selectViewController isKindOfClass:[UINavigationController class]]) {
-                UINavigationController *navController = (UINavigationController *) selectViewController;
-                if ([navController.visibleViewController isKindOfClass:[KGChatViewController class]]) {
-                    notifyType = 1;
-                }
-            } else {
-                if ([selectViewController.presentedViewController isKindOfClass:[KGChatViewController class]]) {
-                    notifyType = 1;
-                }
-            }
-		} else {
-            notifyType = 2;
-        }
-
+        NSInteger notifyType = [self notifyType:fromUserId];//0：前台运行，非聊天页面 1：聊天页面 2：后台运行
         switch (notifyType) {
             case 0: {
-                MTStatusBarOverlay *overlay = [MTStatusBarOverlay sharedInstance];
-                overlay.animation = MTStatusBarOverlayAnimationFallDown;
-                overlay.detailViewMode = MTDetailViewModeCustom;
-                overlay.frame = CGRectMake(200, 0, 150, 20);
-                [overlay setDetailView:nil];
-                overlay.delegate = self;
-
-                if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-                    overlay.defaultStatusBarImage = [UIImage imageWithColor:MAIN_COLOR];
-                } else {
-                    overlay.defaultStatusBarImage = nil;
-                }
-                overlay.hidesActivity = YES;
-                [overlay postMessage:[NSString stringWithFormat:@"%@(1)", displayName] duration:10.0];
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:displayName
-                                                                    message:body
-                                                                   delegate:nil
-                                                          cancelButtonTitle:@"确定"
-                                                          otherButtonTitles:nil];
-                [alertView show];
+                [JDStatusBarNotification showWithStatus:[NSString stringWithFormat:@"来自[%@]：%@", fromUserName, body]  dismissAfter:5.0];
                 break;
             }
             case 1: {
                 KGMessageObject *msgObj = [[KGMessageObject alloc] init];
                 msgObj.content = body;
-                msgObj.from = displayName;
+                msgObj.from = fromUserName;
                 msgObj.date = [NSDate date];
                 msgObj.type = MessageTypeOther;
                 KGChatCellInfo *chatCellInfo = [[KGChatCellInfo alloc] initWithMessage:msgObj];
-                [[NSNotificationCenter defaultCenter]postNotificationName:kXMPPNewMsgNotifaction object:chatCellInfo];
+                [[NSNotificationCenter defaultCenter] postNotificationName:kXMPPNewMsgNotifaction object:chatCellInfo];
                 break;
             }
             case 2: {
                 UILocalNotification *localNotification = [[UILocalNotification alloc] init];
                 localNotification.alertAction = @"Ok";
-                localNotification.alertBody = [NSString stringWithFormat:@"From: %@\n\n%@",displayName,body];
+                localNotification.alertBody = [NSString stringWithFormat:@"From: %@\n\n%@",fromUserName,body];
                 [[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
                 break;
             }
@@ -468,7 +446,6 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
     {
         if  ([presenceType isEqualToString:@"subscribe"])
         {
-//            [xmppRoster subscribePresenceToUser:[presence from]];
             XMPPJID *jid = [XMPPJID jidWithString:[NSString stringWithFormat:@"%@",[presence from]]];
             [xmppRoster acceptPresenceSubscriptionRequestFrom:jid andAddToRoster:YES];
         }
@@ -578,28 +555,57 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
     [xmppStream sendElement:message];
 }
 
-- (void)statusBarOverlayDidRecognizeGesture:(UIGestureRecognizer *)gestureRecognizer {
-    [[MTStatusBarOverlay sharedInstance] hide];
-    UIWindow *window = [[UIApplication sharedApplication].delegate window];
-    UITabBarController *rootViewController = (UITabBarController *)window.rootViewController;
-    UIViewController *chatViewController = [rootViewController.storyboard instantiateViewControllerWithIdentifier:@"kChatViewController"];
-    UIViewController *selectViewController = rootViewController.selectedViewController;
-    if ([selectViewController isKindOfClass:[UINavigationController class]]) {
-        UINavigationController *navController = (UINavigationController *) selectViewController;
-        [navController popToRootViewControllerAnimated:NO];
-        [rootViewController setSelectedIndex:3];
-        navController = (UINavigationController *)(rootViewController.selectedViewController);
-        UIViewController *recentContactsController = [rootViewController.storyboard instantiateViewControllerWithIdentifier:@"kRecentContactsController"];
-        recentContactsController.hidesBottomBarWhenPushed = YES;
-        [navController pushViewController:recentContactsController animated:NO];
-        [navController pushViewController:chatViewController animated:YES];
-    }
-}
+//- (void)statusBarOverlayDidRecognizeGesture:(UIGestureRecognizer *)gestureRecognizer {
+//    [[MTStatusBarOverlay sharedInstance] hide];
+//    UIWindow *window = [[UIApplication sharedApplication].delegate window];
+//    UITabBarController *rootViewController = (UITabBarController *)window.rootViewController;
+//    UIViewController *chatViewController = [rootViewController.storyboard instantiateViewControllerWithIdentifier:@"kChatViewController"];
+//    UIViewController *selectViewController = rootViewController.selectedViewController;
+//    if ([selectViewController isKindOfClass:[UINavigationController class]]) {
+//        UINavigationController *navController = (UINavigationController *) selectViewController;
+//        [navController popToRootViewControllerAnimated:NO];
+//        [rootViewController setSelectedIndex:3];
+//        navController = (UINavigationController *)(rootViewController.selectedViewController);
+//        UIViewController *recentContactsController = [rootViewController.storyboard instantiateViewControllerWithIdentifier:@"kRecentContactsController"];
+//        recentContactsController.hidesBottomBarWhenPushed = YES;
+//        [navController pushViewController:recentContactsController animated:NO];
+//        [navController pushViewController:chatViewController animated:YES];
+//    }
+//}
 
 - (void)addFriendSubscribe:(NSInteger) userId {
     XMPPJID *jid = [XMPPJID jidWithString:[NSString stringWithFormat:@"%d@%@",userId,kChatHostName]];
     //[presence addAttributeWithName:@"subscription" stringValue:@"好友"];
     [xmppRoster subscribePresenceToUser:jid];
+}
+
+- (NSInteger)notifyType: (NSInteger)fromUserId{
+    NSInteger notifyType = 0;
+    if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive)
+    {
+        UIWindow *window = [[UIApplication sharedApplication].delegate window];
+        UITabBarController *rootViewController = (UITabBarController *)window.rootViewController;
+        UIViewController *selectViewController = rootViewController.selectedViewController;
+        if ([selectViewController isKindOfClass:[UINavigationController class]]) {
+            UINavigationController *navController = (UINavigationController *) selectViewController;
+            if ([navController.visibleViewController isKindOfClass:[KGChatViewController class]]) {
+                KGChatViewController *chatVC = (KGChatViewController *)navController.visibleViewController;
+                if (chatVC.toUserId == fromUserId) {
+                    notifyType = 1;
+                }
+            }
+        } else {
+            if ([selectViewController.presentedViewController isKindOfClass:[KGChatViewController class]]) {
+                KGChatViewController *chatVC = (KGChatViewController *)selectViewController.presentedViewController;
+                if (chatVC.toUserId == fromUserId) {
+                    notifyType = 1;
+                }
+            }
+        }
+    } else {
+        notifyType = 2;
+    }
+    return notifyType;
 }
 
 

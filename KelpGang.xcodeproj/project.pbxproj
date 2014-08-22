@@ -73,6 +73,9 @@
 		A12BBF2519A47EB40041547A /* KGMyFollowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A12BBF2419A47EB40041547A /* KGMyFollowCell.m */; };
 		A12BBF2819A490FC0041547A /* KGMyJourneyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A12BBF2719A490FC0041547A /* KGMyJourneyCell.m */; };
 		A12BBF2B19A4B0C90041547A /* KGUserFollowObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A12BBF2A19A4B0C90041547A /* KGUserFollowObject.m */; };
+		A12F27E819A71BB300B30FF8 /* JDStatusBarNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = A12F27E319A71BB300B30FF8 /* JDStatusBarNotification.m */; };
+		A12F27E919A71BB300B30FF8 /* JDStatusBarStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = A12F27E519A71BB300B30FF8 /* JDStatusBarStyle.m */; };
+		A12F27EA19A71BB300B30FF8 /* JDStatusBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = A12F27E719A71BB300B30FF8 /* JDStatusBarView.m */; };
 		A1311F4118CA27A300D1A40F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1311F4018CA27A300D1A40F /* MapKit.framework */; };
 		A1311F4518CA2E0800D1A40F /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1311F4418CA2E0800D1A40F /* SwipeView.m */; };
 		A1393978199CA4F50013891C /* KGJourneyObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A1393977199CA4F50013891C /* KGJourneyObject.m */; };
@@ -842,6 +845,12 @@
 		A12BBF2719A490FC0041547A /* KGMyJourneyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGMyJourneyCell.m; sourceTree = "<group>"; };
 		A12BBF2919A4B0C90041547A /* KGUserFollowObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGUserFollowObject.h; sourceTree = "<group>"; };
 		A12BBF2A19A4B0C90041547A /* KGUserFollowObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGUserFollowObject.m; sourceTree = "<group>"; };
+		A12F27E219A71BB300B30FF8 /* JDStatusBarNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDStatusBarNotification.h; sourceTree = "<group>"; };
+		A12F27E319A71BB300B30FF8 /* JDStatusBarNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDStatusBarNotification.m; sourceTree = "<group>"; };
+		A12F27E419A71BB300B30FF8 /* JDStatusBarStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDStatusBarStyle.h; sourceTree = "<group>"; };
+		A12F27E519A71BB300B30FF8 /* JDStatusBarStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDStatusBarStyle.m; sourceTree = "<group>"; };
+		A12F27E619A71BB300B30FF8 /* JDStatusBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDStatusBarView.h; sourceTree = "<group>"; };
+		A12F27E719A71BB300B30FF8 /* JDStatusBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDStatusBarView.m; sourceTree = "<group>"; };
 		A1311F4018CA27A300D1A40F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A1311F4318CA2E0800D1A40F /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
 		A1311F4418CA2E0800D1A40F /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
@@ -1753,6 +1762,19 @@
 			path = PSTCollectionView;
 			sourceTree = "<group>";
 		};
+		A12F27E119A71BB300B30FF8 /* JDStatusBarNotification */ = {
+			isa = PBXGroup;
+			children = (
+				A12F27E219A71BB300B30FF8 /* JDStatusBarNotification.h */,
+				A12F27E319A71BB300B30FF8 /* JDStatusBarNotification.m */,
+				A12F27E419A71BB300B30FF8 /* JDStatusBarStyle.h */,
+				A12F27E519A71BB300B30FF8 /* JDStatusBarStyle.m */,
+				A12F27E619A71BB300B30FF8 /* JDStatusBarView.h */,
+				A12F27E719A71BB300B30FF8 /* JDStatusBarView.m */,
+			);
+			path = JDStatusBarNotification;
+			sourceTree = "<group>";
+		};
 		A1311F4218CA2E0800D1A40F /* SwipeView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1851,6 +1873,7 @@
 		A143011818BB461A0064DF87 /* ToolBox */ = {
 			isa = PBXGroup;
 			children = (
+				A12F27E119A71BB300B30FF8 /* JDStatusBarNotification */,
 				A162DAB81999B2210038AE8B /* AFHTTPRequestOperationManager-Timeout */,
 				A121F3DF198F778400260E73 /* MWPhotoBrowser */,
 				A164DA18194EA249008B26E8 /* IQKeyBoardManager */,
@@ -3465,6 +3488,7 @@
 				A19F0EC618E2B33B00C2944D /* KGBuyerDescriptionCell.m in Sources */,
 				A164DA32194EA249008B26E8 /* IQTextView.m in Sources */,
 				A14415A218C0EA590053456D /* KGBuyerListViewController.m in Sources */,
+				A12F27E919A71BB300B30FF8 /* JDStatusBarStyle.m in Sources */,
 				A180E43D190F6DB5003347F8 /* KGCreateOrderController.m in Sources */,
 				A121F38D198F5E5E00260E73 /* KGCity.m in Sources */,
 				A1DDFB7B18EEAF670078ED73 /* KGCascadeMenuLeftCell.m in Sources */,
@@ -3473,6 +3497,7 @@
 				A197503218D84BF10062CAA7 /* UIDevice+Addtional.m in Sources */,
 				A121F417198F778400260E73 /* MWGridCell.m in Sources */,
 				A1AD133E1908D8BD00DF17B6 /* KGUserObject.m in Sources */,
+				A12F27E819A71BB300B30FF8 /* JDStatusBarNotification.m in Sources */,
 				A1311F4518CA2E0800D1A40F /* SwipeView.m in Sources */,
 				A121F424198F778400260E73 /* PSTCollectionViewFlowLayout.m in Sources */,
 				A1CA59E61917616200D9A429 /* KGCreateOrderTextFieldCell.m in Sources */,
@@ -3505,6 +3530,7 @@
 				A121F41A198F778400260E73 /* MWPhotoBrowser.m in Sources */,
 				A16FBEF018DC1FA6009E2F66 /* KGHostViewController.m in Sources */,
 				A121F41C198F778400260E73 /* MWTapDetectingView.m in Sources */,
+				A12F27EA19A71BB300B30FF8 /* JDStatusBarView.m in Sources */,
 				A11C988B1998D9B200F82E2A /* KGImageObject.m in Sources */,
 				A12BBF2B19A4B0C90041547A /* KGUserFollowObject.m in Sources */,
 				A112DF481918C98600108FAD /* KGCompletedOrderLabelCell.m in Sources */,

@@ -8,8 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum _AppStartupType{
+    APPSTARTUP_LAUNCH,  // 正常启动
+    APPSTARTUP_BACKGROUND,  // 后台启动
+    APPSTARTUP_AFTER_LOGIN,   // 登录后
+}AppStartupType;
+
 @interface AppStartup : NSObject
 
-+ (void)startup;
++ (void)startup: (AppStartupType) type;
 
 @end

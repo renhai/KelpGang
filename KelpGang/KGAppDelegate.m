@@ -37,7 +37,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
     [[IQKeyboardManager sharedManager] setEnable:YES];
 
-    [AppStartup startup];
+    [AppStartup startup: APPSTARTUP_LAUNCH];
 
     return YES;
 }
@@ -89,6 +89,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
 	DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
+    [AppStartup startup: APPSTARTUP_BACKGROUND];
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {

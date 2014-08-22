@@ -7,6 +7,7 @@
 //
 
 #import "KGSettingsViewController.h"
+#import "XMPPManager.h"
 
 @interface KGSettingsViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *logoutBtn;
@@ -86,6 +87,7 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 
     [[SDImageCache sharedImageCache] clearMemory];
+    [[XMPPManager sharedInstance] disconnect];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

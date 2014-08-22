@@ -12,6 +12,7 @@
 #import "XMPPManager.h"
 #import "KGChatTxtMessageCell.h"
 #import "KGCreateOrderController.h"
+#import "IQKeyboardManager.h"
 
 static const CGFloat kMaxChatTextViewHeight = 99.0;
 static const NSInteger kHeaderTipViewTag = 1;
@@ -59,7 +60,7 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     [self setLeftBarbuttonItem];
     [self setTitle:@"myrenhai"];
     self.chatCellInfoArr = [[NSMutableArray alloc] init];
-    [self mockData];
+//    [self mockData];
 
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -85,6 +86,11 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChanged:) name: UITextViewTextDidChangeNotification object:nil];
 
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(newMsgCome:) name:kXMPPNewMsgNotifaction object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    [[IQKeyboardManager sharedManager] setEnable:NO];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -92,6 +98,7 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     [self.chatTextField resignFirstResponder];
     [self.chatTextView resignFirstResponder];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[IQKeyboardManager sharedManager] setEnable:YES];
 }
 
 - (void)mockData {
@@ -142,7 +149,7 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     self.chatTextView.layer.borderWidth = LINE_HEIGHT;
     self.chatTextView.layer.borderColor = RGBCOLOR(211, 220, 224).CGColor;
     self.chatTextView.hidden = YES;
-    self.chatTextField.inputAccessoryView = [[UIView alloc] init];
+    self.chatTextView.inputAccessoryView = [[UIView alloc] init];
 }
 
 -(void)initHeaderView {
@@ -322,14 +329,6 @@ static const NSInteger kHeaderRefreshViewTag = 2;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    UITableViewCell *cell;
-//    cell = [tableView dequeueReusableCellWithIdentifier:@"kChatMessageOtherCell"];
-//    if (!cell) {
-//        cell = [[KGChatTextMessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"kChatMessageOtherCell"];
-//    }
-//    cell.backgroundColor = [UIColor clearColor];
-//    KGChatTextMessageCell *mCell = (KGChatTextMessageCell *)cell;
-
     KGChatTxtMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"kChatTxtMessageCell" forIndexPath:indexPath];
     KGChatCellInfo *chatCellInfo = self.chatCellInfoArr[indexPath.row];
     [cell configCell:chatCellInfo];
@@ -400,25 +399,26 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     [self.tableView reloadData];
     [self.tableView scrollToRowAtIndexPath:lastRow atScrollPosition:UITableViewScrollPositionNone animated:YES];
 
-    NSString *myJID = [NSString stringWithFormat:@"%d@%@", APPCONTEXT.currUser.uid, kChatHostName];
+//    NSString *myJID = [NSString stringWithFormat:@"%d@%@", APPCONTEXT.currUser.uid, kChatHostName];
     NSString *toJID = [NSString stringWithFormat:@"%d@%@", self.toUserId, kChatHostName];
+
+    NSString *uuid = [XMPPStream generateUUID];
+    XMPPMessage *message = [XMPPMessage messageWithType:@"chat" to:[XMPPJID jidWithString:toJID] elementID:uuid];
+
     XMPPElement *body = [XMPPElement elementWithName:@"body"];
     [body setStringValue:textField.text];
-    XMPPElement *mes = [XMPPElement elementWithName:@"message"];
-    [mes addAttributeWithName:@"type" stringValue:@"chat"];
-    [mes addAttributeWithName:@"to" stringValue:toJID];
-    [mes addAttributeWithName:@"from" stringValue:myJID];
-    [mes addChild:body];
+    [message addChild:body];
 
-    XMPPElement *uname = [XMPPElement elementWithName:@"uname"];
-    [uname setStringValue:APPCONTEXT.currUser.nickName];
-    [mes addChild:uname];
+    XMPPElement *userinfo = [XMPPElement elementWithName:@"userinfo"];
+    [userinfo addAttributeWithName:@"uid" integerValue:APPCONTEXT.currUser.uid];
+    [userinfo addAttributeWithName:@"nickname" stringValue:APPCONTEXT.currUser.nickName];
+    [userinfo addAttributeWithName:@"avatarurl" stringValue:APPCONTEXT.currUser.avatarUrl];
+    [message addChild:userinfo];
 
-    XMPPElement *userId = [XMPPElement elementWithName:@"uid"];
-    [userId setStringValue:[NSString stringWithFormat:@"%d", APPCONTEXT.currUser.uid]];
-    [mes addChild:userId];
+    NSXMLElement *receipt = [NSXMLElement elementWithName:@"request" xmlns:@"urn:xmpp:receipts"];
+    [message addChild:receipt];
 
-    [[XMPPManager sharedInstance] sendMessage:mes];
+    [[XMPPManager sharedInstance] sendMessage:message];
 
     textField.text = @"";
     return YES;
@@ -485,14 +485,6 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     [self.view endEditing:YES];
 }
 
-//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-//    DLog(@"%@", scrollView);
-//    LOGBOOL(decelerate);
-//    if (scrollView.contentOffset.y <= 0) {
-//
-//    }
-//}
-
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     DLog("%@", scrollView);
     if (scrollView.contentOffset.y <= 0) {
@@ -513,6 +505,9 @@ static const NSInteger kHeaderRefreshViewTag = 2;
 }
 
 - (void)handleRefresh {
+    if (self.chatCellInfoArr.count <= 10 ) {
+        return;
+    }
     UIActivityIndicatorView *refreshView = (UIActivityIndicatorView *)[self.headerView viewWithTag:kHeaderRefreshViewTag];
     if (!refreshView.isAnimating) {
         [self startRefresh];
