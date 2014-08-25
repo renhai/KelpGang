@@ -952,8 +952,8 @@
 		A16FBEF618DC255A009E2F66 /* half_heart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "half_heart@2x.png"; sourceTree = "<group>"; };
 		A16FBEFF18DC4F3A009E2F66 /* recent-contact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "recent-contact.png"; sourceTree = "<group>"; };
 		A16FBF0018DC4F3A009E2F66 /* recent-contact@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "recent-contact@2x.png"; sourceTree = "<group>"; };
-		A1711BD7197FB7EC00721862 /* AppStartup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppStartup.h; sourceTree = "<group>"; };
-		A1711BD8197FB7EC00721862 /* AppStartup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppStartup.m; sourceTree = "<group>"; };
+		A1711BD7197FB7EC00721862 /* AppStartup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppStartup.h; path = ToolBox/AppStartup.h; sourceTree = "<group>"; };
+		A1711BD8197FB7EC00721862 /* AppStartup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppStartup.m; path = ToolBox/AppStartup.m; sourceTree = "<group>"; };
 		A174B7AE1941A09D0067B8FA /* KGNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGNetworkManager.h; sourceTree = "<group>"; };
 		A174B7AF1941A09D0067B8FA /* KGNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGNetworkManager.m; sourceTree = "<group>"; };
 		A174CD651904CFAC00D910C5 /* UIViewController+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Additions.h"; sourceTree = "<group>"; };
@@ -1531,8 +1531,8 @@
 		A1B22C5718D1CD1D00953EE5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		A1B287B818ED955B00E44682 /* KGFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGFilterView.h; sourceTree = "<group>"; };
 		A1B287B918ED955B00E44682 /* KGFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGFilterView.m; sourceTree = "<group>"; };
-		A1B4F74B195033E900D48B09 /* AppContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppContext.h; sourceTree = "<group>"; };
-		A1B4F74C195033E900D48B09 /* AppContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppContext.m; sourceTree = "<group>"; };
+		A1B4F74B195033E900D48B09 /* AppContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppContext.h; path = ToolBox/AppContext.h; sourceTree = "<group>"; };
+		A1B4F74C195033E900D48B09 /* AppContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppContext.m; path = ToolBox/AppContext.m; sourceTree = "<group>"; };
 		A1BBB07E18D6B4E1002C8BD2 /* KGTaskListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGTaskListViewController.h; sourceTree = "<group>"; };
 		A1BBB07F18D6B4E1002C8BD2 /* KGTaskListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGTaskListViewController.m; sourceTree = "<group>"; };
 		A1BBB08418D6EE86002C8BD2 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
@@ -1832,6 +1832,10 @@
 				A14300DE18BB252F0064DF87 /* KGViewController.m */,
 				A1A1DAFF18C9CE7E00F03E04 /* KGGlobal.h */,
 				A11E91691900F4F800BBC1A2 /* KGMacro.h */,
+				A1B4F74B195033E900D48B09 /* AppContext.h */,
+				A1B4F74C195033E900D48B09 /* AppContext.m */,
+				A1711BD7197FB7EC00721862 /* AppStartup.h */,
+				A1711BD8197FB7EC00721862 /* AppStartup.m */,
 				A14300E018BB252F0064DF87 /* Images.xcassets */,
 				A144159418C0E98F0053456D /* ViewControllers */,
 				A143011818BB461A0064DF87 /* ToolBox */,
@@ -1889,10 +1893,6 @@
 				A10635E1191B80430069F8E4 /* KGLocationManager.m */,
 				A174B7AE1941A09D0067B8FA /* KGNetworkManager.h */,
 				A174B7AF1941A09D0067B8FA /* KGNetworkManager.m */,
-				A1B4F74B195033E900D48B09 /* AppContext.h */,
-				A1B4F74C195033E900D48B09 /* AppContext.m */,
-				A1711BD7197FB7EC00721862 /* AppStartup.h */,
-				A1711BD8197FB7EC00721862 /* AppStartup.m */,
 			);
 			path = ToolBox;
 			sourceTree = "<group>";
