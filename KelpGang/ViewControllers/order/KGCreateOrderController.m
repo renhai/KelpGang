@@ -197,7 +197,9 @@
 
     if (indexPath.section == 0) {
         KGDeliveryAddressController *addrController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"kDeliveryAddressController"];
-        [self.navigationController pushViewController:addrController animated:YES];
+//        [self.navigationController pushViewController:addrController animated:YES];
+        UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:addrController];
+        [self presentViewController:nc animated:YES completion:nil];
     }
 }
 
@@ -232,13 +234,13 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell;
-    if (indexPath.row == [self.photos count]) {
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"kAddPhotoCell" forIndexPath:indexPath];
-    } else {
+//    if (indexPath.row == [self.photos count]) {
+//        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"kAddPhotoCell" forIndexPath:indexPath];
+//    } else {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"kPhotoCell" forIndexPath:indexPath];
         KGCreateOrderPhotoCell *pCell = (KGCreateOrderPhotoCell *)cell;
         [pCell.delButton addTarget:self action:@selector(delPhoto:) forControlEvents:UIControlEventTouchUpInside];
-    }
+//    }
     return cell;
 }
 
@@ -269,19 +271,26 @@
 - (void)createOrder: (UIButton *)sender {
     [[HudHelper getInstance] showHudOnView:self.view caption:@"正在创建" image:nil acitivity:YES autoHideTime:0.0];
     __weak typeof(self) weakSelf = self;
+
     int64_t delayInSeconds = 2.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [[HudHelper getInstance]hideHudInView:self.view];
-        KGCompletedOrderController *destController = [self.storyboard instantiateViewControllerWithIdentifier:@"kCompletedOrderController"];
-        KGOrderObject *obj = [[KGOrderObject alloc]init];
-        obj.orderStatus = WAITING_CONFIRM;
-        destController.orderObj = obj;
-        [weakSelf.navigationController pushViewController:destController animated:YES];
+        [[HudHelper getInstance]hideHudInView:weakSelf.view];
+        NSArray *controllers = weakSelf.navigationController.viewControllers;
+        if (controllers.count > 1) {
+            KGCompletedOrderController *destController = [weakSelf.storyboard instantiateViewControllerWithIdentifier:@"kCompletedOrderController"];
+            KGOrderObject *obj = [[KGOrderObject alloc]init];
+            obj.orderStatus = WAITING_CONFIRM;
+            destController.orderObj = obj;
+            [weakSelf.navigationController pushViewController:destController animated:YES];
 
-        NSMutableArray *controllers = [NSMutableArray arrayWithArray:weakSelf.navigationController.viewControllers];
-        [controllers removeObjectAtIndex:controllers.count - 2];
-        [weakSelf.navigationController setViewControllers:controllers];
+            NSMutableArray *controllers = [NSMutableArray arrayWithArray:weakSelf.navigationController.viewControllers];
+            [controllers removeObjectAtIndex:controllers.count - 2];
+            [weakSelf.navigationController setViewControllers:controllers];
+        } else {
+            [weakSelf dismissViewControllerAnimated:YES completion:nil];
+        }
+
     });
 
 
