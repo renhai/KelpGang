@@ -11,9 +11,10 @@
 #import "KGAddressObject.h"
 #import "KGAddAddressController.h"
 
-@interface KGDeliveryAddressController ()
+@interface KGDeliveryAddressController () </*SWTableViewCellDelegate, */UIActionSheetDelegate>
 
-@property(nonatomic, strong) NSMutableArray *datasource;
+@property (nonatomic, strong) NSMutableArray *datasource;
+@property (nonatomic, assign) NSInteger currEditCellIndex;
 
 @end
 
@@ -105,6 +106,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     KGDeliveryAddressCell *cell = [tableView dequeueReusableCellWithIdentifier:@"kDeliveryAddressTableViewCell" forIndexPath:indexPath];
+//    [cell setRightUtilityButtons:[self rightButtons] WithButtonWidth:58.0f];
+//    cell.delegate = self;
     KGAddressObject *obj = self.datasource[indexPath.row];
     [cell setObject:obj];
     return cell;
@@ -120,12 +123,22 @@
     return 0;
 }
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+    self.currEditCellIndex = indexPath.row;
+    if (self.selectBlock) {
+        KGAddressObject *selectObj = self.datasource[indexPath.row];
+        [self goBack:nil];
+        self.selectBlock(selectObj);
+    } else {
+        [self showActionSheet];
+    }
+}
 
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return YES;
+    return NO;
 }
 
 
@@ -159,14 +172,135 @@
     KGAddAddressController *desController = segue.destinationViewController;
     if ([@"kAddAddrSegue" isEqualToString:segue.identifier]) {
         desController.addressId = 0;
-    } else if ([@"kModAddrSegue" isEqualToString:segue.identifier]) {
-        KGAddressObject *addrObj = self.datasource[[self.tableView indexPathForSelectedRow].row];
-        desController.addressId = addrObj.addressId;
     }
 }
 
 - (void)refreshTableView: (NSNotification *)noti {
     [self refeshAddrList];
+}
+
+/*
+- (NSArray *)rightButtons
+{
+    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
+                                                title:@"更多"];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
+                                                title:@"删除"];
+
+    return rightUtilityButtons;
+}
+
+
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index
+{
+    NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+    self.currEditCellIndex = cellIndexPath.row;
+    switch (index) {
+        case 0:
+        {
+            NSLog(@"More button was pressed");
+//            UIAlertView *alertTest = [[UIAlertView alloc] initWithTitle:@"Hello" message:@"More more more" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles: nil];
+//            [alertTest show];
+            [self showActionSheet];
+            [cell hideUtilityButtonsAnimated:YES];
+            break;
+        }
+        case 1:
+        {
+            // Delete button was pressed
+            NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+//
+//            [_testArray[cellIndexPath.section] removeObjectAtIndex:cellIndexPath.row];
+//            [self.tableView deleteRowsAtIndexPaths:@[cellIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
+            DLog(@"delete button clicked: %@", cellIndexPath);
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+- (BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(SWTableViewCell *)cell
+{
+    // allow just one cell's utility button to be open at once
+    return YES;
+}
+*/
+
+- (void)showActionSheet {
+    UIActionSheet *choiceSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                             delegate:self
+                                                    cancelButtonTitle:@"取消"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"编辑",@"删除", @"设为默认地址", nil];
+    [choiceSheet showInView:self.view.window];
+}
+
+
+#pragma UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    switch (buttonIndex) {
+        case 0: {
+            KGAddressObject *addrObj = self.datasource[self.currEditCellIndex];
+            KGAddAddressController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"kAddAddressController"];
+            controller.title = @"编辑地址";
+            controller.addressId = addrObj.addressId;
+            UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:controller];
+            [self presentViewController:nc animated:YES completion:nil];
+            break;
+        }
+        case 1: {
+            KGAddressObject *addrObj = [self.datasource objectAtIndex:self.currEditCellIndex];
+            NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
+                                     @"address_id":@(addrObj.addressId),
+                                     @"session_key":APPCONTEXT.currUser.sessionKey};
+            [[HudHelper getInstance] showHudOnView:self.tableView caption:nil image:nil acitivity:YES autoHideTime:0.0];
+            [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/deleteAddress" params:params success:^(id responseObject) {
+                [[HudHelper getInstance] hideHudInView:self.tableView];
+                DLog(@"%@", responseObject);
+                if ([KGUtils checkResult:responseObject]) {
+                    [self.datasource removeObjectAtIndex:self.currEditCellIndex];
+                    [self.tableView beginUpdates];
+                    [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.currEditCellIndex inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+                    [self.tableView endUpdates];
+                }
+            } failure:^(NSError *error) {
+                [[HudHelper getInstance] hideHudInView:self.tableView];
+                DLog(@"%@", error);
+            }];
+            break;
+        }
+        case 2: {
+            KGAddressObject *addrObj = [self.datasource objectAtIndex:self.currEditCellIndex];
+            NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
+                                     @"address_id":@(addrObj.addressId),
+                                     @"session_key":APPCONTEXT.currUser.sessionKey};
+            [[HudHelper getInstance] showHudOnView:self.tableView caption:nil image:nil acitivity:YES autoHideTime:0.0];
+            [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/setAddressDefault" params:params success:^(id responseObject) {
+                [[HudHelper getInstance] hideHudInView:self.tableView];
+                DLog(@"%@", responseObject);
+                if ([KGUtils checkResult:responseObject]) {
+                    for (NSInteger i = 0; i < self.datasource.count; i ++) {
+                        KGAddressObject *obj = self.datasource[i];
+                        obj.defaultAddr = (i == self.currEditCellIndex);
+                    }
+                    [self.tableView reloadData];
+
+                }
+            } failure:^(NSError *error) {
+                [[HudHelper getInstance] hideHudInView:self.tableView];
+                DLog(@"%@", error);
+            }];
+            break;
+        }
+
+        default:
+            break;
+    }
 }
 
 @end

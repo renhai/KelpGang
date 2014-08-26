@@ -2451,7 +2451,6 @@
                                     <outlet property="detailAddrLabel" destination="vKV-pP-Pl3" id="lxD-8q-ze9"/>
                                     <outlet property="districtLabel" destination="Qec-IT-gBf" id="ADm-OE-qej"/>
                                     <outlet property="nameLabel" destination="Yi6-DR-VMQ" id="db0-el-dr3"/>
-                                    <segue destination="ggo-cb-fWs" kind="push" identifier="kModAddrSegue" id="P8T-jm-OOi"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -2476,12 +2475,12 @@
         <!--Add Address Controller - 新增地址管理-->
         <scene sceneID="m2P-fQ-vQi">
             <objects>
-                <tableViewController id="ggo-cb-fWs" customClass="KGAddAddressController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="kAddAddressController" id="ggo-cb-fWs" customClass="KGAddAddressController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8lb-pM-ssA">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.91372549020000005" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="bzK-2I-OCv">
+                        <view key="tableFooterView" hidden="YES" contentMode="scaleToFill" id="bzK-2I-OCv">
                             <rect key="frame" x="0.0" y="230" width="320" height="80"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -3066,7 +3065,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="jkA-9y-eMr"/>
         <segue reference="aDv-BX-YPr"/>
     </inferredMetricsTieBreakers>
 </document>

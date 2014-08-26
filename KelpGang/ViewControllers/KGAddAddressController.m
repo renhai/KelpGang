@@ -115,7 +115,7 @@
                                                DLog(@"%@", responseObject);
                                                if ([KGUtils checkResult:responseObject]) {
                                                    [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateAddress object:nil];
-                                                   [self.navigationController popViewControllerAnimated:YES];
+                                                   [self goBack:nil];
                                                }
                                         } failure:^(NSError *error) {
                                             DLog(@"%@", error);

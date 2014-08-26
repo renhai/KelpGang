@@ -197,7 +197,10 @@
 
     if (indexPath.section == 0) {
         KGDeliveryAddressController *addrController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"kDeliveryAddressController"];
-//        [self.navigationController pushViewController:addrController animated:YES];
+        addrController.selectBlock = ^ (KGAddressObject *obj) {
+            self.addrObj = obj;
+            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+        };
         UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:addrController];
         [self presentViewController:nc animated:YES completion:nil];
     }
