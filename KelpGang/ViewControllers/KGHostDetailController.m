@@ -44,7 +44,7 @@
             NSDictionary *dic = (NSDictionary *)responseObject;
             if ([KGUtils checkResult:dic]) {
                 NSDictionary *data = dic[@"data"];
-                self.user.uname = [data valueForKeyPath:@"user_info.user_name"];
+                self.user.uname = [data valueForKeyPath:@"user_info.account"];
                 self.user.cellPhone = [data valueForKeyPath:@"user_info.user_phone"];
                 self.user.gender = [KGUtils convertGender:[data valueForKeyPath:@"user_info.user_sex"]];
                 self.user.avatarUrl = [data valueForKeyPath:@"user_info.head_url"];
@@ -58,7 +58,8 @@
             }
         } failure:^(NSError *error) {
             DLog(@"%@", error);
-            [[HudHelper getInstance] showHudOnView:self.tableView caption:@"系统错误,请稍后再试" image:nil acitivity:NO autoHideTime:1.6];        }];
+            [[HudHelper getInstance] hideHudInView:self.tableView];
+        }];
     }
 }
 
@@ -93,7 +94,7 @@
                     headView.layer.cornerRadius = headView.width / 2;
                 } else if (indexPath.row == 1) {
                     UITextField *tf = (UITextField *)[cell viewWithTag:1];
-                    tf.text = self.user.uname;
+                    tf.text = self.user.nickName;
                     tf.delegate = self;
                 } else if (indexPath.row == 2) {
                     UITextView *tv = (UITextView *)[cell viewWithTag:1];
@@ -144,11 +145,10 @@
             if (APPCONTEXT.currUser.gender == FEMALE) {
                 return;
             }
-            [[HudHelper getInstance] showHudOnView:self.tableView caption:nil image:nil acitivity:YES autoHideTime:0.0];
             NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"sex": @"F", @"session_key": APPCONTEXT.currUser.sessionKey};
             [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/setSex" params:params success:^(id responseObject) {
-                [[HudHelper getInstance] hideHudInView:self.view];
                 if ([KGUtils checkResult:responseObject]) {
+                    [JDStatusBarNotification showWithStatus:@"修改成功" dismissAfter:1.6];
                     self.user.gender = FEMALE;
                     [self.tableView reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationNone];
                     APPCONTEXT.currUser.gender = FEMALE;
@@ -156,17 +156,15 @@
                 }
             } failure:^(NSError *error) {
                 DLog(@"error: %@", error);
-                [[HudHelper getInstance] hideHudInView:self.tableView];
             }];
         } else if (indexPath.row == 5) {
             if (APPCONTEXT.currUser.gender == MALE) {
                 return;
             }
-            [[HudHelper getInstance] showHudOnView:self.tableView caption:nil image:nil acitivity:YES autoHideTime:0.0];
             NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"sex": @"M", @"session_key": APPCONTEXT.currUser.sessionKey};
             [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/setSex" params:params success:^(id responseObject) {
-                [[HudHelper getInstance] hideHudInView:self.view];
                 if ([KGUtils checkResult:responseObject]) {
+                    [JDStatusBarNotification showWithStatus:@"修改成功" dismissAfter:2];
                     self.user.gender = MALE;
                     [self.tableView reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationNone];
                     APPCONTEXT.currUser.gender = MALE;
@@ -174,7 +172,6 @@
                 }
             } failure:^(NSError *error) {
                 DLog(@"error: %@", error);
-                [[HudHelper getInstance] hideHudInView:self.tableView];
             }];
         }
     }
@@ -204,34 +201,29 @@
             return NO;
         }
         NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"email": email, @"session_key": APPCONTEXT.currUser.sessionKey};
-        [[HudHelper getInstance] showHudOnView:self.tableView caption:nil image:nil acitivity:YES autoHideTime:0.0];
         [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/setEmail" params:params success:^(id responseObject) {
-            [[HudHelper getInstance] hideHudInView:self.view];
             if ([KGUtils checkResult:responseObject]) {
+                [JDStatusBarNotification showWithStatus:@"修改成功" dismissAfter:2];
                 APPCONTEXT.currUser.email = email;
                 [APPCONTEXT userPersist];
             }
         } failure:^(NSError *error) {
             DLog(@"error: %@", error);
-            [[HudHelper getInstance] hideHudInView:self.tableView];
         }];
     } else if (textField == self.nicknameTF) {
         NSString *nickName = textField.text;
-        if ([nickName isEqualToString:APPCONTEXT.currUser.uname]) {
+        if ([nickName isEqualToString:APPCONTEXT.currUser.nickName]) {
             return NO;
         }
         NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"name": nickName, @"session_key": APPCONTEXT.currUser.sessionKey};
-        [[HudHelper getInstance] showHudOnView:self.tableView caption:nil image:nil acitivity:YES autoHideTime:0.0];
         [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/setName" params:params success:^(id responseObject) {
-            [[HudHelper getInstance] hideHudInView:self.view];
             if ([KGUtils checkResult:responseObject]) {
+                [JDStatusBarNotification showWithStatus:@"修改成功" dismissAfter:2];
                 APPCONTEXT.currUser.nickName = nickName;
-                APPCONTEXT.currUser.uname = nickName;
                 [APPCONTEXT userPersist];
             }
         } failure:^(NSError *error) {
             DLog(@"error: %@", error);
-            [[HudHelper getInstance] hideHudInView:self.tableView];
         }];
     }
     return YES;
@@ -251,16 +243,14 @@
 
         NSString *intro = textView.text;
         NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"desc": intro, @"session_key": APPCONTEXT.currUser.sessionKey};
-        [[HudHelper getInstance] showHudOnView:self.tableView caption:nil image:nil acitivity:YES autoHideTime:0.0];
         [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/setDesc" params:params success:^(id responseObject) {
-            [[HudHelper getInstance] hideHudInView:self.view];
             if ([KGUtils checkResult:responseObject]) {
+                [JDStatusBarNotification showWithStatus:@"修改成功" dismissAfter:2];
                 APPCONTEXT.currUser.intro = intro;
                 [APPCONTEXT userPersist];
             }
         } failure:^(NSError *error) {
             DLog(@"error: %@", error);
-            [[HudHelper getInstance] hideHudInView:self.tableView];
         }];
 
         return NO;
@@ -325,22 +315,21 @@
 #pragma UIImagePickerControllerDelegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    [[HudHelper getInstance] showHudOnView:self.tableView caption:@"上传头像中" image:nil acitivity:YES autoHideTime:0.0];
     [picker dismissViewControllerAnimated:YES completion:^() {
         UIImage *oriImage = [info objectForKey:@"UIImagePickerControllerEditedImage"];
         if (!oriImage) {
             oriImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
         }
         NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"session_key": APPCONTEXT.currUser.sessionKey};
-
         [[KGNetworkManager sharedInstance] uploadPhoto:@"/mobile/user/setHeadurl"
                                                 params:params
                                                   name:@"head_url"
                                                  image:oriImage
                                                success:^(id responseObject) {
-                                                   [[HudHelper getInstance] hideHudInView:self.tableView];
                                                    DLog(@"result: %@", responseObject);
                                                    if ([KGUtils checkResult:responseObject]) {
+                                                       [JDStatusBarNotification showWithStatus:@"头像上传成功" dismissAfter:2];
+
                                                        NSDictionary *data = responseObject[@"data"];
                                                        NSString *headUrl = data[@"head_url"];
                                                        self.user.avatarUrl = headUrl;
@@ -350,7 +339,6 @@
                                                    }
                                                }
                                                failure:^(NSError *error) {
-                                                   [[HudHelper getInstance] hideHudInView:self.tableView];
                                                    DLog(@"error: %@", error);
                                                }];
 

@@ -62,7 +62,7 @@
         }
     } failure:^(NSError *error) {
         DLog(@"%@",error);
-        [[HudHelper getInstance] showHudOnView:self.view caption:@"系统错误,请稍后再试" image:nil acitivity:NO autoHideTime:1.6];
+        [[HudHelper getInstance] hideHudInView:self.tableView];
     }];
 }
 
@@ -114,30 +114,26 @@
                              @"follow_id": @(followId),
                              @"session_key": APPCONTEXT.currUser.sessionKey};
     if (userObj.isFollowed) {
-        [[HudHelper getInstance]showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
         [[KGNetworkManager sharedInstance]postRequest:@"/mobile/user/disFollow" params:params success:^(id responseObject) {
             DLog(@"%@", responseObject);
-            [[HudHelper getInstance] hideHudInView:self.view];
             if ([KGUtils checkResult:responseObject]) {
+                [JDStatusBarNotification showWithStatus:@"取消关注成功" dismissAfter:2.0];
                 userObj.isFollowed = NO;
                 [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
             }
         } failure:^(NSError *error) {
             DLog(@"%@", error);
-            [[HudHelper getInstance] showHudOnView:self.view caption:@"系统错误,请稍后再试" image:nil acitivity:NO autoHideTime:1.6];
         }];
     } else {
-        [[HudHelper getInstance]showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
         [[KGNetworkManager sharedInstance]postRequest:@"/mobile/user/follow" params:params success:^(id responseObject) {
             DLog(@"%@", responseObject);
-            [[HudHelper getInstance] hideHudInView:self.view];
             if ([KGUtils checkResult:responseObject]) {
+                [JDStatusBarNotification showWithStatus:@"关注成功" dismissAfter:2.0];
                 userObj.isFollowed = YES;
                 [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
             }
         } failure:^(NSError *error) {
             DLog(@"%@", error);
-            [[HudHelper getInstance] showHudOnView:self.view caption:@"系统错误,请稍后再试" image:nil acitivity:NO autoHideTime:1.6];
         }];
     }
 }

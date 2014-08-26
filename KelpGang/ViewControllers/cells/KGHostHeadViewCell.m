@@ -47,8 +47,8 @@
     self.user = user;
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:user.avatarUrl] placeholderImage: [UIImage imageNamed:user.gender == MALE ? kAvatarMale : kAvatarFemale]];
     self.headImageView.layer.cornerRadius = self.headImageView.width / 2;
-    self.nameLabel.text = user.uname;
-    if (!user.uname || [@"" isEqualToString:user.uname]) {
+    self.nameLabel.text = user.nickName;
+    if (!user.nickName || [@"" isEqualToString:user.nickName]) {
         self.nameLabel.text = @"未登录用户";
     }
     self.nameLabel.textColor = user.gender == FEMALE ? RGB(255, 133, 133) : RGB(33, 185, 162);

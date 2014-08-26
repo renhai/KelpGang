@@ -138,16 +138,15 @@ static const NSInteger kLimit = 20;
                 NSArray *data = [self convertBuyerSummary:responseObject];
 
                 [self.datasource addObjectsFromArray:data];
+                [self.tableView.pullToRefreshView performSelector:@selector(stopAnimating) withObject:nil afterDelay:0.2];
                 [self.tableView reloadData];
-                [self.tableView.pullToRefreshView performSelector:@selector(stopAnimating) withObject:nil afterDelay:0.5];
                 if (self.hasmore) {
                     self.tableView.showsInfiniteScrolling = YES;
                 }
             }
         } failure:^(NSError *error) {
             NSLog(@"%@", error);
-            [self.tableView.pullToRefreshView stopAnimating];
-            [[HudHelper getInstance] showHudOnView:self.view caption:@"系统错误,请稍后再试" image:nil acitivity:NO autoHideTime:1.6];
+            [self.tableView.pullToRefreshView performSelector:@selector(stopAnimating) withObject:nil afterDelay:0.2];
         }];
     }
 }
@@ -179,7 +178,6 @@ static const NSInteger kLimit = 20;
             NSLog(@"%@", error);
             [self.tableView.pullToRefreshView stopAnimating];
             [self.tableView.infiniteScrollingView stopAnimating];
-            [[HudHelper getInstance] showHudOnView:self.view caption:@"系统错误,请稍后再试" image:nil acitivity:NO autoHideTime:1.6];
         }];
     } else {
         [self.tableView.infiniteScrollingView stopAnimating];
@@ -244,16 +242,18 @@ static const NSInteger kLimit = 20;
         if ([KGUtils checkIsNetworkConnectionAvailableAndNotify:self.view]) {
             [[HudHelper getInstance] showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
             [[KGNetworkManager sharedInstance] postRequest:item.url params:nil success:^(id responseObject) {
-                NSDictionary *dic = (NSDictionary *)responseObject;
-                if (item.index == 0) {
-                    item.data = [self convertCountryData:dic];
-                } else if (item.index == 2) {
-                    item.data = [self convertCityData:dic];
-                }
-                [item openFilterView];
                 [[HudHelper getInstance] hideHudInView:self.view];
+                if ([KGUtils checkResult:responseObject]) {
+                    if (item.index == 0) {
+                        item.data = [self convertCountryData:responseObject];
+                    } else if (item.index == 2) {
+                        item.data = [self convertCityData:responseObject];
+                    }
+                    [item openFilterView];
+                }
             } failure:^(NSError *error) {
-                [[HudHelper getInstance] showHudOnView:self.view caption:@"系统错误,请稍后再试" image:nil acitivity:NO autoHideTime:1.6];
+                DLog(@"error: %@", error);
+                [[HudHelper getInstance] hideHudInView:self.view];
             }];
         }
     }

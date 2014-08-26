@@ -283,8 +283,7 @@ static const NSInteger kHeaderRefreshViewTag = 2;
             }
         } failure:^(NSError *error) {
             DLog(@"%@", error);
-            [[HudHelper getInstance] showHudOnView:self.view caption:@"系统错误,请稍后再试" image:nil acitivity:NO autoHideTime:1.6];
-
+            [[HudHelper getInstance] hideHudInView:self.view];
         }];
 
     }

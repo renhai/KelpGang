@@ -69,7 +69,7 @@
         }
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
-        [[HudHelper getInstance] showHudOnView:self.view caption:@"系统错误,请稍后再试" image:nil acitivity:NO autoHideTime:1.6];
+        [[HudHelper getInstance] hideHudInView:self.view];
     }];
 }
 
@@ -312,18 +312,13 @@
                                  @"good_id": @(goodsId),
                                  @"travel_id": @(travelId),
                                  @"session_key": APPCONTEXT.currUser.sessionKey};
-        [[HudHelper getInstance] showHudOnView:photoBrowser.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
         [[KGNetworkManager sharedInstance] postRequest:@"/mobile/good/addCollection" params:params success:^(id responseObject) {
             DLog(@"%@", responseObject);
             if([KGUtils checkResult:responseObject]) {
-                [[HudHelper getInstance] showHudOnView:photoBrowser.view caption:@"收藏成功" autoHideTime:1.6];
-            } else {
-                [[HudHelper getInstance] hideHudInView:photoBrowser.view];
+                [JDStatusBarNotification showWithStatus:@"收藏成功" dismissAfter:2.0];
             }
-
         } failure:^(NSError *error) {
             DLog(@"%@", error);
-            [[HudHelper getInstance] showHudOnView:photoBrowser.view caption:@"收藏失败" autoHideTime:1.6];
         }];
     }];
     return captionView;
@@ -393,17 +388,15 @@
                              @"session_key": APPCONTEXT.currUser.sessionKey};
 
     if (self.isFollowed) {
-        [[HudHelper getInstance]showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
         [[KGNetworkManager sharedInstance]postRequest:@"/mobile/user/disFollow" params:params success:^(id responseObject) {
             DLog(@"%@", responseObject);
-            [[HudHelper getInstance] hideHudInView:self.view];
             if ([KGUtils checkResult:responseObject]) {
+                [JDStatusBarNotification showWithStatus:@"取消关注成功" dismissAfter:2.0];
                 self.isFollowed = NO;
                 [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]]withRowAnimation:UITableViewRowAnimationNone];
             }
         } failure:^(NSError *error) {
             DLog(@"%@", error);
-            [[HudHelper getInstance] showHudOnView:self.view caption:@"系统错误,请稍后再试" image:nil acitivity:NO autoHideTime:1.6];
         }];
     } else {
         if (followId == APPCONTEXT.currUser.uid) {
@@ -411,17 +404,15 @@
             [alert show];
             return;
         }
-        [[HudHelper getInstance]showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
         [[KGNetworkManager sharedInstance]postRequest:@"/mobile/user/follow" params:params success:^(id responseObject) {
             DLog(@"%@", responseObject);
-            [[HudHelper getInstance] hideHudInView:self.view];
             if ([KGUtils checkResult:responseObject]) {
+                [JDStatusBarNotification showWithStatus:@"关注成功" dismissAfter:2.0];
                 self.isFollowed = YES;
                 [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]]withRowAnimation:UITableViewRowAnimationNone];
             }
         } failure:^(NSError *error) {
             DLog(@"%@", error);
-            [[HudHelper getInstance] showHudOnView:self.view caption:@"系统错误,请稍后再试" image:nil acitivity:NO autoHideTime:1.6];
         }];
     }
 
