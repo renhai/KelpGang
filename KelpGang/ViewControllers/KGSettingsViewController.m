@@ -86,7 +86,9 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kCurrentSessionKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 
+    [[SDImageCache sharedImageCache] clearDisk];
     [[SDImageCache sharedImageCache] clearMemory];
+
     [[XMPPManager sharedInstance] disconnect];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }

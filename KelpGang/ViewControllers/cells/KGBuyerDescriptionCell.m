@@ -7,6 +7,7 @@
 //
 
 #import "KGBuyerDescriptionCell.h"
+#import "KGUserObject.h"
 
 @implementation KGBuyerDescriptionCell
 
@@ -35,15 +36,15 @@
     self.vipImageView.left = self.nameLabel.right + 5;
 }
 
-- (void)setUserInfo: (NSDictionary *)userInfo {
-    self.nameLabel.text = userInfo[@"user_name"];
-    self.descLabel.text = userInfo[@"user_desc"];
-    BOOL isVip = [userInfo[@"user_v"] boolValue];
-    self.vipImageView.hidden = !isVip;
-    NSInteger level = [userInfo[@"user_star"] integerValue];
-    [self configLevelView:level];
-    NSString *headUrl = userInfo[@"head_url"];
-    [self.headImgView setImageWithURL:[NSURL URLWithString:headUrl] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+- (void)setUserInfo: (KGUserObject *)userInfo {
+    if (!userInfo) {
+        userInfo = [[KGUserObject alloc] init];
+    }
+    self.nameLabel.text = userInfo.nickName;
+    self.descLabel.text = userInfo.intro;
+    self.vipImageView.hidden = !userInfo.isVip;
+    [self configLevelView:userInfo.level];
+    [self.headImgView setImageWithURL:[NSURL URLWithString:userInfo.avatarUrl] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.headImgView.layer.cornerRadius = self.headImgView.width / 2;
 
 }

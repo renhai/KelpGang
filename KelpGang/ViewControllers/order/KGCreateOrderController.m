@@ -48,7 +48,6 @@
 {
     [super viewDidLoad];
     [self setLeftBarbuttonItem];
-//    [self setTitle:@"创建订单"];
     [self mockData];
     self.photos = [[NSMutableArray alloc] init];
     [self.photos addObject:@(1)];

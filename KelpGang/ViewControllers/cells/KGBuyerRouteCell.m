@@ -50,6 +50,9 @@
 }
 
 - (void)setRouteInfo: (KGJourneyObject *)info {
+    if (!info) {
+        info = [[KGJourneyObject alloc] init];
+    }
     self.fromLabel.text = info.fromCity;
     self.toLabel.text = info.toCountry;
     if (!info.fromCity || [@"" isEqualToString:info.fromCity]) {

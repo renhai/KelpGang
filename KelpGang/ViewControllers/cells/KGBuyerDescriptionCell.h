@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class KGUserObject;
+
 @interface KGBuyerDescriptionCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *headImgView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -16,6 +18,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *followButton;
 @property (weak, nonatomic) IBOutlet UIView *levelView;
 
-- (void)setUserInfo: (NSDictionary *)userInfo;
+- (void)setUserInfo: (KGUserObject *)userInfo;
 
 @end

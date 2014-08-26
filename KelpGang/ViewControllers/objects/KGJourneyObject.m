@@ -17,6 +17,8 @@
         self.fromCity = @"";
         self.desc = @"";
         self.defaultGoodsImgUrl = @"";
+        self.startDate = [NSDate date];
+        self.backDate = [NSDate date];
     }
     return self;
 }

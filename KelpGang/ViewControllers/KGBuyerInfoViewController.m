@@ -25,7 +25,7 @@
 
 @property (nonatomic, strong) NSMutableArray *photos;
 
-@property (nonatomic, strong) NSDictionary *user_info;
+@property (nonatomic, strong) KGUserObject *userObj;
 @property (nonatomic, strong) KGJourneyObject *journeyObj;
 @property (nonatomic, strong) NSArray *good_info;
 @property (nonatomic, strong) NSArray *comment_info;
@@ -51,15 +51,15 @@
     [super viewDidLoad];
     [self setLeftBarbuttonItem];
 
-    [[HudHelper getInstance] showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
     self.photos = [[NSMutableArray alloc] init];
     NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"travel_id": @(self.travelId)};
+    [[HudHelper getInstance] showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
     [[KGNetworkManager sharedInstance] postRequest:@"/mobile/travel/getUserTravel" params:params success:^(id responseObject) {
         NSLog(@"%@", responseObject);
         [[HudHelper getInstance] hideHudInView:self.view];
         if ([KGUtils checkResult:responseObject]) {
             NSDictionary *data = responseObject[@"data"];
-            self.user_info = data[@"user_info"];
+            self.userObj = [self parseUserInfo:data[@"user_info"]];
             self.journeyObj = [self getJourneyObj:data[@"travel_info"]];
             self.good_info = [self getGoodsList:data[@"good_info"]];
             self.comment_info = data[@"comment_info"];
@@ -88,13 +88,21 @@
     UIViewController *destController = segue.destinationViewController;
     if ([destController isKindOfClass:[KGChatViewController class]]) {
         KGChatViewController *chatViewController = (KGChatViewController *)destController;
-        chatViewController.toUserId = [self.user_info[@"user_id"] integerValue];
+        chatViewController.toUserId = self.userObj.uid;
     }
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
     if ([@"kChatSegue" isEqualToString:identifier]) {
-        if (APPCONTEXT.currUser.uid == [self.user_info[@"user_id"] integerValue]) {
+        if (![APPCONTEXT checkLogin]) {
+            [JDStatusBarNotification showWithStatus:@"请先登录~" dismissAfter:2.0];
+            return NO;
+        }
+        if (APPCONTEXT.currUser.uid == self.userObj.uid) {
+            [JDStatusBarNotification showWithStatus:@"您不能和自己聊天~" dismissAfter:2.0];
+            return NO;
+        }
+        if (self.userObj.uid <= 0) {
             return NO;
         }
     }
@@ -127,7 +135,7 @@
         if (indexPath.row == 0) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"kBuyerDescriptionCell" forIndexPath:indexPath];
             KGBuyerDescriptionCell *dCell = (KGBuyerDescriptionCell *)cell;
-            [dCell setUserInfo:self.user_info];
+            [dCell setUserInfo:self.userObj];
             [dCell.followButton setTitle:self.isFollowed ? @"取消关注" : @"关注" forState: UIControlStateNormal];
             [dCell.followButton addTarget:self action:@selector(followAction:) forControlEvents:UIControlEventTouchUpInside];
         } else if (indexPath.row == 1) {
@@ -237,9 +245,6 @@
 #pragma SwipeViewDelegate
 - (void)swipeView:(SwipeView *)swipeView didSelectItemAtIndex:(NSInteger)index {
     NSLog(@"selelect index is : %d", index);
-    //for testing
-    //    [[SDImageCache sharedImageCache] clearDisk];
-    //    [[SDImageCache sharedImageCache] clearMemory];
 
     self.currAlbumIndex = index;
     [self.photos removeAllObjects];
@@ -287,11 +292,19 @@
     KGGoodsObject *goodsObj = self.good_info[self.currAlbumIndex];
     NSString *title = goodsObj.good_name;
     KGPicBottomView *captionView = [[KGPicBottomView alloc] initWithPhoto:photo index:index count:self.photos.count title:title chatBlock:^(UIButton *sender) {
-        if (APPCONTEXT.currUser.uid == [self.user_info[@"user_id"] integerValue]) {
+        if (![APPCONTEXT checkLogin]) {
+            [JDStatusBarNotification showWithStatus:@"请先登录~" dismissAfter:2.0];
+            return;
+        }
+        if (APPCONTEXT.currUser.uid == self.userObj.uid) {
+            [JDStatusBarNotification showWithStatus:@"您不能和自己聊天~" dismissAfter:2.0];
+            return;
+        }
+        if (self.userObj.uid <= 0) {
             return;
         }
         KGChatViewController *chatViewController = (KGChatViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"kChatViewController"];
-        chatViewController.toUserId = [self.user_info[@"user_id"] integerValue];
+        chatViewController.toUserId = self.userObj.uid;
         self.navigationController.navigationBar.translucent = NO;
         [self dismissViewControllerAnimated:NO completion:nil];
         [self.navigationController pushViewController:chatViewController animated:YES];
@@ -382,7 +395,7 @@
         [alert show];
         return;
     }
-    NSInteger followId = [self.user_info[@"user_id"] integerValue];
+    NSInteger followId = self.userObj.uid;
     NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
                              @"follow_id": @(followId),
                              @"session_key": APPCONTEXT.currUser.sessionKey};
@@ -416,6 +429,19 @@
         }];
     }
 
+}
+
+- (KGUserObject *)parseUserInfo: (NSDictionary *)user_info {
+    KGUserObject *obj = [[KGUserObject alloc] init];
+    obj.uid = [user_info [@"user_id"] integerValue];
+    obj.uname = user_info [@"account"];
+    obj.nickName = user_info [@"user_name"];
+    obj.gender = [KGUtils convertGender:user_info [@"user_sex"]];
+    obj.avatarUrl = user_info [@"head_url"];
+    obj.vip = [user_info [@"user_v"] boolValue];
+    obj.level = [user_info [@"user_star"] integerValue];
+    obj.intro = user_info [@"user_desc"];
+    return obj;
 }
 
 @end

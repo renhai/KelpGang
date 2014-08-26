@@ -58,7 +58,6 @@ static const NSInteger kHeaderRefreshViewTag = 2;
 {
     [super viewDidLoad];
     [self setLeftBarbuttonItem];
-    [self setTitle:@"myrenhai"];
     self.chatCellInfoArr = [[NSMutableArray alloc] init];
 //    [self mockData];
 
@@ -70,11 +69,22 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     [self initTopView];
     [self initChatTextField];
 
-//    if (self.toUserId > 0) {
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//            [[XMPPManager sharedInstance] addFriendSubscribe:self.toUserId];
-//        });
-//    }
+    [self queryUserInfo];
+}
+
+- (void)queryUserInfo {
+    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
+                             @"host_id": @(self.toUserId)};
+    [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/getUser2" params: params success:^(id responseObject) {
+        DLog(@"%@", responseObject);
+        if ([KGUtils checkResult:responseObject]) {
+            NSDictionary *data = responseObject[@"data"];
+            NSString *userName = [data valueForKeyPath:@"user_info.user_name"];
+            self.title = userName;
+        }
+    } failure:^(NSError *error) {
+        DLog(@"%@", error);
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
