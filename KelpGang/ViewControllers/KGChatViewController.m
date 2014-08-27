@@ -13,6 +13,7 @@
 #import "KGChatTxtMessageCell.h"
 #import "KGCreateOrderController.h"
 #import "IQKeyboardManager.h"
+#import "KGTaskObject.h"
 
 static const CGFloat kMaxChatTextViewHeight = 99.0;
 static const NSInteger kHeaderTipViewTag = 1;
@@ -35,6 +36,7 @@ static const NSInteger kHeaderRefreshViewTag = 2;
 @property (nonatomic, strong) NSMutableArray *taskList;
 @property (nonatomic, strong) UIView *taskView;
 @property (nonatomic, assign) BOOL taskViewDisplay;
+@property (nonatomic, assign) NSInteger currSelectedTaskId;
 
 @end
 
@@ -59,7 +61,6 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     [super viewDidLoad];
     [self setLeftBarbuttonItem];
     self.chatCellInfoArr = [[NSMutableArray alloc] init];
-//    [self mockData];
 
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -70,6 +71,7 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     [self initChatTextField];
 
     [self queryUserInfo];
+    [self queryTaskInfo];
 }
 
 - (void)queryUserInfo {
@@ -85,6 +87,32 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     } failure:^(NSError *error) {
         DLog(@"%@", error);
     }];
+}
+
+- (void)queryTaskInfo {
+    self.taskList = [[NSMutableArray alloc]init];
+    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
+                             @"session_key": APPCONTEXT.currUser.sessionKey};
+    [[KGNetworkManager sharedInstance]postRequest:@"/mobile/task/getTasks" params:params success:^(id responseObject) {
+        DLog(@"%@", responseObject);
+        if ([KGUtils checkResult:responseObject]) {
+            NSDictionary *data = responseObject[@"data"];
+            NSArray *taskInfo = data[@"task_info"];
+            if (taskInfo) {
+                for (NSDictionary *dic in taskInfo) {
+                    KGTaskObject *task = [[KGTaskObject alloc]init];
+                    task.taskId = [dic[@"taskId"] integerValue];
+                    task.title = dic[@"title"];
+                    @synchronized(self.taskList) {
+                        [self.taskList addObject:task];
+                    }
+                }
+            }
+        }
+    } failure:^(NSError *error) {
+        DLog(@"%@", error);
+    }];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -241,66 +269,55 @@ static const NSInteger kHeaderRefreshViewTag = 2;
         UIImageView *arrowView = (UIImageView *)[self.topView viewWithTag:1003];
         arrowView.image = [UIImage imageNamed:@"down-arrow-big"];
     } else {
-        NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
-                                 @"session_key": APPCONTEXT.currUser.sessionKey};
-        [[HudHelper getInstance] showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
-        [[KGNetworkManager sharedInstance]postRequest:@"/mobile/task/getTasks" params:params success:^(id responseObject) {
-            DLog(@"%@", responseObject);
-            [[HudHelper getInstance] hideHudInView:self.view];
-            if ([KGUtils checkResult:responseObject]) {
-                NSDictionary *data = responseObject[@"data"];
-                self.taskList = data[@"task_info"];
-                if (!self.taskList || self.taskList.count == 0) {
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kAlertViewTip message:@"请先创建一个任务" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-                    [alert show];
-                    return ;
-                }
-                CGFloat currY = 0;
-                CGFloat containerHeight = MIN([self.taskList count] * itemHeight, 5 * itemHeight);
-                UIScrollView *container = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.tableView.width, containerHeight)];
-                container.scrollEnabled = YES;
-                container.contentSize = CGSizeMake(self.tableView.width, [self.taskList count] * itemHeight);
-                container.backgroundColor = RGB(246, 251, 249);
-                container.opaque = NO;
-                container.alpha = 0.95;
-                for (NSInteger i = 0; i < self.taskList.count; i ++) {
-                    NSDictionary *item = self.taskList[i];
-                    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, currY, self.tableView.width, itemHeight)];
-                    [button setBackgroundImage:[UIImage imageWithColor:RGBACOLOR(0, 0, 0, 0.12)] forState:UIControlStateHighlighted];
-                    UIView *line = [KGUtils seperatorWithFrame:CGRectMake(0, button.height - LINE_HEIGHT, button.width, LINE_HEIGHT)];
-                    [button addSubview:line];
-                    UILabel *label = [[UILabel alloc]initWithFrame:CGRectZero];
-                    label.text = item[@"title"];
-                    label.font = [UIFont systemFontOfSize:16];
-                    label.textColor = RGBCOLOR(114, 114, 114);
-                    label.backgroundColor = CLEARCOLOR;
-                    [label sizeToFit];
-                    label.width = 280;
-                    label.left = 20;
-                    label.centerY = itemHeight / 2;
-                    [button addSubview:label];
-                    currY += itemHeight;
-                    button.tag = i;
-                    [button addTarget:self action:@selector(tapTaskItem:) forControlEvents:UIControlEventTouchUpInside];
-                    [container addSubview:button];
-                }
-                container.top = self.topView.bottom;
-                self.taskView = container;
-                [self.view addSubview:self.taskView];
-                self.taskViewDisplay = YES;
-                UIImageView *arrowView = (UIImageView *)[self.topView viewWithTag:1003];
-                arrowView.image = [UIImage imageNamed:@"up-arrow-big"];
+        @synchronized (self.taskList) {
+            if (!self.taskList || self.taskList.count == 0) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kAlertViewTip message:@"请先创建一个任务" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [alert show];
+                return ;
             }
-        } failure:^(NSError *error) {
-            DLog(@"%@", error);
-            [[HudHelper getInstance] hideHudInView:self.view];
-        }];
-
+            CGFloat currY = 0;
+            CGFloat containerHeight = MIN([self.taskList count] * itemHeight, 5 * itemHeight);
+            UIScrollView *container = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.tableView.width, containerHeight)];
+            container.scrollEnabled = YES;
+            container.contentSize = CGSizeMake(self.tableView.width, [self.taskList count] * itemHeight);
+            container.backgroundColor = RGB(246, 251, 249);
+            container.opaque = NO;
+            container.alpha = 0.95;
+            for (NSInteger i = 0; i < self.taskList.count; i ++) {
+                KGTaskObject *item = self.taskList[i];
+                UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, currY, self.tableView.width, itemHeight)];
+                [button setBackgroundImage:[UIImage imageWithColor:RGBACOLOR(0, 0, 0, 0.12)] forState:UIControlStateHighlighted];
+                UIView *line = [KGUtils seperatorWithFrame:CGRectMake(0, button.height - LINE_HEIGHT, button.width, LINE_HEIGHT)];
+                [button addSubview:line];
+                UILabel *label = [[UILabel alloc]initWithFrame:CGRectZero];
+                label.text = item.title;
+                label.font = [UIFont systemFontOfSize:16];
+                label.textColor = RGBCOLOR(114, 114, 114);
+                label.backgroundColor = CLEARCOLOR;
+                [label sizeToFit];
+                label.width = 280;
+                label.left = 20;
+                label.centerY = itemHeight / 2;
+                [button addSubview:label];
+                currY += itemHeight;
+                button.tag = i;
+                [button addTarget:self action:@selector(tapTaskItem:) forControlEvents:UIControlEventTouchUpInside];
+                [container addSubview:button];
+            }
+            container.top = self.topView.bottom;
+            self.taskView = container;
+            [self.view addSubview:self.taskView];
+            self.taskViewDisplay = YES;
+            UIImageView *arrowView = (UIImageView *)[self.topView viewWithTag:1003];
+            arrowView.image = [UIImage imageNamed:@"up-arrow-big"];
+        }
     }
 }
 
 - (void)tapTaskItem:(UIButton *)sender {
-    NSLog(@"selected task index: %i, item: %@", sender.tag, self.taskList[sender.tag]);
+    KGTaskObject *item = self.taskList[sender.tag];
+    self.currSelectedTaskId = item.taskId;
+    NSLog(@"selected task index: %d, taskId: %d", sender.tag, item.taskId);
     [self.taskView removeFromSuperview];
     self.taskView = nil;
     self.taskViewDisplay = NO;
@@ -309,10 +326,9 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     [arrowView sizeToFit];
     arrowView.centerY = self.topView.height / 2;
 
-    NSDictionary *item = self.taskList[sender.tag];
     UIButton *topButton = (UIButton *)[self.topView viewWithTag:1001];
     UILabel *label = (UILabel *)[topButton viewWithTag:1002];
-    label.text = item[@"title"];
+    label.text = item.title;
     [topButton removeTarget:self action:@selector(tapTopView:) forControlEvents:UIControlEventTouchUpInside];
     [topButton addTarget:self action:@selector(createOrderAction:) forControlEvents:UIControlEventTouchUpInside];
 }
@@ -321,6 +337,8 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     UIStoryboard *board = [UIStoryboard storyboardWithName:@"order" bundle:nil];
     KGCreateOrderController *controller = [board instantiateViewControllerWithIdentifier:@"kCreateOrderController"];
     controller.title = @"创建订单";
+    controller.buyerId = self.toUserId;
+    controller.taskId = self.currSelectedTaskId;
     [self.navigationController pushViewController:controller animated:YES];
 }
 

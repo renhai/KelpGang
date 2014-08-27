@@ -8,12 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class KGAddressObject;
+//@class KGAddressObject;
 
 @interface KGCreateOrderController : UIViewController
 
-@property (nonatomic, strong) KGAddressObject *addrObj;
-@property (nonatomic, strong) NSString *buyerName;
-@property (nonatomic, strong) NSString *taskName;
+@property (nonatomic, assign) NSInteger buyerId;
+@property (nonatomic, assign) NSInteger taskId;
 
 @end

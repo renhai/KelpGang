@@ -18,6 +18,7 @@
 #import "KGCreateOrderTextFieldCell.h"
 #import "KGCompletedOrderController.h"
 #import "KGOrderObject.h"
+#import "KGTaskObject.h"
 
 
 @interface KGCreateOrderController () <UITextViewDelegate, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
@@ -25,6 +26,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *createButton;
 
 @property (nonatomic, strong) NSMutableArray *photos;
+@property (nonatomic, strong) KGAddressObject *addrObj;
+@property (nonatomic, strong) KGUserObject *buyerObj;
+@property (nonatomic, strong) KGTaskObject *taskObj;
 
 @end
 
@@ -54,9 +58,106 @@
     [self.photos addObject:@(1)];
     [self.photos addObject:@(1)];
     [self.photos addObject:@(1)];
+    [self queryDefaultAddr];
+    [self queryBuyerInfo];
+    [self queryTaskInfo];
 
     [self.createButton addTarget:self action:@selector(createOrder:) forControlEvents:UIControlEventTouchUpInside];
 
+}
+
+- (void)queryDefaultAddr {
+    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
+                             @"session_key": APPCONTEXT.currUser.sessionKey};
+    [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/getAddressDefault" params:params success:^(id responseObject) {
+        NSLog(@"%@", responseObject);
+        if ([KGUtils checkResult:responseObject]) {
+            NSArray *addrArr = [responseObject valueForKeyPath:@"data.address_info"];
+            NSDictionary *info;
+            if (addrArr && addrArr.count > 0) {
+                info = addrArr[0];
+            } else {
+                return;
+            }
+            KGAddressObject *obj = [[KGAddressObject alloc] init];
+            obj.addressId = [info[@"address_id"] integerValue];
+            obj.consignee = info[@"receiver_name"];
+            obj.mobile = info[@"tel"];
+            obj.uid = [info[@"user_id"] integerValue];
+            obj.areaCode = info[@"zipcode"];
+            obj.defaultAddr = [info[@"address_is_default"] boolValue];
+            obj.province = [info valueForKeyPath:@"address_detail.province"];
+            obj.city = [info valueForKeyPath:@"address_detail.city"];
+            obj.district = [info valueForKeyPath:@"address_detail.county"];
+            obj.street = [info valueForKeyPath:@"address_detail.street"];
+            self.addrObj = obj;
+            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"%@", error);
+    }];
+}
+
+- (void)queryBuyerInfo {
+    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
+                             @"host_id": @(self.buyerId)};
+    [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/getUser2" params: params success:^(id responseObject) {
+        DLog(@"%@", responseObject);
+        if ([KGUtils checkResult:responseObject]) {
+            NSDictionary *data = responseObject[@"data"];
+            NSString *userName = [data valueForKeyPath:@"user_info.user_name"];
+            KGUserObject *user = [[KGUserObject alloc]init];
+            user.uid = self.buyerId;
+            user.nickName = userName;
+            self.buyerObj = user;
+            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:1]] withRowAnimation:UITableViewRowAnimationNone];
+
+        }
+    } failure:^(NSError *error) {
+        DLog(@"%@", error);
+    }];
+}
+
+- (void)queryTaskInfo {
+    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
+                             @"task_id": @(self.taskId)};
+    [[KGNetworkManager sharedInstance] postRequest:@"/mobile/task/getUserTask" params: params success:^(id responseObject) {
+        DLog(@"%@", responseObject);
+        if ([KGUtils checkResult:responseObject]) {
+            NSDictionary *info = responseObject[@"data"];
+            NSArray *goodsArr = info[@"good_info"];
+            NSDictionary *goodsInfo = @{};
+            if (goodsArr && [goodsArr count] > 0) {
+                goodsInfo = goodsArr[0];
+            }
+            NSDictionary *task_info = info[@"task_info"];
+            NSDictionary *user_info = info[@"user_info"];
+            KGTaskObject *taskObj = [[KGTaskObject alloc] init];
+            taskObj.taskId = [task_info[@"task_id"] integerValue];
+            taskObj.title = task_info[@"task_title"];
+            taskObj.gratuity = [task_info[@"task_gratuity"] floatValue];
+            taskObj.deadline = [NSDate dateWithTimeIntervalSince1970:[task_info[@"task_deadline"] doubleValue]];
+            taskObj.message = task_info[@"task_message"];
+            taskObj.expectCountry = task_info[@"task_good_country"];
+            taskObj.maxMoney = [task_info[@"task_money"] floatValue];
+            taskObj.defaultImageUrl = goodsInfo[@"good_default_head_url"];
+            if (!taskObj.defaultImageUrl) {
+                taskObj.defaultImageUrl = @"";
+            }
+            taskObj.ownerId = [user_info[@"user_id"] integerValue];
+            taskObj.ownerName = user_info[@"user_name"];
+            taskObj.ownerCity = task_info[@"task_live_city"];
+            if (!taskObj.ownerCity) {
+                taskObj.ownerCity = @"";
+            }
+            taskObj.ownerHeadUrl = user_info[@"head_url"];
+            taskObj.ownerGender = [KGUtils convertGender:user_info[@"user_sex"]];
+            self.taskObj = taskObj;
+            [self.tableView reloadData];
+        }
+    } failure:^(NSError *error) {
+        DLog(@"%@", error);
+    }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -72,19 +173,8 @@
 }
 
 - (void)mockData {
-    KGAddressObject *obj = [[KGAddressObject alloc] init];
-    obj.consignee = @"用户1";
-    obj.mobile = @"12112127878";
-    obj.province = @"河北省";
-    obj.city = @"沧州市";
-    obj.district = @"盐山县";
-    obj.street = @"圣诞节法拉盛江东父老就撒旦法离开就撒旦法离开家拉屎大富科技圣诞节发牢骚";
-    obj.areaCode = @"343899";
-    obj.defaultAddr = NO;
-    self.addrObj = obj;
-
-    self.buyerName = @"sdfsdfj";
-    self.taskName = @"教室里的房间爱老师的开发将阿里水电费加拉开始的放假快乐事纠纷的";
+//    self.buyerName = @"sdfsdfj";
+//    self.taskName = @"教室里的房间爱老师的开发将阿里水电费加拉开始的放假快乐事纠纷的";
 }
 
 - (void)didReceiveMemoryWarning
@@ -117,11 +207,11 @@
         if (indexPath.row == 0) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"buyerCell" forIndexPath:indexPath];
             KGCreateOrderBuyerCell *bCell = (KGCreateOrderBuyerCell *)cell;
-            [bCell setObject:self.buyerName];
+            [bCell setObject:self.buyerObj.nickName];
         } else if (indexPath.row == 1) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"taskNameCell" forIndexPath:indexPath];
             KGCreateOrderTaskNameCell *tCell = (KGCreateOrderTaskNameCell *)cell;
-            [tCell setObject:self.taskName];
+            [tCell setObject:self.taskObj.title];
             tCell.taskValueTextView.delegate = self;
         } else if (indexPath.row == 2) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"uploadPhotoLabelCell" forIndexPath:indexPath];

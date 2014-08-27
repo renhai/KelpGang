@@ -59,6 +59,9 @@
 }
 
 - (void)setObject:(KGAddressObject *)addrObj {
+    if (!addrObj) {
+        addrObj = [[KGAddressObject alloc] init];
+    }
     self.consigneeValueLabel.text = addrObj.consignee;
     self.mobileLabel.text = addrObj.mobile;
     self.addrValueLabel.text = [NSString stringWithFormat:@"%@%@%@%@", addrObj.province, addrObj.city, addrObj.district, addrObj.street];
