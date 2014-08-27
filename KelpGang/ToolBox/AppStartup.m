@@ -51,7 +51,7 @@
     VoidBlock loginBlock = ^{
         NSDictionary *params = @{@"account": APPCONTEXT.currUser.uname, @"password_md5": APPCONTEXT.currUser.password};
         [[KGNetworkManager sharedInstance] postRequest:@"/mobile/home/login" params:params success:^(id responseObject) {
-            if ([KGUtils checkResult:responseObject]) {
+            if ([KGUtils checkResultWithAlert:responseObject]) {
                 NSDictionary *data = responseObject[@"data"];
                 NSInteger userId = [data[@"id"] integerValue];
                 NSString *sessionKey = data[@"session_key"];

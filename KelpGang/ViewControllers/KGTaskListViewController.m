@@ -52,7 +52,7 @@
                              @"goodCountry": @"英国"};
     [[KGNetworkManager sharedInstance]postRequest:@"/mobile/task/index2" params:params success:^(id responseObject) {
         DLog(@"%@", responseObject);
-        if ([KGUtils checkResult:responseObject]) {
+        if ([KGUtils checkResultWithAlert:responseObject]) {
             [self.datasource removeAllObjects];
             NSArray *taskArr = responseObject[@"data"];
             for (NSDictionary *info in taskArr) {

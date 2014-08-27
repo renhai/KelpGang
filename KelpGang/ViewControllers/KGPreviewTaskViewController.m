@@ -112,7 +112,7 @@
     [[KGNetworkManager sharedInstance]uploadMultiPhotos:@"/mobile/task/publish" params:params name:@"good_photos" images:self.taskObj.imageArr success:^(id responseObject) {
         DLog(@"%@", responseObject);
         [[HudHelper getInstance] hideHudInView:self.tableView];
-        if ([KGUtils checkResult:responseObject]) {
+        if ([KGUtils checkResultWithAlert:responseObject]) {
             [[NSNotificationCenter defaultCenter] postNotificationName:kPublishTask object:nil];
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"发布成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
             [alertView show];

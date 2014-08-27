@@ -22,6 +22,8 @@
 
 + (NSString *)md5HexDigest:(NSString *)orig;
 
++ (BOOL)checkResultWithAlert: (NSDictionary *)info;
+
 + (BOOL)checkResult: (NSDictionary *)info;
 
 + (Gender)convertGender: (id)sex;

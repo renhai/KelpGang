@@ -132,7 +132,7 @@ static const NSInteger kLimit = 20;
     if ([KGUtils checkIsNetworkConnectionAvailableAndNotify:self.view]) {
         NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"end_id": @0, @"limit": @(kLimit)};
         [[KGNetworkManager sharedInstance] postRequest:@"/mobile/travel/index" params:params success:^(id responseObject) {
-            if ([KGUtils checkResult:responseObject]) {
+            if ([KGUtils checkResultWithAlert:responseObject]) {
                 [self.datasource removeAllObjects];
                 self.hasmore = [responseObject[@"hasmore"] boolValue];
                 NSArray *data = [self convertBuyerSummary:responseObject];
@@ -158,7 +158,7 @@ static const NSInteger kLimit = 20;
         NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"end_id": @(endId), @"limit": @(kLimit)};
         [[KGNetworkManager sharedInstance] postRequest:@"/mobile/travel/index" params:params success:^(id responseObject) {
             NSLog(@"%@", responseObject);
-            if ([KGUtils checkResult:responseObject]) {
+            if ([KGUtils checkResultWithAlert:responseObject]) {
                 self.hasmore = [responseObject[@"hasmore"] boolValue];
                 NSArray *data = [self convertBuyerSummary:responseObject];
                 NSMutableArray *indexPaths = [[NSMutableArray alloc] init];
@@ -243,7 +243,7 @@ static const NSInteger kLimit = 20;
             [[HudHelper getInstance] showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
             [[KGNetworkManager sharedInstance] postRequest:item.url params:nil success:^(id responseObject) {
                 [[HudHelper getInstance] hideHudInView:self.view];
-                if ([KGUtils checkResult:responseObject]) {
+                if ([KGUtils checkResultWithAlert:responseObject]) {
                     if (item.index == 0) {
                         item.data = [self convertCountryData:responseObject];
                     } else if (item.index == 2) {

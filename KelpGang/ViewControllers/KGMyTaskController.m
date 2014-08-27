@@ -51,7 +51,7 @@
         [[KGNetworkManager sharedInstance]postRequest:@"/mobile/user/getUserTasks" params:params success:^(id responseObject) {
             DLog(@"%@",responseObject);
             [[HudHelper getInstance] hideHudInView:self.tableView];
-            if ([KGUtils checkResult:responseObject]) {
+            if ([KGUtils checkResultWithAlert:responseObject]) {
                 [self.datasource removeAllObjects];
                 NSArray *taskArr = responseObject[@"data"];
                 for (NSDictionary *info in taskArr) {
@@ -86,7 +86,7 @@
         [[KGNetworkManager sharedInstance]postRequest:@"/mobile/user/getUserTravels" params:params success:^(id responseObject) {
             DLog(@"%@",responseObject);
             [[HudHelper getInstance] hideHudInView:self.tableView];
-            if ([KGUtils checkResult:responseObject]) {
+            if ([KGUtils checkResultWithAlert:responseObject]) {
                 [self.datasource removeAllObjects];
                 NSArray *taskArr = responseObject[@"data"];
                 for (NSDictionary *info in taskArr) {

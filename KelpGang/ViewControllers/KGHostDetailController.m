@@ -42,7 +42,7 @@
             DLog(@"%@", responseObject);
             [[HudHelper getInstance] hideHudInView:self.tableView];
             NSDictionary *dic = (NSDictionary *)responseObject;
-            if ([KGUtils checkResult:dic]) {
+            if ([KGUtils checkResultWithAlert:dic]) {
                 NSDictionary *data = dic[@"data"];
                 self.user.uname = [data valueForKeyPath:@"user_info.account"];
                 self.user.cellPhone = [data valueForKeyPath:@"user_info.user_phone"];
@@ -147,7 +147,7 @@
             }
             NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"sex": @"F", @"session_key": APPCONTEXT.currUser.sessionKey};
             [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/setSex" params:params success:^(id responseObject) {
-                if ([KGUtils checkResult:responseObject]) {
+                if ([KGUtils checkResultWithAlert:responseObject]) {
                     [JDStatusBarNotification showWithStatus:@"修改成功" dismissAfter:1.6];
                     self.user.gender = FEMALE;
                     [self.tableView reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationNone];
@@ -163,7 +163,7 @@
             }
             NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"sex": @"M", @"session_key": APPCONTEXT.currUser.sessionKey};
             [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/setSex" params:params success:^(id responseObject) {
-                if ([KGUtils checkResult:responseObject]) {
+                if ([KGUtils checkResultWithAlert:responseObject]) {
                     [JDStatusBarNotification showWithStatus:@"修改成功" dismissAfter:2];
                     self.user.gender = MALE;
                     [self.tableView reloadRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationNone];
@@ -202,7 +202,7 @@
         }
         NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"email": email, @"session_key": APPCONTEXT.currUser.sessionKey};
         [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/setEmail" params:params success:^(id responseObject) {
-            if ([KGUtils checkResult:responseObject]) {
+            if ([KGUtils checkResultWithAlert:responseObject]) {
                 [JDStatusBarNotification showWithStatus:@"修改成功" dismissAfter:2];
                 APPCONTEXT.currUser.email = email;
                 [APPCONTEXT userPersist];
@@ -217,7 +217,7 @@
         }
         NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"name": nickName, @"session_key": APPCONTEXT.currUser.sessionKey};
         [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/setName" params:params success:^(id responseObject) {
-            if ([KGUtils checkResult:responseObject]) {
+            if ([KGUtils checkResultWithAlert:responseObject]) {
                 [JDStatusBarNotification showWithStatus:@"修改成功" dismissAfter:2];
                 APPCONTEXT.currUser.nickName = nickName;
                 [APPCONTEXT userPersist];
@@ -244,7 +244,7 @@
         NSString *intro = textView.text;
         NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"desc": intro, @"session_key": APPCONTEXT.currUser.sessionKey};
         [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/setDesc" params:params success:^(id responseObject) {
-            if ([KGUtils checkResult:responseObject]) {
+            if ([KGUtils checkResultWithAlert:responseObject]) {
                 [JDStatusBarNotification showWithStatus:@"修改成功" dismissAfter:2];
                 APPCONTEXT.currUser.intro = intro;
                 [APPCONTEXT userPersist];
@@ -327,7 +327,7 @@
                                                  image:oriImage
                                                success:^(id responseObject) {
                                                    DLog(@"result: %@", responseObject);
-                                                   if ([KGUtils checkResult:responseObject]) {
+                                                   if ([KGUtils checkResultWithAlert:responseObject]) {
                                                        [JDStatusBarNotification showWithStatus:@"头像上传成功" dismissAfter:2];
 
                                                        NSDictionary *data = responseObject[@"data"];

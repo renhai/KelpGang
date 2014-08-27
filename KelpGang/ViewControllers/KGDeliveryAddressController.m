@@ -47,7 +47,7 @@
     NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"session_key": APPCONTEXT.currUser.sessionKey};
     [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/getAddressList" params:params success:^(id responseObject) {
         [[HudHelper getInstance] hideHudInView:self.tableView];
-        if ([KGUtils checkResult:responseObject]) {
+        if ([KGUtils checkResultWithAlert:responseObject]) {
             NSDictionary *data = responseObject[@"data"];
             NSArray *addressArr = data[@"address_info"];
             if (!addressArr) {
@@ -155,7 +155,7 @@
         [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/deleteAddress" params:params success:^(id responseObject) {
             [[HudHelper getInstance] hideHudInView:self.tableView];
             DLog(@"%@", responseObject);
-            if ([KGUtils checkResult:responseObject]) {
+            if ([KGUtils checkResultWithAlert:responseObject]) {
                 [self.datasource removeObjectAtIndex:indexPath.row];
                 [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
             }
@@ -262,7 +262,7 @@
             [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/deleteAddress" params:params success:^(id responseObject) {
                 [[HudHelper getInstance] hideHudInView:self.tableView];
                 DLog(@"%@", responseObject);
-                if ([KGUtils checkResult:responseObject]) {
+                if ([KGUtils checkResultWithAlert:responseObject]) {
                     [self.datasource removeObjectAtIndex:self.currEditCellIndex];
                     [self.tableView beginUpdates];
                     [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.currEditCellIndex inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
@@ -283,7 +283,7 @@
             [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/setAddressDefault" params:params success:^(id responseObject) {
                 [[HudHelper getInstance] hideHudInView:self.tableView];
                 DLog(@"%@", responseObject);
-                if ([KGUtils checkResult:responseObject]) {
+                if ([KGUtils checkResultWithAlert:responseObject]) {
                     for (NSInteger i = 0; i < self.datasource.count; i ++) {
                         KGAddressObject *obj = self.datasource[i];
                         obj.defaultAddr = (i == self.currEditCellIndex);

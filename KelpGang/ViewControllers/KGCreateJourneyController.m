@@ -535,7 +535,7 @@
         [[HudHelper getInstance] hideHudInView:self.tableView];
         self.navigationItem.rightBarButtonItem.enabled = YES;
         DLog(@"%@",responseObject);
-        if ([KGUtils checkResult:responseObject]) {
+        if ([KGUtils checkResultWithAlert:responseObject]) {
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"发布成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
             [alert show];
         }

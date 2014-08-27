@@ -59,7 +59,7 @@
         [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/getAddress" params:params success:^(id responseObject) {
             [[HudHelper getInstance] hideHudInView:self.tableView];
             DLog(@"%@", responseObject);
-            if ([KGUtils checkResult:responseObject]) {
+            if ([KGUtils checkResultWithAlert:responseObject]) {
                 KGAddressObject *obj = [[KGAddressObject alloc] init];
                 NSArray *addrArr = [responseObject valueForKeyPath:@"data.address_info"];
                 if (addrArr && [addrArr count] > 0) {
@@ -113,7 +113,7 @@
                                            success:^(id responseObject) {
                                                [[HudHelper getInstance] hideHudInView:self.tableView];
                                                DLog(@"%@", responseObject);
-                                               if ([KGUtils checkResult:responseObject]) {
+                                               if ([KGUtils checkResultWithAlert:responseObject]) {
                                                    [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateAddress object:nil];
                                                    [self goBack:nil];
                                                }

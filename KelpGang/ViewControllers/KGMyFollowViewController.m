@@ -44,7 +44,7 @@
     [[KGNetworkManager sharedInstance]postRequest:@"/mobile/user/getFollowUsers" params:params success:^(id responseObject) {
         DLog(@"%@",responseObject);
         [[HudHelper getInstance] hideHudInView:self.tableView];
-        if ([KGUtils checkResult:responseObject]) {
+        if ([KGUtils checkResultWithAlert:responseObject]) {
             [self.datasource removeAllObjects];
             NSDictionary *data = responseObject[@"data"];
             NSArray *userArr = data[@"user_info"];
@@ -116,7 +116,7 @@
     if (userObj.isFollowed) {
         [[KGNetworkManager sharedInstance]postRequest:@"/mobile/user/disFollow" params:params success:^(id responseObject) {
             DLog(@"%@", responseObject);
-            if ([KGUtils checkResult:responseObject]) {
+            if ([KGUtils checkResultWithAlert:responseObject]) {
                 [JDStatusBarNotification showWithStatus:@"取消关注成功" dismissAfter:2.0];
                 userObj.isFollowed = NO;
                 [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
@@ -127,7 +127,7 @@
     } else {
         [[KGNetworkManager sharedInstance]postRequest:@"/mobile/user/follow" params:params success:^(id responseObject) {
             DLog(@"%@", responseObject);
-            if ([KGUtils checkResult:responseObject]) {
+            if ([KGUtils checkResultWithAlert:responseObject]) {
                 [JDStatusBarNotification showWithStatus:@"关注成功" dismissAfter:2.0];
                 userObj.isFollowed = YES;
                 [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];

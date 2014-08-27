@@ -43,7 +43,7 @@
     [[KGNetworkManager sharedInstance]postRequest:@"/mobile/user/getUserCollections" params:params success:^(id responseObject) {
         DLog(@"%@",responseObject);
         [[HudHelper getInstance] hideHudInView:self.tableView];
-        if ([KGUtils checkResult:responseObject]) {
+        if ([KGUtils checkResultWithAlert:responseObject]) {
             [self.datasource removeAllObjects];
             NSArray *data = responseObject[@"data"];
             for (NSDictionary *info in data) {

@@ -86,12 +86,21 @@
     return [hash lowercaseString];
 }
 
-+ (BOOL)checkResult: (NSDictionary *)info {
++ (BOOL)checkResultWithAlert: (NSDictionary *)info {
     NSInteger code = [info[@"code"] integerValue];
     NSString *msg = info[@"msg"];
     if (code != 0) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alert show];
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
++ (BOOL)checkResult: (NSDictionary *)info {
+    NSInteger code = [info[@"code"] integerValue];
+    if (code != 0) {
         return NO;
     } else {
         return YES;

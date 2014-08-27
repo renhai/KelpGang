@@ -57,7 +57,7 @@
     [[KGNetworkManager sharedInstance] postRequest:@"/mobile/travel/getUserTravel" params:params success:^(id responseObject) {
         NSLog(@"%@", responseObject);
         [[HudHelper getInstance] hideHudInView:self.view];
-        if ([KGUtils checkResult:responseObject]) {
+        if ([KGUtils checkResultWithAlert:responseObject]) {
             NSDictionary *data = responseObject[@"data"];
             self.userObj = [self parseUserInfo:data[@"user_info"]];
             self.journeyObj = [self getJourneyObj:data[@"travel_info"]];
@@ -327,7 +327,7 @@
                                  @"session_key": APPCONTEXT.currUser.sessionKey};
         [[KGNetworkManager sharedInstance] postRequest:@"/mobile/good/addCollection" params:params success:^(id responseObject) {
             DLog(@"%@", responseObject);
-            if([KGUtils checkResult:responseObject]) {
+            if([KGUtils checkResultWithAlert:responseObject]) {
                 [JDStatusBarNotification showWithStatus:@"收藏成功" dismissAfter:2.0];
             }
         } failure:^(NSError *error) {
@@ -403,7 +403,7 @@
     if (self.isFollowed) {
         [[KGNetworkManager sharedInstance]postRequest:@"/mobile/user/disFollow" params:params success:^(id responseObject) {
             DLog(@"%@", responseObject);
-            if ([KGUtils checkResult:responseObject]) {
+            if ([KGUtils checkResultWithAlert:responseObject]) {
                 [JDStatusBarNotification showWithStatus:@"取消关注成功" dismissAfter:2.0];
                 self.isFollowed = NO;
                 [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]]withRowAnimation:UITableViewRowAnimationNone];
@@ -419,7 +419,7 @@
         }
         [[KGNetworkManager sharedInstance]postRequest:@"/mobile/user/follow" params:params success:^(id responseObject) {
             DLog(@"%@", responseObject);
-            if ([KGUtils checkResult:responseObject]) {
+            if ([KGUtils checkResultWithAlert:responseObject]) {
                 [JDStatusBarNotification showWithStatus:@"关注成功" dismissAfter:2.0];
                 self.isFollowed = YES;
                 [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]]withRowAnimation:UITableViewRowAnimationNone];
