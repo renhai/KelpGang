@@ -232,7 +232,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="VWM-Lh-QcI">
-                                                    <rect key="frame" x="103" y="7" width="210" height="45"/>
+                                                    <rect key="frame" x="103" y="5" width="210" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="textColor" red="0.12941176469999999" green="0.72549019609999998" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -254,7 +254,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上传图片" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dYG-2k-ZOT">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商品图片" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dYG-2k-ZOT">
                                                     <rect key="frame" x="15" y="12" width="64" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -272,23 +272,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="161"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="图片标题" minimumFontSize="17" id="3O7-7G-KcV">
-                                                    <rect key="frame" x="10" y="5" width="240" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="textColor" red="0.12941176469999999" green="0.72549019609999998" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                                                </textField>
-                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ntn-tV-eo1">
-                                                    <rect key="frame" x="277" y="5" width="26" height="26"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" image="delete_img.png">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                </button>
                                                 <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="HZ5-fT-Zw5">
                                                     <rect key="frame" x="10" y="50" width="300" height="93"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eBI-TQ-4Mn">
                                                         <size key="itemSize" width="93" height="93"/>
@@ -335,7 +321,7 @@
                                                             </view>
                                                             <connections>
                                                                 <outlet property="delButton" destination="9nj-i3-3XP" id="RzH-r4-kC7"/>
-                                                                <outlet property="imageView" destination="Q5Z-Sg-j4p" id="dig-Dk-XTo"/>
+                                                                <outlet property="photoView" destination="Q5Z-Sg-j4p" id="vQv-sA-8N2"/>
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>
@@ -344,8 +330,6 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="deleteAllPhotosButton" destination="ntn-tV-eo1" id="9f7-fE-WH6"/>
-                                            <outlet property="photoNameTextField" destination="3O7-7G-KcV" id="4hR-Of-3Wa"/>
                                             <outlet property="photosView" destination="HZ5-fT-Zw5" id="wT4-Eb-7Ca"/>
                                         </connections>
                                     </tableViewCell>
@@ -392,7 +376,7 @@
                                                     <color key="textColor" red="0.73333333329999995" green="0.73333333329999995" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥2500" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gYZ-w8-DSJ">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥2500" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gYZ-w8-DSJ">
                                                     <rect key="frame" x="240" y="12" width="64" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>

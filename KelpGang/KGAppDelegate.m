@@ -34,7 +34,7 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
     [[IQKeyboardManager sharedManager] setShouldResignOnTouchOutside:YES];
     [[IQKeyboardManager sharedManager] setShouldShowTextFieldPlaceholder:NO];
-    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
+    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:YES];
     [[IQKeyboardManager sharedManager] setEnable:YES];
 
     [AppStartup startup: APPSTARTUP_LAUNCH];

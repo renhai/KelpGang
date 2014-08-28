@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface KGCreateOrderPhotoCell : UICollectionViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIImageView *photoView;
 @property (weak, nonatomic) IBOutlet UIButton *delButton;
 
 @end

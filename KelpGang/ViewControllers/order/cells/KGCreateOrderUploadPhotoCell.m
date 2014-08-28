@@ -7,6 +7,7 @@
 //
 
 #import "KGCreateOrderUploadPhotoCell.h"
+#import "KGGoodsObject.h"
 
 @implementation KGCreateOrderUploadPhotoCell
 
@@ -33,11 +34,17 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    self.photoNameTextField.top = 7;
-    self.photoNameTextField.left = 20;
-    self.deleteAllPhotosButton.top = self.photoNameTextField.top;
-    self.deleteAllPhotosButton.right = self.width - 20;
-    self.photosView.top = self.photoNameTextField.bottom + 15;
+//    self.photoNameTextField.top = 7;
+//    self.photoNameTextField.left = 20;
+//    self.deleteAllPhotosButton.top = self.photoNameTextField.top;
+//    self.deleteAllPhotosButton.right = self.width - 20;
+//    self.photosView.top = self.photoNameTextField.bottom + 15;
+    self.photosView.top = 10;
 }
+
+//- (void)setObject:(KGGoodsObject *)obj {
+//    self.photoNameTextField.enabled = NO;
+//    self.photoNameTextField.text = obj.good_name;
+//}
 
 @end

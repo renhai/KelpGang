@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+//@class KGGoodsObject;
+
 @interface KGCreateOrderUploadPhotoCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UITextField *photoNameTextField;
-@property (weak, nonatomic) IBOutlet UIButton *deleteAllPhotosButton;
+
 @property (weak, nonatomic) IBOutlet UICollectionView *photosView;
+
+//- (void)setObject: (KGGoodsObject *)obj;
 
 @end

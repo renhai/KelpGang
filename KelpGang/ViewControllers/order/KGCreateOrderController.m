@@ -19,6 +19,8 @@
 #import "KGCompletedOrderController.h"
 #import "KGOrderObject.h"
 #import "KGTaskObject.h"
+#import "KGGoodsObject.h"
+#import "KGGoodsPhotoObject.h"
 
 
 @interface KGCreateOrderController () <UITextViewDelegate, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
@@ -26,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *createButton;
 
 @property (nonatomic, strong) NSMutableArray *photos;
+@property (nonatomic, strong) KGGoodsObject *goodsObj;
 @property (nonatomic, strong) KGAddressObject *addrObj;
 @property (nonatomic, strong) KGUserObject *buyerObj;
 @property (nonatomic, strong) KGTaskObject *taskObj;
@@ -52,12 +55,6 @@
 {
     [super viewDidLoad];
     [self setLeftBarbuttonItem];
-    [self mockData];
-    self.photos = [[NSMutableArray alloc] init];
-    [self.photos addObject:@(1)];
-    [self.photos addObject:@(1)];
-    [self.photos addObject:@(1)];
-    [self.photos addObject:@(1)];
     [self queryDefaultAddr];
     [self queryBuyerInfo];
     [self queryTaskInfo];
@@ -124,14 +121,14 @@
     [[KGNetworkManager sharedInstance] postRequest:@"/mobile/task/getUserTask" params: params success:^(id responseObject) {
         DLog(@"%@", responseObject);
         if ([KGUtils checkResult:responseObject]) {
-            NSDictionary *info = responseObject[@"data"];
-            NSArray *goodsArr = info[@"good_info"];
+            NSDictionary *data = responseObject[@"data"];
+            NSArray *goodsArr = data[@"good_info"];
             NSDictionary *goodsInfo = @{};
             if (goodsArr && [goodsArr count] > 0) {
                 goodsInfo = goodsArr[0];
             }
-            NSDictionary *task_info = info[@"task_info"];
-            NSDictionary *user_info = info[@"user_info"];
+            NSDictionary *task_info = data[@"task_info"];
+            NSDictionary *user_info = data[@"user_info"];
             KGTaskObject *taskObj = [[KGTaskObject alloc] init];
             taskObj.taskId = [task_info[@"task_id"] integerValue];
             taskObj.title = task_info[@"task_title"];
@@ -153,6 +150,29 @@
             taskObj.ownerHeadUrl = user_info[@"head_url"];
             taskObj.ownerGender = [KGUtils convertGender:user_info[@"user_sex"]];
             self.taskObj = taskObj;
+
+            KGGoodsObject *goodsObj = [[KGGoodsObject alloc]init];
+            goodsObj.goods_id = [goodsInfo[@"good_id"] integerValue];
+            goodsObj.good_default_head_url = goodsInfo[@"good_default_head_url"];
+            goodsObj.good_default_main_url = goodsInfo[@"good_default_main_url"];
+            goodsObj.good_default_photo_url = goodsInfo[@"good_default_photo_url"];
+            goodsObj.good_default_tiny_url = goodsInfo[@"good_default_tiny_url"];
+            goodsObj.good_name = goodsInfo[@"good_name"];
+            goodsObj.good_is_collection = [goodsInfo[@"good_is_collection"] boolValue];
+            NSArray *photoArr = goodsInfo[@"good_photos"];
+            NSMutableArray *photos = [[NSMutableArray alloc]init];
+            for (NSDictionary *photoDic in photoArr) {
+                KGGoodsPhotoObject *photoObj = [[KGGoodsPhotoObject alloc]init];
+                photoObj.good_photo_id = [photoDic[@"good_photo_id"] integerValue];
+                photoObj.good_head_url = photoDic[@"good_head_url"];
+                photoObj.good_main_url = photoDic[@"good_main_url"];
+                photoObj.good_photo_url = photoDic[@"good_photo_url"];
+                photoObj.good_tiny_url = photoDic[@"good_tiny_url"];
+                [photos addObject:photoObj];
+            }
+            goodsObj.good_photos = photos;
+            self.goodsObj = goodsObj;
+
             [self.tableView reloadData];
         }
     } failure:^(NSError *error) {
@@ -170,11 +190,6 @@
         }
     }
 
-}
-
-- (void)mockData {
-//    self.buyerName = @"sdfsdfj";
-//    self.taskName = @"教室里的房间爱老师的开发将阿里水电费加拉开始的放假快乐事纠纷的";
 }
 
 - (void)didReceiveMemoryWarning
@@ -218,29 +233,37 @@
         } else if (indexPath.row == 3) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"uploadPhotoCell" forIndexPath:indexPath];
             KGCreateOrderUploadPhotoCell *uCell = (KGCreateOrderUploadPhotoCell *)cell;
-            uCell.photoNameTextField.delegate = self;
             uCell.photosView.delegate = self;
             uCell.photosView.dataSource = self;
-            [uCell.deleteAllPhotosButton addTarget:self action:@selector(deleteAllPhotos:) forControlEvents:UIControlEventTouchUpInside];
+            [uCell.photosView reloadData];
         } else if (indexPath.row > 3 && indexPath.row < 7) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"textFieldCell" forIndexPath:indexPath];
             KGCreateOrderTextFieldCell *tCell = (KGCreateOrderTextFieldCell *)cell;
             tCell.textField.delegate = self;
+            [tCell.textField addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];
             NSString *title;
             NSString *text;
             if (indexPath.row == 4) {
+                tCell.textField.keyboardType = UIKeyboardTypeDecimalPad;
                 title = @"跑腿费比例：";
-                text = @"10%";
+                text = [NSString stringWithFormat:@"%0.1f", self.taskObj.gratuity];
             } else if (indexPath.row == 5) {
+                tCell.textField.keyboardType = UIKeyboardTypeDecimalPad;
                 title = @"任务金额：";
-                text = @"￥100";
+                text = [NSString stringWithFormat:@"%0.1f", self.taskObj.maxMoney];
             } else {
+                tCell.textField.keyboardType = UIKeyboardTypeDefault;
                 title = @"任务描述：";
-                text = @"白色榴莲味面霜，2倍浓度";
+                text = self.taskObj.message;
             }
             [tCell configCell:title text:text];
         } else {
             cell = [tableView dequeueReusableCellWithIdentifier:@"priceCell" forIndexPath:indexPath];
+            UILabel *priceLbl = (UILabel *)[cell viewWithTag:100];
+            CGFloat price = self.taskObj.maxMoney * (1.0 + self.taskObj.gratuity / 100);
+            priceLbl.text = [NSString stringWithFormat:@"￥%0.1f", price];
+            [priceLbl sizeToFit];
+            priceLbl.right = cell.width - 10;
         }
     }
     return cell;
@@ -259,7 +282,7 @@
         } else if (indexPath.row == 2) {
             return 47;
         } else if (indexPath.row == 3) {
-            return 162;
+            return 120;
         }
     }
     return 46;
@@ -306,11 +329,19 @@
     return YES;
 }
 
+- (void)textViewDidChange:(UITextView *)textView {
+    self.taskObj.title = textView.text;
+}
+
 #pragma UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:7 inSection:1]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 #pragma UICollectionViewDataSource
@@ -321,7 +352,7 @@
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [self.photos count] + 1;
+    return [self.goodsObj.good_photos count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -331,7 +362,10 @@
 //    } else {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"kPhotoCell" forIndexPath:indexPath];
         KGCreateOrderPhotoCell *pCell = (KGCreateOrderPhotoCell *)cell;
-        [pCell.delButton addTarget:self action:@selector(delPhoto:) forControlEvents:UIControlEventTouchUpInside];
+        KGGoodsPhotoObject *photo = self.goodsObj.good_photos[indexPath.row];
+        [pCell.photoView setImageWithURL:[NSURL URLWithString:photo.good_head_url]usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//        [pCell.delButton addTarget:self action:@selector(delPhoto:) forControlEvents:UIControlEventTouchUpInside];
+
 //    }
     return cell;
 }
@@ -342,6 +376,11 @@
     DLog(@"indexPath: %@", indexPath);
 }
 
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(93, 93);
+}
+
+/*
 
 - (void)deleteAllPhotos: (UIButton *)sender {
     [self.photos removeAllObjects];
@@ -359,6 +398,7 @@
     [self.photos removeObjectAtIndex:indexPath.row];
     [uCell.photosView reloadData];
 }
+*/
 
 - (void)createOrder: (UIButton *)sender {
     [[HudHelper getInstance] showHudOnView:self.view caption:@"正在创建" image:nil acitivity:YES autoHideTime:0.0];
@@ -384,9 +424,32 @@
         }
 
     });
+}
 
-
-
+- (void)textFieldChanged: (UITextField *)sender {
+    UITableViewCell *cell = (UITableViewCell *)sender.superview.superview.superview;
+    if (![KGUtils isHigherIOS7]) {
+        cell = (UITableViewCell *)sender.superview.superview;
+    }
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    if (indexPath.section == 1) {
+        switch (indexPath.row) {
+            case 4: {
+                self.taskObj.gratuity = [sender.text floatValue];
+                break;
+            }
+            case 5: {
+                self.taskObj.maxMoney = [sender.text floatValue];
+                break;
+            }
+            case 6: {
+                self.taskObj.message = sender.text;
+                break;
+            }
+            default:
+                break;
+        }
+    }
 }
 
 @end

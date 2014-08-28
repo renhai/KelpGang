@@ -33,7 +33,6 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    self.taskValueTextView.centerY = self.taskNameLabel.centerY;
     self.taskValueTextView.left = self.taskNameLabel.right;
 }
 

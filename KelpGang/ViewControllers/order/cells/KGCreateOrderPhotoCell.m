@@ -21,8 +21,8 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    self.imageView.layer.borderWidth = 3;
-    self.imageView.layer.borderColor = RGBCOLOR(213, 232, 232).CGColor;
+    self.photoView.layer.borderWidth = 3;
+    self.photoView.layer.borderColor = RGBCOLOR(213, 232, 232).CGColor;
 
     self.delButton.right = self.width - 4;
     self.delButton.top = 4;
