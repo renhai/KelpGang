@@ -59,7 +59,6 @@
         }
         DLog(@"result: %@", responseObject);
     } failure:^(NSError *error) {
-        [[HudHelper getInstance] hideHudInView:self.tableView];
         DLog(@"error: %@", error);
     }];
 

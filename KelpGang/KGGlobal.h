@@ -36,6 +36,7 @@ self.navigationItem.leftBarButtonItem = buttonItem;\
 #define kLoginUserKey   @"kX2UserKey"
 #define kAlertViewTip   @"提示"
 #define kUpdateAddress  @"kUpdateAddress"
+#define kNetworkError   @"网络故障，请稍后重试"
 
 
 typedef enum {

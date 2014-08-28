@@ -58,7 +58,6 @@
             }
         } failure:^(NSError *error) {
             DLog(@"%@", error);
-            [[HudHelper getInstance] hideHudInView:self.tableView];
         }];
     }
 }

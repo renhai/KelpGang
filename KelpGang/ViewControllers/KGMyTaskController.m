@@ -80,7 +80,6 @@
             }
         } failure:^(NSError *error) {
             DLog(@"%@",error);
-            [[HudHelper getInstance] hideHudInView:self.tableView];
         }];
     } else {
         [[KGNetworkManager sharedInstance]postRequest:@"/mobile/user/getUserTravels" params:params success:^(id responseObject) {
@@ -110,7 +109,6 @@
             }
         } failure:^(NSError *error) {
             DLog(@"%@",error);
-            [[HudHelper getInstance] hideHudInView:self.tableView];
         }];
     }
 }

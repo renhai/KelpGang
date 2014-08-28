@@ -69,7 +69,6 @@
         }
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
-        [[HudHelper getInstance] hideHudInView:self.view];
     }];
 }
 

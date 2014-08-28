@@ -32,7 +32,7 @@
               success(responseObject);
           }
       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-          [[HudHelper getInstance] showHudOnWindow:@"网络故障，请稍后重试" image:nil acitivity:NO autoHideTime:1.6];
+          [JDStatusBarNotification showWithStatus:kNetworkError dismissAfter:1.6    styleName:JDStatusBarStyleDark];
           if (failure) {
               failure(error);
           }
@@ -57,7 +57,7 @@
             success(responseObject);
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [[HudHelper getInstance] showHudOnWindow:@"网络故障，请稍后重试" image:nil acitivity:NO autoHideTime:1.6];
+        [JDStatusBarNotification showWithStatus:kNetworkError dismissAfter:1.6    styleName:JDStatusBarStyleDark];
         if (failure) {
             failure(error);
         }
@@ -84,7 +84,7 @@
             success(responseObject);
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [[HudHelper getInstance] showHudOnWindow:@"网络故障，请稍后重试" image:nil acitivity:NO autoHideTime:1.6];
+        [JDStatusBarNotification showWithStatus:kNetworkError dismissAfter:1.6    styleName:JDStatusBarStyleDark];
         if (failure) {
             failure(error);
         }
@@ -115,7 +115,7 @@
             success(responseObject);
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [[HudHelper getInstance] showHudOnWindow:@"网络故障，请稍后重试" image:nil acitivity:NO autoHideTime:1.6];
+        [JDStatusBarNotification showWithStatus:kNetworkError dismissAfter:1.6    styleName:JDStatusBarStyleDark];
         if (failure) {
             failure(error);
         }

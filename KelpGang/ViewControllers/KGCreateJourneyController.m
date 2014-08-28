@@ -542,7 +542,7 @@
     } failure:^(NSError *error) {
         DLog(@"error:%@",error);
         self.navigationItem.rightBarButtonItem.enabled = YES;
-        [[HudHelper getInstance] showHudOnView:self.tableView caption:@"系统错误，请稍后重试" autoHideTime:1.6];
+        [JDStatusBarNotification showWithStatus:kNetworkError dismissAfter:1.6    styleName:JDStatusBarStyleDark];
     }];
 }
 
