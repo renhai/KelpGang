@@ -117,7 +117,6 @@
 		A1610CB6199367C0001F9DAA /* KGDiscoverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1610CB5199367C0001F9DAA /* KGDiscoverCell.m */; };
 		A1610CC019938B95001F9DAA /* KGDiscoverDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1610CBF19938B95001F9DAA /* KGDiscoverDetailViewController.m */; };
 		A162DABD1999B2210038AE8B /* AFHTTPRequestOperationManager+timeout.m in Sources */ = {isa = PBXBuildFile; fileRef = A162DABA1999B2210038AE8B /* AFHTTPRequestOperationManager+timeout.m */; };
-		A162DABF1999B2210038AE8B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A162DABC1999B2210038AE8B /* README.md */; };
 		A162DAC2199A15A80038AE8B /* KGMyTaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = A162DAC1199A15A80038AE8B /* KGMyTaskController.m */; };
 		A162DAC5199A19ED0038AE8B /* KGMyTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A162DAC4199A19ED0038AE8B /* KGMyTaskCell.m */; };
 		A164DA2E194EA249008B26E8 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A164DA19194EA249008B26E8 /* IQKeyboardManager.bundle */; };
@@ -924,7 +923,6 @@
 		A1610CBF19938B95001F9DAA /* KGDiscoverDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGDiscoverDetailViewController.m; sourceTree = "<group>"; };
 		A162DAB91999B2210038AE8B /* AFHTTPRequestOperationManager+timeout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPRequestOperationManager+timeout.h"; sourceTree = "<group>"; };
 		A162DABA1999B2210038AE8B /* AFHTTPRequestOperationManager+timeout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPRequestOperationManager+timeout.m"; sourceTree = "<group>"; };
-		A162DABC1999B2210038AE8B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		A162DAC0199A15A80038AE8B /* KGMyTaskController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGMyTaskController.h; sourceTree = "<group>"; };
 		A162DAC1199A15A80038AE8B /* KGMyTaskController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGMyTaskController.m; sourceTree = "<group>"; };
 		A162DAC3199A19ED0038AE8B /* KGMyTaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGMyTaskCell.h; sourceTree = "<group>"; };
@@ -2148,7 +2146,6 @@
 			children = (
 				A162DAB91999B2210038AE8B /* AFHTTPRequestOperationManager+timeout.h */,
 				A162DABA1999B2210038AE8B /* AFHTTPRequestOperationManager+timeout.m */,
-				A162DABC1999B2210038AE8B /* README.md */,
 			);
 			path = "AFHTTPRequestOperationManager-Timeout";
 			sourceTree = "<group>";
@@ -2868,7 +2865,6 @@
 				A1986FAB191A3EA20064CC6C /* 巴拿马.png in Resources */,
 				A1986F87191A3EA20064CC6C /* 奥地利.png in Resources */,
 				A10150E318CB8BA7004A729D /* default_line.png in Resources */,
-				A162DABF1999B2210038AE8B /* README.md in Resources */,
 				A1986F21191A3EA20064CC6C /* 利比里亚.png in Resources */,
 				A1986FF5191A3EA20064CC6C /* 沙特阿拉伯.png in Resources */,
 				A182A2B818E1267F00B63470 /* my-follow@2x.png in Resources */,
@@ -3736,7 +3732,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KelpGang/KelpGang-Prefix.pch";
 				INFOPLIST_FILE = "KelpGang/KelpGang-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -3751,7 +3747,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KelpGang/KelpGang-Prefix.pch";
 				INFOPLIST_FILE = "KelpGang/KelpGang-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
