@@ -401,29 +401,57 @@
 */
 
 - (void)createOrder: (UIButton *)sender {
-    [[HudHelper getInstance] showHudOnView:self.view caption:@"正在创建" image:nil acitivity:YES autoHideTime:0.0];
-    __weak typeof(self) weakSelf = self;
+//    [[HudHelper getInstance] showHudOnView:self.view caption:@"正在创建" image:nil acitivity:YES autoHideTime:0.0];
+//    __weak typeof(self) weakSelf = self;
+//
+//    int64_t delayInSeconds = 2.0;
+//    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+//    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+//        [[HudHelper getInstance]hideHudInView:weakSelf.view];
+//        NSArray *controllers = weakSelf.navigationController.viewControllers;
+//        if (controllers.count > 1) {
+//            KGCompletedOrderController *destController = [weakSelf.storyboard instantiateViewControllerWithIdentifier:@"kCompletedOrderController"];
+//            KGOrderObject *obj = [[KGOrderObject alloc]init];
+//            obj.orderStatus = WAITING_CONFIRM;
+//            destController.orderObj = obj;
+//            [weakSelf.navigationController pushViewController:destController animated:YES];
+//
+//            NSMutableArray *controllers = [NSMutableArray arrayWithArray:weakSelf.navigationController.viewControllers];
+//            [controllers removeObjectAtIndex:controllers.count - 2];
+//            [weakSelf.navigationController setViewControllers:controllers];
+//        } else {
+//            [weakSelf dismissViewControllerAnimated:YES completion:nil];
+//        }
+//
+//    });
 
-    int64_t delayInSeconds = 2.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [[HudHelper getInstance]hideHudInView:weakSelf.view];
-        NSArray *controllers = weakSelf.navigationController.viewControllers;
-        if (controllers.count > 1) {
-            KGCompletedOrderController *destController = [weakSelf.storyboard instantiateViewControllerWithIdentifier:@"kCompletedOrderController"];
+    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
+                             @"session_key": APPCONTEXT.currUser.sessionKey,
+                             @"addressId": @(self.addrObj.addressId),
+                             @"buyer_id": @(self.buyerObj.uid),
+                             @"task_id": @(self.taskObj.taskId),
+                             @"title": self.taskObj.title,
+                             @"gratuity": [NSString stringWithFormat:@"%0.1f", self.taskObj.gratuity],
+                             @"message": self.taskObj.message,
+                             @"money": [NSString stringWithFormat:@"%0.1f", self.taskObj.maxMoney]};
+    [[HudHelper getInstance] showHudOnView:self.view caption:@"正在创建" image:nil acitivity:YES autoHideTime:0.0];
+    [[KGNetworkManager sharedInstance]postRequest:@"/mobile/order/addOrders" params:params success:^(id responseObject) {
+        DLog(@"%@", responseObject);
+        [[HudHelper getInstance] hideHudInView:self.view];
+        if ([KGUtils checkResultWithAlert:responseObject]) {
+            KGCompletedOrderController *destController = [self.storyboard instantiateViewControllerWithIdentifier:@"kCompletedOrderController"];
             KGOrderObject *obj = [[KGOrderObject alloc]init];
             obj.orderStatus = WAITING_CONFIRM;
             destController.orderObj = obj;
-            [weakSelf.navigationController pushViewController:destController animated:YES];
+            [self.navigationController pushViewController:destController animated:YES];
 
-            NSMutableArray *controllers = [NSMutableArray arrayWithArray:weakSelf.navigationController.viewControllers];
+            NSMutableArray *controllers = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
             [controllers removeObjectAtIndex:controllers.count - 2];
-            [weakSelf.navigationController setViewControllers:controllers];
-        } else {
-            [weakSelf dismissViewControllerAnimated:YES completion:nil];
+            [self.navigationController setViewControllers:controllers];
         }
-
-    });
+    } failure:^(NSError *error) {
+        DLog(@"%@", error);
+    }];
 }
 
 - (void)textFieldChanged: (UITextField *)sender {
