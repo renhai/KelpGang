@@ -73,9 +73,28 @@
     self.statusLabel.font = [UIFont systemFontOfSize:13];
     self.statusLabel.layer.cornerRadius = 4;
     self.statusLabel.layer.borderWidth = 1;
-    self.statusLabel.textColor = MAIN_COLOR;
-    self.statusLabel.layer.borderColor = MAIN_COLOR.CGColor;
-    self.statusLabel.text = @"待认领";
+
+    NSString *status = @"";
+    UIColor *statusColor = CLEARCOLOR;
+    switch (obj.taskStatus) {
+        case 0:
+            statusColor = MAIN_COLOR;
+            status = @"待认领";
+            break;
+        case 1:
+            statusColor = RGB(187, 187, 187);
+            status = @"已认领";
+            break;
+        case 2:
+            statusColor = RGB(187, 187, 187);
+            status = @"已过期";
+            break;
+        default:
+            break;
+    }
+    self.statusLabel.textColor = statusColor;
+    self.statusLabel.layer.borderColor = statusColor.CGColor;
+    self.statusLabel.text = status;
     self.statusLabel.textAlignment = NSTextAlignmentCenter;
 }
 

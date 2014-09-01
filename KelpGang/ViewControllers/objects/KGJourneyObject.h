@@ -19,5 +19,6 @@
 @property (nonatomic, strong) NSString *desc;
 
 @property (nonatomic, strong) NSString *defaultGoodsImgUrl;
+@property (nonatomic, assign) NSInteger journeyStatus;
 
 @end

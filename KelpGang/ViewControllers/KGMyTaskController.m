@@ -70,6 +70,7 @@
                     taskObj.expectCountry = task_info[@"task_good_country"];
                     taskObj.maxMoney = [task_info[@"task_money"] floatValue];
                     taskObj.defaultImageUrl = goodsInfo[@"good_default_head_url"];
+                    taskObj.taskStatus = [task_info[@"task_status"] integerValue];
                     if (!taskObj.defaultImageUrl) {
                         taskObj.defaultImageUrl = @"";
                     }
@@ -103,6 +104,7 @@
                     journeyObj.startDate = [NSDate dateWithTimeIntervalSince1970:[travel_info[@"travel_start_time"] doubleValue]];
                     journeyObj.desc = travel_info[@"travel_desc"];
                     journeyObj.defaultGoodsImgUrl = goodsInfo[@"good_default_head_url"];
+                    journeyObj.journeyStatus = [travel_info[@"travel_status"] integerValue];
                     [self.datasource addObject:journeyObj];
                 }
                 [self.tableView reloadData];

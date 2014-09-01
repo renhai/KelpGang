@@ -26,5 +26,6 @@
 @property (nonatomic, strong) NSString *ownerHeadUrl;
 @property (nonatomic, strong) NSString *ownerCity;
 @property (nonatomic, assign) Gender ownerGender;
+@property (nonatomic, assign) NSInteger taskStatus;
 
 @end
