@@ -13,7 +13,7 @@
 @property (nonatomic, assign) NSInteger orderId;
 @property (nonatomic, strong) NSString *orderNumber;
 @property (nonatomic, strong) NSString *orderDesc;
-@property (nonatomic, assign) NSInteger orderMoney;
+@property (nonatomic, assign) CGFloat orderMoney;
 @property (nonatomic, strong) NSString *orderImageUrl;
 @property (nonatomic, assign) OrderStatus orderStatus;
 @property (nonatomic, assign) NSInteger userId;

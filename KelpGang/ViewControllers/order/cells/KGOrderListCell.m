@@ -43,6 +43,8 @@
     self.orderDescLabel.width = 210;
     [self.orderDescLabel sizeToFit];
 
+    [self.orderMoneyLabel sizeToFit];
+
     [self.orderStatusLabel sizeToFit];
     self.orderStatusLabel.width += 4;
     self.orderStatusLabel.height += 2;
@@ -62,7 +64,7 @@
     self.orderImageView.layer.borderColor = RGBCOLOR(201, 201, 201).CGColor;
     self.orderNumLabel.text = [NSString stringWithFormat:@"订单号 %@", orderSummaryObj.orderNumber];
     self.orderDescLabel.text = orderSummaryObj.orderDesc;
-    self.orderMoneyLabel.text = [NSString stringWithFormat:@"￥%i", orderSummaryObj.orderMoney];
+    self.orderMoneyLabel.text = [NSString stringWithFormat:@"￥%0.2f", orderSummaryObj.orderMoney];
 
     self.orderStatusLabel.layer.cornerRadius = 4;
     self.orderStatusLabel.layer.borderWidth = 1;
@@ -88,6 +90,9 @@
             break;
         case WAITING_RECEIPT:
             self.orderStatusLabel.text = @"等待买家确认收货";
+            break;
+        case WAITING_COMMENT:
+            self.orderStatusLabel.text = @"待评价";
             break;
         case COMPLETED:
             self.orderStatusLabel.text = @"已完成";

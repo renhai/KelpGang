@@ -14,6 +14,7 @@
 @interface KGOrderListController ()
 
 @property (nonatomic, strong) NSMutableArray *orderList;
+@property (nonatomic, assign) NSInteger segType;
 
 @end
 
@@ -32,31 +33,40 @@
 {
     [super viewDidLoad];
     [self setTitle:@"我的订单"];
-    self.orderList = [[NSMutableArray alloc]init];
-    [self mockData];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.segType = 0;
+    [self refreshDatasource];
 }
 
-- (void)mockData {
-    for (NSInteger i = 0; i < 20; i ++) {
-        KGOrderSummaryObject * obj = [[KGOrderSummaryObject alloc] init];
-        obj.orderId = i;
-        obj.orderNumber = [NSString stringWithFormat:@"122121212121212%i", i];
-        obj.orderDesc = i % 2 == 0 ? @"凯夫拉束带结发拉丝机东方丽景阿斯顿发科技阿什利的客服经理说大家发了卡士大夫" : @"水电费加拉斯的减肥圣";
-        obj.orderMoney = 200 + i;
-        obj.orderImageUrl = @"http://b.hiphotos.baidu.com/image/w%3D2048/sign=5e82a4e40846f21fc9345953c21c6a60/cb8065380cd791231e957e6baf345982b2b780bc.jpg";
-        obj.orderStatus = i % 6;
-        obj.userId = i;
-        obj.userName = [NSString stringWithFormat:@"用户%i", i];
-        obj.userAvatar = @"http://f.hiphotos.baidu.com/image/w%3D2048/sign=bd17fb17be315c6043956cefb989ca13/c83d70cf3bc79f3da535b332b8a1cd11738b29df.jpg";
-        obj.hasNewNotification = i % 2;
-        [self.orderList addObject:obj];
-    }
+- (void)refreshDatasource {
+    self.orderList = [[NSMutableArray alloc]init];
+    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
+                             @"session_key": APPCONTEXT.currUser.sessionKey};
+    NSString *postUrl = self.segType == 0 ? @"/mobile/order/getBuyOrders" : @"/mobile/order/getSellOrders";
+    [[HudHelper getInstance] showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
+    [[KGNetworkManager sharedInstance] postRequest:postUrl params:params success:^(id responseObject) {
+        DLog(@"%@", responseObject);
+        [[HudHelper getInstance] hideHudInView:self.view];
+        if ([KGUtils checkResultWithAlert:responseObject]) {
+            NSArray *data = responseObject[@"data"];
+            for (NSDictionary *one in data) {
+                KGOrderSummaryObject * obj = [[KGOrderSummaryObject alloc] init];
+                obj.orderId = [one[@"order_id"] integerValue];
+                obj.orderNumber = one[@"order_number"];
+                obj.orderDesc = one[@"title"];
+                obj.orderMoney = [one[@"total_money"] floatValue];
+                obj.orderImageUrl = one[@"goods_pic"];
+                obj.orderStatus = [one[@"order_status"] integerValue];
+                obj.userId = [one[@"user_id"]integerValue];
+                obj.userName = one[@"user_name"];
+                obj.userAvatar = one[@"head_url"];
+                obj.hasNewNotification = NO;
+                [self.orderList addObject:obj];
+            }
+            [self.tableView reloadData];
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"%@", error);
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -89,17 +99,6 @@
     return cell;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 #pragma UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -109,7 +108,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UISegmentedControl *seg = [[UISegmentedControl alloc] initWithItems:@[@"买入的订单", @"卖出的订单"]];
-    seg.selectedSegmentIndex = 0;
+    seg.selectedSegmentIndex = self.segType;
     seg.tintColor = RGBCOLOR(187, 187, 187);
     seg.segmentedControlStyle = UISegmentedControlStyleBordered;
     seg.frame = CGRectMake(20, 10, 280, 29);
@@ -137,6 +136,8 @@
 
 - (void)segmentedControl: (UISegmentedControl *) seg {
     DLog(@"%@", seg);
+    self.segType = seg.selectedSegmentIndex;
+    [self refreshDatasource];
 }
 
 

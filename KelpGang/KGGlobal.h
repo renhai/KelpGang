@@ -50,7 +50,8 @@ typedef enum {
     PURCHASING =            2,//采购中
     RETURNING =             3,//返程中
     WAITING_RECEIPT =       4,//等待买家确认收货
-    COMPLETED =             5,//已完成
+    WAITING_COMMENT =       5,//待评价
+    COMPLETED =             6//已完成
 } OrderStatus;
 
 
