@@ -401,30 +401,9 @@
 */
 
 - (void)createOrder: (UIButton *)sender {
-//    [[HudHelper getInstance] showHudOnView:self.view caption:@"正在创建" image:nil acitivity:YES autoHideTime:0.0];
-//    __weak typeof(self) weakSelf = self;
-//
-//    int64_t delayInSeconds = 2.0;
-//    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-//    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-//        [[HudHelper getInstance]hideHudInView:weakSelf.view];
-//        NSArray *controllers = weakSelf.navigationController.viewControllers;
-//        if (controllers.count > 1) {
-//            KGCompletedOrderController *destController = [weakSelf.storyboard instantiateViewControllerWithIdentifier:@"kCompletedOrderController"];
-//            KGOrderObject *obj = [[KGOrderObject alloc]init];
-//            obj.orderStatus = WAITING_CONFIRM;
-//            destController.orderObj = obj;
-//            [weakSelf.navigationController pushViewController:destController animated:YES];
-//
-//            NSMutableArray *controllers = [NSMutableArray arrayWithArray:weakSelf.navigationController.viewControllers];
-//            [controllers removeObjectAtIndex:controllers.count - 2];
-//            [weakSelf.navigationController setViewControllers:controllers];
-//        } else {
-//            [weakSelf dismissViewControllerAnimated:YES completion:nil];
-//        }
-//
-//    });
-
+    if (![self preCheck]) {
+        return;
+    }
     NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
                              @"session_key": APPCONTEXT.currUser.sessionKey,
                              @"addressId": @(self.addrObj.addressId),
@@ -478,6 +457,37 @@
                 break;
         }
     }
+}
+
+- (BOOL)preCheck {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    if (![APPCONTEXT checkLogin]) {
+        alert.message = @"请先登录";
+        [alert show];
+        return NO;
+    }
+    if (self.addrObj.addressId <= 0) {
+        alert.message = @"收货地址不能为空";
+        [alert show];
+        return NO;
+    }
+    if (!self.taskObj.title || [@"" isEqualToString:self.taskObj.title]) {
+        alert.message = @"任务名称不能为空";
+        [alert show];
+        return NO;
+    }
+    if (!self.taskObj.message || [@"" isEqualToString:self.taskObj.message]) {
+        alert.message = @"任务描述不能为空";
+        [alert show];
+        return NO;
+    }
+    if (self.buyerObj.uid <= 0) {
+        alert.message = @"买手信息有误";
+        [alert show];
+        return NO;
+    }
+    return YES;
+
 }
 
 @end
