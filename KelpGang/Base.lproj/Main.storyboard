@@ -1907,7 +1907,7 @@
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
-                                            <segue destination="wry-1v-JvQ" kind="push" id="52h-cj-pjy"/>
+                                            <segue destination="wry-1v-JvQ" kind="push" identifier="kTaskListSegue" id="52h-cj-pjy"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>

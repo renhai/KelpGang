@@ -211,22 +211,20 @@
     if (item.data) {
         [item openFilterView];
     } else {
-        if ([KGUtils checkIsNetworkConnectionAvailableAndNotify:self.view]) {
-            [[HudHelper getInstance] showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
-            [[KGNetworkManager sharedInstance] postRequest:item.url params:nil success:^(id responseObject) {
-                NSDictionary *dic = (NSDictionary *)responseObject;
-                if (item.index == 0) {
-                    item.data = [self convertCountryData:dic];
-                } else if (item.index == 2) {
-                    item.data = [self convertCityData:dic];
-                }
-                [item openFilterView];
-                [[HudHelper getInstance] hideHudInView:self.view];
-            } failure:^(NSError *error) {
-                NSLog(@"Error: %@", error);
-                [[HudHelper getInstance] hideHudInView:self.view];
-            }];
-        }
+        [[HudHelper getInstance] showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
+        [[KGNetworkManager sharedInstance] postRequest:item.url params:nil success:^(id responseObject) {
+            NSDictionary *dic = (NSDictionary *)responseObject;
+            if (item.index == 0) {
+                item.data = [self convertCountryData:dic];
+            } else if (item.index == 2) {
+                item.data = [self convertCityData:dic];
+            }
+            [item openFilterView];
+            [[HudHelper getInstance] hideHudInView:self.view];
+        } failure:^(NSError *error) {
+            NSLog(@"Error: %@", error);
+            [[HudHelper getInstance] hideHudInView:self.view];
+        }];
     }
 }
 

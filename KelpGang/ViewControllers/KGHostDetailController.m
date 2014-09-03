@@ -32,7 +32,7 @@
 {
     [super viewDidLoad];
     [self setLeftBarbuttonItem];
-//    self.nicknameTF.enabled = NO;
+    self.nicknameTF.enabled = YES;
     self.cellphoneTF.enabled = NO;
     self.user = [[KGUserObject alloc] init];
     if ([APPCONTEXT checkLogin]) {
@@ -41,9 +41,8 @@
         [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/getUser" params: params success:^(id responseObject) {
             DLog(@"%@", responseObject);
             [[HudHelper getInstance] hideHudInView:self.tableView];
-            NSDictionary *dic = (NSDictionary *)responseObject;
-            if ([KGUtils checkResultWithAlert:dic]) {
-                NSDictionary *data = dic[@"data"];
+            if ([KGUtils checkResultWithAlert:responseObject]) {
+                NSDictionary *data = responseObject[@"data"];
                 self.user.uname = [data valueForKeyPath:@"user_info.account"];
                 self.user.cellPhone = [data valueForKeyPath:@"user_info.user_phone"];
                 self.user.gender = [KGUtils convertGender:[data valueForKeyPath:@"user_info.user_sex"]];

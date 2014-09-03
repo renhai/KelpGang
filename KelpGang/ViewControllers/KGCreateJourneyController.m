@@ -664,23 +664,32 @@
 
 - (BOOL)checkJourney {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    if (![APPCONTEXT checkLogin]) {
+        alert.message = @"请先登录";
+        [alert show];
+        return NO;
+    }
     if (!self.journeyObj.toCountry || [@"" isEqualToString:self.journeyObj.toCountry]) {
         alert.message = @"去往国家不能为空";
         [alert show];
         return NO;
-    } else if (!self.journeyObj.permanent && (!self.journeyObj.fromCity || [@"" isEqualToString:self.journeyObj.fromCity])) {
+    }
+    if (!self.journeyObj.permanent && (!self.journeyObj.fromCity || [@"" isEqualToString:self.journeyObj.fromCity])) {
         alert.message = @"出发城市不能为空";
         [alert show];
         return NO;
-    } else if (!self.journeyObj.backDate) {
+    }
+    if (!self.journeyObj.backDate) {
         alert.message = @"回国时间不能为空";
         [alert show];
         return NO;
-    } else if (!self.journeyObj.startDate) {
+    }
+    if (!self.journeyObj.startDate) {
         alert.message = @"出发时间不能为空";
         [alert show];
         return NO;
-    } else if (!self.journeyObj.desc || [@"" isEqualToString:self.journeyObj.desc]) {
+    }
+    if (!self.journeyObj.desc || [@"" isEqualToString:self.journeyObj.desc]) {
         alert.message = @"描述不能为空";
         [alert show];
         return NO;

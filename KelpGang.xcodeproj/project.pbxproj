@@ -28,11 +28,6 @@
 		A110FA1E1907A879001651A3 /* order.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A110FA1D1907A879001651A3 /* order.storyboard */; };
 		A110FA211907AB95001651A3 /* KGOrderListController.m in Sources */ = {isa = PBXBuildFile; fileRef = A110FA201907AB95001651A3 /* KGOrderListController.m */; };
 		A112770318E29445006F7CFA /* KGBuyerInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A112770218E29445006F7CFA /* KGBuyerInfoViewController.m */; };
-		A112DF3F19187DEA00108FAD /* KGCompletedOrderConsigneeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A112DF3E19187DEA00108FAD /* KGCompletedOrderConsigneeCell.m */; };
-		A112DF4219188C6300108FAD /* KGCompletedOrderBuyerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A112DF4119188C6300108FAD /* KGCompletedOrderBuyerCell.m */; };
-		A112DF451918979600108FAD /* KGCompletedOrderPhotoInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A112DF441918979600108FAD /* KGCompletedOrderPhotoInfoCell.m */; };
-		A112DF481918C98600108FAD /* KGCompletedOrderLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A112DF471918C98600108FAD /* KGCompletedOrderLabelCell.m */; };
-		A112DF4B1918CCED00108FAD /* KGCompletedOrderPriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A112DF4A1918CCED00108FAD /* KGCompletedOrderPriceCell.m */; };
 		A112DF4E1918D2A600108FAD /* KGOrderObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A112DF4D1918D2A600108FAD /* KGOrderObject.m */; };
 		A11C98881998BBCD00F82E2A /* KGTaskViewHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A11C98871998BBCD00F82E2A /* KGTaskViewHeadCell.m */; };
 		A11C988B1998D9B200F82E2A /* KGImageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A11C988A1998D9B200F82E2A /* KGImageObject.m */; };
@@ -687,6 +682,13 @@
 		A1BBB08618D6EE86002C8BD2 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BBB08418D6EE86002C8BD2 /* search.png */; };
 		A1BBB08718D6EE86002C8BD2 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BBB08518D6EE86002C8BD2 /* search@2x.png */; };
 		A1BCF764194AD6C6008319C4 /* KGBuyerRouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BCF763194AD6C6008319C4 /* KGBuyerRouteCell.m */; };
+		A1BFA61619B6C48D007AF67B /* KGTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BFA61519B6C48D007AF67B /* KGTableViewCell.m */; };
+		A1BFA61919B6C645007AF67B /* KGOrderNumberAndDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BFA61819B6C645007AF67B /* KGOrderNumberAndDateCell.m */; };
+		A1BFA61C19B6CE21007AF67B /* KGOrderConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BFA61B19B6CE21007AF67B /* KGOrderConfirmViewController.m */; };
+		A1BFA61F19B6FB21007AF67B /* KGOrderAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BFA61E19B6FB21007AF67B /* KGOrderAddressCell.m */; };
+		A1BFA62219B72B04007AF67B /* KGOrderLeftRightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BFA62119B72B04007AF67B /* KGOrderLeftRightCell.m */; };
+		A1BFA62519B73232007AF67B /* KGOrderTotalMoneyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BFA62419B73232007AF67B /* KGOrderTotalMoneyCell.m */; };
+		A1BFA62819B7345F007AF67B /* KGOrderImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BFA62719B7345F007AF67B /* KGOrderImageCell.m */; };
 		A1C0ACFB18C759010092E3B4 /* XMPPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C0ACFA18C759010092E3B4 /* XMPPManager.m */; };
 		A1CA060018DAF32D00B1F3A6 /* KGJourneyPictureContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CA05FF18DAF32D00B1F3A6 /* KGJourneyPictureContainerView.m */; };
 		A1CA59E21917616200D9A429 /* KGCreateOrderBuyerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CA59D51917616200D9A429 /* KGCreateOrderBuyerCell.m */; };
@@ -697,8 +699,6 @@
 		A1CA59E71917616200D9A429 /* KGCreateOrderUploadPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CA59DF1917616200D9A429 /* KGCreateOrderUploadPhotoCell.m */; };
 		A1CA59E81917616200D9A429 /* KGOrderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CA59E11917616200D9A429 /* KGOrderListCell.m */; };
 		A1CA59EC191762A000D9A429 /* KGOrderSummaryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CA59EB191762A000D9A429 /* KGOrderSummaryObject.m */; };
-		A1CA59F21917685600D9A429 /* KGCompletedOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CA59F11917685600D9A429 /* KGCompletedOrderController.m */; };
-		A1CA59F5191797E200D9A429 /* KGCompletedOrderInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CA59F4191797E200D9A429 /* KGCompletedOrderInfoCell.m */; };
 		A1CF104A18F655F600B9F6B1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1CF104918F655F600B9F6B1 /* QuartzCore.framework */; };
 		A1CF105118F68E3600B9F6B1 /* KGChatTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = A1CF105018F68E3600B9F6B1 /* KGChatTextField.m */; };
 		A1DD134C18E03229000F52C2 /* KGHostDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DD134B18E03229000F52C2 /* KGHostDetailController.m */; };
@@ -760,16 +760,6 @@
 		A110FA201907AB95001651A3 /* KGOrderListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGOrderListController.m; sourceTree = "<group>"; };
 		A112770118E29445006F7CFA /* KGBuyerInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGBuyerInfoViewController.h; sourceTree = "<group>"; };
 		A112770218E29445006F7CFA /* KGBuyerInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGBuyerInfoViewController.m; sourceTree = "<group>"; };
-		A112DF3D19187DEA00108FAD /* KGCompletedOrderConsigneeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCompletedOrderConsigneeCell.h; sourceTree = "<group>"; };
-		A112DF3E19187DEA00108FAD /* KGCompletedOrderConsigneeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCompletedOrderConsigneeCell.m; sourceTree = "<group>"; };
-		A112DF4019188C6300108FAD /* KGCompletedOrderBuyerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCompletedOrderBuyerCell.h; sourceTree = "<group>"; };
-		A112DF4119188C6300108FAD /* KGCompletedOrderBuyerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCompletedOrderBuyerCell.m; sourceTree = "<group>"; };
-		A112DF431918979600108FAD /* KGCompletedOrderPhotoInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCompletedOrderPhotoInfoCell.h; sourceTree = "<group>"; };
-		A112DF441918979600108FAD /* KGCompletedOrderPhotoInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCompletedOrderPhotoInfoCell.m; sourceTree = "<group>"; };
-		A112DF461918C98600108FAD /* KGCompletedOrderLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCompletedOrderLabelCell.h; sourceTree = "<group>"; };
-		A112DF471918C98600108FAD /* KGCompletedOrderLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCompletedOrderLabelCell.m; sourceTree = "<group>"; };
-		A112DF491918CCED00108FAD /* KGCompletedOrderPriceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCompletedOrderPriceCell.h; sourceTree = "<group>"; };
-		A112DF4A1918CCED00108FAD /* KGCompletedOrderPriceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCompletedOrderPriceCell.m; sourceTree = "<group>"; };
 		A112DF4C1918D2A600108FAD /* KGOrderObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGOrderObject.h; sourceTree = "<group>"; };
 		A112DF4D1918D2A600108FAD /* KGOrderObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGOrderObject.m; sourceTree = "<group>"; };
 		A11C98861998BBCD00F82E2A /* KGTaskViewHeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGTaskViewHeadCell.h; sourceTree = "<group>"; };
@@ -1555,6 +1545,20 @@
 		A1BBB08518D6EE86002C8BD2 /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
 		A1BCF762194AD6C6008319C4 /* KGBuyerRouteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGBuyerRouteCell.h; sourceTree = "<group>"; };
 		A1BCF763194AD6C6008319C4 /* KGBuyerRouteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGBuyerRouteCell.m; sourceTree = "<group>"; };
+		A1BFA61419B6C48D007AF67B /* KGTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGTableViewCell.h; sourceTree = "<group>"; };
+		A1BFA61519B6C48D007AF67B /* KGTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGTableViewCell.m; sourceTree = "<group>"; };
+		A1BFA61719B6C645007AF67B /* KGOrderNumberAndDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGOrderNumberAndDateCell.h; sourceTree = "<group>"; };
+		A1BFA61819B6C645007AF67B /* KGOrderNumberAndDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGOrderNumberAndDateCell.m; sourceTree = "<group>"; };
+		A1BFA61A19B6CE21007AF67B /* KGOrderConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGOrderConfirmViewController.h; sourceTree = "<group>"; };
+		A1BFA61B19B6CE21007AF67B /* KGOrderConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGOrderConfirmViewController.m; sourceTree = "<group>"; };
+		A1BFA61D19B6FB21007AF67B /* KGOrderAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGOrderAddressCell.h; sourceTree = "<group>"; };
+		A1BFA61E19B6FB21007AF67B /* KGOrderAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGOrderAddressCell.m; sourceTree = "<group>"; };
+		A1BFA62019B72B04007AF67B /* KGOrderLeftRightCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGOrderLeftRightCell.h; sourceTree = "<group>"; };
+		A1BFA62119B72B04007AF67B /* KGOrderLeftRightCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGOrderLeftRightCell.m; sourceTree = "<group>"; };
+		A1BFA62319B73232007AF67B /* KGOrderTotalMoneyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGOrderTotalMoneyCell.h; sourceTree = "<group>"; };
+		A1BFA62419B73232007AF67B /* KGOrderTotalMoneyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGOrderTotalMoneyCell.m; sourceTree = "<group>"; };
+		A1BFA62619B7345F007AF67B /* KGOrderImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGOrderImageCell.h; sourceTree = "<group>"; };
+		A1BFA62719B7345F007AF67B /* KGOrderImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGOrderImageCell.m; sourceTree = "<group>"; };
 		A1C0ACF918C759010092E3B4 /* XMPPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPManager.h; sourceTree = "<group>"; };
 		A1C0ACFA18C759010092E3B4 /* XMPPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPManager.m; sourceTree = "<group>"; };
 		A1CA05FE18DAF32D00B1F3A6 /* KGJourneyPictureContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGJourneyPictureContainerView.h; sourceTree = "<group>"; };
@@ -1575,10 +1579,6 @@
 		A1CA59E11917616200D9A429 /* KGOrderListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGOrderListCell.m; sourceTree = "<group>"; };
 		A1CA59EA191762A000D9A429 /* KGOrderSummaryObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGOrderSummaryObject.h; sourceTree = "<group>"; };
 		A1CA59EB191762A000D9A429 /* KGOrderSummaryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGOrderSummaryObject.m; sourceTree = "<group>"; };
-		A1CA59F01917685600D9A429 /* KGCompletedOrderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCompletedOrderController.h; sourceTree = "<group>"; };
-		A1CA59F11917685600D9A429 /* KGCompletedOrderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCompletedOrderController.m; sourceTree = "<group>"; };
-		A1CA59F3191797E200D9A429 /* KGCompletedOrderInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCompletedOrderInfoCell.h; sourceTree = "<group>"; };
-		A1CA59F4191797E200D9A429 /* KGCompletedOrderInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCompletedOrderInfoCell.m; sourceTree = "<group>"; };
 		A1CF104918F655F600B9F6B1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A1CF104F18F68E3600B9F6B1 /* KGChatTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGChatTextField.h; sourceTree = "<group>"; };
 		A1CF105018F68E3600B9F6B1 /* KGChatTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGChatTextField.m; sourceTree = "<group>"; };
@@ -1683,8 +1683,8 @@
 				A110FA201907AB95001651A3 /* KGOrderListController.m */,
 				A180E43B190F6DB5003347F8 /* KGCreateOrderController.h */,
 				A180E43C190F6DB5003347F8 /* KGCreateOrderController.m */,
-				A1CA59F01917685600D9A429 /* KGCompletedOrderController.h */,
-				A1CA59F11917685600D9A429 /* KGCompletedOrderController.m */,
+				A1BFA61A19B6CE21007AF67B /* KGOrderConfirmViewController.h */,
+				A1BFA61B19B6CE21007AF67B /* KGOrderConfirmViewController.m */,
 			);
 			path = order;
 			sourceTree = "<group>";
@@ -2272,6 +2272,8 @@
 				A12BBF2419A47EB40041547A /* KGMyFollowCell.m */,
 				A12BBF2619A490FC0041547A /* KGMyJourneyCell.h */,
 				A12BBF2719A490FC0041547A /* KGMyJourneyCell.m */,
+				A1BFA61419B6C48D007AF67B /* KGTableViewCell.h */,
+				A1BFA61519B6C48D007AF67B /* KGTableViewCell.m */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -2746,18 +2748,16 @@
 				A1CA59DF1917616200D9A429 /* KGCreateOrderUploadPhotoCell.m */,
 				A1CA59E01917616200D9A429 /* KGOrderListCell.h */,
 				A1CA59E11917616200D9A429 /* KGOrderListCell.m */,
-				A1CA59F3191797E200D9A429 /* KGCompletedOrderInfoCell.h */,
-				A1CA59F4191797E200D9A429 /* KGCompletedOrderInfoCell.m */,
-				A112DF3D19187DEA00108FAD /* KGCompletedOrderConsigneeCell.h */,
-				A112DF3E19187DEA00108FAD /* KGCompletedOrderConsigneeCell.m */,
-				A112DF4019188C6300108FAD /* KGCompletedOrderBuyerCell.h */,
-				A112DF4119188C6300108FAD /* KGCompletedOrderBuyerCell.m */,
-				A112DF431918979600108FAD /* KGCompletedOrderPhotoInfoCell.h */,
-				A112DF441918979600108FAD /* KGCompletedOrderPhotoInfoCell.m */,
-				A112DF461918C98600108FAD /* KGCompletedOrderLabelCell.h */,
-				A112DF471918C98600108FAD /* KGCompletedOrderLabelCell.m */,
-				A112DF491918CCED00108FAD /* KGCompletedOrderPriceCell.h */,
-				A112DF4A1918CCED00108FAD /* KGCompletedOrderPriceCell.m */,
+				A1BFA61719B6C645007AF67B /* KGOrderNumberAndDateCell.h */,
+				A1BFA61819B6C645007AF67B /* KGOrderNumberAndDateCell.m */,
+				A1BFA61D19B6FB21007AF67B /* KGOrderAddressCell.h */,
+				A1BFA61E19B6FB21007AF67B /* KGOrderAddressCell.m */,
+				A1BFA62019B72B04007AF67B /* KGOrderLeftRightCell.h */,
+				A1BFA62119B72B04007AF67B /* KGOrderLeftRightCell.m */,
+				A1BFA62319B73232007AF67B /* KGOrderTotalMoneyCell.h */,
+				A1BFA62419B73232007AF67B /* KGOrderTotalMoneyCell.m */,
+				A1BFA62619B7345F007AF67B /* KGOrderImageCell.h */,
+				A1BFA62719B7345F007AF67B /* KGOrderImageCell.m */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -3453,7 +3453,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A112DF4219188C6300108FAD /* KGCompletedOrderBuyerCell.m in Sources */,
 				A1610CB319936564001F9DAA /* KGDiscoverViewController.m in Sources */,
 				A1CA59E21917616200D9A429 /* KGCreateOrderBuyerCell.m in Sources */,
 				A108052319A352DE005674E7 /* KGCollectObject.m in Sources */,
@@ -3465,12 +3464,12 @@
 				A1F13E0618EE954F0013B183 /* KGCommonMenuCell.m in Sources */,
 				A14B63741906656400C14A15 /* KGRecentContactObject.m in Sources */,
 				A121F423198F778400260E73 /* PSTCollectionViewData.m in Sources */,
-				A112DF3F19187DEA00108FAD /* KGCompletedOrderConsigneeCell.m in Sources */,
 				A121F42A198F778400260E73 /* PSTGridLayoutRow.m in Sources */,
 				A19F85E618EA6C300089B14F /* KGPreviewTaskViewController.m in Sources */,
 				A1610CC019938B95001F9DAA /* KGDiscoverDetailViewController.m in Sources */,
 				A1393978199CA4F50013891C /* KGJourneyObject.m in Sources */,
 				A121F418198F778400260E73 /* MWGridViewController.m in Sources */,
+				A1BFA62819B7345F007AF67B /* KGOrderImageCell.m in Sources */,
 				A15AD1B519AC442500A41D6F /* SWTableViewCell.m in Sources */,
 				A121F427198F778400260E73 /* PSTCollectionViewUpdateItem.m in Sources */,
 				A16873C019A3064300810275 /* KGGoodsObject.m in Sources */,
@@ -3480,9 +3479,9 @@
 				A14300DF18BB252F0064DF87 /* KGViewController.m in Sources */,
 				A164DA31194EA249008B26E8 /* IQSegmentedNextPrevious.m in Sources */,
 				A1929ECD19061FDC00DDB66E /* KGHostHeadViewCell.m in Sources */,
+				A1BFA62219B72B04007AF67B /* KGOrderLeftRightCell.m in Sources */,
 				A1DDFB7E18EEB4920078ED73 /* KGCascadeMenuRightCell.m in Sources */,
 				A1930B2318CEFA66000D84A1 /* KGPicBottomView.m in Sources */,
-				A112DF4B1918CCED00108FAD /* KGCompletedOrderPriceCell.m in Sources */,
 				A164DA35194EA249008B26E8 /* IQUIView+Hierarchy.m in Sources */,
 				A121F425198F778400260E73 /* PSTCollectionViewItemKey.m in Sources */,
 				A1B287BA18ED955B00E44682 /* KGFilterView.m in Sources */,
@@ -3509,6 +3508,7 @@
 				A1A948BC18D93E84006DCF6E /* KGCreateJourneyController.m in Sources */,
 				A121F390198F5EDB00260E73 /* KGZone.m in Sources */,
 				A15AD1B319AC442500A41D6F /* SWCellScrollView.m in Sources */,
+				A1BFA62519B73232007AF67B /* KGOrderTotalMoneyCell.m in Sources */,
 				A164DA30194EA249008B26E8 /* IQNSArray+Sort.m in Sources */,
 				A14300D518BB252F0064DF87 /* main.m in Sources */,
 				A18A2B9B18E18D8C00FDFB8E /* KGBadgeView.m in Sources */,
@@ -3527,6 +3527,7 @@
 				A14415A218C0EA590053456D /* KGBuyerListViewController.m in Sources */,
 				A12F27E919A71BB300B30FF8 /* JDStatusBarStyle.m in Sources */,
 				A180E43D190F6DB5003347F8 /* KGCreateOrderController.m in Sources */,
+				A1BFA61F19B6FB21007AF67B /* KGOrderAddressCell.m in Sources */,
 				A121F38D198F5E5E00260E73 /* KGCity.m in Sources */,
 				A1DDFB7B18EEAF670078ED73 /* KGCascadeMenuLeftCell.m in Sources */,
 				A1610CB6199367C0001F9DAA /* KGDiscoverCell.m in Sources */,
@@ -3537,6 +3538,7 @@
 				A12F27E819A71BB300B30FF8 /* JDStatusBarNotification.m in Sources */,
 				A15AD1B619AC442500A41D6F /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				A1311F4518CA2E0800D1A40F /* SwipeView.m in Sources */,
+				A1BFA61C19B6CE21007AF67B /* KGOrderConfirmViewController.m in Sources */,
 				A121F424198F778400260E73 /* PSTCollectionViewFlowLayout.m in Sources */,
 				A1CA59E61917616200D9A429 /* KGCreateOrderTextFieldCell.m in Sources */,
 				A10635E2191B80430069F8E4 /* KGLocationManager.m in Sources */,
@@ -3545,7 +3547,6 @@
 				A164DA36194EA249008B26E8 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				A197503A18D84BF10062CAA7 /* UIWindow+RscExt.m in Sources */,
 				A1DD134F18E04C7A000F52C2 /* KGDeliveryAddressController.m in Sources */,
-				A1CA59F21917685600D9A429 /* KGCompletedOrderController.m in Sources */,
 				A121F41F198F778400260E73 /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
 				A112DF4E1918D2A600108FAD /* KGOrderObject.m in Sources */,
 				A1CA59E51917616200D9A429 /* KGCreateOrderTaskNameCell.m in Sources */,
@@ -3563,7 +3564,6 @@
 				A18A2B8A18E1325D00FDFB8E /* KGTaskListViewCell.m in Sources */,
 				A11C98881998BBCD00F82E2A /* KGTaskViewHeadCell.m in Sources */,
 				A1F13E0318EE47830013B183 /* KGCommonMenu.m in Sources */,
-				A1CA59F5191797E200D9A429 /* KGCompletedOrderInfoCell.m in Sources */,
 				A1A1DAFD18C9CCD200F03E04 /* KGUtils.m in Sources */,
 				A121F41A198F778400260E73 /* MWPhotoBrowser.m in Sources */,
 				A16FBEF018DC1FA6009E2F66 /* KGHostViewController.m in Sources */,
@@ -3572,11 +3572,11 @@
 				A12F27EA19A71BB300B30FF8 /* JDStatusBarView.m in Sources */,
 				A11C988B1998D9B200F82E2A /* KGImageObject.m in Sources */,
 				A12BBF2B19A4B0C90041547A /* KGUserFollowObject.m in Sources */,
-				A112DF481918C98600108FAD /* KGCompletedOrderLabelCell.m in Sources */,
 				A1B4F74D195033E900D48B09 /* AppContext.m in Sources */,
 				A16873B719A2F5F400810275 /* KGMyCollectViewController.m in Sources */,
 				A1A0DA0318FE662300E0C0E8 /* KGBaseMessageCell.m in Sources */,
 				A19F0ED118E2C6A400C2944D /* HudHelper.m in Sources */,
+				A1BFA61919B6C645007AF67B /* KGOrderNumberAndDateCell.m in Sources */,
 				A1BCF764194AD6C6008319C4 /* KGBuyerRouteCell.m in Sources */,
 				A1AD133B1908C1DF00DF17B6 /* KGDeliveryAddressCell.m in Sources */,
 				A121F38A198F5DA600260E73 /* KGProvince.m in Sources */,
@@ -3585,7 +3585,6 @@
 				A18A2B8D18E1334200FDFB8E /* KGAddAddressController.m in Sources */,
 				A16873BD19A305A500810275 /* KGGoodsPhotoObject.m in Sources */,
 				A162DAC5199A19ED0038AE8B /* KGMyTaskCell.m in Sources */,
-				A112DF451918979600108FAD /* KGCompletedOrderPhotoInfoCell.m in Sources */,
 				A143012618BB461A0064DF87 /* UIImage+PKImage.m in Sources */,
 				A19F0ECC18E2B86200C2944D /* KGCommentListViewController.m in Sources */,
 				A16873BA19A2F80F00810275 /* KGMyCollectViewCell.m in Sources */,
@@ -3598,6 +3597,7 @@
 				A121F41E198F778400260E73 /* DACircularProgressView.m in Sources */,
 				A121F426198F778400260E73 /* PSTCollectionViewLayout.m in Sources */,
 				A143012518BB461A0064DF87 /* UIFont+PKFont.m in Sources */,
+				A1BFA61619B6C48D007AF67B /* KGTableViewCell.m in Sources */,
 				A1933C2718E3D3C9000FC0B4 /* KGPhotoBrowserViewController.m in Sources */,
 				A162DAC2199A15A80038AE8B /* KGMyTaskController.m in Sources */,
 				A197503918D84BF10062CAA7 /* UIView+Additions.m in Sources */,

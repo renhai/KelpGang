@@ -16,11 +16,11 @@
 #import "IQUIView+Hierarchy.h"
 #import "KGCreateOrderPhotoCell.h"
 #import "KGCreateOrderTextFieldCell.h"
-#import "KGCompletedOrderController.h"
 #import "KGOrderObject.h"
-#import "KGTaskObject.h"
 #import "KGGoodsObject.h"
 #import "KGGoodsPhotoObject.h"
+#import "KGOrderConfirmViewController.h"
+
 
 
 @interface KGCreateOrderController () <UITextViewDelegate, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
@@ -29,9 +29,7 @@
 
 @property (nonatomic, strong) NSMutableArray *photos;
 @property (nonatomic, strong) KGGoodsObject *goodsObj;
-@property (nonatomic, strong) KGAddressObject *addrObj;
-@property (nonatomic, strong) KGUserObject *buyerObj;
-@property (nonatomic, strong) KGTaskObject *taskObj;
+@property (nonatomic, strong) KGOrderObject *orderObj;
 
 @end
 
@@ -55,13 +53,13 @@
 {
     [super viewDidLoad];
     [self setLeftBarbuttonItem];
-    [self queryDefaultAddr];
-    [self queryBuyerInfo];
     [self queryTaskInfo];
 
     [self.createButton addTarget:self action:@selector(createOrder:) forControlEvents:UIControlEventTouchUpInside];
 
 }
+
+/*
 
 - (void)queryDefaultAddr {
     NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
@@ -114,52 +112,45 @@
         DLog(@"%@", error);
     }];
 }
+*/
 
 - (void)queryTaskInfo {
     NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
-                             @"task_id": @(self.taskId)};
-    [[KGNetworkManager sharedInstance] postRequest:@"/mobile/task/getUserTask" params: params success:^(id responseObject) {
+                             @"session_key": APPCONTEXT.currUser.sessionKey,
+                             @"task_id": @(self.taskId),
+                             @"buyer_id": @(self.buyerId)};
+    [[HudHelper getInstance] showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
+    [[KGNetworkManager sharedInstance] postRequest:@"/mobile/order/getTaskAndBuyerInfo" params: params success:^(id responseObject) {
         DLog(@"%@", responseObject);
-        if ([KGUtils checkResult:responseObject]) {
+        [[HudHelper getInstance] hideHudInView:self.view];
+        if ([KGUtils checkResultWithAlert:responseObject]) {
             NSDictionary *data = responseObject[@"data"];
-            NSArray *goodsArr = data[@"good_info"];
-            NSDictionary *goodsInfo = @{};
-            if (goodsArr && [goodsArr count] > 0) {
-                goodsInfo = goodsArr[0];
-            }
-            NSDictionary *task_info = data[@"task_info"];
-            NSDictionary *user_info = data[@"user_info"];
-            KGTaskObject *taskObj = [[KGTaskObject alloc] init];
-            taskObj.taskId = [task_info[@"task_id"] integerValue];
-            taskObj.title = task_info[@"task_title"];
-            taskObj.gratuity = [task_info[@"task_gratuity"] floatValue];
-            taskObj.deadline = [NSDate dateWithTimeIntervalSince1970:[task_info[@"task_deadline"] doubleValue]];
-            taskObj.message = task_info[@"task_message"];
-            taskObj.expectCountry = task_info[@"task_good_country"];
-            taskObj.maxMoney = [task_info[@"task_money"] floatValue];
-            taskObj.defaultImageUrl = goodsInfo[@"good_default_head_url"];
-            if (!taskObj.defaultImageUrl) {
-                taskObj.defaultImageUrl = @"";
-            }
-            taskObj.ownerId = [user_info[@"user_id"] integerValue];
-            taskObj.ownerName = user_info[@"user_name"];
-            taskObj.ownerCity = task_info[@"task_live_city"];
-            if (!taskObj.ownerCity) {
-                taskObj.ownerCity = @"";
-            }
-            taskObj.ownerHeadUrl = user_info[@"head_url"];
-            taskObj.ownerGender = [KGUtils convertGender:user_info[@"user_sex"]];
-            self.taskObj = taskObj;
+            self.orderObj = [[KGOrderObject alloc]init];
+            self.orderObj.taskTitle = data[@"taskTitle"];
+            self.orderObj.taskId = [data[@"taskId"] integerValue];
+            self.orderObj.taskMessage = data[@"taskMessage"];
+            self.orderObj.taskMoney = [data[@"money"] floatValue];
+            self.orderObj.totalMoney = [data[@"totalMoney"] floatValue];
+            self.orderObj.gratuity = [data[@"gratuity"] floatValue];
+            self.orderObj.buyerId = [data[@"buyerId"] integerValue];
+            self.orderObj.buyerName = data[@"buyerName"];
 
-            KGGoodsObject *goodsObj = [[KGGoodsObject alloc]init];
-            goodsObj.goods_id = [goodsInfo[@"good_id"] integerValue];
-            goodsObj.good_default_head_url = goodsInfo[@"good_default_head_url"];
-            goodsObj.good_default_main_url = goodsInfo[@"good_default_main_url"];
-            goodsObj.good_default_photo_url = goodsInfo[@"good_default_photo_url"];
-            goodsObj.good_default_tiny_url = goodsInfo[@"good_default_tiny_url"];
-            goodsObj.good_name = goodsInfo[@"good_name"];
-            goodsObj.good_is_collection = [goodsInfo[@"good_is_collection"] boolValue];
-            NSArray *photoArr = goodsInfo[@"good_photos"];
+            KGAddressObject *addrObj = [[KGAddressObject alloc] init];
+            addrObj.addressId = [data[@"addressId"] integerValue];
+            if (addrObj.addressId > 0) {
+                addrObj.consignee = data[@"receiverName"];
+                addrObj.mobile = data[@"receiverTel"];
+                NSDictionary *addressDetail = data[@"addressDetail"];
+                addrObj.province = addressDetail[@"province"];
+                addrObj.city = addressDetail[@"city"];
+                addrObj.district = addressDetail[@"county"];
+                addrObj.street = addressDetail[@"street"];
+            }
+            self.orderObj.addr = addrObj;
+
+            self.goodsObj = [[KGGoodsObject alloc] init];
+            self.goodsObj.goods_id = [data[@"goodsId"] integerValue];
+            NSArray *photoArr = data[@"goodsPhotos"];
             NSMutableArray *photos = [[NSMutableArray alloc]init];
             for (NSDictionary *photoDic in photoArr) {
                 KGGoodsPhotoObject *photoObj = [[KGGoodsPhotoObject alloc]init];
@@ -170,9 +161,7 @@
                 photoObj.good_tiny_url = photoDic[@"good_tiny_url"];
                 [photos addObject:photoObj];
             }
-            goodsObj.good_photos = photos;
-            self.goodsObj = goodsObj;
-
+            self.goodsObj.good_photos = photos;
             [self.tableView reloadData];
         }
     } failure:^(NSError *error) {
@@ -201,10 +190,16 @@
 #pragma UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    if (!self.orderObj) {
+        return 0;
+    }
     return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (!self.orderObj) {
+        return 0;
+    }
     if (section == 0) {
         return 1;
     } else {
@@ -217,16 +212,16 @@
     if (indexPath.section == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"consigneeCell" forIndexPath:indexPath];
         KGCreateOrderConsigneeCell *cCell = (KGCreateOrderConsigneeCell *)cell;
-        [cCell setObject:self.addrObj];
+        [cCell setObject:self.orderObj.addr];
     } else {
         if (indexPath.row == 0) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"buyerCell" forIndexPath:indexPath];
             KGCreateOrderBuyerCell *bCell = (KGCreateOrderBuyerCell *)cell;
-            [bCell setObject:self.buyerObj.nickName];
+            [bCell setObject:self.orderObj.buyerName];
         } else if (indexPath.row == 1) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"taskNameCell" forIndexPath:indexPath];
             KGCreateOrderTaskNameCell *tCell = (KGCreateOrderTaskNameCell *)cell;
-            [tCell setObject:self.taskObj.title];
+            [tCell setObject:self.orderObj.taskTitle];
             tCell.taskValueTextView.delegate = self;
         } else if (indexPath.row == 2) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"uploadPhotoLabelCell" forIndexPath:indexPath];
@@ -246,21 +241,21 @@
             if (indexPath.row == 4) {
                 tCell.textField.keyboardType = UIKeyboardTypeDecimalPad;
                 title = @"跑腿费比例：";
-                text = [NSString stringWithFormat:@"%0.1f", self.taskObj.gratuity];
+                text = [NSString stringWithFormat:@"%0.1f", self.orderObj.gratuity];
             } else if (indexPath.row == 5) {
                 tCell.textField.keyboardType = UIKeyboardTypeDecimalPad;
                 title = @"任务金额：";
-                text = [NSString stringWithFormat:@"%0.1f", self.taskObj.maxMoney];
+                text = [NSString stringWithFormat:@"%0.1f", self.orderObj.taskMoney];
             } else {
                 tCell.textField.keyboardType = UIKeyboardTypeDefault;
                 title = @"任务描述：";
-                text = self.taskObj.message;
+                text = self.orderObj.taskMessage;
             }
             [tCell configCell:title text:text];
         } else {
             cell = [tableView dequeueReusableCellWithIdentifier:@"priceCell" forIndexPath:indexPath];
             UILabel *priceLbl = (UILabel *)[cell viewWithTag:100];
-            CGFloat price = self.taskObj.maxMoney * (1.0 + self.taskObj.gratuity / 100);
+            CGFloat price = self.orderObj.taskMoney * (1.0 + self.orderObj.gratuity / 100);
             priceLbl.text = [NSString stringWithFormat:@"￥%0.1f", price];
             [priceLbl sizeToFit];
             priceLbl.right = cell.width - 10;
@@ -310,7 +305,7 @@
     if (indexPath.section == 0) {
         KGDeliveryAddressController *addrController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"kDeliveryAddressController"];
         addrController.selectBlock = ^ (KGAddressObject *obj) {
-            self.addrObj = obj;
+            self.orderObj.addr = obj;
             [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
         };
         UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:addrController];
@@ -330,7 +325,7 @@
 }
 
 - (void)textViewDidChange:(UITextView *)textView {
-    self.taskObj.title = textView.text;
+    self.orderObj.taskTitle = textView.text;
 }
 
 #pragma UITextFieldDelegate
@@ -406,22 +401,22 @@
     }
     NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
                              @"session_key": APPCONTEXT.currUser.sessionKey,
-                             @"addressId": @(self.addrObj.addressId),
-                             @"buyer_id": @(self.buyerObj.uid),
-                             @"task_id": @(self.taskObj.taskId),
-                             @"title": self.taskObj.title,
-                             @"gratuity": [NSString stringWithFormat:@"%0.1f", self.taskObj.gratuity],
-                             @"message": self.taskObj.message,
-                             @"money": [NSString stringWithFormat:@"%0.1f", self.taskObj.maxMoney]};
+                             @"addressId": @(self.orderObj.addr.addressId),
+                             @"buyer_id": @(self.orderObj.buyerId),
+                             @"task_id": @(self.orderObj.taskId),
+                             @"title": self.orderObj.taskTitle,
+                             @"gratuity": [NSString stringWithFormat:@"%0.1f", self.orderObj.gratuity],
+                             @"message": self.orderObj.taskMessage,
+                             @"money": [NSString stringWithFormat:@"%0.1f", self.orderObj.taskMoney]};
     [[HudHelper getInstance] showHudOnView:self.view caption:@"正在创建" image:nil acitivity:YES autoHideTime:0.0];
     [[KGNetworkManager sharedInstance]postRequest:@"/mobile/order/addOrders" params:params success:^(id responseObject) {
         DLog(@"%@", responseObject);
         [[HudHelper getInstance] hideHudInView:self.view];
         if ([KGUtils checkResultWithAlert:responseObject]) {
-            KGCompletedOrderController *destController = [self.storyboard instantiateViewControllerWithIdentifier:@"kCompletedOrderController"];
-            KGOrderObject *obj = [[KGOrderObject alloc]init];
-            obj.orderStatus = WAITING_CONFIRM;
-            destController.orderObj = obj;
+            NSDictionary *data = responseObject[@"data"];
+            NSInteger orderId = [data[@"order_id"] integerValue];
+            KGOrderConfirmViewController *destController = [[KGOrderConfirmViewController alloc] initWithStyle:UITableViewStylePlain];
+            destController.orderId = orderId;
             [self.navigationController pushViewController:destController animated:YES];
 
             NSMutableArray *controllers = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
@@ -442,15 +437,15 @@
     if (indexPath.section == 1) {
         switch (indexPath.row) {
             case 4: {
-                self.taskObj.gratuity = [sender.text floatValue];
+                self.orderObj.gratuity = [sender.text floatValue];
                 break;
             }
             case 5: {
-                self.taskObj.maxMoney = [sender.text floatValue];
+                self.orderObj.taskMoney = [sender.text floatValue];
                 break;
             }
             case 6: {
-                self.taskObj.message = sender.text;
+                self.orderObj.taskMessage = sender.text;
                 break;
             }
             default:
@@ -466,22 +461,27 @@
         [alert show];
         return NO;
     }
-    if (self.addrObj.addressId <= 0) {
+    if (!self.orderObj) {
+        alert.message = @"创建订单失败";
+        [alert show];
+        return NO;
+    }
+    if (self.orderObj.addr.addressId <= 0) {
         alert.message = @"收货地址不能为空";
         [alert show];
         return NO;
     }
-    if (!self.taskObj.title || [@"" isEqualToString:self.taskObj.title]) {
+    if (!self.orderObj.taskTitle || [@"" isEqualToString:self.orderObj.taskTitle]) {
         alert.message = @"任务名称不能为空";
         [alert show];
         return NO;
     }
-    if (!self.taskObj.message || [@"" isEqualToString:self.taskObj.message]) {
+    if (!self.orderObj.taskMessage || [@"" isEqualToString:self.orderObj.taskMessage]) {
         alert.message = @"任务描述不能为空";
         [alert show];
         return NO;
     }
-    if (self.buyerObj.uid <= 0) {
+    if (self.orderObj.buyerId <= 0) {
         alert.message = @"买手信息有误";
         [alert show];
         return NO;

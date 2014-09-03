@@ -576,6 +576,11 @@
 
 - (BOOL)checkTask {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    if (![APPCONTEXT checkLogin]) {
+        alert.message = @"请先登录";
+        [alert show];
+        return NO;
+    }
     if ([self.titleTextField.text isEqualToString:@""]) {
         alert.message = @"任务标题不能为空";
         [alert show];

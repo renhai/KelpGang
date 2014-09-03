@@ -118,21 +118,21 @@
     destController.hidesBottomBarWhenPushed = YES;
 
     if ([destController isKindOfClass:[KGHostDetailController class]]) {
-//        KGHostDetailController *hostDetailController = (KGHostDetailController *) destController;
-//        hostDetailController.user = self.userObj;
+
     }
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
-    if ([identifier isEqualToString:@"kSettingsSegue"]) {
+    if ([@"kSettingsSegue" isEqualToString:identifier]) {
+        return YES;
+    }
+    if ([@"kTaskListSegue" isEqualToString:identifier]) {
         return YES;
     }
     if (![APPCONTEXT checkLogin]) {
         return NO;
     }
-//    if ([identifier isEqualToString:@"kHostDetailSegue"]) {
-//        return YES;
-//    }
+
     return YES;
 }
 
@@ -142,52 +142,52 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     switch (indexPath.section) {
-        case 0: {
-            if (![APPCONTEXT checkLogin]) {
-                KGLoginController *loginController = [UIStoryboard storyboardWithName:@"login" bundle:nil].instantiateInitialViewController;
-                UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:loginController];
-                [self presentViewController:nc animated:YES completion:nil];
-            }
+        case 0: {//用户信息
+            [self checkIfNeedLogin];
             break;
         }
-        case 1:
+        case 1: {//最近联系人
+            [self checkIfNeedLogin];
             break;
+        }
         case 2: {
-            if (indexPath.row == 0) {
-                UIStoryboard *orderBoard = [UIStoryboard storyboardWithName:@"order" bundle:nil];
-                UIViewController *orderController = orderBoard.instantiateInitialViewController;
-                orderController.hidesBottomBarWhenPushed = YES;
-                [orderController setLeftBarbuttonItem];
-                [self.navigationController pushViewController:orderController animated:YES];
+            if (indexPath.row == 0) {//我的订单
+                if (![self checkIfNeedLogin]) {
+                    UIStoryboard *orderBoard = [UIStoryboard storyboardWithName:@"order" bundle:nil];
+                    UIViewController *orderController = orderBoard.instantiateInitialViewController;
+                    orderController.hidesBottomBarWhenPushed = YES;
+                    [orderController setLeftBarbuttonItem];
+                    [self.navigationController pushViewController:orderController animated:YES];
+                }
             } else if (indexPath.row == 1) {//我的任务
-//                KGBaseWebViewController *taskController = [[KGBaseWebViewController alloc] initWithWebPath:@"/html/gj_task.htm"];
-//                taskController.isPullToRefresh = YES;
-//                taskController.hidesBottomBarWhenPushed = YES;
-//                [taskController setLeftBarbuttonItem];
-//                [taskController setTitle:@"我的任务"];
-//                [self.navigationController pushViewController:taskController animated:YES];
+                [self checkIfNeedLogin];
             } else if (indexPath.row == 2) {//我的收藏
-//                KGBaseWebViewController *collectController = [[KGBaseWebViewController alloc] initWithWebPath:@"/html/gj_collect.htm"];
-//                collectController.isPullToRefresh = YES;
-//                collectController.hidesBottomBarWhenPushed = YES;
-//                [collectController setLeftBarbuttonItem];
-//                [collectController setTitle:@"我的收藏"];
-//                [self.navigationController pushViewController:collectController animated:YES];
+                [self checkIfNeedLogin];
+            } else if (indexPath.row == 3) {//我的关注
+                [self checkIfNeedLogin];
             }
+
             break;
         }
-        case 3:
+        case 3: {//我是买手
             break;
-        case 4: {
-//            KGSettingViewController *settingController = [[KGSettingViewController alloc] initWithWebPath:@"/html/gj_set.htm"];
-//            [settingController setLeftBarbuttonItem];
-//            [settingController setTitle:@"设置"];
-//            settingController.hidesBottomBarWhenPushed = YES;
-//            [self.navigationController pushViewController:settingController animated:YES];
+        }
+        case 4: {//设置
             break;
         }
         default:
             break;
+    }
+}
+
+- (BOOL)checkIfNeedLogin {
+    if (![APPCONTEXT checkLogin]) {
+        KGLoginController *loginController = [UIStoryboard storyboardWithName:@"login" bundle:nil].instantiateInitialViewController;
+        UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:loginController];
+        [self presentViewController:nc animated:YES completion:nil];
+        return YES;
+    } else {
+        return NO;
     }
 }
 

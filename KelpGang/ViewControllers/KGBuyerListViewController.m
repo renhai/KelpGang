@@ -129,59 +129,53 @@ static const NSInteger kLimit = 20;
 }
 
 - (void)refreshDatasource {
-    if ([KGUtils checkIsNetworkConnectionAvailableAndNotify:self.view]) {
-        NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"end_id": @0, @"limit": @(kLimit)};
-        [[KGNetworkManager sharedInstance] postRequest:@"/mobile/travel/index" params:params success:^(id responseObject) {
-            if ([KGUtils checkResultWithAlert:responseObject]) {
-                [self.datasource removeAllObjects];
-                self.hasmore = [responseObject[@"hasmore"] boolValue];
-                NSArray *data = [self convertBuyerSummary:responseObject];
+    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"end_id": @0, @"limit": @(kLimit)};
+    [[KGNetworkManager sharedInstance] postRequest:@"/mobile/travel/index" params:params success:^(id responseObject) {
+        if ([KGUtils checkResultWithAlert:responseObject]) {
+            [self.datasource removeAllObjects];
+            self.hasmore = [responseObject[@"hasmore"] boolValue];
+            NSArray *data = [self convertBuyerSummary:responseObject];
 
-                [self.datasource addObjectsFromArray:data];
-                [self.tableView.pullToRefreshView performSelector:@selector(stopAnimating) withObject:nil afterDelay:0.2];
-                [self.tableView reloadData];
-                if (self.hasmore) {
-                    self.tableView.showsInfiniteScrolling = YES;
-                }
-            }
-        } failure:^(NSError *error) {
-            NSLog(@"%@", error);
+            [self.datasource addObjectsFromArray:data];
             [self.tableView.pullToRefreshView performSelector:@selector(stopAnimating) withObject:nil afterDelay:0.2];
-        }];
-    }
+            [self.tableView reloadData];
+            if (self.hasmore) {
+                self.tableView.showsInfiniteScrolling = YES;
+            }
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"%@", error);
+        [self.tableView.pullToRefreshView performSelector:@selector(stopAnimating) withObject:nil afterDelay:0.2];
+    }];
 }
 
 - (void)insertRowAtBottom {
-    if ([KGUtils checkIsNetworkConnectionAvailableAndNotify:self.view]) {
-        KGBuyerSummaryObject *lastObj = self.datasource.lastObject;
-        NSInteger endId = lastObj.travelId;
-        NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"end_id": @(endId), @"limit": @(kLimit)};
-        [[KGNetworkManager sharedInstance] postRequest:@"/mobile/travel/index" params:params success:^(id responseObject) {
-            NSLog(@"%@", responseObject);
-            if ([KGUtils checkResultWithAlert:responseObject]) {
-                self.hasmore = [responseObject[@"hasmore"] boolValue];
-                NSArray *data = [self convertBuyerSummary:responseObject];
-                NSMutableArray *indexPaths = [[NSMutableArray alloc] init];
-                NSInteger count = [self.datasource count];
-                for (NSInteger i = 0; i < data.count; i ++) {
-                    [indexPaths addObject:[NSIndexPath indexPathForRow:count + i  inSection:0]];
-                }
-                [self.datasource addObjectsFromArray:data];
-
-                [self.tableView beginUpdates];
-                [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
-                [self.tableView endUpdates];
-                [self.tableView.infiniteScrollingView stopAnimating];
-                self.tableView.showsInfiniteScrolling = data.count > 0;
+    KGBuyerSummaryObject *lastObj = self.datasource.lastObject;
+    NSInteger endId = lastObj.travelId;
+    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"end_id": @(endId), @"limit": @(kLimit)};
+    [[KGNetworkManager sharedInstance] postRequest:@"/mobile/travel/index" params:params success:^(id responseObject) {
+        NSLog(@"%@", responseObject);
+        if ([KGUtils checkResultWithAlert:responseObject]) {
+            self.hasmore = [responseObject[@"hasmore"] boolValue];
+            NSArray *data = [self convertBuyerSummary:responseObject];
+            NSMutableArray *indexPaths = [[NSMutableArray alloc] init];
+            NSInteger count = [self.datasource count];
+            for (NSInteger i = 0; i < data.count; i ++) {
+                [indexPaths addObject:[NSIndexPath indexPathForRow:count + i  inSection:0]];
             }
-        } failure:^(NSError *error) {
-            NSLog(@"%@", error);
-            [self.tableView.pullToRefreshView stopAnimating];
+            [self.datasource addObjectsFromArray:data];
+
+            [self.tableView beginUpdates];
+            [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView endUpdates];
             [self.tableView.infiniteScrollingView stopAnimating];
-        }];
-    } else {
+            self.tableView.showsInfiniteScrolling = data.count > 0;
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"%@", error);
+        [self.tableView.pullToRefreshView stopAnimating];
         [self.tableView.infiniteScrollingView stopAnimating];
-    }
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -239,23 +233,21 @@ static const NSInteger kLimit = 20;
     if (item.data) {
         [item openFilterView];
     } else {
-        if ([KGUtils checkIsNetworkConnectionAvailableAndNotify:self.view]) {
-            [[HudHelper getInstance] showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
-            [[KGNetworkManager sharedInstance] postRequest:item.url params:nil success:^(id responseObject) {
-                [[HudHelper getInstance] hideHudInView:self.view];
-                if ([KGUtils checkResultWithAlert:responseObject]) {
-                    if (item.index == 0) {
-                        item.data = [self convertCountryData:responseObject];
-                    } else if (item.index == 2) {
-                        item.data = [self convertCityData:responseObject];
-                    }
-                    [item openFilterView];
+        [[HudHelper getInstance] showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
+        [[KGNetworkManager sharedInstance] postRequest:item.url params:nil success:^(id responseObject) {
+            [[HudHelper getInstance] hideHudInView:self.view];
+            if ([KGUtils checkResultWithAlert:responseObject]) {
+                if (item.index == 0) {
+                    item.data = [self convertCountryData:responseObject];
+                } else if (item.index == 2) {
+                    item.data = [self convertCityData:responseObject];
                 }
-            } failure:^(NSError *error) {
-                DLog(@"error: %@", error);
-                [[HudHelper getInstance] hideHudInView:self.view];
-            }];
-        }
+                [item openFilterView];
+            }
+        } failure:^(NSError *error) {
+            DLog(@"error: %@", error);
+            [[HudHelper getInstance] hideHudInView:self.view];
+        }];
     }
 }
 
