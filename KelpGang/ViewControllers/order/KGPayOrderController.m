@@ -9,6 +9,8 @@
 #import "KGPayOrderController.h"
 #import "KGOrderObject.h"
 #import "KGOrderListController.h"
+#import "KGOrderPurchaseController.h"
+
 
 @interface KGPayOrderController ()
 
@@ -104,11 +106,18 @@
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    for (UIViewController *temp in self.navigationController.viewControllers) {
-        if ([temp isKindOfClass:[KGOrderListController class]]) {
-            [self.navigationController popToViewController:temp animated:YES];
-        }
-    }
+//    for (UIViewController *temp in self.navigationController.viewControllers) {
+//        if ([temp isKindOfClass:[KGOrderListController class]]) {
+//            [self.navigationController popToViewController:temp animated:NO];
+//        }
+//    }
+    KGOrderPurchaseController *destController = [[KGOrderPurchaseController alloc]initWithStyle:UITableViewStylePlain];
+    destController.orderId = self.orderObj.orderId;
+    [self.navigationController pushViewController:destController animated:YES];
+
+    NSMutableArray *controllers = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
+    [controllers removeObjectsInRange:NSMakeRange(controllers.count - 3, 2)];
+    [self.navigationController setViewControllers:controllers];
 }
 
 @end

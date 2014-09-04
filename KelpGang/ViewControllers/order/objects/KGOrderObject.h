@@ -27,5 +27,7 @@
 @property (nonatomic, strong) NSString *taskMessage;
 @property (nonatomic, strong) NSString *buyerName;
 @property (nonatomic, assign) NSInteger buyerId;
+@property (nonatomic, strong) NSString *leaveMessage;
+
 
 @end

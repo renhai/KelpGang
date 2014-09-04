@@ -10,6 +10,7 @@
 #import "KGOrderListCell.h"
 #import "KGOrderSummaryObject.h"
 #import "KGOrderConfirmViewController.h"
+#import "KGOrderPurchaseController.h"
 
 
 @interface KGOrderListController ()
@@ -126,14 +127,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
-//    KGCompletedOrderController *destController = [self.storyboard instantiateViewControllerWithIdentifier:@"kCompletedOrderController"];
-//    destController.orderId = 111;
-//    [self.navigationController pushViewController:destController animated:YES];
-
     KGOrderSummaryObject *obj = self.orderList[indexPath.row];
-    KGOrderConfirmViewController *controller = [[KGOrderConfirmViewController alloc]initWithStyle:UITableViewStylePlain];
-    controller.orderId = obj.orderId;
-    [self.navigationController pushViewController:controller animated:YES];
+    if (obj.orderStatus == WAITING_CONFIRM || obj.orderStatus == WAITING_PAID) {
+        KGOrderConfirmViewController *controller = [[KGOrderConfirmViewController alloc]initWithStyle:UITableViewStylePlain];
+        controller.orderId = obj.orderId;
+        [self.navigationController pushViewController:controller animated:YES];
+    } else if (obj.orderStatus == PURCHASING) {
+        KGOrderPurchaseController *controller = [[KGOrderPurchaseController alloc]initWithStyle:UITableViewStylePlain];
+        controller.orderId = obj.orderId;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+
 }
 
 

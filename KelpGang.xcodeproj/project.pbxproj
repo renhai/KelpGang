@@ -95,6 +95,10 @@
 		A143012718BB461A0064DF87 /* PKResManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A143012218BB461A0064DF87 /* PKResManager.m */; };
 		A14415A218C0EA590053456D /* KGBuyerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A144159D18C0EA590053456D /* KGBuyerListViewController.m */; };
 		A1468F1919B8208B00461BCE /* KGPayOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1468F1819B8208B00461BCE /* KGPayOrderController.m */; };
+		A1468F2019B8644D00461BCE /* KGOrderPurchaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1468F1F19B8644D00461BCE /* KGOrderPurchaseController.m */; };
+		A1468F2319B86C7C00461BCE /* KGLocateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1468F2219B86C7C00461BCE /* KGLocateCell.m */; };
+		A1468F2619B8750700461BCE /* KGOrderMoneyInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1468F2519B8750700461BCE /* KGOrderMoneyInfoCell.m */; };
+		A1468F2919B87E7E00461BCE /* KGLeaveMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1468F2819B87E7E00461BCE /* KGLeaveMessageCell.m */; };
 		A14B637019064E0200C14A15 /* bubble-small.png in Resources */ = {isa = PBXBuildFile; fileRef = A14B636E19064E0200C14A15 /* bubble-small.png */; };
 		A14B637119064E0200C14A15 /* bubble-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A14B636F19064E0200C14A15 /* bubble-small@2x.png */; };
 		A14B63741906656400C14A15 /* KGRecentContactObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A14B63731906656400C14A15 /* KGRecentContactObject.m */; };
@@ -886,6 +890,14 @@
 		A144159D18C0EA590053456D /* KGBuyerListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGBuyerListViewController.m; sourceTree = "<group>"; };
 		A1468F1719B8208B00461BCE /* KGPayOrderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGPayOrderController.h; sourceTree = "<group>"; };
 		A1468F1819B8208B00461BCE /* KGPayOrderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGPayOrderController.m; sourceTree = "<group>"; };
+		A1468F1E19B8644D00461BCE /* KGOrderPurchaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGOrderPurchaseController.h; sourceTree = "<group>"; };
+		A1468F1F19B8644D00461BCE /* KGOrderPurchaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGOrderPurchaseController.m; sourceTree = "<group>"; };
+		A1468F2119B86C7C00461BCE /* KGLocateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGLocateCell.h; sourceTree = "<group>"; };
+		A1468F2219B86C7C00461BCE /* KGLocateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGLocateCell.m; sourceTree = "<group>"; };
+		A1468F2419B8750700461BCE /* KGOrderMoneyInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGOrderMoneyInfoCell.h; sourceTree = "<group>"; };
+		A1468F2519B8750700461BCE /* KGOrderMoneyInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGOrderMoneyInfoCell.m; sourceTree = "<group>"; };
+		A1468F2719B87E7E00461BCE /* KGLeaveMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGLeaveMessageCell.h; sourceTree = "<group>"; };
+		A1468F2819B87E7E00461BCE /* KGLeaveMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGLeaveMessageCell.m; sourceTree = "<group>"; };
 		A14B636E19064E0200C14A15 /* bubble-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble-small.png"; sourceTree = "<group>"; };
 		A14B636F19064E0200C14A15 /* bubble-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble-small@2x.png"; sourceTree = "<group>"; };
 		A14B63721906656400C14A15 /* KGRecentContactObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGRecentContactObject.h; sourceTree = "<group>"; };
@@ -1690,6 +1702,8 @@
 				A1BFA61B19B6CE21007AF67B /* KGOrderConfirmViewController.m */,
 				A1468F1719B8208B00461BCE /* KGPayOrderController.h */,
 				A1468F1819B8208B00461BCE /* KGPayOrderController.m */,
+				A1468F1E19B8644D00461BCE /* KGOrderPurchaseController.h */,
+				A1468F1F19B8644D00461BCE /* KGOrderPurchaseController.m */,
 			);
 			path = order;
 			sourceTree = "<group>";
@@ -2763,6 +2777,12 @@
 				A1BFA62419B73232007AF67B /* KGOrderTotalMoneyCell.m */,
 				A1BFA62619B7345F007AF67B /* KGOrderImageCell.h */,
 				A1BFA62719B7345F007AF67B /* KGOrderImageCell.m */,
+				A1468F2119B86C7C00461BCE /* KGLocateCell.h */,
+				A1468F2219B86C7C00461BCE /* KGLocateCell.m */,
+				A1468F2419B8750700461BCE /* KGOrderMoneyInfoCell.h */,
+				A1468F2519B8750700461BCE /* KGOrderMoneyInfoCell.m */,
+				A1468F2719B87E7E00461BCE /* KGLeaveMessageCell.h */,
+				A1468F2819B87E7E00461BCE /* KGLeaveMessageCell.m */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -3458,6 +3478,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1468F2619B8750700461BCE /* KGOrderMoneyInfoCell.m in Sources */,
 				A1610CB319936564001F9DAA /* KGDiscoverViewController.m in Sources */,
 				A1CA59E21917616200D9A429 /* KGCreateOrderBuyerCell.m in Sources */,
 				A108052319A352DE005674E7 /* KGCollectObject.m in Sources */,
@@ -3471,6 +3492,8 @@
 				A121F423198F778400260E73 /* PSTCollectionViewData.m in Sources */,
 				A121F42A198F778400260E73 /* PSTGridLayoutRow.m in Sources */,
 				A19F85E618EA6C300089B14F /* KGPreviewTaskViewController.m in Sources */,
+				A1468F2019B8644D00461BCE /* KGOrderPurchaseController.m in Sources */,
+				A1468F2919B87E7E00461BCE /* KGLeaveMessageCell.m in Sources */,
 				A1610CC019938B95001F9DAA /* KGDiscoverDetailViewController.m in Sources */,
 				A1393978199CA4F50013891C /* KGJourneyObject.m in Sources */,
 				A121F418198F778400260E73 /* MWGridViewController.m in Sources */,
@@ -3504,6 +3527,7 @@
 				A112770318E29445006F7CFA /* KGBuyerInfoViewController.m in Sources */,
 				A10150CA18CB6445004A729D /* KGChatViewController.m in Sources */,
 				A143012418BB461A0064DF87 /* UIColor+PKColor.m in Sources */,
+				A1468F2319B86C7C00461BCE /* KGLocateCell.m in Sources */,
 				A179E6BC1921F221006A72BD /* KGLoginController.m in Sources */,
 				A1DD134C18E03229000F52C2 /* KGHostDetailController.m in Sources */,
 				A15AD1B219AC442500A41D6F /* NSMutableArray+SWUtilityButtons.m in Sources */,

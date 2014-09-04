@@ -276,6 +276,11 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if (self.orderObj.orderStatus == WAITING_PAID) {
+        if (self.orderObj.buyerId == APPCONTEXT.currUser.uid) {
+            return 0;
+        }
+    }
     return 60.0;
 }
 
