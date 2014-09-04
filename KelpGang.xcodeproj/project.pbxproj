@@ -94,6 +94,7 @@
 		A143012618BB461A0064DF87 /* UIImage+PKImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A143012018BB461A0064DF87 /* UIImage+PKImage.m */; };
 		A143012718BB461A0064DF87 /* PKResManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A143012218BB461A0064DF87 /* PKResManager.m */; };
 		A14415A218C0EA590053456D /* KGBuyerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A144159D18C0EA590053456D /* KGBuyerListViewController.m */; };
+		A1468F1919B8208B00461BCE /* KGPayOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1468F1819B8208B00461BCE /* KGPayOrderController.m */; };
 		A14B637019064E0200C14A15 /* bubble-small.png in Resources */ = {isa = PBXBuildFile; fileRef = A14B636E19064E0200C14A15 /* bubble-small.png */; };
 		A14B637119064E0200C14A15 /* bubble-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A14B636F19064E0200C14A15 /* bubble-small@2x.png */; };
 		A14B63741906656400C14A15 /* KGRecentContactObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A14B63731906656400C14A15 /* KGRecentContactObject.m */; };
@@ -883,6 +884,8 @@
 		A143012318BB461A0064DF87 /* PKResManagerKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKResManagerKit.h; sourceTree = "<group>"; };
 		A144159C18C0EA590053456D /* KGBuyerListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGBuyerListViewController.h; sourceTree = "<group>"; };
 		A144159D18C0EA590053456D /* KGBuyerListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGBuyerListViewController.m; sourceTree = "<group>"; };
+		A1468F1719B8208B00461BCE /* KGPayOrderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGPayOrderController.h; sourceTree = "<group>"; };
+		A1468F1819B8208B00461BCE /* KGPayOrderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGPayOrderController.m; sourceTree = "<group>"; };
 		A14B636E19064E0200C14A15 /* bubble-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble-small.png"; sourceTree = "<group>"; };
 		A14B636F19064E0200C14A15 /* bubble-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble-small@2x.png"; sourceTree = "<group>"; };
 		A14B63721906656400C14A15 /* KGRecentContactObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGRecentContactObject.h; sourceTree = "<group>"; };
@@ -1685,6 +1688,8 @@
 				A180E43C190F6DB5003347F8 /* KGCreateOrderController.m */,
 				A1BFA61A19B6CE21007AF67B /* KGOrderConfirmViewController.h */,
 				A1BFA61B19B6CE21007AF67B /* KGOrderConfirmViewController.m */,
+				A1468F1719B8208B00461BCE /* KGPayOrderController.h */,
+				A1468F1819B8208B00461BCE /* KGPayOrderController.m */,
 			);
 			path = order;
 			sourceTree = "<group>";
@@ -3514,6 +3519,7 @@
 				A18A2B9B18E18D8C00FDFB8E /* KGBadgeView.m in Sources */,
 				A199395818FBD687002E7E51 /* KGChatCellInfo.m in Sources */,
 				A121F42B198F778400260E73 /* PSTGridLayoutSection.m in Sources */,
+				A1468F1919B8208B00461BCE /* KGPayOrderController.m in Sources */,
 				A16FBEED18DC178C009E2F66 /* KGMaskView.m in Sources */,
 				A121F420198F778400260E73 /* PSTCollectionView.m in Sources */,
 				A1A003F718F3F0BC00B5A1D7 /* KGMessageObject.m in Sources */,

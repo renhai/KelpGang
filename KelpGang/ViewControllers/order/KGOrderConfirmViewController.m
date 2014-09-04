@@ -15,6 +15,7 @@
 #import "KGOrderTotalMoneyCell.h"
 #import "KGOrderImageCell.h"
 #import "KGCreateOrderController.h"
+#import "KGPayOrderController.h"
 
 
 @interface KGOrderConfirmViewController ()
@@ -306,7 +307,10 @@
 }
 
 - (void)payTheOrder: (UIButton *)sender {
-    DLog(@"");
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"order" bundle:nil];
+    KGPayOrderController *destController = [sb instantiateViewControllerWithIdentifier:@"kPayOrderController"];
+    destController.orderObj = self.orderObj;
+    [self.navigationController pushViewController:destController animated:YES];
 }
 
 @end
