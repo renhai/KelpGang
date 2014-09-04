@@ -13,6 +13,7 @@
 @interface KGOrderObject : NSObject
 
 @property (nonatomic, assign) NSInteger orderId;
+@property (nonatomic, assign) NSInteger ownerId;
 @property (nonatomic, strong) NSString *orderNumber;
 @property (nonatomic, strong) NSString *orderImageUrl;
 @property (nonatomic, assign) OrderStatus orderStatus;
@@ -25,6 +26,6 @@
 @property (nonatomic, strong) NSString *taskTitle;
 @property (nonatomic, strong) NSString *taskMessage;
 @property (nonatomic, strong) NSString *buyerName;
-@property (nonatomic, assign) NSInteger buyerId;;
+@property (nonatomic, assign) NSInteger buyerId;
 
 @end

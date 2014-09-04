@@ -57,6 +57,7 @@
             NSDictionary *data = responseObject[@"data"];
             self.orderObj = [[KGOrderObject alloc]init];
             self.orderObj.orderId = self.orderId;
+            self.orderObj.ownerId = [data[@"owner_id"] integerValue];
             self.orderObj.orderNumber = data[@"orderNumber"];
             self.orderObj.orderImageUrl = data[@"goodPic"];
             self.orderObj.orderStatus = [data[@"orderStatus"] integerValue];
@@ -79,11 +80,20 @@
             addrObj.district = addressDetail[@"county"];
             addrObj.street = addressDetail[@"street"];
             self.orderObj.addr = addrObj;
-            [self.tableView reloadData];
+            [self refreshThisView];
         }
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
     }];
+}
+
+- (void)refreshThisView {
+    [self.tableView reloadData];
+    if (self.orderObj.orderStatus == WAITING_CONFIRM) {
+        self.title = @"等待卖家确认";
+    } else if (self.orderObj.orderStatus == WAITING_PAID) {
+        self.title = @"等待买家付款";
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -235,9 +245,31 @@
 
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(15, 10, 290, 37)];
     button.backgroundColor = MAIN_COLOR;
-    [button setTitle:@"编辑" forState:UIControlStateNormal];
     button.showsTouchWhenHighlighted = YES;
-    [button addTarget:self action:@selector(tapActionButton:) forControlEvents:UIControlEventTouchUpInside];
+    if (self.orderObj.orderStatus == WAITING_CONFIRM) {
+        if (self.orderObj.buyerId == APPCONTEXT.currUser.uid) {//卖家
+            [button setTitle:@"确认" forState:UIControlStateNormal];
+            [button addTarget:self action:@selector(comfirmOrder:) forControlEvents:UIControlEventTouchUpInside];
+        } else if (self.orderObj.ownerId == APPCONTEXT.currUser.uid) {//买家
+            [button setTitle:@"编辑" forState:UIControlStateNormal];
+            [button addTarget:self action:@selector(editOrder:) forControlEvents:UIControlEventTouchUpInside];
+        } else {
+            return nil;
+        }
+    } else if (self.orderObj.orderStatus == WAITING_PAID) {
+        if (self.orderObj.buyerId == APPCONTEXT.currUser.uid) {//卖家
+            [button setTitle:@"等待买家付款" forState:UIControlStateNormal];
+            [button setBackgroundColor:[UIColor lightGrayColor]];
+            button.enabled = NO;
+        } else if (self.orderObj.ownerId == APPCONTEXT.currUser.uid) {//买家
+            [button setTitle:@"立即支付" forState:UIControlStateNormal];
+            [button addTarget:self action:@selector(payTheOrder:) forControlEvents:UIControlEventTouchUpInside];
+        } else {
+            return nil;
+        }
+    }
+
+
     [footer addSubview:button];
     return footer;
 }
@@ -246,19 +278,35 @@
     return 60.0;
 }
 
-- (void)tapActionButton: (UIButton *)sender {
-    switch (self.orderObj.orderStatus) {
-        case WAITING_CONFIRM: {
-            UIStoryboard *sb = [UIStoryboard storyboardWithName:@"order" bundle:nil];
-            KGCreateOrderController *creatController = [sb instantiateViewControllerWithIdentifier:@"kCreateOrderController"];
-            creatController.title = @"编辑订单";
-            UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:creatController];
-            [self presentViewController:nc animated:YES completion:nil];
-            break;
+- (void)editOrder: (UIButton *)sender {
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"order" bundle:nil];
+    KGCreateOrderController *creatController = [sb instantiateViewControllerWithIdentifier:@"kCreateOrderController"];
+    creatController.title = @"编辑订单";
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:creatController];
+    [self presentViewController:nc animated:YES completion:nil];
+}
+
+- (void)comfirmOrder: (UIButton *)sender {
+    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
+                             @"session_key": APPCONTEXT.currUser.sessionKey,
+                             @"order_id": @(self.orderObj.orderId)};
+    [[HudHelper getInstance] showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
+    [[KGNetworkManager sharedInstance] postRequest:@"/mobile/order/buyerAck" params:params success:^(id responseObject) {
+        DLog(@"%@", responseObject);
+        [[HudHelper getInstance] hideHudInView:self.view];
+        if ([KGUtils checkResultWithAlert:responseObject]) {
+            NSDictionary *data = responseObject[@"data"];
+            NSInteger orderStatus = [data[@"order_status"] integerValue];
+            self.orderObj.orderStatus = orderStatus;
+            [self refreshThisView];
         }
-        default:
-            break;
-    }
+    } failure:^(NSError *error) {
+        NSLog(@"%@", error);
+    }];
+}
+
+- (void)payTheOrder: (UIButton *)sender {
+    DLog(@"");
 }
 
 @end
