@@ -83,26 +83,23 @@
 }
 
 - (void)payOrder: (UIButton *)sender {
-//    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
-//                             @"session_key": APPCONTEXT.currUser.sessionKey,
-//                             @"order_id": @(self.orderObj.orderId)};
-//    [[HudHelper getInstance] showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
-//    [[KGNetworkManager sharedInstance] postRequest:@"/mobile/order/receiverPay" params:params success:^(id responseObject) {
-//        DLog(@"%@", responseObject);
-//        [[HudHelper getInstance] hideHudInView:self.view];
-//        if ([KGUtils checkResultWithAlert:responseObject]) {
-//            NSDictionary *data = responseObject[@"data"];
-//            NSInteger orderStatus = [data[@"order_status"] integerValue];
-//            self.orderObj.orderStatus = orderStatus;
-//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kAlertViewTip message:@"支付完成" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-//            [alert show];
-//        }
-//    } failure:^(NSError *error) {
-//        NSLog(@"%@", error);
-//    }];
-
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kAlertViewTip message:@"支付完成" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-    [alert show];
+    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
+                             @"session_key": APPCONTEXT.currUser.sessionKey,
+                             @"order_id": @(self.orderObj.orderId)};
+    [[HudHelper getInstance] showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
+    [[KGNetworkManager sharedInstance] postRequest:@"/mobile/order/receiverPay" params:params success:^(id responseObject) {
+        DLog(@"%@", responseObject);
+        [[HudHelper getInstance] hideHudInView:self.view];
+        if ([KGUtils checkResultWithAlert:responseObject]) {
+            NSDictionary *data = responseObject[@"data"];
+            NSInteger orderStatus = [data[@"order_status"] integerValue];
+            self.orderObj.orderStatus = orderStatus;
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kAlertViewTip message:@"支付完成" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"%@", error);
+    }];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {

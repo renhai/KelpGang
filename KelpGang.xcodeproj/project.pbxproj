@@ -641,6 +641,7 @@
 		A198708D191A3EA20064CC6C /* 黑山.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EE9191A3EA20064CC6C /* 黑山.png */; };
 		A198708E191A3EA20064CC6C /* 黑山@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1986EEA191A3EA20064CC6C /* 黑山@2x.png */; };
 		A199395818FBD687002E7E51 /* KGChatCellInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A199395718FBD687002E7E51 /* KGChatCellInfo.m */; };
+		A19E4C1019B9679600D1669A /* KGLeaveMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = A19E4C0F19B9679600D1669A /* KGLeaveMessageController.m */; };
 		A19EE92A199871A500D6C935 /* KGTaskObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A19EE929199871A500D6C935 /* KGTaskObject.m */; };
 		A19F0EC318E2AE0D00C2944D /* KGBuyerRefPicturesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A19F0EC218E2AE0D00C2944D /* KGBuyerRefPicturesCell.m */; };
 		A19F0EC618E2B33B00C2944D /* KGBuyerDescriptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A19F0EC518E2B33B00C2944D /* KGBuyerDescriptionCell.m */; };
@@ -1493,6 +1494,8 @@
 		A1986EEA191A3EA20064CC6C /* 黑山@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "黑山@2x.png"; sourceTree = "<group>"; };
 		A199395618FBD687002E7E51 /* KGChatCellInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGChatCellInfo.h; sourceTree = "<group>"; };
 		A199395718FBD687002E7E51 /* KGChatCellInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGChatCellInfo.m; sourceTree = "<group>"; };
+		A19E4C0E19B9679600D1669A /* KGLeaveMessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGLeaveMessageController.h; sourceTree = "<group>"; };
+		A19E4C0F19B9679600D1669A /* KGLeaveMessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGLeaveMessageController.m; sourceTree = "<group>"; };
 		A19EE928199871A500D6C935 /* KGTaskObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGTaskObject.h; sourceTree = "<group>"; };
 		A19EE929199871A500D6C935 /* KGTaskObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGTaskObject.m; sourceTree = "<group>"; };
 		A19F0EC118E2AE0D00C2944D /* KGBuyerRefPicturesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGBuyerRefPicturesCell.h; sourceTree = "<group>"; };
@@ -1704,6 +1707,8 @@
 				A1468F1819B8208B00461BCE /* KGPayOrderController.m */,
 				A1468F1E19B8644D00461BCE /* KGOrderPurchaseController.h */,
 				A1468F1F19B8644D00461BCE /* KGOrderPurchaseController.m */,
+				A19E4C0E19B9679600D1669A /* KGLeaveMessageController.h */,
+				A19E4C0F19B9679600D1669A /* KGLeaveMessageController.m */,
 			);
 			path = order;
 			sourceTree = "<group>";
@@ -3546,6 +3551,7 @@
 				A1468F1919B8208B00461BCE /* KGPayOrderController.m in Sources */,
 				A16FBEED18DC178C009E2F66 /* KGMaskView.m in Sources */,
 				A121F420198F778400260E73 /* PSTCollectionView.m in Sources */,
+				A19E4C1019B9679600D1669A /* KGLeaveMessageController.m in Sources */,
 				A1A003F718F3F0BC00B5A1D7 /* KGMessageObject.m in Sources */,
 				A1C0ACFB18C759010092E3B4 /* XMPPManager.m in Sources */,
 				A1711BD9197FB7EC00721862 /* AppStartup.m in Sources */,

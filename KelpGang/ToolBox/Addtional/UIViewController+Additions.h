@@ -12,6 +12,7 @@
 
 - (void)setLeftBarbuttonItem;
 - (void)setRightBarbuttonItem: (UIImage *)image selector: (SEL)selector;
+- (void)setRightBarbuttonItemWithText:(NSString *)text selector:(SEL)selector;
 - (void)goBack:(UIBarButtonItem *)sender;
 
 @end

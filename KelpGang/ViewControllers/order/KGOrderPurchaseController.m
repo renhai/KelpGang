@@ -15,6 +15,7 @@
 #import "KGOrderAddressCell.h"
 #import "KGOrderMoneyInfoCell.h"
 #import "KGLeaveMessageCell.h"
+#import "KGLeaveMessageController.h"
 
 
 @interface KGOrderPurchaseController ()
@@ -255,6 +256,17 @@
     if (indexPath.row == 1 && [self isBuyer]) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"每个订单采购定位只能操作一次，地点将作为这次订单的采购定位，请保持手机的网络畅通" delegate:self cancelButtonTitle:@"开始定位" otherButtonTitles:@"取消", nil];
         [alert show];
+    } else if (indexPath.row == 5 && ![self isBuyer]) {
+        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"order" bundle:nil];
+        KGLeaveMessageController *vc = [sb instantiateViewControllerWithIdentifier:@"kLeaveMessageController"];
+        vc.orderId = self.orderObj.orderId;
+        vc.oriMessage = self.orderObj.leaveMessage;
+        vc.block = ^ (NSString *leaveMsg) {
+            self.orderObj.leaveMessage = leaveMsg;
+            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:5 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+        };
+        UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
+        [self presentViewController:nc animated:YES completion:^ {}];
     }
 }
 
