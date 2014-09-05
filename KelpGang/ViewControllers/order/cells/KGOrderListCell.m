@@ -86,7 +86,7 @@
             self.orderStatusLabel.text = @"采购中";
             break;
         case RETURNING:
-            self.orderStatusLabel.text = @"返程中";
+            self.orderStatusLabel.text = @"采购完成";
             break;
         case WAITING_RECEIPT:
             self.orderStatusLabel.text = @"等待买家确认收货";

@@ -23,6 +23,7 @@
 @interface KGOrderPurchaseController ()
 
 @property (nonatomic, strong) KGOrderObject *orderObj;
+@property (nonatomic, strong) UIAlertView *finishAlertView;
 
 @end
 
@@ -40,7 +41,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"采购中";
     [self setLeftBarbuttonItem];
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
         [self.tableView setSeparatorInset:UIEdgeInsetsZero];
@@ -92,8 +92,7 @@
                 locaton.latitude = [NSNumber numberWithDouble:[data[@"latitude"] doubleValue]] ;
                 self.orderObj.location = locaton;
             }
-
-            [self.tableView reloadData];
+            [self refreshViewController];
         }
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
@@ -245,8 +244,17 @@
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(15, 10, 290, 37)];
     button.backgroundColor = MAIN_COLOR;
     button.showsTouchWhenHighlighted = YES;
-    [button setTitle:@"采购完成" forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(finishPurchase:) forControlEvents:UIControlEventTouchUpInside];
+
+
+    if (self.orderObj.orderStatus == PURCHASING) {
+        [button setTitle:@"采购完成" forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(finishBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    } else if (self.orderObj.orderStatus == RETURNING) {
+        [button setTitle:@"提交物流信息" forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(submitLogistics:) forControlEvents:UIControlEventTouchUpInside];
+    } else {
+        return nil;
+    }
 
     [footer addSubview:button];
     return footer;
@@ -259,8 +267,21 @@
     return 60.0;
 }
 
-- (void)finishPurchase: (UIButton *)sender {
-
+- (void)finishBtnClicked: (UIButton *)sender {
+    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
+                             @"session_key": APPCONTEXT.currUser.sessionKey,
+                             @"order_id": @(self.orderObj.orderId)};
+    [[KGNetworkManager sharedInstance] postRequest:@"/mobile/order/isLocate" params:params success:^(id responseObject) {
+        DLog(@"%@", responseObject);
+        if ([KGUtils checkResult:responseObject]) {
+            self.finishAlertView = [[UIAlertView alloc]initWithTitle:nil message:@"您还没有进行地点定位，可能影响信用，是否提交？" delegate:self cancelButtonTitle:@"提交" otherButtonTitles:@"取消", nil];
+            [self.finishAlertView show];
+        } else {
+            [self finishPurchase];
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"%@", error);
+    }];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -282,8 +303,14 @@
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 0) {
-        [self startLocation];
+    if (self.finishAlertView == alertView) {
+        if (buttonIndex == 0) {
+            [self finishPurchase];
+        }
+    } else {
+        if (buttonIndex == 0) {
+            [self startLocation];
+        }
     }
 }
 
@@ -332,6 +359,38 @@
 
 - (NSString *)toJsonString: (NSDictionary *)dict {
     return [[NSString alloc] initWithData:[self toJSONData:dict] encoding:NSUTF8StringEncoding];
+}
+
+- (void)finishPurchase {
+    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
+                             @"session_key": APPCONTEXT.currUser.sessionKey,
+                             @"order_id": @(self.orderObj.orderId)};
+    [[HudHelper getInstance] showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
+    [[KGNetworkManager sharedInstance] postRequest:@"/mobile/order/purchasing" params:params success:^(id responseObject) {
+        DLog(@"%@", responseObject);
+        [[HudHelper getInstance] hideHudInView:self.view];
+        if ([KGUtils checkResultWithAlert:responseObject]) {
+            NSDictionary *data = responseObject[@"data"];
+            NSInteger status = [data[@"order_status"] integerValue];
+            self.orderObj.orderStatus = status;
+            [self refreshViewController];
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"%@", error);
+    }];
+}
+
+- (void)refreshViewController {
+    [self.tableView reloadData];
+    if (self.orderObj.orderStatus == PURCHASING) {
+        self.title = @"采购中";
+    } else if (self.orderObj.orderStatus == RETURNING) {
+        self.title = @"采购完成";
+    }
+}
+
+- (void)submitLogistics: (UIButton *)sender {
+
 }
 
 @end

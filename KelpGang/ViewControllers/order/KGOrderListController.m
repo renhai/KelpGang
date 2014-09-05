@@ -132,7 +132,7 @@
         KGOrderConfirmViewController *controller = [[KGOrderConfirmViewController alloc]initWithStyle:UITableViewStylePlain];
         controller.orderId = obj.orderId;
         [self.navigationController pushViewController:controller animated:YES];
-    } else if (obj.orderStatus == PURCHASING) {
+    } else if (obj.orderStatus == PURCHASING || obj.orderStatus == RETURNING) {
         KGOrderPurchaseController *controller = [[KGOrderPurchaseController alloc]initWithStyle:UITableViewStylePlain];
         controller.orderId = obj.orderId;
         [self.navigationController pushViewController:controller animated:YES];

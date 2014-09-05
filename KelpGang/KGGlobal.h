@@ -48,7 +48,7 @@ typedef enum {
     WAITING_CONFIRM =       0,//待确认
     WAITING_PAID =          1,//待付款
     PURCHASING =            2,//采购中
-    RETURNING =             3,//返程中
+    RETURNING =             3,//采购完成
     WAITING_RECEIPT =       4,//等待买家确认收货
     WAITING_COMMENT =       5,//待评价
     COMPLETED =             6//已完成
