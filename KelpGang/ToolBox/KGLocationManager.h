@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 
-typedef void(^LocationBlock)(NSString *location);
+@class KGLocationObject;
+
+typedef void(^LocationBlock)(KGLocationObject *location);
 
 @interface KGLocationManager : NSObject <MKMapViewDelegate>
 

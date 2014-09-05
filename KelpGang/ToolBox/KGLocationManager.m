@@ -7,12 +7,14 @@
 //
 
 #import "KGLocationManager.h"
+#import "KGLocationObject.h"
 
 
 @interface KGLocationManager()
 
 @property (nonatomic, copy)LocationBlock locationBlock;
-@property (nonatomic, strong)NSString *location;
+@property (nonatomic, strong)KGLocationObject *location;
+@property (nonatomic, assign) BOOL called;
 
 @end
 
@@ -34,6 +36,7 @@
     _mapView = [[MKMapView alloc] init];
     _mapView.delegate = self;
     _mapView.showsUserLocation = YES;
+    self.called = NO;
 }
 
 -(void)stopLocation {
@@ -56,12 +59,16 @@
     CLGeocoder *clGeoCoder = [[CLGeocoder alloc] init];
     CLGeocodeCompletionHandler handle = ^(NSArray *placemarks,NSError *error) {
         for (CLPlacemark * placeMark in placemarks) {
-            self.location = placeMark.name;
+            self.location = [[KGLocationObject alloc] init];
+            self.location.longitude = [NSNumber numberWithDouble:placeMark.location.coordinate.longitude];
+            self.location.latitude = [NSNumber numberWithDouble: placeMark.location.coordinate.latitude];
+            self.location.addressDictionary = placeMark.addressDictionary;
             [self stopLocation];
         }
 
-        if (self.locationBlock) {
+        if (self.locationBlock && !self.called) {
             self.locationBlock(self.location);
+            self.called = YES;
         }
     };
     [clGeoCoder reverseGeocodeLocation:newLocation completionHandler:handle];
@@ -69,6 +76,10 @@
 
 - (void)mapView:(MKMapView *)mapView didFailToLocateUserWithError:(NSError *)error {
     [self stopLocation];
+    if (kCLErrorDenied == error.code || kCLErrorLocationUnknown == error.code) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"定位服务未开启" message:@"需要到手机设置开启定位服务完成此次操作" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+    }
 }
 
 

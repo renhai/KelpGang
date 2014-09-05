@@ -16,6 +16,8 @@
 #import "KGOrderMoneyInfoCell.h"
 #import "KGLeaveMessageCell.h"
 #import "KGLeaveMessageController.h"
+#import "KGLocationManager.h"
+#import "KGLocationObject.h"
 
 
 @interface KGOrderPurchaseController ()
@@ -82,6 +84,15 @@
             addrObj.district = addressDetail[@"county"];
             addrObj.street = addressDetail[@"street"];
             self.orderObj.addr = addrObj;
+
+            if (data[@"address_detail"]) {
+                KGLocationObject *locaton = [[KGLocationObject alloc]init];
+                locaton.addressDictionary = data[@"address_detail"];
+                locaton.longitude = [NSNumber numberWithDouble:[data[@"longitude"] doubleValue]] ;
+                locaton.latitude = [NSNumber numberWithDouble:[data[@"latitude"] doubleValue]] ;
+                self.orderObj.location = locaton;
+            }
+
             [self.tableView reloadData];
         }
     } failure:^(NSError *error) {
@@ -272,12 +283,55 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {
-        //开始定位
+        [self startLocation];
     }
+}
+
+- (void)startLocation {
+        [[KGLocationManager shareLocation] getAddress:^(KGLocationObject *location) {
+            NSLog(@"%@", location.addressDictionary);
+            [self sendLocateInfo:location];
+        }];
+}
+
+- (void)sendLocateInfo: (KGLocationObject *) location {
+    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
+                             @"session_key": APPCONTEXT.currUser.sessionKey,
+                             @"order_id": @(self.orderObj.orderId),
+                             @"longitude": [location.longitude stringValue],
+                             @"latitude": [location.latitude stringValue],
+                             @"address_detail": [self toJsonString:location.addressDictionary]};
+    [[HudHelper getInstance] showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
+    [[KGNetworkManager sharedInstance] postRequest:@"/mobile/order/location" params:params success:^(id responseObject) {
+        DLog(@"%@", responseObject);
+        [[HudHelper getInstance] hideHudInView:self.view];
+        if ([KGUtils checkResultWithAlert:responseObject]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kAlertViewTip message:@"定位成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"%@", error);
+    }];
 }
 
 - (BOOL)isBuyer {
     return self.orderObj.buyerId == APPCONTEXT.currUser.uid;
+}
+
+- (NSData *)toJSONData:(id)theData {
+    NSError *error = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:theData
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:&error];
+    if ([jsonData length] > 0 && error == nil) {
+        return jsonData;
+    } else {
+        return nil;
+    }
+}
+
+- (NSString *)toJsonString: (NSDictionary *)dict {
+    return [[NSString alloc] initWithData:[self toJSONData:dict] encoding:NSUTF8StringEncoding];
 }
 
 @end

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class KGAddressObject;
+@class KGLocationObject;
 
 @interface KGOrderObject : NSObject
 
@@ -28,6 +29,7 @@
 @property (nonatomic, strong) NSString *buyerName;
 @property (nonatomic, assign) NSInteger buyerId;
 @property (nonatomic, strong) NSString *leaveMessage;
+@property (nonatomic, strong) KGLocationObject *location;
 
 
 @end
