@@ -31,7 +31,8 @@
             break;
         case APPSTARTUP_AFTER_LOGIN:
             if ([APPCONTEXT checkLogin]) {
-                startupBlocks = @[[[AppStartup xmppConnectBlock] copy]];
+                startupBlocks = @[[[AppStartup xmppConnectBlock] copy],
+                                  [[AppStartup moveDBFileToSandboxBlock] copy]];
             }
             break;
         default:
