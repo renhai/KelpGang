@@ -237,7 +237,7 @@
     [imageView setContentMode:UIViewContentModeScaleAspectFill];
     [imageView setClipsToBounds:YES];
     NSString *imageUrl = [self.good_info[index] valueForKey:@"good_default_head_url"];
-    [imageView setImageWithURL:[NSURL URLWithString:imageUrl] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [imageView setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"default-placeholder"] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [containerView addSubview:imageView];
 
     view = containerView;

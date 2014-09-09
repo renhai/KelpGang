@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		06CE0146A8D24179B54771E8 /* libPods-KelpGang.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E044CDC874D44F7B9918FAE3 /* libPods-KelpGang.a */; };
+		9162EA9819BF7A51004FC4B2 /* default-placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 9162EA9719BF7A51004FC4B2 /* default-placeholder.png */; };
 		A10150CA18CB6445004A729D /* KGChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A10150C918CB6445004A729D /* KGChatViewController.m */; };
 		A10150E318CB8BA7004A729D /* default_line.png in Resources */ = {isa = PBXBuildFile; fileRef = A10150DF18CB8BA7004A729D /* default_line.png */; };
 		A10150E418CB8BA7004A729D /* default_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A10150E018CB8BA7004A729D /* default_line@2x.png */; };
@@ -746,6 +747,7 @@
 
 /* Begin PBXFileReference section */
 		71B7D4768EEC4B5B9F048CA3 /* Pods-KelpGang.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KelpGang.xcconfig"; path = "Pods/Pods-KelpGang.xcconfig"; sourceTree = "<group>"; };
+		9162EA9719BF7A51004FC4B2 /* default-placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default-placeholder.png"; sourceTree = "<group>"; };
 		A10150C818CB6445004A729D /* KGChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGChatViewController.h; sourceTree = "<group>"; };
 		A10150C918CB6445004A729D /* KGChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = KGChatViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		A10150DF18CB8BA7004A729D /* default_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_line.png; sourceTree = "<group>"; };
@@ -1997,6 +1999,7 @@
 		A143015E18BB5D7A0064DF87 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9162EA9719BF7A51004FC4B2 /* default-placeholder.png */,
 				A1986D46191A3EA10064CC6C /* country */,
 				A182B28319BF171F009A065E /* big-full-heart@2x.png */,
 				A182B28419BF171F009A065E /* big-full-heart.png */,
@@ -3318,6 +3321,7 @@
 				A1986F32191A3EA20064CC6C /* 南非@2x.png in Resources */,
 				A1986FD9191A3EA20064CC6C /* 新西兰.png in Resources */,
 				A1DD135718E05562000F52C2 /* selected-tablecell@2x.png in Resources */,
+				9162EA9819BF7A51004FC4B2 /* default-placeholder.png in Resources */,
 				A1986F9C191A3EA20064CC6C /* 尼日尔@2x.png in Resources */,
 				A1986F83191A3EA20064CC6C /* 多米尼克.png in Resources */,
 				A1987032191A3EA20064CC6C /* 约旦@2x.png in Resources */,
