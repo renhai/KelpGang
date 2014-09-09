@@ -12,11 +12,11 @@
 #import "KGLocationObject.h"
 #import "KGOrderImageCell.h"
 #import "KGOrderNumberAndLogisticsCell.h"
-#import "KGOrderNumberAndDateCell.h"
 #import "KGOrderMoneyInfoCell.h"
 #import "KGOrderAddressCell.h"
 #import "KGLeaveMessageCell.h"
 #import "KGOrderLocationCell.h"
+#import "KGCommentOrderController.h"
 
 
 @interface KGConfirmReceiptController ()
@@ -274,6 +274,8 @@
         self.title = @"订单完成";
         if (![self isBuyer] && !self.orderObj.commented) {
             [self setRightBarbuttonItemWithText:@"评论" selector:@selector(commentClicked:)];
+        } else {
+            self.navigationItem.rightBarButtonItem = nil;
         }
     }
 }
@@ -305,7 +307,14 @@
 }
 
 - (void)commentClicked: (UIButton *)sender {
-
+    KGCommentOrderController *controller = [[KGCommentOrderController alloc]initWithStyle:UITableViewStylePlain];
+    controller.orderObj = self.orderObj;
+    controller.block = ^ {
+        self.orderObj.commented = YES;
+        [self refreshViewController];
+    };
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:controller];
+    [self presentViewController:nc animated:YES completion:nil];
 }
 
 @end

@@ -176,6 +176,16 @@
 		A182B26C19BEB50F009A065E /* KGConfirmReceiptController.m in Sources */ = {isa = PBXBuildFile; fileRef = A182B26B19BEB50F009A065E /* KGConfirmReceiptController.m */; };
 		A182B26F19BEBBA1009A065E /* KGOrderNumberAndLogisticsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A182B26E19BEBBA1009A065E /* KGOrderNumberAndLogisticsCell.m */; };
 		A182B27219BECDDF009A065E /* KGOrderLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A182B27119BECDDF009A065E /* KGOrderLocationCell.m */; };
+		A182B27819BEF711009A065E /* KGCommentOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = A182B27719BEF711009A065E /* KGCommentOrderController.m */; };
+		A182B27B19BF0085009A065E /* KGBuyerInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A182B27A19BF0085009A065E /* KGBuyerInfoCell.m */; };
+		A182B27F19BF1058009A065E /* AMRatingControl.m in Sources */ = {isa = PBXBuildFile; fileRef = A182B27E19BF1058009A065E /* AMRatingControl.m */; };
+		A182B28219BF1090009A065E /* KGRatingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A182B28119BF1090009A065E /* KGRatingCell.m */; };
+		A182B28719BF171F009A065E /* big-full-heart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A182B28319BF171F009A065E /* big-full-heart@2x.png */; };
+		A182B28819BF171F009A065E /* big-full-heart.png in Resources */ = {isa = PBXBuildFile; fileRef = A182B28419BF171F009A065E /* big-full-heart.png */; };
+		A182B28919BF171F009A065E /* big-empty-heart.png in Resources */ = {isa = PBXBuildFile; fileRef = A182B28519BF171F009A065E /* big-empty-heart.png */; };
+		A182B28A19BF171F009A065E /* big-empty-heart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A182B28619BF171F009A065E /* big-empty-heart@2x.png */; };
+		A182B28D19BF1CCA009A065E /* KGCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A182B28C19BF1CCA009A065E /* KGCommentCell.m */; };
+		A182B29119BF2264009A065E /* GCPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A182B29019BF2264009A065E /* GCPlaceholderTextView.m */; };
 		A18A2B8018E131EA00FDFB8E /* KGJourneyGoods.m in Sources */ = {isa = PBXBuildFile; fileRef = A18A2B7F18E131EA00FDFB8E /* KGJourneyGoods.m */; };
 		A18A2B8818E1325D00FDFB8E /* KGBuyerListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A18A2B8318E1325D00FDFB8E /* KGBuyerListViewCell.m */; };
 		A18A2B8918E1325D00FDFB8E /* KGJourneyAddImgTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A18A2B8518E1325D00FDFB8E /* KGJourneyAddImgTableViewCell.m */; };
@@ -1023,6 +1033,22 @@
 		A182B26E19BEBBA1009A065E /* KGOrderNumberAndLogisticsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGOrderNumberAndLogisticsCell.m; sourceTree = "<group>"; };
 		A182B27019BECDDF009A065E /* KGOrderLocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGOrderLocationCell.h; sourceTree = "<group>"; };
 		A182B27119BECDDF009A065E /* KGOrderLocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGOrderLocationCell.m; sourceTree = "<group>"; };
+		A182B27619BEF711009A065E /* KGCommentOrderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCommentOrderController.h; sourceTree = "<group>"; };
+		A182B27719BEF711009A065E /* KGCommentOrderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCommentOrderController.m; sourceTree = "<group>"; };
+		A182B27919BF0085009A065E /* KGBuyerInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGBuyerInfoCell.h; sourceTree = "<group>"; };
+		A182B27A19BF0085009A065E /* KGBuyerInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGBuyerInfoCell.m; sourceTree = "<group>"; };
+		A182B27D19BF1058009A065E /* AMRatingControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMRatingControl.h; sourceTree = "<group>"; };
+		A182B27E19BF1058009A065E /* AMRatingControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMRatingControl.m; sourceTree = "<group>"; };
+		A182B28019BF1090009A065E /* KGRatingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGRatingCell.h; sourceTree = "<group>"; };
+		A182B28119BF1090009A065E /* KGRatingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGRatingCell.m; sourceTree = "<group>"; };
+		A182B28319BF171F009A065E /* big-full-heart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "big-full-heart@2x.png"; sourceTree = "<group>"; };
+		A182B28419BF171F009A065E /* big-full-heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "big-full-heart.png"; sourceTree = "<group>"; };
+		A182B28519BF171F009A065E /* big-empty-heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "big-empty-heart.png"; sourceTree = "<group>"; };
+		A182B28619BF171F009A065E /* big-empty-heart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "big-empty-heart@2x.png"; sourceTree = "<group>"; };
+		A182B28B19BF1CCA009A065E /* KGCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCommentCell.h; sourceTree = "<group>"; };
+		A182B28C19BF1CCA009A065E /* KGCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCommentCell.m; sourceTree = "<group>"; };
+		A182B28F19BF2264009A065E /* GCPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCPlaceholderTextView.h; sourceTree = "<group>"; };
+		A182B29019BF2264009A065E /* GCPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCPlaceholderTextView.m; sourceTree = "<group>"; };
 		A18A2B7E18E131EA00FDFB8E /* KGJourneyGoods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGJourneyGoods.h; sourceTree = "<group>"; };
 		A18A2B7F18E131EA00FDFB8E /* KGJourneyGoods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGJourneyGoods.m; sourceTree = "<group>"; };
 		A18A2B8218E1325D00FDFB8E /* KGBuyerListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGBuyerListViewCell.h; sourceTree = "<group>"; };
@@ -1731,6 +1757,8 @@
 				A182B26519BE9D56009A065E /* KGAddLogisticsController.m */,
 				A182B26A19BEB50F009A065E /* KGConfirmReceiptController.h */,
 				A182B26B19BEB50F009A065E /* KGConfirmReceiptController.m */,
+				A182B27619BEF711009A065E /* KGCommentOrderController.h */,
+				A182B27719BEF711009A065E /* KGCommentOrderController.m */,
 			);
 			path = order;
 			sourceTree = "<group>";
@@ -1939,6 +1967,8 @@
 		A143011818BB461A0064DF87 /* ToolBox */ = {
 			isa = PBXGroup;
 			children = (
+				A182B28E19BF2264009A065E /* GCPlaceholderTextView */,
+				A182B27C19BF1058009A065E /* AMRatingControl */,
 				A15AD1A519AC442500A41D6F /* SWTableViewCell */,
 				A12F27E119A71BB300B30FF8 /* JDStatusBarNotification */,
 				A162DAB81999B2210038AE8B /* AFHTTPRequestOperationManager-Timeout */,
@@ -1988,6 +2018,10 @@
 			isa = PBXGroup;
 			children = (
 				A1986D46191A3EA10064CC6C /* country */,
+				A182B28319BF171F009A065E /* big-full-heart@2x.png */,
+				A182B28419BF171F009A065E /* big-full-heart.png */,
+				A182B28519BF171F009A065E /* big-empty-heart.png */,
+				A182B28619BF171F009A065E /* big-empty-heart@2x.png */,
 				A10CDF31198B96FF00F7B0ED /* china_province_city_zone.sqlite */,
 				A195420D190E6564009F5318 /* check-mark-white.png */,
 				A195420E190E6564009F5318 /* check-mark-white@2x.png */,
@@ -2234,6 +2268,24 @@
 				A15D676A1952871F00056F5E /* KGRegisterController.m */,
 			);
 			path = login;
+			sourceTree = "<group>";
+		};
+		A182B27C19BF1058009A065E /* AMRatingControl */ = {
+			isa = PBXGroup;
+			children = (
+				A182B27D19BF1058009A065E /* AMRatingControl.h */,
+				A182B27E19BF1058009A065E /* AMRatingControl.m */,
+			);
+			path = AMRatingControl;
+			sourceTree = "<group>";
+		};
+		A182B28E19BF2264009A065E /* GCPlaceholderTextView */ = {
+			isa = PBXGroup;
+			children = (
+				A182B28F19BF2264009A065E /* GCPlaceholderTextView.h */,
+				A182B29019BF2264009A065E /* GCPlaceholderTextView.m */,
+			);
+			path = GCPlaceholderTextView;
 			sourceTree = "<group>";
 		};
 		A18A2B7D18E131EA00FDFB8E /* objects */ = {
@@ -2816,6 +2868,12 @@
 				A182B26E19BEBBA1009A065E /* KGOrderNumberAndLogisticsCell.m */,
 				A182B27019BECDDF009A065E /* KGOrderLocationCell.h */,
 				A182B27119BECDDF009A065E /* KGOrderLocationCell.m */,
+				A182B27919BF0085009A065E /* KGBuyerInfoCell.h */,
+				A182B27A19BF0085009A065E /* KGBuyerInfoCell.m */,
+				A182B28019BF1090009A065E /* KGRatingCell.h */,
+				A182B28119BF1090009A065E /* KGRatingCell.m */,
+				A182B28B19BF1CCA009A065E /* KGCommentCell.h */,
+				A182B28C19BF1CCA009A065E /* KGCommentCell.m */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -2921,6 +2979,7 @@
 				A1986F47191A3EA20064CC6C /* 古巴.png in Resources */,
 				A198706F191A3EA20064CC6C /* 阿尔巴尼亚.png in Resources */,
 				A16FBEF718DC255A009E2F66 /* empty_heart.png in Resources */,
+				A182B28919BF171F009A065E /* big-empty-heart.png in Resources */,
 				A1986FC0191A3EA20064CC6C /* 拉脱维亚@2x.png in Resources */,
 				A1986FAB191A3EA20064CC6C /* 巴拿马.png in Resources */,
 				A1986F87191A3EA20064CC6C /* 奥地利.png in Resources */,
@@ -2976,6 +3035,7 @@
 				A1986F31191A3EA20064CC6C /* 南非.png in Resources */,
 				A1930B2C18CEFDC7000D84A1 /* collect.png in Resources */,
 				A1986FC8191A3EA20064CC6C /* 摩洛哥@2x.png in Resources */,
+				A182B28819BF171F009A065E /* big-full-heart.png in Resources */,
 				A1986F10191A3EA20064CC6C /* 保加利亚@2x.png in Resources */,
 				A1986F5A191A3EA20064CC6C /* 图瓦卢@2x.png in Resources */,
 				A10150E618CB8BA7004A729D /* selected_line@2x.png in Resources */,
@@ -3116,6 +3176,7 @@
 				A1986FA6191A3EA20064CC6C /* 巴巴多斯@2x.png in Resources */,
 				A1930B2518CEFB3E000D84A1 /* KGPicBottom.xib in Resources */,
 				A1987071191A3EA20064CC6C /* 阿曼.png in Resources */,
+				A182B28A19BF171F009A065E /* big-empty-heart@2x.png in Resources */,
 				A1986F80191A3EA20064CC6C /* 墨西哥@2x.png in Resources */,
 				A1986F7B191A3EA20064CC6C /* 塞浦路斯.png in Resources */,
 				A12ADE4918D323A10009B225 /* delete_img.png in Resources */,
@@ -3398,6 +3459,7 @@
 				A1987029191A3EA20064CC6C /* 秘鲁.png in Resources */,
 				A1986F43191A3EA20064CC6C /* 厄立特里亚国.png in Resources */,
 				A1AFF97918D079160043E75E /* right-arrow@2x.png in Resources */,
+				A182B28719BF171F009A065E /* big-full-heart@2x.png in Resources */,
 				A1986F37191A3EA20064CC6C /* 卢旺达.png in Resources */,
 				A1987003191A3EA20064CC6C /* 津巴布韦.png in Resources */,
 				A190FCD518C87B1700A87329 /* star_1.png in Resources */,
@@ -3519,6 +3581,7 @@
 				A108052319A352DE005674E7 /* KGCollectObject.m in Sources */,
 				A164DA37194EA249008B26E8 /* IQUIWindow+Hierarchy.m in Sources */,
 				A182B27219BECDDF009A065E /* KGOrderLocationCell.m in Sources */,
+				A182B27819BEF711009A065E /* KGCommentOrderController.m in Sources */,
 				A1AFF97518D0494B0043E75E /* KGCreateTaskViewController.m in Sources */,
 				A11F3CD51994C462007B615D /* KGDiscoverDetailCell.m in Sources */,
 				A18A2B8018E131EA00FDFB8E /* KGJourneyGoods.m in Sources */,
@@ -3527,6 +3590,7 @@
 				A14B63741906656400C14A15 /* KGRecentContactObject.m in Sources */,
 				A121F423198F778400260E73 /* PSTCollectionViewData.m in Sources */,
 				A121F42A198F778400260E73 /* PSTGridLayoutRow.m in Sources */,
+				A182B28D19BF1CCA009A065E /* KGCommentCell.m in Sources */,
 				A19F85E618EA6C300089B14F /* KGPreviewTaskViewController.m in Sources */,
 				A1468F2019B8644D00461BCE /* KGOrderPurchaseController.m in Sources */,
 				A1468F2919B87E7E00461BCE /* KGLeaveMessageCell.m in Sources */,
@@ -3536,6 +3600,8 @@
 				A1BFA62819B7345F007AF67B /* KGOrderImageCell.m in Sources */,
 				A15AD1B519AC442500A41D6F /* SWTableViewCell.m in Sources */,
 				A121F427198F778400260E73 /* PSTCollectionViewUpdateItem.m in Sources */,
+				A182B29119BF2264009A065E /* GCPlaceholderTextView.m in Sources */,
+				A182B28219BF1090009A065E /* KGRatingCell.m in Sources */,
 				A16873C019A3064300810275 /* KGGoodsObject.m in Sources */,
 				A15D676B1952871F00056F5E /* KGRegisterController.m in Sources */,
 				A19EE92A199871A500D6C935 /* KGTaskObject.m in Sources */,
@@ -3595,6 +3661,7 @@
 				A14415A218C0EA590053456D /* KGBuyerListViewController.m in Sources */,
 				A12F27E919A71BB300B30FF8 /* JDStatusBarStyle.m in Sources */,
 				A180E43D190F6DB5003347F8 /* KGCreateOrderController.m in Sources */,
+				A182B27B19BF0085009A065E /* KGBuyerInfoCell.m in Sources */,
 				A1BFA61F19B6FB21007AF67B /* KGOrderAddressCell.m in Sources */,
 				A121F38D198F5E5E00260E73 /* KGCity.m in Sources */,
 				A1DDFB7B18EEAF670078ED73 /* KGCascadeMenuLeftCell.m in Sources */,
@@ -3647,6 +3714,7 @@
 				A1BFA61919B6C645007AF67B /* KGOrderNumberAndDateCell.m in Sources */,
 				A1BCF764194AD6C6008319C4 /* KGBuyerRouteCell.m in Sources */,
 				A1AD133B1908C1DF00DF17B6 /* KGDeliveryAddressCell.m in Sources */,
+				A182B27F19BF1058009A065E /* AMRatingControl.m in Sources */,
 				A121F38A198F5DA600260E73 /* KGProvince.m in Sources */,
 				A164DA33194EA249008B26E8 /* IQTitleBarButtonItem.m in Sources */,
 				A1CA59EC191762A000D9A429 /* KGOrderSummaryObject.m in Sources */,

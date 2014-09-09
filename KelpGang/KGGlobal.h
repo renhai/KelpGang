@@ -37,6 +37,8 @@ self.navigationItem.leftBarButtonItem = buttonItem;\
 #define kAlertViewTip   @"提示"
 #define kUpdateAddress  @"kUpdateAddress"
 #define kNetworkError   @"网络故障，请稍后重试"
+#define kDefaultComment @"我很满意,100个赞！"
+#define kDefaultRate 5
 
 
 typedef enum {

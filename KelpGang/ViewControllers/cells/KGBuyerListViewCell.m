@@ -97,6 +97,9 @@
 }
 
 - (void)configLevelView: (NSInteger)level {
+    if (level > 10) {
+        level = 10;
+    }
     for (UIView *subView in self.levelView.subviews) {
         [subView removeFromSuperview];
     }

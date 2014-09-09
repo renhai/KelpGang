@@ -61,11 +61,15 @@
 }
 
 - (void)configLevelView {
+
     for (UIView *subView in self.levelView.subviews) {
         [subView removeFromSuperview];
     }
     self.levelView.clipsToBounds = NO;
     NSInteger level = self.user.level;
+    if (level > 10) {
+        level = 10;
+    }
     NSInteger heartCount = ceil(level / 2.0);
     CGFloat margin = 2.0;
     BOOL isLastHeartFull = level % 2 == 0;
