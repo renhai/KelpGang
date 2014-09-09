@@ -103,9 +103,9 @@
 
 - (void)unfollow: (UIButton *)sender {
     UITableViewCell *cell = (UITableViewCell *)sender.superview.superview.superview;
-    if (![KGUtils isHigherIOS7]) {
-        cell = (UITableViewCell *)sender.superview.superview;
-    }
+//    if (![KGUtils isHigherIOS7]) {
+//        cell = (UITableViewCell *)sender.superview.superview;
+//    }
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     KGUserFollowObject *userObj = self.datasource[indexPath.row];
     NSInteger followId = userObj.uid;

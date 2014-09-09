@@ -175,7 +175,7 @@
     UISegmentedControl *seg = [[UISegmentedControl alloc] initWithItems:@[@"我的任务", @"我的行程"]];
     seg.selectedSegmentIndex = self.segType;
     seg.tintColor = RGBCOLOR(187, 187, 187);
-    seg.segmentedControlStyle = UISegmentedControlStyleBordered;
+//    seg.segmentedControlStyle = UISegmentedControlStyleBordered;
     seg.frame = CGRectMake(20, 10, 280, 29);
     [seg addTarget:self action:@selector(segmentedControl:) forControlEvents:UIControlEventValueChanged];
     UIView *header = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 49)];

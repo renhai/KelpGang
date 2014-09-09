@@ -20,6 +20,7 @@
 {
     [super viewDidLoad];
     self.delegate = self;
+    /*
     if (![KGUtils isHigherIOS7]) {
         UIImage *tabbarImage = [UIImage imageNamed:@"tab-bar"];
         UIImage *selectedImage = [UIImage imageNamed:@"tab_bar_selected"];
@@ -42,6 +43,7 @@
 //            [item setSelectedImage:[selectedImages objectAtIndex: index ++]];
 //        }
     }
+    */
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,6 +53,7 @@
 }
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+    /*
     if (![KGUtils isHigherIOS7]) {
         [self.selectedViewController.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:RGBCOLOR(33, 185, 162),UITextAttributeTextColor,nil] forState:UIControlStateNormal];
         NSInteger index = 0;
@@ -60,6 +63,7 @@
             }
         }
     }
+    */
 
 }
 

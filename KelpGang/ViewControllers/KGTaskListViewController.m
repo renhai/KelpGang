@@ -157,11 +157,11 @@
 
 
 - (void)setRightBarButtonItems {
-    if (![KGUtils isHigherIOS7]) {
-        UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-        negativeSpacer.width = 15;
-        self.navigationItem.rightBarButtonItems = @[negativeSpacer, self.rightBarButtonItem];
-    }
+//    if (![KGUtils isHigherIOS7]) {
+//        UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+//        negativeSpacer.width = 15;
+//        self.navigationItem.rightBarButtonItems = @[negativeSpacer, self.rightBarButtonItem];
+//    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

@@ -178,9 +178,11 @@
     CGPoint point = [tapGesture locationInView:tapGesture.view];
     NSInteger index = (point.x / kImageContainerViewWidth);
     UITableViewCell *cell = (UITableViewCell *)tapGesture.view.superview.superview.superview;
+    /*
     if (![KGUtils isHigherIOS7]) {
         cell = (UITableViewCell *)tapGesture.view.superview.superview;
     }
+    */
     NSIndexPath *tapPath = [self.tableView indexPathForCell:cell];
     self.currTapCellIndex = tapPath.row;
     NSLog(@"curr tap cell index: %d, image index: %d", self.currTapCellIndex, index);
@@ -285,7 +287,7 @@
         browser.displayNavArrows = NO;
         browser.displaySelectionButtons = YES;
         browser.alwaysShowControls = YES;
-        browser.wantsFullScreenLayout = YES;
+        browser.extendedLayoutIncludesOpaqueBars = YES;
         browser.zoomPhotosToFill = YES;
         browser.enableGrid = NO;
         browser.startOnGrid = YES;
@@ -430,9 +432,9 @@
 
 - (void)deleteGoods:(UIButton *) sender {
     UITableViewCell *cell = (UITableViewCell *)sender.superview.superview.superview;
-    if (![KGUtils isHigherIOS7]) {
-        cell = (UITableViewCell *)sender.superview.superview;
-    }
+//    if (![KGUtils isHigherIOS7]) {
+//        cell = (UITableViewCell *)sender.superview.superview;
+//    }
     NSIndexPath *tapPath = [self.tableView indexPathForCell:cell];
     [self.goodsArr removeObjectAtIndex:tapPath.row];
     [self reloadGoodsSection];
@@ -589,9 +591,9 @@
 
 - (void)textFieldChanged: (UITextField *)sender {
     UITableViewCell *cell = (UITableViewCell *)sender.superview.superview.superview;
-    if (![KGUtils isHigherIOS7]) {
-        cell = (UITableViewCell *)sender.superview.superview;
-    }
+//    if (![KGUtils isHigherIOS7]) {
+//        cell = (UITableViewCell *)sender.superview.superview;
+//    }
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     if (indexPath.section == 0) {
         switch (indexPath.row) {

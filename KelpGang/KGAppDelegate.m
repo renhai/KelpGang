@@ -24,13 +24,15 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 {
     [[UITabBar appearance] setTintColor:MAIN_COLOR];
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:MAIN_COLOR] forBarMetrics:UIBarMetricsDefault];
-    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor], UITextAttributeFont: [UIFont systemFontOfSize:20]}];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont systemFontOfSize:20]}];
+    /*
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
         [[UIBarButtonItem appearance] setBackgroundImage:[UIImage new]
                                                 forState:UIControlStateNormal
                                               barMetrics:UIBarMetricsDefault];
         [application setStatusBarStyle:UIStatusBarStyleLightContent];
     }
+    */ 
 
     [[IQKeyboardManager sharedManager] setShouldResignOnTouchOutside:YES];
     [[IQKeyboardManager sharedManager] setShouldShowTextFieldPlaceholder:NO];

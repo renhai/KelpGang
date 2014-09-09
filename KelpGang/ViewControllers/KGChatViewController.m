@@ -459,7 +459,11 @@ static const NSInteger kHeaderRefreshViewTag = 2;
 
 - (void)textChanged:(NSNotification *) note {
     NSLog(@"******* contentSize height: %f", self.chatTextView.contentSize.height);
-    CGSize newSize = [self.chatTextView.text sizeWithFont:self.chatTextView.font constrainedToSize:CGSizeMake(self.chatTextView.width,9999) lineBreakMode:NSLineBreakByWordWrapping];
+//    CGSize newSize = [self.chatTextView.text sizeWithFont:self.chatTextView.font constrainedToSize:CGSizeMake(self.chatTextView.width,9999) lineBreakMode:NSLineBreakByWordWrapping];
+    
+    CGRect newRect = [self.chatTextView.text boundingRectWithSize:CGSizeMake(self.chatTextView.width,9999) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: self.chatTextView.font} context:nil];
+    CGSize newSize = newRect.size;
+    
     NSLog(@"!!!!! newSize: %@", NSStringFromCGSize(newSize));
     CGFloat contentHeight = newSize.height + 16;
     if (![self.chatTextView.text isEqualToString:@""] && contentHeight <= kMaxChatTextViewHeight) {

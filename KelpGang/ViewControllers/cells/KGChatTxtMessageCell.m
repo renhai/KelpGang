@@ -36,7 +36,9 @@ static const CGFloat kHeaderImageMarginLeftOrRight = 14.0;
 - (void)layoutSubviews {
     [super layoutSubviews];
     CGSize constraint = CGSizeMake(kMessageLableMaxWidth, 20000.0f);
-    CGSize labelSize = [self.messageLabel.text sizeWithFont:self.messageLabel.font constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
+//    CGSize labelSize = [self.messageLabel.text sizeWithFont:self.messageLabel.font constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
+    CGRect newRect = [self.messageLabel.text boundingRectWithSize:constraint options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: self.messageLabel.font} context:nil];
+    CGSize labelSize = newRect.size;
     CGFloat bgViewPaddingMsgLabelTopOrBottom = 13.0;
     CGFloat headerImageMarginMsgLabelLeftOrRight = 10.0;
     BOOL showTime = self.chatCellInfo.showTime;

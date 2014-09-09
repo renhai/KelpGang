@@ -25,12 +25,12 @@
 
 - (void)setRightBarbuttonItemWithText:(NSString *)text selector:(SEL)selector {
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:text style:UIBarButtonItemStyleBordered target:self action:selector];
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+//    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
         [rightItem setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName,nil] forState:UIControlStateNormal];
 
-    } else {
-        [rightItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor,[UIFont systemFontOfSize:16], UITextAttributeFont, nil] forState:UIControlStateNormal];
-    }
+//    } else {
+//        [rightItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor,[UIFont systemFontOfSize:16], UITextAttributeFont, nil] forState:UIControlStateNormal];
+//    }
     self.navigationItem.rightBarButtonItem = rightItem;
 }
 

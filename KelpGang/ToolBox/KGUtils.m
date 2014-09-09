@@ -15,6 +15,7 @@
 
 @implementation KGUtils
 
+/*
 + (BOOL)isHigherIOS7
 {
     NSString *requestSysVer = @"7.0";
@@ -26,6 +27,7 @@
 
     return YES;
 }
+*/
 
 #pragma mark - Reachability
 + (BOOL)checkIsNetworkConnectionAvailableAndNotify:(UIView*)view

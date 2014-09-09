@@ -24,7 +24,9 @@
 - (CGFloat)cellHeight {
     NSString *content = self.messageObj.content;
     CGSize constraint = CGSizeMake(kMessageLableMaxWidth, 20000.0f);
-    CGSize labelSize = [content sizeWithFont:[UIFont systemFontOfSize:16] constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
+//    CGSize labelSize = [content sizeWithFont:[UIFont systemFontOfSize:16] constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
+    CGRect newRect = [content boundingRectWithSize:constraint options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:16]} context:nil];
+    CGSize labelSize = newRect.size;
     CGFloat cellHeight = labelSize.height + kMessageLabelMarginTop + kMessageLabelMarginBottom;
 
     if (self.showTime) {

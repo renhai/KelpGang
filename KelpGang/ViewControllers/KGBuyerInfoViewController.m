@@ -260,7 +260,7 @@
     browser.displayNavArrows = NO;
     browser.displaySelectionButtons = NO;
     browser.alwaysShowControls = NO;
-    browser.wantsFullScreenLayout = YES;
+    browser.extendedLayoutIncludesOpaqueBars = YES;
     browser.zoomPhotosToFill = NO;
     browser.enableGrid = NO;
     browser.startOnGrid = NO;

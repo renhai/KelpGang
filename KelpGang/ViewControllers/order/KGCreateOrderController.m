@@ -430,9 +430,9 @@
 
 - (void)textFieldChanged: (UITextField *)sender {
     UITableViewCell *cell = (UITableViewCell *)sender.superview.superview.superview;
-    if (![KGUtils isHigherIOS7]) {
-        cell = (UITableViewCell *)sender.superview.superview;
-    }
+//    if (![KGUtils isHigherIOS7]) {
+//        cell = (UITableViewCell *)sender.superview.superview;
+//    }
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     if (indexPath.section == 1) {
         switch (indexPath.row) {

@@ -37,7 +37,7 @@
         self.displayNavArrows = NO;
         self.displaySelectionButtons = NO;
         self.alwaysShowControls = NO;
-        self.wantsFullScreenLayout = YES;
+        self.extendedLayoutIncludesOpaqueBars = YES;
         self.zoomPhotosToFill = NO;
         self.enableGrid = NO;
         self.startOnGrid = NO;

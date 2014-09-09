@@ -10,7 +10,7 @@
 
 @interface KGUtils : NSObject
 
-+ (BOOL)isHigherIOS7;
+//+ (BOOL)isHigherIOS7;
 
 + (BOOL)checkIsNetworkConnectionAvailableAndNotify:(UIView*)view;
 
