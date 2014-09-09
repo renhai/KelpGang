@@ -13,8 +13,6 @@
 		A10150E418CB8BA7004A729D /* default_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A10150E018CB8BA7004A729D /* default_line@2x.png */; };
 		A10150E518CB8BA7004A729D /* selected_line.png in Resources */ = {isa = PBXBuildFile; fileRef = A10150E118CB8BA7004A729D /* selected_line.png */; };
 		A10150E618CB8BA7004A729D /* selected_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A10150E218CB8BA7004A729D /* selected_line@2x.png */; };
-		A1036BB618BF336200FA7358 /* test-head.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1036BB518BF336200FA7358 /* test-head.jpg */; };
-		A1036BB818BF3A1700FA7358 /* test-canada-flag.png in Resources */ = {isa = PBXBuildFile; fileRef = A1036BB718BF3A1700FA7358 /* test-canada-flag.png */; };
 		A1036BBB18BF3DCF00FA7358 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = A1036BB918BF3DCF00FA7358 /* location.png */; };
 		A1036BBC18BF3DCF00FA7358 /* location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1036BBA18BF3DCF00FA7358 /* location@2x.png */; };
 		A10635E2191B80430069F8E4 /* KGLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A10635E1191B80430069F8E4 /* KGLocationManager.m */; };
@@ -206,14 +204,6 @@
 		A190FCC618C856D800A87329 /* me_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A190FCC418C856D800A87329 /* me_gray@2x.png */; };
 		A190FCC918C857C700A87329 /* more_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = A190FCC718C857C700A87329 /* more_gray.png */; };
 		A190FCCA18C857C700A87329 /* more_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A190FCC818C857C700A87329 /* more_gray@2x.png */; };
-		A190FCD518C87B1700A87329 /* star_1.png in Resources */ = {isa = PBXBuildFile; fileRef = A190FCCD18C87B1700A87329 /* star_1.png */; };
-		A190FCD618C87B1700A87329 /* star_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A190FCCE18C87B1700A87329 /* star_1@2x.png */; };
-		A190FCD718C87B1700A87329 /* star_2.png in Resources */ = {isa = PBXBuildFile; fileRef = A190FCCF18C87B1700A87329 /* star_2.png */; };
-		A190FCD818C87B1700A87329 /* star_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A190FCD018C87B1700A87329 /* star_2@2x.png */; };
-		A190FCD918C87B1700A87329 /* star_3.png in Resources */ = {isa = PBXBuildFile; fileRef = A190FCD118C87B1700A87329 /* star_3.png */; };
-		A190FCDA18C87B1700A87329 /* star_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A190FCD218C87B1700A87329 /* star_3@2x.png */; };
-		A190FCDB18C87B1700A87329 /* star_4.png in Resources */ = {isa = PBXBuildFile; fileRef = A190FCD318C87B1700A87329 /* star_4.png */; };
-		A190FCDC18C87B1700A87329 /* star_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A190FCD418C87B1700A87329 /* star_4@2x.png */; };
 		A190FCDF18C8859400A87329 /* airplane.png in Resources */ = {isa = PBXBuildFile; fileRef = A190FCDD18C8859400A87329 /* airplane.png */; };
 		A190FCE018C8859400A87329 /* airplane@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A190FCDE18C8859400A87329 /* airplane@2x.png */; };
 		A190FCE318C89BB000A87329 /* nav_bar_item_back.png in Resources */ = {isa = PBXBuildFile; fileRef = A190FCE118C89BB000A87329 /* nav_bar_item_back.png */; };
@@ -762,8 +752,6 @@
 		A10150E018CB8BA7004A729D /* default_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default_line@2x.png"; sourceTree = "<group>"; };
 		A10150E118CB8BA7004A729D /* selected_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selected_line.png; sourceTree = "<group>"; };
 		A10150E218CB8BA7004A729D /* selected_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selected_line@2x.png"; sourceTree = "<group>"; };
-		A1036BB518BF336200FA7358 /* test-head.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "test-head.jpg"; sourceTree = "<group>"; };
-		A1036BB718BF3A1700FA7358 /* test-canada-flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test-canada-flag.png"; sourceTree = "<group>"; };
 		A1036BB918BF3DCF00FA7358 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
 		A1036BBA18BF3DCF00FA7358 /* location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location@2x.png"; sourceTree = "<group>"; };
 		A10635E0191B80430069F8E4 /* KGLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGLocationManager.h; sourceTree = "<group>"; };
@@ -1077,14 +1065,6 @@
 		A190FCC418C856D800A87329 /* me_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "me_gray@2x.png"; sourceTree = "<group>"; };
 		A190FCC718C857C700A87329 /* more_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = more_gray.png; sourceTree = "<group>"; };
 		A190FCC818C857C700A87329 /* more_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more_gray@2x.png"; sourceTree = "<group>"; };
-		A190FCCD18C87B1700A87329 /* star_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_1.png; sourceTree = "<group>"; };
-		A190FCCE18C87B1700A87329 /* star_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star_1@2x.png"; sourceTree = "<group>"; };
-		A190FCCF18C87B1700A87329 /* star_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_2.png; sourceTree = "<group>"; };
-		A190FCD018C87B1700A87329 /* star_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star_2@2x.png"; sourceTree = "<group>"; };
-		A190FCD118C87B1700A87329 /* star_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_3.png; sourceTree = "<group>"; };
-		A190FCD218C87B1700A87329 /* star_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star_3@2x.png"; sourceTree = "<group>"; };
-		A190FCD318C87B1700A87329 /* star_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_4.png; sourceTree = "<group>"; };
-		A190FCD418C87B1700A87329 /* star_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star_4@2x.png"; sourceTree = "<group>"; };
 		A190FCDD18C8859400A87329 /* airplane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = airplane.png; sourceTree = "<group>"; };
 		A190FCDE18C8859400A87329 /* airplane@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "airplane@2x.png"; sourceTree = "<group>"; };
 		A190FCE118C89BB000A87329 /* nav_bar_item_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_bar_item_back.png; sourceTree = "<group>"; };
@@ -2115,14 +2095,6 @@
 				A190FCE218C89BB000A87329 /* nav_bar_item_back@2x.png */,
 				A190FCDD18C8859400A87329 /* airplane.png */,
 				A190FCDE18C8859400A87329 /* airplane@2x.png */,
-				A190FCCD18C87B1700A87329 /* star_1.png */,
-				A190FCCE18C87B1700A87329 /* star_1@2x.png */,
-				A190FCCF18C87B1700A87329 /* star_2.png */,
-				A190FCD018C87B1700A87329 /* star_2@2x.png */,
-				A190FCD118C87B1700A87329 /* star_3.png */,
-				A190FCD218C87B1700A87329 /* star_3@2x.png */,
-				A190FCD318C87B1700A87329 /* star_4.png */,
-				A190FCD418C87B1700A87329 /* star_4@2x.png */,
 				A190FCC718C857C700A87329 /* more_gray.png */,
 				A190FCC818C857C700A87329 /* more_gray@2x.png */,
 				A190FCC318C856D800A87329 /* me_gray.png */,
@@ -2139,8 +2111,6 @@
 				A106930418C068CF003CC6BC /* head-indicator@2x.png */,
 				A1036BB918BF3DCF00FA7358 /* location.png */,
 				A1036BBA18BF3DCF00FA7358 /* location@2x.png */,
-				A1036BB718BF3A1700FA7358 /* test-canada-flag.png */,
-				A1036BB518BF336200FA7358 /* test-head.jpg */,
 				A1A6232518BDE01E00D8E9A0 /* arrow-down@2x.png */,
 				A1A6231718BDC4F400D8E9A0 /* arrow-down.png */,
 				A1A6231518BDA73B00D8E9A0 /* navbar-item-right.png */,
@@ -2987,12 +2957,10 @@
 				A1986F21191A3EA20064CC6C /* 利比里亚.png in Resources */,
 				A1986FF5191A3EA20064CC6C /* 沙特阿拉伯.png in Resources */,
 				A182A2B818E1267F00B63470 /* my-follow@2x.png in Resources */,
-				A190FCD618C87B1700A87329 /* star_1@2x.png in Resources */,
 				A1986F7F191A3EA20064CC6C /* 墨西哥.png in Resources */,
 				A1986FE6191A3EA20064CC6C /* 格陵兰@2x.png in Resources */,
 				A1987000191A3EA20064CC6C /* 波黑@2x.png in Resources */,
 				A198707D191A3EA20064CC6C /* 马尔代夫.png in Resources */,
-				A1036BB618BF336200FA7358 /* test-head.jpg in Resources */,
 				A1986F94191A3EA20064CC6C /* 安道尔共和国@2x.png in Resources */,
 				A1987018191A3EA20064CC6C /* 瑙鲁@2x.png in Resources */,
 				A1986F40191A3EA20064CC6C /* 危地马拉@2x.png in Resources */,
@@ -3042,7 +3010,6 @@
 				A1986FEB191A3EA20064CC6C /* 欧盟.png in Resources */,
 				A1987081191A3EA20064CC6C /* 马来西亚.png in Resources */,
 				A1986FDB191A3EA20064CC6C /* 日本.png in Resources */,
-				A1036BB818BF3A1700FA7358 /* test-canada-flag.png in Resources */,
 				A1986F18191A3EA20064CC6C /* 几内亚@2x.png in Resources */,
 				A1986F96191A3EA20064CC6C /* 密克罗尼西亚@2x.png in Resources */,
 				A1987033191A3EA20064CC6C /* 纳米比亚.png in Resources */,
@@ -3138,7 +3105,6 @@
 				A1986F2F191A3EA20064CC6C /* 南极洲.png in Resources */,
 				A1987045191A3EA20064CC6C /* 苏格兰.png in Resources */,
 				A16FBEFA18DC255A009E2F66 /* full_heart@2x.png in Resources */,
-				A190FCDC18C87B1700A87329 /* star_4@2x.png in Resources */,
 				A1986FEA191A3EA20064CC6C /* 梵蒂冈城国@2x.png in Resources */,
 				A1987077191A3EA20064CC6C /* 韩国.png in Resources */,
 				A1986F41191A3EA20064CC6C /* 厄瓜多尔.png in Resources */,
@@ -3238,7 +3204,6 @@
 				A14B637E19066B3800C14A15 /* avatar-male@2x.png in Resources */,
 				A1F8A66218C9A8B400ECDABB /* v-user-icon.png in Resources */,
 				A1986F89191A3EA20064CC6C /* 委内瑞拉.png in Resources */,
-				A190FCD918C87B1700A87329 /* star_3.png in Resources */,
 				A190FCC618C856D800A87329 /* me_gray@2x.png in Resources */,
 				A1987070191A3EA20064CC6C /* 阿尔巴尼亚@2x.png in Resources */,
 				A1986F35191A3EA20064CC6C /* 卡塔尔.png in Resources */,
@@ -3293,7 +3258,6 @@
 				A1A2EED018D4A71C00CEFA96 /* up-arrow-big.png in Resources */,
 				A1986FA8191A3EA20064CC6C /* 巴布亚新几内亚@2x.png in Resources */,
 				A1987031191A3EA20064CC6C /* 约旦.png in Resources */,
-				A190FCD818C87B1700A87329 /* star_2@2x.png in Resources */,
 				A1986F19191A3EA20064CC6C /* 几内亚比绍.png in Resources */,
 				A198704A191A3EA20064CC6C /* 英国@2x.png in Resources */,
 				A1986F1E191A3EA20064CC6C /* 刚果（布）@2x.png in Resources */,
@@ -3335,7 +3299,6 @@
 				A1987009191A3EA20064CC6C /* 澳大利亚.png in Resources */,
 				A1986FFD191A3EA20064CC6C /* 波多黎各.png in Resources */,
 				A1986FEC191A3EA20064CC6C /* 欧盟@2x.png in Resources */,
-				A190FCDA18C87B1700A87329 /* star_3@2x.png in Resources */,
 				A1987074191A3EA20064CC6C /* 阿根廷@2x.png in Resources */,
 				A198703C191A3EA20064CC6C /* 美国阿拉斯酋长@2x.png in Resources */,
 				A16FBEF918DC255A009E2F66 /* full_heart.png in Resources */,
@@ -3382,7 +3345,6 @@
 				A1986FB4191A3EA20064CC6C /* 布隆迪@2x.png in Resources */,
 				A1986F16191A3EA20064CC6C /* 冰岛@2x.png in Resources */,
 				A197503D18D85F920062CAA7 /* trip.png in Resources */,
-				A190FCD718C87B1700A87329 /* star_2.png in Resources */,
 				A1986FD5191A3EA20064CC6C /* 斯里兰卡.png in Resources */,
 				A1986FE9191A3EA20064CC6C /* 梵蒂冈城国.png in Resources */,
 				A1986F85191A3EA20064CC6C /* 多米尼加共和国.png in Resources */,
@@ -3443,7 +3405,6 @@
 				A1986F7E191A3EA20064CC6C /* 塞舌尔@2x.png in Resources */,
 				A1987001191A3EA20064CC6C /* 泰国.png in Resources */,
 				A1987040191A3EA20064CC6C /* 肯尼亚@2x.png in Resources */,
-				A190FCDB18C87B1700A87329 /* star_4.png in Resources */,
 				A1DD135218E0538E000F52C2 /* add-white.png in Resources */,
 				A1987039191A3EA20064CC6C /* 美国.png in Resources */,
 				A180C0EC18C8BE7800116DCF /* search_someone_active@2x.png in Resources */,
@@ -3462,7 +3423,6 @@
 				A182B28719BF171F009A065E /* big-full-heart@2x.png in Resources */,
 				A1986F37191A3EA20064CC6C /* 卢旺达.png in Resources */,
 				A1987003191A3EA20064CC6C /* 津巴布韦.png in Resources */,
-				A190FCD518C87B1700A87329 /* star_1.png in Resources */,
 				A1986F2E191A3EA20064CC6C /* 北爱尔兰@2x.png in Resources */,
 				A1986FD3191A3EA20064CC6C /* 斯洛文尼亚.png in Resources */,
 				A1986F54191A3EA20064CC6C /* 哥伦比亚@2x.png in Resources */,
