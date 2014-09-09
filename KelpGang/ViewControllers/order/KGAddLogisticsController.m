@@ -10,6 +10,7 @@
 #import "KGOrderNumberAndDateCell.h"
 #import "KGOrderObject.h"
 #import "KGLogisticsCell.h"
+#import "KGConfirmReceiptController.h"
 
 
 @interface KGAddLogisticsController ()
@@ -169,7 +170,8 @@
         DLog(@"%@", responseObject);
         [[HudHelper getInstance] hideHudInView:self.view];
         if ([KGUtils checkResultWithAlert:responseObject]) {
-            UIViewController *destController = [[UIViewController alloc]init];
+            KGConfirmReceiptController *destController = [[KGConfirmReceiptController alloc] initWithStyle:UITableViewStylePlain];
+            destController.orderId = self.orderObj.orderId;
             [self.navigationController pushViewController:destController animated:YES];
 
             NSMutableArray *controllers = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
@@ -191,7 +193,8 @@
         DLog(@"%@", responseObject);
         [[HudHelper getInstance] hideHudInView:self.view];
         if ([KGUtils checkResultWithAlert:responseObject]) {
-            UIViewController *destController = [[UIViewController alloc]init];
+            KGConfirmReceiptController *destController = [[KGConfirmReceiptController alloc] initWithStyle:UITableViewStylePlain];
+            destController.orderId = self.orderObj.orderId;
             [self.navigationController pushViewController:destController animated:YES];
 
             NSMutableArray *controllers = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];

@@ -30,6 +30,9 @@
 @property (nonatomic, assign) NSInteger buyerId;
 @property (nonatomic, strong) NSString *leaveMessage;
 @property (nonatomic, strong) KGLocationObject *location;
+@property (nonatomic, strong) NSString *logisticsCompany;
+@property (nonatomic, strong) NSString *logisticsNumber;
+@property (nonatomic, assign) BOOL commented;
 
 
 @end

@@ -11,6 +11,7 @@
 #import "KGOrderSummaryObject.h"
 #import "KGOrderConfirmViewController.h"
 #import "KGOrderPurchaseController.h"
+#import "KGConfirmReceiptController.h"
 
 
 @interface KGOrderListController ()
@@ -36,6 +37,10 @@
     [super viewDidLoad];
     [self setTitle:@"我的订单"];
     self.segType = 0;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self refreshDatasource];
 }
 
@@ -125,22 +130,42 @@
     return 125;
 }
 
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    return indexPath;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     KGOrderSummaryObject *obj = self.orderList[indexPath.row];
-    if (obj.orderStatus == WAITING_CONFIRM || obj.orderStatus == WAITING_PAID) {
-        KGOrderConfirmViewController *controller = [[KGOrderConfirmViewController alloc]initWithStyle:UITableViewStylePlain];
-        controller.orderId = obj.orderId;
-        [self.navigationController pushViewController:controller animated:YES];
-    } else if (obj.orderStatus == PURCHASING || obj.orderStatus == RETURNING) {
-        KGOrderPurchaseController *controller = [[KGOrderPurchaseController alloc]initWithStyle:UITableViewStylePlain];
-        controller.orderId = obj.orderId;
-        [self.navigationController pushViewController:controller animated:YES];
-    }
+    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
+                             @"session_key": APPCONTEXT.currUser.sessionKey,
+                             @"order_id": @(obj.orderId)};
+    [[HudHelper getInstance] showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
+    [[KGNetworkManager sharedInstance] postRequest:@"/mobile/order/getOrderStatus" params:params success:^(id responseObject) {
+        DLog(@"%@", responseObject);
+        [[HudHelper getInstance] hideHudInView:self.view];
+        if ([KGUtils checkResultWithAlert:responseObject]) {
+            NSDictionary *data = responseObject[@"data"];
+            obj.orderStatus = [data[@"orderStatus"] integerValue];
+            if (obj.orderStatus == WAITING_CONFIRM || obj.orderStatus == WAITING_PAID) {
+                KGOrderConfirmViewController *controller = [[KGOrderConfirmViewController alloc]initWithStyle:UITableViewStylePlain];
+                controller.orderId = obj.orderId;
+                [self.navigationController pushViewController:controller animated:YES];
+            } else if (obj.orderStatus == PURCHASING || obj.orderStatus == RETURNING) {
+                KGOrderPurchaseController *controller = [[KGOrderPurchaseController alloc]initWithStyle:UITableViewStylePlain];
+                controller.orderId = obj.orderId;
+                [self.navigationController pushViewController:controller animated:YES];
+            } else if (obj.orderStatus == WAITING_RECEIPT || obj.orderStatus == COMPLETED) {
+                KGConfirmReceiptController *controller = [[KGConfirmReceiptController alloc] init];
+                controller.orderId = obj.orderId;
+                [self.navigationController pushViewController:controller animated:YES];
+            }
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"%@", error);
+    }];
 
 }
-
-
 
 #pragma UISegmentedControl
 

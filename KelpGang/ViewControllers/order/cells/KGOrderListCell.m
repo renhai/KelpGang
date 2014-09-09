@@ -91,9 +91,6 @@
         case WAITING_RECEIPT:
             self.orderStatusLabel.text = @"确认收货";
             break;
-        case WAITING_COMMENT:
-            self.orderStatusLabel.text = @"待评价";
-            break;
         case COMPLETED:
             self.orderStatusLabel.text = @"已完成";
             break;

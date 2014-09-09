@@ -10,4 +10,13 @@
 
 @implementation KGLocationObject
 
+- (NSString *)locationString {
+    if (!self.addressDictionary[@"Name"]) {
+        NSString *location = [NSString stringWithFormat:@"经度 %@, 纬度 %@", [self.longitude stringValue], [self.latitude stringValue] ];
+        return location;
+    } else {
+        return self.addressDictionary[@"Name"];
+    }
+}
+
 @end

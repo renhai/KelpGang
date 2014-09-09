@@ -14,5 +14,7 @@
 @property (nonatomic, strong) NSNumber *latitude;
 @property (nonatomic, strong) NSDictionary *addressDictionary;
 
+- (NSString *)locationString;
+
 
 @end
