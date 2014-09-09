@@ -18,6 +18,7 @@
 #import "KGLeaveMessageController.h"
 #import "KGLocationManager.h"
 #import "KGLocationObject.h"
+#import "KGAddLogisticsController.h"
 
 
 @interface KGOrderPurchaseController ()
@@ -390,7 +391,9 @@
 }
 
 - (void)submitLogistics: (UIButton *)sender {
-
+    KGAddLogisticsController *destController = [[KGAddLogisticsController alloc] init];
+    destController.orderObj = self.orderObj;
+    [self.navigationController pushViewController:destController animated:YES];
 }
 
 @end
