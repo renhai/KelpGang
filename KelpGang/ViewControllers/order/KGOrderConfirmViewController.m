@@ -287,7 +287,9 @@
 - (void)editOrder: (UIButton *)sender {
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"order" bundle:nil];
     KGCreateOrderController *creatController = [sb instantiateViewControllerWithIdentifier:@"kCreateOrderController"];
-    creatController.title = @"编辑订单";
+    creatController.taskId = self.orderObj.taskId;
+    creatController.buyerId = self.orderObj.buyerId;
+    creatController.orderId = self.orderObj.orderId;
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:creatController];
     [self presentViewController:nc animated:YES completion:nil];
 }

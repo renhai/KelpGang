@@ -53,68 +53,21 @@
 {
     [super viewDidLoad];
     [self setLeftBarbuttonItem];
-    [self queryTaskInfo];
+    [self getTaskAndBuyerInfo];
 
-    [self.createButton addTarget:self action:@selector(createOrder:) forControlEvents:UIControlEventTouchUpInside];
-
+    if (self.orderId > 0) {
+        [self setTitle:@"编辑订单"];
+        [self.createButton setTitle:@"更新" forState:UIControlStateNormal];
+        [self.createButton addTarget:self action:@selector(updateOrder:) forControlEvents:UIControlEventTouchUpInside];
+    } else {
+        [self setTitle:@"创建订单"];
+        [self.createButton setTitle:@"创建" forState:UIControlStateNormal];
+        [self.createButton addTarget:self action:@selector(createOrder:) forControlEvents:UIControlEventTouchUpInside];
+    }
 }
 
-/*
 
-- (void)queryDefaultAddr {
-    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
-                             @"session_key": APPCONTEXT.currUser.sessionKey};
-    [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/getAddressDefault" params:params success:^(id responseObject) {
-        NSLog(@"%@", responseObject);
-        if ([KGUtils checkResult:responseObject]) {
-            NSArray *addrArr = [responseObject valueForKeyPath:@"data.address_info"];
-            NSDictionary *info;
-            if (addrArr && addrArr.count > 0) {
-                info = addrArr[0];
-            } else {
-                return;
-            }
-            KGAddressObject *obj = [[KGAddressObject alloc] init];
-            obj.addressId = [info[@"address_id"] integerValue];
-            obj.consignee = info[@"receiver_name"];
-            obj.mobile = info[@"tel"];
-            obj.uid = [info[@"user_id"] integerValue];
-            obj.areaCode = info[@"zipcode"];
-            obj.defaultAddr = [info[@"address_is_default"] boolValue];
-            obj.province = [info valueForKeyPath:@"address_detail.province"];
-            obj.city = [info valueForKeyPath:@"address_detail.city"];
-            obj.district = [info valueForKeyPath:@"address_detail.county"];
-            obj.street = [info valueForKeyPath:@"address_detail.street"];
-            self.addrObj = obj;
-            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
-        }
-    } failure:^(NSError *error) {
-        NSLog(@"%@", error);
-    }];
-}
-
-- (void)queryBuyerInfo {
-    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
-                             @"host_id": @(self.buyerId)};
-    [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/getUser2" params: params success:^(id responseObject) {
-        DLog(@"%@", responseObject);
-        if ([KGUtils checkResult:responseObject]) {
-            NSDictionary *data = responseObject[@"data"];
-            NSString *userName = [data valueForKeyPath:@"user_info.user_name"];
-            KGUserObject *user = [[KGUserObject alloc]init];
-            user.uid = self.buyerId;
-            user.nickName = userName;
-            self.buyerObj = user;
-            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:1]] withRowAnimation:UITableViewRowAnimationNone];
-
-        }
-    } failure:^(NSError *error) {
-        DLog(@"%@", error);
-    }];
-}
-*/
-
-- (void)queryTaskInfo {
+- (void)getTaskAndBuyerInfo{
     NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
                              @"session_key": APPCONTEXT.currUser.sessionKey,
                              @"task_id": @(self.taskId),
@@ -351,17 +304,10 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell;
-//    if (indexPath.row == [self.photos count]) {
-//        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"kAddPhotoCell" forIndexPath:indexPath];
-//    } else {
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"kPhotoCell" forIndexPath:indexPath];
-        KGCreateOrderPhotoCell *pCell = (KGCreateOrderPhotoCell *)cell;
-        KGGoodsPhotoObject *photo = self.goodsObj.good_photos[indexPath.row];
-        [pCell.photoView setImageWithURL:[NSURL URLWithString:photo.good_head_url]usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-//        [pCell.delButton addTarget:self action:@selector(delPhoto:) forControlEvents:UIControlEventTouchUpInside];
-
-//    }
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"kPhotoCell" forIndexPath:indexPath];
+    KGCreateOrderPhotoCell *pCell = (KGCreateOrderPhotoCell *)cell;
+    KGGoodsPhotoObject *photo = self.goodsObj.good_photos[indexPath.row];
+    [pCell.photoView setImageWithURL:[NSURL URLWithString:photo.good_head_url]usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     return cell;
 }
 
@@ -374,26 +320,6 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     return CGSizeMake(93, 93);
 }
-
-/*
-
-- (void)deleteAllPhotos: (UIButton *)sender {
-    [self.photos removeAllObjects];
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:1]];
-    KGCreateOrderUploadPhotoCell *uCell = (KGCreateOrderUploadPhotoCell *)cell;
-    [uCell.photosView reloadData];
-}
-
-- (void)delPhoto: (UIButton *)sender {
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:1]];
-    KGCreateOrderUploadPhotoCell *uCell = (KGCreateOrderUploadPhotoCell *)cell;
-    KGCreateOrderPhotoCell *pCell = (KGCreateOrderPhotoCell *)sender.superview.superview;
-    NSIndexPath *indexPath = [uCell.photosView indexPathForCell:pCell];
-    NSLog(@"%@", indexPath);
-    [self.photos removeObjectAtIndex:indexPath.row];
-    [uCell.photosView reloadData];
-}
-*/
 
 - (void)createOrder: (UIButton *)sender {
     if (![self preCheck]) {
@@ -428,11 +354,37 @@
     }];
 }
 
+- (void)updateOrder: (UIButton *)sender {
+    if (![self preCheck]) {
+        return;
+    }
+    [self goBack:nil];
+//    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
+//                             @"session_key": APPCONTEXT.currUser.sessionKey,
+//                             @"addressId": @(self.orderObj.addr.addressId),
+//                             @"buyer_id": @(self.orderObj.buyerId),
+//                             @"task_id": @(self.orderObj.taskId),
+//                             @"title": self.orderObj.taskTitle,
+//                             @"gratuity": [NSString stringWithFormat:@"%0.1f", self.orderObj.gratuity],
+//                             @"message": self.orderObj.taskMessage,
+//                             @"money": [NSString stringWithFormat:@"%0.1f", self.orderObj.taskMoney]};
+//    [[HudHelper getInstance] showHudOnView:self.view caption:@"正在创建" image:nil acitivity:YES autoHideTime:0.0];
+//    [[KGNetworkManager sharedInstance]postRequest:@"/mobile/order/updateOrders" params:params success:^(id responseObject) {
+//        DLog(@"%@", responseObject);
+//        [[HudHelper getInstance] hideHudInView:self.view];
+//        if ([KGUtils checkResultWithAlert:responseObject]) {
+//            NSDictionary *data = responseObject[@"data"];
+//            NSInteger orderId = [data[@"order_id"] integerValue];
+//            [self goBack:nil];
+//        }
+//    } failure:^(NSError *error) {
+//        DLog(@"%@", error);
+//    }];
+}
+
+
 - (void)textFieldChanged: (UITextField *)sender {
     UITableViewCell *cell = (UITableViewCell *)sender.superview.superview.superview;
-//    if (![KGUtils isHigherIOS7]) {
-//        cell = (UITableViewCell *)sender.superview.superview;
-//    }
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     if (indexPath.section == 1) {
         switch (indexPath.row) {

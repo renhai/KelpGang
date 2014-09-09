@@ -15,4 +15,6 @@
 @property (nonatomic, assign) NSInteger buyerId;
 @property (nonatomic, assign) NSInteger taskId;
 
+@property (nonatomic, assign) NSInteger orderId;
+
 @end
