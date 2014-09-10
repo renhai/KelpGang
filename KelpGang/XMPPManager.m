@@ -12,6 +12,8 @@
 #import "DDTTYLogger.h"
 #import "KGChatCellInfo.h"
 #import "KGChatViewController.h"
+#import "FMDB.h"
+
 
 // Log levels: off, error, warn, info, verbose
 #if DEBUG
@@ -402,10 +404,24 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 //		NSString *displayName = [user displayName];
 
 		NSString *body = [[message elementForName:@"body"] stringValue];
-        NSXMLElement *fromInfo = [message elementForName:@"userinfo"];
-        NSString *fromUserName = [fromInfo attributeStringValueForName:@"nickname"];
-        NSInteger fromUserId = [fromInfo attributeIntegerValueForName:@"uid"];
-        NSString *avatarUrl = [fromInfo attributeStringValueForName:@"avatarurl"];
+        NSXMLElement *fromInfo = [message elementForName:@"from_user"];
+        NSString *fromUserName = [fromInfo attributeStringValueForName:@"from_name"];
+        NSInteger fromUserId = [fromInfo attributeIntegerValueForName:@"from_id"];
+        NSInteger toUserId = APPCONTEXT.currUser.uid;
+        NSString *uuid = [message attributeStringValueForName:@"id"];
+
+        KGMessageObject *msgObj = [[KGMessageObject alloc] init];
+        msgObj.uuid = uuid;
+        msgObj.fromUID = fromUserId;
+        msgObj.toUID = toUserId;
+        msgObj.message = body;
+        msgObj.fromName = fromUserName;
+        msgObj.createTime = [NSDate date];
+        msgObj.hasRead = 0;
+        msgObj.msgType = TEXT;
+
+        [self saveMessage:msgObj];
+
 
         NSInteger notifyType = [self notifyType:fromUserId];//0：前台运行，非聊天页面 1：聊天页面 2：后台运行
         switch (notifyType) {
@@ -414,11 +430,7 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
                 break;
             }
             case 1: {
-                KGMessageObject *msgObj = [[KGMessageObject alloc] init];
-                msgObj.content = body;
-                msgObj.from = fromUserName;
-                msgObj.date = [NSDate date];
-                msgObj.type = MessageTypeOther;
+
                 KGChatCellInfo *chatCellInfo = [[KGChatCellInfo alloc] initWithMessage:msgObj];
                 [[NSNotificationCenter defaultCenter] postNotificationName:kXMPPNewMsgNotifaction object:chatCellInfo];
                 break;
@@ -606,6 +618,17 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
         notifyType = 2;
     }
     return notifyType;
+}
+
+
+- (void)saveMessage: (KGMessageObject *) msg {
+    NSString *dbFilePath = [KGUtils databaseFilePath];
+    FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:dbFilePath];
+    [queue inDatabase:^(FMDatabase *db) {
+
+        [db executeUpdate:@"INSERT INTO message (uuid, from_uid, to_uid, msg, msg_type, create_time, has_read) VALUES (?,?,?,?,?,?,?)", msg.uuid, @(msg.fromUID), @(msg.toUID), msg.message, @(msg.msgType), msg.createTime, @(msg.hasRead)];
+
+    }];
 }
 
 

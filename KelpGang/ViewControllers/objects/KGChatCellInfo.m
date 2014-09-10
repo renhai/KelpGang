@@ -16,13 +16,13 @@
         self.messageObj = msg;
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"yyyy.MM.dd HH:mm"];
-        self.time = [dateFormatter stringFromDate:msg.date];
+        self.time = [dateFormatter stringFromDate:msg.createTime];
     }
     return self;
 }
 
 - (CGFloat)cellHeight {
-    NSString *content = self.messageObj.content;
+    NSString *content = self.messageObj.message;
     CGSize constraint = CGSizeMake(kMessageLableMaxWidth, 20000.0f);
 //    CGSize labelSize = [content sizeWithFont:[UIFont systemFontOfSize:16] constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
     CGRect newRect = [content boundingRectWithSize:constraint options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:16]} context:nil];
@@ -36,8 +36,12 @@
     return cellHeight;
 }
 
--(MessageType)messageType {
-    return self.messageObj.type;
+-(ChatCellType)cellType {
+    if (APPCONTEXT.currUser.uid == self.messageObj.fromUID) {
+        return Me;
+    } else {
+        return Other;
+    }
 }
 
 

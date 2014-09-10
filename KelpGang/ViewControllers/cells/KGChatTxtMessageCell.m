@@ -45,7 +45,7 @@ static const CGFloat kHeaderImageMarginLeftOrRight = 14.0;
     [self.headImageView setTop:showTime ? kHeaderImageMarginTop + kTimeViewHeight : kHeaderImageMarginTop];
     [self.messageLabel setTop:showTime ? kMessageLabelMarginTop + kTimeViewHeight : kMessageLabelMarginTop];
     [self.backView setTop:showTime ? kBackgroundViewMarginTop + kTimeViewHeight : kBackgroundViewMarginTop];
-    if (self.chatCellInfo.messageType == MessageTypeOther) {
+    if (self.chatCellInfo.cellType == Other) {
         [self.headImageView setLeft:kHeaderImageMarginLeftOrRight];
 
         [self.messageLabel setLeft:self.headImageView.right + headerImageMarginMsgLabelLeftOrRight];
@@ -56,7 +56,7 @@ static const CGFloat kHeaderImageMarginLeftOrRight = 14.0;
         [self.backView setWidth:kBackgroundViewPaddingLeftOrRight * 2 + self.headImageView.width + headerImageMarginMsgLabelLeftOrRight + labelSize.width];
         [self.backView setHeight:bgViewPaddingMsgLabelTopOrBottom * 2 + self.messageLabel.height];
         self.backView.backgroundColor = [UIColor whiteColor];
-    } else if (self.chatCellInfo.messageType == MessageTypeMe) {
+    } else if (self.chatCellInfo.cellType == Me) {
         [self.headImageView setLeft:SCREEN_WIDTH - kHeaderImageMarginLeftOrRight - self.headImageView.width];
 
         [self.messageLabel setLeft:self.headImageView.left - headerImageMarginMsgLabelLeftOrRight - labelSize.width];
@@ -94,7 +94,7 @@ static const CGFloat kHeaderImageMarginLeftOrRight = 14.0;
     self.headImageView.layer.cornerRadius = self.headImageView.width / 2;
     self.backView.layer.cornerRadius = 4;
     self.timeView.layer.cornerRadius = 4;
-    self.messageLabel.text = chatCellInfo.messageObj.content;
+    self.messageLabel.text = chatCellInfo.messageObj.message;
     self.timeView.hidden = YES;
     self.timeLabel.text = chatCellInfo.time;
 }

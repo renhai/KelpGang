@@ -9,17 +9,22 @@
 #import <Foundation/Foundation.h>
 
 typedef enum {
-    MessageTypeMe = 0,
-    MessageTypeOther = 1
+    TEXT = 0,
+    PICTURE = 1,
+    VOICE = 2
 } MessageType;
 
 @interface KGMessageObject : NSObject
 
-@property (nonatomic,assign) NSInteger messageId;
-@property (nonatomic,strong) NSString *from;
-@property (nonatomic,strong) NSString *to;
-@property (nonatomic,strong) NSString *content;
-@property (nonatomic,strong) NSDate *date;
-@property (nonatomic,assign) MessageType type;
+@property (nonatomic,assign) NSInteger msgId;
+@property (nonatomic,strong) NSString *uuid;
+@property (nonatomic,assign) NSInteger fromUID;
+@property (nonatomic,assign) NSInteger toUID;
+@property (nonatomic,strong) NSString *fromName;
+@property (nonatomic,strong) NSString *toName;
+@property (nonatomic,strong) NSString *message;
+@property (nonatomic,strong) NSDate *createTime;
+@property (nonatomic,assign) MessageType msgType;
+@property (nonatomic,assign) NSInteger hasRead;
 
 @end

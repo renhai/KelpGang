@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "KGMessageObject.h"
 
+typedef enum {
+    Me = 0,
+    Other = 1
+} ChatCellType;
+
 static const CGFloat kMessageLableMaxWidth = 240.0;
 static const CGFloat kMessageLabelMarginTop = 21.0;
 static const CGFloat kMessageLabelMarginBottom = 21.0;
@@ -25,6 +30,6 @@ static const CGFloat kTimeViewHeight = 28.0;
 
 - (CGFloat)cellHeight;
 
--(MessageType)messageType;
+-(ChatCellType)cellType;
 
 @end

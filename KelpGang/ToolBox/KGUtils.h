@@ -28,4 +28,6 @@
 
 + (Gender)convertGender: (id)sex;
 
++(NSString *)databaseFilePath;
+
 @end

@@ -10,6 +10,7 @@
 #import "DDLog.h"
 #import "DDTTYLogger.h"
 #import "XMPPManager.h"
+#import "FMDB.h"
 
 @implementation AppStartup
 
@@ -20,7 +21,8 @@
             if ([APPCONTEXT checkLogin]) {
                 startupBlocks = @[[[AppStartup autoLoginBlock] copy],
                                   [[AppStartup xmppInitBlock] copy],
-                                  [[AppStartup moveDBFileToSandboxBlock] copy]];
+                                  [[AppStartup moveDBFileToSandboxBlock] copy],
+                                  [[AppStartup createChatTableBlock] copy]];
             }
             break;
         case APPSTARTUP_BACKGROUND:
@@ -31,8 +33,9 @@
             break;
         case APPSTARTUP_AFTER_LOGIN:
             if ([APPCONTEXT checkLogin]) {
-                startupBlocks = @[[[AppStartup xmppConnectBlock] copy],
-                                  [[AppStartup moveDBFileToSandboxBlock] copy]];
+                startupBlocks = @[[[AppStartup xmppInitBlock] copy],
+                                  [[AppStartup moveDBFileToSandboxBlock] copy],
+                                  [[AppStartup createChatTableBlock] copy]];
             }
             break;
         default:
@@ -123,6 +126,49 @@
                 NSLog(@"数据库移动失败");
             }
         }
+    };
+    return block;
+}
+
++ (VoidBlock) createChatTableBlock {
+    VoidBlock block = ^{
+
+        NSString *dbFilePath = [KGUtils databaseFilePath];
+
+        FMDatabase *db = [FMDatabase databaseWithPath:dbFilePath];
+
+        //判断数据库是否已经打开，如果没有打开，提示失败
+        if (![db open]) {
+            NSLog(@"数据库打开失败");
+            return;
+        }
+
+        //为数据库设置缓存，提高查询效率
+        [db setShouldCacheStatements:YES];
+
+        //判断数据库中是否已经存在这个表，如果不存在则创建该表
+        if(![db tableExists:@"message"])
+        {
+            [db beginTransaction];
+
+            [db executeUpdate:@"CREATE TABLE IF NOT EXISTS message (msg_id INTEGER PRIMARY KEY AUTOINCREMENT, uuid  TEXT, from_uid INTEGER, to_uid INTEGER, msg TEXT, msg_type INTEGER, create_time NUMERIC, has_read INTEGER);"];
+
+            [db executeUpdate:@"CREATE INDEX from_id_time_idx ON message(from_uid ASC, create_time DESC);"];
+
+            [db executeUpdate:@"CREATE INDEX to_id_time_idx ON message(to_uid ASC, create_time DESC);"];
+
+            [db executeUpdate:@"CREATE INDEX uuid_idx ON message(uuid);"];
+
+            if([db hadError])
+            {
+                NSLog(@"Error %d : %@",[db lastErrorCode],[db lastErrorMessage]);
+            }
+            
+            [db commit];
+            [db close];
+            NSLog(@"创建完成");
+        }
+
     };
     return block;
 }
