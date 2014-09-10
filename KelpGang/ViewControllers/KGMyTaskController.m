@@ -175,7 +175,6 @@
     UISegmentedControl *seg = [[UISegmentedControl alloc] initWithItems:@[@"我的任务", @"我的行程"]];
     seg.selectedSegmentIndex = self.segType;
     seg.tintColor = RGBCOLOR(187, 187, 187);
-//    seg.segmentedControlStyle = UISegmentedControlStyleBordered;
     seg.frame = CGRectMake(20, 10, 280, 29);
     [seg addTarget:self action:@selector(segmentedControl:) forControlEvents:UIControlEventValueChanged];
     UIView *header = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 49)];
@@ -190,5 +189,66 @@
     self.segType = seg.selectedSegmentIndex;
     [self refreshDatasource];
 }
+
+
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+     if (self.segType == 0) {
+         KGTaskObject *taskObj = self.datasource[indexPath.row];
+         if (taskObj.taskStatus == 1) {
+             return NO;
+         }
+     }
+     return YES;
+ }
+
+
+
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+
+     if (editingStyle == UITableViewCellEditingStyleDelete) {
+         if (self.segType == 0) {
+             KGTaskObject *taskObj = self.datasource[indexPath.row];
+             NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
+                                      @"session_key": APPCONTEXT.currUser.sessionKey,
+                                      @"task_id": @(taskObj.taskId)};
+             [[HudHelper getInstance] showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
+             [[KGNetworkManager sharedInstance] postRequest:@"/mobile/task/delete" params: params success:^(id responseObject) {
+                 DLog(@"%@", responseObject);
+                 [[HudHelper getInstance] hideHudInView:self.view];
+                 if ([KGUtils checkResultWithAlert:responseObject]) {
+                     [tableView beginUpdates];
+                     [self.datasource removeObjectAtIndex:indexPath.row];
+                     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                     [tableView endUpdates];
+                 }
+             } failure:^(NSError *error) {
+                 DLog(@"%@", error);
+             }];
+         } else if (self.segType == 1) {
+             KGJourneyObject *journeyObj = self.datasource[indexPath.row];
+             NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
+                                      @"session_key": APPCONTEXT.currUser.sessionKey,
+                                      @"travel_id": @(journeyObj.journeyId)};
+             [[HudHelper getInstance] showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
+             [[KGNetworkManager sharedInstance] postRequest:@"/mobile/travel/delete" params: params success:^(id responseObject) {
+                 DLog(@"%@", responseObject);
+                 [[HudHelper getInstance] hideHudInView:self.view];
+                 if ([KGUtils checkResultWithAlert:responseObject]) {
+                     [tableView beginUpdates];
+                     [self.datasource removeObjectAtIndex:indexPath.row];
+                     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                     [tableView endUpdates];
+                 }
+             } failure:^(NSError *error) {
+                 DLog(@"%@", error);
+             }];
+         }
+     }
+ }
+
 
 @end
