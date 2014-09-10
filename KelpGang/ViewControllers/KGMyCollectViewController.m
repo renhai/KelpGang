@@ -9,8 +9,9 @@
 #import "KGMyCollectViewController.h"
 #import "KGMyCollectViewCell.h"
 #import "KGCollectObject.h"
+#import "KGPhotoBrowserViewController.h"
 
-@interface KGMyCollectViewController ()
+@interface KGMyCollectViewController () <SWTableViewCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray *datasource;
 
@@ -58,7 +59,8 @@
                 collectObj.photoId = [collection_info[@"collection_photo_id"] integerValue];
                 collectObj.travelId = [collection_info[@"collection_travel_id"] integerValue];
                 collectObj.popularity = [collection_info[@"collection_popularity"] integerValue];
-                collectObj.goodsImageUrl = collection_info[@"good_head_url"];
+                collectObj.goodsHeadUrl = collection_info[@"good_head_url"];
+                collectObj.goodsOrigUrl = good_info[@"good_default_photo_url"];
                 collectObj.goodsName = good_info[@"good_name"];
                 [self.datasource addObject:collectObj];
             }
@@ -72,7 +74,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -92,6 +93,8 @@
     KGMyCollectViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"kMyCollectCell" forIndexPath:indexPath];
     KGCollectObject *collectObj = self.datasource[indexPath.row];
     [cell setObject:collectObj];
+    [cell setRightUtilityButtons: [self rightButtons]];
+    cell.delegate = self;
 
     return cell;
 }
@@ -102,7 +105,60 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+    KGCollectObject *collectObj = self.datasource[indexPath.row];
+
+    KGPhotoBrowserViewController *controller = [[KGPhotoBrowserViewController alloc]initWithImgUrls:@[[NSURL URLWithString:collectObj.goodsOrigUrl]] index:0];
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:controller];
+    [self presentViewController:nc animated:YES completion:nil];
 }
+
+- (NSArray *)rightButtons {
+    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
+                                                title:@"取消收藏"];
+
+    return rightUtilityButtons;
+}
+
+
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index
+{
+    [cell hideUtilityButtonsAnimated:YES];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+
+    switch (index) {
+        case 0: {
+            KGCollectObject *collectObj = self.datasource[indexPath.row];
+            NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
+                                     @"session_key": APPCONTEXT.currUser.sessionKey,
+                                     @"photo_id": @(collectObj.photoId)};
+            [[HudHelper getInstance] showHudOnView:self.view caption:nil image:nil acitivity:YES autoHideTime:0.0];
+            [[KGNetworkManager sharedInstance] postRequest:@"/mobile/good/deleteCollection" params: params success:^(id responseObject) {
+                DLog(@"%@", responseObject);
+                [[HudHelper getInstance] hideHudInView:self.view];
+                if ([KGUtils checkResultWithAlert:responseObject]) {
+                    [self.tableView beginUpdates];
+                    [self.datasource removeObjectAtIndex:indexPath.row];
+                    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                    [self.tableView endUpdates];
+                }
+            } failure:^(NSError *error) {
+                DLog(@"%@", error);
+            }];
+
+            DLog(@"delete button clicked: %@", indexPath);
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+- (BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(SWTableViewCell *)cell {
+    return YES;
+}
+
 
 
 @end

@@ -13,7 +13,8 @@
 @property (nonatomic, assign) NSInteger goodsId;
 @property (nonatomic, assign) NSInteger photoId;
 @property (nonatomic, assign) NSInteger travelId;
-@property (nonatomic, strong) NSString *goodsImageUrl;
+@property (nonatomic, strong) NSString *goodsHeadUrl;
+@property (nonatomic, strong) NSString *goodsOrigUrl;
 @property (nonatomic, strong) NSString *goodsName;
 @property (nonatomic, assign) NSInteger popularity;
 

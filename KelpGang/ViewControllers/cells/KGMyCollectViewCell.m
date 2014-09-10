@@ -35,22 +35,27 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     self.goodsImageView.frame = CGRectMake(20, 15, 93, 93);
+
     [self.descLabel sizeToFit];
-    self.descLabel.width = 175;
     self.descLabel.origin = CGPointMake(self.goodsImageView.right + 10, 30);
+
     [self.hotLabel sizeToFit];
     self.hotLabel.origin = CGPointMake(self.goodsImageView.right + 10, self.descLabel.bottom + 15);
+
     [self.hotValueLabel sizeToFit];
     self.hotValueLabel.left = self.hotLabel.right + 10;
     self.hotValueLabel.centerY = self.hotLabel.centerY;
 }
 
 - (void)setObject:(KGCollectObject *)obj {
-    [self.goodsImageView setImageWithURL:[NSURL URLWithString:obj.goodsImageUrl] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [self.goodsImageView setImageWithURL:[NSURL URLWithString:obj.goodsHeadUrl] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.goodsImageView.contentMode = UIViewContentModeScaleAspectFill;
     self.goodsImageView.clipsToBounds = YES;
     self.descLabel.text = obj.goodsName;
     self.descLabel.numberOfLines = 2;
+    self.descLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    self.descLabel.width = 190;
+
     self.descLabel.font = [UIFont systemFontOfSize:16];
     self.descLabel.textColor = RGB(114, 114, 114);
 
@@ -60,5 +65,7 @@
 
     self.hotLabel.font = [UIFont systemFontOfSize:13];
     self.hotLabel.textColor = RGB(187, 187, 187);
+    [self setNeedsLayout];
 }
+
 @end

@@ -11,7 +11,7 @@
 
 @interface KGPhotoBrowserViewController () <MWPhotoBrowserDelegate>
 
-@property(nonatomic, strong) NSMutableArray *imgUrls;
+@property(nonatomic, strong) NSArray *imgUrls;
 @property(nonatomic, assign) NSInteger currIndex;
 
 @end
@@ -27,7 +27,7 @@
     return self;
 }
 
-- (id) initWithImgUrls: (NSMutableArray *)imgUrls index: (NSInteger) index {
+- (id) initWithImgUrls: (NSArray *)imgUrls index: (NSInteger) index {
     self = [super initWithDelegate:self];
     if (self) {
         self.imgUrls = imgUrls;

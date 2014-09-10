@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SWTableViewCell.h"
 
 @class KGCollectObject;
 
-@interface KGMyCollectViewCell : UITableViewCell
+@interface KGMyCollectViewCell : SWTableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *goodsImageView;
 @property (weak, nonatomic) IBOutlet UILabel *descLabel;
 @property (weak, nonatomic) IBOutlet UILabel *hotLabel;

@@ -11,6 +11,6 @@
 
 @interface KGPhotoBrowserViewController : MWPhotoBrowser
 
-- (id) initWithImgUrls: (NSMutableArray *)imgUrls index: (NSInteger) index;
+- (id) initWithImgUrls: (NSArray *)imgUrls index: (NSInteger) index;
 
 @end
