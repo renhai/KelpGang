@@ -2091,7 +2091,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" id="VEt-U1-wGE">
                             <view key="customView" contentMode="scaleToFill" id="8w8-fz-Xss">
-                                <rect key="frame" x="245" y="11" width="59" height="22"/>
+                                <rect key="frame" x="282" y="11" width="22" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JPn-2A-gIh">
@@ -2102,16 +2102,6 @@
                                         </state>
                                         <connections>
                                             <segue destination="f6u-L3-iGf" kind="push" id="1qx-48-A72"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zH0-rd-8kK">
-                                        <rect key="frame" x="37" y="0.0" width="22" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="search.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="Zxq-f2-DDg" kind="push" id="wfr-vB-8bm"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2896,21 +2886,6 @@
             </objects>
             <point key="canvasLocation" x="1481" y="2138"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="COb-ic-2y5">
-            <objects>
-                <viewController id="Zxq-f2-DDg" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Lb1-38-xSX">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="iH5-Fc-0bE"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fKx-b0-Hbn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1481" y="2855"/>
-        </scene>
         <!--My Task Controller - 我的任务-->
         <scene sceneID="WHQ-d5-u62">
             <objects>
@@ -3048,7 +3023,6 @@
         <image name="nav_bar_item_back.png" width="23" height="16"/>
         <image name="recent-contact.png" width="21" height="21"/>
         <image name="right-arrow.png" width="7" height="13"/>
-        <image name="search.png" width="22" height="22"/>
         <image name="search_gray.png" width="25" height="24"/>
         <image name="search_someone_gray.png" width="25" height="24"/>
         <image name="selected-tablecell.png" width="14" height="14"/>
