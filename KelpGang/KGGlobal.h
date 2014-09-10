@@ -15,7 +15,7 @@ self.navigationItem.leftBarButtonItem = buttonItem;\
 }
 #define kPublishTask @"kPublishTask"
 #define kXMPPNewMsgNotifaction @"xmppNewMsgNotifaction"
-#define kChatHostName @"10.4.25.89"
+#define kChatHostName @"10.3.20.160"
 #define kChatHostPort 5222
 #define kWebHTML5Url @"http://10.2.24.140"
 #define kWebServerBaseURL @"http://10.3.20.160:55641"

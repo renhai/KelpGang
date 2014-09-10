@@ -9,12 +9,11 @@
 #import "KGBuyerListViewController.h"
 #import "KGBuyerListViewCell.h"
 #import "KGBuyerInfoViewController.h"
-//#import "XMPPManager.h"
 #import "SVPullToRefresh.h"
 #import "KGFilterItem.h"
 #import "KGBuyerSummaryObject.h"
 
-static const NSInteger kLimit = 20;
+static const NSInteger kLimit = 10;
 
 @interface KGBuyerListViewController ()
 
@@ -23,6 +22,10 @@ static const NSInteger kLimit = 20;
 @property (nonatomic, strong) NSMutableArray *datasource;
 @property (nonatomic, assign) NSInteger currTapIndex;
 @property (nonatomic, assign) BOOL hasmore;
+
+@property (nonatomic, strong) NSString *toCountry;
+@property (nonatomic, strong) NSString *city;
+@property (nonatomic, strong) NSString *backTime;
 
 @end
 
@@ -45,6 +48,10 @@ static const NSInteger kLimit = 20;
 {
     [super viewDidLoad];
     [self initFilterBar];
+
+    self.toCountry = @"";
+    self.city = @"";
+    self.backTime = @"";
 
     __weak typeof(self) weakSelf = self;
     [self.tableView addPullToRefreshWithActionHandler:^{
@@ -71,7 +78,20 @@ static const NSInteger kLimit = 20;
     __weak typeof(self) weakSelf = self;
     SelectDoneBlock doneBlock = ^(NSInteger index, NSString *item) {
         [weakSelf closeItemByIndex:self.currTapIndex];
-        NSLog(@"selected index: %d, item : %@", index, item);
+        DLog(@"selected index: %d, item : %@", index, item);
+        switch (index) {
+            case 0:
+                self.toCountry = item;
+                break;
+            case 1:
+                self.backTime = [self getBackTimeType:item];
+                break;
+            case 2:
+                self.city = item;
+                break;
+            default:
+                break;
+        }
         if (weakSelf.tableView.pullToRefreshView.state == SVPullToRefreshStateStopped) {
             [weakSelf.tableView setContentOffset:CGPointMake(0, 0)];
             [weakSelf.tableView triggerPullToRefresh];
@@ -129,15 +149,20 @@ static const NSInteger kLimit = 20;
 }
 
 - (void)refreshDatasource {
-    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"end_id": @0, @"limit": @(kLimit)};
-    [[KGNetworkManager sharedInstance] postRequest:@"/mobile/travel/index" params:params success:^(id responseObject) {
+    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
+                             @"end_id": @0,
+                             @"limit": @(kLimit),
+                             @"toCountry": self.toCountry,
+                             @"departure_city": self.city,
+                             @"type": self.backTime};
+    [[KGNetworkManager sharedInstance] postRequest:@"/mobile/travel/index2" params:params success:^(id responseObject) {
         if ([KGUtils checkResultWithAlert:responseObject]) {
             [self.datasource removeAllObjects];
             self.hasmore = [responseObject[@"hasmore"] boolValue];
             NSArray *data = [self convertBuyerSummary:responseObject];
 
             [self.datasource addObjectsFromArray:data];
-            [self.tableView.pullToRefreshView performSelector:@selector(stopAnimating) withObject:nil afterDelay:0.2];
+            [self.tableView.pullToRefreshView performSelector:@selector(stopAnimating) withObject:nil afterDelay:0.5];
             [self.tableView reloadData];
             if (self.hasmore) {
                 self.tableView.showsInfiniteScrolling = YES;
@@ -152,8 +177,13 @@ static const NSInteger kLimit = 20;
 - (void)insertRowAtBottom {
     KGBuyerSummaryObject *lastObj = self.datasource.lastObject;
     NSInteger endId = lastObj.travelId;
-    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid), @"end_id": @(endId), @"limit": @(kLimit)};
-    [[KGNetworkManager sharedInstance] postRequest:@"/mobile/travel/index" params:params success:^(id responseObject) {
+    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
+                             @"end_id": @(endId),
+                             @"limit": @(kLimit),
+                             @"toCountry": self.toCountry,
+                             @"departure_city": self.city,
+                             @"type": self.backTime};
+    [[KGNetworkManager sharedInstance] postRequest:@"/mobile/travel/index2" params:params success:^(id responseObject) {
         NSLog(@"%@", responseObject);
         if ([KGUtils checkResultWithAlert:responseObject]) {
             self.hasmore = [responseObject[@"hasmore"] boolValue];
@@ -190,11 +220,6 @@ static const NSInteger kLimit = 20;
     KGBuyerInfoViewController *detailController = segue.destinationViewController;
     detailController.travelId = obj.travelId;
     [detailController setHidesBottomBarWhenPushed:YES];
-
-//    BOOL connect = [[XMPPManager sharedInstance] connect];
-//    NSLog(@"prepareForSegue, connect: %d", connect);
-//    NSLog(@"prepareForSegue, isXmppConnected: %d", [[XMPPManager sharedInstance] isXmppConnected]);
-
 }
 
 #pragma UITableViewDataSource
@@ -346,6 +371,22 @@ static const NSInteger kLimit = 20;
     [formatter setDateFormat:@"M.d"];
     NSString *result = [NSString stringWithFormat:@"%@-%@", [formatter stringFromDate:startDate], [formatter stringFromDate:endDate]];
     return result;
+}
+
+- (NSString *)getBackTimeType: (NSString *) backTime {
+    NSString *type = @"";
+    if ([@"常驻" isEqualToString: backTime]) {
+        type = @"1";
+    } else if ([@"3天内" isEqualToString: backTime]) {
+        type = @"2";
+    } else if ([@"1周内" isEqualToString: backTime]) {
+        type = @"3";
+    } else if ([@"2周内" isEqualToString: backTime]) {
+        type = @"4";
+    } else {
+        type = @"5";
+    }
+    return type;
 }
 
 @end
