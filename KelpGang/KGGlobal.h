@@ -39,6 +39,7 @@ self.navigationItem.leftBarButtonItem = buttonItem;\
 #define kNetworkError   @"网络故障，请稍后重试"
 #define kDefaultComment @"我很满意,100个赞！"
 #define kDefaultRate 5
+#define kUpdateOrderNotification    @"kUpdateOrderNotification"
 
 
 typedef enum {

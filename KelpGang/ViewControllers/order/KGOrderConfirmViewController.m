@@ -26,6 +26,10 @@
 
 @implementation KGOrderConfirmViewController
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -43,6 +47,7 @@
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
         [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     }
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getOrderInfo) name:kUpdateOrderNotification object:nil];
     [self getOrderInfo];
 }
 

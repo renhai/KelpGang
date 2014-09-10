@@ -331,9 +331,9 @@
                              @"buyer_id": @(self.orderObj.buyerId),
                              @"task_id": @(self.orderObj.taskId),
                              @"title": self.orderObj.taskTitle,
-                             @"gratuity": [NSString stringWithFormat:@"%0.1f", self.orderObj.gratuity],
+                             @"gratuity": [[NSNumber numberWithFloat:self.orderObj.gratuity] stringValue],
                              @"message": self.orderObj.taskMessage,
-                             @"money": [NSString stringWithFormat:@"%0.1f", self.orderObj.taskMoney]};
+                             @"money": [[NSNumber numberWithFloat:self.orderObj.taskMoney] stringValue]};
     [[HudHelper getInstance] showHudOnView:self.view caption:@"正在创建" image:nil acitivity:YES autoHideTime:0.0];
     [[KGNetworkManager sharedInstance]postRequest:@"/mobile/order/addOrders" params:params success:^(id responseObject) {
         DLog(@"%@", responseObject);
@@ -358,28 +358,27 @@
     if (![self preCheck]) {
         return;
     }
-    [self goBack:nil];
-//    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
-//                             @"session_key": APPCONTEXT.currUser.sessionKey,
-//                             @"addressId": @(self.orderObj.addr.addressId),
-//                             @"buyer_id": @(self.orderObj.buyerId),
-//                             @"task_id": @(self.orderObj.taskId),
-//                             @"title": self.orderObj.taskTitle,
-//                             @"gratuity": [NSString stringWithFormat:@"%0.1f", self.orderObj.gratuity],
-//                             @"message": self.orderObj.taskMessage,
-//                             @"money": [NSString stringWithFormat:@"%0.1f", self.orderObj.taskMoney]};
-//    [[HudHelper getInstance] showHudOnView:self.view caption:@"正在创建" image:nil acitivity:YES autoHideTime:0.0];
-//    [[KGNetworkManager sharedInstance]postRequest:@"/mobile/order/updateOrders" params:params success:^(id responseObject) {
-//        DLog(@"%@", responseObject);
-//        [[HudHelper getInstance] hideHudInView:self.view];
-//        if ([KGUtils checkResultWithAlert:responseObject]) {
-//            NSDictionary *data = responseObject[@"data"];
-//            NSInteger orderId = [data[@"order_id"] integerValue];
-//            [self goBack:nil];
-//        }
-//    } failure:^(NSError *error) {
-//        DLog(@"%@", error);
-//    }];
+    NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
+                             @"session_key": APPCONTEXT.currUser.sessionKey,
+                             @"addressId": @(self.orderObj.addr.addressId),
+                             @"buyer_id": @(self.orderObj.buyerId),
+                             @"task_id": @(self.orderObj.taskId),
+                             @"title": self.orderObj.taskTitle,
+                             @"gratuity": [[NSNumber numberWithFloat:self.orderObj.gratuity] stringValue],
+                             @"message": self.orderObj.taskMessage,
+                             @"money": [[NSNumber numberWithFloat:self.orderObj.taskMoney] stringValue],
+                             @"order_id": @(self.orderId)};
+    [[HudHelper getInstance] showHudOnView:self.view caption:@"正在创建" image:nil acitivity:YES autoHideTime:0.0];
+    [[KGNetworkManager sharedInstance]postRequest:@"/mobile/order/updateOrders" params:params success:^(id responseObject) {
+        DLog(@"%@", responseObject);
+        [[HudHelper getInstance] hideHudInView:self.view];
+        if ([KGUtils checkResultWithAlert:responseObject]) {
+            [self goBack:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateOrderNotification object:nil];
+        }
+    } failure:^(NSError *error) {
+        DLog(@"%@", error);
+    }];
 }
 
 
