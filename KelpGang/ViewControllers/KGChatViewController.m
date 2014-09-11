@@ -15,6 +15,7 @@
 #import "IQKeyboardManager.h"
 #import "KGTaskObject.h"
 #import "FMDB.h"
+#import "KGRecentContactObject.h"
 
 static const CGFloat kMaxChatTextViewHeight = 99.0;
 static const NSInteger kHeaderTipViewTag = 1;
@@ -39,7 +40,11 @@ static const NSInteger kHeaderRefreshViewTag = 2;
 @property (nonatomic, assign) BOOL taskViewDisplay;
 @property (nonatomic, assign) NSInteger currSelectedTaskId;
 @property (nonatomic, assign) BOOL hasMore;
+
 @property (nonatomic, strong) NSString *toUserHeadUrl;
+@property (nonatomic, strong) NSString *toUserName;
+@property (nonatomic, assign) Gender toUserGender;
+
 
 
 @end
@@ -91,10 +96,11 @@ static const NSInteger kHeaderRefreshViewTag = 2;
         DLog(@"%@", responseObject);
         if ([KGUtils checkResult:responseObject]) {
             NSDictionary *data = responseObject[@"data"];
-            NSString *userName = [data valueForKeyPath:@"user_info.user_name"];
-            NSString *headUrl = [data valueForKeyPath:@"user_info.head_url"];
-            self.title = userName;
-            [self setValue:headUrl forKey:@"toUserHeadUrl"];
+            self.toUserName = [data valueForKeyPath:@"user_info.user_name"];
+            self.toUserHeadUrl = [data valueForKeyPath:@"user_info.head_url"];
+            NSString *genderStr = [data valueForKeyPath:@"user_info.user_sex"];
+            self.toUserGender = [KGUtils convertGender:genderStr];
+            [self setValue:self.toUserHeadUrl forKey:@"toUserHeadUrl"];
         }
     } failure:^(NSError *error) {
         DLog(@"%@", error);
@@ -412,6 +418,7 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     XMPPElement *userinfo = [XMPPElement elementWithName:@"from_user"];
     [userinfo addAttributeWithName:@"from_id" integerValue:APPCONTEXT.currUser.uid];
     [userinfo addAttributeWithName:@"from_name" stringValue:APPCONTEXT.currUser.nickName];
+    [userinfo addAttributeWithName:@"from_gender" integerValue:APPCONTEXT.currUser.gender];
     [message addChild:userinfo];
 
     NSXMLElement *receipt = [NSXMLElement elementWithName:@"request" xmlns:@"urn:xmpp:receipts"];
@@ -439,6 +446,15 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     [self.tableView scrollToRowAtIndexPath:lastRow atScrollPosition:UITableViewScrollPositionNone animated:YES];
 
     [self saveMessage:obj];
+
+    KGRecentContactObject *recentObj = [[KGRecentContactObject alloc] init];
+    recentObj.uid = self.toUserId;
+    recentObj.gender = self.toUserGender;
+    recentObj.uname = self.toUserName;
+    recentObj.lastMsg = textField.text;
+    recentObj.lastMsgTime = [NSDate date];
+    recentObj.hasRead = 0;
+    [self saveOrUpdateRecentContact:recentObj];
 
     textField.text = @"";
     return YES;
@@ -653,6 +669,20 @@ static const NSInteger kHeaderRefreshViewTag = 2;
         [self handleShowTime:self.datasource];
         [self.tableView reloadData];
     }
+}
+
+- (void)saveOrUpdateRecentContact: (KGRecentContactObject *)obj {
+    NSString *dbFilePath = [KGUtils databaseFilePath];
+    FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:dbFilePath];
+    [queue inDatabase:^(FMDatabase *db) {
+
+        FMResultSet *rs = [db executeQuery:@"select id from recent_contact where uid = ?;", @(obj.uid)];
+        if ([rs next]) {
+            [db executeUpdate:@"UPDATE recent_contact SET uname = ?, last_msg = ?, last_msg_Time = ?, has_read = ?, gender = ? WHERE uid = ?", obj.uname, obj.lastMsg, obj.lastMsgTime, @(obj.hasRead), @(obj.gender), @(obj.uid)];
+        } else {
+            [db executeUpdate:@"INSERT INTO recent_contact (uid, uname, last_msg, last_msg_Time, has_read, gener) VALUES (?,?,?,?,?)", @(obj.uid), obj.uname, obj.lastMsg, obj.lastMsgTime, @(obj.hasRead), @(obj.gender)];
+        }
+    }];
 }
 
 @end

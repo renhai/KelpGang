@@ -9,6 +9,7 @@
 #import "KGRecentContactsController.h"
 #import "KGRecentContactsCell.h"
 #import "KGRecentContactObject.h"
+#import "FMDB.h"
 
 @interface KGRecentContactsController ()
 
@@ -33,47 +34,12 @@
     [self setLeftBarbuttonItem];
 
     self.contacts = [[NSMutableArray alloc] init];
-    [self mockData];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
+    NSArray *results = [self queryRecentContact];
+    [self.contacts addObjectsFromArray:results];
 
-- (void)mockData {
-    KGRecentContactObject *obj1 = [[KGRecentContactObject alloc]init];
-    obj1.uid = 1;
-    obj1.uname = @"任海";
-    obj1.gender = MALE;
-    obj1.headUrl = @"";
-    obj1.lastMsg = @"这位朋友特别热心，帮带的东西很好，下次继续合作。";
-    obj1.lastMsgTime = [NSDate date];
-    obj1.hasRead = NO;
-    [self.contacts addObject:obj1];
-
-    KGRecentContactObject *obj2 = [[KGRecentContactObject alloc]init];
-    obj2.uid = 2;
-    obj2.uname = @"王小花";
-    obj2.gender = FEMALE;
-    obj2.headUrl = @"http://b.hiphotos.baidu.com/image/w%3D2048/sign=d21da2634f4a20a4311e3bc7a46a9822/3b87e950352ac65c81339c02fbf2b21193138a89.jpg";
-    obj2.lastMsg = @"这位朋友特别热心";
-    obj2.lastMsgTime = [NSDate dateWithTimeIntervalSinceNow:-1000000];
-    obj2.hasRead = YES;
-    [self.contacts addObject:obj2];
-
-    for (NSInteger i = 0; i < 20; i ++) {
-        KGRecentContactObject *obj = [[KGRecentContactObject alloc]init];
-        obj.uid = i;
-        obj.uname = [NSString stringWithFormat:@"帮帮用户%i", i];
-        obj.gender = i % 2;
-        obj.headUrl = @"http://b.hiphotos.baidu.com/image/w%3D2048/sign=d21da2634f4a20a4311e3bc7a46a9822/3b87e950352ac65c81339c02fbf2b21193138a89.jpg";
-        obj.lastMsg = [NSString stringWithFormat:@"%i这位朋友特别热心，帮带的东西很好，下次继续合作。", i];
-        obj.lastMsgTime = [NSDate date];
-        obj.hasRead = i % 2;
-        [self.contacts addObject:obj];
-    }
+    [self queryUserInfo];
+    [self.tableView reloadData];
 }
 
 
@@ -98,78 +64,81 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *reuseIdentifier = @"kRecentContactsCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+    KGRecentContactsCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
     if (!cell) {
         cell = [[KGRecentContactsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
-    } 
-    KGRecentContactObject *obj = self.contacts[indexPath.row];
-    if ([cell isKindOfClass:[KGRecentContactsCell class]]) {
-        [cell performSelector:@selector(configCell:) withObject:obj];
     }
+    KGRecentContactObject *obj = self.contacts[indexPath.row];
+    [cell configCell:obj];
     return cell;
 }
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 
+    
+
     UIViewController *chatViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"kChatViewController"];
+    KGRecentContactObject *obj = self.contacts[indexPath.row];
+    [chatViewController setValue:@(obj.uid) forKey:@"toUserId"];
     [self.navigationController pushViewController:chatViewController animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 68.0;
+}
+
+- (NSArray *)queryRecentContact{
+    NSMutableArray *resultList = [NSMutableArray new];
+    NSString *dbFilePath = [KGUtils databaseFilePath];
+    FMDatabase *db = [FMDatabase databaseWithPath:dbFilePath];
+    if (![db open]) {
+        NSLog(@"数据库打开失败");
+        return nil;
+    }
+    [db setShouldCacheStatements:YES];
+
+    FMResultSet *rs = [db executeQuery:@"select * from recent_contact order by id desc"];
+
+    while ([rs next]) {
+        NSInteger uid = [rs intForColumn:@"uid"];
+        NSInteger gender = [rs intForColumn:@"gender"];
+        NSString *uname = [rs stringForColumn:@"uname"];
+        NSString *lastMsg = [rs stringForColumn:@"last_msg"];
+        NSDate *lastMsgTime = [NSDate dateWithTimeIntervalSince1970:[rs doubleForColumn:@"last_msg_Time"]];
+        BOOL hasRead = [rs boolForColumn:@"has_read"];
+
+        KGRecentContactObject *obj = [[KGRecentContactObject alloc]init];
+        obj.uid = uid;
+        obj.gender = gender;
+        obj.uname = uname;
+        obj.lastMsg = lastMsg;
+        obj.lastMsgTime = lastMsgTime;
+        obj.hasRead = hasRead;
+        [resultList addObject:obj];
+    }
+
+    [db close];
+    return resultList;
+}
+
+- (void)queryUserInfo {
+    for (KGRecentContactObject *obj in self.contacts) {
+        NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
+                                 @"host_id": @(obj.uid)};
+        [[KGNetworkManager sharedInstance] postRequest:@"/mobile/user/getUser2" params: params success:^(id responseObject) {
+            if ([KGUtils checkResult:responseObject]) {
+                NSDictionary *data = responseObject[@"data"];
+                NSString *headUrl = [data valueForKeyPath:@"user_info.head_url"];
+                [obj setValue:headUrl forKey:@"headUrl"];
+            }
+        } failure:^(NSError *error) {
+            DLog(@"%@", error);
+        }];
+    }
+
 }
 
 

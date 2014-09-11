@@ -13,6 +13,7 @@
 #import "KGChatCellInfo.h"
 #import "KGChatViewController.h"
 #import "FMDB.h"
+#import "KGRecentContactObject.h"
 
 
 // Log levels: off, error, warn, info, verbose
@@ -407,6 +408,7 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
         NSXMLElement *fromInfo = [message elementForName:@"from_user"];
         NSString *fromUserName = [fromInfo attributeStringValueForName:@"from_name"];
         NSInteger fromUserId = [fromInfo attributeIntegerValueForName:@"from_id"];
+        Gender fromGender = [fromInfo attributeIntegerValueForName:@"from_gender"];
         NSInteger toUserId = APPCONTEXT.currUser.uid;
         NSString *uuid = [message attributeStringValueForName:@"id"];
 
@@ -419,8 +421,16 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
         msgObj.createTime = [NSDate date];
         msgObj.hasRead = 0;
         msgObj.msgType = TEXT;
-
         [self saveMessage:msgObj];
+
+        KGRecentContactObject *recentObj = [[KGRecentContactObject alloc] init];
+        recentObj.uid = fromUserId;
+        recentObj.gender = fromGender;
+        recentObj.uname = fromUserName;
+        recentObj.lastMsg = body;
+        recentObj.lastMsgTime = [NSDate date];
+        recentObj.hasRead = 0;
+        [self saveOrUpdateRecentContact:recentObj];
 
 
         NSInteger notifyType = [self notifyType:fromUserId];//0：前台运行，非聊天页面 1：聊天页面 2：后台运行
@@ -627,6 +637,20 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 
         [db executeUpdate:@"INSERT INTO message (uuid, from_uid, to_uid, msg, msg_type, create_time, has_read) VALUES (?,?,?,?,?,?,?)", msg.uuid, @(msg.fromUID), @(msg.toUID), msg.message, @(msg.msgType), msg.createTime, @(msg.hasRead)];
 
+    }];
+}
+
+- (void)saveOrUpdateRecentContact: (KGRecentContactObject *)obj {
+    NSString *dbFilePath = [KGUtils databaseFilePath];
+    FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:dbFilePath];
+    [queue inDatabase:^(FMDatabase *db) {
+
+        FMResultSet *rs = [db executeQuery:@"select id from recent_contact where uid = ?;", @(obj.uid)];
+        if ([rs next]) {
+            [db executeUpdate:@"UPDATE recent_contact SET uname = ?, last_msg = ?, last_msg_Time = ?, has_read = ?, gender = ? WHERE uid = ?", obj.uname, obj.lastMsg, obj.lastMsgTime, @(obj.hasRead), @(obj.gender), @(obj.uid)];
+        } else {
+            [db executeUpdate:@"INSERT INTO recent_contact (uid, uname, last_msg, last_msg_Time, has_read, gener) VALUES (?,?,?,?,?)", @(obj.uid), obj.uname, obj.lastMsg, obj.lastMsgTime, @(obj.hasRead), @(obj.gender)];
+        }
     }];
 }
 

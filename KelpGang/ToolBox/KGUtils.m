@@ -122,6 +122,7 @@
 
     NSArray *filePath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentPath = [filePath objectAtIndex:0];
+    DLog(@"%@",filePath);
     NSString *dbFilePath = [documentPath stringByAppendingPathComponent:[NSString stringWithFormat:@"user_db_uid_%d.sqlite", APPCONTEXT.currUser.uid]];
     return dbFilePath;
 

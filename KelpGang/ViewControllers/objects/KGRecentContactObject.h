@@ -18,6 +18,8 @@
 @property (nonatomic, strong) NSDate * lastMsgTime;
 @property (nonatomic, assign) BOOL hasRead;
 
+//CREATE TABLE IF NOT EXISTS recent_contact (ID INTEGER PRIMARY KEY AUTOINCREMENT, uid  INTEGER, uname TEXT, last_msg TEXT, last_msg_Time NUMERIC, has_read INTEGER);
+
 - (NSString *)lastMsgTime2Str;
 
 @end

@@ -47,7 +47,7 @@
 }
 
 - (void)setObject:(KGUserFollowObject *)obj {
-    [self.headImageView setImageWithURL:[NSURL URLWithString:obj.avatarUrl] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [self.headImageView setImageWithURL:[NSURL URLWithString:obj.avatarUrl] placeholderImage:[UIImage imageNamed:kAvatarMale] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.headImageView.layer.cornerRadius = self.headImageView.width / 2;
     self.nameLabel.text = obj.uname;
     if (obj.gender == FEMALE) {

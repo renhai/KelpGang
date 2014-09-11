@@ -149,8 +149,6 @@
         //判断数据库中是否已经存在这个表，如果不存在则创建该表
         if(![db tableExists:@"message"])
         {
-            [db beginTransaction];
-
             [db executeUpdate:@"CREATE TABLE IF NOT EXISTS message (msg_id INTEGER PRIMARY KEY AUTOINCREMENT, uuid  TEXT, from_uid INTEGER, to_uid INTEGER, msg TEXT, msg_type INTEGER, create_time NUMERIC, has_read INTEGER);"];
 
             [db executeUpdate:@"CREATE INDEX from_id_time_idx ON message(from_uid ASC, create_time DESC);"];
@@ -163,11 +161,23 @@
             {
                 NSLog(@"Error %d : %@",[db lastErrorCode],[db lastErrorMessage]);
             }
-            
-            [db commit];
-            [db close];
-            NSLog(@"创建完成");
+
+            NSLog(@"message table 创建完成");
         }
+        if(![db tableExists:@"recent_contact"]) {
+            [db executeUpdate:@"CREATE TABLE IF NOT EXISTS recent_contact (ID INTEGER PRIMARY KEY AUTOINCREMENT, uid INTEGER, gender INTEGER, uname TEXT, last_msg TEXT, last_msg_Time NUMERIC, has_read INTEGER);"];
+
+            [db executeUpdate:@"CREATE UNIQUE INDEX uid_idx ON recent_contact(uid);"];
+
+            if([db hadError])
+            {
+                NSLog(@"Error %d : %@",[db lastErrorCode],[db lastErrorMessage]);
+            }
+
+            NSLog(@"recent_contact table 创建完成");
+        }
+
+        [db close];
 
     };
     return block;

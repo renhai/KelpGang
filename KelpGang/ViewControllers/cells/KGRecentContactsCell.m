@@ -13,6 +13,13 @@ static const CGFloat kCellHeight = 68;
 
 @implementation KGRecentContactsCell
 
+- (void)dealloc
+{
+    if (self.contactObj) {
+        [self finishObserveObjectProperty];
+    }
+}
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -98,6 +105,28 @@ static const CGFloat kCellHeight = 68;
     self.nameLabel.textColor = contactObj.gender == MALE ? MAIN_COLOR : HexRGB(0xff8585);
     self.messageLabel.text = contactObj.lastMsg;
     self.timeLabel.text = [contactObj lastMsgTime2Str];
+
+    [self startObserveObjectProperty];
+    [self setNeedsLayout];
+}
+
+- (void)finishObserveObjectProperty
+{
+    [self.contactObj removeObserver:self forKeyPath:@"headUrl"];
+}
+
+- (void)startObserveObjectProperty
+{
+    [self.contactObj addObserver:self forKeyPath:@"headUrl"
+                 options:NSKeyValueObservingOptionNew
+                 context:nil];
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"headUrl"]){
+        UIImage *placeHolderImg = self.contactObj.gender == MALE ? [UIImage imageNamed:kAvatarMale] : [UIImage imageNamed:kAvatarFemale];
+        [self.headImageView sd_setImageWithURL:[NSURL URLWithString:self.contactObj.headUrl]placeholderImage:placeHolderImg];    }
 }
 
 
