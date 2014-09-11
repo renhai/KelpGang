@@ -76,6 +76,7 @@
                     if ([subview isKindOfClass:[KGBadgeView class]]) {
                         KGBadgeView *badgeView = (KGBadgeView *)subview;
                         [badgeView setBadgeValue:99];
+                        badgeView.hidden = YES;
                     }
                 }
             }

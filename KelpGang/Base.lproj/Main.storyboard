@@ -1724,7 +1724,7 @@
                                                     <color key="textColor" red="0.44705882349999998" green="0.44705882349999998" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" id="W1N-59-WD8">
+                                                <view hidden="YES" contentMode="scaleToFill" id="W1N-59-WD8">
                                                     <rect key="frame" x="256" y="12" width="22" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>

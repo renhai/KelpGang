@@ -603,6 +603,10 @@ static const NSInteger kHeaderRefreshViewTag = 2;
 
 - (void)loadLatestMessage {
     NSArray *reverseArray = [self queryMessage:0];
+    if (!reverseArray || reverseArray.count == 0) {
+        self.hasMore = NO;
+        return;
+    }
     [self.datasource addObjectsFromArray:reverseArray];
     [self.tableView reloadData];
 }
@@ -620,7 +624,7 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     }
     [db setShouldCacheStatements:YES];
 
-    FMResultSet *rs = [db executeQuery:@"select msg_id, uuid, from_uid, to_uid, msg, msg_type, create_time, has_read from message where from_uid in(?,?) and msg_id < ? order by create_time desc limit 10", @(APPCONTEXT.currUser.uid), @(self.toUserId), @(lastId)];
+    FMResultSet *rs = [db executeQuery:@"select msg_id, uuid, from_uid, to_uid, msg, msg_type, create_time, has_read from message where ((from_uid = ? and to_uid = ?) or (from_uid = ? and to_uid = ?)) and msg_id < ? order by create_time desc limit 10", @(APPCONTEXT.currUser.uid), @(self.toUserId), @(self.toUserId), @(APPCONTEXT.currUser.uid), @(lastId)];
 
     while ([rs next]) {
         NSInteger msgId = [rs intForColumn:@"msg_id"];
@@ -680,7 +684,7 @@ static const NSInteger kHeaderRefreshViewTag = 2;
         if ([rs next]) {
             [db executeUpdate:@"UPDATE recent_contact SET uname = ?, last_msg = ?, last_msg_Time = ?, has_read = ?, gender = ? WHERE uid = ?", obj.uname, obj.lastMsg, obj.lastMsgTime, @(obj.hasRead), @(obj.gender), @(obj.uid)];
         } else {
-            [db executeUpdate:@"INSERT INTO recent_contact (uid, uname, last_msg, last_msg_Time, has_read, gener) VALUES (?,?,?,?,?)", @(obj.uid), obj.uname, obj.lastMsg, obj.lastMsgTime, @(obj.hasRead), @(obj.gender)];
+            [db executeUpdate:@"INSERT INTO recent_contact (uid, uname, last_msg, last_msg_Time, has_read, gender) VALUES (?,?,?,?,?,?)", @(obj.uid), obj.uname, obj.lastMsg, obj.lastMsgTime, @(obj.hasRead), @(obj.gender)];
         }
     }];
 }

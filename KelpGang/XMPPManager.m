@@ -649,7 +649,11 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
         if ([rs next]) {
             [db executeUpdate:@"UPDATE recent_contact SET uname = ?, last_msg = ?, last_msg_Time = ?, has_read = ?, gender = ? WHERE uid = ?", obj.uname, obj.lastMsg, obj.lastMsgTime, @(obj.hasRead), @(obj.gender), @(obj.uid)];
         } else {
-            [db executeUpdate:@"INSERT INTO recent_contact (uid, uname, last_msg, last_msg_Time, has_read, gener) VALUES (?,?,?,?,?)", @(obj.uid), obj.uname, obj.lastMsg, obj.lastMsgTime, @(obj.hasRead), @(obj.gender)];
+            [db executeUpdate:@"INSERT INTO recent_contact (uid, uname, last_msg, last_msg_Time, has_read, gender) VALUES (?,?,?,?,?,?)", @(obj.uid), obj.uname, obj.lastMsg, obj.lastMsgTime, @(obj.hasRead), @(obj.gender)];
+        }
+        if([db hadError])
+        {
+            NSLog(@"Error %d : %@",[db lastErrorCode],[db lastErrorMessage]);
         }
     }];
 }

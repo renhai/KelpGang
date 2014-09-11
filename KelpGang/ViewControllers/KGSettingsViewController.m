@@ -89,7 +89,7 @@
     [[SDImageCache sharedImageCache] clearDisk];
     [[SDImageCache sharedImageCache] clearMemory];
 
-    [[XMPPManager sharedInstance] disconnect];
+    [[XMPPManager sharedInstance] teardownStream];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
