@@ -49,7 +49,9 @@
     NSDictionary *params = @{@"user_id": @(APPCONTEXT.currUser.uid),
                              @"end_id": @(0),
                              @"limit":@(100),
-                             @"goodCountry": @"英国"};
+                             @"goodCountry": @"",
+                             @"liveCity": @"",
+                             @"gratuity": @""};
     [[KGNetworkManager sharedInstance]postRequest:@"/mobile/task/index2" params:params success:^(id responseObject) {
         DLog(@"%@", responseObject);
         if ([KGUtils checkResultWithAlert:responseObject]) {
