@@ -10,6 +10,6 @@
 
 @interface KGDiscoverDetailViewController : UIViewController
 
-@property (nonatomic, strong)NSString *imageUrl;
+@property (nonatomic, assign) NSInteger discoveryId;
 
 @end

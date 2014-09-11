@@ -29,10 +29,10 @@
 }
 
 - (void)setObject: (id)info {
-    [self.headImageView setImageWithURL:[NSURL URLWithString:info[@"imageUrl"]] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [self.headImageView setImageWithURL:[NSURL URLWithString:info[@"headUrl"]] placeholderImage:[UIImage imageNamed:kAvatarMale] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.headImageView.centerX = self.width / 2;
 
-    self.nameLabel.text = info[@"userName"];
+    self.nameLabel.text = info[@"name"];
     [self.nameLabel sizeToFit];
     self.nameLabel.centerX = self.headImageView.centerX;
     self.nameLabel.top = self.headImageView.bottom + 5;

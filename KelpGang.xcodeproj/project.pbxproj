@@ -211,6 +211,7 @@
 		A190FCE418C89BB000A87329 /* nav_bar_item_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A190FCE218C89BB000A87329 /* nav_bar_item_back@2x.png */; };
 		A1929ECD19061FDC00DDB66E /* KGHostHeadViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1929ECC19061FDC00DDB66E /* KGHostHeadViewCell.m */; };
 		A1929ED019063C3000DDB66E /* KGRecentContactsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1929ECF19063C3000DDB66E /* KGRecentContactsCell.m */; };
+		A192E4AE19C1A9AF00E34602 /* KGDiscovery.m in Sources */ = {isa = PBXBuildFile; fileRef = A192E4AD19C1A9AF00E34602 /* KGDiscovery.m */; };
 		A1930B2318CEFA66000D84A1 /* KGPicBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1930B2218CEFA66000D84A1 /* KGPicBottomView.m */; };
 		A1930B2518CEFB3E000D84A1 /* KGPicBottom.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1930B2418CEFB3E000D84A1 /* KGPicBottom.xib */; };
 		A1930B2818CEFD47000D84A1 /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = A1930B2618CEFD47000D84A1 /* chat.png */; };
@@ -1075,6 +1076,8 @@
 		A1929ECC19061FDC00DDB66E /* KGHostHeadViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGHostHeadViewCell.m; sourceTree = "<group>"; };
 		A1929ECE19063C3000DDB66E /* KGRecentContactsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGRecentContactsCell.h; sourceTree = "<group>"; };
 		A1929ECF19063C3000DDB66E /* KGRecentContactsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGRecentContactsCell.m; sourceTree = "<group>"; };
+		A192E4AC19C1A9AF00E34602 /* KGDiscovery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGDiscovery.h; sourceTree = "<group>"; };
+		A192E4AD19C1A9AF00E34602 /* KGDiscovery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGDiscovery.m; sourceTree = "<group>"; };
 		A1930B2118CEFA66000D84A1 /* KGPicBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGPicBottomView.h; sourceTree = "<group>"; };
 		A1930B2218CEFA66000D84A1 /* KGPicBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGPicBottomView.m; sourceTree = "<group>"; };
 		A1930B2418CEFB3E000D84A1 /* KGPicBottom.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KGPicBottom.xib; sourceTree = "<group>"; };
@@ -2298,6 +2301,8 @@
 				A108052219A352DE005674E7 /* KGCollectObject.m */,
 				A12BBF2919A4B0C90041547A /* KGUserFollowObject.h */,
 				A12BBF2A19A4B0C90041547A /* KGUserFollowObject.m */,
+				A192E4AC19C1A9AF00E34602 /* KGDiscovery.h */,
+				A192E4AD19C1A9AF00E34602 /* KGDiscovery.m */,
 			);
 			path = objects;
 			sourceTree = "<group>";
@@ -3674,6 +3679,7 @@
 				A12F27EA19A71BB300B30FF8 /* JDStatusBarView.m in Sources */,
 				A11C988B1998D9B200F82E2A /* KGImageObject.m in Sources */,
 				A12BBF2B19A4B0C90041547A /* KGUserFollowObject.m in Sources */,
+				A192E4AE19C1A9AF00E34602 /* KGDiscovery.m in Sources */,
 				A1B4F74D195033E900D48B09 /* AppContext.m in Sources */,
 				A16873B719A2F5F400810275 /* KGMyCollectViewController.m in Sources */,
 				A1A0DA0318FE662300E0C0E8 /* KGBaseMessageCell.m in Sources */,
