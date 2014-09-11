@@ -73,22 +73,30 @@ static const NSInteger kLimit = 10;
 
 - (void)initFilterBar {
     self.currTapIndex = -1;
-    NSArray *timeArr = @[@"3天内", @"1周内", @"2周内", @"1月内", @"常驻"];
+    NSArray *timeArr = @[@"3天内", @"1周内", @"2周内", @"1月内", @"常驻", @"回国时间"];
 
     __weak typeof(self) weakSelf = self;
     SelectDoneBlock doneBlock = ^(NSInteger index, NSString *item) {
         [weakSelf closeItemByIndex:self.currTapIndex];
         DLog(@"selected index: %d, item : %@", index, item);
         switch (index) {
-            case 0:
+            case 0: {
                 self.toCountry = item;
+                if ([@"目的国家" isEqualToString:self.toCountry]) {
+                    self.toCountry = @"";
+                }
                 break;
+            }
             case 1:
                 self.backTime = [self getBackTimeType:item];
                 break;
-            case 2:
+            case 2: {
                 self.city = item;
+                if ([@"所在城市" isEqualToString:self.city]) {
+                    self.city = @"";
+                }
                 break;
+            }
             default:
                 break;
         }
@@ -287,6 +295,9 @@ static const NSInteger kLimit = 10;
         }
         NSArray *countryInfo = one[@"country_info"];
         NSMutableArray *countryArr = [NSMutableArray array];
+        if ([@"热门国家" isEqualToString: continentName]) {
+            [countryArr addObject:@"目的国家"];
+        }
         for (NSDictionary *country in countryInfo) {
             NSString *countryName = country[@"country_name"];
             [countryArr addObject:countryName];
@@ -310,6 +321,9 @@ static const NSInteger kLimit = 10;
         }
         NSArray *countryInfo = one[@"city_info"];
         NSMutableArray *countryArr = [NSMutableArray array];
+        if ([@"热门城市" isEqualToString: continentName]) {
+            [countryArr addObject:@"所在城市"];
+        }
         for (NSDictionary *country in countryInfo) {
             NSString *countryName = country[@"city_name"];
             [countryArr addObject:countryName];
@@ -383,8 +397,10 @@ static const NSInteger kLimit = 10;
         type = @"3";
     } else if ([@"2周内" isEqualToString: backTime]) {
         type = @"4";
-    } else {
+    } else if (@"1月内") {
         type = @"5";
+    } else if ([@"回国时间" isEqualToString: backTime]) {
+        type = @"";
     }
     return type;
 }
