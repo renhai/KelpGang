@@ -397,7 +397,7 @@ static const NSInteger kLimit = 10;
         type = @"3";
     } else if ([@"2周内" isEqualToString: backTime]) {
         type = @"4";
-    } else if (@"1月内") {
+    } else if ([@"1月内" isEqualToString: backTime]) {
         type = @"5";
     } else if ([@"回国时间" isEqualToString: backTime]) {
         type = @"";

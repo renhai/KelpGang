@@ -15,10 +15,10 @@ self.navigationItem.leftBarButtonItem = buttonItem;\
 }
 #define kPublishTask @"kPublishTask"
 #define kXMPPNewMsgNotifaction @"xmppNewMsgNotifaction"
-#define kChatHostName @"10.3.20.160"
+#define kChatHostName @"123.125.36.160"
 #define kChatHostPort 5222
 #define kWebHTML5Url @"http://10.2.24.140"
-#define kWebServerBaseURL @"http://10.3.20.160:55641"
+#define kWebServerBaseURL @"http://123.125.36.160:55641"
 
 #define kTabBarIndexFind        0;
 #define kTabBarIndexDiscover    1;
