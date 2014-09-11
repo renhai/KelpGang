@@ -96,8 +96,11 @@ static const int ddLogLevel = LOG_LEVEL_INFO;
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
     DDLogVerbose(@"%@", notification);
+    NSDictionary *userInfo = notification.userInfo;
+    NSInteger fromUID = [userInfo[@"from_uid"]integerValue];
     UITabBarController *rootViewController = (UITabBarController *)self.window.rootViewController;
     UIViewController *chatViewController = [rootViewController.storyboard instantiateViewControllerWithIdentifier:@"kChatViewController"];
+    [chatViewController setValue:@(fromUID) forKey:@"toUserId"];
     UIViewController *selectViewController = rootViewController.selectedViewController;
     if ([selectViewController isKindOfClass:[UINavigationController class]]) {
         UINavigationController *navController = (UINavigationController *) selectViewController;

@@ -430,15 +430,14 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
                 break;
             }
             case 1: {
-
                 KGChatCellInfo *chatCellInfo = [[KGChatCellInfo alloc] initWithMessage:msgObj];
                 [[NSNotificationCenter defaultCenter] postNotificationName:kXMPPNewMsgNotifaction object:chatCellInfo];
                 break;
             }
             case 2: {
                 UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-                localNotification.alertAction = @"Ok";
-                localNotification.alertBody = [NSString stringWithFormat:@"From: %@\n\n%@",fromUserName,body];
+                localNotification.alertBody = [NSString stringWithFormat:@"%@:%@",fromUserName,body];
+                localNotification.userInfo = @{@"from_uid": @(fromUserId)};
                 [[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
                 break;
             }

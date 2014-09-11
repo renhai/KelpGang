@@ -39,6 +39,8 @@ static const NSInteger kHeaderRefreshViewTag = 2;
 @property (nonatomic, assign) BOOL taskViewDisplay;
 @property (nonatomic, assign) NSInteger currSelectedTaskId;
 @property (nonatomic, assign) BOOL hasMore;
+@property (nonatomic, strong) NSString *toUserHeadUrl;
+
 
 @end
 
@@ -47,6 +49,7 @@ static const NSInteger kHeaderRefreshViewTag = 2;
 - (void)dealloc
 {
     NSLog(@"KGChatViewController dealloc");
+    [self finishObserveObjectProperty];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -64,6 +67,8 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     [self setLeftBarbuttonItem];
     self.datasource = [[NSMutableArray alloc] init];
     self.hasMore = YES;
+    [[XMPPManager sharedInstance] connect];
+    [self startObserveObjectProperty];
 
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -87,7 +92,9 @@ static const NSInteger kHeaderRefreshViewTag = 2;
         if ([KGUtils checkResult:responseObject]) {
             NSDictionary *data = responseObject[@"data"];
             NSString *userName = [data valueForKeyPath:@"user_info.user_name"];
+            NSString *headUrl = [data valueForKeyPath:@"user_info.head_url"];
             self.title = userName;
+            [self setValue:headUrl forKey:@"toUserHeadUrl"];
         }
     } failure:^(NSError *error) {
         DLog(@"%@", error);
@@ -152,6 +159,12 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     for (KGChatCellInfo *chatCellInfo in msgArr) {
         chatCellInfo.showTime = ![preTime isEqualToString:chatCellInfo.time];
         preTime = chatCellInfo.time;
+
+        if (chatCellInfo.cellType == Other) {
+            chatCellInfo.headUrl = self.toUserHeadUrl ? self.toUserHeadUrl : @"";
+        } else {
+            chatCellInfo.headUrl = APPCONTEXT.currUser.avatarUrl;
+        }
     }
 }
 
@@ -621,6 +634,25 @@ static const NSInteger kHeaderRefreshViewTag = 2;
     [self handleShowTime:resultList];
     NSArray *reverseArray = [[resultList reverseObjectEnumerator] allObjects];
     return reverseArray;
+}
+
+#pragma mark - Object Property Observer
+- (void)startObserveObjectProperty {
+    [self addObserver:self forKeyPath:@"toUserHeadUrl" options:NSKeyValueObservingOptionNew context:nil];
+}
+
+- (void)finishObserveObjectProperty {
+    [self removeObserver:self forKeyPath:@"toUserHeadUrl"];
+}
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
+{
+    if ([keyPath isEqual:@"toUserHeadUrl"]) {
+        [self handleShowTime:self.datasource];
+        [self.tableView reloadData];
+    }
 }
 
 @end

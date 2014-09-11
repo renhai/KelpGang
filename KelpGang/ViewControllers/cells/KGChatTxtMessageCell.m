@@ -92,6 +92,7 @@ static const CGFloat kHeaderImageMarginLeftOrRight = 14.0;
     self.chatCellInfo = chatCellInfo;
     [self.contentView sendSubviewToBack:self.backView];
     self.headImageView.layer.cornerRadius = self.headImageView.width / 2;
+    [self.headImageView setImageWithURL:[NSURL URLWithString:chatCellInfo.headUrl] placeholderImage: [UIImage imageNamed:kAvatarMale] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.backView.layer.cornerRadius = 4;
     self.timeView.layer.cornerRadius = 4;
     self.messageLabel.text = chatCellInfo.messageObj.message;

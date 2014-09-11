@@ -25,6 +25,7 @@ static const CGFloat kTimeViewHeight = 28.0;
 @property (nonatomic, assign) BOOL showTime;
 @property (nonatomic, strong) NSString *time;
 @property (nonatomic, assign) BOOL showIndicator;
+@property (nonatomic, strong) NSString *headUrl;
 
 - (id)initWithMessage: (KGMessageObject *) msg;
 
