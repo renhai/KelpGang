@@ -101,6 +101,7 @@ static const NSInteger kHeaderRefreshViewTag = 2;
             NSString *genderStr = [data valueForKeyPath:@"user_info.user_sex"];
             self.toUserGender = [KGUtils convertGender:genderStr];
             [self setValue:self.toUserHeadUrl forKey:@"toUserHeadUrl"];
+            [self setTitle:self.toUserName];
         }
     } failure:^(NSError *error) {
         DLog(@"%@", error);

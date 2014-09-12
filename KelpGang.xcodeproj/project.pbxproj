@@ -145,6 +145,13 @@
 		A1711BD9197FB7EC00721862 /* AppStartup.m in Sources */ = {isa = PBXBuildFile; fileRef = A1711BD8197FB7EC00721862 /* AppStartup.m */; };
 		A174B7B01941A09D0067B8FA /* KGNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A174B7AF1941A09D0067B8FA /* KGNetworkManager.m */; };
 		A174CD671904CFAC00D910C5 /* UIViewController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = A174CD661904CFAC00D910C5 /* UIViewController+Additions.m */; };
+		A17952D419C2899500CD940D /* KGTaskDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = A17952D319C2899500CD940D /* KGTaskDetailController.m */; };
+		A17952D719C28EDF00CD940D /* KGTaskDetailHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A17952D619C28EDF00CD940D /* KGTaskDetailHeadCell.m */; };
+		A17952DA19C2ACF200CD940D /* KGTaskExpectCountryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A17952D919C2ACF200CD940D /* KGTaskExpectCountryCell.m */; };
+		A17952DD19C2AFAA00CD940D /* KGTaskMaxMoneyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A17952DC19C2AFAA00CD940D /* KGTaskMaxMoneyCell.m */; };
+		A17952E019C2B16000CD940D /* KGTaskDescCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A17952DF19C2B16000CD940D /* KGTaskDescCell.m */; };
+		A17952E319C2C99A00CD940D /* KGTaskGoodsPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A17952E219C2C99A00CD940D /* KGTaskGoodsPhotoCell.m */; };
+		A17952E619C2D25800CD940D /* KGTaskGoodsPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A17952E519C2D25800CD940D /* KGTaskGoodsPhotoCollectionViewCell.m */; };
 		A179E6B91921EB28006A72BD /* login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A179E6B81921EB28006A72BD /* login.storyboard */; };
 		A179E6BC1921F221006A72BD /* KGLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A179E6BB1921F221006A72BD /* KGLoginController.m */; };
 		A180C0EB18C8BE7800116DCF /* search_someone_active.png in Resources */ = {isa = PBXBuildFile; fileRef = A180C0E918C8BE7800116DCF /* search_someone_active.png */; };
@@ -987,6 +994,20 @@
 		A174B7AF1941A09D0067B8FA /* KGNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGNetworkManager.m; sourceTree = "<group>"; };
 		A174CD651904CFAC00D910C5 /* UIViewController+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Additions.h"; sourceTree = "<group>"; };
 		A174CD661904CFAC00D910C5 /* UIViewController+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Additions.m"; sourceTree = "<group>"; };
+		A17952D219C2899500CD940D /* KGTaskDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGTaskDetailController.h; sourceTree = "<group>"; };
+		A17952D319C2899500CD940D /* KGTaskDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGTaskDetailController.m; sourceTree = "<group>"; };
+		A17952D519C28EDF00CD940D /* KGTaskDetailHeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGTaskDetailHeadCell.h; sourceTree = "<group>"; };
+		A17952D619C28EDF00CD940D /* KGTaskDetailHeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGTaskDetailHeadCell.m; sourceTree = "<group>"; };
+		A17952D819C2ACF200CD940D /* KGTaskExpectCountryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGTaskExpectCountryCell.h; sourceTree = "<group>"; };
+		A17952D919C2ACF200CD940D /* KGTaskExpectCountryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGTaskExpectCountryCell.m; sourceTree = "<group>"; };
+		A17952DB19C2AFAA00CD940D /* KGTaskMaxMoneyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGTaskMaxMoneyCell.h; sourceTree = "<group>"; };
+		A17952DC19C2AFAA00CD940D /* KGTaskMaxMoneyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGTaskMaxMoneyCell.m; sourceTree = "<group>"; };
+		A17952DE19C2B16000CD940D /* KGTaskDescCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGTaskDescCell.h; sourceTree = "<group>"; };
+		A17952DF19C2B16000CD940D /* KGTaskDescCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGTaskDescCell.m; sourceTree = "<group>"; };
+		A17952E119C2C99A00CD940D /* KGTaskGoodsPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGTaskGoodsPhotoCell.h; sourceTree = "<group>"; };
+		A17952E219C2C99A00CD940D /* KGTaskGoodsPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGTaskGoodsPhotoCell.m; sourceTree = "<group>"; };
+		A17952E419C2D25800CD940D /* KGTaskGoodsPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGTaskGoodsPhotoCollectionViewCell.h; sourceTree = "<group>"; };
+		A17952E519C2D25800CD940D /* KGTaskGoodsPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGTaskGoodsPhotoCollectionViewCell.m; sourceTree = "<group>"; };
 		A179E6B81921EB28006A72BD /* login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = login.storyboard; sourceTree = "<group>"; };
 		A179E6BA1921F221006A72BD /* KGLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGLoginController.h; sourceTree = "<group>"; };
 		A179E6BB1921F221006A72BD /* KGLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGLoginController.m; sourceTree = "<group>"; };
@@ -2174,6 +2195,8 @@
 				A16873B619A2F5F400810275 /* KGMyCollectViewController.m */,
 				A12BBF2019A47BD30041547A /* KGMyFollowViewController.h */,
 				A12BBF2119A47BD30041547A /* KGMyFollowViewController.m */,
+				A17952D219C2899500CD940D /* KGTaskDetailController.h */,
+				A17952D319C2899500CD940D /* KGTaskDetailController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -2350,6 +2373,18 @@
 				A12BBF2719A490FC0041547A /* KGMyJourneyCell.m */,
 				A1BFA61419B6C48D007AF67B /* KGTableViewCell.h */,
 				A1BFA61519B6C48D007AF67B /* KGTableViewCell.m */,
+				A17952D519C28EDF00CD940D /* KGTaskDetailHeadCell.h */,
+				A17952D619C28EDF00CD940D /* KGTaskDetailHeadCell.m */,
+				A17952D819C2ACF200CD940D /* KGTaskExpectCountryCell.h */,
+				A17952D919C2ACF200CD940D /* KGTaskExpectCountryCell.m */,
+				A17952DB19C2AFAA00CD940D /* KGTaskMaxMoneyCell.h */,
+				A17952DC19C2AFAA00CD940D /* KGTaskMaxMoneyCell.m */,
+				A17952DE19C2B16000CD940D /* KGTaskDescCell.h */,
+				A17952DF19C2B16000CD940D /* KGTaskDescCell.m */,
+				A17952E119C2C99A00CD940D /* KGTaskGoodsPhotoCell.h */,
+				A17952E219C2C99A00CD940D /* KGTaskGoodsPhotoCell.m */,
+				A17952E419C2D25800CD940D /* KGTaskGoodsPhotoCollectionViewCell.h */,
+				A17952E519C2D25800CD940D /* KGTaskGoodsPhotoCollectionViewCell.m */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -3550,7 +3585,9 @@
 				A1468F2619B8750700461BCE /* KGOrderMoneyInfoCell.m in Sources */,
 				A1610CB319936564001F9DAA /* KGDiscoverViewController.m in Sources */,
 				A1CA59E21917616200D9A429 /* KGCreateOrderBuyerCell.m in Sources */,
+				A17952D719C28EDF00CD940D /* KGTaskDetailHeadCell.m in Sources */,
 				A108052319A352DE005674E7 /* KGCollectObject.m in Sources */,
+				A17952D419C2899500CD940D /* KGTaskDetailController.m in Sources */,
 				A164DA37194EA249008B26E8 /* IQUIWindow+Hierarchy.m in Sources */,
 				A182B27219BECDDF009A065E /* KGOrderLocationCell.m in Sources */,
 				A182B27819BEF711009A065E /* KGCommentOrderController.m in Sources */,
@@ -3665,10 +3702,13 @@
 				A1CA060018DAF32D00B1F3A6 /* KGJourneyPictureContainerView.m in Sources */,
 				A121F41B198F778400260E73 /* MWTapDetectingImageView.m in Sources */,
 				A18A2B8918E1325D00FDFB8E /* KGJourneyAddImgTableViewCell.m in Sources */,
+				A17952E619C2D25800CD940D /* KGTaskGoodsPhotoCollectionViewCell.m in Sources */,
+				A17952E019C2B16000CD940D /* KGTaskDescCell.m in Sources */,
 				A1CA59E41917616200D9A429 /* KGCreateOrderPhotoCell.m in Sources */,
 				A1CA59E31917616200D9A429 /* KGCreateOrderConsigneeCell.m in Sources */,
 				A1CA59E81917616200D9A429 /* KGOrderListCell.m in Sources */,
 				A18A2B8A18E1325D00FDFB8E /* KGTaskListViewCell.m in Sources */,
+				A17952DA19C2ACF200CD940D /* KGTaskExpectCountryCell.m in Sources */,
 				A11C98881998BBCD00F82E2A /* KGTaskViewHeadCell.m in Sources */,
 				A1F13E0318EE47830013B183 /* KGCommonMenu.m in Sources */,
 				A1A1DAFD18C9CCD200F03E04 /* KGUtils.m in Sources */,
@@ -3684,6 +3724,7 @@
 				A16873B719A2F5F400810275 /* KGMyCollectViewController.m in Sources */,
 				A1A0DA0318FE662300E0C0E8 /* KGBaseMessageCell.m in Sources */,
 				A19F0ED118E2C6A400C2944D /* HudHelper.m in Sources */,
+				A17952DD19C2AFAA00CD940D /* KGTaskMaxMoneyCell.m in Sources */,
 				A1BFA61919B6C645007AF67B /* KGOrderNumberAndDateCell.m in Sources */,
 				A1BCF764194AD6C6008319C4 /* KGBuyerRouteCell.m in Sources */,
 				A1AD133B1908C1DF00DF17B6 /* KGDeliveryAddressCell.m in Sources */,
@@ -3714,6 +3755,7 @@
 				A1933C2718E3D3C9000FC0B4 /* KGPhotoBrowserViewController.m in Sources */,
 				A162DAC2199A15A80038AE8B /* KGMyTaskController.m in Sources */,
 				A197503918D84BF10062CAA7 /* UIView+Additions.m in Sources */,
+				A17952E319C2C99A00CD940D /* KGTaskGoodsPhotoCell.m in Sources */,
 				A121F422198F778400260E73 /* PSTCollectionViewController.m in Sources */,
 				A164DA34194EA249008B26E8 /* IQToolbar.m in Sources */,
 				A15AD1B419AC442500A41D6F /* SWLongPressGestureRecognizer.m in Sources */,

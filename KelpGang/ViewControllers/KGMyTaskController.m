@@ -12,6 +12,7 @@
 #import "KGJourneyObject.h"
 #import "KGMyJourneyCell.h"
 #import "KGBuyerInfoViewController.h"
+#import "KGTaskDetailController.h"
 
 
 @interface KGMyTaskController ()
@@ -158,7 +159,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     if (self.segType == 0) {
-
+        KGTaskObject *taskObj = self.datasource[indexPath.row];
+        KGTaskDetailController *controller = [[KGTaskDetailController alloc]initWithStyle:UITableViewStylePlain];
+        controller.taskId = taskObj.taskId;
+        [self.navigationController pushViewController:controller animated:YES];
     } else {
         KGJourneyObject *travelObj = self.datasource[indexPath.row];
         KGBuyerInfoViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"kBuyerInfoViewController"];

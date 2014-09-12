@@ -10,6 +10,7 @@
 #import "KGTaskListViewCell.h"
 #import "KGFilterItem.h"
 #import "KGTaskObject.h"
+#import "KGTaskDetailController.h"
 
 @interface KGTaskListViewController ()
 @property (weak, nonatomic) IBOutlet UIView *conditionBar;
@@ -193,6 +194,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+    KGTaskObject *taskObj = self.datasource[indexPath.row];
+    KGTaskDetailController *controller = [[KGTaskDetailController alloc]initWithStyle:UITableViewStylePlain];
+    controller.taskId = taskObj.taskId;
+    [self.navigationController pushViewController:controller animated:YES];
+
 }
 
 

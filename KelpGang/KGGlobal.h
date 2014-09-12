@@ -15,10 +15,10 @@ self.navigationItem.leftBarButtonItem = buttonItem;\
 }
 #define kPublishTask @"kPublishTask"
 #define kXMPPNewMsgNotifaction @"xmppNewMsgNotifaction"
-#define kChatHostName @"123.125.36.160"
+#define kChatHostName @"10.3.20.160"
 #define kChatHostPort 5222
 #define kWebHTML5Url @"http://10.2.24.140"
-#define kWebServerBaseURL @"http://123.125.36.160:55641"
+#define kWebServerBaseURL @"http://123.125.36.160:80"
 
 #define kTabBarIndexFind        0;
 #define kTabBarIndexDiscover    1;
@@ -40,6 +40,7 @@ self.navigationItem.leftBarButtonItem = buttonItem;\
 #define kDefaultComment @"我很满意,100个赞！"
 #define kDefaultRate 5
 #define kUpdateOrderNotification    @"kUpdateOrderNotification"
+#define kDefaultPlaceHolder @"default-placeholder"
 
 
 typedef enum {
