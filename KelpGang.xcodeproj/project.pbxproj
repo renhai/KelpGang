@@ -71,7 +71,6 @@
 		A12F27E919A71BB300B30FF8 /* JDStatusBarStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = A12F27E519A71BB300B30FF8 /* JDStatusBarStyle.m */; };
 		A12F27EA19A71BB300B30FF8 /* JDStatusBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = A12F27E719A71BB300B30FF8 /* JDStatusBarView.m */; };
 		A1311F4118CA27A300D1A40F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1311F4018CA27A300D1A40F /* MapKit.framework */; };
-		A1311F4518CA2E0800D1A40F /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1311F4418CA2E0800D1A40F /* SwipeView.m */; };
 		A1393978199CA4F50013891C /* KGJourneyObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A1393977199CA4F50013891C /* KGJourneyObject.m */; };
 		A14155AB1904F4BB0045D641 /* KGBaseWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A14155AA1904F4BB0045D641 /* KGBaseWebViewController.m */; };
 		A14300C918BB252F0064DF87 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14300C818BB252F0064DF87 /* Foundation.framework */; };
@@ -152,6 +151,7 @@
 		A17952E019C2B16000CD940D /* KGTaskDescCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A17952DF19C2B16000CD940D /* KGTaskDescCell.m */; };
 		A17952E319C2C99A00CD940D /* KGTaskGoodsPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A17952E219C2C99A00CD940D /* KGTaskGoodsPhotoCell.m */; };
 		A17952E619C2D25800CD940D /* KGTaskGoodsPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A17952E519C2D25800CD940D /* KGTaskGoodsPhotoCollectionViewCell.m */; };
+		A17952E919C2E83700CD940D /* KGBuyerRefPictureCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A17952E819C2E83700CD940D /* KGBuyerRefPictureCollectionViewCell.m */; };
 		A179E6B91921EB28006A72BD /* login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A179E6B81921EB28006A72BD /* login.storyboard */; };
 		A179E6BC1921F221006A72BD /* KGLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A179E6BB1921F221006A72BD /* KGLoginController.m */; };
 		A180C0EB18C8BE7800116DCF /* search_someone_active.png in Resources */ = {isa = PBXBuildFile; fileRef = A180C0E918C8BE7800116DCF /* search_someone_active.png */; };
@@ -867,8 +867,6 @@
 		A12F27E619A71BB300B30FF8 /* JDStatusBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDStatusBarView.h; sourceTree = "<group>"; };
 		A12F27E719A71BB300B30FF8 /* JDStatusBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDStatusBarView.m; sourceTree = "<group>"; };
 		A1311F4018CA27A300D1A40F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		A1311F4318CA2E0800D1A40F /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
-		A1311F4418CA2E0800D1A40F /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
 		A1393976199CA4F50013891C /* KGJourneyObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGJourneyObject.h; sourceTree = "<group>"; };
 		A1393977199CA4F50013891C /* KGJourneyObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGJourneyObject.m; sourceTree = "<group>"; };
 		A14155A91904F4BB0045D641 /* KGBaseWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGBaseWebViewController.h; sourceTree = "<group>"; };
@@ -1008,6 +1006,8 @@
 		A17952E219C2C99A00CD940D /* KGTaskGoodsPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGTaskGoodsPhotoCell.m; sourceTree = "<group>"; };
 		A17952E419C2D25800CD940D /* KGTaskGoodsPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGTaskGoodsPhotoCollectionViewCell.h; sourceTree = "<group>"; };
 		A17952E519C2D25800CD940D /* KGTaskGoodsPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGTaskGoodsPhotoCollectionViewCell.m; sourceTree = "<group>"; };
+		A17952E719C2E83700CD940D /* KGBuyerRefPictureCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGBuyerRefPictureCollectionViewCell.h; sourceTree = "<group>"; };
+		A17952E819C2E83700CD940D /* KGBuyerRefPictureCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGBuyerRefPictureCollectionViewCell.m; sourceTree = "<group>"; };
 		A179E6B81921EB28006A72BD /* login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = login.storyboard; sourceTree = "<group>"; };
 		A179E6BA1921F221006A72BD /* KGLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGLoginController.h; sourceTree = "<group>"; };
 		A179E6BB1921F221006A72BD /* KGLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGLoginController.m; sourceTree = "<group>"; };
@@ -1871,15 +1871,6 @@
 			path = JDStatusBarNotification;
 			sourceTree = "<group>";
 		};
-		A1311F4218CA2E0800D1A40F /* SwipeView */ = {
-			isa = PBXGroup;
-			children = (
-				A1311F4318CA2E0800D1A40F /* SwipeView.h */,
-				A1311F4418CA2E0800D1A40F /* SwipeView.m */,
-			);
-			path = SwipeView;
-			sourceTree = "<group>";
-		};
 		A14300BC18BB252F0064DF87 = {
 			isa = PBXGroup;
 			children = (
@@ -1982,7 +1973,6 @@
 				A164DA18194EA249008B26E8 /* IQKeyBoardManager */,
 				A1A06F4B18FFCD9200C9EAC3 /* MTStatusBarOverlay */,
 				A1974FFD18D84BF10062CAA7 /* Addtional */,
-				A1311F4218CA2E0800D1A40F /* SwipeView */,
 				A143011918BB461A0064DF87 /* PKResManager */,
 				A1A1DAFB18C9CCD200F03E04 /* KGUtils.h */,
 				A1A1DAFC18C9CCD200F03E04 /* KGUtils.m */,
@@ -2343,6 +2333,8 @@
 				A19F0EC218E2AE0D00C2944D /* KGBuyerRefPicturesCell.m */,
 				A19F0EC418E2B33B00C2944D /* KGBuyerDescriptionCell.h */,
 				A19F0EC518E2B33B00C2944D /* KGBuyerDescriptionCell.m */,
+				A17952E719C2E83700CD940D /* KGBuyerRefPictureCollectionViewCell.h */,
+				A17952E819C2E83700CD940D /* KGBuyerRefPictureCollectionViewCell.m */,
 				A1BCF762194AD6C6008319C4 /* KGBuyerRouteCell.h */,
 				A1BCF763194AD6C6008319C4 /* KGBuyerRouteCell.m */,
 				A19F0EC718E2B47800C2944D /* KGBuyerCommentCell.h */,
@@ -3681,7 +3673,6 @@
 				A1AD133E1908D8BD00DF17B6 /* KGUserObject.m in Sources */,
 				A12F27E819A71BB300B30FF8 /* JDStatusBarNotification.m in Sources */,
 				A15AD1B619AC442500A41D6F /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
-				A1311F4518CA2E0800D1A40F /* SwipeView.m in Sources */,
 				A1BFA61C19B6CE21007AF67B /* KGOrderConfirmViewController.m in Sources */,
 				A121F424198F778400260E73 /* PSTCollectionViewFlowLayout.m in Sources */,
 				A1CA59E61917616200D9A429 /* KGCreateOrderTextFieldCell.m in Sources */,
@@ -3749,6 +3740,7 @@
 				A182B26C19BEB50F009A065E /* KGConfirmReceiptController.m in Sources */,
 				A174CD671904CFAC00D910C5 /* UIViewController+Additions.m in Sources */,
 				A121F41E198F778400260E73 /* DACircularProgressView.m in Sources */,
+				A17952E919C2E83700CD940D /* KGBuyerRefPictureCollectionViewCell.m in Sources */,
 				A121F426198F778400260E73 /* PSTCollectionViewLayout.m in Sources */,
 				A143012518BB461A0064DF87 /* UIFont+PKFont.m in Sources */,
 				A1BFA61619B6C48D007AF67B /* KGTableViewCell.m in Sources */,

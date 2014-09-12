@@ -18,9 +18,11 @@
 #import "KGGoodsObject.h"
 #import "KGGoodsPhotoObject.h"
 #import "KGJourneyObject.h"
+#import "KGBuyerRefPictureCollectionViewCell.h"
 
 
-@interface KGBuyerInfoViewController () <SwipeViewDataSource, SwipeViewDelegate, MWPhotoBrowserDelegate>
+
+@interface KGBuyerInfoViewController () <MWPhotoBrowserDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSMutableArray *photos;
@@ -147,10 +149,8 @@
         } else if (indexPath.row == 2) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"kBuyerPictureCell" forIndexPath:indexPath];
             KGBuyerRefPicturesCell *pCell = (KGBuyerRefPicturesCell *)cell;
-            pCell.swipeView.delegate = self;
-            pCell.swipeView.dataSource = self;
-            pCell.swipeView.alignment = SwipeViewAlignmentEdge;
-            [pCell.swipeView reloadData];
+            pCell.photosCollectionView.delegate = self;
+            pCell.photosCollectionView.dataSource = self;
         }
     } else {
         if (indexPath.row == 0) {
@@ -221,57 +221,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
-}
-
-
-#pragma SwipViewDataSource
-- (NSInteger)numberOfItemsInSwipeView:(SwipeView *)swipeView
-{
-    return [self.good_info count];
-}
-
-- (UIView *)swipeView:(SwipeView *)swipeView viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
-{
-    UIView *containerView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 97, 95)];
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 95, 95)];
-    [imageView setContentMode:UIViewContentModeScaleAspectFill];
-    [imageView setClipsToBounds:YES];
-    NSString *imageUrl = [self.good_info[index] valueForKey:@"good_default_head_url"];
-    [imageView setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"default-placeholder"] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    [containerView addSubview:imageView];
-
-    view = containerView;
-    return view;
-}
-
-#pragma SwipeViewDelegate
-- (void)swipeView:(SwipeView *)swipeView didSelectItemAtIndex:(NSInteger)index {
-    NSLog(@"selelect index is : %d", index);
-
-    self.currAlbumIndex = index;
-    [self.photos removeAllObjects];
-    NSArray *imgArry = [self.good_info[index] valueForKey:@"good_photos"];
-    for (KGGoodsPhotoObject *one in imgArry) {
-        [self.photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:one.good_photo_url]]];
-    }
-
-    MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
-    browser.displayActionButton = NO;
-    browser.displayNavArrows = NO;
-    browser.displaySelectionButtons = NO;
-    browser.alwaysShowControls = NO;
-    browser.extendedLayoutIncludesOpaqueBars = YES;
-    browser.zoomPhotosToFill = NO;
-    browser.enableGrid = NO;
-    browser.startOnGrid = NO;
-    browser.enableSwipeToDismiss = YES;
-    browser.alwaysShowControls = NO;
-    browser.delayToHideElements = -1;
-    [browser setCurrentPhotoIndex:0];
-
-    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:browser];
-    [self presentViewController:nc animated:YES completion:nil];
-    
 }
 
 #pragma mark - MWPhotoBrowserDelegate
@@ -444,6 +393,53 @@
     obj.level = [user_info [@"user_star"] integerValue];
     obj.intro = user_info [@"user_desc"];
     return obj;
+}
+
+#pragma UICollectionViewDataSource
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return [self.good_info count];
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+
+    KGBuyerRefPictureCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"kBuyerRefPictureCollectionViewCell" forIndexPath:indexPath];
+    NSString *imageUrl = [self.good_info[indexPath.row] valueForKey:@"good_default_head_url"];
+    [cell.photoView setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"default-placeholder"] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    return cell;
+}
+
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"selelect index is : %d", indexPath.row);
+
+    self.currAlbumIndex = indexPath.row;
+    [self.photos removeAllObjects];
+    NSArray *imgArry = [self.good_info[indexPath.row] valueForKey:@"good_photos"];
+    for (KGGoodsPhotoObject *one in imgArry) {
+        [self.photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:one.good_photo_url]]];
+    }
+
+    MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
+    browser.displayActionButton = NO;
+    browser.displayNavArrows = NO;
+    browser.displaySelectionButtons = NO;
+    browser.alwaysShowControls = NO;
+    browser.extendedLayoutIncludesOpaqueBars = YES;
+    browser.zoomPhotosToFill = NO;
+    browser.enableGrid = NO;
+    browser.startOnGrid = NO;
+    browser.enableSwipeToDismiss = YES;
+    browser.alwaysShowControls = NO;
+    browser.delayToHideElements = -1;
+    [browser setCurrentPhotoIndex:0];
+
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:browser];
+    [self presentViewController:nc animated:YES completion:nil];
 }
 
 @end

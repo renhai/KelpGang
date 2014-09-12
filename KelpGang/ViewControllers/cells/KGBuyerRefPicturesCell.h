@@ -10,6 +10,7 @@
 #import "SwipeView.h"
 
 @interface KGBuyerRefPicturesCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet SwipeView *swipeView;
+
+@property (weak, nonatomic) IBOutlet UICollectionView *photosCollectionView;
 
 @end
