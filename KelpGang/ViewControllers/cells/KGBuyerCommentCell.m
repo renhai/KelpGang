@@ -33,6 +33,8 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    [self.nameLabel sizeToFit];
+    self.nameLabel.centerY = self.headImgView.centerY;
 }
 
 - (void)setcommentInfo: (NSDictionary *)info {
@@ -46,7 +48,8 @@
     }
     self.nameLabel.text = userName;
     self.headImgView.layer.cornerRadius = self.headImgView.width / 2;
-    [self.headImgView setImageWithURL: [NSURL URLWithString:headUrl] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [self.headImgView setImageWithURL: [NSURL URLWithString:headUrl] placeholderImage:[UIImage imageNamed:kAvatarMale] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [self setNeedsLayout];
 
 }
 

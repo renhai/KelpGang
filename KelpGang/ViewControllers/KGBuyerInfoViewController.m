@@ -13,12 +13,12 @@
 #import "MWPhotoBrowser.h"
 #import "KGPicBottomView.h"
 #import "KGChatViewController.h"
-#import "KGCommentListViewController.h"
 #import "KGBuyerRouteCell.h"
 #import "KGGoodsObject.h"
 #import "KGGoodsPhotoObject.h"
 #import "KGJourneyObject.h"
 #import "KGBuyerRefPictureCollectionViewCell.h"
+#import "KGCommentListController.h"
 
 
 
@@ -90,6 +90,9 @@
     if ([destController isKindOfClass:[KGChatViewController class]]) {
         KGChatViewController *chatViewController = (KGChatViewController *)destController;
         chatViewController.toUserId = self.userObj.uid;
+    } else if ([destController isKindOfClass:[KGCommentListController class]]) {
+        KGCommentListController *commentController = (KGCommentListController *)destController;
+        commentController.userId = self.userObj.uid;
     }
 }
 
@@ -104,6 +107,11 @@
             return NO;
         }
         if (self.userObj.uid <= 0) {
+            return NO;
+        }
+    }
+    if ([@"kCommentListSegue" isEqualToString:identifier]) {
+        if (self.comment_number == 0) {
             return NO;
         }
     }

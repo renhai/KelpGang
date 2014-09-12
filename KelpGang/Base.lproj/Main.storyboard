@@ -451,7 +451,7 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="ZAH-X8-gsB" kind="push" identifier="kCommentSegue" id="uAR-fs-fpu"/>
+                                            <segue destination="Cuc-hv-Rh4" kind="push" identifier="kCommentListSegue" id="zhh-LG-nL2"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="kBuyerCommentCell" rowHeight="85" id="Nn0-fo-fhg" customClass="KGBuyerCommentCell">
@@ -538,44 +538,74 @@
             </objects>
             <point key="canvasLocation" x="1255" y="-1000"/>
         </scene>
-        <!--Comment List View Controller - 评论-->
-        <scene sceneID="MX9-hN-WPT">
+        <!--Comment List Controller-->
+        <scene sceneID="MZQ-Gy-N9x">
             <objects>
-                <viewController id="ZAH-X8-gsB" customClass="KGCommentListViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="sfb-3I-3Gr">
+                <tableViewController id="Cuc-hv-Rh4" customClass="KGCommentListController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="19D-Gl-JcC">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" id="Mz0-Nt-l3J" userLabel="Chat View">
-                                <rect key="frame" x="0.0" y="440" width="320" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uHx-Wu-DTw">
-                                        <rect key="frame" x="15" y="10" width="290" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.12941176469999999" green="0.72549019609999998" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="开始聊天">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="cIg-QM-o4s" kind="push" id="t6T-2x-Aa7"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.90196078430000004" green="0.94901960780000005" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="评论" id="Djx-23-OaW"/>
-                    <connections>
-                        <outlet property="chatView" destination="Mz0-Nt-l3J" id="klM-0b-7xH"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hbW-4B-SWK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="kCommentListCell" rowHeight="84" id="jEA-rY-cxN" customClass="KGCommentListCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="84"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jEA-rY-cxN" id="Qqe-MO-Ua3">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="83"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="3lD-BO-XiF">
+                                            <rect key="frame" x="15" y="0.0" width="25" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="王帮主" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Jxb-Ha-v6j">
+                                            <rect key="frame" x="63" y="2" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" red="0.12941176469999999" green="0.72549019609999998" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" id="4FV-HY-hDo" userLabel="level view">
+                                            <rect key="frame" x="184" y="0.0" width="63" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="0.92941176469999998" green="0.29411764709999999" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </view>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KjY-gs-T05">
+                                            <rect key="frame" x="258" y="0.0" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" red="0.73333333333333328" green="0.73333333333333328" blue="0.73333333333333328" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3Cu-z7-79Z">
+                                            <rect key="frame" x="60" y="31" width="260" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" red="0.53725490196078429" green="0.53725490196078429" blue="0.53725490196078429" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="commentLabel" destination="3Cu-z7-79Z" id="OKb-vA-Rad"/>
+                                    <outlet property="headImageView" destination="3lD-BO-XiF" id="yeU-cM-pxT"/>
+                                    <outlet property="levelView" destination="4FV-HY-hDo" id="cgx-Tp-lQk"/>
+                                    <outlet property="nameLabel" destination="Jxb-Ha-v6j" id="Bwa-Gd-Sjb"/>
+                                    <outlet property="timeLabel" destination="KjY-gs-T05" id="Lbz-P5-sRO"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Cuc-hv-Rh4" id="uqP-jF-Hjs"/>
+                            <outlet property="delegate" destination="Cuc-hv-Rh4" id="Pbh-o4-Pee"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="fqL-Wf-oYJ"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zDq-Mz-Pz9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1791" y="-615"/>
+            <point key="canvasLocation" x="1821" y="-812"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="yCm-5o-4xs">
@@ -711,7 +741,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HBO-mO-1qF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1791" y="-1414"/>
+            <point key="canvasLocation" x="1815" y="-1523"/>
         </scene>
         <!--Recent Contacts Controller - 最近联系人-->
         <scene sceneID="yNA-Du-Ypz">
@@ -3065,7 +3095,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="aDv-BX-YPr"/>
-    </inferredMetricsTieBreakers>
 </document>

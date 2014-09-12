@@ -152,6 +152,9 @@
 		A17952E319C2C99A00CD940D /* KGTaskGoodsPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A17952E219C2C99A00CD940D /* KGTaskGoodsPhotoCell.m */; };
 		A17952E619C2D25800CD940D /* KGTaskGoodsPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A17952E519C2D25800CD940D /* KGTaskGoodsPhotoCollectionViewCell.m */; };
 		A17952E919C2E83700CD940D /* KGBuyerRefPictureCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A17952E819C2E83700CD940D /* KGBuyerRefPictureCollectionViewCell.m */; };
+		A17952EC19C2EFB000CD940D /* KGCommentListController.m in Sources */ = {isa = PBXBuildFile; fileRef = A17952EB19C2EFB000CD940D /* KGCommentListController.m */; };
+		A17952EF19C2F17C00CD940D /* KGCommentListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A17952EE19C2F17C00CD940D /* KGCommentListCell.m */; };
+		A17952F219C2F6E300CD940D /* KGCommentObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A17952F119C2F6E300CD940D /* KGCommentObject.m */; };
 		A179E6B91921EB28006A72BD /* login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A179E6B81921EB28006A72BD /* login.storyboard */; };
 		A179E6BC1921F221006A72BD /* KGLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A179E6BB1921F221006A72BD /* KGLoginController.m */; };
 		A180C0EB18C8BE7800116DCF /* search_someone_active.png in Resources */ = {isa = PBXBuildFile; fileRef = A180C0E918C8BE7800116DCF /* search_someone_active.png */; };
@@ -661,7 +664,6 @@
 		A19F0EC318E2AE0D00C2944D /* KGBuyerRefPicturesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A19F0EC218E2AE0D00C2944D /* KGBuyerRefPicturesCell.m */; };
 		A19F0EC618E2B33B00C2944D /* KGBuyerDescriptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A19F0EC518E2B33B00C2944D /* KGBuyerDescriptionCell.m */; };
 		A19F0EC918E2B47800C2944D /* KGBuyerCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A19F0EC818E2B47800C2944D /* KGBuyerCommentCell.m */; };
-		A19F0ECC18E2B86200C2944D /* KGCommentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A19F0ECB18E2B86200C2944D /* KGCommentListViewController.m */; };
 		A19F0ED118E2C6A400C2944D /* HudHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A19F0ED018E2C6A400C2944D /* HudHelper.m */; };
 		A19F85E618EA6C300089B14F /* KGPreviewTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A19F85E518EA6C300089B14F /* KGPreviewTaskViewController.m */; };
 		A1A003E618F3CE8D00B5A1D7 /* chat-add.png in Resources */ = {isa = PBXBuildFile; fileRef = A1A003E518F3CE8D00B5A1D7 /* chat-add.png */; };
@@ -1008,6 +1010,12 @@
 		A17952E519C2D25800CD940D /* KGTaskGoodsPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGTaskGoodsPhotoCollectionViewCell.m; sourceTree = "<group>"; };
 		A17952E719C2E83700CD940D /* KGBuyerRefPictureCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGBuyerRefPictureCollectionViewCell.h; sourceTree = "<group>"; };
 		A17952E819C2E83700CD940D /* KGBuyerRefPictureCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGBuyerRefPictureCollectionViewCell.m; sourceTree = "<group>"; };
+		A17952EA19C2EFB000CD940D /* KGCommentListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCommentListController.h; sourceTree = "<group>"; };
+		A17952EB19C2EFB000CD940D /* KGCommentListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCommentListController.m; sourceTree = "<group>"; };
+		A17952ED19C2F17C00CD940D /* KGCommentListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCommentListCell.h; sourceTree = "<group>"; };
+		A17952EE19C2F17C00CD940D /* KGCommentListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCommentListCell.m; sourceTree = "<group>"; };
+		A17952F019C2F6E300CD940D /* KGCommentObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCommentObject.h; sourceTree = "<group>"; };
+		A17952F119C2F6E300CD940D /* KGCommentObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCommentObject.m; sourceTree = "<group>"; };
 		A179E6B81921EB28006A72BD /* login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = login.storyboard; sourceTree = "<group>"; };
 		A179E6BA1921F221006A72BD /* KGLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGLoginController.h; sourceTree = "<group>"; };
 		A179E6BB1921F221006A72BD /* KGLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGLoginController.m; sourceTree = "<group>"; };
@@ -1554,8 +1562,6 @@
 		A19F0EC518E2B33B00C2944D /* KGBuyerDescriptionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGBuyerDescriptionCell.m; sourceTree = "<group>"; };
 		A19F0EC718E2B47800C2944D /* KGBuyerCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGBuyerCommentCell.h; sourceTree = "<group>"; };
 		A19F0EC818E2B47800C2944D /* KGBuyerCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGBuyerCommentCell.m; sourceTree = "<group>"; };
-		A19F0ECA18E2B86200C2944D /* KGCommentListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGCommentListViewController.h; sourceTree = "<group>"; };
-		A19F0ECB18E2B86200C2944D /* KGCommentListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGCommentListViewController.m; sourceTree = "<group>"; };
 		A19F0ECF18E2C6A400C2944D /* HudHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HudHelper.h; sourceTree = "<group>"; };
 		A19F0ED018E2C6A400C2944D /* HudHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HudHelper.m; sourceTree = "<group>"; };
 		A19F85E418EA6C300089B14F /* KGPreviewTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGPreviewTaskViewController.h; sourceTree = "<group>"; };
@@ -2163,8 +2169,6 @@
 				A1DD134E18E04C7A000F52C2 /* KGDeliveryAddressController.m */,
 				A18A2B8B18E1334200FDFB8E /* KGAddAddressController.h */,
 				A18A2B8C18E1334200FDFB8E /* KGAddAddressController.m */,
-				A19F0ECA18E2B86200C2944D /* KGCommentListViewController.h */,
-				A19F0ECB18E2B86200C2944D /* KGCommentListViewController.m */,
 				A1933C2518E3D3C9000FC0B4 /* KGPhotoBrowserViewController.h */,
 				A1933C2618E3D3C9000FC0B4 /* KGPhotoBrowserViewController.m */,
 				A19F85E418EA6C300089B14F /* KGPreviewTaskViewController.h */,
@@ -2187,6 +2191,8 @@
 				A12BBF2119A47BD30041547A /* KGMyFollowViewController.m */,
 				A17952D219C2899500CD940D /* KGTaskDetailController.h */,
 				A17952D319C2899500CD940D /* KGTaskDetailController.m */,
+				A17952EA19C2EFB000CD940D /* KGCommentListController.h */,
+				A17952EB19C2EFB000CD940D /* KGCommentListController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -2316,6 +2322,8 @@
 				A12BBF2A19A4B0C90041547A /* KGUserFollowObject.m */,
 				A192E4AC19C1A9AF00E34602 /* KGDiscovery.h */,
 				A192E4AD19C1A9AF00E34602 /* KGDiscovery.m */,
+				A17952F019C2F6E300CD940D /* KGCommentObject.h */,
+				A17952F119C2F6E300CD940D /* KGCommentObject.m */,
 			);
 			path = objects;
 			sourceTree = "<group>";
@@ -2377,6 +2385,8 @@
 				A17952E219C2C99A00CD940D /* KGTaskGoodsPhotoCell.m */,
 				A17952E419C2D25800CD940D /* KGTaskGoodsPhotoCollectionViewCell.h */,
 				A17952E519C2D25800CD940D /* KGTaskGoodsPhotoCollectionViewCell.m */,
+				A17952ED19C2F17C00CD940D /* KGCommentListCell.h */,
+				A17952EE19C2F17C00CD940D /* KGCommentListCell.m */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -3604,6 +3614,7 @@
 				A182B29119BF2264009A065E /* GCPlaceholderTextView.m in Sources */,
 				A182B28219BF1090009A065E /* KGRatingCell.m in Sources */,
 				A16873C019A3064300810275 /* KGGoodsObject.m in Sources */,
+				A17952EC19C2EFB000CD940D /* KGCommentListController.m in Sources */,
 				A15D676B1952871F00056F5E /* KGRegisterController.m in Sources */,
 				A19EE92A199871A500D6C935 /* KGTaskObject.m in Sources */,
 				A174B7B01941A09D0067B8FA /* KGNetworkManager.m in Sources */,
@@ -3647,6 +3658,7 @@
 				A199395818FBD687002E7E51 /* KGChatCellInfo.m in Sources */,
 				A121F42B198F778400260E73 /* PSTGridLayoutSection.m in Sources */,
 				A1468F1919B8208B00461BCE /* KGPayOrderController.m in Sources */,
+				A17952F219C2F6E300CD940D /* KGCommentObject.m in Sources */,
 				A16FBEED18DC178C009E2F66 /* KGMaskView.m in Sources */,
 				A121F420198F778400260E73 /* PSTCollectionView.m in Sources */,
 				A19E4C1019B9679600D1669A /* KGLeaveMessageController.m in Sources */,
@@ -3729,7 +3741,6 @@
 				A16873BD19A305A500810275 /* KGGoodsPhotoObject.m in Sources */,
 				A162DAC5199A19ED0038AE8B /* KGMyTaskCell.m in Sources */,
 				A143012618BB461A0064DF87 /* UIImage+PKImage.m in Sources */,
-				A19F0ECC18E2B86200C2944D /* KGCommentListViewController.m in Sources */,
 				A16873BA19A2F80F00810275 /* KGMyCollectViewCell.m in Sources */,
 				A182B26919BEA2E6009A065E /* KGLogisticsCell.m in Sources */,
 				A12BBF2519A47EB40041547A /* KGMyFollowCell.m in Sources */,
@@ -3739,6 +3750,7 @@
 				A12BBF2219A47BD30041547A /* KGMyFollowViewController.m in Sources */,
 				A182B26C19BEB50F009A065E /* KGConfirmReceiptController.m in Sources */,
 				A174CD671904CFAC00D910C5 /* UIViewController+Additions.m in Sources */,
+				A17952EF19C2F17C00CD940D /* KGCommentListCell.m in Sources */,
 				A121F41E198F778400260E73 /* DACircularProgressView.m in Sources */,
 				A17952E919C2E83700CD940D /* KGBuyerRefPictureCollectionViewCell.m in Sources */,
 				A121F426198F778400260E73 /* PSTCollectionViewLayout.m in Sources */,
