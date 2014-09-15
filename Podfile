@@ -4,8 +4,8 @@ inhibit_all_warnings!
 
 target :'KelpGang' do
     #pod 'PSTCollectionView', '~> 1.2.0'
-    pod 'MagicalRecord', '~> 2.2'
-    pod 'SVSegmentedControl', '~> 0.2'
+    #pod 'MagicalRecord', '~> 2.2'
+    #pod 'SVSegmentedControl', '~> 0.2'
     pod 'SDWebImage', '~> 3.7.1'
     pod 'SVPullToRefresh', '~> 0.4.1'
     pod 'XMPPFramework', '~> 3.6.4'

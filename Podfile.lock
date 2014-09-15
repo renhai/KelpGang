@@ -33,16 +33,12 @@ PODS:
   - FMDB/common (2.3)
   - FMDB/standard (2.3):
     - FMDB/common
-  - MagicalRecord (2.2):
-    - MagicalRecord/Core
-  - MagicalRecord/Core (2.2)
   - MBProgressHUD (0.9)
   - Reachability (3.1.1)
   - SDWebImage (3.7.1):
     - SDWebImage/Core
   - SDWebImage/Core (3.7.1)
   - SVPullToRefresh (0.4.1)
-  - SVSegmentedControl (0.2)
   - UIActivityIndicator-for-SDWebImage (1.2):
     - SDWebImage (~> 3.7)
   - XMPPFramework (3.6.4):
@@ -190,12 +186,10 @@ DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - EGOCache (~> 2.0)
   - FMDB
-  - MagicalRecord (~> 2.2)
   - MBProgressHUD (~> 0.8)
   - Reachability (~> 3.1.1)
   - SDWebImage (~> 3.7.1)
   - SVPullToRefresh (~> 0.4.1)
-  - SVSegmentedControl (~> 0.2)
   - UIActivityIndicator-for-SDWebImage
   - XMPPFramework (~> 3.6.4)
 
@@ -205,12 +199,10 @@ SPEC CHECKSUMS:
   CocoaLumberjack: baf4a09a3bcbdfea3363556a90104e026d3504e2
   EGOCache: bf414333c425fe47f5182351d1dd47ebf72d8352
   FMDB: 31ec26773c7f7b7890a6038235a1f2bbd933a7cb
-  MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
   Reachability: 8e9635e3cb4f98e7f825e51147f677ecc694d0e7
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
   SVPullToRefresh: d5161ebc833a38b465364412e5e307ca80bbb190
-  SVSegmentedControl: 755a9721054734a77841147de3cc8babf09ba7f1
   UIActivityIndicator-for-SDWebImage: 8bd92c15280fbe54816448c6b14674145eee05c7
   XMPPFramework: 5a8555132822ebb3e11d2bac0258e62754315bc5
 
