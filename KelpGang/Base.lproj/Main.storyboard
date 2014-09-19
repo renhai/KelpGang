@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="E2r-t6-hyR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="E2r-t6-hyR">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
         <!--Tab View Controller-->
@@ -27,14 +27,13 @@
             </objects>
             <point key="canvasLocation" x="-388" y="236"/>
         </scene>
-        <!--Navigation Controller - 找人帮-->
+        <!--找人帮-->
         <scene sceneID="8WC-mm-GbR">
             <objects>
                 <navigationController definesPresentationContext="YES" id="wFT-OJ-542" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="找人帮" image="search_someone_gray.png" id="FbE-ni-BJn"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="UOy-Nc-PCC">
-                        <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" type="italicSystem" pointSize="20"/>
@@ -50,7 +49,7 @@
             </objects>
             <point key="canvasLocation" x="146" y="-1000"/>
         </scene>
-        <!--Navigation Controller - 发现-->
+        <!--发现-->
         <scene sceneID="YfA-eD-O8W">
             <objects>
                 <navigationController definesPresentationContext="YES" id="nqR-Ue-GAy" sceneMemberID="viewController">
@@ -71,7 +70,7 @@
             </objects>
             <point key="canvasLocation" x="146" y="-113"/>
         </scene>
-        <!--Discover View Controller - 发现-->
+        <!--发现-->
         <scene sceneID="id2-hv-cNS">
             <objects>
                 <tableViewController id="YmX-7r-t2X" customClass="KGDiscoverViewController" sceneMemberID="viewController">
@@ -111,7 +110,7 @@
             </objects>
             <point key="canvasLocation" x="553" y="-113"/>
         </scene>
-        <!--Buyer List View Controller - 帮帮-->
+        <!--帮帮-->
         <scene sceneID="iX6-z6-A3N">
             <objects>
                 <viewController id="ntO-8B-Gy4" customClass="KGBuyerListViewController" sceneMemberID="viewController">
@@ -251,7 +250,7 @@
             </objects>
             <point key="canvasLocation" x="736" y="-1000"/>
         </scene>
-        <!--Buyer Info View Controller - 帮帮信息-->
+        <!--帮帮信息-->
         <scene sceneID="dsi-sE-qVU">
             <objects>
                 <viewController storyboardIdentifier="kBuyerInfoViewController" id="qWW-jf-0kw" customClass="KGBuyerInfoViewController" sceneMemberID="viewController">
@@ -743,7 +742,7 @@
             </objects>
             <point key="canvasLocation" x="1815" y="-1523"/>
         </scene>
-        <!--Recent Contacts Controller - 最近联系人-->
+        <!--最近联系人-->
         <scene sceneID="yNA-Du-Ypz">
             <objects>
                 <tableViewController storyboardIdentifier="kRecentContactsController" id="aXN-6m-HXV" customClass="KGRecentContactsController" sceneMemberID="viewController">
@@ -764,7 +763,7 @@
             </objects>
             <point key="canvasLocation" x="1073" y="3146"/>
         </scene>
-        <!--Settings View Controller - 设置-->
+        <!--设置-->
         <scene sceneID="T2S-qw-TtQ">
             <objects>
                 <tableViewController id="DQn-jO-JoI" customClass="KGSettingsViewController" sceneMemberID="viewController">
@@ -876,7 +875,7 @@
             </objects>
             <point key="canvasLocation" x="1096" y="3881"/>
         </scene>
-        <!--My Follow View Controller - 关注管理-->
+        <!--关注管理-->
         <scene sceneID="49S-El-oaq">
             <objects>
                 <tableViewController id="RMa-Xi-Wzw" customClass="KGMyFollowViewController" sceneMemberID="viewController">
@@ -939,7 +938,7 @@
             </objects>
             <point key="canvasLocation" x="1497" y="3697"/>
         </scene>
-        <!--My Collect View Controller - 我的收藏-->
+        <!--我的收藏-->
         <scene sceneID="btI-vv-KdW">
             <objects>
                 <tableViewController storyboardIdentifier="kMyCollectViewController" id="Ib0-Z9-Ig1" customClass="KGMyCollectViewController" sceneMemberID="viewController">
@@ -1000,7 +999,7 @@
             </objects>
             <point key="canvasLocation" x="1104" y="5291"/>
         </scene>
-        <!--Create Task View Controller - 新任务-->
+        <!--新任务-->
         <scene sceneID="23G-YY-Eaw">
             <objects>
                 <tableViewController id="FL4-SZ-t3M" customClass="KGCreateTaskViewController" sceneMemberID="viewController">
@@ -1657,14 +1656,13 @@
             </objects>
             <point key="canvasLocation" x="1096" y="733"/>
         </scene>
-        <!--Navigation Controller - 发任务-->
+        <!--发任务-->
         <scene sceneID="LBe-b2-1xc">
             <objects>
                 <navigationController definesPresentationContext="YES" id="tcQ-fH-yMk" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="发任务" image="write_gray.png" id="k20-YW-PcV"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="zC3-f2-6Ae">
-                        <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" type="italicSystem" pointSize="20"/>
@@ -1679,7 +1677,7 @@
             </objects>
             <point key="canvasLocation" x="154" y="733"/>
         </scene>
-        <!--Host View Controller - 我-->
+        <!--我-->
         <scene sceneID="9zT-kx-AMW">
             <objects>
                 <tableViewController id="XmP-JS-RxX" customClass="KGHostViewController" sceneMemberID="viewController">
@@ -2015,7 +2013,7 @@
             </objects>
             <point key="canvasLocation" x="585" y="2359"/>
         </scene>
-        <!--Navigation Controller - 我-->
+        <!--我-->
         <scene sceneID="Tg8-yQ-Ubv">
             <objects>
                 <navigationController definesPresentationContext="YES" id="N8V-KK-BJj" sceneMemberID="viewController">
@@ -2035,7 +2033,7 @@
             </objects>
             <point key="canvasLocation" x="154" y="2359"/>
         </scene>
-        <!--Task List View Controller - 任务-->
+        <!--任务-->
         <scene sceneID="hcX-bd-hNZ">
             <objects>
                 <viewController id="wry-1v-JvQ" customClass="KGTaskListViewController" sceneMemberID="viewController">
@@ -2176,7 +2174,7 @@
             </objects>
             <point key="canvasLocation" x="1065" y="2346"/>
         </scene>
-        <!--Host Detail Controller - 个人信息-->
+        <!--个人信息-->
         <scene sceneID="yFe-AA-Kq5">
             <objects>
                 <tableViewController id="3ce-tb-lAT" customClass="KGHostDetailController" sceneMemberID="viewController">
@@ -2438,7 +2436,7 @@
             </objects>
             <point key="canvasLocation" x="1065" y="1447"/>
         </scene>
-        <!--Delivery Address Controller - 收货地址管理-->
+        <!--收货地址管理-->
         <scene sceneID="DwD-NC-dNG">
             <objects>
                 <tableViewController storyboardIdentifier="kDeliveryAddressController" id="4na-FF-oWj" customClass="KGDeliveryAddressController" sceneMemberID="viewController">
@@ -2519,7 +2517,7 @@
             </objects>
             <point key="canvasLocation" x="1481" y="1439"/>
         </scene>
-        <!--Add Address Controller - 新增地址管理-->
+        <!--新增地址管理-->
         <scene sceneID="m2P-fQ-vQi">
             <objects>
                 <tableViewController storyboardIdentifier="kAddAddressController" id="ggo-cb-fWs" customClass="KGAddAddressController" sceneMemberID="viewController">
@@ -2716,7 +2714,7 @@
             </objects>
             <point key="canvasLocation" x="1913" y="1447"/>
         </scene>
-        <!--Create Journey Controller - 发行程-->
+        <!--发行程-->
         <scene sceneID="BA3-k3-AG3">
             <objects>
                 <tableViewController id="f6u-L3-iGf" customClass="KGCreateJourneyController" sceneMemberID="viewController">
@@ -2943,7 +2941,7 @@
             </objects>
             <point key="canvasLocation" x="1481" y="2138"/>
         </scene>
-        <!--My Task Controller - 我的任务-->
+        <!--我的任务-->
         <scene sceneID="WHQ-d5-u62">
             <objects>
                 <tableViewController storyboardIdentifier="kMyTaskController" id="Kug-rE-ZsA" customClass="KGMyTaskController" sceneMemberID="viewController">
