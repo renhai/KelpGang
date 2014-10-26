@@ -28,10 +28,10 @@ PODS:
   - CocoaLumberjack/Extensions (1.6.5.1):
     - CocoaLumberjack/Core
   - EGOCache (2.1)
-  - FMDB (2.3):
+  - FMDB (2.4):
     - FMDB/standard
-  - FMDB/common (2.3)
-  - FMDB/standard (2.3):
+  - FMDB/common (2.4)
+  - FMDB/standard (2.4):
     - FMDB/common
   - MBProgressHUD (0.9)
   - PSTCollectionView (1.2.3)
@@ -200,7 +200,7 @@ SPEC CHECKSUMS:
   CocoaAsyncSocket: 45bdbbc1c0a5ed0640ff4c42af325ba43a2f099a
   CocoaLumberjack: baf4a09a3bcbdfea3363556a90104e026d3504e2
   EGOCache: bf414333c425fe47f5182351d1dd47ebf72d8352
-  FMDB: 31ec26773c7f7b7890a6038235a1f2bbd933a7cb
+  FMDB: 0b2fa25e5264ef177973c0cb8c02c711107979aa
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
   PSTCollectionView: d9f466e4554cc83260ca9bde7beb27f308e8fd76
   Reachability: 8e9635e3cb4f98e7f825e51147f677ecc694d0e7
